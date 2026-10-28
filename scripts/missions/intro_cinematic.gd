@@ -67,15 +67,15 @@ func run() -> void:
 	# 2. Interior: Mack junto a la ventanilla. Vibra el móvil: BIG RAY.
 	var seat := BusModel.window_seat()
 	var face := Vector3(seat.x, seat.y + 1.25, seat.z)
-	var o1 := face + Vector3(-1.9, 0.15, 1.1)
-	var o2 := face + Vector3(-1.5, 0.05, 0.5)
+	var o1 := face + Vector3(-0.55, 0.12, 0.9)
+	var o2 := face + Vector3(-0.45, 0.05, 0.6)
 	var c1_from := Transform3D(Basis.looking_at(face - o1, Vector3.UP), o1)
 	var c1_to := Transform3D(Basis.looking_at(face - o2, Vector3.UP), o2)
 	world.rig.attached_shot(bus, c1_from, c1_to, 7.0, 38.0, 34.0)
 	phone_light.light_energy = 0.0
 	hud.show_subtitle("", "Móvil: BIG RAY", 3.0)
 	await _hold(1.5)
-	phone_light.light_energy = 1.2
+	phone_light.light_energy = 2.5
 	mack.pose_idle_stance("phone")
 	await _hold(2.5)
 	if _skip_all:
@@ -84,7 +84,7 @@ func run() -> void:
 	var shots := [
 		[face + Vector3(0.85, 0.05, 1.3), face + Vector3(0.75, 0.0, 1.0), 34.0],
 		[face + Vector3(1.05, 0.25, -0.5), face + Vector3(0.95, 0.2, -0.2), 40.0],
-		[face + Vector3(-1.8, 0.1, 0.9), face + Vector3(-1.6, 0.05, 0.6), 30.0],
+		[face + Vector3(-0.4, 0.1, 1.2), face + Vector3(-0.35, 0.05, 0.9), 30.0],
 	]
 	var shot_i := 0
 	var since_cut := 100.0
@@ -185,8 +185,8 @@ func _add_bus_interior() -> void:
 	bus.add_child(phone_light)
 	var cabin := OmniLight3D.new()
 	cabin.light_color = Color(0.35, 0.45, 0.7)
-	cabin.omni_range = 7.0
-	cabin.light_energy = 0.35
+	cabin.omni_range = 9.0
+	cabin.light_energy = 1.3
 	cabin.position = Vector3(0, 2.9, 0)
 	bus.add_child(cabin)
 	var head := SpotLight3D.new()

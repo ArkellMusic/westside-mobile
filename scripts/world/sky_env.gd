@@ -5,9 +5,9 @@ extends Node3D
 
 const PRESETS := {
 	"night_desert": {
-		"sun_yaw": -40.0, "sun_pitch": -35.0, "light": Color(0.55, 0.65, 0.95), "energy": 0.55,
+		"sun_yaw": -40.0, "sun_pitch": -35.0, "light": Color(0.62, 0.68, 0.85), "energy": 0.32,
 		"top": Color(0.02, 0.03, 0.08), "horizon": Color(0.10, 0.12, 0.22), "ground": Color(0.03, 0.03, 0.05),
-		"fog": Color(0.06, 0.07, 0.13), "fog_density": 0.0009, "ambient": 0.4, "night": 1.0, "exposure": 1.5, "sky_energy": 1.0,
+		"fog": Color(0.06, 0.07, 0.13), "fog_density": 0.0009, "ambient": 0.3, "night": 1.0, "exposure": 1.35, "sky_energy": 1.0,
 	},
 	"dawn": {
 		"sun_yaw": 95.0, "sun_pitch": -6.0, "light": Color(1.0, 0.55, 0.35), "energy": 0.9,
