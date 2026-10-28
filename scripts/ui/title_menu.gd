@@ -100,6 +100,7 @@ func _build() -> void:
 	_main_box = VBoxContainer.new()
 	_main_box.add_theme_constant_override("separation", 12)
 	_main_box.custom_minimum_size = Vector2(440, 0)
+	_main_box.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	_title_box.add_child(_main_box)
 	_continue_btn = _menu_button("Continuar", func() -> void: continue_requested.emit())
 	_main_box.add_child(_continue_btn)
@@ -111,6 +112,7 @@ func _build() -> void:
 	_load_box = VBoxContainer.new()
 	_load_box.add_theme_constant_override("separation", 10)
 	_load_box.custom_minimum_size = Vector2(700, 0)
+	_load_box.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	_title_box.add_child(_load_box)
 	var slots: Array = [SaveSystem.AUTOSAVE_SLOT]
 	slots.append_array(SaveSystem.MANUAL_SLOTS)
