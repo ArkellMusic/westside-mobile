@@ -246,7 +246,16 @@ func _road_piece_x(b: MeshBuilder, z: float, w: float, x0: float, x1: float, y: 
 
 # ---------------------------------------------------------------- edificios
 
+## Centros de los edificios generados que ceden su sitio a Pinta y Listo, la comisaría
+## y el hospital (los construye Interiors). Los argumentos ya se han evaluado al
+## llegar aquí, así que el resto de la ciudad no cambia.
+const REPLACED_SITES := [Vector2(70.525, -118.737), Vector2(120.14, -118.3), Vector2(175.69, -121.53)]
+
+
 func _add_building(center_xz: Vector2, size: Vector3, color: Color, kind: float, collide: bool = true) -> void:
+	for site in REPLACED_SITES:
+		if center_xz.distance_to(site) < 1.5:
+			return
 	var center := Vector3(center_xz.x, size.y * 0.5, center_xz.y)
 	_buildings.append({"center": center, "size": size, "color": color, "kind": kind})
 	footprints.append(Rect2(center_xz.x - size.x * 0.5, center_xz.y - size.z * 0.5, size.x, size.z))

@@ -14,6 +14,8 @@ var traffic: Traffic
 var radio: Radio
 var pedestrians: Pedestrians
 var impact_system: ImpactSystem
+var interiors: Interiors
+var _radar_timer: float = 0.0
 var wanted: int = 0
 var _wanted_timer: float = 0.0
 var player: Player
@@ -74,6 +76,11 @@ func _ready() -> void:
 	props.name = "StreetProps"
 	add_child(props)
 	props.build(city)
+	interiors = Interiors.new()
+	interiors.name = "Interiors"
+	interiors.main = self
+	add_child(interiors)
+	interiors.build(city)
 	sky.apply_preset("golden", 0.0)
 
 	traffic = Traffic.new()
@@ -122,6 +129,7 @@ func _ready() -> void:
 	hud = HUD.new()
 	theme_root.add_child(hud)
 	hud.radar.footprints = city.footprints
+	hud.radar.markers = interiors.radar_markers(player.global_position)
 	hud.pause_requested.connect(_open_pause)
 	hud.map_requested.connect(_open_map)
 	touch = TouchControls.new()
@@ -242,6 +250,7 @@ func _quit_to_title() -> void:
 	pause_menu.close()
 	pause_menu.visible = false
 	runner.stop()
+	interiors.reset()
 	if current_vehicle:
 		_force_exit_vehicle()
 	_enter_title()
@@ -262,6 +271,7 @@ func _after_mission_world() -> void:
 
 ## Coloca a cada personaje y coche en su sitio de inicio de historia.
 func _reset_story_positions() -> void:
+	interiors.reset()
 	var car: Car = vehicles["ray_car"]
 	_place_car(car, CityLayout.landmark("ray_car"), Vector3(-1, 0, 0))
 	for id in actors:
@@ -324,6 +334,8 @@ func _process(delta: float) -> void:
 		var mins := int(GameState.world_minutes)
 		hud.call("set_clock", mins / 60, mins % 60)
 	var loc := CityLayout.nearest_street_name(focus.global_position)
+	if interiors.inside >= 0:
+		loc = interiors.current_name()
 	if loc != _last_location:
 		_last_location = loc
 		hud.show_location(loc)
@@ -333,6 +345,12 @@ func _process(delta: float) -> void:
 		var bob: Node3D = _marker.get_child(1)
 		bob.position.y = 3.2 + sin(Time.get_ticks_msec() * 0.004) * 0.25
 	_update_interaction()
+	_radar_timer -= delta
+	if _radar_timer <= 0.0:
+		_radar_timer = 0.5
+		_refresh_radar_markers()
+	if GameState.health <= 0.0 and not interiors.busy:
+		interiors.wasted_respawn()
 	if Controls.just_pressed("pause"):
 		_open_pause()
 	elif Controls.just_pressed("map"):
@@ -391,6 +409,11 @@ func _update_interaction() -> void:
 				label = "Hablar"
 				action = func() -> void: _ambient_line(id)
 				break
+	if label == "":
+		var ia := interiors.interaction(player.global_position, _interactable.is_empty())
+		if not ia.is_empty():
+			label = ia["label"]
+			action = ia["action"]
 	touch.set_interact_label(label)
 	if label != "" and Controls.just_pressed("interact"):
 		action.call()
@@ -441,11 +464,18 @@ func vehicle(id: String) -> Car:
 func set_marker(pos: Vector3) -> void:
 	_marker_pos = pos
 	_marker.visible = pos != Vector3.INF
-	var markers: Array = []
-	if pos != Vector3.INF:
-		markers.append({"pos": pos, "color": Color(0.95, 0.78, 0.2), "label": "!"})
-	hud.radar.markers = markers
+	_refresh_radar_markers()
 	map_screen.mission_marker = pos
+
+
+## Marcador de misión + puntos permanentes (hospital, policía, pintura) cercanos.
+func _refresh_radar_markers() -> void:
+	var markers: Array = []
+	if _marker_pos != Vector3.INF:
+		markers.append({"pos": _marker_pos, "color": Color(0.95, 0.78, 0.2), "label": "!"})
+	if interiors.inside < 0:
+		markers.append_array(interiors.radar_markers(player.global_position))
+	hud.radar.markers = markers
 
 
 func set_interactable(label: String, pos: Vector3, radius: float, callback: Callable, follow: Node3D = null) -> void:
@@ -460,6 +490,11 @@ func capture_state() -> void:
 	var n: Node3D = current_vehicle if current_vehicle else player
 	GameState.player_position = n.global_position
 	GameState.player_yaw = player.face_yaw()
+	if interiors.inside >= 0:
+		# Dentro de un interior se guarda la puerta de la calle, no la sala lejana.
+		var t := interiors.outside_transform()
+		GameState.player_position = t.origin
+		GameState.player_yaw = t.basis.get_euler().y
 	GameState.has_position = true
 
 

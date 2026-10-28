@@ -279,6 +279,19 @@ func add_damage(amount: float) -> void:
 	_update_damage_visuals()
 
 
+## Cambia el color de la carrocería sin reconstruir el coche (ruedas, asiento y
+## ocupantes siguen en su sitio).
+func repaint(color: Color) -> void:
+	body_color = color
+	if _body_mesh == null:
+		return
+	var real_id := RealCarModel.for_style(style)
+	if real_id != "" and not RealCarModel.data(real_id).is_empty():
+		_body_mesh.mesh = RealCarModel.painted_body(real_id, color)
+	else:
+		_body_mesh.mesh = CarModel.build(style, color, false)
+
+
 func repair() -> void:
 	damage = 0.0
 	_crumple = 0.0
