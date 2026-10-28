@@ -1,5 +1,153 @@
 {
-  "version": 1,
-  "notes": "Generado por tools/build_radio_index.py. Música original o con licencia.",
-  "stations": []
+ "version": 2,
+ "notes": "Generado por tools/fetch_radio.py desde Drive (Radio_original).",
+ "stations": [
+  {
+   "id": "basscathedral",
+   "name": "Bass Cathedral",
+   "fm": "104.6",
+   "color": "#00E5A0",
+   "tracks": [
+    {
+     "title": "State of Mind (Psystep Version)",
+     "artist": "F_Fact",
+     "path": "res://assets/audio/radio/basscathedral/f_fact_state_of_mind_psystep_version.ogg",
+     "seconds": 342.04
+    },
+    {
+     "title": "Waking Me Softly",
+     "artist": "Ghost_k",
+     "path": "res://assets/audio/radio/basscathedral/ghost_k_waking_me_softly.ogg",
+     "seconds": 226.34
+    },
+    {
+     "title": "Rich",
+     "artist": "adisa",
+     "path": "res://assets/audio/radio/basscathedral/adisa_rich.ogg",
+     "seconds": 166.88
+    },
+    {
+     "title": "Don't Go (RumbleStep Mix)",
+     "artist": "cdk",
+     "path": "res://assets/audio/radio/basscathedral/cdk_don_t_go_rumblestep_mix.ogg",
+     "seconds": 251.35
+    },
+    {
+     "title": "Once Again (Original RumbleStep Mix)",
+     "artist": "cdk",
+     "path": "res://assets/audio/radio/basscathedral/cdk_once_again_original_rumblestep_mix.ogg",
+     "seconds": 165.2
+    },
+    {
+     "title": "The Game Has Changed (RumbleStep Mix)",
+     "artist": "cdk",
+     "path": "res://assets/audio/radio/basscathedral/cdk_the_game_has_changed_rumblestep_mix.ogg",
+     "seconds": 317.34
+    }
+   ]
+  }
+ ],
+ "ads": [
+  {
+   "title": "A One-Way Ticket",
+   "path": "res://assets/audio/radio/_anuncios/a_one_way_ticket.ogg",
+   "seconds": 21.96
+  },
+  {
+   "title": "Big Hank's Auto",
+   "path": "res://assets/audio/radio/_anuncios/big_hank_s_auto.ogg",
+   "seconds": 26.0
+  },
+  {
+   "title": "Burner Plus",
+   "path": "res://assets/audio/radio/_anuncios/burner_plus.ogg",
+   "seconds": 38.4
+  },
+  {
+   "title": "Cluckin' Veyra",
+   "path": "res://assets/audio/radio/_anuncios/cluckin_veyra.ogg",
+   "seconds": 19.96
+  },
+  {
+   "title": "Detox Glow",
+   "path": "res://assets/audio/radio/_anuncios/detox_glow.ogg",
+   "seconds": 22.4
+  },
+  {
+   "title": "Earthquake Mode",
+   "path": "res://assets/audio/radio/_anuncios/earthquake_mode.ogg",
+   "seconds": 28.36
+  },
+  {
+   "title": "Heaven Can Wait",
+   "path": "res://assets/audio/radio/_anuncios/heaven_can_wait.ogg",
+   "seconds": 42.8
+  },
+  {
+   "title": "Iron Temple",
+   "path": "res://assets/audio/radio/_anuncios/iron_temple.ogg",
+   "seconds": 25.32
+  },
+  {
+   "title": "Loud Is a Personality",
+   "path": "res://assets/audio/radio/_anuncios/loud_is_a_personality.ogg",
+   "seconds": 24.0
+  },
+  {
+   "title": "Match and Run",
+   "path": "res://assets/audio/radio/_anuncios/match_and_run.ogg",
+   "seconds": 18.4
+  },
+  {
+   "title": "Mayor For Sale",
+   "path": "res://assets/audio/radio/_anuncios/mayor_for_sale.ogg",
+   "seconds": 39.0
+  },
+  {
+   "title": "Ramírez and Ramírez",
+   "path": "res://assets/audio/radio/_anuncios/ram_rez_and_ram_rez.ogg",
+   "seconds": 27.6
+  },
+  {
+   "title": "Ride Low, Live High",
+   "path": "res://assets/audio/radio/_anuncios/ride_low_live_high.ogg",
+   "seconds": 27.44
+  },
+  {
+   "title": "Sue Everybody",
+   "path": "res://assets/audio/radio/_anuncios/sue_everybody.ogg",
+   "seconds": 34.96
+  },
+  {
+   "title": "The House Always Wins",
+   "path": "res://assets/audio/radio/_anuncios/the_house_always_wins.ogg",
+   "seconds": 29.56
+  },
+  {
+   "title": "Voltage",
+   "path": "res://assets/audio/radio/_anuncios/voltage.ogg",
+   "seconds": 20.0
+  },
+  {
+   "title": "We're Doing Our Best",
+   "path": "res://assets/audio/radio/_anuncios/we_re_doing_our_best.ogg",
+   "seconds": 24.4
+  },
+  {
+   "title": "We're Not Robbing You",
+   "path": "res://assets/audio/radio/_anuncios/we_re_not_robbing_you.ogg",
+   "seconds": 20.0
+  },
+  {
+   "title": "What Happens Here Was Never",
+   "path": "res://assets/audio/radio/_anuncios/what_happens_here_was_never.ogg",
+   "seconds": 27.68
+  }
+ ],
+ "tune": [
+  "res://assets/audio/radio/_sintonizar/sintonizar_1.ogg",
+  "res://assets/audio/radio/_sintonizar/sintonizar_2.ogg",
+  "res://assets/audio/radio/_sintonizar/sintonizar_3.ogg",
+  "res://assets/audio/radio/_sintonizar/sintonizar_4.ogg"
+ ]
 }
