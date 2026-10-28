@@ -49,6 +49,9 @@ def main():
             failed += 1
             print("ERROR", t, e)
     for mdl in manifest.get("models", []):
+        if os.path.isdir(f"assets/props/{mdl['id']}"):
+            credits.append(f"modelo {mdl['id']}: {mdl['slug']} (Poly Haven, CC0)")
+            continue
         try:
             files = get_json(f"{API}/files/{mdl['slug']}")
             g = files["gltf"][mdl["res"]]["gltf"]

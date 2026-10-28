@@ -159,6 +159,181 @@
       "id": "manhole",
       "slug": "water_manhole_cover",
       "res": "1k"
+    },
+    {
+      "id": "sofa_01",
+      "slug": "Sofa_01",
+      "res": "1k"
+    },
+    {
+      "id": "armchair_01",
+      "slug": "ArmChair_01",
+      "res": "1k"
+    },
+    {
+      "id": "coffeetable_01",
+      "slug": "CoffeeTable_01",
+      "res": "1k"
+    },
+    {
+      "id": "dining_table",
+      "slug": "dining_table",
+      "res": "1k"
+    },
+    {
+      "id": "dining_chair_02",
+      "slug": "dining_chair_02",
+      "res": "1k"
+    },
+    {
+      "id": "television_01",
+      "slug": "Television_01",
+      "res": "1k"
+    },
+    {
+      "id": "shelf_01",
+      "slug": "Shelf_01",
+      "res": "1k"
+    },
+    {
+      "id": "old_bed_frame",
+      "slug": "old_bed_frame",
+      "res": "1k"
+    },
+    {
+      "id": "classicnightstand_01",
+      "slug": "ClassicNightstand_01",
+      "res": "1k"
+    },
+    {
+      "id": "side_table_01",
+      "slug": "side_table_01",
+      "res": "1k"
+    },
+    {
+      "id": "drawer_cabinet",
+      "slug": "drawer_cabinet",
+      "res": "1k"
+    },
+    {
+      "id": "modern_wooden_cabinet",
+      "slug": "modern_wooden_cabinet",
+      "res": "1k"
+    },
+    {
+      "id": "metal_tool_chest",
+      "slug": "metal_tool_chest",
+      "res": "1k"
+    },
+    {
+      "id": "tool_cart",
+      "slug": "tool_cart",
+      "res": "1k"
+    },
+    {
+      "id": "tire_pump",
+      "slug": "tire_pump",
+      "res": "1k"
+    },
+    {
+      "id": "steel_frame_shelves_01",
+      "slug": "steel_frame_shelves_01",
+      "res": "1k"
+    },
+    {
+      "id": "bench_vice_01",
+      "slug": "bench_vice_01",
+      "res": "1k"
+    },
+    {
+      "id": "barrel_02",
+      "slug": "Barrel_02",
+      "res": "1k"
+    },
+    {
+      "id": "cardboard_box_01",
+      "slug": "cardboard_box_01",
+      "res": "1k"
+    },
+    {
+      "id": "spray_paint_bottles",
+      "slug": "spray_paint_bottles",
+      "res": "1k"
+    },
+    {
+      "id": "ladder_sectioned_01",
+      "slug": "ladder_sectioned_01",
+      "res": "1k"
+    },
+    {
+      "id": "industrial_storage_cart",
+      "slug": "industrial_storage_cart",
+      "res": "1k"
+    },
+    {
+      "id": "old_tyre",
+      "slug": "old_tyre",
+      "res": "1k"
+    },
+    {
+      "id": "power_box_01",
+      "slug": "power_box_01",
+      "res": "1k"
+    },
+    {
+      "id": "metal_office_desk",
+      "slug": "metal_office_desk",
+      "res": "1k"
+    },
+    {
+      "id": "modern_arm_chair_01",
+      "slug": "modern_arm_chair_01",
+      "res": "1k"
+    },
+    {
+      "id": "steel_frame_shelves_02",
+      "slug": "steel_frame_shelves_02",
+      "res": "1k"
+    },
+    {
+      "id": "plastic_monobloc_chair_01",
+      "slug": "plastic_monobloc_chair_01",
+      "res": "1k"
+    },
+    {
+      "id": "desk_lamp_arm_01",
+      "slug": "desk_lamp_arm_01",
+      "res": "1k"
+    },
+    {
+      "id": "vintage_day_bed",
+      "slug": "vintage_day_bed",
+      "res": "1k"
+    },
+    {
+      "id": "vintage_crutches_01",
+      "slug": "vintage_crutches_01",
+      "res": "1k"
+    },
+    {
+      "id": "side_table_tall_01",
+      "slug": "side_table_tall_01",
+      "res": "1k"
+    },
+    {
+      "id": "steel_frame_shelves_03",
+      "slug": "steel_frame_shelves_03",
+      "res": "1k"
+    },
+    {
+      "id": "security_camera_01",
+      "slug": "security_camera_01",
+      "res": "1k"
+    },
+    {
+      "id": "wetfloorsign_01",
+      "slug": "WetFloorSign_01",
+      "res": "1k"
     }
   ]
 }
