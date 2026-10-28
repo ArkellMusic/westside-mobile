@@ -84,7 +84,7 @@ func apply_preset(preset: String, duration: float) -> void:
 	_duration = maxf(duration, 0.001)
 	_t = 0.0 if duration > 0.0 else 1.0
 	if duration <= 0.0:
-		_set(_to)
+		_apply_values(_to)
 
 
 func _process(delta: float) -> void:
@@ -99,10 +99,10 @@ func _process(delta: float) -> void:
 				mix[k] = (a as Color).lerp(b, t)
 			else:
 				mix[k] = lerpf(float(a), float(b), t)
-		_set(mix)
+		_apply_values(mix)
 
 
-func _set(p: Dictionary) -> void:
+func _apply_values(p: Dictionary) -> void:
 	current = p
 	sun.rotation_degrees = Vector3(float(p["sun_pitch"]), float(p["sun_yaw"]), 0)
 	sun.light_color = p["light"]

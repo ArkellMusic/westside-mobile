@@ -612,7 +612,7 @@ func _build_beach_and_ocean() -> void:
 		var ya := _sand_height(xa)
 		var yb := _sand_height(xb)
 		var p := [Vector3(xa, ya, z0), Vector3(xb, yb, z0), Vector3(xb, yb, z1), Vector3(xa, ya, z1)]
-		var n := (p[1] - p[0]).cross(p[3] - p[0]).normalized()
+		var n: Vector3 = (p[1] - p[0]).cross(p[3] - p[0]).normalized()
 		if n.y < 0:
 			n = -n
 		b.quad("sand", p[0], p[1], p[2], p[3], n)

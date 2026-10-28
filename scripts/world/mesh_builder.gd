@@ -52,7 +52,7 @@ func _vertex(st: SurfaceTool, p: Vector3, n: Vector3, uv: Vector2, c: Color) -> 
 func tri(key: String, p: Array, n: Array, uv: Array, c: Color = Color.WHITE, uv2: Array = []) -> void:
 	var st: SurfaceTool = _tools[key]
 	var face_n: Vector3 = (n[0] + n[1] + n[2]).normalized()
-	var cross := (p[1] - p[0]).cross(p[2] - p[0])
+	var cross: Vector3 = (p[1] - p[0]).cross(p[2] - p[0])
 	var order := [0, 1, 2]
 	if cross.dot(face_n) > 0.0:
 		order = [0, 2, 1]
