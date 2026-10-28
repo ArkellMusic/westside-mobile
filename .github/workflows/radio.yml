@@ -19,7 +19,9 @@ jobs:
           sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           pip install -q gdown
       - name: Descargar y convertir
-        run: python3 tools/fetch_radio.py 2>&1 | tee radio.log
+        run: |
+          set -o pipefail
+          python3 tools/fetch_radio.py 2>&1 | tee radio.log
       - name: Subir al repositorio
         run: |
           exec > >(tee push.log) 2>&1

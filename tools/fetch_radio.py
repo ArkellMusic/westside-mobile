@@ -65,7 +65,7 @@ def find_dir(root, name):
 
 def main():
     if not os.path.isdir(SRC):
-        run([sys.executable, "-m", "gdown", "--folder", FOLDER, "-O", SRC, "--remaining-ok"])
+        run([sys.executable, "-m", "gdown", "--folder", FOLDER, "-O", SRC])
     stations = []
     songs_dir = find_dir(SRC, "Canciones") or SRC
     for folder in sorted(os.listdir(songs_dir)):
