@@ -12,7 +12,7 @@ signal driver_changed(has_driver: bool)
 var vehicle_id: String = ""
 var display_name: String = ""
 var has_driver: bool = false
-var max_engine_force: float = 95.0
+var max_engine_force: float = 6500.0
 var max_brake: float = 28.0
 var max_speed: float = 46.0       # m/s (~165 km/h)
 var max_reverse: float = 9.0

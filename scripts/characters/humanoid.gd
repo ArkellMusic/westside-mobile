@@ -23,6 +23,9 @@ var _elbow := [null, null]
 var _leg := [null, null]
 var _knee := [null, null]
 var _seated: bool = false
+var _built: bool = false
+var _skel: Skeleton3D = null
+var _bones: Dictionary = {}
 
 static var _mat_cache: Dictionary = {}
 static var _mesh_cache: Dictionary = {}
@@ -72,6 +75,17 @@ func setup(appearance: Dictionary) -> void:
 	for c in get_children():
 		remove_child(c)
 		c.free()
+	_skel = null
+	_built = true
+	var model_path := String(look.get("model", ""))
+	if model_path != "" and ResourceLoader.exists(model_path):
+		var model: Node3D = (load(model_path) as PackedScene).instantiate()
+		add_child(model)
+		_skel = model.get_node("Skeleton3D")
+		for i in _skel.get_bone_count():
+			_bones[_skel.get_bone_name(i)] = i
+		_apply(_new_pose())
+		return
 	var b: float = look.get("build", 1.0)
 	var h: float = look.get("height", 1.0)
 	var female: bool = look.get("female", false)
@@ -211,11 +225,16 @@ func _build_headwear() -> void:
 			_part(_head, _cyl(0.124, 0.05), Vector3(0, 0.2, 0.005), col.lightened(0.05))
 
 
+## Pose en radianes. Convenio común para el modelo procedural y el modelo con esqueleto:
+##   leg > 0 adelanta el muslo · knee > 0 dobla la rodilla · arm > 0 adelanta el brazo
+##   elbow > 0 dobla el codo · arm_out > 0 separa el brazo · torso_x < 0 inclina adelante
+static func _new_pose() -> Dictionary:
+	return {"leg": [0.0, 0.0], "knee": [0.05, 0.05], "arm": [0.0, 0.0], "elbow": [0.15, 0.15], "arm_out": [0.08, 0.08], "torso_x": 0.0, "torso_y": 0.0, "head_x": 0.0, "hip_y": 0.0}
+
+
 ## speed en m/s, on_floor para la pose aérea.
 func animate(delta: float, speed: float, on_floor: bool) -> void:
-	if _hips == null:
-		return
-	if _seated:
+	if not _built or _seated:
 		return
 	_blend_speed = lerpf(_blend_speed, speed, clampf(delta * 8.0, 0.0, 1.0))
 	var s := _blend_speed
@@ -225,61 +244,94 @@ func animate(delta: float, speed: float, on_floor: bool) -> void:
 	_phase = fposmod(_phase + delta * freq, TAU)
 	var sw := sin(_phase)
 	var amp := lerpf(0.45, 0.85, run) * walk
-
+	var p := _new_pose()
 	if not on_floor:
+		p["leg"] = [0.55, -0.3]
+		p["knee"] = [0.9, 0.35]
+		p["arm"] = [0.5, 0.5]
+		p["arm_out"] = [0.6, 0.6]
+		p["elbow"] = [0.5, 0.5]
+		p["torso_x"] = -0.1
+	else:
 		for i in 2:
-			_leg[i].rotation.x = -0.5 if i == 0 else 0.3
-			_knee[i].rotation.x = 0.9 if i == 0 else 0.3
-			_arm[i].rotation.x = -0.9
-			_arm[i].rotation.z = (-1.0 if i == 0 else 1.0) * 0.5
-			_elbow[i].rotation.x = -0.4
-		_torso.rotation.x = -0.1
-		return
-
-	for i in 2:
-		var side := sw if i == 0 else -sw
-		_leg[i].rotation.x = side * amp
-		_knee[i].rotation.x = maxf(0.0, -side) * amp * 1.4 + 0.05
-		_arm[i].rotation.x = -side * amp * 0.9
-		_arm[i].rotation.z = (-1.0 if i == 0 else 1.0) * (0.08 + 0.05 * run)
-		_elbow[i].rotation.x = -(0.25 + 0.9 * run) * walk - 0.1
-	var breathe := sin(Time.get_ticks_msec() * 0.002) * 0.015 * (1.0 - walk)
-	_hips.position.y = 0.95 - absf(cos(_phase)) * 0.04 * walk + breathe
-	_torso.rotation.x = -0.18 * run - 0.03 * walk
-	_torso.rotation.y = sw * 0.08 * walk
-	_head.rotation.x = 0.12 * run
+			var side := sw if i == 0 else -sw
+			p["leg"][i] = side * amp
+			p["knee"][i] = maxf(0.0, -side) * amp * 1.4 + 0.05
+			p["arm"][i] = -side * amp * 0.9
+			p["arm_out"][i] = 0.08 + 0.05 * run
+			p["elbow"][i] = (0.25 + 0.9 * run) * walk + 0.12
+		p["torso_x"] = -0.18 * run - 0.03 * walk
+		p["torso_y"] = sw * 0.08 * walk
+		p["head_x"] = 0.12 * run
+		p["hip_y"] = -absf(cos(_phase)) * 0.04 * walk + sin(Time.get_ticks_msec() * 0.002) * 0.012 * (1.0 - walk)
+	_apply(p)
 
 
-## Pose de brazos cruzados / manos juntas para personajes que esperan.
+## Posturas de espera para personajes quietos.
 func pose_idle_stance(kind: String) -> void:
-	if _hips == null:
+	if not _built:
 		return
+	var p := _new_pose()
 	match kind:
 		"arms_crossed":
-			for i in 2:
-				_arm[i].rotation = Vector3(-0.5, 0, (-1.0 if i == 0 else 1.0) * -0.35)
-				_elbow[i].rotation = Vector3(-1.9, 0, 0)
+			p["arm"] = [0.75, 0.75]
+			p["elbow"] = [2.05, 2.05]
+			p["arm_out"] = [-0.2, -0.2]
 		"hands_together":
-			for i in 2:
-				_arm[i].rotation = Vector3(-0.35, 0, (-1.0 if i == 0 else 1.0) * -0.25)
-				_elbow[i].rotation = Vector3(-1.2, 0, 0)
+			p["arm"] = [0.5, 0.5]
+			p["elbow"] = [1.35, 1.35]
+			p["arm_out"] = [-0.12, -0.12]
 		"phone":
-			_arm[1].rotation = Vector3(-0.3, 0, 0.6)
-			_elbow[1].rotation = Vector3(-2.4, 0, 0)
+			p["arm"] = [0.0, 0.55]
+			p["elbow"] = [0.15, 2.45]
+			p["arm_out"] = [0.08, -0.05]
+	_apply(p)
 
 
-## Pose sentada (pasajero/conductor o asiento del autobús).
+## Sentado (asiento del coche o del autobús).
 func set_seated(on: bool) -> void:
 	_seated = on
-	if _hips == null:
+	if not _built:
+		return
+	var p := _new_pose()
+	if on:
+		p["leg"] = [1.45, 1.45]
+		p["knee"] = [1.45, 1.45]
+		p["arm"] = [0.85, 0.85]
+		p["elbow"] = [0.5, 0.5]
+	_apply(p)
+
+
+func _apply(p: Dictionary) -> void:
+	if _skel:
+		_apply_rigged(p)
 		return
 	for i in 2:
-		_leg[i].rotation.x = -1.45 if on else 0.0
-		_knee[i].rotation.x = 1.45 if on else 0.0
-		_arm[i].rotation.x = -0.9 if on else 0.0
-		_elbow[i].rotation.x = -0.5 if on else 0.0
-	_hips.position.y = 0.95
-	_torso.rotation = Vector3.ZERO
+		_leg[i].rotation.x = p["leg"][i]
+		_knee[i].rotation.x = -float(p["knee"][i])
+		_arm[i].rotation.x = p["arm"][i]
+		_arm[i].rotation.z = (-1.0 if i == 0 else 1.0) * float(p["arm_out"][i])
+		_elbow[i].rotation.x = p["elbow"][i]
+	_torso.rotation = Vector3(p["torso_x"], p["torso_y"], 0)
+	_head.rotation.x = p["head_x"]
+	_hips.position.y = 0.95 + float(p["hip_y"])
+
+
+func _apply_rigged(p: Dictionary) -> void:
+	var b := _bones
+	_skel.set_bone_pose_position(b["hips"], _skel.get_bone_rest(b["hips"]).origin + Vector3(0, p["hip_y"], 0))
+	var tq := Quaternion(Vector3.RIGHT, float(p["torso_x"]) * 0.5) * Quaternion(Vector3.UP, float(p["torso_y"]) * 0.5)
+	_skel.set_bone_pose_rotation(b["spine"], tq)
+	_skel.set_bone_pose_rotation(b["chest"], tq)
+	_skel.set_bone_pose_rotation(b["head"], Quaternion(Vector3.RIGHT, p["head_x"]))
+	for i in 2:
+		var pre := "l_" if i == 0 else "r_"
+		var sgn := 1.0 if i == 0 else -1.0
+		_skel.set_bone_pose_rotation(b[pre + "thigh"], Quaternion(Vector3.RIGHT, p["leg"][i]))
+		_skel.set_bone_pose_rotation(b[pre + "shin"], Quaternion(Vector3.RIGHT, -float(p["knee"][i])))
+		var hang := sgn * (PI * 0.5 - float(p["arm_out"][i]))
+		_skel.set_bone_pose_rotation(b[pre + "upperarm"], Quaternion(Vector3.RIGHT, p["arm"][i]) * Quaternion(Vector3.BACK, hang))
+		_skel.set_bone_pose_rotation(b[pre + "forearm"], Quaternion(Vector3.UP, -sgn * float(p["elbow"][i])))
 
 
 func _pivot(parent: Node3D, pos: Vector3) -> Node3D:

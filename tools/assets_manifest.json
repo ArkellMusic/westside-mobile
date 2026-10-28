@@ -1,0 +1,21 @@
+{
+  "notes": "Texturas y cielos CC0 de Poly Haven (polyhaven.com, dominio público). Los descarga .github/workflows/assets.yml al cambiar este archivo.",
+  "textures": [
+    {"id": "asphalt", "slug": "asphalt_06", "res": "2k"},
+    {"id": "sidewalk", "slug": "square_concrete_pavers", "res": "2k"},
+    {"id": "concrete", "slug": "concrete_floor_worn_001", "res": "2k"},
+    {"id": "stucco", "slug": "white_stucco", "res": "2k"},
+    {"id": "stucco_beige", "slug": "beige_wall_001", "res": "2k"},
+    {"id": "brick", "slug": "painted_brick", "res": "2k"},
+    {"id": "concrete_wall", "slug": "concrete_wall_008", "res": "2k"},
+    {"id": "roof", "slug": "gravel_concrete", "res": "1k"},
+    {"id": "grass", "category": "grass", "res": "2k"},
+    {"id": "sand", "category": "sand", "res": "2k"},
+    {"id": "dirt", "category": "terrain", "res": "1k"}
+  ],
+  "hdris": [
+    {"id": "day", "slug": "citrus_orchard_road_puresky", "res": "2k"},
+    {"id": "sunset", "slug": "evening_road_01_puresky", "res": "2k"},
+    {"id": "dusk", "slug": "belfast_sunset_puresky", "res": "2k"}
+  ]
+}

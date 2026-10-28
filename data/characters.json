@@ -5,7 +5,7 @@
     "mack": {
       "name": "Marcus Johnson", "alias": "Mack", "role": "Protagonista. Vuelve a Westbrook después de ocho años para salvar la casa de su madre.",
       "faction": "",
-      "look": {"skin": "#5C3A24", "top_type": "hoodie", "top": "#141416", "print": "#E4E4E4", "under": "#F2F2F0", "pants_type": "long", "pants": "#33343A", "shoes": "#F4F4F4", "sole": "#F4F4F4", "hair_type": "fade", "hair": "#0D0A08", "beard": true, "head": "cap", "head_color": "#101012", "chain": "silver", "build": 1.04, "height": 1.0}
+      "look": {"model": "res://assets/characters/streetwear/mack_rigged.scn", "skin": "#5C3A24", "top_type": "hoodie", "top": "#141416", "print": "#E4E4E4", "under": "#F2F2F0", "pants_type": "long", "pants": "#33343A", "shoes": "#F4F4F4", "sole": "#F4F4F4", "hair_type": "fade", "hair": "#0D0A08", "beard": true, "head": "cap", "head_color": "#101012", "chain": "silver", "build": 1.04, "height": 1.0}
     },
     "dre": {
       "name": "Darnell Williams", "alias": "Dre", "role": "Líder de los Westbrook Saints. Amigo de infancia de Mack; no le ha perdonado que se fuera.",
@@ -20,7 +20,7 @@
     "keisha": {
       "name": "Keisha Monroe", "alias": "K", "role": "Investiga las compras sospechosas de casas y locales en Westbrook.",
       "faction": "",
-      "look": {"female": true, "skin": "#8A5A3C", "top_type": "crop", "top": "#F0EFEA", "pants_type": "long", "pants": "#24252A", "shoes": "#151517", "sole": "#F2F2F2", "hair_type": "bun", "hair": "#120D0A", "head": "none", "chain": "silver", "hoops": true, "build": 0.95, "height": 0.95}
+      "look": {"model": "res://assets/characters/urban/keisha_rigged.scn", "female": true, "skin": "#8A5A3C", "top_type": "crop", "top": "#F0EFEA", "pants_type": "long", "pants": "#24252A", "shoes": "#151517", "sole": "#F2F2F2", "hair_type": "bun", "hair": "#120D0A", "head": "none", "chain": "silver", "hoops": true, "build": 0.95, "height": 0.95}
     },
     "loco": {
       "name": "Diego Vargas", "alias": "Loco", "role": "Mecánico de Vargas Auto Works y corredor de las carreras del puerto.",
@@ -30,7 +30,7 @@
     "big_ray": {
       "name": "Raymond Brooks", "alias": "Big Ray", "role": "El veterano del barrio. Llama a Mack y lo recoge en la terminal.",
       "faction": "",
-      "look": {"skin": "#3B2416", "top_type": "open_shirt", "top": "#3E5A3A", "under": "#F2F2F0", "pants_type": "long", "pants": "#4A5E80", "shoes": "#F4F4F4", "sole": "#F4F4F4", "hair_type": "short", "hair": "#0B0806", "beard": true, "head": "cap", "head_color": "#1F3D2A", "chain": "gold", "watch": true, "build": 1.42, "height": 1.0}
+      "look": {"model": "res://assets/characters/oakland/big_ray_rigged.scn", "skin": "#3B2416", "top_type": "open_shirt", "top": "#3E5A3A", "under": "#F2F2F0", "pants_type": "long", "pants": "#4A5E80", "shoes": "#F4F4F4", "sole": "#F4F4F4", "hair_type": "short", "hair": "#0B0806", "beard": true, "head": "cap", "head_color": "#1F3D2A", "chain": "gold", "watch": true, "build": 1.42, "height": 1.0}
     },
     "okafor": {
       "name": "Samuel Okafor", "alias": "Okafor", "role": "Dueño de Veyra Mart. Vecino de toda la vida de la madre de Mack.",

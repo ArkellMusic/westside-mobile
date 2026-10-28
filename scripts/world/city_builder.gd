@@ -900,7 +900,7 @@ func _build_parked_cars() -> void:
 					var v: Dictionary = variants[rng.randi() % variants.size()]
 					(v["list"] as Array).append(t)
 					parked_spots.append(t)
-					_collider_box(p + Vector3(0, 0.75, 0), Vector3(4.6, 1.4, 1.9), basis)
+					_collider_box(p + Vector3(0, 0.75, 0), Vector3(1.9, 1.4, 4.6), basis)
 				x += rng.randf_range(7.0, 14.0)
 	for i in variants.size():
 		_multimesh(variants[i]["mesh"], variants[i]["list"], "ParkedCars%d" % i)
