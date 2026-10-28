@@ -298,6 +298,8 @@ func _process(delta: float) -> void:
 		return
 	_update_movers(delta)
 	sky.set_time_of_day(GameState.world_minutes)
+	if current_vehicle:
+		current_vehicle.set_lights(sky.night_amount() > 0.35)
 	if wanted > 0:
 		_wanted_timer -= delta
 		if _wanted_timer <= 0.0:
@@ -505,6 +507,7 @@ func leave_vehicle() -> void:
 		return
 	var car := current_vehicle
 	car.set_driver(false)
+	car.set_lights(false)
 	var t := 0.0
 	while car.linear_velocity.length() > 2.5 and t < 4.0:
 		await get_tree().physics_frame

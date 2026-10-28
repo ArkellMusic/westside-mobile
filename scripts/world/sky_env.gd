@@ -10,9 +10,9 @@ const PRESETS := {
 		"fog": Color(0.06, 0.07, 0.13), "fog_density": 0.0009, "ambient": 0.3, "night": 1.0, "exposure": 1.35, "sky_energy": 1.0,
 	},
 	"night_city": {
-		"sun_yaw": -40.0, "sun_pitch": -35.0, "light": Color(0.62, 0.7, 0.9), "energy": 0.3,
+		"sun_yaw": -40.0, "sun_pitch": -35.0, "light": Color(0.62, 0.7, 0.9), "energy": 0.45,
 		"top": Color(0.025, 0.045, 0.12), "horizon": Color(0.09, 0.13, 0.26), "ground": Color(0.03, 0.035, 0.07),
-		"fog": Color(0.07, 0.1, 0.19), "fog_density": 0.0008, "ambient": 0.35, "night": 1.0, "exposure": 1.3, "sky_energy": 1.0,
+		"fog": Color(0.07, 0.1, 0.19), "fog_density": 0.0008, "ambient": 0.55, "night": 1.0, "exposure": 1.45, "sky_energy": 1.0,
 	},
 	"dusk": {
 		"sun_yaw": -78.0, "sun_pitch": 3.0, "light": Color(0.9, 0.45, 0.4), "energy": 0.2,

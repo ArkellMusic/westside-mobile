@@ -26,6 +26,8 @@ var _wheels: Array = []
 var _rear_wheels: Array = []
 var _body_mesh: MeshInstance3D
 var _spec: Dictionary = {}
+var _headlights: Array = []
+var lights_on: bool = false
 
 ## Daños e impactos.
 var damage: float = 0.0           # 0..100
@@ -79,6 +81,20 @@ func _build() -> void:
 	cs.position = Vector3(0, 0.35 + (height - 0.35) * 0.5, 0)
 	add_child(cs)
 
+	_headlights.clear()
+	for sx in [-1.0, 1.0]:
+		var hl := SpotLight3D.new()
+		hl.light_color = Color(1.0, 0.94, 0.82)
+		hl.light_energy = 4.0
+		hl.spot_range = 38.0
+		hl.spot_angle = 30.0
+		hl.spot_attenuation = 0.8
+		hl.shadow_enabled = false
+		hl.position = Vector3(sx * (float(_spec["half_w"]) - 0.3), 0.7, float(_spec["length"]) * 0.5 + 0.1)
+		hl.rotation = Vector3(-0.06, PI, 0)
+		hl.visible = false
+		add_child(hl)
+		_headlights.append(hl)
 	var wheel_mesh := CarModel.wheel_mesh(style)
 	var r: float = _spec["wheel_r"]
 	for front in [true, false]:
@@ -105,6 +121,14 @@ func _build() -> void:
 			_wheels.append(w)
 			if not front:
 				_rear_wheels.append(w)
+
+
+func set_lights(on: bool) -> void:
+	if on == lights_on:
+		return
+	lights_on = on
+	for hl in _headlights:
+		(hl as SpotLight3D).visible = on
 
 
 func set_driver(active: bool) -> void:

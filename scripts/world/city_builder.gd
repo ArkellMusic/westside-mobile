@@ -75,6 +75,7 @@ func _make_materials() -> void:
 	mat_sand = _ground_mat(ground_shader, 3)
 	mat_dirt = _ground_mat(ground_shader, 4)
 	_texture_ground(mat_lawn, "grass", 3.0)
+	mat_lawn.set_shader_parameter("tint", Color(1.55, 1.6, 1.25))
 	_texture_ground(mat_concrete, "concrete", 4.0)
 	_texture_ground(mat_sidewalk, "sidewalk", 2.4)
 	_texture_ground(mat_sand, "sand", 14.0)
