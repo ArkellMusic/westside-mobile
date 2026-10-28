@@ -1,0 +1,19 @@
+# WESTSIDE LEGACY Mobile - Godot 4.7
+# Ficheros generados por el editor y la caché de Godot
+.godot/
+
+# Los ficheros *.import se mantienen en el repositorio a propósito (contienen ajustes de importación).
+# export_presets.cfg tampoco se ignora: guarda la configuración de exportación para iOS.
+
+# Salidas de compilación
+build/
+/android/
+*.ipa
+screenshots_tmp/
+
+# Temporales
+*.tmp
+
+# Ficheros del sistema operativo
+.DS_Store
+Thumbs.db

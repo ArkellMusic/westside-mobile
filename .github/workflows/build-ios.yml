@@ -1,0 +1,128 @@
+name: Compilar IPA iOS
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  GODOT_VERSION: "4.7.2"
+  GODOT_RELEASE: "stable"
+  APP_NAME: "WestsideLegacy"
+
+jobs:
+  pruebas:
+    name: Pruebas (Linux)
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar Godot
+        run: |
+          BASE=https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-${GODOT_RELEASE}
+          curl -fsSL -o godot.zip "$BASE/Godot_v${GODOT_VERSION}-${GODOT_RELEASE}_linux.x86_64.zip"
+          unzip -q godot.zip
+          mv "Godot_v${GODOT_VERSION}-${GODOT_RELEASE}_linux.x86_64" godot
+          chmod +x godot
+      - name: Importar proyecto
+        run: ./godot --headless --path . --import 2>&1 | tee import.log
+      - name: Ejecutar pruebas
+        run: |
+          ./godot --headless --path . res://tests/test_runner.tscn 2>&1 | tee test.log
+          if grep -q "SCRIPT ERROR\|Parse Error" test.log import.log; then echo "Errores de script"; exit 1; fi
+          grep -q "0 fallos" test.log
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-pruebas
+          path: |
+            import.log
+            test.log
+
+  ios:
+    name: Compilar IPA (macOS)
+    needs: pruebas
+    runs-on: macos-15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Descargar Godot y plantillas de exportación
+        run: |
+          BASE=https://github.com/godotengine/godot/releases/download/${GODOT_VERSION}-${GODOT_RELEASE}
+          curl -fsSL -o godot.zip "$BASE/Godot_v${GODOT_VERSION}-${GODOT_RELEASE}_macos.universal.zip"
+          unzip -q godot.zip
+          curl -fsSL -o templates.tpz "$BASE/Godot_v${GODOT_VERSION}-${GODOT_RELEASE}_export_templates.tpz"
+          TPL="$HOME/Library/Application Support/Godot/export_templates/${GODOT_VERSION}.${GODOT_RELEASE}"
+          mkdir -p "$TPL"
+          unzip -q templates.tpz -d tpl_tmp
+          mv tpl_tmp/templates/* "$TPL/"
+          echo "GODOT=$PWD/Godot.app/Contents/MacOS/Godot" >> "$GITHUB_ENV"
+      - name: Importar proyecto
+        run: '"$GODOT" --headless --path . --import'
+      - name: Exportar proyecto de Xcode
+        run: |
+          mkdir -p build/ios
+          "$GODOT" --headless --path . --export-release "iOS" "build/ios/${APP_NAME}.ipa" 2>&1 | tee export.log
+          ls -la build/ios
+      - name: Compilar sin firma con Xcode
+        run: |
+          cd build/ios
+          xcodebuild -list -project "${APP_NAME}.xcodeproj" || true
+          xcodebuild -project "${APP_NAME}.xcodeproj" -scheme "${APP_NAME}" -configuration Release \
+            -sdk iphoneos -destination 'generic/platform=iOS' -derivedDataPath dd \
+            CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="" DEVELOPMENT_TEAM="" \
+            build 2>&1 | tee xcodebuild.log | tail -40
+      - name: Empaquetar IPA
+        run: |
+          APP=$(find build/ios/dd/Build/Products -maxdepth 2 -name "*.app" -type d | head -1)
+          echo "App: $APP"
+          test -n "$APP"
+          rm -rf Payload && mkdir Payload
+          cp -R "$APP" Payload/
+          zip -qry "${APP_NAME}.ipa" Payload
+          ls -la "${APP_NAME}.ipa"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: logs-ios
+          path: |
+            export.log
+            build/ios/xcodebuild.log
+      - uses: actions/upload-artifact@v4
+        with:
+          name: WestsideLegacy-ipa
+          path: WestsideLegacy.ipa
+      - name: Publicar como "Última compilación"
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete ultima-compilacion --yes --cleanup-tag || true
+          gh release create ultima-compilacion "${APP_NAME}.ipa" --title "Última compilación" \
+            --notes "IPA sin firmar generado automáticamente desde ${GITHUB_SHA}. Instálalo con Sideloadly (ver docs/INSTALAR_EN_IPHONE.md)." --prerelease
+
+  estado:
+    name: Informe de estado
+    needs: [pruebas, ios]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: logs-*
+          path: ci-logs
+        continue-on-error: true
+      - name: Escribir estado en la rama ci-status
+        run: |
+          mkdir -p /tmp/keep && cp -r ci-logs /tmp/keep/ 2>/dev/null || true
+          git config user.name "ci-bot"
+          git config user.email "ci-bot@users.noreply.github.com"
+          printf "commit=%s\npruebas=%s\nios=%s\nfecha=%s\n" "$GITHUB_SHA" "${{ needs.pruebas.result }}" "${{ needs.ios.result }}" "$(date -u +%FT%TZ)" > ci-status.txt
+          git checkout --orphan ci-status
+          git rm -rfq . || true
+          cp -r /tmp/keep/ci-logs . 2>/dev/null || true
+          find ci-logs -name "*.log" -exec sh -c 'tail -c 60000 "$1" > "$1.tmp" && mv "$1.tmp" "$1"' _ {} \; 2>/dev/null || true
+          git add ci-status.txt ci-logs 2>/dev/null || git add ci-status.txt
+          git commit -qm "Estado CI ${GITHUB_SHA}"
+          git push -f origin ci-status

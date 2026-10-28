@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "notes": "Colores provisionales: sirven para radar y marcadores hasta que se cierre la identidad visual de cada banda.",
+  "factions": [
+    {
+      "id": "westbrook_saints",
+      "name": "Westbrook Saints",
+      "leader": "Dre",
+      "home_zone": "south_veyra",
+      "color": "#D4A72C",
+      "start_reputation": 10
+    },
+    {
+      "id": "redline_kings",
+      "name": "Redline Kings",
+      "leader": "Viper",
+      "home_zone": "south_veyra",
+      "color": "#C8323C",
+      "start_reputation": -10
+    },
+    {
+      "id": "midnight_locos",
+      "name": "Midnight Locos",
+      "leader": "",
+      "home_zone": "",
+      "color": "#1FA3A3",
+      "start_reputation": 0
+    },
+    {
+      "id": "the_syndicate",
+      "name": "The Syndicate",
+      "leader": "",
+      "home_zone": "",
+      "color": "#B8BCC6",
+      "start_reputation": 0
+    }
+  ]
+}

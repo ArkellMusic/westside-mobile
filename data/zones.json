@@ -1,0 +1,78 @@
+{
+  "version": 1,
+  "notes": "unlock_after_mission = número de misión principal que, al completarse, abre la zona. 0 = disponible desde el inicio.",
+  "zones": [
+    {
+      "id": "south_veyra",
+      "name": "South Veyra",
+      "type": "city",
+      "unlock_after_mission": 0,
+      "access": "Ciudad inicial",
+      "mood": "Costa oeste, barrios residenciales, bulevares y zona industrial. Primera zona del prototipo: Westbrook.",
+      "districts": ["Westbrook"]
+    },
+    {
+      "id": "san_cordova",
+      "name": "San Cordova",
+      "type": "city",
+      "unlock_after_mission": 22,
+      "access": "Puente Aurelio",
+      "mood": "Ciudad de colinas y bahía.",
+      "districts": []
+    },
+    {
+      "id": "las_brisas",
+      "name": "Las Brisas",
+      "type": "city",
+      "unlock_after_mission": 42,
+      "access": "Autopista del desierto",
+      "mood": "Ciudad del ocio en el desierto.",
+      "districts": []
+    },
+    {
+      "id": "northpoint",
+      "name": "Northpoint",
+      "type": "city",
+      "unlock_after_mission": 62,
+      "access": "Por definir",
+      "mood": "Ciudad del norte, lluviosa y portuaria.",
+      "districts": []
+    },
+    {
+      "id": "bahia_solana",
+      "name": "Bahía Solana",
+      "type": "city",
+      "unlock_after_mission": 69,
+      "access": "Por definir",
+      "mood": "Ambiente costero inspirado en el sur de Florida, con humedales y zonas tropicales.",
+      "districts": []
+    },
+    {
+      "id": "isla_brava",
+      "name": "Isla Brava",
+      "type": "island",
+      "unlock_after_mission": 71,
+      "access": "Por definir",
+      "mood": "",
+      "districts": []
+    },
+    {
+      "id": "isla_coral",
+      "name": "Isla Coral",
+      "type": "island",
+      "unlock_after_mission": 73,
+      "access": "Por definir",
+      "mood": "",
+      "districts": []
+    },
+    {
+      "id": "isla_nacar",
+      "name": "Isla Nácar",
+      "type": "island",
+      "unlock_after_mission": 75,
+      "access": "Por definir",
+      "mood": "",
+      "districts": []
+    }
+  ]
+}

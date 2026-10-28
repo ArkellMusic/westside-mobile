@@ -1,0 +1,86 @@
+{
+  "id": "m01",
+  "number": 1,
+  "title": "BACK TO WESTBROOK",
+  "title_es": "De vuelta a Westbrook",
+  "act": "ACTO I",
+  "notes": "Según la biblia de misiones: llegada en autobús, Big Ray, Veyra Mart, casa de la madre y primera pista sobre Dre. Voces EN (por grabar) / subtítulos ES.",
+  "steps": [
+    {"type": "phase", "n": 1},
+    {"type": "cutscene", "shots": [
+      {"from": [118, 6, 18], "look": [100, 1.5, -3], "to": [108, 3.5, 12], "look_to": [100, 1.5, -4], "duration": 5.0, "fov": 50}
+    ], "lines": [
+      {"speaker": "Conductor", "en": "Westbrook Terminal. End of the line.", "es": "Terminal de Westbrook. Final de trayecto.", "t": 3.0},
+      {"speaker": "Mack", "en": "End of the line... yeah.", "es": "Final de trayecto... ya.", "t": 2.5}
+    ]},
+    {"type": "phase", "n": 2},
+    {"type": "pickup", "target": "bag", "label": "Coger bolsa", "objective": "Recoge tu bolsa del maletero del autobús", "hint": "Mueve a Mack con el joystick izquierdo y arrastra a la derecha para girar la cámara."},
+    {"type": "checkpoint"},
+    {"type": "phase", "n": 3},
+    {"type": "talk", "actor": "big_ray", "label": "Hablar", "objective": "Busca a Big Ray entre los taxis", "hint": "Big Ray te espera junto a su coche, al oeste de la terminal."},
+    {"type": "dialogue", "actors": ["big_ray", "player"], "lines": [
+      {"speaker": "Big Ray", "en": "Look at you. Eight years gone and you still dress like you're about to rob somebody.", "es": "Mírate. Ocho años fuera y sigues vistiendo como si fueras a atracar a alguien.", "t": 4.5},
+      {"speaker": "Mack", "en": "Good to see you too, Ray.", "es": "Yo también me alegro de verte, Ray.", "t": 2.5},
+      {"speaker": "Big Ray", "en": "Don't get sentimental on me. Get in the car before somebody recognizes you.", "es": "No te me pongas sentimental. Sube al coche antes de que alguien te reconozca.", "t": 4.0},
+      {"speaker": "Mack", "en": "Who's gonna recognize me?", "es": "¿Quién me va a reconocer?", "t": 2.2},
+      {"speaker": "Big Ray", "en": "Half this block wants to beat your ass. The other half owed your mama money. Get in.", "es": "Media manzana tiene ganas de partirte la cara. La otra mitad le debía dinero a tu madre. Sube.", "t": 4.5}
+    ]},
+    {"type": "phase", "n": 4},
+    {"type": "enter_vehicle", "vehicle": "ray_car", "seat": "passenger", "label": "Subir", "objective": "Sube al coche de Big Ray (asiento del copiloto)"},
+    {"type": "scripted_drive", "vehicle": "ray_car", "driver": "big_ray", "speed": 9.0, "route": [
+      [40, -2.6], [-44, -2.6], [-47.8, -10], [-47.8, -92], [-42, -97.4], [44, -97.4], [47.8, -92], [47.8, -10], [40, -2.6], [-12, -2.6], [-20, -2.6]
+    ], "events": [
+      {"t": 6.0, "spawn_redline_car": true}
+    ], "lines": [
+      {"speaker": "Big Ray", "en": "That was the old laundromat. Got bought last spring. Nobody knows by who.", "es": "Esa era la lavandería. La compraron en primavera. Nadie sabe quién.", "t": 4.5, "at": 2.0},
+      {"speaker": "Big Ray", "en": "Red rims. Redline Kings. They roll through Westbrook like they pay rent here now.", "es": "Llantas rojas. Redline Kings. Ahora se pasean por Westbrook como si pagaran alquiler.", "t": 4.5, "at": 9.0},
+      {"speaker": "Mack", "en": "And Dre just lets that happen?", "es": "¿Y Dre deja que pase eso?", "t": 2.5, "at": 14.5},
+      {"speaker": "Big Ray", "en": "Dre's got his hands full. And don't say his name like that around here.", "es": "Dre tiene las manos llenas. Y aquí no digas su nombre así.", "t": 4.0, "at": 17.5},
+      {"speaker": "Big Ray", "en": "Barber shop on Kingsley. Bought. The lot behind Vargas. Bought. Same suits every time.", "es": "La barbería de Kingsley. Comprada. El solar de detrás de lo de Vargas. Comprado. Siempre los mismos trajes.", "t": 5.0, "at": 25.0},
+      {"speaker": "Mack", "en": "Who the hell buys a whole neighborhood?", "es": "¿Quién coño compra un barrio entero?", "t": 2.8, "at": 31.0},
+      {"speaker": "Big Ray", "en": "Somebody with clean money and dirty hands.", "es": "Alguien con el dinero limpio y las manos sucias.", "t": 3.5, "at": 34.5},
+      {"speaker": "Big Ray", "en": "Gotta make a stop. Okafor's been asking about you.", "es": "Tengo que parar. Okafor lleva días preguntando por ti.", "t": 3.5, "at": 46.0}
+    ]},
+    {"type": "checkpoint"},
+    {"type": "phase", "n": 5},
+    {"type": "exit_vehicle"},
+    {"type": "talk", "actor": "okafor", "label": "Hablar", "objective": "Habla con Okafor en Veyra Mart"},
+    {"type": "dialogue", "actors": ["okafor", "player"], "lines": [
+      {"speaker": "Okafor", "en": "Marcus Johnson. Your mother paid for half my customers' groceries.", "es": "Marcus Johnson. Tu madre le pagaba la compra a la mitad de mis clientes.", "t": 4.0},
+      {"speaker": "Mack", "en": "Sounds like her.", "es": "Eso es muy de ella.", "t": 2.0},
+      {"speaker": "Okafor", "en": "Two men in suits came last week. Cash for the store. I told them no.", "es": "La semana pasada vinieron dos tipos de traje. Dinero en mano por la tienda. Les dije que no.", "t": 4.5},
+      {"speaker": "Okafor", "en": "Next morning my window was in pieces. Message received.", "es": "A la mañana siguiente tenía el escaparate hecho añicos. Mensaje recibido.", "t": 4.0},
+      {"speaker": "Big Ray", "en": "Told you. This ain't kids.", "es": "Te lo dije. Esto no son críos.", "t": 2.5}
+    ]},
+    {"type": "toast", "title": "PUNTO DE INTERÉS", "subtitle": "Veyra Mart · tienda del barrio", "duration": 3.0},
+    {"type": "phase", "n": 6},
+    {"type": "dialogue", "actors": ["big_ray", "player"], "lines": [
+      {"speaker": "Big Ray", "en": "You drive. Let's see if you still know these streets. Take Coral. The long way.", "es": "Conduce tú. A ver si todavía te sabes estas calles. Por Coral. El camino largo.", "t": 4.5}
+    ]},
+    {"type": "move_actor_to_vehicle", "actor": "big_ray", "vehicle": "ray_car", "seat": "passenger"},
+    {"type": "enter_vehicle", "vehicle": "ray_car", "seat": "driver", "label": "Conducir", "objective": "Ponte al volante del coche de Big Ray"},
+    {"type": "drive_to", "target": "coral_checkpoint", "radius": 14.0, "objective": "Conduce hasta Coral St con Crenwood Ave", "hint": "Gas y freno a la derecha; el joystick gira. Freno con el coche parado = marcha atrás."},
+    {"type": "drive_to", "target": "mack_house_curb", "radius": 8.0, "stop": true, "objective": "Aparca delante de la casa de tu madre"},
+    {"type": "checkpoint"},
+    {"type": "exit_vehicle"},
+    {"type": "move_actor_from_vehicle", "actor": "big_ray", "to": [-96, 0.12, 9.5]},
+    {"type": "goto", "target": "mack_door", "radius": 2.5, "objective": "Acércate a la puerta"},
+    {"type": "phase", "n": 7},
+    {"type": "prop", "id": "door_threat"},
+    {"type": "cutscene", "shots": [
+      {"from": [-98.2, 1.7, 12.0], "look": [-100, 1.4, 17.4], "to": [-99.2, 1.6, 13.2], "look_to": [-100, 1.3, 17.4], "duration": 7.0, "fov": 45},
+      {"from": [-103.5, 1.5, 11.0], "look": [-100, 1.2, 14.6], "to": [-102.5, 1.4, 12.0], "look_to": [-100.5, 1.1, 14.6], "duration": 9.0, "fov": 40},
+      {"from": [-94.0, 2.2, 8.0], "look": [-99.5, 1.5, 15.0], "to": [-92.0, 2.8, 6.0], "look_to": [-100, 1.8, 16.0], "duration": 9.0, "fov": 50}
+    ], "lines": [
+      {"speaker": "Mack", "en": "'Sell.' They spray-painted my mama's door.", "es": "«VENDE». Le han pintado la puerta a mi madre.", "t": 3.5},
+      {"speaker": "Big Ray", "en": "Letter's from Crestline Holdings. Never heard of 'em. Nobody has.", "es": "La carta es de Crestline Holdings. Nunca he oído hablar de ellos. Nadie.", "t": 4.0},
+      {"speaker": "Mack", "en": "This ain't theirs.", "es": "Esto no es de ellos.", "t": 2.5},
+      {"speaker": "Big Ray", "en": "Black and gold. Saints colors. Somebody's been watching this house for you.", "es": "Negro y dorado. Colores de los Saints. Alguien ha estado vigilando esta casa por ti.", "t": 4.5},
+      {"speaker": "Mack", "en": "'Nobody touches Miss Johnson's house. — D.'", "es": "«Nadie toca la casa de la señora Johnson. —D.»", "t": 4.0},
+      {"speaker": "Mack", "en": "Dre.", "es": "Dre.", "t": 2.0},
+      {"speaker": "Big Ray", "en": "Thirty days, Mack. Welcome home.", "es": "Treinta días, Mack. Bienvenido a casa.", "t": 3.5}
+    ]},
+    {"type": "reward", "money": 200, "reputation": {"westbrook_saints": 5}, "toast": "+$200 · Big Ray te presta para empezar"},
+    {"type": "complete", "next_objective": "Explora Westbrook · Próxima misión: OLD KEYS (en desarrollo)"}
+  ]
+}
