@@ -9,6 +9,7 @@ extends Node
 ## tools/build_radio_index.py a partir de assets/audio/radio/<emisora>/).
 
 signal station_changed(index: int, station: Dictionary)
+signal track_changed(title: String, artist: String)
 
 const BUS := "Radio"
 const OFF := -1
@@ -24,6 +25,9 @@ var _lengths: Dictionary = {}    # ruta -> duración (s)
 var _streams: Dictionary = {}
 var _station_offsets: Array = []
 var _fade: Tween
+var _tune_player: AudioStreamPlayer
+var _tune_sounds: Array = []
+var _ads: Array = []
 
 
 func _ready() -> void:
@@ -43,9 +47,43 @@ func _ready() -> void:
 			var st: Dictionary = s.duplicate()
 			st["tracks"] = tracks
 			stations.append(st)
+	for a in data.get("ads", []):
+		if ResourceLoader.exists(String(a["path"])):
+			_ads.append(a)
+	for t in data.get("tune", []):
+		if ResourceLoader.exists(String(t)):
+			_tune_sounds.append(load(String(t)))
+	_tune_player = AudioStreamPlayer.new()
+	_tune_player.bus = BUS
+	_tune_player.volume_db = -6.0
+	add_child(_tune_player)
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 7
-	for s in stations:
+	# Programación de cada emisora: canciones barajadas y una pausa de
+	# publicidad cada 2 o 3 temas (sin repetir el mismo anuncio seguido).
+	for st in stations:
+		var songs: Array = (st["tracks"] as Array).duplicate()
+		for i in range(songs.size() - 1, 0, -1):
+			var j := rng.randi_range(0, i)
+			var tmp: Variant = songs[i]
+			songs[i] = songs[j]
+			songs[j] = tmp
+		var program: Array = []
+		var until_ads := rng.randi_range(2, 3)
+		var last_ad := -1
+		for song in songs:
+			program.append(song)
+			until_ads -= 1
+			if until_ads <= 0 and not _ads.is_empty():
+				var k := rng.randi() % _ads.size()
+				if k == last_ad and _ads.size() > 1:
+					k = (k + 1) % _ads.size()
+				last_ad = k
+				var ad: Dictionary = (_ads[k] as Dictionary).duplicate()
+				ad["is_ad"] = true
+				program.append(ad)
+				until_ads = rng.randi_range(2, 3)
+		st["tracks"] = program
 		_station_offsets.append(rng.randf_range(0.0, 3600.0))
 
 
@@ -84,13 +122,18 @@ func next_station() -> void:
 		_fade_to(-40.0, 0.25, true)
 		station_changed.emit(OFF, {"name": "Radio apagada", "genre": ""})
 		return
+	if not _tune_sounds.is_empty():
+		_tune_player.stream = _tune_sounds[randi() % _tune_sounds.size()]
+		_tune_player.play()
 	_tune(current, false)
 
 
 func station_name() -> String:
 	if current == OFF or current >= stations.size():
 		return "Radio apagada"
-	return String(stations[current].get("name", ""))
+	var st: Dictionary = stations[current]
+	var fm := String(st.get("fm", ""))
+	return String(st.get("name", "")) + ("  " + fm + " FM" if fm != "" else "")
 
 
 func _tune(index: int, quiet_intro: bool) -> void:
@@ -111,7 +154,7 @@ func _tune(index: int, quiet_intro: bool) -> void:
 	_play_track(st, i, pos)
 	_player.volume_db = -40.0
 	_fade_to(volume_db, 0.6 if quiet_intro else 0.2, false)
-	station_changed.emit(index, st)
+	station_changed.emit(index, {"name": station_name(), "color": st.get("color", "#D4A72C")})
 
 
 func _play_track(st: Dictionary, i: int, at: float) -> void:
@@ -122,6 +165,8 @@ func _play_track(st: Dictionary, i: int, at: float) -> void:
 	_player.stream = _streams[path]
 	_player.set_meta("track", i)
 	_player.play(clampf(at, 0.0, maxf(_length(t) - 0.5, 0.0)))
+	if not t.get("is_ad", false):
+		track_changed.emit(String(t.get("title", "")), String(t.get("artist", "")))
 
 
 func _on_finished() -> void:

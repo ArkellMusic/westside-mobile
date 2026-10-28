@@ -87,6 +87,9 @@ func _ready() -> void:
 	radio.name = "Radio"
 	add_child(radio)
 	radio.station_changed.connect(func(_i: int, st: Dictionary) -> void: hud.show_location(String(st.get("name", ""))))
+	radio.track_changed.connect(func(title: String, artist: String) -> void:
+		if current_vehicle and title != "":
+			hud.show_subtitle(artist, title, 3.5))
 	impact_system = ImpactSystem.new()
 	add_child(impact_system)
 	impact_system.traffic = traffic
