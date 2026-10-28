@@ -44,7 +44,7 @@ jobs:
   ios:
     name: Compilar IPA (macOS)
     needs: pruebas
-    runs-on: macos-15
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
       - name: Descargar Godot y plantillas de exportación
@@ -67,6 +67,9 @@ jobs:
           ls -la build/ios
       - name: Compilar sin firma con Xcode
         run: |
+          set -o pipefail
+          sudo xcode-select -s "$(ls -d /Applications/Xcode_26*.app | sort -V | tail -1)" || true
+          xcodebuild -version
           cd build/ios
           xcodebuild -list -project "${APP_NAME}.xcodeproj" || true
           xcodebuild -project "${APP_NAME}.xcodeproj" -scheme "${APP_NAME}" -configuration Release \
