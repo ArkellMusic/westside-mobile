@@ -345,13 +345,56 @@ func _fill_beachfront(inner: Rect2) -> void:
 		z += dz
 
 
+## Material PBR con proyección triplanar en coordenadas de mundo (sin UV).
+func _textured(id: String, tint: Color, tile: float) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.vertex_color_use_as_albedo = true
+	m.albedo_color = tint
+	if ResourceLoader.exists(TEX + id + "/albedo.jpg"):
+		m.albedo_texture = load(TEX + id + "/albedo.jpg")
+		m.normal_enabled = true
+		m.normal_texture = load(TEX + id + "/normal.jpg")
+		m.roughness_texture = load(TEX + id + "/roughness.jpg")
+		m.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_GREEN
+		m.uv1_triplanar = true
+		m.uv1_world_triplanar = true
+		m.uv1_scale = Vector3.ONE / tile
+	return m
+
+
 func _flush_buildings() -> void:
+	_add_roof_details()
 	var mm := _box_multimesh(_buildings)
 	var mi := MultiMeshInstance3D.new()
 	mi.name = "Buildings"
 	mi.multimesh = mm
 	add_child(mi)
 	_build_pools()
+
+
+## Cornisas y aparatos de aire acondicionado en las azoteas.
+func _add_roof_details() -> void:
+	var caps: Array = []
+	var units: Array = []
+	for b in _buildings:
+		var c: Vector3 = b["center"]
+		var s: Vector3 = b["size"]
+		if s.y < 3.2:
+			continue
+		var top := c.y + s.y * 0.5
+		caps.append(Transform3D(Basis.from_scale(Vector3(s.x + 0.35, 0.45, s.z + 0.35)), Vector3(c.x, top + 0.05, c.z)))
+		if float(b["kind"]) > 0.34 and s.x > 10.0:
+			for k in rng.randi_range(1, 3):
+				var p := Vector3(c.x + rng.randf_range(-s.x * 0.3, s.x * 0.3), top + 0.6, c.z + rng.randf_range(-s.z * 0.3, s.z * 0.3))
+				units.append(Transform3D(Basis(Vector3.UP, rng.randf() * TAU).scaled(Vector3(rng.randf_range(1.6, 2.6), 1.2, rng.randf_range(1.2, 1.8))), p))
+	var cap_mesh := BoxMesh.new()
+	cap_mesh.size = Vector3.ONE
+	cap_mesh.material = _textured("concrete_wall", Color(0.82, 0.8, 0.78), 2.0)
+	_multimesh(cap_mesh, caps, "Cornices")
+	var unit_mesh := BoxMesh.new()
+	unit_mesh.size = Vector3.ONE
+	unit_mesh.material = MeshBuilder.material(Color(0.62, 0.64, 0.66), 0.45, 0.6)
+	_multimesh(unit_mesh, units, "RoofUnits")
 
 
 func _box_multimesh(items: Array) -> MultiMesh:
@@ -392,7 +435,7 @@ func _build_pools() -> void:
 func _build_mack_house() -> void:
 	var c := CityLayout.landmark("mack_house")
 	var b := MeshBuilder.new()
-	var wall := MeshBuilder.material(Color(0.93, 0.88, 0.78), 0.9)
+	var wall := _textured("stucco_beige", Color(1.0, 0.97, 0.92), 3.0)
 	var trim := MeshBuilder.material(Color(0.12, 0.12, 0.13), 0.7)
 	var gold := MeshBuilder.material(Color(0.83, 0.65, 0.17), 0.35, 0.7)
 	var wood := MeshBuilder.material(Color(0.42, 0.28, 0.17), 0.8)
@@ -426,7 +469,7 @@ func _build_mack_house() -> void:
 func _build_garage() -> void:
 	var c := CityLayout.landmark("vargas_garage")
 	var b := MeshBuilder.new()
-	b.surface("wall", MeshBuilder.material(Color(0.55, 0.52, 0.48), 0.9))
+	b.surface("wall", _textured("concrete_wall", Color(0.85, 0.83, 0.8), 3.0))
 	b.surface("door", MeshBuilder.material(Color(0.35, 0.37, 0.4), 0.5, 0.6))
 	b.surface("sign", MeshBuilder.material(Color(0.9, 0.25, 0.15), 0.5, 0.0, Color(1.0, 0.35, 0.15), 1.5))
 	b.surface("dark", MeshBuilder.material(Color(0.05, 0.05, 0.06), 0.9))
@@ -490,7 +533,7 @@ func _build_terminal() -> void:
 func _build_veyra_mart() -> void:
 	var c := CityLayout.landmark("veyra_mart")
 	var b := MeshBuilder.new()
-	b.surface("wall", MeshBuilder.material(Color(0.86, 0.80, 0.70), 0.9))
+	b.surface("wall", _textured("brick", Color(0.95, 0.88, 0.8), 2.5))
 	b.surface("glass", MeshBuilder.material(Color(0.25, 0.22, 0.16), 0.1, 0.0, Color(1.0, 0.85, 0.55), 0.6))
 	b.surface("awning", MeshBuilder.material(Color(0.12, 0.45, 0.35), 0.8))
 	b.surface("sign", MeshBuilder.material(Color(0.95, 0.3, 0.2), 0.5, 0.0, Color(1.0, 0.3, 0.2), 1.8))
