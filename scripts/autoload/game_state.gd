@@ -16,11 +16,14 @@ var play_time: float = 0.0
 var in_game: bool = false
 var active_mission: String = ""
 var mission_step: int = 0
+## Hora del juego en minutos desde medianoche (1 minuto de juego = 1 segundo real).
+var world_minutes: float = 7.0 * 60.0 + 30.0
 
 
 func _process(delta: float) -> void:
 	if in_game and not get_tree().paused:
 		play_time += delta
+		world_minutes = fposmod(world_minutes + delta, 24.0 * 60.0)
 
 
 func new_game() -> void:
@@ -33,6 +36,7 @@ func new_game() -> void:
 	play_time = 0.0
 	active_mission = ""
 	mission_step = 0
+	world_minutes = 7.0 * 60.0 + 30.0
 	reputation = {}
 	for f in GameData.factions:
 		reputation[String(f["id"])] = int(f.get("start_reputation", 0))
@@ -95,6 +99,7 @@ func to_dict() -> Dictionary:
 		"play_time": play_time,
 		"active_mission": active_mission,
 		"mission_step": mission_step,
+		"world_minutes": world_minutes,
 	}
 
 
@@ -117,4 +122,5 @@ func from_dict(d: Dictionary) -> void:
 	play_time = float(d.get("play_time", 0.0))
 	active_mission = String(d.get("active_mission", ""))
 	mission_step = int(d.get("mission_step", 0))
+	world_minutes = float(d.get("world_minutes", 7.0 * 60.0 + 30.0))
 	EventBus.money_changed.emit(money)

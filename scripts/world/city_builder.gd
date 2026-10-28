@@ -546,7 +546,7 @@ func _build_veyra_mart() -> void:
 		b.box("bars", c + Vector3(gx, 1.5, 6.1), Vector3(0.05, 2.5, 0.05))
 		gx += 0.45
 	b.box("wall", c + Vector3(4.5, 1.3, 6.05), Vector3(1.4, 2.4, 0.05))
-	b.box("awning", c + Vector3(0, 3.3, 7.0), Vector3(16.4, 0.15, 2.2), Transform3D(Basis(Vector3.RIGHT, 0.25), Vector3.ZERO))
+	b.box("awning", Vector3.ZERO, Vector3(16.4, 0.15, 2.2), Transform3D(Basis(Vector3.RIGHT, 0.25), c + Vector3(0, 3.3, 7.0)))
 	b.box("sign", c + Vector3(0, 4.4, 6.1), Vector3(10.0, 1.0, 0.15))
 	_mesh_instance(b.commit(), "VeyraMart")
 	_collider_box(c + Vector3(0, 2.6, 0), Vector3(16.0, 5.2, 12.0))
@@ -609,7 +609,7 @@ func _build_river_and_bridge() -> void:
 			var mid := (prev + p) * 0.5
 			var dir := (p - prev)
 			var basis := Basis(Quaternion(Vector3.RIGHT, dir.normalized()))
-			br.box("steel", mid, Vector3(dir.length() + 0.3, 0.9, 0.9), Transform3D(basis, Vector3.ZERO))
+			br.box("steel", Vector3.ZERO, Vector3(dir.length() + 0.3, 0.9, 0.9), Transform3D(basis, mid))
 			if i < seg:
 				br.box("steel", Vector3(p.x, (p.y + 1.0) * 0.5, p.z), Vector3(0.12, p.y - 1.0, 0.12))
 			prev = p

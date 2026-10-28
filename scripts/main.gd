@@ -282,6 +282,9 @@ func _process(delta: float) -> void:
 	hud.radar.player_heading = (current_vehicle.global_rotation.y + PI) if current_vehicle else player.face_yaw()
 	hud.radar.view_yaw = rig.yaw
 	hud.set_speed_kmh(current_vehicle.speed_kmh() if current_vehicle and current_seat == "driver" else -1.0)
+	if hud.has_method("set_clock"):
+		var mins := int(GameState.world_minutes)
+		hud.call("set_clock", mins / 60, mins % 60)
 	var loc := CityLayout.nearest_street_name(focus.global_position)
 	if loc != _last_location:
 		_last_location = loc
