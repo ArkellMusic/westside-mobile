@@ -72,9 +72,34 @@ func _make_materials() -> void:
 	mat_sidewalk = _ground_mat(ground_shader, 2)
 	mat_sand = _ground_mat(ground_shader, 3)
 	mat_dirt = _ground_mat(ground_shader, 4)
+	_texture_ground(mat_concrete, "concrete", 4.0)
+	_texture_ground(mat_sidewalk, "sidewalk", 2.4)
+	_texture_ground(mat_sand, "sand", 14.0)
+	_texture_ground(mat_dirt, "dirt", 7.0)
+	if ResourceLoader.exists(TEX + "asphalt/albedo.jpg"):
+		mat_road.set_shader_parameter("asphalt_albedo", load(TEX + "asphalt/albedo.jpg"))
+		mat_road.set_shader_parameter("asphalt_normal", load(TEX + "asphalt/normal.jpg"))
+		mat_road.set_shader_parameter("asphalt_rough", load(TEX + "asphalt/roughness.jpg"))
+	for pair in [["house", "stucco"], ["shop", "brick"], ["tower", "concrete_wall"], ["roof", "roof"]]:
+		if ResourceLoader.exists(TEX + pair[1] + "/albedo.jpg"):
+			mat_building.set_shader_parameter(pair[0] + "_albedo", load(TEX + pair[1] + "/albedo.jpg"))
+			mat_building.set_shader_parameter(pair[0] + "_normal", load(TEX + pair[1] + "/normal.jpg"))
 	mat_water = ShaderMaterial.new()
 	mat_water.shader = load("res://assets/shaders/water.gdshader")
 	mat_water.set_shader_parameter("shore_x", CityLayout.SHORE_X)
+
+
+const TEX := "res://assets/textures/"
+
+
+func _texture_ground(m: ShaderMaterial, id: String, tile: float) -> void:
+	if not ResourceLoader.exists(TEX + id + "/albedo.jpg"):
+		return
+	m.set_shader_parameter("use_texture", true)
+	m.set_shader_parameter("tile", tile)
+	m.set_shader_parameter("tex_albedo", load(TEX + id + "/albedo.jpg"))
+	m.set_shader_parameter("tex_normal", load(TEX + id + "/normal.jpg"))
+	m.set_shader_parameter("tex_rough", load(TEX + id + "/roughness.jpg"))
 
 
 func _ground_mat(shader: Shader, surface: int) -> ShaderMaterial:

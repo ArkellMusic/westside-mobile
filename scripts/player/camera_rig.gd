@@ -12,6 +12,7 @@ var vehicle_mode: bool = false
 var cinematic: bool = false
 
 var camera: Camera3D
+var cine_camera: Camera3D
 var _arm: SpringArm3D
 var _pivot: Node3D
 var _idle_time: float = 0.0
@@ -41,6 +42,12 @@ func _ready() -> void:
 	camera.near = 0.08
 	_arm.add_child(camera)
 	camera.current = true
+	# Cámara aparte para cinemáticas: el SpringArm no la mueve.
+	cine_camera = Camera3D.new()
+	cine_camera.far = 5000.0
+	cine_camera.near = 0.05
+	cine_camera.top_level = true
+	add_child(cine_camera)
 
 
 func exclude(body: CollisionObject3D) -> void:
@@ -73,15 +80,16 @@ func cinematic_shot(from: Transform3D, to: Transform3D, duration: float, fov_fro
 	_cine_duration = maxf(duration, 0.01)
 	_cine_fov_from = fov_from
 	_cine_fov_to = fov_to
-	camera.global_transform = from
-	camera.fov = fov_from
+	cine_camera.global_transform = from
+	cine_camera.fov = fov_from
+	cine_camera.current = true
 
 
 ## Plano relativo a un nodo en movimiento (p. ej. dentro del autobús).
 func attached_shot(node: Node3D, local_from: Transform3D, local_to: Transform3D, duration: float, fov_from: float = 50.0, fov_to: float = 50.0) -> void:
 	cinematic_shot(local_from, local_to, duration, fov_from, fov_to)
 	_attach = node
-	camera.global_transform = node.global_transform * local_from
+	cine_camera.global_transform = node.global_transform * local_from
 
 
 static func look_from(pos: Vector3, at: Vector3) -> Transform3D:
@@ -91,9 +99,7 @@ static func look_from(pos: Vector3, at: Vector3) -> Transform3D:
 func end_cinematic() -> void:
 	cinematic = false
 	_attach = null
-	camera.position = Vector3.ZERO
-	camera.rotation = Vector3.ZERO
-	camera.fov = 65.0
+	camera.current = true
 
 
 func shake(amount: float) -> void:
@@ -107,8 +113,8 @@ func _process(delta: float) -> void:
 		var xf := _cine_from.interpolate_with(_cine_to, t)
 		if _attach and is_instance_valid(_attach):
 			xf = _attach.global_transform * xf
-		camera.global_transform = xf
-		camera.fov = lerpf(_cine_fov_from, _cine_fov_to, t)
+		cine_camera.global_transform = xf
+		cine_camera.fov = lerpf(_cine_fov_from, _cine_fov_to, t)
 		return
 	if target == null:
 		return

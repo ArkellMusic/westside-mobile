@@ -5,6 +5,11 @@ render_mode diffuse_burley, specular_schlick_ggx;
 
 uniform int surface = 0; // 0 césped, 1 hormigón, 2 acera, 3 arena, 4 tierra seca
 uniform vec3 tint : source_color = vec3(1.0);
+uniform sampler2D tex_albedo : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform sampler2D tex_normal : hint_normal, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform sampler2D tex_rough : hint_roughness_g, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform bool use_texture = false;
+uniform float tile = 4.0;
 
 varying vec3 wpos;
 
@@ -27,6 +32,8 @@ float vnoise(vec2 p) {
 
 void vertex() {
 	wpos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	TANGENT = vec3(1.0, 0.0, 0.0);
+	BINORMAL = vec3(0.0, 0.0, 1.0);
 }
 
 void fragment() {
@@ -60,5 +67,16 @@ void fragment() {
 	}
 	ALBEDO = col * tint;
 	ROUGHNESS = rough;
+	if (use_texture) {
+		vec2 tuv = p / tile;
+		// Dos escalas mezcladas para romper la repetición.
+		vec3 t1 = texture(tex_albedo, tuv).rgb;
+		vec3 t2 = texture(tex_albedo, tuv * 0.23 + 0.37).rgb;
+		vec3 tex = mix(t1, t2, 0.35) * (0.85 + 0.3 * n1);
+		float keep_wet = surface == 3 ? smoothstep(-0.05, -0.6, wpos.y) : 0.0;
+		ALBEDO = mix(tex * tint, col * tint, 0.15 + keep_wet * 0.6);
+		NORMAL_MAP = texture(tex_normal, tuv).rgb;
+		ROUGHNESS = mix(texture(tex_rough, tuv).g, rough, keep_wet);
+	}
 	SPECULAR = 0.25;
 }

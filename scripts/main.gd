@@ -876,7 +876,7 @@ func _render_photo() -> void:
 	vp.queue_free()
 	for h in people:
 		(h as Node).queue_free()
-	rig.camera.current = true
+	(rig.cine_camera if rig.cinematic else rig.camera).current = true
 
 
 func _setup_ambient_talk() -> void:

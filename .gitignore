@@ -17,3 +17,5 @@ screenshots_tmp/
 # Ficheros del sistema operativo
 .DS_Store
 Thumbs.db
+*_texture_?.png
+*_texture_?.png.import

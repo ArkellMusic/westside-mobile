@@ -6,8 +6,13 @@ shader_type spatial;
 render_mode diffuse_burley, specular_schlick_ggx;
 
 uniform vec3 asphalt : source_color = vec3(0.16, 0.16, 0.17);
+uniform sampler2D asphalt_albedo : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform sampler2D asphalt_normal : hint_normal, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform sampler2D asphalt_rough : hint_roughness_g, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform float tile = 5.0;
 
 varying vec2 info;
+varying vec3 wpos;
 
 float hash21(vec2 p) {
 	p = fract(p * vec2(123.34, 456.21));
@@ -17,6 +22,9 @@ float hash21(vec2 p) {
 
 void vertex() {
 	info = UV2;
+	wpos = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xyz;
+	TANGENT = vec3(1.0, 0.0, 0.0);
+	BINORMAL = vec3(0.0, 0.0, 1.0);
 }
 
 void fragment() {
@@ -24,7 +32,9 @@ void fragment() {
 	float len = info.x;
 	float width = info.y;
 	float grain = hash21(floor(vec2(wp.x * max(width, 1.0), wp.y) * 6.0));
-	vec3 col = asphalt * (0.9 + 0.18 * grain);
+	vec2 tuv = wpos.xz / tile;
+	vec3 col = texture(asphalt_albedo, tuv).rgb * (asphalt / vec3(0.16)) * 0.9 * (0.94 + 0.12 * grain);
+	float tex_rough = texture(asphalt_rough, tuv).g;
 	// Manchas de desgaste en el centro de cada carril.
 	col *= 1.0 - 0.06 * smoothstep(0.0, 0.5, sin(wp.x * 6.2831 * 2.0) * 0.5 + 0.5);
 	float paint = 0.0;
@@ -59,6 +69,7 @@ void fragment() {
 		}
 	}
 	ALBEDO = mix(col, paint_col * (0.85 + 0.15 * grain), paint * 0.92);
-	ROUGHNESS = mix(0.82, 0.6, paint);
+	NORMAL_MAP = mix(texture(asphalt_normal, tuv).rgb, vec3(0.5, 0.5, 1.0), paint * 0.7);
+	ROUGHNESS = mix(tex_rough, 0.55, paint);
 	SPECULAR = 0.35;
 }
