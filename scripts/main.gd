@@ -456,9 +456,11 @@ func leave_vehicle() -> void:
 	while car.linear_velocity.length() > 2.5 and t < 4.0:
 		await get_tree().physics_frame
 		t += get_physics_process_delta_time()
-	var exit := car.exit_point(1.0)
+	# Conductor por la izquierda (+X local); copiloto por la derecha, hacia la acera.
+	var side := 1.0 if current_seat == "driver" else -1.0
+	var exit := car.exit_point(side)
 	if _point_blocked(exit):
-		exit = car.exit_point(-1.0)
+		exit = car.exit_point(-side)
 	_remove_seat_model(car, current_seat)
 	current_vehicle = null
 	current_seat = ""
