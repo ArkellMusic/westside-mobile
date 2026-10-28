@@ -274,13 +274,13 @@ func pose_idle_stance(kind: String) -> void:
 	var p := _new_pose()
 	match kind:
 		"arms_crossed":
-			p["arm"] = [0.75, 0.75]
-			p["elbow"] = [2.05, 2.05]
-			p["arm_out"] = [-0.2, -0.2]
+			p["arm"] = [0.25, 0.25]
+			p["elbow"] = [1.4, 1.4]
+			p["arm_out"] = [-0.32, -0.32]
 		"hands_together":
-			p["arm"] = [0.5, 0.5]
-			p["elbow"] = [1.35, 1.35]
-			p["arm_out"] = [-0.12, -0.12]
+			p["arm"] = [0.3, 0.3]
+			p["elbow"] = [1.05, 1.05]
+			p["arm_out"] = [-0.18, -0.18]
 		"phone":
 			p["arm"] = [0.0, 0.55]
 			p["elbow"] = [0.15, 2.45]

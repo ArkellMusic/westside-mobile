@@ -15,14 +15,14 @@ const PRESETS := {
 		"fog": Color(0.85, 0.58, 0.46), "fog_density": 0.0011, "ambient": 0.45, "night": 0.55, "exposure": 1.05, "sky_energy": 1.0,
 	},
 	"morning": {
-		"sun_yaw": 110.0, "sun_pitch": -24.0, "light": Color(1.0, 0.86, 0.68), "energy": 1.35,
+		"sun_yaw": 110.0, "sun_pitch": -32.0, "light": Color(1.0, 0.9, 0.76), "energy": 1.15,
 		"top": Color(0.28, 0.48, 0.78), "horizon": Color(0.88, 0.80, 0.70), "ground": Color(0.25, 0.22, 0.18),
-		"fog": Color(0.86, 0.80, 0.72), "fog_density": 0.0006, "ambient": 0.6, "night": 0.05, "exposure": 1.0, "sky_energy": 1.0, "hdri": "res://assets/sky/day.hdr",
+		"fog": Color(0.86, 0.80, 0.72), "fog_density": 0.0006, "ambient": 0.35, "night": 0.05, "exposure": 0.78, "sky_energy": 1.0, "hdri": "res://assets/sky/day.hdr",
 	},
 	"golden": {
 		"sun_yaw": -80.0, "sun_pitch": -11.0, "light": Color(1.0, 0.66, 0.4), "energy": 1.25,
 		"top": Color(0.22, 0.32, 0.58), "horizon": Color(1.0, 0.66, 0.44), "ground": Color(0.2, 0.15, 0.12),
-		"fog": Color(0.95, 0.68, 0.5), "fog_density": 0.0008, "ambient": 0.5, "night": 0.35, "exposure": 1.0, "sky_energy": 1.0, "hdri": "res://assets/sky/sunset.hdr",
+		"fog": Color(0.95, 0.68, 0.5), "fog_density": 0.0008, "ambient": 0.35, "night": 0.35, "exposure": 0.8, "sky_energy": 1.0, "hdri": "res://assets/sky/sunset.hdr",
 	},
 }
 
@@ -51,7 +51,8 @@ func _ready() -> void:
 	env.background_mode = Environment.BG_SKY
 	env.sky = sky
 	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
-	env.tonemap_mode = Environment.TONE_MAPPER_FILMIC
+	env.tonemap_mode = Environment.TONE_MAPPER_ACES
+	env.tonemap_white = 6.0
 	env.glow_enabled = true
 	env.glow_intensity = 0.6
 	env.glow_bloom = 0.05

@@ -12,6 +12,10 @@ const MODELS := {
 	"mack": ["res://assets/characters/streetwear/Meshy_AI_Streetwear_Stance_20261025_texture", 1.83],
 	"big_ray": ["res://assets/characters/oakland/Meshy_AI_Arms_of_Oakland_20261025_texture", 1.86],
 	"keisha": ["res://assets/characters/urban/Meshy_AI_Urban_Balance_20261025_texture", 1.70],
+	"dre": ["res://assets/characters/tpose/Meshy_AI_T_Pose_Urban_Model_20261028_texture", 1.86],
+	"loco": ["res://assets/characters/stance2/Meshy_AI_Streetwear_Stance_20261028_texture", 1.78],
+	"ghost": ["res://assets/characters/shadow/Meshy_AI_Shadow_Spread_20261028_texture", 1.83],
+	"viper": ["res://assets/characters/tatted/Meshy_AI_Tatted_in_Black_20261028_texture", 1.77],
 }
 
 const BONES := ["hips", "spine", "chest", "neck", "head",

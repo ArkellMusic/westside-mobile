@@ -148,6 +148,7 @@ func _finish() -> void:
 	_place_bus(CityLayout.landmark("bus_bay") + Vector3(0, 0.05, 0))
 	world.parked_bus = bus
 	hud.show_subtitle("", "", 0.01)
+	hud.set_letterbox(false)
 	hud.fade_to(0.0, 1.0)
 	finished.emit()
 

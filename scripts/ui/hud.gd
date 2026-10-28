@@ -335,7 +335,7 @@ func set_speed_kmh(v: float) -> void:
 
 
 func show_subtitle(speaker: String, text: String, duration: float = 4.0) -> void:
-	if not Settings.subtitles:
+	if not Settings.subtitles or text == "":
 		_hide_subtitle()
 		return
 	var body := text.replace("[", "[lb]")

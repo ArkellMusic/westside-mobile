@@ -10,12 +10,12 @@
     "dre": {
       "name": "Darnell Williams", "alias": "Dre", "role": "Líder de los Westbrook Saints. Amigo de infancia de Mack; no le ha perdonado que se fuera.",
       "faction": "westbrook_saints",
-      "look": {"skin": "#4A2E1C", "top_type": "tank", "top": "#EDEDEA", "pants_type": "long", "pants": "#2A2B2F", "shoes": "#151517", "sole": "#F2F2F2", "hair_type": "dreads", "hair": "#0B0806", "beard": true, "head": "none", "chain": "silver", "build": 1.0, "height": 1.03}
+      "look": {"model": "res://assets/characters/tpose/dre_rigged.scn", "skin": "#4A2E1C", "top_type": "tank", "top": "#EDEDEA", "pants_type": "long", "pants": "#2A2B2F", "shoes": "#151517", "sole": "#F2F2F2", "hair_type": "dreads", "hair": "#0B0806", "beard": true, "head": "none", "chain": "silver", "build": 1.0, "height": 1.03}
     },
     "ghost": {
       "name": "Terrence Carter", "alias": "Ghost", "role": "Socio de los Saints, difícil de leer. Habla poco y lo ve todo.",
       "faction": "westbrook_saints",
-      "look": {"skin": "#3E2617", "top_type": "hoodie", "top": "#121214", "print": "#D2D2D2", "under": "#121214", "pants_type": "long", "pants": "#2B2C30", "shoes": "#111113", "sole": "#111113", "hair_type": "short", "hair": "#0B0806", "beard": true, "head": "beanie", "head_color": "#111113", "glasses": true, "chain": "silver", "build": 1.08, "height": 1.01}
+      "look": {"model": "res://assets/characters/shadow/ghost_rigged.scn", "skin": "#3E2617", "top_type": "hoodie", "top": "#121214", "print": "#D2D2D2", "under": "#121214", "pants_type": "long", "pants": "#2B2C30", "shoes": "#111113", "sole": "#111113", "hair_type": "short", "hair": "#0B0806", "beard": true, "head": "beanie", "head_color": "#111113", "glasses": true, "chain": "silver", "build": 1.08, "height": 1.01}
     },
     "keisha": {
       "name": "Keisha Monroe", "alias": "K", "role": "Investiga las compras sospechosas de casas y locales en Westbrook.",
@@ -25,7 +25,7 @@
     "loco": {
       "name": "Diego Vargas", "alias": "Loco", "role": "Mecánico de Vargas Auto Works y corredor de las carreras del puerto.",
       "faction": "",
-      "look": {"skin": "#9A6B4A", "top_type": "open_shirt", "top": "#151517", "under": "#F2F2F0", "pants_type": "shorts", "pants": "#CDBB98", "socks": "#F4F4F4", "shoes": "#F4F4F4", "sole": "#F4F4F4", "hair_type": "fade", "hair": "#0D0A08", "beard": true, "head": "cap", "head_color": "#101012", "chain": "silver", "build": 1.0, "height": 0.99}
+      "look": {"model": "res://assets/characters/stance2/loco_rigged.scn", "skin": "#9A6B4A", "top_type": "open_shirt", "top": "#151517", "under": "#F2F2F0", "pants_type": "shorts", "pants": "#CDBB98", "socks": "#F4F4F4", "shoes": "#F4F4F4", "sole": "#F4F4F4", "hair_type": "fade", "hair": "#0D0A08", "beard": true, "head": "cap", "head_color": "#101012", "chain": "silver", "build": 1.0, "height": 0.99}
     },
     "big_ray": {
       "name": "Raymond Brooks", "alias": "Big Ray", "role": "El veterano del barrio. Llama a Mack y lo recoge en la terminal.",
@@ -40,7 +40,7 @@
     "viper": {
       "name": "Victor Salazar", "alias": "Viper", "role": "Manda en los Redline Kings. El primer enemigo de verdad en la calle.",
       "faction": "redline_kings",
-      "look": {"skin": "#9C6E4E", "top_type": "tank", "top": "#121214", "pants_type": "long", "pants": "#26272B", "shoes": "#151517", "sole": "#F2F2F2", "hair_type": "fade", "hair": "#0B0806", "beard": true, "head": "none", "chain": "gold", "build": 1.08, "height": 0.98}
+      "look": {"model": "res://assets/characters/tatted/viper_rigged.scn", "skin": "#9C6E4E", "top_type": "tank", "top": "#121214", "pants_type": "long", "pants": "#26272B", "shoes": "#151517", "sole": "#F2F2F2", "hair_type": "fade", "hair": "#0B0806", "beard": true, "head": "none", "chain": "gold", "build": 1.08, "height": 0.98}
     }
   }
 }

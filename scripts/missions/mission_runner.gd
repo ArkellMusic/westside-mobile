@@ -58,7 +58,7 @@ func _run_step(s: Dictionary) -> void:
 			GameState.mission_step = step_index + 1
 			world.capture_state()
 			SaveSystem.autosave()
-			hud.toast("", "Punto de control", 1.5)
+			hud.show_location("Punto de control guardado")
 		"cutscene":
 			await _cutscene(s)
 		"dialogue":

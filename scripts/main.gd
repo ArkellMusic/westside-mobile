@@ -525,7 +525,7 @@ func _seat_model(who: String, look: Dictionary, car: Car, seat: String) -> void:
 	h.setup(look)
 	h.set_seated(true)
 	h.set_meta("who", who)
-	h.position = Vector3(0.4 if seat == "driver" else -0.4, -0.22, -0.15)
+	h.position = Vector3(0.4 if seat == "driver" else -0.4, -0.52, -0.15)
 	h.rotation.y = PI
 	_occupants[key] = h
 
@@ -566,7 +566,7 @@ func spawn_redline_car() -> void:
 	node.add_child(k1)
 	k1.setup(GameData.character_look("viper"))
 	k1.set_seated(true)
-	k1.position = Vector3(0.4, -0.22, -0.15)
+	k1.position = Vector3(0.4, -0.52, -0.15)
 	k1.rotation.y = PI
 	_movers.append({"node": node, "dir": Vector3(1, 0, 0), "speed": 9.0, "life": 45.0})
 
