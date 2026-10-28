@@ -11,7 +11,11 @@ var state: State = State.TITLE
 var city: CityBuilder
 var sky: SkyEnv
 var traffic: Traffic
+var radio: Radio
 var pedestrians: Pedestrians
+var impact_system: ImpactSystem
+var wanted: int = 0
+var _wanted_timer: float = 0.0
 var player: Player
 var rig: CameraRig
 var runner: MissionRunner
@@ -62,14 +66,31 @@ func _ready() -> void:
 	add_child(city)
 	city.build()
 	sky.city = city
+	var props := StreetProps.new()
+	props.name = "StreetProps"
+	add_child(props)
+	props.build(city)
 	sky.apply_preset("golden", 0.0)
 
 	traffic = Traffic.new()
 	add_child(traffic)
 	traffic.setup(Settings.traffic_count())
+	var tcontrol := TrafficControl.new()
+	tcontrol.name = "TrafficControl"
+	add_child(tcontrol)
+	tcontrol.build()
+	traffic.control = tcontrol
 	pedestrians = Pedestrians.new()
 	add_child(pedestrians)
 	pedestrians.setup(Settings.pedestrian_count())
+	radio = Radio.new()
+	radio.name = "Radio"
+	add_child(radio)
+	radio.station_changed.connect(func(_i: int, st: Dictionary) -> void: hud.show_location(String(st.get("name", ""))))
+	impact_system = ImpactSystem.new()
+	add_child(impact_system)
+	impact_system.traffic = traffic
+	pedestrians.pedestrian_hit.connect(_on_pedestrian_hit)
 
 	player = Player.new()
 	player.name = "Mack"
@@ -202,6 +223,7 @@ func _start_play() -> void:
 	state = State.PLAYING
 	rig.end_cinematic()
 	sky.apply_preset("morning", 0.0)
+	sky.resume_cycle()
 	player.visible = true
 	rig.follow(player, false)
 	rig.yaw = player.face_yaw()
@@ -275,6 +297,13 @@ func _process(delta: float) -> void:
 		_update_movers(delta)
 		return
 	_update_movers(delta)
+	sky.set_time_of_day(GameState.world_minutes)
+	if wanted > 0:
+		_wanted_timer -= delta
+		if _wanted_timer <= 0.0:
+			wanted -= 1
+			_wanted_timer = 40.0
+			hud.set_wanted(wanted)
 	var focus: Node3D = current_vehicle if current_vehicle else player
 	if not current_vehicle:
 		player.camera_yaw = rig.yaw
@@ -302,6 +331,22 @@ func _process(delta: float) -> void:
 	GameState.set_health(GameState.health)
 
 
+func _on_pedestrian_hit(_pos: Vector3, _speed: float) -> void:
+	wanted = mini(wanted + 1, 6)
+	_wanted_timer = 40.0
+	hud.set_wanted(wanted)
+
+
+func _hook_car(car: Car) -> void:
+	car.impact_system = impact_system
+	if not car.crashed.is_connected(_on_car_crashed):
+		car.crashed.connect(_on_car_crashed)
+
+
+func _on_car_crashed(strength: float, _point: Vector3, _other: Node) -> void:
+	rig.shake(strength * 1.2)
+
+
 func _update_interaction() -> void:
 	if not _gameplay_on:
 		touch.set_interact_label("")
@@ -309,6 +354,8 @@ func _update_interaction() -> void:
 	var label := ""
 	var action := Callable()
 	if current_vehicle:
+		if Controls.just_pressed("radio"):
+			radio.next_station()
 		if current_seat == "driver" and allow_free_vehicles:
 			if Controls.just_pressed("interact"):
 				leave_vehicle()
@@ -443,10 +490,13 @@ func board(car: Car, seat: String) -> void:
 	rig.exclude(car)
 	rig.follow(car, true)
 	car.set_driver(seat == "driver")
+	_hook_car(car)
 	if seat == "driver":
+		pedestrians.vehicle = car
 		pedestrians.danger = [car]
 		traffic.obstacles = [car]
 	touch.set_mode("car" if seat == "driver" else "hidden")
+	radio.enter_vehicle()
 	await get_tree().process_frame
 
 
@@ -476,8 +526,10 @@ func leave_vehicle() -> void:
 	rig.follow(player, false)
 	rig.yaw = car.global_rotation.y + PI
 	pedestrians.danger = []
+	pedestrians.vehicle = null
 	traffic.obstacles = [player]
 	touch.set_mode("foot" if _gameplay_on else "hidden")
+	radio.exit_vehicle()
 
 
 func _force_exit_vehicle() -> void:
@@ -659,6 +711,7 @@ func _spawn_vehicles() -> void:
 		car.setup(int(d[1]), d[2], String(d[0]), String(d[5]))
 		_place_car(car, d[3], d[4])
 		vehicles[String(d[0])] = car
+		_hook_car(car)
 
 
 func _spawn_actors() -> void:

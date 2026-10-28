@@ -20,6 +20,7 @@ const KEYS := {
 	"handbrake": [KEY_SPACE],
 	"pause": [KEY_ESCAPE, KEY_P],
 	"map": [KEY_M],
+	"radio": [KEY_R],
 }
 
 

@@ -25,6 +25,8 @@ var mat_sidewalk: ShaderMaterial
 var mat_sand: ShaderMaterial
 var mat_dirt: ShaderMaterial
 var mat_water: ShaderMaterial
+var lamp_material: StandardMaterial3D
+var lamp_positions := PackedVector3Array()   # cabeza de cada farola (mundo)
 
 const HOUSE_COLORS := [Color(0.93, 0.86, 0.72), Color(0.95, 0.78, 0.64), Color(0.72, 0.84, 0.88), Color(0.78, 0.88, 0.76), Color(0.97, 0.94, 0.86), Color(0.92, 0.70, 0.62), Color(0.84, 0.82, 0.80), Color(0.98, 0.89, 0.62)]
 const SHOP_COLORS := [Color(0.62, 0.36, 0.28), Color(0.70, 0.68, 0.64), Color(0.86, 0.80, 0.68), Color(0.92, 0.91, 0.88), Color(0.45, 0.55, 0.58), Color(0.78, 0.55, 0.40), Color(0.55, 0.52, 0.50)]
@@ -72,6 +74,7 @@ func _make_materials() -> void:
 	mat_sidewalk = _ground_mat(ground_shader, 2)
 	mat_sand = _ground_mat(ground_shader, 3)
 	mat_dirt = _ground_mat(ground_shader, 4)
+	_texture_ground(mat_lawn, "grass", 3.0)
 	_texture_ground(mat_concrete, "concrete", 4.0)
 	_texture_ground(mat_sidewalk, "sidewalk", 2.4)
 	_texture_ground(mat_sand, "sand", 14.0)
@@ -111,6 +114,8 @@ func _ground_mat(shader: Shader, surface: int) -> ShaderMaterial:
 
 func set_night(amount: float) -> void:
 	mat_building.set_shader_parameter("night", amount)
+	if lamp_material:
+		lamp_material.emission_energy_multiplier = clampf((amount - 0.15) / 0.6, 0.0, 1.0) * 6.0
 
 
 # ---------------------------------------------------------------- utilidades
@@ -914,7 +919,9 @@ func _hits_pool(p: Vector2, margin: float) -> bool:
 func _build_street_lamps() -> void:
 	var b := MeshBuilder.new()
 	b.surface("pole", MeshBuilder.material(Color(0.25, 0.26, 0.28), 0.5, 0.6))
-	b.surface("lamp", MeshBuilder.material(Color(1, 0.9, 0.7), 0.3, 0.0, Color(1.0, 0.82, 0.55), 2.5))
+	lamp_material = MeshBuilder.material(Color(1, 0.9, 0.7), 0.3, 0.0, Color(1.0, 0.82, 0.55), 0.0)
+	lamp_material.emission_enabled = true
+	b.surface("lamp", lamp_material)
 	b.cylinder("pole", Vector3.ZERO, 0.11, 0.08, 7.0, 6)
 	b.box("pole", Vector3(0, 7.0, 1.0), Vector3(0.12, 0.12, 2.0))
 	b.box("lamp", Vector3(0, 6.88, 1.9), Vector3(0.35, 0.12, 0.6))
@@ -934,6 +941,7 @@ func _build_street_lamps() -> void:
 				var face := Vector3(-normal.x * flip, 0, -normal.y * flip)
 				var basis := Basis.looking_at(-face, Vector3.UP)
 				lamps.append(Transform3D(basis, Vector3(p.x, 0.12, p.y)))
+				lamp_positions.append(Vector3(p.x + face.x * 1.9, 7.0, p.y + face.z * 1.9))
 				_collider_box(Vector3(p.x, 3.5, p.y), Vector3(0.3, 7.0, 0.3))
 			t += 34.0
 			flip = -flip

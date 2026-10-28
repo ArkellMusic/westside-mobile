@@ -77,6 +77,7 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
+	_update_letterbox(delta)
 	if _wanted_blink > 0.0:
 		_wanted_blink = maxf(0.0, _wanted_blink - delta)
 	_health_value = GameState.health
@@ -435,11 +436,17 @@ func toast(title: String, subtitle: String = "", duration: float = 3.0) -> void:
 
 
 ## Barras negras de cine arriba y abajo (12 % de la altura).
+var _letter_target: float = 0.0
+
+
 func set_letterbox(on: bool) -> void:
-	if _letter_tween:
-		_letter_tween.kill()
-	_letter_tween = create_tween()
-	_letter_tween.tween_method(_set_letter_amount, _letter_amount, 1.0 if on else 0.0, 0.6).set_trans(Tween.TRANS_SINE)
+	_letter_target = 1.0 if on else 0.0
+
+
+func _update_letterbox(delta: float) -> void:
+	if is_equal_approx(_letter_amount, _letter_target):
+		return
+	_set_letter_amount(move_toward(_letter_amount, _letter_target, delta * 2.2))
 
 
 func _set_letter_amount(v: float) -> void:

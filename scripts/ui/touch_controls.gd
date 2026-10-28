@@ -92,6 +92,7 @@ func _layout() -> void:
 			_add_button("brake", "Freno", pivot, 152.0, 2.0, 58.0, true)
 			_add_button("handbrake", "Freno mano", pivot, 168.0, 50.0, 46.0, true)
 			_add_button("interact", "Salir", pivot, 158.0, 90.0, 46.0, false)
+			_add_button("radio", "Radio", pivot, 262.0, 62.0, 40.0, false)
 	# Suelta los botones que ya no existen o cambiaron de sitio sin dueño.
 	for a in old_actions:
 		var still := false

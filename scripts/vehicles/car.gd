@@ -5,6 +5,8 @@ extends VehicleBody3D
 ## para derrapar. Con conductor lee los controles; sin conductor queda frenado.
 
 signal driver_changed(has_driver: bool)
+## strength 0..1 aprox. (impacto / 25 m/s), punto de contacto y el otro cuerpo.
+signal crashed(strength: float, point: Vector3, other: Node)
 
 @export var style: int = 0
 @export var body_color: Color = Color(0.8, 0.1, 0.1)
@@ -24,6 +26,17 @@ var _wheels: Array = []
 var _rear_wheels: Array = []
 var _body_mesh: MeshInstance3D
 var _spec: Dictionary = {}
+
+## Daños e impactos.
+var damage: float = 0.0           # 0..100
+var impact_system: ImpactSystem = null
+var _prev_vel: Vector3 = Vector3.ZERO
+var _crash_cd: float = 0.0
+var _smoke: CPUParticles3D
+var _dmg_mat: StandardMaterial3D
+var _crumple: float = 0.0
+static var _debris_mesh: BoxMesh
+static var _debris_mat: StandardMaterial3D
 
 
 func setup(p_style: int, p_color: Color, p_id: String = "", p_name: String = "") -> void:
@@ -48,6 +61,8 @@ func _build() -> void:
 	can_sleep = true
 	contact_monitor = true
 	max_contacts_reported = 4
+	if not body_entered.is_connected(_on_body_entered):
+		body_entered.connect(_on_body_entered)
 
 	_body_mesh = MeshInstance3D.new()
 	_body_mesh.name = "Body"
@@ -111,6 +126,8 @@ func speed_kmh() -> float:
 
 
 func _physics_process(delta: float) -> void:
+	_crash_cd = maxf(0.0, _crash_cd - delta)
+	_prev_vel = linear_velocity
 	if not has_driver:
 		engine_force = 0.0
 		brake = 6.0 if linear_velocity.length() < 3.0 else 2.0
@@ -148,6 +165,9 @@ func _physics_process(delta: float) -> void:
 		brk = maxf(brk, max_brake * 0.5)
 	for w in _rear_wheels:
 		(w as VehicleWheel3D).wheel_friction_slip = 1.1 if handbrake else 2.4
+	if damage >= 100.0:
+		force = 0.0
+		brk = maxf(brk, 4.0)
 	engine_force = force
 	brake = brk
 
@@ -168,3 +188,134 @@ func _flip_upright() -> void:
 func exit_point(side: float = -1.0) -> Vector3:
 	var half_w: float = _spec.get("half_w", 1.0)
 	return global_position + global_basis.x * side * (half_w + 0.9) + Vector3.UP * 0.2
+
+
+## Medio tamaño de la caja del coche en (x = ancho/2, y = largo/2).
+func body_half_extents() -> Vector2:
+	return Vector2(float(_spec.get("half_w", 1.0)), float(_spec.get("length", 4.5)) * 0.5)
+
+
+func _on_body_entered(other: Node) -> void:
+	if _crash_cd > 0.0:
+		return
+	var other_vel := Vector3.ZERO
+	if other is RigidBody3D:
+		other_vel = (other as RigidBody3D).linear_velocity
+	elif other.get("speed") != null and other.get("heading") != null:
+		other_vel = (other.get("heading") as Vector3) * float(other.get("speed"))
+	var drop := (_prev_vel - linear_velocity).length()
+	var rel := (_prev_vel - other_vel).length()
+	var impact := maxf(drop, rel * 0.5)
+	if impact < 4.0:
+		return
+	_crash_cd = 0.3
+	var dir := _prev_vel.normalized() if _prev_vel.length() > 0.5 else global_basis.z
+	var point := global_position + dir * float(_spec.get("length", 4.5)) * 0.5 + Vector3.UP * 0.5
+	if other is Node3D:
+		# Punto de contacto aproximado: sobre el borde del coche hacia el otro cuerpo.
+		var to_other := ((other as Node3D).global_position - global_position)
+		to_other.y = 0.0
+		if to_other.length() > 0.1 and to_other.normalized().dot(dir) > 0.2:
+			point = global_position + to_other.normalized() * minf(to_other.length() * 0.5, 2.2) + Vector3.UP * 0.5
+	var strength := clampf(impact / 25.0, 0.0, 1.0)
+	add_damage(impact * 1.6)
+	_crumple_body(strength)
+	_spawn_debris(point, strength)
+	if impact_system != null and impact_system.traffic != null and other is Node3D and impact_system.traffic.cars.has(other):
+		impact_system.knock_traffic_car(other as Node3D, _prev_vel * mass * 0.6, point)
+	crashed.emit(strength, point, other)
+
+
+func add_damage(amount: float) -> void:
+	damage = clampf(damage + amount, 0.0, 100.0)
+	_update_damage_visuals()
+
+
+func repair() -> void:
+	damage = 0.0
+	_crumple = 0.0
+	if _body_mesh:
+		_body_mesh.position = Vector3.ZERO
+		_body_mesh.rotation = Vector3.ZERO
+		_body_mesh.material_overlay = null
+	if _smoke:
+		_smoke.emitting = false
+
+
+func _update_damage_visuals() -> void:
+	if _body_mesh and damage > 5.0:
+		if _dmg_mat == null:
+			_dmg_mat = StandardMaterial3D.new()
+			_dmg_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			_dmg_mat.roughness = 1.0
+			_dmg_mat.metallic = 0.0
+		_dmg_mat.albedo_color = Color(0.05, 0.04, 0.035, clampf(damage / 100.0 * 0.6, 0.0, 0.6))
+		_body_mesh.material_overlay = _dmg_mat
+	if damage > 60.0:
+		if _smoke == null:
+			_smoke = CPUParticles3D.new()
+			_smoke.amount = 10
+			_smoke.lifetime = 1.4
+			_smoke.direction = Vector3.UP
+			_smoke.spread = 20.0
+			_smoke.initial_velocity_min = 1.0
+			_smoke.initial_velocity_max = 1.8
+			_smoke.gravity = Vector3(0, 0.6, 0)
+			_smoke.scale_amount_min = 0.5
+			_smoke.scale_amount_max = 1.0
+			_smoke.local_coords = false
+			var sm := SphereMesh.new()
+			sm.radius = 0.25
+			sm.height = 0.5
+			sm.radial_segments = 6
+			sm.rings = 3
+			var mat := StandardMaterial3D.new()
+			mat.albedo_color = Color(0.7, 0.7, 0.72, 0.45)
+			mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+			mat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+			sm.material = mat
+			_smoke.mesh = sm
+			_smoke.position = Vector3(0, 0.95, float(_spec.get("length", 4.5)) * 0.33)
+			add_child(_smoke)
+		_smoke.emitting = true
+
+
+func _crumple_body(strength: float) -> void:
+	if strength < 0.25 or _body_mesh == null:
+		return
+	_crumple = minf(_crumple + strength, 1.5)
+	var k := _crumple
+	_body_mesh.position = Vector3(randf_range(-0.03, 0.03), -0.02 * k, randf_range(-0.04, 0.04)) * k
+	_body_mesh.rotation = Vector3(randf_range(-0.03, 0.03), randf_range(-0.04, 0.04), randf_range(-0.04, 0.04)) * k
+
+
+func _spawn_debris(point: Vector3, strength: float) -> void:
+	var parent := get_parent()
+	if parent == null or not is_inside_tree():
+		return
+	if _debris_mesh == null:
+		_debris_mesh = BoxMesh.new()
+		_debris_mesh.size = Vector3(0.08, 0.05, 0.08)
+		_debris_mat = StandardMaterial3D.new()
+		_debris_mat.albedo_color = Color(0.9, 0.75, 0.35)
+		_debris_mat.emission_enabled = true
+		_debris_mat.emission = Color(1.0, 0.6, 0.2)
+		_debris_mat.emission_energy_multiplier = 1.2
+		_debris_mesh.material = _debris_mat
+	var p := CPUParticles3D.new()
+	p.amount = 20
+	p.one_shot = true
+	p.explosiveness = 1.0
+	p.lifetime = 0.7
+	p.mesh = _debris_mesh
+	p.direction = Vector3.UP
+	p.spread = 70.0
+	p.initial_velocity_min = 2.0
+	p.initial_velocity_max = 4.0 + strength * 5.0
+	p.gravity = Vector3(0, -12.0, 0)
+	p.angular_velocity_min = -300.0
+	p.angular_velocity_max = 300.0
+	parent.add_child(p)
+	p.global_position = point
+	p.emitting = true
+	get_tree().create_timer(1.5).timeout.connect(p.queue_free)

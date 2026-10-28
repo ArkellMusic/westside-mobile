@@ -12,6 +12,7 @@ var cars: Array = []
 var obstacles: Array = []  # nodos a evitar (jugador, coche del jugador...)
 var rng := RandomNumberGenerator.new()
 var enabled: bool = true
+var control: TrafficControl
 
 
 class TrafficCar:
@@ -23,6 +24,9 @@ class TrafficCar:
 	var cruise: float = 11.0
 	var heading: Vector3 = Vector3.FORWARD
 	var length: float = 4.7
+	var stopped_node: int = -1   # cruce donde ya paró por un STOP
+	var run_node: int = -1       # cruce que cruza en ámbar/rojo sin poder frenar
+	var wait_t: float = 0.0
 
 
 func setup(count: int) -> void:
@@ -80,7 +84,7 @@ func _segment_points(a_i: int, b_i: int) -> Array:
 	var b: Vector2 = nodes[b_i]
 	var dir := (b - a).normalized()
 	var off := _right(dir) * _lane(dir)
-	var end := b - dir * 9.0 + off
+	var end := b - dir * 5.0 + off
 	return [Vector3(end.x, 0.04, end.y)]
 
 
@@ -125,6 +129,7 @@ func _physics_process(delta: float) -> void:
 		var want := car.cruise
 		if absf(turn) > 0.5:
 			want = 5.5
+		want = minf(want, _signal_cap(car, delta))
 		if _blocked(car):
 			want = 0.0
 		car.speed = move_toward(car.speed, want, (9.0 if want < car.speed else 3.5) * delta)
@@ -153,3 +158,52 @@ func _blocked(car: TrafficCar) -> bool:
 		if along > 0.0 and along < 11.0 and absf(d.cross(ahead).y) < 2.4:
 			return true
 	return false
+
+
+## Velocidad máxima permitida por el semáforo / STOP del siguiente cruce (INF si no hay).
+func _signal_cap(car: TrafficCar, delta: float) -> float:
+	if control == null:
+		return INF
+	var nodes: Array = graph["nodes"]
+	var a: Vector2 = nodes[car.from_node]
+	var b: Vector2 = nodes[car.to_node]
+	var dir := (b - a).normalized()
+	var p := Vector2(car.global_position.x, car.global_position.z)
+	var d_line := (b - p).dot(dir) - control.stop_offset(b, dir)
+	if d_line > 18.0 or d_line < -0.6:
+		car.wait_t = 0.0
+		return INF
+	if car.run_node == car.to_node:
+		return INF
+	var sig := control.signal_for(b, dir)
+	var must_stop := false
+	match sig:
+		"red":
+			must_stop = _can_stop(car, d_line, 9.0)
+		"amber":
+			must_stop = _can_stop(car, d_line, 6.0)
+		"stop":
+			if car.stopped_node != car.to_node:
+				must_stop = true
+				if car.speed < 0.3 and d_line < 1.5:
+					car.wait_t += delta
+					if car.wait_t >= 1.5:
+						car.stopped_node = car.to_node
+						car.wait_t = 0.0
+						must_stop = false
+				else:
+					car.wait_t = 0.0
+	if not must_stop:
+		if sig == "red" or sig == "amber":
+			car.run_node = car.to_node
+		return INF
+	if d_line < 0.35:
+		return 0.0
+	return sqrt(2.0 * 5.0 * maxf(d_line - 0.2, 0.0))
+
+
+## ¿Puede frenar antes de la línea con una deceleración `decel` (m/s²)?
+func _can_stop(car: TrafficCar, d_line: float, decel: float) -> bool:
+	if car.speed < 0.6:
+		return true
+	return car.speed * car.speed / (2.0 * decel) < d_line - 0.3
