@@ -1,0 +1,221 @@
++ /usr/bin/python3 -m gdown --folder https://drive.google.com/drive/folders/1ro4zPFqfKKwTAk25H0MBuPgbBUodTQM9 -O radio_src
+warning: `--folder` is no longer required for folder URLs and will be removed in a future release
+Retrieving folder contents
+Retrieving folder contents completed
+Building directory structure
+Building directory structure completed
+Downloading...
+From: https://drive.google.com/uc?id=16JcHicDl7xim9Gr1aOVEvD6O2b-JrkJV
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/A One-Way Ticket.wav
+Retrieving folder 1xqIYl9WxGoKLPz22ZOApMdcsfSCTocN0 Anuncios
+Processing file 16JcHicDl7xim9Gr1aOVEvD6O2b-JrkJV A One-Way Ticket.wav
+Processing file 1m2S5XIUDaTCuwDoMeJvFFFeWAc7X5zdA Big Hank's Auto.wav
+Processing file 1hBANsCFaq8Pd-tGnrGOS6xXEj3xFCAMd Burner Plus.wav
+Processing file 1vFpzy9jMZbBFVvW2EEWmhu1LE8U8JNFy Cluckin' Veyra.wav
+Processing file 1pjHKPwA3KsmqGOa6Ph0rRQE2aVtjtBoF Detox Glow.wav
+Processing file 12ZThtlN6ECctW27-FZAP2kqHP36kro7- Earthquake Mode.wav
+Processing file 1eCmhT8HyZNe4NLwEqJRME7n6gFlUxWtk GUIONES_ANUNCIOS_EN.md
+Processing file 1ARZFugOXLsA07WJ4VDg-IskdXnxHFBz5 Heaven Can Wait.wav
+Processing file 1r0evl2WZO6sR6d6GGiEWw2S06tWXdWEs Iron Temple.wav
+Processing file 18pkuEhfvWAE9j4AuWUzLhqJ1GqDXrbk8 Loud Is a Personality.wav
+Processing file 15y7QiIXgnLhek7-uYwfm2GLgVB-FifK2 Match and Run.wav
+Processing file 10HQF4VdKZ_g3qDGjMiyuMUEDzC4m1gWw Mayor For Sale.wav
+Processing file 1W2YAnizcXVDJ2U7A6FN2obKGc6UXA6ah Ramírez and Ramírez.wav
+Processing file 17ArNUcCX9OKDdMQuBjmKtAhH4X3wI4ia Ride Low, Live High.wav
+Processing file 1zpKHQhoeYDbZOJJDj9BBYiE6yhLW9qID Sue Everybody.wav
+Processing file 1DV4AbgInM7jnLFA5o7VWaE6gQiJMS_rS The House Always Wins.wav
+Processing file 16GJmbTuZbrcT6iFO3VYvDFUlEgDmTLIb Voltage.wav
+Processing file 1GugJc9QgcYbV5D9AayJSud5YyqRGMgEv We're Doing Our Best.wav
+Processing file 1ajr94C0VaTSe0m50gPcOvP4ehXgCxThS We're Not Robbing You.wav
+Processing file 1t8Zx-M3GabEgLl7_Vj_EB3mBW7_S1iUR What Happens Here Was Never.wav
+Retrieving folder 1JZLjd1J8CVgIcHF1-kY2CsoPOxwBC2dv Canciones
+Retrieving folder 1m84QD_-DEgZAppVta6UQ0QYdUWk9zFD7 01_PerreoSur
+Retrieving folder 1qD22spnq4fbWY2ssgeDDorfxNW93gNj9 02_PulsoFM
+Retrieving folder 1elwqhQcD83TCKoElgVfDOXxTiNbgb9ZG 03_RadioSouthVeyra
+Retrieving folder 1siwe1AfnBD6PV1ChJYBn1QYyTVHwdm_Q 04_Motoveyra
+Retrieving folder 1zTQ7IVRR08gFrS8vfeqQTYAs3ec22ss5 05_WestbrookRock
+Retrieving folder 1qp_QooRlppyFyonj5Zl5bat9Ia9ICI07 06_RuidoBlanco
+Retrieving folder 1bgvufs5UFMTnMawveRNd86hnWHh-YAEk 07_VeyraPopHits
+Retrieving folder 1bGQpwX-StMhJZd9fWCGGRUu5uQltaOMM 08_VeyraGold
+Retrieving folder 1KNDuYTFbardQ9qmVICoNpjuiR_anPlBf 09_WestbrookUnderground
+Retrieving folder 1cizCng2bq1J087QQLjxisXj890sya95U 10_BassCathedral
+Processing file 1cVvBmyZkgxO-2ttoeP_O6-ReOIVlZgCJ adisa - Rich.mp3
+Processing file 1lqnU2stQn2b2brC2nAPhS-E8p_RcBF7A cdk - Don't Go (RumbleStep Mix).mp3
+Processing file 1j_9HHiiM5otyr_6BJL3P_JUxXxsSS7ZS cdk - Once Again (Original RumbleStep Mix).mp3
+Processing file 1mZcQQ4l-vmxWc8OaPoGw7xznlBKNCcTd cdk - The Game Has Changed (RumbleStep Mix).mp3
+Processing file 19srUs05qw_Isu96h6_W05dYJrUc45uQc F_Fact - State of Mind (Psystep Version).mp3
+Processing file 1up3qcWV0SEuChmsW6hv5sskH9sjuj83w Ghost_k - Waking Me Softly.mp3
+Retrieving folder 1o0kHvXvsCVI228_C-fowtPUgPuMp5JFr 12_VelvetFM
+Retrieving folder 1z_fqNOrusDhajBIZkB2_oQa8fHFOvvZi 13_Desierto879
+Retrieving folder 1huSHI46r3AV6YpDMiuu1MMa6mCBb_1iQ 14_IslaRoots
+Retrieving folder 1YdiM5ncsOvRkBFiF7_aZSeoZLcAJmfb6 Codigo
+Processing file 1wlTN7-lYJII73d0fUwvf0f0KqX-w6gIU WLRadioComponent.cpp
+Processing file 1lJyGI8tavZrnJIaXXSgsYMjvzGpez4dr WLRadioComponent.h
+Processing file 1nv02OD-VlHTvNJm12rD3j32_mwJEJLqU WLRadioStation.h
+Retrieving folder 1ryUFpShMjcVtnJNTv7VdRx7OX9lMP4pa Sintonizar
+Processing file 1OBlCWUX8aUXodiRYHzJ5n_ESBdwJMzgW sintonizar_1.wav
+Processing file 1BO2H9Nj19LR3769aR51cgrsf8MPEPFrH sintonizar_2.wav
+Processing file 1bA33Tsxu39ohkF3noLbUoh9qhY_yKK2c sintonizar_3.wav
+Processing file 1Bo3KE3wtOldIkMxisxGTBqag5HOWbcOM sintonizar_4.wav
+Processing file 12jj-WqmMd_gIrZlybb1h5dEd5SkTSsG8 canciones.json
+Processing file 1CAemWzOXd7Q1NAhnmzfGS7Gn9U3IDhfh crear_emisoras.py
+Processing file 19-n-2US8MYBHbZVSqORb7sFIujwVluxy CREDITOS.txt
+Processing file 1LqMa1M7bpxLTbYGKi6eErmMD2_iqcfyT EMISORAS_WESTSIDE_LEGACY.md
+Processing file 1Y4VM4TchUz0QLWb6Lk9MX_3YbDR3fcFm LEEME_RADIO.md
+Processing file 1pFna-ZXzZDnyKkMWASqeHvfRs7wMZg-j LISTA_CANCIONES.md
+  0%|          | 0.00/4.23M [00:00<?, ?B/s]100%|██████████| 4.23M/4.23M [00:00<00:00, 95.1MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1m2S5XIUDaTCuwDoMeJvFFFeWAc7X5zdA
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Big Hank's Auto.wav
+  0%|          | 0.00/5.01M [00:00<?, ?B/s] 21%|██        | 1.05M/5.01M [00:00<00:00, 10.5MB/s]100%|██████████| 5.01M/5.01M [00:00<00:00, 35.5MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1hBANsCFaq8Pd-tGnrGOS6xXEj3xFCAMd
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Burner Plus.wav
+  0%|          | 0.00/7.39M [00:00<?, ?B/s] 64%|██████▍   | 4.72M/7.39M [00:00<00:00, 34.3MB/s]100%|██████████| 7.39M/7.39M [00:00<00:00, 37.5MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1vFpzy9jMZbBFVvW2EEWmhu1LE8U8JNFy
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Cluckin' Veyra.wav
+  0%|          | 0.00/3.85M [00:00<?, ?B/s] 95%|█████████▌| 3.67M/3.85M [00:00<00:00, 36.5MB/s]100%|██████████| 3.85M/3.85M [00:00<00:00, 37.1MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1pjHKPwA3KsmqGOa6Ph0rRQE2aVtjtBoF
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Detox Glow.wav
+  0%|          | 0.00/4.31M [00:00<?, ?B/s] 36%|███▋      | 1.57M/4.31M [00:00<00:00, 15.4MB/s]100%|██████████| 4.31M/4.31M [00:00<00:00, 30.2MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=12ZThtlN6ECctW27-FZAP2kqHP36kro7-
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Earthquake Mode.wav
+  0%|          | 0.00/5.46M [00:00<?, ?B/s] 86%|████████▋ | 4.72M/5.46M [00:00<00:00, 24.5MB/s]100%|██████████| 5.46M/5.46M [00:00<00:00, 28.2MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1eCmhT8HyZNe4NLwEqJRME7n6gFlUxWtk
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/GUIONES_ANUNCIOS_EN.md
+  0%|          | 0.00/6.04k [00:00<?, ?B/s]100%|██████████| 6.04k/6.04k [00:00<00:00, 26.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1ARZFugOXLsA07WJ4VDg-IskdXnxHFBz5
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Heaven Can Wait.wav
+  0%|          | 0.00/8.23M [00:00<?, ?B/s] 57%|█████▋    | 4.72M/8.23M [00:00<00:00, 28.7MB/s] 96%|█████████▌| 7.86M/8.23M [00:00<00:00, 26.2MB/s]100%|██████████| 8.23M/8.23M [00:00<00:00, 27.7MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1r0evl2WZO6sR6d6GGiEWw2S06tWXdWEs
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Iron Temple.wav
+  0%|          | 0.00/4.88M [00:00<?, ?B/s] 97%|█████████▋| 4.72M/4.88M [00:00<00:00, 24.7MB/s]100%|██████████| 4.88M/4.88M [00:00<00:00, 25.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=18pkuEhfvWAE9j4AuWUzLhqJ1GqDXrbk8
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Loud Is a Personality.wav
+  0%|          | 0.00/4.62M [00:00<?, ?B/s]100%|██████████| 4.62M/4.62M [00:00<00:00, 25.4MB/s]100%|██████████| 4.62M/4.62M [00:00<00:00, 25.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=15y7QiIXgnLhek7-uYwfm2GLgVB-FifK2
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Match and Run.wav
+  0%|          | 0.00/3.55M [00:00<?, ?B/s]100%|██████████| 3.55M/3.55M [00:00<00:00, 101MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=10HQF4VdKZ_g3qDGjMiyuMUEDzC4m1gWw
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Mayor For Sale.wav
+  0%|          | 0.00/7.50M [00:00<?, ?B/s] 21%|██        | 1.57M/7.50M [00:00<00:00, 14.8MB/s]100%|██████████| 7.50M/7.50M [00:00<00:00, 38.0MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1W2YAnizcXVDJ2U7A6FN2obKGc6UXA6ah
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Ramírez and Ramírez.wav
+  0%|          | 0.00/5.31M [00:00<?, ?B/s] 89%|████████▉ | 4.72M/5.31M [00:00<00:00, 27.4MB/s]100%|██████████| 5.31M/5.31M [00:00<00:00, 30.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=17ArNUcCX9OKDdMQuBjmKtAhH4X3wI4ia
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Ride Low, Live High.wav
+  0%|          | 0.00/5.28M [00:00<?, ?B/s] 89%|████████▉ | 4.72M/5.28M [00:00<00:00, 29.0MB/s]100%|██████████| 5.28M/5.28M [00:00<00:00, 32.2MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1zpKHQhoeYDbZOJJDj9BBYiE6yhLW9qID
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Sue Everybody.wav
+  0%|          | 0.00/6.73M [00:00<?, ?B/s] 39%|███▉      | 2.62M/6.73M [00:00<00:00, 7.82MB/s]100%|██████████| 6.73M/6.73M [00:00<00:00, 14.3MB/s]100%|██████████| 6.73M/6.73M [00:00<00:00, 13.1MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1DV4AbgInM7jnLFA5o7VWaE6gQiJMS_rS
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/The House Always Wins.wav
+  0%|          | 0.00/5.69M [00:00<?, ?B/s] 83%|████████▎ | 4.72M/5.69M [00:00<00:00, 21.5MB/s]100%|██████████| 5.69M/5.69M [00:00<00:00, 25.1MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=16GJmbTuZbrcT6iFO3VYvDFUlEgDmTLIb
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/Voltage.wav
+  0%|          | 0.00/3.85M [00:00<?, ?B/s]100%|██████████| 3.85M/3.85M [00:00<00:00, 48.9MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1GugJc9QgcYbV5D9AayJSud5YyqRGMgEv
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/We're Doing Our Best.wav
+  0%|          | 0.00/4.70M [00:00<?, ?B/s]100%|██████████| 4.70M/4.70M [00:00<00:00, 30.5MB/s]100%|██████████| 4.70M/4.70M [00:00<00:00, 30.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1ajr94C0VaTSe0m50gPcOvP4ehXgCxThS
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/We're Not Robbing You.wav
+  0%|          | 0.00/3.85M [00:00<?, ?B/s] 54%|█████▍    | 2.10M/3.85M [00:00<00:00, 21.0MB/s]100%|██████████| 3.85M/3.85M [00:00<00:00, 33.3MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1t8Zx-M3GabEgLl7_Vj_EB3mBW7_S1iUR
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Anuncios/What Happens Here Was Never.wav
+  0%|          | 0.00/5.33M [00:00<?, ?B/s] 79%|███████▊  | 4.19M/5.33M [00:00<00:00, 41.6MB/s]100%|██████████| 5.33M/5.33M [00:00<00:00, 23.1MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1cVvBmyZkgxO-2ttoeP_O6-ReOIVlZgCJ
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Canciones/10_BassCathedral/adisa - Rich.mp3
+  0%|          | 0.00/2.68M [00:00<?, ?B/s]100%|██████████| 2.68M/2.68M [00:00<00:00, 70.8MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1lqnU2stQn2b2brC2nAPhS-E8p_RcBF7A
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Canciones/10_BassCathedral/cdk - Don't Go (RumbleStep Mix).mp3
+  0%|          | 0.00/10.1M [00:00<?, ?B/s] 16%|█▌        | 1.57M/10.1M [00:00<00:00, 14.9MB/s] 47%|████▋     | 4.72M/10.1M [00:00<00:00, 23.3MB/s] 73%|███████▎  | 7.34M/10.1M [00:00<00:00, 24.1MB/s]100%|██████████| 10.1M/10.1M [00:00<00:00, 31.0MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1j_9HHiiM5otyr_6BJL3P_JUxXxsSS7ZS
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Canciones/10_BassCathedral/cdk - Once Again (Original RumbleStep Mix).mp3
+  0%|          | 0.00/6.61M [00:00<?, ?B/s] 71%|███████▏  | 4.72M/6.61M [00:00<00:00, 21.6MB/s]100%|██████████| 6.61M/6.61M [00:00<00:00, 29.2MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1mZcQQ4l-vmxWc8OaPoGw7xznlBKNCcTd
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Canciones/10_BassCathedral/cdk - The Game Has Changed (RumbleStep Mix).mp3
+  0%|          | 0.00/12.7M [00:00<?, ?B/s] 21%|██        | 2.62M/12.7M [00:00<00:00, 20.0MB/s] 37%|███▋      | 4.72M/12.7M [00:00<00:00, 11.1MB/s] 87%|████████▋ | 11.0M/12.7M [00:00<00:00, 24.5MB/s]100%|██████████| 12.7M/12.7M [00:00<00:00, 23.0MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=19srUs05qw_Isu96h6_W05dYJrUc45uQc
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Canciones/10_BassCathedral/F_Fact - State of Mind (Psystep Version).mp3
+  0%|          | 0.00/5.48M [00:00<?, ?B/s] 29%|██▊       | 1.57M/5.48M [00:00<00:00, 15.1MB/s] 86%|████████▌ | 4.72M/5.48M [00:00<00:00, 13.4MB/s]100%|██████████| 5.48M/5.48M [00:00<00:00, 15.7MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1up3qcWV0SEuChmsW6hv5sskH9sjuj83w
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Canciones/10_BassCathedral/Ghost_k - Waking Me Softly.mp3
+  0%|          | 0.00/9.06M [00:00<?, ?B/s] 52%|█████▏    | 4.72M/9.06M [00:00<00:00, 17.6MB/s]100%|██████████| 9.06M/9.06M [00:00<00:00, 31.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1wlTN7-lYJII73d0fUwvf0f0KqX-w6gIU
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Codigo/WLRadioComponent.cpp
+  0%|          | 0.00/12.4k [00:00<?, ?B/s]100%|██████████| 12.4k/12.4k [00:00<00:00, 49.6MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1lJyGI8tavZrnJIaXXSgsYMjvzGpez4dr
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Codigo/WLRadioComponent.h
+  0%|          | 0.00/5.57k [00:00<?, ?B/s]100%|██████████| 5.57k/5.57k [00:00<00:00, 29.6MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1nv02OD-VlHTvNJm12rD3j32_mwJEJLqU
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Codigo/WLRadioStation.h
+  0%|          | 0.00/6.17k [00:00<?, ?B/s]100%|██████████| 6.17k/6.17k [00:00<00:00, 27.9MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1OBlCWUX8aUXodiRYHzJ5n_ESBdwJMzgW
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Sintonizar/sintonizar_1.wav
+  0%|          | 0.00/79.9k [00:00<?, ?B/s]100%|██████████| 79.9k/79.9k [00:00<00:00, 4.99MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1BO2H9Nj19LR3769aR51cgrsf8MPEPFrH
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Sintonizar/sintonizar_2.wav
+  0%|          | 0.00/103k [00:00<?, ?B/s]100%|██████████| 103k/103k [00:00<00:00, 6.28MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1bA33Tsxu39ohkF3noLbUoh9qhY_yKK2c
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Sintonizar/sintonizar_3.wav
+  0%|          | 0.00/69.3k [00:00<?, ?B/s]100%|██████████| 69.3k/69.3k [00:00<00:00, 4.41MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1Bo3KE3wtOldIkMxisxGTBqag5HOWbcOM
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/Sintonizar/sintonizar_4.wav
+  0%|          | 0.00/115k [00:00<?, ?B/s]100%|██████████| 115k/115k [00:00<00:00, 6.15MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=12jj-WqmMd_gIrZlybb1h5dEd5SkTSsG8
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/canciones.json
+  0%|          | 0.00/48.3k [00:00<?, ?B/s]100%|██████████| 48.3k/48.3k [00:00<00:00, 116MB/s]
+Downloading...
+From (original): https://drive.google.com/uc?id=1CAemWzOXd7Q1NAhnmzfGS7Gn9U3IDhfh
+From (redirected): https://drive.google.com/uc?id=1CAemWzOXd7Q1NAhnmzfGS7Gn9U3IDhfh&confirm=t&uuid=31f5698c-08f1-48c5-af41-02f8ec2346de
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/crear_emisoras.py
+  0%|          | 0.00/10.3k [00:00<?, ?B/s]100%|██████████| 10.3k/10.3k [00:00<00:00, 48.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=19-n-2US8MYBHbZVSqORb7sFIujwVluxy
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/CREDITOS.txt
+  0%|          | 0.00/11.9k [00:00<?, ?B/s]100%|██████████| 11.9k/11.9k [00:00<00:00, 39.8MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1LqMa1M7bpxLTbYGKi6eErmMD2_iqcfyT
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/EMISORAS_WESTSIDE_LEGACY.md
+  0%|          | 0.00/10.0k [00:00<?, ?B/s]100%|██████████| 10.0k/10.0k [00:00<00:00, 34.3MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1Y4VM4TchUz0QLWb6Lk9MX_3YbDR3fcFm
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/LEEME_RADIO.md
+  0%|          | 0.00/3.14k [00:00<?, ?B/s]100%|██████████| 3.14k/3.14k [00:00<00:00, 17.4MB/s]
+Downloading...
+From: https://drive.google.com/uc?id=1pFna-ZXzZDnyKkMWASqeHvfRs7wMZg-j
+To: /home/runner/work/westside-mobile/westside-mobile/radio_src/LISTA_CANCIONES.md
+  0%|          | 0.00/13.6k [00:00<?, ?B/s]100%|██████████| 13.6k/13.6k [00:00<00:00, 45.6MB/s]
+Download completed
+1 emisoras, 6 canciones, 19 anuncios, 4 sintonías

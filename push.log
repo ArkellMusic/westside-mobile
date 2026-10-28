@@ -1,0 +1,47 @@
++ rm -rf radio_src
++ du -sh assets/audio/radio
+22M	assets/audio/radio
++ find assets/audio/radio -size +50M -print
++ git config user.name ci-bot
++ git config user.email ci-bot@users.noreply.github.com
++ git add assets/audio/radio data/radio.json docs/CREDITOS_MUSICA.txt
++ git commit -m 'Radio: canciones, anuncios y sintonías desde Drive'
+[main a233189] Radio: canciones, anuncios y sintonías desde Drive
+ 31 files changed, 278 insertions(+), 3 deletions(-)
+ create mode 100644 assets/audio/radio/_anuncios/a_one_way_ticket.ogg
+ create mode 100644 assets/audio/radio/_anuncios/big_hank_s_auto.ogg
+ create mode 100644 assets/audio/radio/_anuncios/burner_plus.ogg
+ create mode 100644 assets/audio/radio/_anuncios/cluckin_veyra.ogg
+ create mode 100644 assets/audio/radio/_anuncios/detox_glow.ogg
+ create mode 100644 assets/audio/radio/_anuncios/earthquake_mode.ogg
+ create mode 100644 assets/audio/radio/_anuncios/heaven_can_wait.ogg
+ create mode 100644 assets/audio/radio/_anuncios/iron_temple.ogg
+ create mode 100644 assets/audio/radio/_anuncios/loud_is_a_personality.ogg
+ create mode 100644 assets/audio/radio/_anuncios/match_and_run.ogg
+ create mode 100644 assets/audio/radio/_anuncios/mayor_for_sale.ogg
+ create mode 100644 assets/audio/radio/_anuncios/ram_rez_and_ram_rez.ogg
+ create mode 100644 assets/audio/radio/_anuncios/ride_low_live_high.ogg
+ create mode 100644 assets/audio/radio/_anuncios/sue_everybody.ogg
+ create mode 100644 assets/audio/radio/_anuncios/the_house_always_wins.ogg
+ create mode 100644 assets/audio/radio/_anuncios/voltage.ogg
+ create mode 100644 assets/audio/radio/_anuncios/we_re_doing_our_best.ogg
+ create mode 100644 assets/audio/radio/_anuncios/we_re_not_robbing_you.ogg
+ create mode 100644 assets/audio/radio/_anuncios/what_happens_here_was_never.ogg
+ create mode 100644 assets/audio/radio/_sintonizar/sintonizar_1.ogg
+ create mode 100644 assets/audio/radio/_sintonizar/sintonizar_2.ogg
+ create mode 100644 assets/audio/radio/_sintonizar/sintonizar_3.ogg
+ create mode 100644 assets/audio/radio/_sintonizar/sintonizar_4.ogg
+ create mode 100644 assets/audio/radio/basscathedral/adisa_rich.ogg
+ create mode 100644 assets/audio/radio/basscathedral/cdk_don_t_go_rumblestep_mix.ogg
+ create mode 100644 assets/audio/radio/basscathedral/cdk_once_again_original_rumblestep_mix.ogg
+ create mode 100644 assets/audio/radio/basscathedral/cdk_the_game_has_changed_rumblestep_mix.ogg
+ create mode 100644 assets/audio/radio/basscathedral/f_fact_state_of_mind_psystep_version.ogg
+ create mode 100644 assets/audio/radio/basscathedral/ghost_k_waking_me_softly.ogg
+ create mode 100644 docs/CREDITOS_MUSICA.txt
++ git pull --rebase origin main
+From https://github.com/ArkellMusic/westside-mobile
+ * branch            main       -> FETCH_HEAD
+Current branch main is up to date.
++ git push origin HEAD:main
+To https://github.com/ArkellMusic/westside-mobile
+   64902a3..a233189  HEAD -> main
