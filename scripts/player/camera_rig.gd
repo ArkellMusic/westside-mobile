@@ -27,6 +27,8 @@ var _attach: Node3D = null
 
 
 func _ready() -> void:
+	# La cámara se actualiza después de mover vehículos y personajes (sin retraso).
+	process_priority = 100
 	_pivot = Node3D.new()
 	add_child(_pivot)
 	_arm = SpringArm3D.new()
