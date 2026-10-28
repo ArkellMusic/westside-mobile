@@ -14,6 +14,9 @@ var pools: Array = []        # Rect2 de piscinas (mapa)
 var parked_spots: Array = [] # Transform3D de coches aparcados
 
 var _buildings: Array = []   # {center, size, color, kind}
+var _box_nodes: Array = []   # nodos del MultiMesh de cajas (para rehacerlos sin los edificios del kit)
+## Emitida al cambiar la noche (los edificios del kit encienden sus ventanas).
+signal night_changed(amount: float)
 var _skyline: Array = []
 var _static: StaticBody3D
 
@@ -75,7 +78,8 @@ func _make_materials() -> void:
 	mat_sand = _ground_mat(ground_shader, 3)
 	mat_dirt = _ground_mat(ground_shader, 4)
 	_texture_ground(mat_lawn, "grass", 3.0)
-	mat_lawn.set_shader_parameter("tint", Color(1.55, 1.6, 1.25))
+	mat_lawn.set_shader_parameter("tint", Color(0.85, 0.95, 0.7))
+	mat_lawn.set_shader_parameter("tile", 7.0)
 	_texture_ground(mat_concrete, "concrete", 4.0)
 	_texture_ground(mat_sidewalk, "sidewalk", 2.4)
 	_texture_ground(mat_sand, "sand", 14.0)
@@ -114,6 +118,7 @@ func _ground_mat(shader: Shader, surface: int) -> ShaderMaterial:
 
 
 func set_night(amount: float) -> void:
+	night_changed.emit(amount)
 	mat_building.set_shader_parameter("night", amount)
 	if lamp_material:
 		lamp_material.emission_energy_multiplier = clampf((amount - 0.15) / 0.6, 0.0, 1.0) * 6.0
@@ -369,20 +374,70 @@ func _textured(id: String, tint: Color, tile: float) -> StandardMaterial3D:
 
 
 func _flush_buildings() -> void:
-	_add_roof_details()
-	var mm := _box_multimesh(_buildings)
-	var mi := MultiMeshInstance3D.new()
-	mi.name = "Buildings"
-	mi.multimesh = mm
-	add_child(mi)
+	_render_boxes({}, rng)
 	_build_pools()
 
 
+## Datos de los edificios "no casa" jugables que un módulo externo (KitBuildings)
+## puede sustituir por mallas reales: [{index, center, size, color, kind}].
+func kit_candidates() -> Array:
+	var out: Array = []
+	for i in _buildings.size():
+		var b: Dictionary = _buildings[i]
+		var c: Vector3 = b["center"]
+		if float(b["kind"]) < 0.34:
+			continue
+		if c.x < CityLayout.PLAY_MIN.x or c.x > CityLayout.PLAY_MAX.x or c.z < CityLayout.PLAY_MIN.y or c.z > CityLayout.PLAY_MAX.y:
+			continue
+		out.append({"index": i, "center": c, "size": b["size"], "color": b["color"], "kind": b["kind"]})
+	return out
+
+
+## Vuelve a generar las cajas sin los edificios cuyo índice está en `taken`.
+## Los tomados se dibujan solo a lo lejos (lod_begin metros) como caja barata, para
+## que no haya huecos en el horizonte cuando el kit ya está fuera de su rango.
+## Colisiones y footprints no cambian.
+func rebuild_boxes(taken: Dictionary, lod_begin: float = 330.0) -> void:
+	for n in _box_nodes:
+		if is_instance_valid(n):
+			n.queue_free()
+	_box_nodes.clear()
+	var rr := RandomNumberGenerator.new()
+	rr.seed = SEED + 7
+	_render_boxes(taken, rr, lod_begin)
+
+
+func _render_boxes(taken: Dictionary, r: RandomNumberGenerator, lod_begin: float = 330.0) -> void:
+	_add_roof_details(taken, r)
+	var near: Array = []
+	var far: Array = []
+	for i in _buildings.size():
+		if taken.has(i):
+			far.append(_buildings[i])
+		else:
+			near.append(_buildings[i])
+	var mi := MultiMeshInstance3D.new()
+	mi.name = "Buildings"
+	mi.multimesh = _box_multimesh(near)
+	add_child(mi)
+	_box_nodes.append(mi)
+	if not far.is_empty():
+		var fi := MultiMeshInstance3D.new()
+		fi.name = "BuildingsFar"
+		fi.multimesh = _box_multimesh(far)
+		fi.visibility_range_begin = lod_begin
+		add_child(fi)
+		_box_nodes.append(fi)
+
+
 ## Cornisas y aparatos de aire acondicionado en las azoteas.
-func _add_roof_details() -> void:
+func _add_roof_details(taken: Dictionary, r: RandomNumberGenerator) -> void:
 	var caps: Array = []
 	var units: Array = []
-	for b in _buildings:
+	for bi in _buildings.size():
+		if taken.has(bi):
+			continue
+		var b: Dictionary = _buildings[bi]
 		var c: Vector3 = b["center"]
 		var s: Vector3 = b["size"]
 		if s.y < 3.2:
@@ -390,17 +445,22 @@ func _add_roof_details() -> void:
 		var top := c.y + s.y * 0.5
 		caps.append(Transform3D(Basis.from_scale(Vector3(s.x + 0.35, 0.45, s.z + 0.35)), Vector3(c.x, top + 0.05, c.z)))
 		if float(b["kind"]) > 0.34 and s.x > 10.0:
-			for k in rng.randi_range(1, 3):
-				var p := Vector3(c.x + rng.randf_range(-s.x * 0.3, s.x * 0.3), top + 0.6, c.z + rng.randf_range(-s.z * 0.3, s.z * 0.3))
-				units.append(Transform3D(Basis(Vector3.UP, rng.randf() * TAU).scaled(Vector3(rng.randf_range(1.6, 2.6), 1.2, rng.randf_range(1.2, 1.8))), p))
+			for k in r.randi_range(1, 3):
+				var p := Vector3(c.x + r.randf_range(-s.x * 0.3, s.x * 0.3), top + 0.6, c.z + r.randf_range(-s.z * 0.3, s.z * 0.3))
+				units.append(Transform3D(Basis(Vector3.UP, r.randf() * TAU).scaled(Vector3(r.randf_range(1.6, 2.6), 1.2, r.randf_range(1.2, 1.8))), p))
 	var cap_mesh := BoxMesh.new()
 	cap_mesh.size = Vector3.ONE
 	cap_mesh.material = _textured("concrete_wall", Color(0.82, 0.8, 0.78), 2.0)
-	_multimesh(cap_mesh, caps, "Cornices")
+	_track(_multimesh(cap_mesh, caps, "Cornices"))
 	var unit_mesh := BoxMesh.new()
 	unit_mesh.size = Vector3.ONE
 	unit_mesh.material = MeshBuilder.material(Color(0.62, 0.64, 0.66), 0.45, 0.6)
-	_multimesh(unit_mesh, units, "RoofUnits")
+	_track(_multimesh(unit_mesh, units, "RoofUnits"))
+
+
+func _track(n: Node) -> void:
+	if n:
+		_box_nodes.append(n)
 
 
 func _box_multimesh(items: Array) -> MultiMesh:
@@ -808,9 +868,9 @@ func _tree_mesh() -> ArrayMesh:
 	return b.commit()
 
 
-func _multimesh(mesh: Mesh, transforms: Array, node_name: String, shadows: bool = true) -> void:
+func _multimesh(mesh: Mesh, transforms: Array, node_name: String, shadows: bool = true) -> MultiMeshInstance3D:
 	if transforms.is_empty():
-		return
+		return null
 	var mm := MultiMesh.new()
 	mm.transform_format = MultiMesh.TRANSFORM_3D
 	mm.mesh = mesh
@@ -822,6 +882,7 @@ func _multimesh(mesh: Mesh, transforms: Array, node_name: String, shadows: bool 
 	mi.multimesh = mm
 	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON if shadows else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	add_child(mi)
+	return mi
 
 
 func _build_vegetation() -> void:

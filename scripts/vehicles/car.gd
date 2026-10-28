@@ -66,9 +66,20 @@ func _build() -> void:
 	if not body_entered.is_connected(_on_body_entered):
 		body_entered.connect(_on_body_entered)
 
+	var real_id := RealCarModel.for_style(style)
+	var real: Dictionary = RealCarModel.data(real_id) if real_id != "" else {}
 	_body_mesh = MeshInstance3D.new()
 	_body_mesh.name = "Body"
-	_body_mesh.mesh = CarModel.build(style, body_color, false)
+	if real.is_empty():
+		_body_mesh.mesh = CarModel.build(style, body_color, false)
+	else:
+		_body_mesh.mesh = RealCarModel.painted_body(real_id, body_color)
+		_spec = _spec.duplicate()
+		_spec["half_w"] = real["half_w"]
+		_spec["length"] = real["length"]
+		_spec["height"] = real["height"]
+		_spec["wheel_r"] = real["wheel_r"]
+		_spec["track"] = real["track"]
 	add_child(_body_mesh)
 
 	var half_w: float = _spec["half_w"]
@@ -78,7 +89,7 @@ func _build() -> void:
 	shape.size = Vector3(half_w * 2.0, height - 0.35, length)
 	var cs := CollisionShape3D.new()
 	cs.shape = shape
-	cs.position = Vector3(0, 0.35 + (height - 0.35) * 0.5, 0)
+	cs.position = Vector3(0, 0.35 + (height - 0.35) * 0.5, float(real.get("center_z", 0.0)))
 	add_child(cs)
 
 	_headlights.clear()
@@ -97,10 +108,20 @@ func _build() -> void:
 		_headlights.append(hl)
 	var wheel_mesh := CarModel.wheel_mesh(style)
 	var r: float = _spec["wheel_r"]
-	for front in [true, false]:
-		for sx in [-1.0, 1.0]:
+	var defs: Array = []
+	if real.is_empty():
+		for front in [true, false]:
+			for sx in [-1.0, 1.0]:
+				defs.append({"front": front, "side": sx, "pos": Vector3(sx * float(_spec["track"]), r, (1.0 if front else -1.0) * float(_spec["wheel_z"])), "mesh": null})
+	else:
+		defs = real["wheels"]
+	for wd in defs:
+		var front: bool = wd["front"]
+		var sx: float = wd["side"]
+		if true:
 			var w := VehicleWheel3D.new()
-			w.position = Vector3(sx * float(_spec["track"]), r + 0.12, (1.0 if front else -1.0) * float(_spec["wheel_z"]))
+			var wp: Vector3 = wd["pos"]
+			w.position = Vector3(wp.x, wp.y + 0.12, wp.z)
 			w.wheel_radius = r
 			w.wheel_rest_length = 0.16
 			w.suspension_travel = 0.18
@@ -113,9 +134,12 @@ func _build() -> void:
 			w.use_as_steering = front
 			w.use_as_traction = not front
 			var wm := MeshInstance3D.new()
-			wm.mesh = wheel_mesh
-			if sx < 0.0:
-				wm.rotation.y = PI
+			if wd["mesh"] != null:
+				wm.mesh = wd["mesh"]
+			else:
+				wm.mesh = wheel_mesh
+				if sx < 0.0:
+					wm.rotation.y = PI
 			w.add_child(wm)
 			add_child(w)
 			_wheels.append(w)

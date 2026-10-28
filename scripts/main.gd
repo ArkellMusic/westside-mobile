@@ -65,6 +65,10 @@ func _ready() -> void:
 	city.name = "Westbrook"
 	add_child(city)
 	city.build()
+	var kit_buildings := KitBuildings.new()
+	kit_buildings.name = "KitBuildings"
+	add_child(kit_buildings)
+	kit_buildings.build(city)
 	sky.city = city
 	var props := StreetProps.new()
 	props.name = "StreetProps"

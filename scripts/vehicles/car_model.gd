@@ -37,7 +37,15 @@ static var _shared_materials: Dictionary = {}
 
 
 static func spec(style: int) -> Dictionary:
-	return PROFILES.get(style, PROFILES[0])
+	var base: Dictionary = PROFILES.get(style, PROFILES[0])
+	var real_id := RealCarModel.for_style(style)
+	if real_id == "":
+		return base
+	var d := RealCarModel.data(real_id)
+	var out := base.duplicate()
+	for k in ["half_w", "length", "height", "wheel_r", "track"]:
+		out[k] = d[k]
+	return out
 
 
 static func _mats() -> Dictionary:
@@ -61,6 +69,11 @@ static func _mats() -> Dictionary:
 ## Carrocería (con o sin ruedas). body_color se aplica por color de vértice, así
 ## que un mismo material sirve para todos los coches y para MultiMesh.
 static func build(style: int, body_color: Color, with_wheels: bool) -> ArrayMesh:
+	# Si hay modelo real para este estilo, se usa (malla completa con ruedas).
+	if with_wheels:
+		var real_id := RealCarModel.for_style(style)
+		if real_id != "":
+			return RealCarModel.full_mesh(real_id, body_color)
 	var s := spec(style)
 	var m := _mats()
 	var b := MeshBuilder.new()

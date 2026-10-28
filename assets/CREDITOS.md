@@ -65,3 +65,11 @@ Texturas y cielos de Poly Haven (https://polyhaven.com), licencia CC0.
 - modelo steel_frame_shelves_03: steel_frame_shelves_03 (Poly Haven, CC0)
 - modelo security_camera_01: security_camera_01 (Poly Haven, CC0)
 - modelo wetfloorsign_01: WetFloorSign_01 (Poly Haven, CC0)
+
+## Edificios
+- Downtown City MegaKit (versión Standard) — Quaternius (https://quaternius.com), licencia CC0.
+
+## Coches (licencia CC BY 4.0, Daniel Zhabotinsky, Sketchfab)
+- «Kiri '86 low poly model» — https://sketchfab.com/3d-models/kiri-86-low-poly-model-5c17c582ef9549798f694b660feea42a
+- «Doutrive '78 low poly model» — https://sketchfab.com/3d-models/doutrive-78-low-poly-model-30700a84311c4bea9ef722f0773ce92a
+- «Eugene MK6 '65 low poly model» — https://sketchfab.com/3d-models/eugene-mk6-65-low-poly-model-22732575b0644cc9b65cf21857288189
