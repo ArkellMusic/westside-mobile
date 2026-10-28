@@ -1,21 +1,164 @@
 {
   "notes": "Texturas y cielos CC0 de Poly Haven (polyhaven.com, dominio público). Los descarga .github/workflows/assets.yml al cambiar este archivo.",
   "textures": [
-    {"id": "asphalt", "slug": "asphalt_06", "res": "2k"},
-    {"id": "sidewalk", "slug": "square_concrete_pavers", "res": "2k"},
-    {"id": "concrete", "slug": "concrete_floor_worn_001", "res": "2k"},
-    {"id": "stucco", "slug": "white_stucco", "res": "2k"},
-    {"id": "stucco_beige", "slug": "beige_wall_001", "res": "2k"},
-    {"id": "brick", "slug": "painted_brick", "res": "2k"},
-    {"id": "concrete_wall", "slug": "concrete_wall_008", "res": "2k"},
-    {"id": "roof", "slug": "gravel_concrete", "res": "1k"},
-    {"id": "grass", "category": "grass", "res": "2k"},
-    {"id": "sand", "category": "sand", "res": "2k"},
-    {"id": "dirt", "category": "terrain", "res": "1k"}
+    {
+      "id": "asphalt",
+      "slug": "asphalt_06",
+      "res": "2k"
+    },
+    {
+      "id": "sidewalk",
+      "slug": "square_concrete_pavers",
+      "res": "2k"
+    },
+    {
+      "id": "concrete",
+      "slug": "concrete_floor_worn_001",
+      "res": "2k"
+    },
+    {
+      "id": "stucco",
+      "slug": "white_stucco",
+      "res": "2k"
+    },
+    {
+      "id": "stucco_beige",
+      "slug": "beige_wall_001",
+      "res": "2k"
+    },
+    {
+      "id": "brick",
+      "slug": "painted_brick",
+      "res": "2k"
+    },
+    {
+      "id": "concrete_wall",
+      "slug": "concrete_wall_008",
+      "res": "2k"
+    },
+    {
+      "id": "roof",
+      "slug": "gravel_concrete",
+      "res": "1k"
+    },
+    {
+      "id": "grass",
+      "res": "2k",
+      "slug": "grass_medium_01"
+    },
+    {
+      "id": "sand",
+      "category": "sand",
+      "res": "2k"
+    },
+    {
+      "id": "dirt",
+      "category": "terrain",
+      "res": "1k"
+    },
+    {
+      "id": "apartment_facade",
+      "slug": "concrete_tile_facade",
+      "res": "2k"
+    },
+    {
+      "id": "industrial_wall",
+      "slug": "concrete_block_wall_02",
+      "res": "2k"
+    },
+    {
+      "id": "pavement",
+      "slug": "concrete_pavement",
+      "res": "2k"
+    }
   ],
   "hdris": [
-    {"id": "day", "slug": "citrus_orchard_road_puresky", "res": "2k"},
-    {"id": "sunset", "slug": "evening_road_01_puresky", "res": "2k"},
-    {"id": "dusk", "slug": "belfast_sunset_puresky", "res": "2k"}
+    {
+      "id": "day",
+      "slug": "citrus_orchard_road_puresky",
+      "res": "2k"
+    },
+    {
+      "id": "sunset",
+      "slug": "evening_road_01_puresky",
+      "res": "2k"
+    },
+    {
+      "id": "dusk",
+      "slug": "belfast_sunset_puresky",
+      "res": "2k"
+    }
+  ],
+  "models": [
+    {
+      "id": "street_lamp_01",
+      "slug": "street_lamp_01",
+      "res": "1k"
+    },
+    {
+      "id": "street_lamp_02",
+      "slug": "street_lamp_02",
+      "res": "1k"
+    },
+    {
+      "id": "fire_hydrant",
+      "slug": "fire_hydrant",
+      "res": "1k"
+    },
+    {
+      "id": "trash_can",
+      "slug": "metal_trash_can",
+      "res": "1k"
+    },
+    {
+      "id": "utility_box_01",
+      "slug": "utility_box_01",
+      "res": "1k"
+    },
+    {
+      "id": "utility_box_02",
+      "slug": "utility_box_02",
+      "res": "1k"
+    },
+    {
+      "id": "street_seating",
+      "slug": "modular_street_seating",
+      "res": "1k"
+    },
+    {
+      "id": "road_barrier",
+      "slug": "concrete_road_barrier",
+      "res": "1k"
+    },
+    {
+      "id": "electricity_poles",
+      "slug": "modular_electricity_poles",
+      "res": "1k"
+    },
+    {
+      "id": "aircon_unit",
+      "slug": "exterior_aircon_unit",
+      "res": "1k"
+    },
+    {
+      "id": "apartments_facade",
+      "slug": "modular_urban_apartments_facade",
+      "res": "1k"
+    },
+    {
+      "id": "factory_facade",
+      "slug": "modular_factory_facade",
+      "res": "1k"
+    },
+    {
+      "id": "fire_escape",
+      "slug": "modular_fire_escape",
+      "res": "1k"
+    },
+    {
+      "id": "manhole",
+      "slug": "water_manhole_cover",
+      "res": "1k"
+    }
   ]
 }

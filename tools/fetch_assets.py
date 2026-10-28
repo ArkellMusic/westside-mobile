@@ -34,6 +34,9 @@ def main():
     credits = []
     failed = 0
     for t in manifest["textures"]:
+        if os.path.exists(f"assets/textures/{t['id']}/albedo.jpg"):
+            credits.append(f"{t['id']}: ya descargada (Poly Haven, CC0)")
+            continue
         try:
             slug = resolve(t, "textures")
             files = get_json(f"{API}/files/{slug}")
@@ -45,7 +48,21 @@ def main():
         except Exception as e:  # noqa: BLE001
             failed += 1
             print("ERROR", t, e)
+    for mdl in manifest.get("models", []):
+        try:
+            files = get_json(f"{API}/files/{mdl['slug']}")
+            g = files["gltf"][mdl["res"]]["gltf"]
+            base = f"assets/props/{mdl['id']}/"
+            download(g["url"], base + os.path.basename(g["url"]))
+            for rel, info in g.get("include", {}).items():
+                download(info["url"], base + rel)
+            credits.append(f"modelo {mdl['id']}: {mdl['slug']} (Poly Haven, CC0)")
+        except Exception as e:  # noqa: BLE001
+            failed += 1
+            print("ERROR", mdl, e)
     for h in manifest["hdris"]:
+        if os.path.exists(f"assets/sky/{h['id']}.hdr"):
+            continue
         try:
             files = get_json(f"{API}/files/{h['slug']}")
             download(files["hdri"][h["res"]]["hdr"]["url"], f"assets/sky/{h['id']}.hdr")
