@@ -129,7 +129,7 @@ func _world() -> void:
 			var m := MixamoPerson.new()
 			main.add_child(m)
 			m.setup({"model": models[k], "tint": 0, "scale": 1.0, "phase": 0.3 * k})
-			m.global_position = c + Vector3(-1.1 + 1.1 * k, 0.12, -3.0 + 0.3 * absf(k - 1))
+			m.global_position = c + Vector3(-1.1 + 1.1 * k, 0.0, -3.0 + 0.3 * absf(k - 1))
 			m.rotation.y = PI + 0.25 * (1 - k)
 			made.append(m)
 		(made[2] as MixamoPerson).pose_idle_stance("phone")

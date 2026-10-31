@@ -21,6 +21,9 @@ const MODELS := [
 	"res://assets/characters/mixamo/ch22.scn",
 	"res://assets/characters/mixamo/remy.scn",
 ]
+## Elevación (m) por modelo medida con el vértice más bajo de la malla en las poses de andar e idle:
+## sin ella los pies se hunden 1-4 cm bajo el suelo.
+const FOOT_LIFT := [0.037, 0.032, 0.023, 0.027, 0.030, 0.012]
 const LIB_PATH := "res://assets/animations/mixamo/lib.res"
 const ANIM_RANGE := 40.0
 const MAX_ANIMATED := 25
@@ -111,6 +114,7 @@ func setup(appearance: Dictionary) -> void:
 	_pivot = Node3D.new()
 	_pivot.name = "Pivot"
 	_pivot.rotation.y = PI   # los modelos de Mixamo miran a +Z
+	_pivot.position.y = float(FOOT_LIFT[mi])
 	add_child(_pivot)
 	_model = (_scenes[path] as PackedScene).instantiate()
 	_pivot.add_child(_model)
