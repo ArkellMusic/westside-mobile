@@ -83,8 +83,19 @@ func cinematic_shot(from: Transform3D, to: Transform3D, duration: float, fov_fro
 	_cine_fov_from = fov_from
 	_cine_fov_to = fov_to
 	cine_camera.global_transform = from
-	cine_camera.fov = fov_from
+	cine_camera.fov = letterbox_fov(fov_from)
 	cine_camera.current = true
+
+
+## Fracción de pantalla tapada por CADA franja negra (la pone el HUD).
+static var letterbox_cover: float = 0.0
+
+
+## Abre el FOV vertical para que lo encuadrado quede en la banda visible entre
+## las franjas negras y no se corten las caras.
+static func letterbox_fov(fov: float) -> float:
+	var visible_frac := maxf(1.0 - 2.0 * letterbox_cover, 0.3)
+	return rad_to_deg(2.0 * atan(tan(deg_to_rad(fov) * 0.5) / visible_frac))
 
 
 ## Plano relativo a un nodo en movimiento (p. ej. dentro del autobús).
@@ -116,7 +127,7 @@ func _process(delta: float) -> void:
 		if _attach and is_instance_valid(_attach):
 			xf = _attach.global_transform * xf
 		cine_camera.global_transform = xf
-		cine_camera.fov = lerpf(_cine_fov_from, _cine_fov_to, t)
+		cine_camera.fov = letterbox_fov(lerpf(_cine_fov_from, _cine_fov_to, t))
 		return
 	if target == null:
 		return

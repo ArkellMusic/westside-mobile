@@ -466,6 +466,7 @@ func _apply_letterbox(v: float) -> void:
 	if _letter_top == null:
 		return
 	var h := size.y * LETTERBOX_FRACTION * v
+	CameraRig.letterbox_cover = LETTERBOX_FRACTION * v
 	_letter_top.position = Vector2.ZERO
 	_letter_top.size = Vector2(size.x, h)
 	_letter_bottom.position = Vector2(0.0, size.y - h)
