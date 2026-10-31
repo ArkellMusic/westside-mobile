@@ -165,7 +165,8 @@ func _build_respray() -> void:
 		_mesh_box(self, Vector3(c.x - 4.8 + k * 2.4, c.y + 0.5, front + 0.03), Vector3(2.2, 0.7, 0.06), _mat(stripe_cols[k], 0.5))
 	# Cartel: placa oscura con letras luminosas, y cartel vertical en la azotea.
 	_mesh_box(self, Vector3(c.x, c.y + 4.95, front + 0.1), Vector3(6.2, 0.95, 0.12), _mat(Color(0.03, 0.05, 0.1), 0.5))
-	_label(self, "PINTA Y LISTO", Vector3(c.x, c.y + 4.95, front + 0.19), 0.0, 120, Color(1.0, 0.85, 0.2), 0.0075)
+	# Sin rótulo exterior: el nombre se ve en el mapa.
+	#_label(self, "PINTA Y LISTO", Vector3(c.x, c.y + 4.95, front + 0.19), 0.0, 120, Color(1.0, 0.85, 0.2), 0.0075)
 	var pylon := _mesh_box(self, Vector3(c.x + 4.9, c.y + h + 1.6, front - 0.4), Vector3(0.3, 3.2, 0.3), dark)
 	pylon.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
 	_mesh_box(self, Vector3(c.x + 4.9, c.y + h + 3.6, front - 0.4), Vector3(1.6, 1.0, 0.2), _mat(Color(0.95, 0.7, 0.1), 0.4, 0.0, Color(1.0, 0.7, 0.1), 1.2))
@@ -218,7 +219,8 @@ func _build_police_exterior() -> void:
 	_mesh_box(self, Vector3(cx - 2.0, 3.58, front + 0.12), Vector3(0.5, 0.6, 0.4), _mat(Color(0.1, 0.3, 1.0), 0.3, 0.0, Color(0.1, 0.35, 1.0), 3.0))
 	_mesh_box(self, Vector3(cx + 2.0, 3.58, front + 0.12), Vector3(0.5, 0.6, 0.4), _mat(Color(0.1, 0.3, 1.0), 0.3, 0.0, Color(0.1, 0.35, 1.0), 3.0))
 	_mesh_box(self, Vector3(cx, 3.9, front + 0.1), Vector3(9.0, 1.0, 0.14), _mat(Color(0.03, 0.05, 0.12), 0.5))
-	_label(self, "SOUTH VEYRA PD", Vector3(cx, 3.9, front + 0.2), 0.0, 120, Color(0.85, 0.92, 1.0), 0.0085)
+	# Sin rótulo exterior: el nombre se ve en el mapa.
+	#_label(self, "SOUTH VEYRA PD", Vector3(cx, 3.9, front + 0.2), 0.0, 120, Color(0.85, 0.92, 1.0), 0.0085)
 	_label(self, "POLICÍA", Vector3(cx, 3.35, front + 1.79), 0.0, 52, Color(0.1, 0.2, 0.5), 0.006)
 	var l := OmniLight3D.new()
 	l.light_color = Color(0.5, 0.65, 1.0)

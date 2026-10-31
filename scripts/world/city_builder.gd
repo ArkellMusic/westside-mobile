@@ -569,6 +569,7 @@ func _build_garage() -> void:
 	footprints.append(Rect2(c.x - 13.0, c.z - 9.0, 26.0, 18.0))
 	var label := Label3D.new()
 	label.text = "VARGAS AUTO WORKS"
+	label.visible = false  # Nombres de edificios solo en el mapa/radar.
 	label.font_size = 96
 	label.pixel_size = 0.01
 	label.modulate = Color(1, 0.95, 0.85)
@@ -604,6 +605,7 @@ func _build_terminal() -> void:
 	footprints.append(Rect2(c.x - 20.0, c.z - 16.0, 40.0, 12.0))
 	var label := Label3D.new()
 	label.text = "WESTBROOK TERMINAL"
+	label.visible = false  # Nombres de edificios solo en el mapa/radar.
 	label.font_size = 128
 	label.pixel_size = 0.012
 	label.outline_size = 16
@@ -635,6 +637,7 @@ func _build_veyra_mart() -> void:
 	footprints.append(Rect2(c.x - 8.0, c.z - 6.0, 16.0, 12.0))
 	var label := Label3D.new()
 	label.text = "VEYRA MART"
+	label.visible = false  # Nombres de edificios solo en el mapa/radar.
 	label.font_size = 110
 	label.pixel_size = 0.009
 	label.outline_size = 10

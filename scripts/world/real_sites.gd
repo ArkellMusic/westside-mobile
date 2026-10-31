@@ -174,6 +174,7 @@ func _build_hospital() -> void:
 	_npc("doctor_pinch", Vector3(HOSPITAL_DOOR.x + 2.8, 0.12, HOSPITAL_DOOR.z + 1.6), Vector3(HOSPITAL_DOOR.x + 6.0, 0.0, HOSPITAL_DOOR.z + 14.0))
 	var label := Label3D.new()
 	label.text = "URGENCIAS"
+	label.visible = false  # Nombres de edificios solo en el mapa/radar.
 	label.font_size = 90
 	label.pixel_size = 0.009
 	label.modulate = Color(0.85, 0.05, 0.08)
@@ -279,6 +280,7 @@ func _label_sign(text: String, pos: Vector3, yaw_deg: float) -> Node3D:
 	for side in [-1.0, 1.0]:
 		var l := Label3D.new()
 		l.text = text
+		l.visible = false  # Nombres de edificios solo en el mapa/radar.
 		l.font_size = 64
 		l.pixel_size = 0.0058
 		l.modulate = Color(0.95, 0.95, 0.95)
@@ -383,6 +385,7 @@ func _build_subway_kiosk() -> void:
 	add_child(sign_box)
 	var t := Label3D.new()
 	t.text = "METRO"
+	t.visible = false  # Nombres de edificios solo en el mapa/radar.
 	t.font_size = 96
 	t.pixel_size = 0.0065
 	t.modulate = Color(1, 1, 1)
@@ -390,6 +393,7 @@ func _build_subway_kiosk() -> void:
 	add_child(t)
 	var t2 := Label3D.new()
 	t2.text = "METRO"
+	t2.visible = false
 	t2.font_size = 96
 	t2.pixel_size = 0.0065
 	t2.modulate = Color(1, 1, 1)
