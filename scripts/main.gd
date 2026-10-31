@@ -26,6 +26,7 @@ var hud: HUD
 var touch: TouchControls
 var pause_menu: PauseMenu
 var map_screen: MapScreen
+var gps: GPS
 var title_menu: TitleMenu
 var ui_layer: CanvasLayer
 
@@ -129,6 +130,10 @@ func _ready() -> void:
 	hud = HUD.new()
 	theme_root.add_child(hud)
 	hud.radar.footprints = city.footprints
+	gps = GPS.new()
+	gps.name = "GPS"
+	add_child(gps)
+	hud.radar.gps = gps
 	hud.radar.markers = interiors.radar_markers(player.global_position)
 	hud.pause_requested.connect(_open_pause)
 	hud.map_requested.connect(_open_map)
@@ -137,6 +142,7 @@ func _ready() -> void:
 	theme_root.move_child(touch, 0)
 	map_screen = MapScreen.new()
 	map_screen.footprints = city.footprints
+	map_screen.gps = gps
 	map_screen.visible = false
 	theme_root.add_child(map_screen)
 	map_screen.closed.connect(_close_map)
@@ -329,6 +335,9 @@ func _process(delta: float) -> void:
 	hud.radar.player_pos = focus.global_position
 	hud.radar.player_heading = (current_vehicle.global_rotation.y + PI) if current_vehicle else player.face_yaw()
 	hud.radar.view_yaw = rig.yaw
+	hud.radar.speed_mps = current_vehicle.speed_kmh() / 3.6 if current_vehicle else 0.0
+	gps.player_pos = focus.global_position
+	gps.active = interiors.inside < 0
 	hud.set_speed_kmh(current_vehicle.speed_kmh() if current_vehicle and current_seat == "driver" else -1.0)
 	if hud.has_method("set_clock"):
 		var mins := int(GameState.world_minutes)
@@ -466,6 +475,7 @@ func set_marker(pos: Vector3) -> void:
 	_marker.visible = pos != Vector3.INF
 	_refresh_radar_markers()
 	map_screen.mission_marker = pos
+	gps.set_mission_target(pos)
 
 
 ## Marcador de misión + puntos permanentes (hospital, policía, pintura) cercanos.

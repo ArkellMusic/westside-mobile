@@ -6,13 +6,21 @@ signal pause_requested
 signal map_requested
 
 const LETTERBOX_FRACTION := 0.12
-const CLUSTER_W := 330.0
-const CLUSTER_H := 200.0
-const BAR_W := 210.0
-const BAR_H := 16.0
-const MONEY_GREEN := Color("#2F8A3A")
-const HEALTH_FG := Color("#B4191E")
+## El bloque superior derecho se dibuja en coordenadas de la referencia (360 x 300)
+## y se escala con CLUSTER_SCALE.
+const REF_W := 360.0
+const REF_H := 300.0
+const CLUSTER_SCALE := 0.86
+const CLUSTER_W := REF_W * CLUSTER_SCALE
+const CLUSTER_H := REF_H * CLUSTER_SCALE
+const MONEY_GREEN := Color("#2F6B2F")
+const STAR_BROWN := Color("#8A5A14")
+const STAR_GLOW := Color("#E8A92A")
+const HEALTH_FG := Color("#C0202A")
 const HEALTH_BG := Color("#3C0A0C")
+const ARMOR_FG := Color("#E2E2E2")
+const RADAR_W := 350.0
+const RADAR_H := 230.0
 const OUTLINE_PX := 6
 
 ## Radar (abajo a la izquierda). Se actualiza desde el jugador.
@@ -104,16 +112,16 @@ func _build() -> void:
 
 	# Radar (abajo a la izquierda, elevado para no tapar el borde)
 	radar = Radar.new()
-	radar.custom_minimum_size = Vector2(200, 200)
+	radar.custom_minimum_size = Vector2(RADAR_W, RADAR_H)
 	_gameplay.add_child(radar)
 	radar.anchor_left = 0.0
 	radar.anchor_right = 0.0
 	radar.anchor_top = 1.0
 	radar.anchor_bottom = 1.0
 	radar.offset_left = 0.0
-	radar.offset_right = 200.0
-	radar.offset_top = -224.0
-	radar.offset_bottom = -24.0
+	radar.offset_right = RADAR_W
+	radar.offset_top = -RADAR_H - 4.0
+	radar.offset_bottom = -4.0
 
 	# Esquina superior izquierda: botones + caja de ayuda
 	var left := VBoxContainer.new()
@@ -250,8 +258,8 @@ func _build() -> void:
 	_safe.add_child(_fps_label)
 	_fps_label.anchor_top = 1.0
 	_fps_label.anchor_bottom = 1.0
-	_fps_label.offset_top = -256.0
-	_fps_label.offset_bottom = -230.0
+	_fps_label.offset_top = -RADAR_H - 34.0
+	_fps_label.offset_bottom = -RADAR_H - 8.0
 
 	# Aviso grande
 	_toast_panel = PanelContainer.new()
@@ -527,89 +535,196 @@ func set_weapon_icon(kind: String) -> void:
 
 
 # ------------------------------------------------------------ Dibujo del cluster
+## Todo se dibuja en coordenadas de referencia (REF_W x REF_H) con una transformación de escala.
 
-func _text_outlined(font: Font, pos: Vector2, text: String, width: float, fs: int, col: Color, align: int = HORIZONTAL_ALIGNMENT_RIGHT) -> void:
-	_cluster.draw_string_outline(font, pos, text, align, width, fs, OUTLINE_PX, Color.BLACK)
-	_cluster.draw_string(font, pos, text, align, width, fs, col)
+const GLYPH_SEGS := {
+	"0": "abcdef", "1": "", "2": "abged", "3": "abgcd", "4": "fgbc",
+	"5": "afgcd", "6": "afgedc", "7": "abc", "8": "abcdefg", "9": "abcdfg",
+}
+static var _sb_round: StyleBoxFlat
+
+
+## Glifos bloque (estilo rotulación gruesa) dibujados con rectángulos redondeados.
+## Devuelve el ancho total. Con draw=false solo mide.
+func _glyph_text(text: String, right: float, top: float, h: float, wratio: float, fill: Color, ol: float, gap: float, draw: bool = true) -> float:
+	var gw := h * wratio
+	var t := h * 0.26
+	var total := 0.0
+	for ch in text:
+		total += (gw * 0.34 if ch == ":" else gw) + gap
+	total -= gap
+	if not draw:
+		return total
+	var x := right - total
+	var rects: Array[Rect2] = []
+	for ch in text:
+		if ch == ":":
+			var cw := gw * 0.34
+			var sq := t * 0.95
+			rects.append(Rect2(x + (cw - sq) * 0.5, top + h * 0.28, sq, sq))
+			rects.append(Rect2(x + (cw - sq) * 0.5, top + h * 0.62, sq, sq))
+			x += cw + gap
+			continue
+		var segs := ""
+		if ch == "$":
+			segs = "afgcd"
+		else:
+			segs = String(GLYPH_SEGS.get(ch, ""))
+		var half := h * 0.5 + t * 0.5
+		var map := {
+			"a": Rect2(x, top, gw, t),
+			"d": Rect2(x, top + h - t, gw, t),
+			"g": Rect2(x, top + (h - t) * 0.5, gw, t),
+			"f": Rect2(x, top, t, half),
+			"b": Rect2(x + gw - t, top, t, half),
+			"e": Rect2(x, top + h * 0.5 - t * 0.5, t, half),
+			"c": Rect2(x + gw - t, top + h * 0.5 - t * 0.5, t, half),
+		}
+		for sc in segs:
+			rects.append(map[String(sc)])
+		if ch == "1":
+			rects.append(Rect2(x + gw * 0.5 - t * 0.5, top, t, h))
+			rects.append(Rect2(x + gw * 0.14, top + t * 0.2, gw * 0.4, t * 0.8))
+			rects.append(Rect2(x + gw * 0.14, top + h - t * 0.8, gw * 0.72, t * 0.8))
+		if ch == "$":
+			rects.append(Rect2(x + gw * 0.5 - t * 0.4, top - h * 0.1, t * 0.8, h * 1.2))
+		x += gw + gap
+	if _sb_round == null:
+		_sb_round = StyleBoxFlat.new()
+		_sb_round.anti_aliasing = true
+	_sb_round.bg_color = Color.BLACK
+	_sb_round.set_corner_radius_all(int(ol + 2.0))
+	for r in rects:
+		_cluster.draw_style_box(_sb_round, r.grow(ol))
+	_sb_round.bg_color = fill
+	_sb_round.set_corner_radius_all(2)
+	for r in rects:
+		_cluster.draw_style_box(_sb_round, r)
+	return total
 
 
 func _draw_cluster() -> void:
-	var bold := UITheme.bold_font()
-	var right := CLUSTER_W
-	# Barras (derecha de la fila) y arma (izquierda)
-	var bx := right - BAR_W - 4.0
-	var wx := bx - 14.0 - 92.0
-	_draw_weapon_box(Rect2(wx, 4.0, 92.0, 92.0))
-	_text_outlined(bold, Vector2(bx, 46.0), _clock_text, BAR_W, 46, Color.WHITE)
+	var S := CLUSTER_SCALE
+	_cluster.draw_set_transform(Vector2.ZERO, 0.0, Vector2(S, S))
+	var right := REF_W - 8.0
+	# Arma (caja redondeada con borde negro grueso)
+	_draw_weapon_box(Rect2(10.0, 8.0, 124.0, 128.0))
+	# Reloj
+	_glyph_text(_clock_text, right, 6.0, 42.0, 0.84, Color(0.96, 0.96, 0.96), 3.5, 7.0)
+	# Armadura (barra fina blanca/gris)
+	_draw_bar(Rect2(158.0, 66.0, right - 158.0, 17.0), _armor / 100.0 if _armor > 0.0 else 0.0, ARMOR_FG, Color(0.45, 0.45, 0.47, 0.0 if _armor <= 0.0 else 0.9), _armor > 0.0)
+	# Vida
 	var hp_max := maxf(1.0, float(GameState.MAX_HEALTH))
 	var hp := clampf(_health_value / hp_max, 0.0, 1.0) if _health_value >= 0.0 else 1.0
-	var ay := 56.0
-	if _armor > 0.0:
-		_draw_bar(Rect2(bx, ay, BAR_W, BAR_H), _armor / 100.0, Color(0.9, 0.9, 0.92), Color(0.25, 0.25, 0.27))
-	_draw_bar(Rect2(bx, ay + BAR_H + 6.0, BAR_W, BAR_H), hp, HEALTH_FG, HEALTH_BG)
-	# Dinero
-	_text_outlined(bold, Vector2(right - 4.0, 140.0), _money_text, right - 4.0, 42, MONEY_GREEN)
+	_draw_bar(Rect2(10.0, 142.0, right - 10.0, 18.0), hp, HEALTH_FG, HEALTH_BG, true)
+	# Dinero (8 dígitos con ceros)
+	_glyph_text(_money_text, right, 178.0, 38.0, 0.62, MONEY_GREEN, 3.5, 5.0)
 	# Estrellas de búsqueda
 	var blink_on := true
 	if _wanted_blink > 0.0:
 		blink_on = fmod(_wanted_blink, 0.6) > 0.25
-	var sr := 15.0
-	var step := 36.0
+	var pulse := 0.5 + 0.5 * sin(Time.get_ticks_msec() * 0.008)
 	for i in range(6):
-		var cx := right - 4.0 - sr - float(5 - i) * step
+		var cx := 36.0 + float(i) * 58.0
 		var active := i < _wanted
-		var col := Color(0.24, 0.24, 0.26) if not active else (Color.WHITE if blink_on else Color(1, 1, 1, 0.25))
-		_draw_star(Vector2(cx, 172.0), sr, col)
+		var col := Color(STAR_BROWN.r, STAR_BROWN.g, STAR_BROWN.b, 0.16)
+		var olc := Color(0, 0, 0, 0.22)
+		if active:
+			col = STAR_BROWN.lerp(STAR_GLOW, pulse * 0.75)
+			olc = Color.BLACK
+			if not blink_on:
+				col = Color(col.r, col.g, col.b, 0.2)
+				olc = Color(0, 0, 0, 0.3)
+		_draw_star(Vector2(cx, 262.0), 28.0, col, olc)
+	_cluster.draw_set_transform(Vector2.ZERO, 0.0, Vector2.ONE)
 
 
-func _draw_bar(r: Rect2, frac: float, fg: Color, bg: Color) -> void:
+func _draw_bar(r: Rect2, frac: float, fg: Color, bg: Color, show_track: bool = true) -> void:
+	if not show_track:
+		return
+	var sb := StyleBoxFlat.new()
+	sb.anti_aliasing = true
+	sb.bg_color = Color.BLACK
+	sb.set_corner_radius_all(2)
+	_cluster.draw_style_box(sb, r.grow(3.0))
 	_cluster.draw_rect(r, bg, true)
 	if frac > 0.0:
 		_cluster.draw_rect(Rect2(r.position, Vector2(r.size.x * clampf(frac, 0.0, 1.0), r.size.y)), fg, true)
-	_cluster.draw_rect(r, Color.BLACK, false, 2.0)
 
 
-func _draw_star(c: Vector2, r: float, col: Color) -> void:
+func _draw_star(c: Vector2, r: float, col: Color, outline: Color) -> void:
 	var pts := PackedVector2Array()
 	for i in range(10):
-		var rad := r if i % 2 == 0 else r * 0.42
+		var rad := r if i % 2 == 0 else r * 0.46
 		var a := -PI * 0.5 + TAU * float(i) / 10.0
 		pts.append(c + Vector2(cos(a), sin(a)) * rad)
-	_cluster.draw_colored_polygon(pts, col)
 	var ol := PackedVector2Array(pts)
 	ol.append(pts[0])
-	_cluster.draw_polyline(ol, Color.BLACK, 2.5, true)
+	_cluster.draw_polyline(ol, outline, 6.0, true)
+	_cluster.draw_colored_polygon(pts, col)
 
 
 func _draw_weapon_box(r: Rect2) -> void:
-	var c := r.get_center()
-	_cluster.draw_circle(c, r.size.x * 0.5, Color(1, 1, 1, 0.18))
-	_cluster.draw_arc(c, r.size.x * 0.5 - 1.0, 0.0, TAU, 40, Color(0, 0, 0, 0.85), 3.0, true)
+	var sb := StyleBoxFlat.new()
+	sb.anti_aliasing = true
+	sb.bg_color = Color(0.9, 0.9, 0.9)
+	sb.set_corner_radius_all(26)
+	sb.set_border_width_all(7)
+	sb.border_color = Color.BLACK
+	_cluster.draw_style_box(sb, r)
+	var inner := r.grow(-9.0)
+	var sb2 := StyleBoxFlat.new()
+	sb2.anti_aliasing = true
+	sb2.bg_color = Color(0, 0, 0, 0)
+	sb2.set_corner_radius_all(18)
+	sb2.set_border_width_all(2)
+	sb2.border_color = Color(1, 1, 1, 0.95)
+	_cluster.draw_style_box(sb2, inner)
 	if _weapon_kind == "fist":
-		_draw_fist(c)
+		_draw_fist(r.get_center(), 2.15)
 
 
-## Puño original: palma, cuatro nudillos y pulgar, con contorno negro.
-func _draw_fist(c: Vector2) -> void:
-	var skin := Color(0.96, 0.96, 0.96)
-	var polys: Array[PackedVector2Array] = []
-	# Palma
-	polys.append(PackedVector2Array([c + Vector2(-20, -2), c + Vector2(22, -2), c + Vector2(22, 26), c + Vector2(-14, 28), c + Vector2(-22, 14)]))
-	# Cuatro dedos doblados (nudillos)
+## Puño original (dibujado por código): palma redondeada, cuatro nudillos y pulgar cruzado.
+func _draw_fist(c: Vector2, k: float) -> void:
+	var skin := Color(0.97, 0.97, 0.97)
+	var shade := Color(0.78, 0.78, 0.8)
+	var line := Color(0.12, 0.12, 0.14)
+	var palm := Rect2(c + Vector2(-23, -4) * k, Vector2(46, 34) * k)
+	var thumb := Rect2(c + Vector2(-25, 9) * k, Vector2(38, 14) * k)
+	var knuckles: Array[Vector2] = []
 	for i in range(4):
-		var x := -20.0 + float(i) * 11.0
-		polys.append(PackedVector2Array([c + Vector2(x, -22), c + Vector2(x + 10, -22), c + Vector2(x + 10.5, 0), c + Vector2(x, 0)]))
-	# Pulgar cruzado
-	polys.append(PackedVector2Array([c + Vector2(-22, 6), c + Vector2(10, 4), c + Vector2(12, 14), c + Vector2(-18, 18)]))
-	for p in polys:
-		var ol := PackedVector2Array(p)
-		ol.append(p[0])
-		_cluster.draw_polyline(ol, Color.BLACK, 4.0, true)
-	for p in polys:
-		_cluster.draw_colored_polygon(p, skin)
-		var ol2 := PackedVector2Array(p)
-		ol2.append(p[0])
-		_cluster.draw_polyline(ol2, Color(0.1, 0.1, 0.1), 1.5, true)
+		knuckles.append(c + Vector2(-17.5 + float(i) * 11.7, -9.0) * k)
+	var kr := 7.2 * k
+	var sb := StyleBoxFlat.new()
+	sb.anti_aliasing = true
+	# Contorno negro
+	sb.bg_color = Color.BLACK
+	sb.set_corner_radius_all(int(9 * k))
+	_cluster.draw_style_box(sb, palm.grow(2.5))
+	for kp in knuckles:
+		_cluster.draw_circle(kp, kr + 2.5, Color.BLACK)
+	sb.set_corner_radius_all(int(7 * k))
+	_cluster.draw_style_box(sb, thumb.grow(2.5))
+	# Relleno
+	sb.bg_color = skin
+	sb.set_corner_radius_all(int(9 * k))
+	_cluster.draw_style_box(sb, palm)
+	for kp in knuckles:
+		_cluster.draw_circle(kp, kr, skin)
+	# Sombra de la parte baja de la palma y separaciones de los dedos
+	sb.bg_color = shade
+	sb.set_corner_radius_all(int(8 * k))
+	_cluster.draw_style_box(sb, Rect2(palm.position + Vector2(2, 20) * k, Vector2(palm.size.x - 4.0 * k, 10 * k)))
+	for i in range(1, 4):
+		var kx := c.x + (-17.5 + (float(i) - 0.5) * 11.7) * k
+		_cluster.draw_line(Vector2(kx, c.y - 8.0 * k), Vector2(kx, c.y + 6.0 * k), line, 2.0)
+	sb.bg_color = skin
+	sb.set_corner_radius_all(int(7 * k))
+	_cluster.draw_style_box(sb, thumb)
+	sb.bg_color = Color(0, 0, 0, 0)
+	sb.set_border_width_all(2)
+	sb.border_color = line
+	_cluster.draw_style_box(sb, thumb)
 
 
 ## Oculta radar, dinero, botones, objetivo, etc. (no subtítulos, barras ni fundido).

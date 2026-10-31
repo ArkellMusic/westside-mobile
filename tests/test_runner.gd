@@ -104,6 +104,54 @@ func _ready() -> void:
 	Controls.touch_move = Vector2.ZERO
 	car.set_driver(false)
 
+	print("== GPS y radar")
+	var gps := GPS.new()
+	add_child(gps)
+	var far_a := CityLayout.landmark("player_spawn")
+	var far_b := CityLayout.landmark("beach")
+	var route := gps.find_route(Vector2(far_a.x, far_a.z), Vector2(far_b.x, far_b.z))
+	var straight := Vector2(far_a.x, far_a.z).distance_to(Vector2(far_b.x, far_b.z))
+	check(route.size() >= 4 and GPS.route_length(route) >= straight * 0.99, "A* encuentra ruta entre dos landmarks lejanos (%d puntos, %.0f m)" % [route.size(), GPS.route_length(route)])
+	check(route[0].distance_to(Vector2(far_a.x, far_a.z)) < 0.1 and route[route.size() - 1].distance_to(Vector2(far_b.x, far_b.z)) < 0.1, "la ruta empieza en el jugador y acaba en el destino")
+	var desert := CityLayout.landmark("desert_road")
+	var hw := gps.find_route(Vector2(far_a.x, far_a.z), Vector2(desert.x, desert.z))
+	check(hw.size() >= 3 and GPS.route_length(hw) > 2400.0, "la ruta llega a la autopista del desierto (%.0f m)" % GPS.route_length(hw))
+	var pier_pt := CityLayout.landmark("pier")
+	var pier_route := gps.find_route(Vector2(far_a.x, far_a.z), Vector2(pier_pt.x, pier_pt.z))
+	check(pier_route.size() >= 4, "ruta hasta el muelle")
+	gps.player_pos = Vector3(0, 0, 0)
+	gps.set_waypoint(Vector3(-150, 0, 100))
+	check(gps.has_waypoint() and gps.waypoint_route.size() >= 3, "el waypoint se pone y traza ruta")
+	gps.toggle_waypoint(Vector3(-148, 0, 98), 14.0)
+	check(not gps.has_waypoint() and gps.waypoint_route.is_empty(), "tocar sobre el waypoint lo quita")
+	gps.set_waypoint(Vector3(-150, 0, 100))
+	gps.player_pos = Vector3(-140, 0, 96)
+	gps.update(0.1)
+	check(not gps.has_waypoint(), "el waypoint se borra al llegar (< 15 m)")
+	gps.set_mission_target(Vector3(100, 0, -122))
+	check(gps.mission_route.size() >= 3, "el GPS de misión traza ruta")
+	var radar := Radar.new()
+	var hud_test := HUD.new()
+	add_child(hud_test)
+	add_child(radar)
+	radar.size = Vector2(350, 230)
+	radar.gps = gps
+	radar.player_pos = Vector3(0, 0, 0)
+	radar.view_yaw = 0.7
+	gps.player_pos = Vector3.ZERO
+	gps.set_waypoint(Vector3(-150, 0, 100))
+	await get_tree().process_frame
+	await get_tree().process_frame
+	hud_test.set_wanted(3)
+	hud_test.set_armor(60.0)
+	hud_test.set_clock(11, 17)
+	await get_tree().process_frame
+	check(radar.is_inside_tree() and hud_test.radar != null and hud_test.radar.size.x > 100.0, "radar y HUD se instancian y dibujan sin errores")
+	check(Radar.clamp_to_ellipse(Vector2(1000, 0), Vector2(170, 110)).is_equal_approx(Vector2(170, 0)), "marcadores se acotan a la elipse")
+	radar.queue_free()
+	hud_test.queue_free()
+	gps.queue_free()
+
 	print("== Resultado: %d correctas, %d fallos" % [_passed, _failed])
 	get_tree().quit(1 if _failed > 0 else 0)
 
