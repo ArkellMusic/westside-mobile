@@ -281,9 +281,7 @@ func _reset_story_positions() -> void:
 	var car: Car = vehicles["ray_car"]
 	_place_car(car, CityLayout.landmark("ray_car"), Vector3(-1, 0, 0))
 	for id in actors:
-		var a: NPC = actors[id]
-		a.visible = true
-		a.process_mode = Node.PROCESS_MODE_INHERIT
+		_set_actor_present(String(id), _story_needs(String(id)))
 	_place_actor("big_ray", CityLayout.landmark("big_ray"))
 	_clear_occupants()
 
@@ -758,6 +756,9 @@ func _spawn_vehicles() -> void:
 		["free_sedan", 0, Color(0.55, 0.06, 0.07), Vector3(-130, 0, 4.95), Vector3(1, 0, 0), ""],
 		["free_suv", 2, Color(0.08, 0.08, 0.09), Vector3(124, 0, -95.05), Vector3(1, 0, 0), ""],
 		["free_pickup", 3, Color(0.75, 0.72, 0.65), Vector3(-200, 0, 104.95), Vector3(1, 0, 0), ""],
+		["free_cuda", 4, Color(0.78, 0.45, 0.1), Vector3(-180, 0, -4.95), Vector3(-1, 0, 0), ""],
+		["free_patrol", 5, Color.WHITE, Vector3(140, 0, -104.95), Vector3(1, 0, 0), ""],
+		["free_ambulance", 6, Color.WHITE, Vector3(214, 0, -104.95), Vector3(1, 0, 0), ""],
 	]
 	for d in defs:
 		var car := Car.new()
@@ -788,6 +789,33 @@ func _spawn_actors() -> void:
 		actors[String(d[0])] = npc
 	(actors["dre"] as NPC).face(CityLayout.landmark("ghost"))
 	(actors["ghost"] as NPC).face(CityLayout.landmark("dre_corner"))
+	for id in actors:
+		_set_actor_present(String(id), _story_needs(String(id)))
+
+
+## Los 7 protagonistas no son gente de la calle: solo aparecen en el mundo
+## cuando la misión activa (o la historia ya jugada) los necesita.
+const STORY_CAST := ["dre", "ghost", "loco", "keisha", "viper"]
+
+
+func _story_needs(id: String) -> bool:
+	if not STORY_CAST.has(id):
+		return true  # Big Ray y Okafor: los coloca la propia historia.
+	var mid: String = GameState.active_mission
+	if mid == "":
+		return false
+	var m := GameData.load_mission(mid)
+	return JSON.stringify(m).contains("\"%s\"" % id)
+
+
+func _set_actor_present(id: String, on: bool) -> void:
+	var a: NPC = actors.get(id)
+	if a == null:
+		return
+	a.visible = on
+	a.process_mode = Node.PROCESS_MODE_INHERIT if on else Node.PROCESS_MODE_DISABLED
+	if not on:
+		_ambient_talk.erase(id)
 
 
 func _spawn_scenery_people() -> void:
