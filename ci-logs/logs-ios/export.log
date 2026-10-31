@@ -1,0 +1,563 @@
+[1msavepack[22m | Storing File: res://assets/props/street_lamp_01/textures/street_lamp_01_nor_gl_1k.jpg.import[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/street_lamp_01_1k.gltf-6f22d9da195866dd3816567e6f451769.scn[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_lamp_01/street_lamp_01_1k.gltf.import[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/street_lamp_02_arm_1k.jpg-e613611c290330a7ced334d64162caf3.ctex[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_lamp_02/textures/street_lamp_02_arm_1k.jpg.import[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/street_lamp_02_diff_1k.jpg-9ffd4934528096e0ee30ece1bfcd6b43.ctex[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_lamp_02/textures/street_lamp_02_diff_1k.jpg.import[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/street_lamp_02_nor_gl_1k.jpg-db0e4866ae22229fa35d9225c7057538.ctex[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_lamp_02/textures/street_lamp_02_nor_gl_1k.jpg.import[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/street_lamp_02_1k.gltf-9e921a7ac8dfcb1e6d09805096c559a6.scn[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_lamp_02/street_lamp_02_1k.gltf.import[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_armrests_arm_1k.jpg-267bec24dd411c45ec30925b16471efd.ctex[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_armrests_arm_1k.jpg.import[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_armrests_diff_1k.jpg-d57464704a94a7831985b0312f77b875.ctex[39m[0m
+[  82% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_armrests_diff_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_armrests_nor_gl_1k.jpg-54cff4f57366168d354975afa58abae0.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_armrests_nor_gl_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_connectors_arm_1k.jpg-acff1c4a641ea7d7be33ef5c6f577453.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_connectors_arm_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_connectors_diff_1k.jpg-83c482c737b597baff3ed5101715624e.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_connectors_diff_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_connectors_nor_gl_1k.jpg-91f93de8d350068dcd9a1c512a018c45.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_connectors_nor_gl_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_supports_arm_1k.jpg-064ae0037f0336a30990080470e33b8d.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_supports_arm_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_supports_diff_1k.jpg-87fadf2f048f87c54b5c3776d09310bc.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_supports_diff_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_supports_nor_gl_1k.jpg-8edfa528c84497e11ebf11f0fbc29196.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_supports_nor_gl_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_timber_arm_1k.jpg-cd84f653460e25dc095b7eda965e022c.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_timber_arm_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_timber_diff_1k.jpg-753c581e9052e9dcf16fd82a3f9bfbac.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_timber_diff_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_timber_nor_gl_1k.jpg-a11aba083ec6528585693d72a1a8fc59.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/textures/modular_street_seating_timber_nor_gl_1k.jpg.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/modular_street_seating_1k.gltf-139dfbd56061d0ba25fce6dbc1219a76.scn[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/street_seating/modular_street_seating_1k.gltf.import[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Television_01_arm_1k.jpg-bdebca1b0b1b3abd6511e21159a72fb3.ctex[39m[0m
+[  83% ] [90m[1msavepack[22m | Storing File: res://assets/props/television_01/textures/Television_01_arm_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Television_01_diff_1k.jpg-f54331e25a984ba03d24e619534cace2.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/television_01/textures/Television_01_diff_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Television_01_nor_gl_1k.jpg-34a58fa0e324c1219f7f5a4071f1ff60.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/television_01/textures/Television_01_nor_gl_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/Television_01_1k.gltf-95a5909ae4c80453077ef5dee7397f9b.scn[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/television_01/Television_01_1k.gltf.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tire_pump_arm_1k.jpg-71cc3979ea6a77db95658d99fbcb72f4.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tire_pump/textures/tire_pump_arm_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tire_pump_diff_1k.jpg-a9d6c72b9e2bea7abd3aee2fafb61055.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tire_pump/textures/tire_pump_diff_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tire_pump_nor_gl_1k.jpg-020d6e47db79c49402f7bfaadaa03b5f.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tire_pump/textures/tire_pump_nor_gl_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tire_pump_1k.gltf-4912bebb37c3d95962a4658484d298df.scn[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tire_pump/tire_pump_1k.gltf.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tool_cart_arm_1k.jpg-112c54048e00d4a7667cad04403b6d90.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tool_cart/textures/tool_cart_arm_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tool_cart_diff_1k.jpg-32543c8b4421b2d9fd25428bb89248d6.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tool_cart/textures/tool_cart_diff_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tool_cart_nor_gl_1k.jpg-127b3c9c07117e1ca857e4b25cda9652.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tool_cart/textures/tool_cart_nor_gl_1k.jpg.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/tool_cart_1k.gltf-f1de2349c80f5be06f1734dfd1731246.scn[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/tool_cart/tool_cart_1k.gltf.import[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal_trash_can_arm_1k.jpg-d1050ad75f23e7f545358718a4373e70.ctex[39m[0m
+[  84% ] [90m[1msavepack[22m | Storing File: res://assets/props/trash_can/textures/metal_trash_can_arm_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal_trash_can_diff_1k.jpg-2e57b38f4dd84edde3390f01bf0598ae.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/trash_can/textures/metal_trash_can_diff_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal_trash_can_nor_gl_1k.jpg-6458bd5aebb71930ea7fb6473e7bea33.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/trash_can/textures/metal_trash_can_nor_gl_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal_trash_can_rust_arm_1k.jpg-2e2b05eda831dd53398d8ebe1a1e575c.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/trash_can/textures/metal_trash_can_rust_arm_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal_trash_can_rust_diff_1k.jpg-13dde2c9f3be1dcbd391bb2a31069f45.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/trash_can/textures/metal_trash_can_rust_diff_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal_trash_can_rust_nor_gl_1k.jpg-3cffe5b4ec03dd0cbe64d37d831697ca.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/trash_can/textures/metal_trash_can_rust_nor_gl_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/metal_trash_can_1k.gltf-d10de44f5d241e5ab69d00704f240a99.scn[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/trash_can/metal_trash_can_1k.gltf.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_01_arm_1k.jpg-b12d7367764a5109d855bbc2bae0c767.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_01/textures/utility_box_01_arm_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_01_diff_1k.jpg-72e99586ca68687f6a4208274c3051af.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_01/textures/utility_box_01_diff_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_01_nor_gl_1k.jpg-f957d6a59d01d7df0fef8e6e407337c4.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_01/textures/utility_box_01_nor_gl_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_01_1k.gltf-f165123a1cb4f968cbca531638dcbbcf.scn[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_01/utility_box_01_1k.gltf.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_02_arm_1k.jpg-fbd441e987ef806ec4c917b2461e055c.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_02/textures/utility_box_02_arm_1k.jpg.import[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_02_diff_1k.jpg-e7e6c5f4b630181e8d4e0620859bb89a.ctex[39m[0m
+[  85% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_02/textures/utility_box_02_diff_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_02_nor_gl_1k.jpg-d02bfd9a165eb918e9ae1703f38128c5.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_02/textures/utility_box_02_nor_gl_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/utility_box_02_1k.gltf-5566d6d0304ba3d44217c76e0033b90a.scn[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/utility_box_02/utility_box_02_1k.gltf.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_crutches_01_arm_1k.jpg-3c19b71d4247afc4f3abd1469e313a38.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_crutches_01/textures/vintage_crutches_01_arm_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_crutches_01_diff_1k.jpg-49165d20db2e304794fc545af263929c.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_crutches_01/textures/vintage_crutches_01_diff_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_crutches_01_nor_gl_1k.jpg-d19ef5c7beedd6f6094dc763fde53888.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_crutches_01/textures/vintage_crutches_01_nor_gl_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_crutches_01_1k.gltf-10fb25b268fd15a282709bed16c2c2a2.scn[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_crutches_01/vintage_crutches_01_1k.gltf.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_day_bed_arm_1k.jpg-c150621154c6aaa188291e3b9d245f81.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_day_bed/textures/vintage_day_bed_arm_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_day_bed_diff_1k.jpg-d9b23c0fc8a23365898b89f58d69ad92.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_day_bed/textures/vintage_day_bed_diff_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_day_bed_nor_gl_1k.jpg-b38dd28f9bc67d4df317d207afc604c9.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_day_bed/textures/vintage_day_bed_nor_gl_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/vintage_day_bed_1k.gltf-d0fd48ad9a3d02eb707facc69fe49bab.scn[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/vintage_day_bed/vintage_day_bed_1k.gltf.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/WetFloorSign_01_arm_1k.jpg-9cfe11fe2c50885674601cdbfb45e306.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/wetfloorsign_01/textures/WetFloorSign_01_arm_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/WetFloorSign_01_diff_1k.jpg-343170a7e782764bd48c639c5beae8f9.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/wetfloorsign_01/textures/WetFloorSign_01_diff_1k.jpg.import[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/WetFloorSign_01_nor_gl_1k.jpg-7ad1d485d9a5e2d42f6a8c5dc9d0396d.ctex[39m[0m
+[  86% ] [90m[1msavepack[22m | Storing File: res://assets/props/wetfloorsign_01/textures/WetFloorSign_01_nor_gl_1k.jpg.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/WetFloorSign_01_1k.gltf-bf5986485e857c0f6443a260a574501e.scn[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/props/wetfloorsign_01/WetFloorSign_01_1k.gltf.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/building.gdshader[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/ground.gdshader[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/road.gdshader[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/shaders/water.gdshader[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/day.hdr-260240eab0949a59a392073589c7295b.ctex[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/sky/day.hdr.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/dusk.hdr-7b1734f7c55e238c89c9ea3a31051ff0.ctex[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/sky/dusk.hdr.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/sunset.hdr-4338eeb8a3aac36b8876c5bd55082833.ctex[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/sky/sunset.hdr.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-f515db1c3c0f6ba9fe3953c6d9f1283d.ctex[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/textures/apartment_facade/albedo.jpg.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-cc8dcbebae63d7f8093de6869260893f.ctex[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/textures/apartment_facade/ao.jpg.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-57f0be3190a20cf9199d6adf14b4cbd0.ctex[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/textures/apartment_facade/normal.jpg.import[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-658b8f7abcfdb9341d2b9dd1b759cbbc.ctex[39m[0m
+[  87% ] [90m[1msavepack[22m | Storing File: res://assets/textures/apartment_facade/roughness.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-9872f3a925bd2a299a331e642bf8de48.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/asphalt/albedo.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-4c07465ea970ec68203fecf7c90090ec.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/asphalt/ao.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-0d118647acb35b3124a80d7ceac35367.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/asphalt/normal.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-efc31ef84d56bae4214f970bf262011c.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/asphalt/roughness.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-c67113708ebd46f5f02ed6f5da49f6f3.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/beach_aerial/albedo.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-b64275de7edc1730d893d1546cdcf966.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/beach_aerial/ao.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-0c0151a54ca5ff88eedf060f9a071a99.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/beach_aerial/normal.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-c9b3c86a9074ea44f2a85f787ee6474c.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/beach_aerial/roughness.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-6181e9f9a9951ab54be3801ba89c04cf.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/brick/albedo.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-d2c75b68d41c54250c818c76846bc121.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/brick/ao.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-d0290ae2cc0bff372b1064769a904b68.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/brick/normal.jpg.import[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-cad0c0fada48525e25be8a61ad011c6d.etc2.ctex[39m[0m
+[  88% ] [90m[1msavepack[22m | Storing File: res://assets/textures/brick/roughness.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-24a04f05c53c6761ba13159ed4f01267.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/cliff/albedo.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-6e9823d5b24da33892b2ce4b6584e724.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/cliff/ao.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-0ccd306fbef4bbcbe84c965c31eeb888.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/cliff/normal.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-6310042fbe135929ea2e2a6251252bfa.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/cliff/roughness.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-62356a5467733fcae3d0794c35b27354.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coast_rocks/albedo.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-5e26094528ec9dd35e41befd369fbdc5.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coast_rocks/ao.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-69cafd860ee29411fac86a13628d521d.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coast_rocks/normal.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-c76860df884e2ebad0eda8ca7726053c.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coast_rocks/roughness.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-f5b03a38f1068d20bc9adc4d613d5ae4.etc2.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete/albedo.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-aeb759527428159c9b4b6ec6f926ba66.etc2.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete/ao.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-4f6f97a2b19e4b16dccf2c4b82119ad9.etc2.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete/normal.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-e86d1d3c9a096e5078d6eceb66603ebf.etc2.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete/roughness.jpg.import[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-d541cc5a08f1aa75156b645196d00ced.etc2.ctex[39m[0m
+[  89% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete_wall/albedo.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-21cadf74f87243c28ae5db8cbb7fc712.etc2.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete_wall/ao.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-33b84642d1f0b6e6ccdbcdd0de2dd4de.etc2.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete_wall/normal.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-99fe44bb1d9360a6cbfdf48be5534ac9.etc2.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/concrete_wall/roughness.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-7426232ea899c29d688cf444eb0d8865.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coral_gravel/albedo.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-e06f1af7d9b187b50c830031deb4dc89.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coral_gravel/ao.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-6df75ce4395d54cf664a082b3e88c032.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coral_gravel/normal.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-931de1c7e68f671d0ba4923e97844226.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/coral_gravel/roughness.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-128e1a6439bf5435f3c60e7b0c168b62.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_cracked/albedo.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-3cf7afdb8b37d31c1f3335559759c84f.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_cracked/ao.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-a94b96d419d9fa34bc2b4f7deced2874.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_cracked/normal.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-e625d5467791bcb687328ecf6dcfd1a0.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_cracked/roughness.jpg.import[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-f3be38abf0b6c5b67040d572368e8307.ctex[39m[0m
+[  90% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_red/albedo.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-3d23581c6c0e1329535d73de0f6c43e2.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_red/ao.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-d7c3d90520e572e4598be5afe0f3094e.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_red/normal.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-df5443d0945b0667df09d6e2d8d2a39b.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_red/roughness.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-32a2c7ad7dd1b0582cae076f248aa5d6.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_rocks/albedo.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-d31f89b62b74ca9d95e7541b46a78121.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_rocks/ao.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-b2e0c9dcab02968fca703fb4a4199f03.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_rocks/normal.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-e085578e8cdb2a2cd7ebc8ccd51debc0.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/desert_rocks/roughness.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-dd88c4868d45a592d9cb9767ca680a58.etc2.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt/albedo.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-d2ea4c8f8bfab1cd2e23b7d3446d99ca.etc2.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt/ao.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-7e3640208a635fa5736b65c1276416c7.etc2.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt/normal.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-381acd4a6d80fa9508a29bec3fabbcf3.etc2.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt/roughness.jpg.import[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-e7d04a6dae3da8a448b3db58b03f30ec.ctex[39m[0m
+[  91% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt_road/albedo.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-55a90e3d5c0b2b61a712e306e95789e2.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt_road/ao.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-331a3a9c6b97dfd74f01c5ff6a11c4cd.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt_road/normal.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-b240b212aacc085c8118d98858e5a00e.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/dirt_road/roughness.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-cde0e9bfe0c4b04793233bc50530cfd6.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/forest/albedo.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-dee4e238531b90f36da25d28bd9c8242.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/forest/ao.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-ba545da7bfcad1d97c4a271e19b159d3.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/forest/normal.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-7b4bc95728bd17bb0417697dd496fb9d.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/forest/roughness.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-c5686f840e8c1d5f2eec429cc1f725e6.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass/albedo.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-4dbe3c9b1506861edf06d7e7fb931621.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass/ao.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-09a15d5ed491c038a6dde434548e96f2.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass/normal.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-cff437a3cc60bff76900755e715585d5.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass/roughness.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-c921628da632f2701018f75b18db9f39.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass_mix/albedo.jpg.import[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-79800b4a81f17956fcf5ab9cc907628a.ctex[39m[0m
+[  92% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass_mix/ao.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-efa1d7d4174f1dc13578d5e7819fcd24.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass_mix/normal.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-fc9f78f71458ca33053b2cb9bbb83011.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/grass_mix/roughness.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-6ada92b169ad16bfd0d6e9938ae5c159.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/hill_grass/albedo.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-8476c52a212e108c2618397071f5f693.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/hill_grass/ao.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-a60be333092ff26a12e9f896d47d6706.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/hill_grass/normal.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-d6f513c4f9f2206c6ed69a3d4327b3fc.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/hill_grass/roughness.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-ccca8c90b55d57ab1fe0ebb28efbfd03.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/industrial_wall/albedo.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-04494f94870d77315d2a221cc42b0cc5.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/industrial_wall/ao.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-d5192a4e4881c500db7ff7e6f1709846.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/industrial_wall/normal.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-ad97d21d8199d4d4b2dd12fdf88e9001.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/industrial_wall/roughness.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-6a3694b25bc0b592f568a0f2b994e6be.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/park_dirt/albedo.jpg.import[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-30d095fe56e834ee30a6745e1404685b.ctex[39m[0m
+[  93% ] [90m[1msavepack[22m | Storing File: res://assets/textures/park_dirt/ao.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-100d07110249bf3bcee0dce2749c642e.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/park_dirt/normal.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-245c68625fc0494122b9df01511c2bba.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/park_dirt/roughness.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-1cfc740835b00e23dbc0d82b478a2764.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/pavement/albedo.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-a0d58a1215edc46d59c4c6676f7187c9.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/pavement/ao.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-00b84a58ef81a31bb7684c1b863f0b13.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/pavement/normal.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-cdbfa3fdf417e8e612610ee82c5b47d8.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/pavement/roughness.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-15bcb68a347357bb654c19dac726f565.etc2.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/roof/albedo.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-d9b8a66131d13df9b237059257d0d0fe.etc2.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/roof/ao.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-1d05e4591fd27c53cb62289d68f3a94d.etc2.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/roof/normal.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-cb3152966e0f30311cb06d55f108bf45.etc2.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/roof/roughness.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-7a270acfdc81d30709519d2f52e859eb.etc2.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sand/albedo.jpg.import[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-b100d919940e1be7377447401edd898c.etc2.ctex[39m[0m
+[  94% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sand/ao.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-948948ed9157a4e1266016831ab2403b.etc2.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sand/normal.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-37529ff3590cc7917387264bbe5a5d91.etc2.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sand/roughness.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-78760c5f19ca0cc0052077191c6b5e1e.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/seabed/albedo.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-39a94f6b2c97a8e5f3bf87d37ca3b2a8.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/seabed/ao.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-f37d2c6250625befc3530444ec1bef5b.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/seabed/normal.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-aa7d17a49d2468acfe94eede881f72b7.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/seabed/roughness.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-d7879d42d4a50c549282db48997aab85.etc2.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sidewalk/albedo.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-95b3650e9f22e14574edd76ededaae9d.etc2.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sidewalk/ao.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-4aa2b534e8c3548bd8e5b627a2d81532.etc2.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sidewalk/normal.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-8783e44cfeafcf3c6a54fa80a7b79757.etc2.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/sidewalk/roughness.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-2b4bcb5eb639daf07c10c6e205598f06.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/snow/albedo.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-e18da9a03750a54821762dd2d56e0b9d.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/snow/ao.jpg.import[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-cf60b34ae627dd2b905d9ca281351122.ctex[39m[0m
+[  95% ] [90m[1msavepack[22m | Storing File: res://assets/textures/snow/normal.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-4e40143749fdef96b0167c36d32d420e.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/snow/roughness.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-d8386f33371cab060b85462c01f786ba.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco/albedo.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-1d23c7474db3c02d4285a9335786cad4.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco/ao.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-846238d29f007ca19fe64db30a918cc1.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco/normal.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-dba97cc8ba92571b029f8a920fc29259.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco/roughness.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/albedo.jpg-6d4605bc4017c084f4de7732385c8c70.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco_beige/albedo.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/ao.jpg-37a7a75319be69d5f1b4e3a1574ba90f.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco_beige/ao.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/normal.jpg-dafd271e79513d65a4d8e50a04c0d64e.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco_beige/normal.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/roughness.jpg-aec4d243e665aec3f14a650a32613f01.etc2.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/textures/stucco_beige/roughness.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/state_map.jpg-1d981b559c54a947608dd1435142cb4b.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/ui/state_map.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/962d64562c84_albedo.jpg-953c5634b0c17b90191bfabd4f39fa34.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/harley/962d64562c84_albedo.jpg.import[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/HARLEY-DASH_albedo.jpg-8c6fe835d24d88b0635f011da024a886.ctex[39m[0m
+[  96% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/harley/HARLEY-DASH_albedo.jpg.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/harley/harley.scn[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/harley_logo_albedo.png-9b905e2cd56a0f078b9737a802d430f8.ctex[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/harley/harley_logo_albedo.png.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/heli/heli.scn[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/md_500_war_thunder_0_albedo.jpg-a3e78e499ab8bed44552fc6b81260a3b.ctex[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/heli/md_500_war_thunder_0_albedo.jpg.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/md_500_war_thunder_1_albedo.jpg-ab08fbc72e21dd14f2ff614e1f6b68b0.ctex[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/heli/md_500_war_thunder_1_albedo.jpg.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/md_500_war_thunder_2_albedo.jpg-593ee91b1574194975b3c80b4138db6d.ctex[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/heli/md_500_war_thunder_2_albedo.jpg.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/md_500_war_thunder_3_albedo.jpg-7f975d4ee811f354bba3de89772912ff.ctex[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/heli/md_500_war_thunder_3_albedo.jpg.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/md_500_war_thunder_4_albedo.jpg-3229f6473de2bcf9274b7edab8b61f7c.ctex[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/heli/md_500_war_thunder_4_albedo.jpg.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://.godot/imported/md_500_war_thunder_5_albedo.jpg-51077d9063ee2dff29b208df6b4e2002.ctex[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://assets/vehicles/heli/md_500_war_thunder_5_albedo.jpg.import[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://data/missions/m01.json[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://data/characters.json[39m[0m
+[  97% ] [90m[1msavepack[22m | Storing File: res://data/factions.json[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://data/radio.json[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://data/zones.json[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://Godot.app/Contents/Resources/GDScript.icns[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://Godot.app/Contents/Resources/GodotLG.icns[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://Godot.app/Contents/Resources/Project.icns[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://Godot.app/Contents/Resources/Resource.icns[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://Godot.app/Contents/Resources/Scene.icns[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://Godot.app/Contents/Resources/Shader.icns[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/exported/133200997/export-3ad5c15c4f3250da0cc7c1af1770d85f-main.scn[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/audio/radio.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/controls.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/event_bus.gdc[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/street_props.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/traffic_control.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/traffic.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/characters/humanoid.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/settings.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/save_system.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/game_data.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/game_state.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicles/real_car_model.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicles/car_model.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicles/car.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/ui_theme.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/vehicles/bus_model.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player/player.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/main.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/map_screen.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/hud.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/touch_controls.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/pause_menu.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/radar.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/title_menu.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/ui/settings_panel.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/characters/mixamo_person.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/missions/intro_cinematic.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/characters/npc.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/missions/mission_runner.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/player/camera_rig.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/city_builder.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/gps.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/city_layout.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/impact_system.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/interiors.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/kit_buildings.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/mesh_builder.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/pedestrians.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/sky_env.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/world/real_sites.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scenes/main.tscn.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/audio/radio.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/controls.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://scripts/autoload/event_bus.gd.remap[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/global_script_class_cache.cfg[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://icon.png[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://.godot/uid_cache.bin[39m[0m
+[  98% ] [90m[1msavepack[22m | Storing File: res://project.binary[39m[0m
+[92m[ DONE ][39m [1msavepack[22m
+[0m
+[  33% ] [90m[1mexport[22m | Extracting and configuring Xcode project[39m[0m
+Static framework: libgodot.ios.release.xcframework
+Unzipping...
+READ: data.pck
+READ: godot_apple_embedded/
+READ: godot_apple_embedded/export_options.plist
+ADDING: WestsideLegacy/export_options.plist size: 479
+READ: godot_apple_embedded/godot_apple_embedded-Info.plist
+ADDING: WestsideLegacy/WestsideLegacy-Info.plist size: 2324
+READ: godot_apple_embedded/godot_apple_embedded.entitlements
+ADDING: WestsideLegacy/WestsideLegacy.entitlements size: 190
+READ: godot_apple_embedded/Launch Screen.storyboard
+WARNING: Property not found: application/boot_splash/fullsize
+     at: get_setting_with_override_and_custom_features (core/config/project_settings.cpp:409)
+ADDING: WestsideLegacy/Launch Screen.storyboard size: 3025
+READ: godot_apple_embedded/dummy.cpp
+ADDING: WestsideLegacy/dummy.cpp size: 2493
+READ: godot_apple_embedded/dummy.h
+ADDING: WestsideLegacy/dummy.h size: 2285
+READ: godot_apple_embedded/dummy.swift
+ADDING: WestsideLegacy/dummy.swift size: 2252
+READ: godot_apple_embedded/dylibs/
+READ: godot_apple_embedded/dylibs/empty
+ADDING: WestsideLegacy/dylibs/empty size: 42
+Creating build/ios/WestsideLegacy/dylibs
+READ: godot_apple_embedded/en.lproj/
+READ: godot_apple_embedded/en.lproj/InfoPlist.strings
+ADDING: WestsideLegacy/en.lproj/InfoPlist.strings size: 44
+Creating build/ios/WestsideLegacy/en.lproj
+READ: godot_apple_embedded/Images.xcassets/
+READ: godot_apple_embedded/Images.xcassets/SplashImage.imageset/
+READ: godot_apple_embedded/Images.xcassets/SplashImage.imageset/Contents.json
+ADDING: WestsideLegacy/Images.xcassets/SplashImage.imageset/Contents.json size: 343
+Creating build/ios/WestsideLegacy/Images.xcassets/SplashImage.imageset
+READ: godot_apple_embedded/Images.xcassets/SplashImage.imageset/splash@2x.png
+ADDING: WestsideLegacy/Images.xcassets/SplashImage.imageset/splash@2x.png size: 14701
+READ: godot_apple_embedded/Images.xcassets/SplashImage.imageset/splash@3x.png
+ADDING: WestsideLegacy/Images.xcassets/SplashImage.imageset/splash@3x.png size: 14701
+READ: godot_apple_embedded.xcodeproj/
+READ: godot_apple_embedded.xcodeproj/project.pbxproj
+ADDING: WestsideLegacy.xcodeproj/project.pbxproj size: 16323
+Creating build/ios/WestsideLegacy.xcodeproj
+READ: godot_apple_embedded.xcodeproj/project.xcworkspace/
+READ: godot_apple_embedded.xcodeproj/project.xcworkspace/contents.xcworkspacedata
+ADDING: WestsideLegacy.xcodeproj/project.xcworkspace/contents.xcworkspacedata size: 160
+Creating build/ios/WestsideLegacy.xcodeproj/project.xcworkspace
+READ: godot_apple_embedded.xcodeproj/xcshareddata/
+READ: godot_apple_embedded.xcodeproj/xcshareddata/xcschemes/
+READ: godot_apple_embedded.xcodeproj/xcshareddata/xcschemes/godot_apple_embedded.xcscheme
+ADDING: WestsideLegacy.xcodeproj/xcshareddata/xcschemes/WestsideLegacy.xcscheme size: 3516
+Creating build/ios/WestsideLegacy.xcodeproj/xcshareddata/xcschemes
+READ: libgodot_camera.ios.debug.xcframework/
+READ: libgodot_camera.ios.debug.xcframework/ios-arm64_x86_64-simulator/
+READ: libgodot_camera.ios.debug.xcframework/ios-arm64_x86_64-simulator/empty
+READ: libgodot_camera.ios.debug.xcframework/ios-arm64_x86_64-simulator/libgodot_camera.a
+READ: libgodot_camera.ios.debug.xcframework/Info.plist
+READ: libgodot_camera.ios.debug.xcframework/ios-arm64/
+READ: libgodot_camera.ios.debug.xcframework/ios-arm64/empty
+READ: libgodot_camera.ios.debug.xcframework/ios-arm64/libgodot_camera.a
+READ: libgodot_camera.ios.release.xcframework/
+READ: libgodot_camera.ios.release.xcframework/Info.plist
+READ: libgodot_camera.ios.release.xcframework/ios-arm64/
+READ: libgodot_camera.ios.release.xcframework/ios-arm64/empty
+READ: libgodot_camera.ios.release.xcframework/ios-arm64/libgodot_camera.a
+READ: libgodot_camera.ios.release.xcframework/ios-arm64_x86_64-simulator/
+READ: libgodot_camera.ios.release.xcframework/ios-arm64_x86_64-simulator/empty
+READ: libgodot_camera.ios.release.xcframework/ios-arm64_x86_64-simulator/libgodot_camera.a
+READ: libgodot_camera.visionos.debug.xcframework/
+READ: libgodot_camera.visionos.debug.xcframework/Info.plist
+ADDING: libgodot_camera.visionos.debug.xcframework/Info.plist size: 1011
+Creating build/ios/libgodot_camera.visionos.debug.xcframework
+READ: libgodot_camera.visionos.debug.xcframework/xros-arm64-simulator/
+READ: libgodot_camera.visionos.debug.xcframework/xros-arm64-simulator/empty
+ADDING: libgodot_camera.visionos.debug.xcframework/xros-arm64-simulator/empty size: 42
+Creating build/ios/libgodot_camera.visionos.debug.xcframework/xros-arm64-simulator
+READ: libgodot_camera.visionos.debug.xcframework/xros-arm64/
+READ: libgodot_camera.visionos.debug.xcframework/xros-arm64/empty
+ADDING: libgodot_camera.visionos.debug.xcframework/xros-arm64/empty size: 42
+Creating build/ios/libgodot_camera.visionos.debug.xcframework/xros-arm64
+READ: libgodot_camera.visionos.release.xcframework/
+READ: libgodot_camera.visionos.release.xcframework/xros-arm64-simulator/
+READ: libgodot_camera.visionos.release.xcframework/xros-arm64-simulator/empty
+ADDING: libgodot_camera.visionos.release.xcframework/xros-arm64-simulator/empty size: 42
+Creating build/ios/libgodot_camera.visionos.release.xcframework/xros-arm64-simulator
+READ: libgodot_camera.visionos.release.xcframework/xros-arm64/
+READ: libgodot_camera.visionos.release.xcframework/xros-arm64/empty
+ADDING: libgodot_camera.visionos.release.xcframework/xros-arm64/empty size: 42
+Creating build/ios/libgodot_camera.visionos.release.xcframework/xros-arm64
+READ: libgodot_camera.visionos.release.xcframework/Info.plist
+ADDING: libgodot_camera.visionos.release.xcframework/Info.plist size: 1011
+READ: libgodot.ios.debug.xcframework/
+READ: libgodot.ios.debug.xcframework/Info.plist
+READ: libgodot.ios.debug.xcframework/ios-arm64_x86_64-simulator/
+READ: libgodot.ios.debug.xcframework/ios-arm64_x86_64-simulator/empty
+READ: libgodot.ios.debug.xcframework/ios-arm64_x86_64-simulator/libgodot.a
+READ: libgodot.ios.debug.xcframework/ios-arm64/
+READ: libgodot.ios.debug.xcframework/ios-arm64/empty
+READ: libgodot.ios.debug.xcframework/ios-arm64/libgodot.a
+READ: libgodot.ios.release.xcframework/
+READ: libgodot.ios.release.xcframework/Info.plist
+ADDING: WestsideLegacy.xcframework/Info.plist size: 1028
+Creating build/ios/WestsideLegacy.xcframework
+READ: libgodot.ios.release.xcframework/ios-arm64/
+READ: libgodot.ios.release.xcframework/ios-arm64/empty
+READ: libgodot.ios.release.xcframework/ios-arm64/libgodot.a
+ADDING: WestsideLegacy.xcframework/ios-arm64/libgodot.a size: 188887256
+Creating build/ios/WestsideLegacy.xcframework/ios-arm64
+READ: libgodot.ios.release.xcframework/ios-arm64_x86_64-simulator/
+READ: libgodot.ios.release.xcframework/ios-arm64_x86_64-simulator/empty
+READ: libgodot.ios.release.xcframework/ios-arm64_x86_64-simulator/libgodot.a
+ADDING: WestsideLegacy.xcframework/ios-arm64_x86_64-simulator/libgodot.a size: 174700784
+Creating build/ios/WestsideLegacy.xcframework/ios-arm64_x86_64-simulator
+READ: MoltenVK.xcframework/
+READ: MoltenVK.xcframework/ios-arm64_x86_64-simulator/
+READ: MoltenVK.xcframework/ios-arm64_x86_64-simulator/libMoltenVK.a
+ADDING: MoltenVK.xcframework/ios-arm64_x86_64-simulator/libMoltenVK.a size: 13712744
+Creating build/ios/MoltenVK.xcframework/ios-arm64_x86_64-simulator
+READ: MoltenVK.xcframework/Info.plist
+ADDING: MoltenVK.xcframework/Info.plist size: 3177
+READ: MoltenVK.xcframework/ios-arm64/
+READ: MoltenVK.xcframework/ios-arm64/libMoltenVK.a
+ADDING: MoltenVK.xcframework/ios-arm64/libMoltenVK.a size: 6917632
+Creating build/ios/MoltenVK.xcframework/ios-arm64
+READ: PrivacyInfo.xcprivacy
+ADDING: PrivacyInfo.xcprivacy size: 990
+Exporting launch screen storyboard
+Exporting additional assets
+[  66% ] [90m[1mexport[22m | Code-signing dylibs[39m[0m
+[92m[ DONE ][39m [1mexport[22m
+[0m
