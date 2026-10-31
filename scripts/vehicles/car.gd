@@ -57,7 +57,7 @@ func _build() -> void:
 	_spec = CarModel.spec(style)
 	mass = 1250.0
 	center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
-	center_of_mass = Vector3(0, 0.35, 0.1)
+	center_of_mass = Vector3(0, 0.12, 0.05)
 	angular_damp = 0.6
 	linear_damp = 0.05
 	can_sleep = true
@@ -129,7 +129,7 @@ func _build() -> void:
 			w.suspension_max_force = 14000.0
 			w.damping_compression = 0.45
 			w.damping_relaxation = 0.6
-			w.wheel_friction_slip = 2.6 if front else 2.4
+			w.wheel_friction_slip = 1.9 if front else 2.0
 			w.wheel_roll_influence = 0.12
 			w.use_as_steering = front
 			w.use_as_traction = not front
@@ -212,7 +212,7 @@ func _physics_process(delta: float) -> void:
 	if handbrake:
 		brk = maxf(brk, max_brake * 0.5)
 	for w in _rear_wheels:
-		(w as VehicleWheel3D).wheel_friction_slip = 1.1 if handbrake else 2.4
+		(w as VehicleWheel3D).wheel_friction_slip = 1.0 if handbrake else 2.0
 	if damage >= 100.0:
 		force = 0.0
 		brk = maxf(brk, 4.0)
@@ -220,9 +220,36 @@ func _physics_process(delta: float) -> void:
 	brake = brk
 
 	# Fuerza hacia abajo y estabilización para que no vuelque con facilidad.
-	apply_central_force(Vector3.DOWN * linear_velocity.length() * 25.0)
+	var spd := linear_velocity.length()
+	apply_central_force(Vector3.DOWN * (spd * 25.0 + spd * spd * 1.8))
+	_stabilize(delta)
 	if global_basis.y.y < 0.3 and linear_velocity.length() < 2.0:
 		_flip_upright()
+
+
+## Barra estabilizadora: en curvas rápidas el coche derrapa en vez de volcar.
+## Contrarresta el balanceo (roll) y el cabeceo mientras las ruedas tocan suelo.
+func _stabilize(delta: float) -> void:
+	var grounded := 0
+	for w in get_children():
+		if w is VehicleWheel3D and (w as VehicleWheel3D).is_in_contact():
+			grounded += 1
+	if grounded < 2:
+		return
+	var b := global_basis
+	var fwd := b.z
+	var right := b.x
+	# Ángulo de balanceo respecto a la horizontal.
+	var roll := asin(clampf(right.y, -1.0, 1.0))
+	var w_roll := angular_velocity.dot(fwd)
+	var w_pitch := angular_velocity.dot(right)
+	var inertia := mass * 1.4
+	var torque := -fwd * (roll * 9.0 + w_roll * 2.2) * inertia * 9.0
+	torque -= right * w_pitch * inertia * 3.0
+	apply_torque(torque)
+	# Límite duro: nunca más de ~14° de balanceo con las ruedas en el suelo.
+	if absf(roll) > 0.25:
+		angular_velocity -= fwd * w_roll * minf(1.0, delta * 12.0)
 
 
 func _flip_upright() -> void:

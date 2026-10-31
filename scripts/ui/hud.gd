@@ -385,7 +385,8 @@ func show_location(place: String) -> void:
 
 ## Negativo oculta el indicador.
 func set_speed_kmh(v: float) -> void:
-	if v < 0.0:
+	# Velocímetro desactivado a petición (estilo GTA SA, sin indicador de velocidad).
+	if true or v < 0.0:
 		_speed_label.visible = false
 		return
 	_speed_label.visible = true
@@ -472,6 +473,10 @@ func _apply_letterbox(v: float) -> void:
 	_letter_bottom.position = Vector2(0.0, size.y - h)
 	_letter_bottom.size = Vector2(size.x, h)
 	_letter_top.visible = v > 0.001
+	# Subtítulos por encima de la franja inferior (si no, quedan tapados).
+	if _subtitle_panel:
+		var safe_bottom := get_global_rect().end.y - _safe.get_global_rect().end.y
+		_subtitle_panel.offset_bottom = -maxf(h - safe_bottom + 14.0, 24.0)
 	_letter_bottom.visible = v > 0.001
 
 
