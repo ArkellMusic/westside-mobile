@@ -4,7 +4,7 @@
     {
       "id": "asphalt",
       "slug": "asphalt_06",
-      "res": "2k"
+      "res": "4k"
     },
     {
       "id": "sidewalk",
@@ -43,13 +43,13 @@
     },
     {
       "id": "grass",
-      "res": "2k",
+      "res": "4k",
       "slug": "grass_medium_01"
     },
     {
       "id": "sand",
-      "category": "sand",
-      "res": "2k"
+      "res": "4k",
+      "slug": "coast_sand_01"
     },
     {
       "id": "dirt",
@@ -69,6 +69,76 @@
     {
       "id": "pavement",
       "slug": "concrete_pavement",
+      "res": "2k"
+    },
+    {
+      "id": "grass_mix",
+      "slug": "forest_ground_05",
+      "res": "2k"
+    },
+    {
+      "id": "hill_grass",
+      "slug": "aerial_grass_rock",
+      "res": "2k"
+    },
+    {
+      "id": "forest",
+      "slug": "forest_leaves_03",
+      "res": "2k"
+    },
+    {
+      "id": "desert_red",
+      "slug": "red_dirt_mud_01",
+      "res": "4k"
+    },
+    {
+      "id": "desert_rocks",
+      "slug": "dry_ground_rocks",
+      "res": "2k"
+    },
+    {
+      "id": "desert_cracked",
+      "slug": "mud_cracked_dry_03",
+      "res": "2k"
+    },
+    {
+      "id": "beach_aerial",
+      "slug": "aerial_beach_01",
+      "res": "2k"
+    },
+    {
+      "id": "cliff",
+      "slug": "aerial_rocks_02",
+      "res": "2k"
+    },
+    {
+      "id": "coast_rocks",
+      "slug": "coast_land_rocks_01",
+      "res": "2k"
+    },
+    {
+      "id": "seabed",
+      "slug": "coral_ground_02",
+      "res": "2k"
+    },
+    {
+      "id": "coral_gravel",
+      "slug": "coral_gravel",
+      "res": "2k"
+    },
+    {
+      "id": "dirt_road",
+      "slug": "gravel_road",
+      "res": "2k"
+    },
+    {
+      "id": "park_dirt",
+      "slug": "park_dirt",
+      "res": "2k"
+    },
+    {
+      "id": "snow",
+      "slug": "snow_02",
       "res": "2k"
     }
   ],

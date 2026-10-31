@@ -34,7 +34,11 @@ def main():
     credits = []
     failed = 0
     for t in manifest["textures"]:
-        if os.path.exists(f"assets/textures/{t['id']}/albedo.jpg"):
+        res_file = f"assets/textures/{t['id']}/.res"
+        same_res = os.path.exists(res_file) and open(res_file).read().strip() == t["res"]
+        # Sin .res = descarga antigua en 2K: se rehace si ahora se pide otra resolución o textura.
+        legacy_ok = not os.path.exists(res_file) and t["res"] == "2k" and t["id"] != "sand"
+        if os.path.exists(f"assets/textures/{t['id']}/albedo.jpg") and (same_res or legacy_ok):
             credits.append(f"{t['id']}: ya descargada (Poly Haven, CC0)")
             continue
         try:
@@ -44,6 +48,7 @@ def main():
             for key, name in MAPS.items():
                 if key in files and t["res"] in files[key]:
                     download(files[key][t["res"]]["jpg"]["url"], f"assets/textures/{t['id']}/{name}.jpg")
+            open(res_file, "w").write(t["res"])
             credits.append(f"{t['id']}: {slug} (Poly Haven, CC0)")
         except Exception as e:  # noqa: BLE001
             failed += 1
