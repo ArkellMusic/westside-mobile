@@ -2,20 +2,34 @@
 
 Texturas y cielos de Poly Haven (https://polyhaven.com), licencia CC0.
 
-- asphalt: ya descargada (Poly Haven, CC0)
+- asphalt: asphalt_06 (Poly Haven, CC0)
 - sidewalk: ya descargada (Poly Haven, CC0)
 - concrete: ya descargada (Poly Haven, CC0)
 - stucco: ya descargada (Poly Haven, CC0)
 - stucco_beige: ya descargada (Poly Haven, CC0)
 - brick: ya descargada (Poly Haven, CC0)
 - concrete_wall: ya descargada (Poly Haven, CC0)
-- roof: ya descargada (Poly Haven, CC0)
-- grass: ya descargada (Poly Haven, CC0)
-- sand: ya descargada (Poly Haven, CC0)
-- dirt: ya descargada (Poly Haven, CC0)
+- roof: gravel_concrete (Poly Haven, CC0)
+- grass: grass_medium_01 (Poly Haven, CC0)
+- sand: coast_sand_01 (Poly Haven, CC0)
+- dirt: coast_sand_rocks_02 (Poly Haven, CC0)
 - apartment_facade: ya descargada (Poly Haven, CC0)
 - industrial_wall: ya descargada (Poly Haven, CC0)
 - pavement: ya descargada (Poly Haven, CC0)
+- grass_mix: forest_ground_05 (Poly Haven, CC0)
+- hill_grass: aerial_grass_rock (Poly Haven, CC0)
+- forest: forest_leaves_03 (Poly Haven, CC0)
+- desert_red: red_dirt_mud_01 (Poly Haven, CC0)
+- desert_rocks: dry_ground_rocks (Poly Haven, CC0)
+- desert_cracked: mud_cracked_dry_03 (Poly Haven, CC0)
+- beach_aerial: aerial_beach_01 (Poly Haven, CC0)
+- cliff: aerial_rocks_02 (Poly Haven, CC0)
+- coast_rocks: coast_land_rocks_01 (Poly Haven, CC0)
+- seabed: coral_ground_02 (Poly Haven, CC0)
+- coral_gravel: coral_gravel (Poly Haven, CC0)
+- dirt_road: gravel_road (Poly Haven, CC0)
+- park_dirt: park_dirt (Poly Haven, CC0)
+- snow: snow_02 (Poly Haven, CC0)
 - modelo street_lamp_01: street_lamp_01 (Poly Haven, CC0)
 - modelo street_lamp_02: street_lamp_02 (Poly Haven, CC0)
 - modelo fire_hydrant: fire_hydrant (Poly Haven, CC0)
@@ -65,11 +79,3 @@ Texturas y cielos de Poly Haven (https://polyhaven.com), licencia CC0.
 - modelo steel_frame_shelves_03: steel_frame_shelves_03 (Poly Haven, CC0)
 - modelo security_camera_01: security_camera_01 (Poly Haven, CC0)
 - modelo wetfloorsign_01: WetFloorSign_01 (Poly Haven, CC0)
-
-## Edificios
-- Downtown City MegaKit (versión Standard) — Quaternius (https://quaternius.com), licencia CC0.
-
-## Coches (licencia CC BY 4.0, Daniel Zhabotinsky, Sketchfab)
-- «Kiri '86 low poly model» — https://sketchfab.com/3d-models/kiri-86-low-poly-model-5c17c582ef9549798f694b660feea42a
-- «Doutrive '78 low poly model» — https://sketchfab.com/3d-models/doutrive-78-low-poly-model-30700a84311c4bea9ef722f0773ce92a
-- «Eugene MK6 '65 low poly model» — https://sketchfab.com/3d-models/eugene-mk6-65-low-poly-model-22732575b0644cc9b65cf21857288189
