@@ -252,7 +252,14 @@ func _road_piece_x(b: MeshBuilder, z: float, w: float, x0: float, x1: float, y: 
 const REPLACED_SITES := [Vector2(70.525, -118.737), Vector2(120.14, -118.3), Vector2(175.69, -121.53)]
 
 
+## Solares que ocupan los edificios reales de RealSites (hospital con helipuerto, aparcamiento).
+const REPLACED_RECTS := [Rect2(166.0, -192.0, 68.0, 82.0), Rect2(-112.0, -147.0, 18.0, 38.0)]
+
+
 func _add_building(center_xz: Vector2, size: Vector3, color: Color, kind: float, collide: bool = true) -> void:
+	for r in REPLACED_RECTS:
+		if (r as Rect2).has_point(center_xz):
+			return
 	for site in REPLACED_SITES:
 		if center_xz.distance_to(site) < 1.5:
 			return
@@ -1023,8 +1030,8 @@ func _build_street_lamps() -> void:
 
 func _build_parked_cars() -> void:
 	var variants: Array = []
-	for i in 8:
-		variants.append({"mesh": CarModel.build(i % 4, CAR_COLORS[(i * 3) % CAR_COLORS.size()], true), "list": []})
+	for i in 10:
+		variants.append({"mesh": CarModel.build(CarModel.TRAFFIC_STYLES[i % CarModel.TRAFFIC_STYLES.size()], CAR_COLORS[(i * 3) % CAR_COLORS.size()], true), "list": []})
 	var keep_clear: Array = []
 	for id in ["ray_car", "bus_bay", "mart_stop", "mack_house_curb", "vargas_front", "player_spawn"]:
 		var l := CityLayout.landmark(id)

@@ -40,6 +40,8 @@ var _respray_cd: float = 0.0
 var _env_saved: Dictionary = {}
 var _env_on: bool = false
 var _wasted_running: bool = false
+var _model_npcs: Array = []
+var _follow_light: OmniLight3D
 
 
 # ---------------------------------------------------------------- definición
@@ -57,12 +59,19 @@ func _define_places() -> void:
 			"enter": Vector3(122.25, 0, -108.6), "radius": 2.2, "out": Vector3(122.25, 0.25, -107.2), "out_yaw": PI,
 			"ambient": Color(0.78, 0.84, 1.0), "energy": 0.3},
 		{"id": "hospital", "name": "Westbrook General", "size": Vector2(16, 12), "height": 3.4, "door_x": -4.0,
-			"enter": Vector3(173.0, 0, -108.6), "radius": 2.2, "out": Vector3(173.0, 0.25, -107.2), "out_yaw": PI,
+			"enter": Vector3(193.9, 0, -128.2), "radius": 2.2, "out": Vector3(193.9, 0.25, -126.8), "out_yaw": PI,
 			"ambient": Color(0.86, 0.95, 0.95), "energy": 0.3},
+		{"id": "subway", "name": "Estación Westbrook", "size": Vector2(16, 10), "height": 3.4, "door_x": 0.0,
+			"enter": Vector3(-59.0, 0, -20.0), "radius": 2.4, "out": Vector3(-59.0, 0.25, -18.2), "out_yaw": PI,
+			"ambient": Color(0.75, 0.82, 0.95), "energy": 0.8,
+			"model": "res://assets/buildings/subway/subway.scn", "origin": Vector3(3600, 100, -3400),
+			"anchor": Vector2(40.0, -36.0), "floor_ymax": 12.2, "spawn": Vector3(0, 0.1, 2.5), "spawn_yaw": PI},
 	]
 
 
 func _origin(i: int) -> Vector3:
+	if _places[i].has("origin"):
+		return _places[i]["origin"]
 	return BASE + Vector3(i * SPACING, 0.0, 0.0)
 
 
@@ -87,13 +96,16 @@ func build(city: CityBuilder) -> void:
 	add_child(kb)
 	kb._rng.seed = 4242
 	kb._build_modular(Vector2(122.25, -117.0), Vector3(16, 9.6, 14), 0)
-	kb._build_modular(Vector2(176.0, -120.0), Vector3(28, 13.2, 20), 0)
 	kb._flush()
 	if not city.night_changed.is_connected(kb.set_night):
 		city.night_changed.connect(kb.set_night)
 	_build_respray()
 	_build_police_exterior()
-	_build_hospital_exterior()
+	# Edificios, vehículos y personajes reales (hospital, cárcel, aparcamiento, flota policial).
+	var rs := RealSites.new()
+	rs.name = "RealSites"
+	add_child(rs)
+	rs.build(city, self, main)
 
 
 func _build_garage_side_door() -> void:
@@ -215,92 +227,6 @@ func _build_police_exterior() -> void:
 	l.shadow_enabled = false
 	l.position = Vector3(cx, 2.6, front + 1.2)
 	add_child(l)
-	# Dos coches patrulla aparcados delante (en la acera, paralelos a la fachada).
-	_police_car(Vector3(116.4, 0.15, -108.3), Color(0.04, 0.04, 0.05))
-	_police_car(Vector3(128.2, 0.15, -108.3), Color(0.92, 0.93, 0.95))
-
-
-func _police_car(pos: Vector3, color: Color) -> void:
-	var node := Node3D.new()
-	node.position = pos
-	node.rotation.y = PI * 0.5
-	add_child(node)
-	var mi := MeshInstance3D.new()
-	mi.mesh = CarModel.build(0, color, true)
-	node.add_child(mi)
-	var bar := _mat(Color(0.1, 0.1, 0.12), 0.4)
-	_mesh_box(node, Vector3(0, 1.48, -0.3), Vector3(0.9, 0.1, 0.34), bar)
-	_mesh_box(node, Vector3(-0.3, 1.55, -0.3), Vector3(0.3, 0.07, 0.3), _mat(Color(1, 0.05, 0.05), 0.3, 0.0, Color(1, 0.05, 0.03), 3.0))
-	_mesh_box(node, Vector3(0.3, 1.55, -0.3), Vector3(0.3, 0.07, 0.3), _mat(Color(0.05, 0.2, 1), 0.3, 0.0, Color(0.05, 0.25, 1.0), 3.0))
-	var stripe_col := Color(0.95, 0.95, 0.97) if color.get_luminance() < 0.5 else Color(0.05, 0.08, 0.2)
-	for sx in [-1.0, 1.0]:
-		_mesh_box(node, Vector3(sx * 0.955, 0.7, 0.0), Vector3(0.02, 0.2, 2.6), _mat(stripe_col, 0.5))
-		_label(node, "POLICE", Vector3(sx * 0.97, 0.95, -0.2), 90.0 * sx, 30, stripe_col, 0.004)
-	var body := StaticBody3D.new()
-	var cs := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(1.9, 1.4, 4.6)
-	cs.shape = shape
-	cs.position = Vector3(0, 0.75, 0)
-	body.add_child(cs)
-	node.add_child(body)
-
-
-func _build_hospital_exterior() -> void:
-	var cx := 173.0
-	var front := -110.0
-	var white := _mat(Color(0.93, 0.94, 0.95), 0.5)
-	var glass := _mat(Color(0.05, 0.1, 0.12), 0.1, 0.3, Color(0.3, 0.6, 0.6), 0.5)
-	var red := _mat(Color(0.85, 0.05, 0.08), 0.4, 0.0, Color(1.0, 0.05, 0.08), 1.5)
-	_solid_box(Vector3(176.0, 6.6, -120.0), Vector3(28, 13.2, 20))
-	_city.footprints.append(Rect2(162.0, -130.0, 28.0, 20.0))
-	# Puertas dobles, marquesina, cartel y cruz roja.
-	_mesh_box(self, Vector3(cx, 1.3, front + 0.07), Vector3(3.0, 2.6, 0.1), glass)
-	for sx in [-1.0, 1.0]:
-		_mesh_box(self, Vector3(cx + sx * 1.6, 1.35, front + 0.1), Vector3(0.2, 2.7, 0.16), white)
-	_mesh_box(self, Vector3(cx, 1.3, front + 0.12), Vector3(0.08, 2.6, 0.1), white)
-	_mesh_box(self, Vector3(cx, 2.75, front + 0.1), Vector3(3.4, 0.2, 0.16), white)
-	_mesh_box(self, Vector3(cx, 3.05, front + 1.1), Vector3(6.0, 0.14, 2.2), white)
-	_mesh_box(self, Vector3(cx, 3.2, front + 2.15), Vector3(6.0, 0.3, 0.1), red)
-	for sx in [-1.0, 1.0]:
-		_mesh_box(self, Vector3(cx + sx * 2.9, 1.5, front + 2.0), Vector3(0.14, 3.0, 0.14), white)
-	_mesh_box(self, Vector3(cx, 4.2, front + 0.1), Vector3(11.0, 1.1, 0.14), white)
-	_label(self, "WESTBROOK GENERAL", Vector3(cx, 4.2, front + 0.19), 0.0, 120, Color(0.75, 0.05, 0.08), 0.0088)
-	_mesh_box(self, Vector3(cx, 6.6, front + 0.1), Vector3(2.6, 2.6, 0.14), white)
-	_mesh_box(self, Vector3(cx, 6.6, front + 0.18), Vector3(2.0, 0.6, 0.1), red)
-	_mesh_box(self, Vector3(cx, 6.6, front + 0.18), Vector3(0.6, 2.0, 0.1), red)
-	# Bahía de ambulancias a la derecha.
-	_label(self, "URGENCIAS", Vector3(184.5, 0.145, -107.0), 0.0, 90, Color(0.85, 0.05, 0.08), 0.009, true)
-	_mesh_box(self, Vector3(184.5, 3.6, front + 0.1), Vector3(7.0, 0.9, 0.14), red)
-	_label(self, "URGENCIAS", Vector3(184.5, 3.6, front + 0.19), 0.0, 100, Color(1, 1, 1), 0.0075)
-	var amb := Node3D.new()
-	amb.position = Vector3(184.5, 0.15, -108.2)
-	amb.rotation.y = PI * 0.5
-	add_child(amb)
-	var mi := MeshInstance3D.new()
-	mi.mesh = CarModel.build(2, Color(0.95, 0.95, 0.96), true)
-	amb.add_child(mi)
-	for sx in [-1.0, 1.0]:
-		_mesh_box(amb, Vector3(sx * 1.01, 0.95, -0.4), Vector3(0.02, 0.22, 3.4), red)
-		_mesh_box(amb, Vector3(sx * 1.01, 1.3, -0.4), Vector3(0.03, 0.5, 0.12), red)
-		_mesh_box(amb, Vector3(sx * 1.01, 1.3, -0.4), Vector3(0.03, 0.12, 0.5), red)
-	_mesh_box(amb, Vector3(-0.3, 1.86, -0.3), Vector3(0.3, 0.08, 0.3), _mat(Color(1, 0.05, 0.05), 0.3, 0.0, Color(1, 0.05, 0.03), 3.0))
-	_mesh_box(amb, Vector3(0.3, 1.86, -0.3), Vector3(0.3, 0.08, 0.3), _mat(Color(0.05, 0.2, 1), 0.3, 0.0, Color(0.05, 0.25, 1.0), 3.0))
-	var body := StaticBody3D.new()
-	var cs := CollisionShape3D.new()
-	var shape := BoxShape3D.new()
-	shape.size = Vector3(2.0, 1.8, 4.8)
-	cs.shape = shape
-	cs.position = Vector3(0, 0.95, 0)
-	body.add_child(cs)
-	amb.add_child(body)
-	var l := OmniLight3D.new()
-	l.light_color = Color(0.9, 1.0, 1.0)
-	l.light_energy = 1.2
-	l.omni_range = 8.0
-	l.shadow_enabled = false
-	l.position = Vector3(cx, 2.6, front + 1.4)
-	add_child(l)
 
 
 # ---------------------------------------------------------------- puntos de reaparición
@@ -330,7 +256,8 @@ func outside_transform() -> Transform3D:
 func radar_markers(from: Vector3) -> Array:
 	var out: Array = []
 	var defs := [
-		[Vector3(176.0, 0, -110.0), Color(0.88, 0.15, 0.18), "H"],
+		[Vector3(193.9, 0, -129.9), Color(0.88, 0.15, 0.18), "H"],
+		[Vector3(-59.0, 0, -20.0), Color(0.95, 0.65, 0.1), "M"],
 		[Vector3(122.25, 0, -110.0), Color(0.2, 0.35, 0.95), "P"],
 		[Vector3(70.5, 0, -110.0), Color(0.2, 0.7, 0.3), "$"],
 	]
@@ -352,6 +279,8 @@ func interaction(pos: Vector3, can_enter: bool) -> Dictionary:
 		var o := _origin(inside)
 		var size: Vector2 = p["size"]
 		var ex := o + Vector3(float(p["door_x"]), 0, size.y * 0.5 - 0.9)
+		if p.has("model"):
+			ex = o
 		if Vector2(pos.x - ex.x, pos.z - ex.z).length() < 1.9:
 			return {"label": "Salir", "action": func() -> void: leave()}
 		if p["id"] == "house" and Vector2(pos.x - (o.x + 4.4), pos.z - (o.z + 3.2)).length() < 2.0:
@@ -388,8 +317,16 @@ func enter_index(i: int) -> void:
 	var p: Dictionary = _places[i]
 	var size: Vector2 = p["size"]
 	var spawn := _origin(i) + Vector3(float(p["door_x"]), 0.1, size.y * 0.5 - 1.7)
-	main.player.place(spawn, 0.0)
-	_snap_camera(0.0, 3.0)
+	var syaw := 0.0
+	if p.has("model"):
+		spawn = _origin(i) + (p["spawn"] as Vector3)
+		syaw = float(p["spawn_yaw"])
+		_set_follow_light(true)
+	for n in _model_npcs:
+		if is_instance_valid(n):
+			n.player = main.player
+	main.player.place(spawn, syaw)
+	_snap_camera(syaw, 3.0)
 	await get_tree().create_timer(0.2).timeout
 	main.hud.fade_to(0.0, 0.35)
 	main.player.input_enabled = true
@@ -414,6 +351,7 @@ func _exit_to_street() -> void:
 	var t := outside_transform()
 	var yaw := t.basis.get_euler().y
 	inside = -1
+	_set_follow_light(false)
 	_restore_env()
 	for k in _roots:
 		(_roots[k] as Node3D).visible = false
@@ -691,6 +629,10 @@ func _ensure_built(i: int) -> void:
 	var p: Dictionary = _places[i]
 	var size: Vector2 = p["size"]
 	var h: float = p["height"]
+	if p.has("model"):
+		_fill_model_interior(root, p)
+		root.visible = false
+		return
 	match String(p["id"]):
 		"house":
 			_shell(root, size, h, float(p["door_x"]), _pbr("stucco_beige", Color(1.0, 0.95, 0.88), 3.0), _mat(Color(0.93, 0.9, 0.85), 0.9), Color(0.62, 0.46, 0.34))
@@ -704,8 +646,9 @@ func _ensure_built(i: int) -> void:
 		"hospital":
 			_shell(root, size, h, float(p["door_x"]), _pbr("stucco", Color(0.92, 0.98, 0.98), 3.0), _mat(Color(0.95, 0.97, 0.97), 0.9), Color(0.88, 0.92, 0.98))
 			_fill_hospital(root, size)
-	for n in root.find_children("*", "GeometryInstance3D", true, false):
-		(n as GeometryInstance3D).visibility_range_end = VIS_END
+	if not p.has("model"):
+		for n in root.find_children("*", "GeometryInstance3D", true, false):
+			(n as GeometryInstance3D).visibility_range_end = VIS_END
 	root.visible = false
 
 
@@ -988,6 +931,14 @@ func _fill_police(root: Node3D, size: Vector2) -> void:
 	_rbox(root, Vector3(hw - 1.3, 0.25, -hd + 0.5), Vector3(2.4, 0.5, 0.5), _mat(Color(0.35, 0.36, 0.38), 0.6, 0.4))
 	_rbox(root, Vector3(hw - 0.5, 0.2, -hd + 2.0), Vector3(0.9, 0.4, 1.4), _mat(Color(0.25, 0.26, 0.3), 0.8))
 	_label(root, "CELDA 1", Vector3(cx0 + 0.02, 2.55, -hd + cell_d * 0.5), 90.0, 40, Color(1, 0.4, 0.3), 0.005)
+	# Agentes de servicio (modelo real de policía con esqueleto).
+	for c in [["cop_reyes", Vector3(-1.0, 0.05, -3.3), 180.0], ["cop_park", Vector3(-5.2, 0.05, 0.6), 90.0]]:
+		var npc := NPC.new()
+		root.add_child(npc)
+		npc.setup(String(c[0]), "")
+		npc.position = c[1]
+		npc.face(root.position + (c[1] as Vector3) + Vector3(sin(deg_to_rad(float(c[2]))), 0, cos(deg_to_rad(float(c[2])))) * 3.0)
+		_model_npcs.append(npc)
 	# Luces: paneles fluorescentes azulados.
 	for lx in [-4.5, 0.0, 4.5]:
 		_ceiling_panel(root, Vector3(lx, h - 0.04, 0.5), Vector3(2.4, 0.06, 0.5), Color(0.92, 0.96, 1.0))
@@ -1038,6 +989,110 @@ func _fill_hospital(root: Node3D, size: Vector2) -> void:
 	for lx in [-5.0, 0.0, 5.0]:
 		for lz in [-3.0, 2.0]:
 			_ceiling_panel(root, Vector3(lx, h - 0.04, lz), Vector3(2.0, 0.06, 0.5), Color(0.92, 1.0, 0.98))
+	var doc := NPC.new()
+	root.add_child(doc)
+	doc.setup("doctor_pinch", "")
+	doc.position = Vector3(-2.2, 0.05, 1.2)
+	doc.face(root.position + Vector3(-2.2, 0, 6.0))
+	_model_npcs.append(doc)
 	_omni(root, Vector3(-3.5, 2.8, -1.5), Color(0.92, 1.0, 0.98), 1.2, 10.0, true)
 	_omni(root, Vector3(3.5, 2.8, 1.5), Color(0.92, 1.0, 0.98), 1.0, 10.0)
 	_omni(root, Vector3(-3.0, 2.8, 4.0), Color(0.9, 1.0, 0.98), 1.0, 7.0)
+
+
+# ---------------------------------------------------------------- interiores con modelo 3D
+
+func _model_mesh(path: String) -> Mesh:
+	var inst := (load(path) as PackedScene).instantiate()
+	var mi := inst.find_children("*", "MeshInstance3D", true, false)[0] as MeshInstance3D
+	var m := mi.mesh
+	inst.free()
+	return m
+
+
+## Altura del suelo (triángulo horizontal más alto por debajo de ymax) en el punto (x, z).
+func _floor_y(mesh: Mesh, x: float, z: float, ymax: float) -> float:
+	var best := -1000.0
+	for s in mesh.get_surface_count():
+		var a := mesh.surface_get_arrays(s)
+		var v: PackedVector3Array = a[Mesh.ARRAY_VERTEX]
+		var idx: PackedInt32Array = a[Mesh.ARRAY_INDEX]
+		for t in range(0, idx.size(), 3):
+			var p0 := v[idx[t]]
+			var p1 := v[idx[t + 1]]
+			var p2 := v[idx[t + 2]]
+			var top := maxf(p0.y, maxf(p1.y, p2.y))
+			if top > ymax or top <= best:
+				continue
+			if absf(p0.y - p1.y) > 0.05 or absf(p0.y - p2.y) > 0.05:
+				continue
+			var d := (p1.z - p2.z) * (p0.x - p2.x) + (p2.x - p1.x) * (p0.z - p2.z)
+			if absf(d) < 0.0001:
+				continue
+			var l1 := ((p1.z - p2.z) * (x - p2.x) + (p2.x - p1.x) * (z - p2.z)) / d
+			var l2 := ((p2.z - p0.z) * (x - p2.x) + (p0.x - p2.x) * (z - p2.z)) / d
+			if l1 >= 0.0 and l2 >= 0.0 and l1 + l2 <= 1.0:
+				best = top
+	return best
+
+
+func _fill_model_interior(root: Node3D, p: Dictionary) -> void:
+	var mesh := _model_mesh(String(p["model"]))
+	var anc: Vector2 = p["anchor"]
+	var fy := _floor_y(mesh, anc.x, anc.y, float(p["floor_ymax"]))
+	if p.has("floor_y"):
+		fy = float(p["floor_y"])
+	if fy < -500.0:
+		fy = 0.0
+	if p.get("double_sided", false):
+		# Parte del suelo del modelo tiene las normales invertidas: se dibuja por ambas caras.
+		for si in mesh.get_surface_count():
+			var sm := mesh.surface_get_material(si)
+			if sm is BaseMaterial3D:
+				(sm as BaseMaterial3D).cull_mode = BaseMaterial3D.CULL_DISABLED
+	var holder := Node3D.new()
+	holder.name = "Model"
+	holder.position = Vector3(-anc.x, -fy, -anc.y)
+	root.add_child(holder)
+	var mi := MeshInstance3D.new()
+	mi.mesh = mesh
+	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
+	holder.add_child(mi)
+	var faces := PackedVector3Array()
+	for s in mesh.get_surface_count():
+		var a := mesh.surface_get_arrays(s)
+		var v: PackedVector3Array = a[Mesh.ARRAY_VERTEX]
+		var idx: PackedInt32Array = a[Mesh.ARRAY_INDEX]
+		for t in idx:
+			faces.append(v[t])
+	var shape := ConcavePolygonShape3D.new()
+	shape.backface_collision = true
+	shape.set_faces(faces)
+	var body := StaticBody3D.new()
+	var cs := CollisionShape3D.new()
+	cs.shape = shape
+	body.add_child(cs)
+	holder.add_child(body)
+	for n in p.get("npcs", []):
+		var rel: Vector2 = n[1]
+		var gy := _floor_y(mesh, anc.x + rel.x, anc.y + rel.y, fy + 0.8)
+		var npc := NPC.new()
+		root.add_child(npc)
+		npc.setup(String(n[0]), "")
+		npc.position = Vector3(rel.x, (gy - fy if gy > -500.0 else 0.0) + 0.05, rel.y)
+		npc.face(root.position + Vector3(0, 0, 40.0))
+		_model_npcs.append(npc)
+
+
+func _set_follow_light(on: bool) -> void:
+	if on and (_follow_light == null or not is_instance_valid(_follow_light)):
+		_follow_light = OmniLight3D.new()
+		_follow_light.light_color = Color(0.95, 0.97, 1.0)
+		_follow_light.light_energy = 1.1
+		_follow_light.omni_range = 16.0
+		_follow_light.shadow_enabled = false
+		_follow_light.position = Vector3(0, 2.4, 0)
+		main.player.add_child(_follow_light)
+	elif not on and _follow_light != null and is_instance_valid(_follow_light):
+		_follow_light.queue_free()
+		_follow_light = null

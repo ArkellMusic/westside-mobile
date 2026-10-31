@@ -107,7 +107,7 @@ queda **por confirmar (descargado por el usuario de Sketchfab)** antes de public
 | Hospital | Westbrook General (exterior) | 8k -> 8k | licencia por confirmar (descargado por el usuario de Sketchfab) |
 | The Prison | Carcel estatal en el desierto este | 1,1M -> 123k | licencia por confirmar (descargado por el usuario de Sketchfab) |
 | Parking lot | Aparcamiento vallado de Westbrook | 23k -> 23k | licencia por confirmar (descargado por el usuario de Sketchfab) |
-| Police station | Interior de South Veyra PD | 92k -> 85k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Police station | No integrado (nivel abierto sin suelos completos); queda el interior procedural | 92k | licencia por confirmar (descargado por el usuario de Sketchfab) |
 | Subway | Interior "Estacion Westbrook" | 321k -> 119k | licencia por confirmar (descargado por el usuario de Sketchfab) |
 | Male police v1 | Agentes de policia (NPC); modelo Mixamo Fuse, sujeto a los terminos de Adobe/Mixamo | 34k -> 14k | licencia por confirmar (descargado por el usuario de Sketchfab) |
 | Doctor Pinch | Medico del hospital | 61k -> 15k | licencia por confirmar (descargado por el usuario de Sketchfab) |

@@ -10,9 +10,16 @@ const MODELS := {
 	"kiri86": "res://assets/cars/kiri86/kiri86.fbx",
 	"doutrive78": "res://assets/cars/doutrive78/doutrive78.fbx",
 	"eugene65": "res://assets/cars/eugene65/eugene65.fbx",
+	# Modelos de las descargas de Sketchfab (licencia por confirmar), preparados con
+	# tools/bake_asset.gd: <= 40k triángulos, texturas de 1K, sin logotipos de marca.
+	"cuda71": "res://assets/cars/cuda71/cuda71.scn",
+	"cuda71_lod": "res://assets/cars/cuda71/cuda71_lod.scn",   # ~8k tris para tráfico y aparcados
+	"patrol": "res://assets/cars/patrol/patrol.scn",
+	"patrol_lod": "res://assets/cars/patrol/patrol_lod.scn",
+	"ambulance": "res://assets/cars/ambulance/ambulance.scn",
 }
 ## Estilo procedural -> modelo real.
-const STYLE_MODEL := {0: "kiri86", 1: "kiri86", 2: "eugene65", 3: "doutrive78"}
+const STYLE_MODEL := {0: "kiri86", 1: "kiri86", 2: "eugene65", 3: "doutrive78", 4: "cuda71", 5: "patrol", 6: "ambulance"}
 
 static var _cache: Dictionary = {}       # id -> datos base
 static var _painted: Dictionary = {}     # id+color -> ArrayMesh
@@ -117,6 +124,9 @@ static func full_mesh(id: String, color: Color) -> ArrayMesh:
 	var key := "full" + id + color.to_html()
 	if _painted.has(key):
 		return _painted[key]
+	# Tráfico y coches aparcados salen muchas veces: usan la versión ligera si existe.
+	if available(id + "_lod"):
+		id = id + "_lod"
 	var d := data(id)
 	var body := painted_body(id, color)
 	var mesh := ArrayMesh.new()

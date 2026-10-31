@@ -38,7 +38,7 @@ func setup(count: int) -> void:
 	for i in count:
 		var tc := TrafficCar.new()
 		tc.sync_to_physics = false
-		var style := rng.randi() % 4
+		var style: int = CarModel.TRAFFIC_STYLES[rng.randi() % CarModel.TRAFFIC_STYLES.size()]
 		var mi := MeshInstance3D.new()
 		mi.mesh = CarModel.build(style, colors[rng.randi() % colors.size()], true)
 		tc.add_child(mi)

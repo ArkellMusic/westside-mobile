@@ -16,6 +16,8 @@ const MODELS := {
 	"loco": ["res://assets/characters/stance2/Meshy_AI_Streetwear_Stance_20261028_texture", 1.78],
 	"ghost": ["res://assets/characters/shadow/Meshy_AI_Shadow_Spread_20261028_texture", 1.83],
 	"viper": ["res://assets/characters/tatted/Meshy_AI_Tatted_in_Black_20261028_texture", 1.77],
+	# Policía (Mixamo Fuse, T-pose): malla ya decimada por tools/bake_asset.gd -> cop.scn
+	"cop": ["res://assets/characters/police/cop", 1.82, true],
 }
 
 const BONES := ["hips", "spine", "chest", "neck", "head",
@@ -29,13 +31,19 @@ const PARENT := {"spine": "hips", "chest": "spine", "neck": "chest", "head": "ne
 
 
 func _init() -> void:
+	# --only=cop,mack  limita los personajes a rigear (por defecto, todos).
+	var only := PackedStringArray()
+	for a in OS.get_cmdline_user_args():
+		if a.begins_with("--only="):
+			only = a.trim_prefix("--only=").split(",")
 	for id in MODELS:
-		_rig(id, MODELS[id][0], MODELS[id][1])
+		if only.is_empty() or only.has(id):
+			_rig(id, MODELS[id][0], MODELS[id][1], MODELS[id].size() > 2 and MODELS[id][2])
 	quit()
 
 
-func _rig(id: String, base: String, height: float) -> void:
-	var ps: PackedScene = load(base + ".fbx")
+func _rig(id: String, base: String, height: float, baked: bool = false) -> void:
+	var ps: PackedScene = load(base + (".scn" if baked else ".fbx"))
 	var src := ps.instantiate()
 	var mi: MeshInstance3D = src.find_children("*", "MeshInstance3D", true, false)[0]
 	var arrays := mi.mesh.surface_get_arrays(0)
@@ -155,16 +163,24 @@ func _rig(id: String, base: String, height: float) -> void:
 	var mesh := ArrayMesh.new()
 	mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, new_arrays)
 	var mat := StandardMaterial3D.new()
-	mat.albedo_texture = load(base + ".png")
-	mat.normal_enabled = true
-	mat.normal_texture = load(base + "_normal.png")
-	mat.metallic_texture = load(base + "_metallic.png")
-	mat.metallic = 1.0
-	if ResourceLoader.exists(base + "_roughness.png"):
-		mat.roughness_texture = load(base + "_roughness.png")
-		mat.roughness = 1.0
+	if baked:
+		# Material ya preparado (texturas reducidas, alfa de pelo/pestañas).
+		mat = (mi.mesh.surface_get_material(0) as StandardMaterial3D).duplicate()
+		mat.metallic = 0.0
+		mat.roughness = 0.8
+		mat.metallic_texture = null
+		mat.roughness_texture = null
 	else:
-		mat.roughness = 0.75
+		mat.albedo_texture = load(base + ".png")
+		mat.normal_enabled = true
+		mat.normal_texture = load(base + "_normal.png")
+		mat.metallic_texture = load(base + "_metallic.png")
+		mat.metallic = 1.0
+		if ResourceLoader.exists(base + "_roughness.png"):
+			mat.roughness_texture = load(base + "_roughness.png")
+			mat.roughness = 1.0
+		else:
+			mat.roughness = 0.75
 	mesh.surface_set_material(0, mat)
 
 	# 5) Esqueleto y bind poses.

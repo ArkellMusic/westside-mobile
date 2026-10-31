@@ -4,7 +4,11 @@ extends RefCounted
 ## que es el "adelante" de VehicleBody3D.
 ## Estilos: 0 sedán, 1 coupé clásico, 2 SUV, 3 pickup.
 
-const STYLE_NAMES := ["Veyra Sedan", "Westbrook Classic", "Canyon SUV", "Hauler Pickup"]
+const STYLE_NAMES := ["Veyra Sedan", "Westbrook Classic", "Canyon SUV", "Hauler Pickup",
+	"Brisa Cutlass '71", "Veyra PD Interceptor", "Ambulancia de Westbrook"]
+## Estilos que solo existen con modelo real (policía y ambulancia no salen en el tráfico
+## normal; el Cutlass sí).
+const TRAFFIC_STYLES := [0, 1, 2, 3, 4]
 
 const PROFILES := {
 	0: {
