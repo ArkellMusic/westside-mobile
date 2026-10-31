@@ -152,6 +152,73 @@ func _ready() -> void:
 	hud_test.queue_free()
 	gps.queue_free()
 
+	print("== Peatones Mixamo")
+	check(MixamoPerson.available(), "recursos Mixamo disponibles (modelos + librería)")
+	for mp in MixamoPerson.MODELS:
+		var ps := load(mp) as PackedScene
+		check(ps != null and ps.can_instantiate(), "modelo Mixamo carga: %s" % String(mp).get_file())
+	var mlib := load(MixamoPerson.LIB_PATH) as AnimationLibrary
+	check(mlib != null, "librería de animaciones Mixamo")
+	for an in ["walk", "run", "sit_talk", "phone", "idle"]:
+		check(mlib != null and mlib.has_animation(an), "animación %s en la librería" % an)
+	if mlib != null:
+		var walk_a := mlib.get_animation("walk")
+		check(walk_a.loop_mode == Animation.LOOP_LINEAR and mlib.get_animation("run").loop_mode == Animation.LOOP_LINEAR, "walk y run en bucle")
+		var root_ok := true
+		for an in ["walk", "run", "idle", "sit_talk", "phone"]:
+			var a := mlib.get_animation(an)
+			for t in a.get_track_count():
+				if a.track_get_type(t) == Animation.TYPE_POSITION_3D:
+					for k in a.track_get_key_count(t):
+						var v: Vector3 = a.track_get_key_value(t, k)
+						if absf(v.x) > 0.001 or absf(v.z) > 0.001:
+							root_ok = false
+		check(root_ok, "sin root motion (traslación X/Z de Hips bloqueada)")
+	var person_nodes := []
+	for k in MixamoPerson.MODELS.size():
+		var mpn := MixamoPerson.new()
+		add_child(mpn)
+		mpn.setup({"model": k, "tint": k, "scale": 1.0, "phase": 0.0})
+		person_nodes.append(mpn)
+	for mpn: MixamoPerson in person_nodes:
+		for sp in [0.0, 1.3, 5.5]:
+			for _f in 6:
+				mpn.animate(0.1, sp, true)
+				await get_tree().process_frame
+		var skm := mpn._skel
+		check(skm != null and skm.get_bone_count() >= 65 and mpn._player.current_animation == "run", "MixamoPerson %d se anima (%s)" % [mpn.look["model"], mpn._player.current_animation])
+		var hipm := skm.find_bone("mixamorig_Hips")
+		var feet := skm.global_transform * skm.get_bone_global_pose(skm.find_bone("mixamorig_LeftFoot")).origin
+		check(hipm >= 0 and feet.y > -0.05 and feet.y < 0.6, "MixamoPerson %d pisa el suelo (pie y=%.2f)" % [mpn.look["model"], feet.y])
+	var down: MixamoPerson = person_nodes[0]
+	down.animate(0.1, 0.0, false)
+	check(down._downed and not down._player.is_playing(), "MixamoPerson atropellado se congela")
+	down.animate(0.1, 1.2, true)
+	check(not down._downed, "MixamoPerson se recupera")
+	check(MixamoPerson.animated_count() <= MixamoPerson.MAX_ANIMATED, "máximo de peatones animados")
+	for mpn in person_nodes:
+		mpn.queue_free()
+	var peds_test := Pedestrians.new()
+	add_child(peds_test)
+	peds_test.setup(4)
+	check(peds_test.peds.size() == 4 and peds_test.peds[0]["node"] is MixamoPerson, "Pedestrians usa MixamoPerson")
+	for _i in 10:
+		await _physics(1)
+	peds_test.queue_free()
+	var phone_h := Humanoid.new()
+	add_child(phone_h)
+	phone_h.setup(GameData.character_look("mack"))
+	phone_h.set_seated(true)
+	phone_h.pose_idle_stance("phone")
+	var psk := phone_h._skel
+	var wrist := psk.get_bone_global_pose(psk.find_bone("r_hand")).origin
+	var headp := psk.get_bone_global_pose(psk.find_bone("head")).origin
+	check(phone_h._phone != null and phone_h._phone.visible, "pose phone: móvil visible en la mano")
+	check(wrist.distance_to(headp + Vector3(0, 0.1, 0)) < 0.2, "pose phone: mano junto a la oreja (%.2f m)" % wrist.distance_to(headp + Vector3(0, 0.1, 0)))
+	phone_h.set_seated(true)
+	check(not phone_h._phone.visible, "el móvil se oculta al cambiar de pose")
+	phone_h.queue_free()
+
 	print("== Resultado: %d correctas, %d fallos" % [_passed, _failed])
 	get_tree().quit(1 if _failed > 0 else 0)
 

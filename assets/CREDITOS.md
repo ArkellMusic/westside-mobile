@@ -1,5 +1,15 @@
 # Créditos de recursos
 
+## Personajes y animaciones de Mixamo (Adobe)
+
+Peatones del juego (`assets/characters/mixamo/`, `assets/animations/mixamo/lib.res`): personajes
+Ch06, Ch07, Ch12, Ch22, Ch28 y Remy, y animaciones Start Walking, Running, Sitting Talking y
+Talking On Phone, de **Mixamo (Adobe), https://www.mixamo.com**. Uso libre en videojuegos y
+proyectos comerciales según los términos de Mixamo (se pueden incluir en el juego; no se pueden
+redistribuir por separado como recurso). Los modelos se decimaron a unos 15k triángulos, las
+texturas se redujeron a 1K y se unificó el esqueleto como `mixamorig_*` con
+`tools/bake_chars.gd` / `tools/bake_anims.gd`. Los FBX originales no van en el repositorio.
+
 Texturas y cielos de Poly Haven (https://polyhaven.com), licencia CC0.
 
 - asphalt: asphalt_06 (Poly Haven, CC0)
@@ -79,3 +89,26 @@ Texturas y cielos de Poly Haven (https://polyhaven.com), licencia CC0.
 - modelo steel_frame_shelves_03: steel_frame_shelves_03 (Poly Haven, CC0)
 - modelo security_camera_01: security_camera_01 (Poly Haven, CC0)
 - modelo wetfloorsign_01: WetFloorSign_01 (Poly Haven, CC0)
+
+## Edificios, vehiculos y personajes de Sketchfab
+
+Modelos descargados por el usuario de Sketchfab. Se optimizaron con `tools/bake_asset.gd`
+(fusion por material, decimacion, texturas a 1K, escala y orientacion normalizadas). Los zips
+originales no incluian archivo de licencia, salvo el helicoptero. Salvo indicacion, la licencia
+queda **por confirmar (descargado por el usuario de Sketchfab)** antes de publicar en la App Store.
+
+| Modelo | Uso en el juego | Triangulos (original -> juego) | Licencia |
+| --- | --- | --- | --- |
+| Plymouth Hemi Cuda 1971 (glb, pista "wwwvecarzcom") | "Brisa Cutlass '71", trafico, aparcado y conducible; logos y matricula retirados | 237k -> 38k (LOD 7k) | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| 2013 Ford Shelby GT500 patrol | "Veyra PD Interceptor"; rotulos "RED VIEW COUNTY" y escudo sustituidos por "SOUTH VEYRA" / SVPD | 84k -> 38k (LOD 10k) | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Ambulance | "Ambulancia de Westbrook", junto al hospital y conducible | 4k -> 4k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Harley-Davidson police | Motos decorativas de la comisaria | 659k -> 27k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| MD-500 (War Thunder) por torreylee070 | Helicoptero estatico en el helipuerto del hospital | 160k -> 26k | CC-BY 4.0, autor torreylee070, https://sketchfab.com/3d-models/md-500-war-thunder-1b21240fb6fb4d228e0dd6847e044b50 |
+| Hospital | Westbrook General (exterior) | 8k -> 8k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| The Prison | Carcel estatal en el desierto este | 1,1M -> 123k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Parking lot | Aparcamiento vallado de Westbrook | 23k -> 23k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Police station | Interior de South Veyra PD | 92k -> 85k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Subway | Interior "Estacion Westbrook" | 321k -> 119k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Male police v1 | Agentes de policia (NPC); modelo Mixamo Fuse, sujeto a los terminos de Adobe/Mixamo | 34k -> 14k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Doctor Pinch | Medico del hospital | 61k -> 15k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+| Police (policia antiguo low-poly) | Guardia de la comisaria | 8k -> 8k | licencia por confirmar (descargado por el usuario de Sketchfab) |

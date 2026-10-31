@@ -25,7 +25,9 @@ var _knee := [null, null]
 var _seated: bool = false
 var _built: bool = false
 var _skel: Skeleton3D = null
+var _static_model: bool = false   # modelo sin esqueleto humanoide (se queda en su pose)
 var _bones: Dictionary = {}
+var _phone: Node3D = null   # móvil de la pose "phone"
 
 static var _mat_cache: Dictionary = {}
 static var _mesh_cache: Dictionary = {}
@@ -76,12 +78,16 @@ func setup(appearance: Dictionary) -> void:
 		remove_child(c)
 		c.free()
 	_skel = null
+	_static_model = false
 	_built = true
 	var model_path := String(look.get("model", ""))
 	if model_path != "" and ResourceLoader.exists(model_path):
 		var model: Node3D = (load(model_path) as PackedScene).instantiate()
 		add_child(model)
-		_skel = model.get_node("Skeleton3D")
+		_skel = model.get_node_or_null("Skeleton3D")
+		if _skel == null:
+			_static_model = true   # p. ej. el médico y el guardia de la comisaría
+			return
 		for i in _skel.get_bone_count():
 			_bones[_skel.get_bone_name(i)] = i
 		_apply(_new_pose())
@@ -236,6 +242,8 @@ static func _new_pose() -> Dictionary:
 func animate(delta: float, speed: float, on_floor: bool) -> void:
 	if not _built or _seated:
 		return
+	if _phone != null and _phone.visible:
+		_phone.visible = false
 	_blend_speed = lerpf(_blend_speed, speed, clampf(delta * 8.0, 0.0, 1.0))
 	var s := _blend_speed
 	var run := clampf((s - 3.0) / 3.0, 0.0, 1.0)
@@ -282,9 +290,16 @@ func pose_idle_stance(kind: String) -> void:
 			p["elbow"] = [1.05, 1.05]
 			p["arm_out"] = [-0.18, -0.18]
 		"phone":
-			p["arm"] = [0.0, 0.55]
-			p["elbow"] = [0.15, 2.45]
-			p["arm_out"] = [0.08, -0.05]
+			# Antebrazo derecho doblado hasta la oreja (valores resueltos numéricamente sobre el
+			# esqueleto auto_rig: muñeca junto a la oreja, codo bajo y hacia delante).
+			# arm_twist gira el brazo sobre su eje para llevar la mano hacia la cabeza.
+			if _seated:
+				p = _seated_pose()
+			p["arm"][1] = 1.0
+			p["elbow"][1] = 2.65
+			p["arm_out"][1] = -0.30
+			p["arm_twist"] = [0.0, -0.55]
+	_set_phone(kind == "phone")
 	_apply(p)
 
 
@@ -293,16 +308,57 @@ func set_seated(on: bool) -> void:
 	_seated = on
 	if not _built:
 		return
+	_set_phone(false)
+	_apply(_seated_pose() if on else _new_pose())
+
+
+static func _seated_pose() -> Dictionary:
 	var p := _new_pose()
-	if on:
-		p["leg"] = [1.45, 1.45]
-		p["knee"] = [1.45, 1.45]
-		p["arm"] = [0.85, 0.85]
-		p["elbow"] = [0.5, 0.5]
-	_apply(p)
+	p["leg"] = [1.45, 1.45]
+	p["knee"] = [1.45, 1.45]
+	p["arm"] = [0.85, 0.85]
+	p["elbow"] = [0.5, 0.5]
+	return p
+
+
+## Móvil (caja negra) pegado a la mano derecha; solo se ve con la pose "phone".
+func _set_phone(on: bool) -> void:
+	if on and _phone == null:
+		_phone = _make_phone()
+	if _phone != null:
+		_phone.visible = on
+
+
+func _make_phone() -> Node3D:
+	var mi := MeshInstance3D.new()
+	mi.name = "Movil"
+	var bm := BoxMesh.new()
+	var m := StandardMaterial3D.new()
+	m.albedo_color = Color(0.03, 0.03, 0.04)
+	m.roughness = 0.6
+	m.metallic = 0.0
+	bm.material = m
+	mi.mesh = bm
+	if _skel:
+		# Hueso de la mano derecha: eje X local = dirección del antebrazo (modelo en pose T)
+		bm.size = Vector3(0.15, 0.015, 0.068)
+		mi.position = Vector3(0.07, -0.024, 0.0)
+		var att := BoneAttachment3D.new()
+		att.name = "MovilAdjunto"
+		_skel.add_child(att)
+		att.bone_name = "r_hand"
+		att.add_child(mi)
+		return att
+	# Procedural: en el extremo del antebrazo derecho
+	bm.size = Vector3(0.07, 0.14, 0.012)
+	mi.position = Vector3(-0.02, -0.34, 0.0)
+	_elbow[1].add_child(mi)
+	return mi
 
 
 func _apply(p: Dictionary) -> void:
+	if _static_model:
+		return
 	if _skel:
 		_apply_rigged(p)
 		return
@@ -311,6 +367,7 @@ func _apply(p: Dictionary) -> void:
 		_knee[i].rotation.x = -float(p["knee"][i])
 		_arm[i].rotation.x = p["arm"][i]
 		_arm[i].rotation.z = (-1.0 if i == 0 else 1.0) * float(p["arm_out"][i])
+		_arm[i].rotation.y = float((p["arm_twist"] as Array)[i]) if p.has("arm_twist") else 0.0
 		_elbow[i].rotation.x = p["elbow"][i]
 	_torso.rotation = Vector3(p["torso_x"], p["torso_y"], 0)
 	_head.rotation.x = p["head_x"]
@@ -330,7 +387,8 @@ func _apply_rigged(p: Dictionary) -> void:
 		_skel.set_bone_pose_rotation(b[pre + "thigh"], Quaternion(Vector3.RIGHT, p["leg"][i]))
 		_skel.set_bone_pose_rotation(b[pre + "shin"], Quaternion(Vector3.RIGHT, -float(p["knee"][i])))
 		var hang := sgn * (PI * 0.5 - float(p["arm_out"][i]))
-		_skel.set_bone_pose_rotation(b[pre + "upperarm"], Quaternion(Vector3.RIGHT, p["arm"][i]) * Quaternion(Vector3.BACK, hang))
+		var tw: float = float((p["arm_twist"] as Array)[i]) if p.has("arm_twist") else 0.0
+		_skel.set_bone_pose_rotation(b[pre + "upperarm"], Quaternion(Vector3.RIGHT, p["arm"][i]) * Quaternion(Vector3.BACK, hang) * Quaternion(Vector3.RIGHT, tw))
 		_skel.set_bone_pose_rotation(b[pre + "forearm"], Quaternion(Vector3.UP, -sgn * float(p["elbow"][i])))
 
 

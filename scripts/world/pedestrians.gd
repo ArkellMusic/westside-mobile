@@ -10,17 +10,17 @@ var downed: Array = []   # peatones atropellados (volando / tumbados)
 var vehicle: Node3D = null   # coche del jugador cuando conduce
 var danger: Array = []  # nodos peligrosos (coche del jugador)
 var rng := RandomNumberGenerator.new()
+var _use_mixamo: bool = false
 
 
 func setup(count: int) -> void:
 	rng.seed = 404
+	_use_mixamo = MixamoPerson.available()
 	var blocks := CityLayout.blocks()
 	for i in count:
 		var blk: Dictionary = blocks[rng.randi() % blocks.size()]
 		var r: Rect2 = (blk["rect"] as Rect2).grow(-CityLayout.SIDEWALK * 0.5)
-		var h := Humanoid.new()
-		add_child(h)
-		h.setup(Humanoid.random_look(rng))
+		var h: Node3D = _make_person()
 		var corners := [r.position, Vector2(r.end.x, r.position.y), r.end, Vector2(r.position.x, r.end.y)]
 		if rng.randf() < 0.5:
 			corners.reverse()
@@ -33,11 +33,30 @@ func setup(count: int) -> void:
 		peds.append({"node": h, "corners": corners, "next": (start + 1) % 4, "speed": rng.randf_range(1.1, 1.6), "dodge": 0.0, "dodger": rng.randf() < 0.5})
 
 
+## Peatón realista de Mixamo; Humanoid (procedural) como respaldo si falta el asset.
+func _make_person() -> Node3D:
+	if _use_mixamo:
+		var m := MixamoPerson.new()
+		add_child(m)
+		m.setup(MixamoPerson.random_look(rng))
+		return m
+	var h := Humanoid.new()
+	add_child(h)
+	h.setup(Humanoid.random_look(rng))
+	return h
+
+
+## Escala propia del peatón (variación de MixamoPerson); 1 para Humanoid.
+func _bs(h: Node3D) -> float:
+	var b = h.get("base_scale")
+	return float(b) if b != null else 1.0
+
+
 func _physics_process(delta: float) -> void:
 	_check_hits()
 	_update_downed(delta)
 	for ped in peds:
-		var h: Humanoid = ped["node"]
+		var h = ped["node"]
 		var target: Vector2 = ped["corners"][ped["next"]]
 		var p := Vector2(h.position.x, h.position.z)
 		var d := target - p
@@ -85,7 +104,7 @@ func _check_hits() -> void:
 	var inv := car.global_transform.affine_inverse()
 	var cp := car.global_position
 	for i in range(peds.size() - 1, -1, -1):
-		var h: Humanoid = peds[i]["node"]
+		var h: Node3D = peds[i]["node"]
 		var dx := h.global_position.x - cp.x
 		var dz := h.global_position.z - cp.z
 		if dx * dx + dz * dz > 36.0:
@@ -98,7 +117,7 @@ func _check_hits() -> void:
 func _knock_down(i: int, car_vel: Vector3, spd: float) -> void:
 	var ped: Dictionary = peds[i]
 	peds.remove_at(i)
-	var h: Humanoid = ped["node"]
+	var h = ped["node"]
 	var v := car_vel * 0.8 + Vector3.UP * 3.0
 	downed.append({"node": h, "ped": ped, "vel": v, "state": 0, "t": 0.0,
 		"spin": Vector3(rng.randf_range(4.0, 8.0), rng.randf_range(-3.0, 3.0), 0.0)})
@@ -109,7 +128,7 @@ func _knock_down(i: int, car_vel: Vector3, spd: float) -> void:
 func _update_downed(delta: float) -> void:
 	for i in range(downed.size() - 1, -1, -1):
 		var d: Dictionary = downed[i]
-		var h: Humanoid = d["node"]
+		var h = d["node"]
 		d["t"] = float(d["t"]) + delta
 		match int(d["state"]):
 			0:
@@ -122,7 +141,8 @@ func _update_downed(delta: float) -> void:
 				h.rotation.y += sp.y * delta
 				h.animate(delta, 6.0, false)
 				if h.position.y <= 0.12 and float(d["t"]) > 0.15:
-					h.position.y = 0.2
+					var ly = h.get("lie_y")
+					h.position.y = float(ly) if ly != null else 0.2
 					h.rotation = Vector3(PI * 0.5, h.rotation.y, 0.0)
 					d["state"] = 1
 					d["t"] = 0.0
@@ -132,7 +152,7 @@ func _update_downed(delta: float) -> void:
 					d["t"] = 0.0
 			2:
 				var k := clampf(1.0 - float(d["t"]) / 0.6, 0.0, 1.0)
-				h.scale = Vector3.ONE * maxf(k, 0.01)
+				h.scale = Vector3.ONE * _bs(h) * maxf(k, 0.01)
 				if float(d["t"]) >= 0.6:
 					_respawn(d["ped"])
 					downed.remove_at(i)
@@ -147,7 +167,7 @@ func _player_pos() -> Vector3:
 
 
 func _respawn(ped: Dictionary) -> void:
-	var h: Humanoid = ped["node"]
+	var h = ped["node"]
 	var blocks := CityLayout.blocks()
 	var pp := _player_pos()
 	var p := Vector2.ZERO
@@ -161,7 +181,7 @@ func _respawn(ped: Dictionary) -> void:
 		p = (corners[start] as Vector2).lerp(corners[(start + 1) % 4], rng.randf())
 		if Vector2(pp.x, pp.z).distance_to(p) > 60.0:
 			break
-	h.scale = Vector3.ONE
+	h.scale = Vector3.ONE * _bs(h)
 	h.rotation = Vector3.ZERO
 	h.position = Vector3(p.x, 0.12, p.y)
 	ped["corners"] = corners

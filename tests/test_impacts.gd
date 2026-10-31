@@ -51,7 +51,7 @@ func _ready() -> void:
 	peds.setup(1)
 	peds.vehicle = car
 	peds.pedestrian_hit.connect(func(_p: Vector3, _s: float) -> void: _hits += 1)
-	var h: Humanoid = peds.peds[0]["node"]
+	var h: Node3D = peds.peds[0]["node"]
 	peds.peds[0]["corners"] = [Vector2(0, 8), Vector2(0, 8.1), Vector2(0, 8.2), Vector2(0, 8.3)]
 	peds.peds[0]["dodger"] = false
 	h.position = Vector3(0, 0.12, 8.0)
