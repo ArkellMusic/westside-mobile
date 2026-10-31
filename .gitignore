@@ -19,3 +19,4 @@ screenshots_tmp/
 Thumbs.db
 *_texture_?.png
 *_texture_?.png.import
+__pycache__/
