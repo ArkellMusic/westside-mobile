@@ -166,18 +166,7 @@ func _add_bus_interior() -> void:
 	var seat := BusModel.window_seat()
 	mack.position = Vector3(seat.x, seat.y - 0.5, seat.z)
 	mack.rotation.y = PI
-	var phone := MeshInstance3D.new()
-	var pm := BoxMesh.new()
-	pm.size = Vector3(0.08, 0.15, 0.01)
-	var mat := StandardMaterial3D.new()
-	mat.albedo_color = Color(0.6, 0.75, 1.0)
-	mat.emission_enabled = true
-	mat.emission = Color(0.6, 0.75, 1.0)
-	mat.emission_energy_multiplier = 2.0
-	pm.material = mat
-	phone.mesh = pm
-	phone.position = Vector3(seat.x - 0.1, seat.y + 1.35, seat.z - 0.12)
-	bus.add_child(phone)
+	# El móvil lo lleva Mack en la mano (pose "phone" de Humanoid); aquí solo su luz.
 	phone_light = OmniLight3D.new()
 	phone_light.light_color = Color(0.65, 0.78, 1.0)
 	phone_light.omni_range = 1.4
