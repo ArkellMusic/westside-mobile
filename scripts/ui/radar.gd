@@ -2,8 +2,9 @@ class_name Radar
 extends Control
 ## Radar OVALADO estilo mapa de GTA SA: tierra beige, parques verdes, agua azul, edificios
 ## blancos y calles negras. El mapa gira para que la dirección de la cámara quede arriba
-## y se mueve suavemente. Cubre todo el mundo: Westbrook, playa y muelle, río y puente,
-## autopista hasta el desierto y montañas (fuera de lo dibujado = tierra de desierto).
+## y se mueve suavemente. Cubre todo el estado (StateLayout): costa e islas, bahías y
+## lago, desierto, montañas, ciudades, autopistas y zonas bloqueadas (sombreadas), más
+## el detalle de Westbrook (manzanas, playa, muelle, río y puente).
 ## Convención: yaw 0 mira hacia -Z (norte). Mundo (x, z) -> pantalla = rel.rotated(view_yaw).
 
 const DESERT_COLOR := Color("#B9A27B")
@@ -17,16 +18,13 @@ const BUILDING_COLOR := Color("#F4F3EE")
 const BUILDING_EDGE := Color("#A9A69C")
 const PIER_COLOR := Color("#7A5A3A")
 const MOUNTAIN_COLOR := Color("#8C7A5E")
+const LAND_COLOR := Color("#C9B98F")
+const RED_DESERT_COLOR := Color("#C98E62")
+const CITY_COLOR := Color("#BDB6A6")
+const LOCKED_TINT := Color(0.05, 0.05, 0.08, 0.42)
 const BORDER_COLOR := Color.BLACK
 const BORDER_W := 9.0
 const ROUTE_W := 4.0
-## Crestas de montaña (centro z o x, semiancho): de city_builder._build_mountains().
-const MOUNTAIN_RECTS := [
-	Rect2(-2200.0, -1920.0, 5000.0, 840.0),
-	Rect2(-1600.0, -1310.0, 3000.0, 520.0),
-	Rect2(920.0, -900.0, 760.0, 740.0),
-	Rect2(920.0, 160.0, 760.0, 740.0),
-]
 
 var player_pos: Vector3 = Vector3.ZERO:
 	set(v):
@@ -133,16 +131,23 @@ func _draw() -> void:
 	var ell := _ellipse(rad)
 	draw_set_transform(center, 0.0, Vector2.ONE)
 
-	# Tierra / desierto (todo lo que no está dibujado)
-	draw_colored_polygon(ell, DESERT_COLOR)
-
-	# Montañas
-	for mr in MOUNTAIN_RECTS:
-		_fill_world_rect(mr, MOUNTAIN_COLOR, ppm, ell)
-	# Océano, playa, río
-	_fill_world_rect(Rect2(-4000.0, -4000.0, 4000.0 + CityLayout.SHORE_X, 8000.0), OCEAN_COLOR, ppm, ell)
-	_fill_world_rect(Rect2(CityLayout.SHORE_X, -4000.0, CityLayout.BEACH_EAST - CityLayout.SHORE_X, 8000.0), SAND_COLOR, ppm, ell)
-	_fill_world_rect(Rect2(CityLayout.RIVER_X0, -4000.0, CityLayout.RIVER_X1 - CityLayout.RIVER_X0, 8000.0), OCEAN_COLOR, ppm, ell)
+	# Mar de fondo y tierra del estado
+	draw_colored_polygon(ell, OCEAN_COLOR)
+	for poly in StateLayout.land_polygons():
+		_fill_world_poly(poly, LAND_COLOR, ppm, ell)
+	for poly in StateLayout.desert_polygons():
+		_fill_world_poly(poly, RED_DESERT_COLOR, ppm, ell)
+	_fill_world_poly(_mountain_poly(), MOUNTAIN_COLOR, ppm, ell)
+	for poly in StateLayout.water_polygons():
+		_fill_world_poly(poly, OCEAN_COLOR, ppm, ell)
+	for id in StateLayout.CITIES:
+		_fill_world_rect(StateLayout.CITIES[id]["rect"], CITY_COLOR, ppm, ell)
+	for c in StateLayout.canals():
+		_fill_world_rect(c, OCEAN_COLOR, ppm, ell)
+	# Playa y río de Westbrook
+	var hole := StateLayout.WB_HOLE
+	_fill_world_rect(Rect2(CityLayout.SHORE_X, hole.position.y - 400.0, CityLayout.BEACH_EAST - CityLayout.SHORE_X, hole.size.y + 800.0), SAND_COLOR, ppm, ell)
+	_fill_world_rect(Rect2(CityLayout.RIVER_X0, StateLayout.RIVER_Z0, CityLayout.RIVER_X1 - CityLayout.RIVER_X0, StateLayout.RIVER_Z1 - StateLayout.RIVER_Z0), OCEAN_COLOR, ppm, ell)
 
 	# Manzanas: parques verdes (residencial), plazas grises (comercial) y paseo de arena
 	for blk in _blocks:
@@ -164,7 +169,28 @@ func _draw() -> void:
 		for seg in _roads:
 			var s: Dictionary = seg
 			_road_line(s["a"], s["b"], float(s["width"]), pass_i, ppm, rad)
-		_road_line(Vector2(CityLayout.EAST_EDGE, CityLayout.HIGHWAY_Z), Vector2(CityLayout.HIGHWAY_END_X, CityLayout.HIGHWAY_Z), 16.0, pass_i, ppm, rad)
+		_road_line(Vector2(CityLayout.EAST_EDGE, CityLayout.HIGHWAY_Z), Vector2(StateWorld.HW_START_X, CityLayout.HIGHWAY_Z), 16.0, pass_i, ppm, rad)
+		var reach_r := (_zoom_m if _zoom_m > 0.0 else range_m) * 1.6 + 40.0
+		var me := Vector2(_disp_pos.x, _disp_pos.z)
+		for rd in StateLayout.roads():
+			var pts: PackedVector2Array = rd["pts"]
+			for k in range(pts.size() - 1):
+				if pts[k].distance_to(me) > reach_r and pts[k + 1].distance_to(me) > reach_r:
+					continue
+				_road_line(pts[k], pts[k + 1], float(rd["w"]), pass_i, ppm, rad)
+		for id in StateLayout.CITIES:
+			var g := StateLayout.city_grid(id)
+			var gr: Rect2 = g["rect"]
+			if gr.grow(reach_r).has_point(me):
+				for x in g["xs"]:
+					_road_line(Vector2(x, gr.position.y), Vector2(x, gr.end.y), 10.0, pass_i, ppm, rad)
+				for z in g["zs"]:
+					_road_line(Vector2(gr.position.x, z), Vector2(gr.end.x, z), 10.0, pass_i, ppm, rad)
+
+	# Zonas bloqueadas por misión: sombreadas
+	for id in StateLayout.ZONE_ORDER:
+		if not GameState.is_zone_unlocked(id):
+			_fill_world_poly(StateLayout.zone_polygon(id), LOCKED_TINT, ppm, ell)
 
 	# Edificios
 	var reach := (_zoom_m if _zoom_m > 0.0 else range_m) * 1.5
@@ -269,6 +295,24 @@ func _draw_route(route: PackedVector2Array, color: Color, ppm: float, rad: Vecto
 		draw_line(c[0], c[1], color, ROUTE_W, true)
 		draw_circle(c[0], ROUTE_W * 0.5, color)
 		draw_circle(c[1], ROUTE_W * 0.5, color)
+
+
+var _mtn_poly := PackedVector2Array()
+
+
+func _mountain_poly() -> PackedVector2Array:
+	if _mtn_poly.is_empty():
+		_mtn_poly = PackedVector2Array([Vector2(500, -2600), Vector2(1500, -2520), Vector2(2600, -2600), Vector2(3600, -2560), Vector2(4200, -2700),
+			Vector2(4300, -3000), Vector2(3000, -3150), Vector2(1500, -3150), Vector2(600, -3000)])
+	return _mtn_poly
+
+
+func _fill_world_poly(poly: PackedVector2Array, color: Color, ppm: float, ell: PackedVector2Array) -> void:
+	var pts := PackedVector2Array()
+	pts.resize(poly.size())
+	for i in poly.size():
+		pts[i] = _to_local(poly[i].x, poly[i].y, ppm)
+	_draw_clipped(pts, color, ell)
 
 
 func _fill_world_rect(rect: Rect2, color: Color, ppm: float, ell: PackedVector2Array) -> void:

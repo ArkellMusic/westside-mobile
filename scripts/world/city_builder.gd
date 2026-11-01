@@ -60,8 +60,6 @@ func build() -> void:
 	_build_river_and_bridge()
 	_build_desert()
 	_build_skyline()
-	_build_mountains()
-	_build_bounds()
 
 
 # ---------------------------------------------------------------- materiales
@@ -155,11 +153,13 @@ func _flat_quad(b: MeshBuilder, key: String, r: Rect2, y: float) -> void:
 func _build_ground() -> void:
 	var b := MeshBuilder.new()
 	b.surface("dirt", mat_dirt)
-	_flat_quad(b, "dirt", Rect2(CityLayout.BEACH_EAST, -3000, CityLayout.RIVER_X0 - CityLayout.BEACH_EAST, 6000), -0.02)
-	_flat_quad(b, "dirt", Rect2(CityLayout.RIVER_X1, -3000, 4600, 6000), -0.02)
+	# Solo Westbrook: fuera de aquí el suelo es el terreno del estado (StateWorld).
+	var hole := StateLayout.WB_HOLE
+	var r := Rect2(CityLayout.BEACH_EAST, hole.position.y, CityLayout.RIVER_X0 - CityLayout.BEACH_EAST, hole.size.y)
+	_flat_quad(b, "dirt", r, -0.02)
 	_mesh_instance(b.commit(), "Ground", false)
 	# Colisión del terreno firme (la playa tiene la suya propia).
-	_collider_box(Vector3(CityLayout.BEACH_EAST + 1900.0, -0.5, 0), Vector3(3800, 1.0, 6000))
+	_collider_box(Vector3(r.get_center().x, -0.5, r.get_center().y), Vector3(r.size.x, 1.0, r.size.y))
 
 
 func _build_blocks_and_sidewalks() -> void:
@@ -651,30 +651,21 @@ func _build_river_and_bridge() -> void:
 	var x0 := CityLayout.RIVER_X0
 	var x1 := CityLayout.RIVER_X1
 	var depth := -5.0
-	var z0 := -3000.0
-	var z1 := 3000.0
+	var z0 := StateLayout.RIVER_Z0
+	var z1 := StateLayout.RIVER_Z1
 	b.quad("concrete", Vector3(x0, 0, z0), Vector3(x0 + 15.0, depth, z0), Vector3(x0 + 15.0, depth, z1), Vector3(x0, 0, z1), Vector3(0.32, 0.95, 0).normalized())
 	b.quad("concrete", Vector3(x0 + 15.0, depth, z0), Vector3(x1 - 15.0, depth, z0), Vector3(x1 - 15.0, depth, z1), Vector3(x0 + 15.0, depth, z1), Vector3.UP)
 	b.quad("concrete", Vector3(x1 - 15.0, depth, z0), Vector3(x1, 0, z0), Vector3(x1, 0, z1), Vector3(x1 - 15.0, depth, z1), Vector3(-0.32, 0.95, 0).normalized())
 	_mesh_instance(b.commit(), "RiverChannel", false)
-	var river_water := mat_water.duplicate() as ShaderMaterial
-	river_water.set_shader_parameter("shore_x", 99999.0)
-	river_water.set_shader_parameter("shallow", Color(0.18, 0.32, 0.30))
-	var water := MeshInstance3D.new()
-	var plane := PlaneMesh.new()
-	plane.size = Vector2(x1 - x0 - 26.0, 6000.0)
-	plane.material = river_water
-	water.mesh = plane
-	water.position = Vector3((x0 + x1) * 0.5, depth + 0.4, 0)
-	water.name = "RiverWater"
-	add_child(water)
+	# El agua del río es la del océano del estado (nivel del mar dentro del canal).
 
 	# Autopista hacia el este (entrada desde el desierto) y puente sobre el río.
 	var r := MeshBuilder.new()
 	r.surface("road", mat_road)
 	var w := 16.0
 	var start := CityLayout.EAST_EDGE + 7.0
-	_road_piece_x(r, CityLayout.HIGHWAY_Z, w, start, CityLayout.HIGHWAY_END_X, 0.05)
+	# Hasta pasado el puente; el resto de la autopista lo dibuja StateWorld.
+	_road_piece_x(r, CityLayout.HIGHWAY_Z, w, start, StateWorld.HW_START_X, 0.05)
 	_mesh_instance(r.commit(), "Highway", false)
 	var br := MeshBuilder.new()
 	br.surface("deck", MeshBuilder.material(Color(0.62, 0.61, 0.58), 0.9))
@@ -683,6 +674,7 @@ func _build_river_and_bridge() -> void:
 	var bx1 := x1 + 6.0
 	var cx := (bx0 + bx1) * 0.5
 	br.box("deck", Vector3(cx, -0.6, 0), Vector3(bx1 - bx0, 1.2, w + 3.0))
+	_collider_box(Vector3(cx, -0.6, 0), Vector3(bx1 - bx0, 1.2, w + 3.0))
 	for sz in [-1.0, 1.0]:
 		br.box("deck", Vector3(cx, 0.55, sz * (w * 0.5 + 1.0)), Vector3(bx1 - bx0, 1.0, 0.5))
 		# Arco atirantado.
@@ -715,29 +707,7 @@ func _build_desert() -> void:
 		poles.append(Transform3D(Basis.IDENTITY, Vector3(x, 0, -14.0)))
 		x += 45.0
 	_multimesh(b.commit(), poles, "TelegraphPoles", false)
-	var cactus := MeshBuilder.new()
-	cactus.surface("c", MeshBuilder.material(Color(0.26, 0.38, 0.2), 0.85))
-	cactus.cylinder("c", Vector3.ZERO, 0.35, 0.3, 4.2, 8)
-	cactus.sphere("c", Vector3(0, 4.2, 0), Vector3(0.3, 0.3, 0.3), 3, 8)
-	cactus.cylinder("c", Vector3(0.35, 1.6, 0), 0.22, 0.2, 1.6, 6, Transform3D(Basis(Vector3.FORWARD, 0.3), Vector3.ZERO))
-	cactus.cylinder("c", Vector3(-0.3, 2.2, 0), 0.2, 0.18, 1.3, 6, Transform3D(Basis(Vector3.FORWARD, -0.25), Vector3.ZERO))
-	var rocks := MeshBuilder.new()
-	rocks.surface("r", MeshBuilder.material(Color(0.55, 0.36, 0.24), 0.95))
-	rocks.sphere("r", Vector3.ZERO, Vector3(3.0, 1.6, 2.4), 4, 7)
-	rocks.sphere("r", Vector3(2.2, -0.2, 1.0), Vector3(1.8, 1.0, 1.5), 3, 6)
-	var ct: Array = []
-	var rt: Array = []
-	for i in 260:
-		var p := Vector3(rng.randf_range(1500.0, CityLayout.HIGHWAY_END_X), 0, rng.randf_range(-400.0, 400.0))
-		if absf(p.z) < 14.0:
-			continue
-		var t := Transform3D(Basis(Vector3.UP, rng.randf() * TAU).scaled(Vector3.ONE * rng.randf_range(0.7, 1.4)), p)
-		if i % 3 == 0:
-			rt.append(t)
-		else:
-			ct.append(t)
-	_multimesh(cactus.commit(), ct, "Cacti", false)
-	_multimesh(rocks.commit(), rt, "DesertRocks", false)
+	# Cactus y rocas: los pone Terrain por chunks según el bioma.
 
 
 # ---------------------------------------------------------------- playa y mar
@@ -757,8 +727,8 @@ func _build_beach_and_ocean() -> void:
 	while x > CityLayout.SHORE_X - 140.0:
 		xs.append(x)
 		x -= 6.0
-	var z0 := -900.0
-	var z1 := 900.0
+	var z0 := StateLayout.WB_HOLE.position.y
+	var z1 := StateLayout.WB_HOLE.end.y
 	for i in range(xs.size() - 1):
 		var xa: float = xs[i]
 		var xb: float = xs[i + 1]
@@ -778,26 +748,7 @@ func _build_beach_and_ocean() -> void:
 	cs.shape = shape
 	_static.add_child(cs)
 
-	var water := MeshInstance3D.new()
-	water.name = "Ocean"
-	var plane := PlaneMesh.new()
-	plane.size = Vector2(1400, 2400)
-	plane.subdivide_width = 70
-	plane.subdivide_depth = 120
-	plane.material = mat_water
-	water.mesh = plane
-	water.position = Vector3(CityLayout.SHORE_X + 40.0 - 700.0, CityLayout.WATER_LEVEL, 0)
-	water.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	add_child(water)
-	var far_plane := PlaneMesh.new()
-	far_plane.size = Vector2(6000, 8000)
-	far_plane.material = mat_water
-	var far := MeshInstance3D.new()
-	far.name = "OceanFar"
-	far.mesh = far_plane
-	far.position = Vector3(CityLayout.SHORE_X - 1400.0 - 2300.0, CityLayout.WATER_LEVEL - 0.05, 0)
-	far.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	add_child(far)
+	# El océano lo dibuja Terrain (plano del estado con la profundidad del fondo).
 
 
 func _build_pier() -> void:
@@ -1066,35 +1017,7 @@ func _build_parked_cars() -> void:
 # ---------------------------------------------------------------- fondo
 
 func _build_skyline() -> void:
-	# Centro de South Veyra hacia el noreste, como en el mapa.
-	var center := Vector2(620, -560)
-	for i in 46:
-		var a := rng.randf() * TAU
-		var r := sqrt(rng.randf()) * 230.0
-		var p := center + Vector2(cos(a), sin(a) * 0.7) * r
-		if p.x < CityLayout.RIVER_X1 + 30.0:
-			p.x += 120.0
-		var h := lerpf(220.0, 45.0, r / 230.0) * rng.randf_range(0.6, 1.1)
-		var w := rng.randf_range(22.0, 42.0)
-		var col: Color = TOWER_COLORS[rng.randi() % TOWER_COLORS.size()]
-		_skyline.append({"center": Vector3(p.x, h * 0.5, p.y), "size": Vector3(w, h, w * rng.randf_range(0.8, 1.2)), "color": col, "kind": 0.9})
-		if rng.randf() < 0.4:
-			var h2 := h * rng.randf_range(0.12, 0.25)
-			_skyline.append({"center": Vector3(p.x, h + h2 * 0.5, p.y), "size": Vector3(w * 0.6, h2, w * 0.6), "color": col, "kind": 0.9})
-	# Edificios medianos entre el barrio y el centro.
-	for i in 70:
-		var p := Vector2(rng.randf_range(450.0, 640.0), rng.randf_range(-480.0, -40.0))
-		var h := rng.randf_range(10.0, 45.0)
-		_skyline.append({"center": Vector3(p.x, h * 0.5, p.y), "size": Vector3(rng.randf_range(18, 34), h, rng.randf_range(18, 34)), "color": SHOP_COLORS[rng.randi() % SHOP_COLORS.size()], "kind": 0.5})
-	for i in 50:
-		var p := Vector2(rng.randf_range(-220.0, 260.0), rng.randf_range(-640.0, -330.0))
-		var h := rng.randf_range(8.0, 28.0)
-		_skyline.append({"center": Vector3(p.x, h * 0.5, p.y), "size": Vector3(rng.randf_range(16, 30), h, rng.randf_range(16, 30)), "color": SHOP_COLORS[rng.randi() % SHOP_COLORS.size()], "kind": 0.5})
-	var mi := MultiMeshInstance3D.new()
-	mi.name = "Skyline"
-	mi.multimesh = _box_multimesh(_skyline)
-	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_OFF
-	add_child(mi)
+	# Los rascacielos del centro de South Veyra los genera StateWorld (ciudad sv_centro).
 	# Puerto al sur: grúas de contenedores.
 	var b := MeshBuilder.new()
 	b.surface("crane", MeshBuilder.material(Color(0.8, 0.25, 0.15), 0.6, 0.3))
@@ -1109,65 +1032,3 @@ func _build_skyline() -> void:
 			b.box("box", base + Vector3(rng.randf_range(-30, 30), 1.3 + 2.6 * (k % 3), rng.randf_range(20, 60)), Vector3(12.0, 2.6, 2.5), Transform3D.IDENTITY, Color.WHITE.lerp(Color(rng.randf(), rng.randf() * 0.5, 0.2), 0.6))
 	_mesh_instance(b.commit(), "Port", false)
 
-
-func _build_mountains() -> void:
-	var b := MeshBuilder.new()
-	var m := MeshBuilder.material(Color(0.33, 0.33, 0.26), 0.95)
-	b.surface("rock", m)
-	var noise := FastNoiseLite.new()
-	noise.seed = SEED
-	noise.frequency = 0.004
-	# Sierra al norte y colinas al este (el mapa pone la Sierra Norte arriba).
-	_ridge(b, noise, Vector2(-2200, -1500), Vector2(2800, -1500), 360.0, 420.0)
-	_ridge(b, noise, Vector2(-1600, -1050), Vector2(1400, -1050), 160.0, 260.0)
-	_ridge(b, noise, Vector2(1300, -900), Vector2(1300, -160), 140.0, 380.0)
-	_ridge(b, noise, Vector2(1300, 160), Vector2(1300, 900), 140.0, 380.0)
-	_mesh_instance(b.commit(), "Mountains", false)
-
-
-func _ridge(b: MeshBuilder, noise: FastNoiseLite, from: Vector2, to: Vector2, height: float, depth: float) -> void:
-	var steps := 70
-	var rows := 6
-	var dir := (to - from).normalized()
-	var across := Vector2(-dir.y, dir.x)
-	var len := from.distance_to(to)
-	var grid: Array = []
-	for r in rows + 1:
-		var line: Array = []
-		var v := float(r) / rows
-		for i in steps + 1:
-			var t := float(i) / steps
-			var p := from + dir * len * t + across * (v - 0.5) * depth * 2.0
-			var ridge := sin(v * PI)
-			var hgt := height * ridge * (0.55 + 0.9 * noise.get_noise_2d(p.x, p.y)) * (0.6 + 0.4 * sin(t * PI))
-			line.append(Vector3(p.x, maxf(hgt, -2.0), p.y))
-		grid.append(line)
-	for r in rows:
-		for i in steps:
-			var a: Vector3 = grid[r][i]
-			var c: Vector3 = grid[r][i + 1]
-			var d: Vector3 = grid[r + 1][i + 1]
-			var e: Vector3 = grid[r + 1][i]
-			var n := (c - a).cross(e - a).normalized()
-			if n.y < 0:
-				n = -n
-			var shade := Color(1, 1, 1).lerp(Color(0.85, 0.75, 0.6), clampf(a.y / height, 0.0, 1.0))
-			if a.y > height * 0.75:
-				shade = Color(1.6, 1.6, 1.65)
-			b.quad("rock", a, c, d, e, n, shade)
-
-
-func _build_bounds() -> void:
-	var mn := CityLayout.PLAY_MIN
-	var mx := CityLayout.PLAY_MAX
-	var h := 40.0
-	_collider_box(Vector3((mn.x + mx.x) * 0.5, h * 0.5, mn.y), Vector3(mx.x - mn.x, h, 1.0))
-	_collider_box(Vector3((mn.x + mx.x) * 0.5, h * 0.5, mx.y), Vector3(mx.x - mn.x, h, 1.0))
-	_collider_box(Vector3(mx.x, h * 0.5, 0), Vector3(1.0, h, mx.y - mn.y))
-	_collider_box(Vector3(mn.x, h * 0.5, 0), Vector3(1.0, h, mx.y - mn.y))
-	# Pared en el agua (por debajo del muelle) para no adentrarse en el mar.
-	var wx := CityLayout.SHORE_X - 15.0
-	var gap0 := CityLayout.PIER_Z - CityLayout.PIER_WIDTH * 0.5
-	var gap1 := CityLayout.PIER_Z + CityLayout.PIER_WIDTH * 0.5
-	_collider_box(Vector3(wx, -1.6, (mn.y + gap0) * 0.5), Vector3(1.0, 4.8, gap0 - mn.y))
-	_collider_box(Vector3(wx, -1.6, (gap1 + mx.y) * 0.5), Vector3(1.0, 4.8, mx.y - gap1))

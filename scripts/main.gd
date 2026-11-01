@@ -9,6 +9,7 @@ const RAY_CAR_COLOR := Color(0.12, 0.26, 0.18)
 
 var state: State = State.TITLE
 var city: CityBuilder
+var state_world: StateWorld
 var sky: SkyEnv
 var traffic: Traffic
 var radio: Radio
@@ -72,6 +73,10 @@ func _ready() -> void:
 	kit_buildings.name = "KitBuildings"
 	add_child(kit_buildings)
 	kit_buildings.build(city)
+	state_world = StateWorld.new()
+	state_world.name = "State"
+	add_child(state_world)
+	state_world.build(city)
 	sky.city = city
 	var props := StreetProps.new()
 	props.name = "StreetProps"
@@ -129,7 +134,7 @@ func _ready() -> void:
 
 	hud = HUD.new()
 	theme_root.add_child(hud)
-	hud.radar.footprints = city.footprints
+	hud.radar.footprints = city.footprints + state_world.footprints
 	gps = GPS.new()
 	gps.name = "GPS"
 	add_child(gps)
@@ -141,7 +146,7 @@ func _ready() -> void:
 	theme_root.add_child(touch)
 	theme_root.move_child(touch, 0)
 	map_screen = MapScreen.new()
-	map_screen.footprints = city.footprints
+	map_screen.footprints = city.footprints + state_world.footprints
 	map_screen.gps = gps
 	map_screen.visible = false
 	theme_root.add_child(map_screen)

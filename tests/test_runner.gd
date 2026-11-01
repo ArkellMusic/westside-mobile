@@ -152,6 +152,57 @@ func _ready() -> void:
 	hud_test.queue_free()
 	gps.queue_free()
 
+	print("== Estado de Las Brisas (StateLayout, terreno y GPS)")
+	StateLayout.ensure()
+	var flat_ok := true
+	for q in [Vector2(0, 0), Vector2(-150, 100), Vector2(200, -200), Vector2(-200, -250), Vector2(240, 260)]:
+		if absf(StateLayout.height_at(q.x, q.y)) > 0.1:
+			flat_ok = false
+			printerr("     no llano en ", q, ": ", StateLayout.height_at(q.x, q.y))
+	check(flat_ok, "height_at llano en Westbrook")
+	check(absf(StateLayout.height_at(3050, 0)) < 0.2 and absf(StateLayout.height_at(2000, 190)) < 0.3, "autopista del desierto y cárcel a cota 0 (cinemática)")
+	check(StateLayout.height_at(2600, -3000) > 200.0, "montañas nevadas al norte (%.0f m)" % StateLayout.height_at(2600, -3000))
+	check(StateLayout.height_at(-700, -1450) < StateLayout.SEA and StateLayout.height_at(3400, 950) < StateLayout.SEA, "bahía de San Cordova y mar entre islas")
+	check(StateLayout.zone_at(0, 0) == "south_veyra" and StateLayout.zone_at(2800, -1350) == "las_brisas" and StateLayout.zone_at(4000, 980) == "isla_coral", "zonas del estado por posición")
+	var sgps := GPS.new()
+	add_child(sgps)
+	var wb := Vector2(98, -8)
+	for zid in StateLayout.ZONE_CENTERS:
+		if zid == "south_veyra":
+			continue
+		var dest: Vector2 = StateLayout.zone_center(zid)
+		var rt := sgps.find_route(wb, dest)
+		var ln := GPS.route_length(rt)
+		var straight_d := wb.distance_to(dest)
+		check(rt.size() >= 5 and ln >= straight_d * 0.99 and ln < straight_d * 2.2, "GPS Westbrook -> %s (%.1f km, %d puntos)" % [zid, ln / 1000.0, rt.size()])
+	sgps.queue_free()
+	var terr := Terrain.new()
+	terr.far_enabled = false
+	terr.veg_enabled = false
+	add_child(terr)
+	terr.update_sync(Vector3(2800, 30, -1350))
+	var c_lb := terr.chunk_of(Vector3(2800, 0, -1350))
+	check(terr.chunk_lod(c_lb) == 0 and terr.loaded_chunks().size() >= 9, "chunks cargados alrededor de Las Brisas (%d)" % terr.loaded_chunks().size())
+	var before_unload := terr.unloaded_count
+	terr.update_sync(Vector3(-350, 10, -1900))
+	check(terr.chunk_lod(c_lb) == -1 and terr.unloaded_count > before_unload, "los chunks lejanos se descargan (%d descargados)" % (terr.unloaded_count - before_unload))
+	check(terr.chunk_lod(terr.chunk_of(Vector3(-350, 0, -1900))) == 0, "chunk de San Cordova a máxima resolución")
+	# El jugador no cae por el terreno.
+	var spots := [Vector3(-350, 0, -1900), Vector3(-600, 0, -2300), Vector3(-150, 0, -2100), Vector3(-900, 0, -1900)]
+	var walkers: Array = []
+	for sp in spots:
+		var pl := Player.new()
+		add_child(pl)
+		pl.place(Vector3(sp.x, StateLayout.height_at(sp.x, sp.z) + 1.0, sp.z), 0.0)
+		walkers.append(pl)
+	await _physics(90)
+	for k in walkers.size():
+		var pl: Player = walkers[k]
+		var gy := StateLayout.height_at(pl.global_position.x, pl.global_position.z)
+		check(pl.global_position.y > gy - 0.5 and pl.global_position.y < gy + 1.2, "el jugador se queda sobre el terreno en %s (y=%.2f, suelo=%.2f)" % [spots[k], pl.global_position.y, gy])
+		pl.queue_free()
+	terr.queue_free()
+
 	print("== Peatones Mixamo")
 	check(MixamoPerson.available(), "recursos Mixamo disponibles (modelos + librería)")
 	for mp in MixamoPerson.MODELS:

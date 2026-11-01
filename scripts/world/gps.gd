@@ -1,7 +1,8 @@
 class_name GPS
 extends Node
 ## Navegación GPS sobre el grafo de calles de Westbrook (CityLayout.road_graph()),
-## ampliado con la autopista del este (puente, desierto) y el muelle.
+## ampliado con la red del estado (StateLayout.road_graph(): autopistas, carreteras y
+## calles de las ciudades) y el muelle.
 ##
 ## Dos rutas independientes:
 ##  - Misión (AMARILLA): la fija main.gd desde set_marker() cuando un paso de la misión
@@ -20,8 +21,6 @@ const DEVIATION_M := 25.0
 const ARRIVE_M := 15.0
 const MISSION_COLOR := Color("#F2C230")
 const WAYPOINT_COLOR := Color("#3D8BFF")
-## Nodos extra de la autopista (conectados a Westbrook Blvd, z = 0, en el extremo este).
-const HIGHWAY_XS := [370.0, 1300.0, 2600.0, 4200.0]
 
 var player_pos: Vector3 = Vector3.ZERO
 ## Vector3.INF = sin destino.
@@ -56,12 +55,27 @@ func _build_graph() -> void:
 		for j in links[i]:
 			if int(j) > i:
 				_connect(i, int(j))
-	# Autopista: Westbrook Blvd (z = 0) en Eastline Ave -> puente -> desierto.
-	var prev := _find(Vector2(CityLayout.EAST_EDGE, CityLayout.HIGHWAY_Z))
-	for x in HIGHWAY_XS:
-		var k := _add_point(Vector2(float(x), CityLayout.HIGHWAY_Z))
-		_connect(prev, k)
-		prev = k
+	# Red del estado (autopistas, carreteras y cuadrículas de las ciudades). Se une a
+	# Westbrook por los extremos que coinciden con cruces de CityLayout.
+	var index := {}
+	for i in range(_pts.size()):
+		index[Vector2i(roundi(_pts[i].x), roundi(_pts[i].y))] = i
+	var sg := StateLayout.road_graph()
+	var snodes: Array = sg["nodes"]
+	var slinks: Array = sg["links"]
+	var map := PackedInt32Array()
+	for p in snodes:
+		var key := Vector2i(roundi(p.x), roundi(p.y))
+		if index.has(key):
+			map.append(index[key])
+		else:
+			var k := _add_point(p)
+			index[key] = k
+			map.append(k)
+	for i in range(slinks.size()):
+		for j in slinks[i]:
+			if int(j) > i:
+				_connect(map[i], map[int(j)])
 	# Muelle: se engancha a la avenida de la playa.
 	var ave_x: float = CityLayout.WEST_EDGE
 	var a := _find(Vector2(ave_x, CityLayout.STREETS[2][0]))

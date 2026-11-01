@@ -1,11 +1,12 @@
 class_name MapScreen
 extends Control
 ## Mapa a pantalla completa: pestaña WESTBROOK (plano vectorial con zoom y arrastre)
-## y pestaña ESTADO (mapa del estado con zonas bloqueadas / abiertas).
+## y pestaña ESTADO: relieve generado desde StateLayout (mismas coordenadas que el
+## mundo 3D) con autopistas, ciudades, zonas bloqueadas (niebla + candado), jugador,
+## waypoint y rutas GPS. Tocar el mapa ESTADO también pone el waypoint azul.
 
 signal closed
 
-const STATE_MAP_PATH := "res://assets/ui/state_map.jpg"
 const MIN_ZOOM := 0.45
 const MAX_ZOOM := 7.0
 const TAP_SLOP := 14.0
@@ -27,16 +28,6 @@ const LANDMARK_NAMES := {
 	"veyra_mart": "Veyra Mart",
 	"mack_house": "Casa de Mack",
 	"vargas_garage": "Vargas Auto Works",
-}
-const ZONE_POSITIONS := {
-	"south_veyra": Vector2(0.20, 0.39),
-	"san_cordova": Vector2(0.15, 0.15),
-	"las_brisas": Vector2(0.54, 0.24),
-	"northpoint": Vector2(0.70, 0.10),
-	"bahia_solana": Vector2(0.88, 0.36),
-	"isla_brava": Vector2(0.61, 0.62),
-	"isla_coral": Vector2(0.79, 0.65),
-	"isla_nacar": Vector2(0.94, 0.65),
 }
 
 var player_pos: Vector3 = Vector3.ZERO:
@@ -84,8 +75,6 @@ func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	_roads = CityLayout.road_segments()
 	_blocks = CityLayout.blocks()
-	if ResourceLoader.exists(STATE_MAP_PATH):
-		_state_tex = load(STATE_MAP_PATH) as Texture2D
 	_build_ui()
 	resized.connect(_on_resized)
 	visibility_changed.connect(_on_visibility_changed)
@@ -212,7 +201,10 @@ func _s2w(p: Vector2) -> Vector2:
 # ------------------------------------------------------------------- Entrada
 
 func _input(event: InputEvent) -> void:
-	if not is_visible_in_tree() or _tab != 0:
+	if not is_visible_in_tree():
+		return
+	if _tab == 1:
+		_input_state(event)
 		return
 	var rect := _map_rect()
 	if event is InputEventScreenTouch:
@@ -294,9 +286,40 @@ func _input(event: InputEvent) -> void:
 			queue_redraw()
 
 
+## Pestaña ESTADO: un toque (sin arrastre) pone o quita el waypoint.
+func _input_state(event: InputEvent) -> void:
+	var pos := Vector2.INF
+	var pressed := false
+	if event is InputEventScreenTouch:
+		pos = make_canvas_position_local((event as InputEventScreenTouch).position)
+		pressed = (event as InputEventScreenTouch).pressed
+	elif event is InputEventMouseButton and (event as InputEventMouseButton).button_index == MOUSE_BUTTON_LEFT:
+		if bool(ProjectSettings.get_setting("input_devices/pointing/emulate_touch_from_mouse", false)):
+			return
+		pos = make_canvas_position_local((event as InputEventMouseButton).position)
+		pressed = (event as InputEventMouseButton).pressed
+	else:
+		return
+	if not _state_rect().has_point(pos):
+		return
+	if pressed:
+		_mouse_tap = {"pos": pos, "t": Time.get_ticks_msec()}
+	elif not _mouse_tap.is_empty():
+		if pos.distance_to(_mouse_tap["pos"]) < TAP_SLOP and Time.get_ticks_msec() - int(_mouse_tap["t"]) < 600:
+			tap_at(pos)
+		_mouse_tap = {}
+	get_viewport().set_input_as_handled()
+
+
 ## Toque (sin arrastre) sobre el mapa: pone el waypoint, o lo quita si se toca sobre él.
 func tap_at(screen_pos: Vector2) -> void:
-	if gps == null or _tab != 0:
+	if gps == null:
+		return
+	if _tab == 1:
+		var r := _state_rect()
+		var w2 := StateLayout.uv_to_world((screen_pos - r.position) / r.size)
+		gps.toggle_waypoint(Vector3(w2.x, 0.0, w2.y), 20.0 * StateLayout.RECT.size.x / r.size.x)
+		queue_redraw()
 		return
 	var w := _s2w(screen_pos)
 	var radius_m := 26.0 / _zoom
@@ -452,32 +475,99 @@ func _map_text(font: Font, text: String, center_pos: Vector2, fs: int, color: Co
 	draw_string(font, pos, text, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, color)
 
 
-func _draw_state() -> void:
+## Rectángulo de pantalla que ocupa el mapa del estado (mismo aspecto que StateLayout.RECT).
+func _state_rect() -> Rect2:
 	var rect := _map_rect().grow(-16.0)
+	var ms := StateLayout.RECT.size
+	var k := minf(rect.size.x / ms.x, rect.size.y / ms.y)
+	var sz := ms * k
+	return Rect2(rect.get_center() - sz * 0.5, sz)
+
+
+func _st(p: Vector2) -> Vector2:
+	var r := _state_rect()
+	return r.position + StateLayout.world_to_uv(p) * r.size
+
+
+func _draw_state() -> void:
 	if _state_tex == null:
-		draw_rect(rect, Color(0.07, 0.07, 0.09))
-		draw_rect(rect, UITheme.GOLD_DARK, false, 2.0)
-		_map_text(UITheme.bold_font(), "Mapa del estado no disponible", rect.get_center(), 26, UITheme.TEXT_DIM)
-		return
-	var tex_size := _state_tex.get_size()
-	var k := minf(rect.size.x / tex_size.x, rect.size.y / tex_size.y)
-	var img_size := tex_size * k
-	var img_rect := Rect2(rect.get_center() - img_size * 0.5, img_size)
+		_state_tex = ImageTexture.create_from_image(StateLayout.make_map_image(4))
+	var img_rect := _state_rect()
 	draw_texture_rect(_state_tex, img_rect, false)
-	draw_rect(img_rect, UITheme.GOLD_DARK, false, 2.0)
+	# Autopistas y carreteras
+	for pass_i in 2:
+		for rd in StateLayout.roads():
+			var pts := PackedVector2Array()
+			for p in (rd["pts"] as PackedVector2Array):
+				pts.append(_st(p))
+			var main_road: bool = rd["main"]
+			if pass_i == 0:
+				draw_polyline(pts, Color(0.1, 0.1, 0.1, 0.8), 6.0 if main_road else 4.5, true)
+			else:
+				draw_polyline(pts, Color(0.98, 0.84, 0.35) if main_road else Color(0.93, 0.93, 0.9), 3.2 if main_road else 2.2, true)
+	# Westbrook: calles
+	for seg in _roads:
+		draw_line(_st(seg["a"]), _st(seg["b"]), Color(0.93, 0.93, 0.9, 0.8), 1.2)
+	# Zonas bloqueadas: niebla + candado
 	var font := UITheme.bold_font()
-	for id in ZONE_POSITIONS:
+	for id in StateLayout.ZONE_ORDER:
 		var zid := String(id)
-		var npos: Vector2 = ZONE_POSITIONS[id]
-		var p := img_rect.position + npos * img_rect.size
 		if GameState.is_zone_unlocked(zid):
-			_draw_pill(font, "ABIERTA", p, 20, Color(UITheme.GOLD.r, UITheme.GOLD.g, UITheme.GOLD.b, 0.95), Color(0.08, 0.06, 0.01))
+			continue
+		var poly := PackedVector2Array()
+		for p in StateLayout.zone_polygon(zid):
+			poly.append(_st(p))
+		var clipped: Array[PackedVector2Array] = Geometry2D.intersect_polygons(poly, PackedVector2Array([img_rect.position, Vector2(img_rect.end.x, img_rect.position.y), img_rect.end, Vector2(img_rect.position.x, img_rect.end.y)]))
+		for cp in clipped:
+			if cp.size() >= 3 and not Geometry2D.is_polygon_clockwise(cp):
+				draw_colored_polygon(cp, Color(0.03, 0.03, 0.06, 0.45))
+		var closed := PackedVector2Array(poly)
+		closed.append(poly[0])
+		draw_polyline(closed, Color(1, 1, 1, 0.25), 1.5, true)
+	for id in StateLayout.ZONE_ORDER:
+		var zid := String(id)
+		var p := _st(StateLayout.zone_center(zid))
+		var z: Dictionary = GameData.zone(zid)
+		var name := String(z.get("name", zid))
+		if GameState.is_zone_unlocked(zid):
+			_map_text(font, name.to_upper(), p + Vector2(0, -12.0), 20, Color.WHITE)
 		else:
-			var z: Dictionary = GameData.zone(zid)
 			var m := int(z.get("unlock_after_mission", 0))
-			var txt := "BLOQUEADA · misión %d" % m if m > 0 else "BLOQUEADA"
-			_draw_lock(p + Vector2(0, -14.0))
-			_draw_pill(font, txt, p + Vector2(0, 28.0), 18, Color(0.04, 0.04, 0.06, 0.9), Color(1, 1, 1))
+			_draw_lock(p + Vector2(0, -30.0))
+			_map_text(font, name.to_upper(), p + Vector2(0, 10.0), 18, Color(1, 1, 1, 0.9))
+			_draw_pill(font, "Misión %d" % m if m > 0 else "Bloqueada", p + Vector2(0, 34.0), 15, Color(0.04, 0.04, 0.06, 0.9), Color(1, 1, 1))
+	draw_rect(img_rect, UITheme.GOLD_DARK, false, 2.0)
+	# Rutas GPS (azul debajo, misión amarilla encima)
+	if gps != null:
+		var me := Vector2(player_pos.x, player_pos.z)
+		for pair in [[gps.waypoint_route, GPS.WAYPOINT_COLOR], [gps.mission_route, GPS.MISSION_COLOR]]:
+			var route: PackedVector2Array = gps.display_route(pair[0], me)
+			if route.size() >= 2:
+				var pts := PackedVector2Array()
+				for q in route:
+					pts.append(_st(q))
+				draw_polyline(pts, Color(0, 0, 0, 0.75), 7.0, true)
+				draw_polyline(pts, pair[1], 4.0, true)
+		if gps.has_waypoint():
+			var wp := _st(Vector2(gps.waypoint.x, gps.waypoint.z))
+			draw_circle(wp + Vector2(0, -16.0), 11.0, Color(0, 0, 0, 0.85))
+			draw_circle(wp + Vector2(0, -16.0), 8.0, GPS.WAYPOINT_COLOR)
+			draw_colored_polygon(PackedVector2Array([wp + Vector2(-6, -11), wp + Vector2(6, -11), wp]), GPS.WAYPOINT_COLOR)
+	if mission_marker != Vector3.INF:
+		var mp := _st(Vector2(mission_marker.x, mission_marker.z))
+		draw_circle(mp, 10.0, Color(0, 0, 0, 0.8))
+		draw_circle(mp, 7.0, Color(0.95, 0.25, 0.2))
+	# Jugador
+	var pp := _st(Vector2(player_pos.x, player_pos.z))
+	var tri := PackedVector2Array([Vector2(0, -13), Vector2(9, 10), Vector2(0, 5), Vector2(-9, 10)])
+	for i in range(tri.size()):
+		tri[i] = pp + tri[i].rotated(-player_heading)
+	draw_circle(pp, 16.0 + sin(_pulse) * 2.0, Color(UITheme.GOLD.r, UITheme.GOLD.g, UITheme.GOLD.b, 0.3))
+	draw_colored_polygon(tri, Color.WHITE)
+	var outline := PackedVector2Array(tri)
+	outline.append(tri[0])
+	draw_polyline(outline, Color(0, 0, 0, 0.9), 2.0, true)
+	_map_text(font, "Toca el mapa para marcar destino", Vector2(img_rect.get_center().x, img_rect.end.y - 10.0), 16, Color(1, 1, 1, 0.75))
 
 
 func _draw_pill(font: Font, text: String, center_pos: Vector2, fs: int, bg: Color, fg: Color) -> void:
