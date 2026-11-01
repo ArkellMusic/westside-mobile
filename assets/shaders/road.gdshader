@@ -10,6 +10,10 @@ uniform sampler2D asphalt_albedo : source_color, filter_linear_mipmap_anisotropi
 uniform sampler2D asphalt_normal : hint_normal, filter_linear_mipmap_anisotropic, repeat_enable;
 uniform sampler2D asphalt_rough : hint_roughness_g, filter_linear_mipmap_anisotropic, repeat_enable;
 uniform float tile = 5.0;
+// 0 = seco, 1 = recién llovido (lo controla SkyEnv según la hora: de noche brilla mojado).
+uniform float wetness : hint_range(0.0, 1.0) = 0.0;
+// Cantidad de charcos cuando está mojado.
+uniform float puddles : hint_range(0.0, 1.0) = 0.6;
 
 varying vec2 info;
 varying vec3 wpos;
@@ -18,6 +22,13 @@ float hash21(vec2 p) {
 	p = fract(p * vec2(123.34, 456.21));
 	p += dot(p, p + 45.32);
 	return fract(p.x * p.y);
+}
+
+float vnoise(vec2 p) {
+	vec2 i = floor(p);
+	vec2 f = fract(p);
+	f = f * f * (3.0 - 2.0 * f);
+	return mix(mix(hash21(i), hash21(i + vec2(1.0, 0.0)), f.x), mix(hash21(i + vec2(0.0, 1.0)), hash21(i + vec2(1.0, 1.0)), f.x), f.y);
 }
 
 void vertex() {
@@ -68,8 +79,32 @@ void fragment() {
 			paint_col = vec3(0.95, 0.72, 0.18);
 		}
 	}
-	ALBEDO = mix(col, paint_col * (0.85 + 0.15 * grain), paint * 0.92);
-	NORMAL_MAP = mix(texture(asphalt_normal, tuv).rgb, vec3(0.5, 0.5, 1.0), paint * 0.7);
-	ROUGHNESS = mix(tex_rough, 0.55, paint);
-	SPECULAR = 0.35;
+	// Variación grande de rugosidad y manchas de aceite / parches de asfalto nuevo.
+	float n_big = vnoise(wpos.xz * 0.06);
+	float n_mid = vnoise(wpos.xz * 0.35 + 7.3);
+	float stain = smoothstep(0.62, 0.85, vnoise(wpos.xz * 0.18 + 3.1)) * smoothstep(0.15, 0.0, abs(fract(wp.x * 2.0) - 0.5) - 0.12);
+	col *= 0.9 + 0.2 * n_big;
+	col = mix(col, col * 0.55, stain * 0.7);
+	float rough = clamp(tex_rough * (0.85 + 0.3 * n_mid) - stain * 0.25, 0.25, 1.0);
+	vec3 nrm = texture(asphalt_normal, tuv).rgb;
+
+	vec3 base = mix(col, paint_col * (0.85 + 0.15 * grain), paint * 0.92);
+	rough = mix(rough, 0.55, paint);
+	nrm = mix(nrm, vec3(0.5, 0.5, 1.0), paint * 0.7);
+
+	// Mojado: todo más oscuro y brillante; en las zonas bajas, charcos espejo.
+	if (wetness > 0.001) {
+		float pm = vnoise(wpos.xz * 0.11 + 11.0) * 0.65 + vnoise(wpos.xz * 0.5) * 0.35;
+		float puddle = smoothstep(0.62 - 0.22 * puddles, 0.7 - 0.22 * puddles, pm) * smoothstep(0.35, 0.9, wetness);
+		float damp = wetness * (0.6 + 0.4 * n_mid);
+		base *= mix(1.0, 0.62, damp);
+		rough = mix(rough, rough * 0.35, damp);
+		base = mix(base, base * 0.55, puddle);
+		rough = mix(rough, 0.03, puddle);
+		nrm = mix(nrm, vec3(0.5, 0.5, 1.0), max(puddle, damp * 0.4));
+	}
+	ALBEDO = base;
+	NORMAL_MAP = nrm;
+	ROUGHNESS = rough;
+	SPECULAR = 0.4;
 }

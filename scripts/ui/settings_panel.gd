@@ -7,6 +7,7 @@ signal back_pressed
 var _loading: bool = false
 var _save_pending: bool = false
 var _quality_buttons: Dictionary = {}
+var _quality_note: Label
 var _fps_buttons: Dictionary = {}
 var _scale_slider: HSlider
 var _opacity_slider: HSlider
@@ -57,6 +58,9 @@ func _build() -> void:
 		q_row.add_child(b)
 		_quality_buttons[q] = b
 	list.add_child(_row("Calidad gráfica", q_row))
+	_quality_note = UITheme.label("", 18, UITheme.TEXT_DIM)
+	_quality_note.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
+	list.add_child(_quality_note)
 
 	# Límite FPS
 	var f_row := HBoxContainer.new()
@@ -152,6 +156,7 @@ func refresh() -> void:
 	_loading = true
 	for q in _quality_buttons:
 		(_quality_buttons[q] as Button).set_pressed_no_signal(q == Settings.quality)
+	_update_quality_note()
 	for fps in _fps_buttons:
 		(_fps_buttons[fps] as Button).set_pressed_no_signal(fps == Settings.fps_cap)
 	_scale_slider.set_value_no_signal(Settings.controls_scale)
@@ -176,6 +181,20 @@ func _on_quality(q: String) -> void:
 	if _loading:
 		return
 	Settings.set_quality(q)
+	_update_quality_note()
+
+
+func _update_quality_note() -> void:
+	if _quality_note == null:
+		return
+	var txt: String = {
+		"high": "Alta: iluminación global, niebla volumétrica, reflejos y sombras suaves.",
+		"medium": "Media: reflejos, oclusión ambiental y sombras suaves, sin iluminación global ni niebla volumétrica.",
+		"low": "Baja: renderizador ligero, sin efectos de pantalla.",
+	}.get(Settings.quality, "")
+	if Settings.needs_restart():
+		txt += " Reinicia el juego para cambiar de renderizador."
+	_quality_note.text = txt
 
 
 func _on_fps(fps: int) -> void:

@@ -122,6 +122,10 @@ void fragment() {
 		SPECULAR = mix(0.35, 0.9, win);
 		float lit_chance = storefront ? 0.8 : night * 0.75;
 		float lit = step(1.0 - lit_chance, hash21(cell * 1.37 + seed + 3.1));
-		EMISSION = win * lit * window_light * (storefront ? 1.1 : 1.8) * (0.3 + night);
+		// Luz interior variada: cálida (bombilla), fría (fluorescente) o azulada (tele).
+		float hue = hash21(cell * 2.13 + seed + 7.7);
+		vec3 wl = hue < 0.6 ? window_light : (hue < 0.85 ? vec3(0.9, 0.92, 1.0) : vec3(0.55, 0.7, 1.0));
+		float glow_mul = storefront ? 1.6 : 2.2;
+		EMISSION = win * lit * wl * glow_mul * (0.2 + night * 1.1);
 	}
 }

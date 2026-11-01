@@ -10,6 +10,9 @@ uniform sampler2D tex_normal : hint_normal, filter_linear_mipmap_anisotropic, re
 uniform sampler2D tex_rough : hint_roughness_g, filter_linear_mipmap_anisotropic, repeat_enable;
 uniform bool use_texture = false;
 uniform float tile = 4.0;
+// Segunda textura (césped mezclado) para romper la repetición del césped; la pone GrassField.
+uniform sampler2D tex_albedo2 : source_color, filter_linear_mipmap_anisotropic, repeat_enable;
+uniform bool use_texture2 = false;
 
 varying vec3 wpos;
 
@@ -74,9 +77,22 @@ void fragment() {
 		vec3 t2 = texture(tex_albedo, tuv * 0.23 + 0.37).rgb;
 		vec3 tex = mix(t1, t2, 0.35) * (0.85 + 0.3 * n1);
 		float keep_wet = surface == 3 ? smoothstep(-0.05, -0.6, wpos.y) : 0.0;
+		if (surface == 0 && use_texture2) {
+			vec3 t3 = texture(tex_albedo2, tuv * 0.61 + 0.11).rgb;
+			tex = mix(tex, t3 * (0.85 + 0.3 * n1), smoothstep(0.35, 0.75, vnoise(p * 0.045 + 5.0)));
+		}
 		ALBEDO = mix(tex * tint, col * tint, 0.15 + keep_wet * 0.6);
 		NORMAL_MAP = texture(tex_normal, tuv).rgb;
 		ROUGHNESS = mix(texture(tex_rough, tuv).g, rough, keep_wet);
+	}
+	if (surface == 0) {
+		// Variación de color a gran escala: zonas más verdes, secas y quemadas por el sol.
+		float m = vnoise(p * 0.03 + 2.0);
+		float dry = smoothstep(0.55, 0.85, m);
+		float lush = smoothstep(0.45, 0.15, m);
+		ALBEDO = mix(ALBEDO, ALBEDO * vec3(1.18, 1.05, 0.7), dry * 0.55);
+		ALBEDO = mix(ALBEDO, ALBEDO * vec3(0.82, 1.06, 0.82), lush * 0.5);
+		ROUGHNESS = max(ROUGHNESS, 0.75);
 	}
 	SPECULAR = 0.25;
 }

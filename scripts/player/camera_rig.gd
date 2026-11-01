@@ -24,6 +24,12 @@ var _cine_fov_from: float = 65.0
 var _cine_fov_to: float = 65.0
 var _shake: float = 0.0
 var _attach: Node3D = null
+## Profundidad de campo de las cinemáticas (enfoca lo que hay en el centro).
+var cine_attrs: CameraAttributesPractical
+var _focus: float = 6.0
+var _post: ColorRect
+var _post_layer: CanvasLayer
+var _motion: float = 0.0
 
 
 func _ready() -> void:
@@ -50,6 +56,79 @@ func _ready() -> void:
 	cine_camera.near = 0.05
 	cine_camera.top_level = true
 	add_child(cine_camera)
+	cine_attrs = CameraAttributesPractical.new()
+	cine_attrs.dof_blur_far_enabled = true
+	cine_attrs.dof_blur_near_enabled = true
+	cine_attrs.dof_blur_amount = 0.07
+	cine_attrs.auto_exposure_enabled = true
+	cine_attrs.auto_exposure_speed = 0.35
+	cine_attrs.auto_exposure_scale = 0.3
+	cine_attrs.auto_exposure_min_sensitivity = 140.0
+	cine_attrs.auto_exposure_max_sensitivity = 420.0
+	_set_focus(6.0)
+	_build_post_fx()
+	EventBus.settings_changed.connect(_apply_quality)
+	_apply_quality()
+
+
+## Viñeta, grano y desenfoque de movimiento por encima del 3D (debajo del HUD).
+func _build_post_fx() -> void:
+	_post_layer = CanvasLayer.new()
+	_post_layer.layer = 1
+	add_child(_post_layer)
+	_post = ColorRect.new()
+	_post.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_post.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	var m := ShaderMaterial.new()
+	m.shader = load("res://assets/shaders/post_fx.gdshader")
+	_post.material = m
+	_post_layer.add_child(_post)
+
+
+func _apply_quality() -> void:
+	var fx := Settings.use_post_fx()
+	if _post_layer:
+		_post_layer.visible = fx
+	var adv := Settings.use_screen_effects()
+	cine_attrs.dof_blur_far_enabled = adv
+	cine_attrs.dof_blur_near_enabled = adv
+	cine_attrs.auto_exposure_enabled = adv
+	cine_camera.attributes = cine_attrs if adv else null
+
+
+func _set_focus(d: float) -> void:
+	_focus = d
+	# Fondo desenfocado a partir de un poco detrás del sujeto; primer plano muy cercano también.
+	cine_attrs.dof_blur_far_distance = d * 1.35 + 1.0
+	cine_attrs.dof_blur_far_transition = maxf(d * 2.0, 4.0)
+	cine_attrs.dof_blur_near_distance = maxf(d * 0.45, 0.3)
+	cine_attrs.dof_blur_near_transition = maxf(d * 0.3, 0.25)
+
+
+## Distancia de enfoque: rayo desde el centro del plano cinemático.
+func _update_focus(delta: float) -> void:
+	if not cine_attrs.dof_blur_far_enabled or not is_inside_tree():
+		return
+	var from := cine_camera.global_position
+	var fwd := -cine_camera.global_basis.z
+	var q := PhysicsRayQueryParameters3D.create(from + fwd * 0.3, from + fwd * 120.0)
+	var hit := get_world_3d().direct_space_state.intersect_ray(q)
+	var d := 40.0
+	if not hit.is_empty():
+		d = from.distance_to(hit["position"])
+	_set_focus(lerpf(_focus, clampf(d, 0.8, 60.0), clampf(delta * 4.0, 0.0, 1.0)))
+
+
+func _update_post(delta: float) -> void:
+	if _post == null or not _post_layer.visible:
+		return
+	var target_motion := 0.0
+	if vehicle_mode and not cinematic and target is Car:
+		target_motion = clampf(((target as Car).linear_velocity.length() - 14.0) / 26.0, 0.0, 1.0)
+	_motion = lerpf(_motion, target_motion, clampf(delta * 3.0, 0.0, 1.0))
+	var m := _post.material as ShaderMaterial
+	m.set_shader_parameter("motion", _motion)
+	m.set_shader_parameter("vignette", 0.34 if cinematic else 0.26)
 
 
 func exclude(body: CollisionObject3D) -> void:
@@ -85,6 +164,19 @@ func cinematic_shot(from: Transform3D, to: Transform3D, duration: float, fov_fro
 	cine_camera.global_transform = from
 	cine_camera.fov = letterbox_fov(fov_from)
 	cine_camera.current = true
+	_focus = -1.0
+	_snap_focus()
+
+
+## Enfoca de golpe al empezar un plano (sin transición desde el anterior).
+func _snap_focus() -> void:
+	if not is_inside_tree() or not cine_attrs.dof_blur_far_enabled:
+		return
+	var from := cine_camera.global_position
+	var fwd := -cine_camera.global_basis.z
+	var q := PhysicsRayQueryParameters3D.create(from + fwd * 0.3, from + fwd * 120.0)
+	var hit := get_world_3d().direct_space_state.intersect_ray(q)
+	_set_focus(clampf(from.distance_to(hit["position"]) if not hit.is_empty() else 40.0, 0.8, 60.0))
 
 
 ## Fracción de pantalla tapada por CADA franja negra (la pone el HUD).
@@ -103,6 +195,7 @@ func attached_shot(node: Node3D, local_from: Transform3D, local_to: Transform3D,
 	cinematic_shot(local_from, local_to, duration, fov_from, fov_to)
 	_attach = node
 	cine_camera.global_transform = node.global_transform * local_from
+	_snap_focus()
 
 
 static func look_from(pos: Vector3, at: Vector3) -> Transform3D:
@@ -120,6 +213,7 @@ func shake(amount: float) -> void:
 
 
 func _process(delta: float) -> void:
+	_update_post(delta)
 	if cinematic:
 		_cine_t = minf(_cine_t + delta / _cine_duration, 1.0)
 		var t := _cine_t * _cine_t * (3.0 - 2.0 * _cine_t)
@@ -128,6 +222,7 @@ func _process(delta: float) -> void:
 			xf = _attach.global_transform * xf
 		cine_camera.global_transform = xf
 		cine_camera.fov = letterbox_fov(lerpf(_cine_fov_from, _cine_fov_to, t))
+		_update_focus(delta)
 		return
 	if target == null:
 		return
