@@ -100,7 +100,6 @@ func _run() -> void:
 		main.sky.set_process(false)
 		env.fog_density = 0.00007
 		env.fog_enabled = false
-		print("fog ", env.fog_enabled, " ", env.fog_mode, " sky_affect=", env.fog_sky_affect, " depth=", env.fog_depth_curve, " aerial=", env.fog_aerial_perspective, " hdens=", env.fog_height_density, " exp=", env.tonemap_exposure)
 		env.volumetric_fog_enabled = false
 		await wait(1.0)
 		await shot("1_aerea_estado")
@@ -120,6 +119,9 @@ func _run() -> void:
 	if want("5"):
 		await view(Vector3(3150, 160, 250), Vector3(3900, 0, 980), 62.0)
 		await shot("5_costa_islas_puentes")
+	if want("8"):
+		await view(Vector3(-560, 70, -1330), Vector3(-900, 40, -1470), 62.0)
+		await shot("8_puente_aurelio")
 	if want("6") or want("7"):
 		main.rig.camera.make_current()
 		main.state_world.terrain.focus_override = Vector3.INF

@@ -90,15 +90,13 @@ void fragment() {
 	vec3 nrm_t = vec3(0.5, 0.5, 1.0);
 	float green_w = (1.0 - w_des) * (1.0 - w_sand);
 	if (green_w > 0.01) {
-		vec3 g1 = layer(1.0, p, 9.0, mixn, fa);
-		vec3 g = g1;
-		float lawn = smoothstep(0.55, 0.8, macro) * (1.0 - far_k);
-		if (lawn > 0.01) {
-			g = mix(g, layer(0.0, p, 6.0, mixn, fa), lawn * 0.6);
-		}
-		float hill = smoothstep(18.0, 70.0, h + (macro2 - 0.5) * 30.0);
+		// Base: pradera (grass_mix) con manchas de hojarasca verde y, en las colinas, hierba con roca.
+		// (La capa 0 "grass" es un atlas de briznas para la hierba 3D: no se usa como suelo.)
+		vec3 g = layer(1.0, p, 10.0, mixn, fa) * vec3(0.92, 1.08, 0.78);
+		g = mix(g, layer(3.0, p, 7.0, mixn, fa) * vec3(1.2, 1.15, 1.0), smoothstep(0.45, 0.8, macro) * 0.5);
+		float hill = smoothstep(25.0, 90.0, h + (macro2 - 0.5) * 40.0);
 		if (hill > 0.01) {
-			g = mix(g, layer(2.0, p, 10.0, mixn, fa), hill);
+			g = mix(g, layer(2.0, p, 12.0, mixn, fa), hill * 0.6);
 		}
 		if (w_for > 0.05) {
 			g = mix(g, layer(3.0, p, 8.0, mixn, fa) * vec3(0.85, 0.95, 0.85), smoothstep(0.1, 0.6, w_for * (0.7 + 0.6 * macro)));
@@ -106,7 +104,7 @@ void fragment() {
 		// Variación de color a gran escala: zonas secas y zonas más verdes.
 		g *= mix(vec3(1.08, 1.02, 0.80), vec3(0.80, 1.02, 0.80), macro2);
 		col += g * green_w;
-		nrm_t = texture(normal_arr, vec3(p / 7.0, 0.0)).rgb;
+		nrm_t = texture(normal_arr, vec3(p / 10.0, 1.0)).rgb;
 	}
 	if (w_des > 0.01) {
 		vec3 d0 = layer(4.0, p, 14.0, mixn, fa);
