@@ -4,8 +4,10 @@ extends Node3D
 ## - 1 estrella: los agentes persiguen a pie e intentan detener al jugador (DETENIDO).
 ## - 2 o más (o si el jugador va armado y dispara): abren fuego.
 ## Llegan en coches patrulla que aparcan cerca con las luces y la sirena puestas.
-## Las estrellas bajan cuando ningún agente ve al jugador durante un rato (lo gestiona main
-## con `any_seen`).
+## Reconocimiento (CrimeSystem): los agentes solo persiguen si RECONOCEN al jugador, es decir,
+## si lo ven a menos de crime.recognition_range() (lejos si encaja con la descripción de ropa
+## y coche; muy cerca si se ha cambiado). Si no, buscan alrededor del último lugar conocido.
+## Las estrellas bajan mientras nadie lo reconoce (lo gestiona main con `any_seen`).
 
 const COUNT := [0, 2, 3, 4, 5, 6, 6]
 const MAX_PATROLS := 3
@@ -14,12 +16,15 @@ const SHOOT_RANGE := 30.0
 const HOLD_DIST := 11.0
 const SIGHT := 48.0
 const AMMO_DROP := 12
+const SEARCH_SPEED := 2.3
+const SEARCH_RADIUS := 16.0
 
 ## Nodo principal (main.gd).
 var main
 var cops: Array = []          # Cop (vivos y caídos)
 var patrols: Array = []       # {"node": Node3D, "red": OmniLight3D, "blue": OmniLight3D}
-var any_seen: bool = false    # algún agente ve al jugador ahora
+var any_seen: bool = false    # algún agente reconoce al jugador ahora (o hace un instante)
+var _known_t: float = 0.0     # segundos que la patrulla sigue sabiendo dónde está
 var rng := RandomNumberGenerator.new()
 var _spawn_cd: float = 0.0
 var _blink: float = 0.0
@@ -42,6 +47,8 @@ class Cop:
 	var last_pos: Vector3 = Vector3.ZERO
 	var aim_t: float = 0.0
 	var stagger_t: float = 0.0
+	var search_off: Vector3 = Vector3.ZERO
+	var search_t: float = 0.0
 
 
 func _ready() -> void:
@@ -50,6 +57,15 @@ func _ready() -> void:
 
 func is_cop(node) -> bool:
 	return node is Cop
+
+
+## ¿Algún agente tiene al jugador a la vista ahora mismo? (un delito delante de él se
+## denuncia al instante, sin testigos)
+func sees_player_now() -> bool:
+	for c in cops:
+		if not c.dead and c.sees:
+			return true
+	return false
 
 
 func alive_count() -> int:
@@ -71,6 +87,7 @@ func clear() -> void:
 			(p["node"] as Node).queue_free()
 	patrols.clear()
 	any_seen = false
+	_known_t = 0.0
 	_spawn_cd = 0.0
 
 
@@ -111,7 +128,10 @@ func _spawn_point(ppos: Vector3) -> Dictionary:
 
 
 func _spawn_unit() -> void:
+	# Si no saben dónde está el jugador, acuden al último lugar conocido.
 	var ppos := _focus().global_position
+	if _known_t <= 0.0 and main.crime.last_known.distance_to(ppos) < 200.0:
+		ppos = main.crime.last_known
 	var sp := _spawn_point(ppos)
 	var pos: Vector3 = sp["pos"]
 	var dir: Vector3 = sp["dir"]
@@ -199,7 +219,8 @@ func _physics_process(delta: float) -> void:
 	var wanted: int = main.wanted
 	var focus := _focus()
 	var ppos := focus.global_position
-	any_seen = false
+	_known_t = maxf(0.0, _known_t - delta)
+	any_seen = _known_t > 0.0 and wanted > 0
 	if wanted > 0 and main._gameplay_on and main.interiors.inside < 0:
 		_calm_t = 0.0
 		_spawn_cd -= delta
@@ -243,15 +264,35 @@ func _update_cop(c: Cop, delta: float, wanted: int, focus: Node3D, dist: float) 
 	if c.see_cd <= 0.0:
 		c.see_cd = 0.3 + rng.randf() * 0.15
 		c.sees = dist < SIGHT and not main.combat.blocked(c.global_position + Vector3.UP * 1.5, ppos + Vector3.UP * 1.1, [c.get_rid(), main.player.get_rid(), focus.get_rid()] if focus is CollisionObject3D else [c.get_rid(), main.player.get_rid()])
-	if c.sees and wanted > 0:
+	if c.sees and wanted > 0 and dist < main.crime.recognition_range():
+		# Lo reconoce: avisa por radio (toda la patrulla lo sabe durante unos segundos).
+		_known_t = 3.0
 		any_seen = true
+		main.crime.on_recognised(ppos)
+	var known := _known_t > 0.0
 	var in_car: bool = main.current_vehicle != null
-	var lethal: bool = wanted >= 2
+	var lethal: bool = wanted >= 2 and known
 	var speed := 0.0
 	var move := Vector3.ZERO
 	c.stagger_t = maxf(0.0, c.stagger_t - delta)
 	if wanted == 0 or c.stagger_t > 0.0:
 		pass   # la búsqueda ha terminado (o acaba de recibir un golpe): se queda en el sitio
+	elif not known:
+		# Busca a pie alrededor del último lugar conocido, cambiando de punto cada pocos segundos.
+		c.search_t -= delta
+		if c.search_t <= 0.0:
+			c.search_t = rng.randf_range(4.0, 7.0)
+			var a := rng.randf() * TAU
+			c.search_off = Vector3(cos(a), 0, sin(a)) * rng.randf_range(3.0, SEARCH_RADIUS)
+		var goal: Vector3 = main.crime.last_known + c.search_off
+		var to_goal := Vector3(goal.x - c.global_position.x, 0, goal.z - c.global_position.z)
+		if to_goal.length() > 1.5:
+			dir = to_goal.normalized()
+			move = dir
+			if c.sidestep_t > 0.0:
+				c.sidestep_t -= delta
+				move = (dir * 0.35 + Vector3(-dir.z, 0, dir.x) * c.side).normalized()
+			speed = RUN_SPEED if to_goal.length() > 30.0 else SEARCH_SPEED
 	elif lethal and c.sees and dist < HOLD_DIST:
 		pass   # a distancia de tiro: se planta y dispara
 	elif dist > 1.25:
@@ -296,7 +337,7 @@ func _update_cop(c: Cop, delta: float, wanted: int, focus: Node3D, dist: float) 
 		c.model.overlay = {}
 	c.model.animate(delta, speed, true)
 	# Detención con una estrella: hay que quedarse al alcance del agente un momento.
-	if wanted == 1 and not in_car and dist < 1.7 and main._gameplay_on and not main.interiors.busy:
+	if wanted == 1 and known and not in_car and dist < 1.7 and main._gameplay_on and not main.interiors.busy:
 		c.arrest_t += delta
 		if c.arrest_t > 1.6:
 			c.arrest_t = 0.0
@@ -339,6 +380,8 @@ func hurt(c, damage: float, dir: Vector3) -> void:
 	c.health -= damage
 	c.stagger_t = 0.35
 	c.sees = true
+	_known_t = 4.0
+	main.crime.on_recognised(_focus().global_position)
 	if main.wanted < 2:
 		main.set_wanted(2)
 	else:

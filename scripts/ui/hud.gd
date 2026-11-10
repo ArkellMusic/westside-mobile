@@ -36,6 +36,7 @@ var _wanted_blink: float = 0.0
 var _armor: float = 0.0
 var _weapon_kind: String = "fist"
 var _ammo: int = -1
+var _searching: bool = false
 var _hurt: ColorRect
 var _hurt_tween: Tween
 var _health_value: float = -1.0
@@ -538,6 +539,11 @@ func set_wanted(level: int) -> void:
 			_cluster.queue_redraw()
 
 
+## true = la policía busca pero no ha reconocido al jugador (estrellas grises parpadeando).
+func set_wanted_searching(on: bool) -> void:
+	_searching = on
+
+
 ## Armadura 0..100; la barra se oculta con 0.
 func set_armor(value: float) -> void:
 	_armor = clampf(value, 0.0, 100.0)
@@ -668,6 +674,10 @@ func _draw_cluster() -> void:
 		if active:
 			col = STAR_BROWN.lerp(STAR_GLOW, pulse * 0.75)
 			olc = Color.BLACK
+			if _searching:
+				# Buscando sin haberte reconocido: gris con latido lento.
+				var slow := 0.5 + 0.5 * sin(Time.get_ticks_msec() * 0.004)
+				col = Color(0.62, 0.62, 0.66, 0.45 + 0.5 * slow)
 			if not blink_on:
 				col = Color(col.r, col.g, col.b, 0.2)
 				olc = Color(0, 0, 0, 0.3)

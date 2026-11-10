@@ -36,8 +36,11 @@
 
 ## Búsqueda policial
 
-- Atropellar, pegar, disparar o robar un coche da **estrellas**.
+- La policía no sabe quién eres hasta que alguien te ve. Si un agente presencia el delito, te identifica al momento. Si no, un **testigo** saca el móvil («LLAMANDO AL 911») y tarda unos 5 segundos en dar el aviso: si lo tumbas antes de que cuelgue, no hay denuncia.
+- El aviso lleva tu **descripción**: la ropa que llevabas y, si ibas en coche, el coche y su color.
+- Los agentes van al último sitio donde te vieron y **buscan** (estrellas grises). Si encajas con la descripción te reconocen a 34 m (42 m en coche); si te has **cambiado de ropa** (armario del dormitorio de la casa de Mack), has **cambiado de coche** o lo has **repintado** en Pinta y Listo, solo a 7 m (9 m en coche).
+- Si un agente te reconoce, la descripción pasa a ser lo que llevas en ese momento.
 - **1 estrella:** los agentes te persiguen a pie; si te alcanzan, quedas **DETENIDO** (multa de $150 y te confiscan la munición).
 - **2 estrellas o más:** disparan. Si te quedas sin vida, despiertas en el hospital (factura de $100).
-- Las estrellas bajan de una en una cuando ningún agente te ve durante unos 18 segundos.
+- Las estrellas bajan de una en una cuando ningún agente te reconoce durante unos 18 segundos.
 - Los agentes caídos sueltan balas.

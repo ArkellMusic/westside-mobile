@@ -4,6 +4,8 @@ extends Node3D
 ## se les echa encima. Sin física para que sean baratos en móvil.
 
 signal pedestrian_hit(position: Vector3, speed: float)
+## Un testigo ha terminado de llamar a la policía (payload de CrimeSystem.commit).
+signal witness_report(payload: Dictionary)
 
 var peds: Array = []
 var downed: Array = []   # peatones atropellados (volando / tumbados)
@@ -65,6 +67,15 @@ func _physics_process(delta: float) -> void:
 			continue
 		var dir := d.normalized()
 		var speed: float = ped["speed"]
+		if float(ped.get("calling", 0.0)) > 0.0:
+			# Testigo: se queda quieto hablando por teléfono hasta dar el aviso.
+			ped["calling"] = float(ped["calling"]) - delta
+			h.animate(delta, 0.0, true)
+			if float(ped["calling"]) <= 0.0:
+				_end_call(ped)
+				witness_report.emit(ped.get("report", {}))
+				ped["panic"] = 6.0
+			continue
 		if float(ped.get("panic", 0.0)) > 0.0:
 			ped["panic"] = float(ped["panic"]) - delta
 			speed = 5.4
@@ -120,6 +131,8 @@ func _check_hits() -> void:
 func _knock_down(i: int, car_vel: Vector3, spd: float, lift: float = 3.0) -> void:
 	var ped: Dictionary = peds[i]
 	peds.remove_at(i)
+	if float(ped.get("calling", 0.0)) > 0.0:
+		_end_call(ped)   # testigo silenciado: no llega a dar el aviso
 	var h = ped["node"]
 	var v := car_vel * 0.8 + Vector3.UP * lift
 	downed.append({"node": h, "ped": ped, "vel": v, "state": 0, "t": 0.0,
@@ -174,6 +187,55 @@ func panic(center: Vector3, radius: float, time: float = 7.0) -> void:
 				ped["corners"] = rev
 				ped["next"] = 3 - prv
 		ped["panic"] = time
+
+
+## Hasta `count` peatones a menos de `radius` de `pos` sacan el móvil y llaman durante `time` s.
+## Al terminar se emite witness_report(payload). Devuelve cuántos han empezado a llamar.
+func call_witnesses(pos: Vector3, radius: float, count: int, time: float, payload: Dictionary) -> int:
+	var c2 := Vector2(pos.x, pos.z)
+	var cands: Array = []
+	for ped in peds:
+		if float(ped.get("calling", 0.0)) > 0.0:
+			continue
+		var h: Node3D = ped["node"]
+		var d := Vector2(h.position.x, h.position.z).distance_to(c2)
+		if d <= radius and d > 2.5:
+			cands.append([d, ped])
+	cands.sort_custom(func(a, b): return a[0] < b[0])
+	var n := 0
+	for c in cands:
+		if n >= count:
+			break
+		var ped: Dictionary = c[1]
+		ped["calling"] = time + 0.8 * n
+		ped["report"] = payload
+		ped["panic"] = 0.0
+		var h: Node3D = ped["node"]
+		if h.has_method("pose_idle_stance"):
+			h.call("pose_idle_stance", "phone")
+		var mark := Label3D.new()
+		mark.name = "Testigo"
+		mark.text = "LLAMANDO AL 911"
+		mark.font_size = 40
+		mark.pixel_size = 0.004
+		mark.outline_size = 10
+		mark.modulate = Color(1.0, 0.85, 0.25)
+		mark.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		mark.no_depth_test = true
+		mark.position = Vector3(0, 2.15, 0)
+		h.add_child(mark)
+		n += 1
+	return n
+
+
+func _end_call(ped: Dictionary) -> void:
+	ped["calling"] = 0.0
+	var h: Node3D = ped["node"]
+	var mark := h.get_node_or_null("Testigo")
+	if mark:
+		mark.queue_free()
+	if h.has_method("set_seated"):
+		h.call("set_seated", false)
 
 
 ## Persona que sale corriendo desde `pos` (conductor al que le roban el coche).

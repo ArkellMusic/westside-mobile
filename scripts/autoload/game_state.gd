@@ -12,6 +12,8 @@ var health: float = MAX_HEALTH
 ## Arma en la mano ("fist" | "pistol") y balas de pistola.
 var weapon: String = "fist"
 var ammo: int = START_AMMO
+## Conjunto de ropa que lleva Mack (índice de Humanoid.OUTFITS).
+var outfit: int = 0
 var reputation: Dictionary = {}
 var completed_missions: Array = []
 var player_position: Vector3 = Vector3.ZERO
@@ -36,6 +38,7 @@ func new_game() -> void:
 	health = MAX_HEALTH
 	weapon = "fist"
 	ammo = START_AMMO
+	outfit = 0
 	completed_missions = []
 	has_position = false
 	player_position = Vector3.ZERO
@@ -100,6 +103,7 @@ func to_dict() -> Dictionary:
 		"health": health,
 		"weapon": weapon,
 		"ammo": ammo,
+		"outfit": outfit,
 		"reputation": reputation.duplicate(),
 		"completed_missions": completed_missions.duplicate(),
 		"player_position": [player_position.x, player_position.y, player_position.z],
@@ -119,6 +123,7 @@ func from_dict(d: Dictionary) -> void:
 	if weapon != "pistol":
 		weapon = "fist"
 	ammo = clampi(int(d.get("ammo", START_AMMO)), 0, MAX_AMMO)
+	outfit = clampi(int(d.get("outfit", 0)), 0, 4)
 	reputation = {}
 	var rep: Dictionary = d.get("reputation", {})
 	for k in rep:

@@ -17,6 +17,7 @@ var pedestrians: Pedestrians
 var impact_system: ImpactSystem
 var combat: Combat
 var police: Police
+var crime: CrimeSystem
 var _stolen: Array = []           # coches robados al tráfico (se reciclan los más viejos)
 var _stolen_n: int = 0
 var interiors: Interiors
@@ -132,6 +133,13 @@ func _ready() -> void:
 	police.name = "Police"
 	police.main = self
 	add_child(police)
+	crime = CrimeSystem.new()
+	crime.name = "Crime"
+	crime.main = self
+	add_child(crime)
+	pedestrians.witness_report.connect(func(payload: Dictionary) -> void:
+		if not payload.is_empty():
+			crime.report(payload))
 
 	_spawn_vehicles()
 	_spawn_actors()
@@ -225,6 +233,7 @@ func _next_title_shot() -> void:
 func _reset_heat() -> void:
 	police.clear()
 	set_wanted(0)
+	set_outfit(GameState.outfit)
 	combat.set_weapon(GameState.weapon)
 	combat.reset()
 
@@ -359,6 +368,8 @@ func _process(delta: float) -> void:
 		_wanted_timer -= delta
 		if _wanted_timer <= 0.0:
 			set_wanted(wanted - 1)
+	crime.set_known(police.any_seen)
+	hud.set_wanted_searching(wanted > 0 and not police.any_seen)
 	if not current_vehicle and _gameplay_on and interiors.inside < 0 and not interiors.busy:
 		combat.update(delta)
 	elif player.model:
@@ -405,8 +416,8 @@ func _process(delta: float) -> void:
 const WANTED_COOLDOWN := 18.0
 
 
-func _on_pedestrian_hit(_pos: Vector3, _speed: float) -> void:
-	set_wanted(mini(wanted + 1, 6))
+func _on_pedestrian_hit(pos: Vector3, _speed: float) -> void:
+	crime.commit(pos, 1)
 
 
 ## Fija el nivel de búsqueda (0-6) y reinicia la cuenta atrás para perder una estrella.
@@ -414,18 +425,29 @@ func set_wanted(level: int) -> void:
 	wanted = clampi(level, 0, 6)
 	_wanted_timer = WANTED_COOLDOWN
 	hud.set_wanted(wanted)
+	if wanted == 0 and crime:
+		crime.clear()
 
 
 func refresh_wanted() -> void:
 	_wanted_timer = WANTED_COOLDOWN
 
 
-## Disparos en la calle: alguien llama a la policía.
+## Disparos en la calle: quien lo oiga llama a la policía.
 func on_gunfire() -> void:
-	if wanted < 1:
-		set_wanted(1)
-	else:
-		refresh_wanted()
+	crime.commit(player.global_position, 1, true)
+
+
+## Mack se pone el siguiente conjunto de ropa (armario de su casa).
+func change_outfit() -> void:
+	set_outfit((GameState.outfit + 1) % Humanoid.OUTFITS.size())
+	hud.toast("ROPA CAMBIADA", Humanoid.outfit_name(GameState.outfit), 2.5)
+	crime.look_changed()
+
+
+func set_outfit(i: int) -> void:
+	GameState.outfit = clampi(i, 0, Humanoid.OUTFITS.size() - 1)
+	player.model.set_outfit(GameState.outfit)
 
 
 ## Daño al jugador (balas de la policía): destello rojo, sacudida y, a cero, hospital.
@@ -476,9 +498,9 @@ func steal_traffic_car(tc: Traffic.TrafficCar) -> void:
 	var left := Vector3(-heading.z, 0, heading.x) * -1.0
 	pedestrians.add_runner(xf.origin + left * 2.0, xf.origin)
 	pedestrians.panic(xf.origin, 14.0, 6.0)
-	if wanted < 1:
-		set_wanted(1)
 	await board(car, "driver")
+	# El testigo describe el coche en el que te vas.
+	crime.commit(xf.origin, 1)
 
 
 func _hook_car(car: Car) -> void:
@@ -749,6 +771,8 @@ func _seat_model(who: String, look: Dictionary, car: Car, seat: String) -> void:
 	var h := Humanoid.new()
 	car.add_child(h)
 	h.setup(look)
+	if who == "player":
+		h.set_outfit(GameState.outfit)
 	h.set_seated(true)
 	h.set_meta("who", who)
 	h.position = Vector3(0.4 if seat == "driver" else -0.4, -0.52, -0.15)

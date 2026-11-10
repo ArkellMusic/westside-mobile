@@ -86,6 +86,10 @@ func _run() -> void:
 	main.rig.yaw = atan2(-along.x, -along.z)
 	main.rig.pitch = -0.12
 	await physics(20)
+	# Un segundo peatón detrás del jugador hará de testigo.
+	var wit: Dictionary = P.peds[2]
+	(wit["node"] as Node3D).position = player.global_position - along * 12.0
+	wit["speed"] = 0.0
 	var peds_before := P.peds.size()
 	var ammo_before := GameState.ammo
 	await tap("attack")
@@ -101,18 +105,84 @@ func _run() -> void:
 		await shot("combate_pose_apuntar")
 		main.rig.end_cinematic()
 		main.combat._aim_t = 1.0
+		# Testigo llamando y Mack con otra ropa.
+		main.hud._toast_panel.visible = false
+		var wn: Node3D = wit["node"]
+		var wp: Vector3 = wn.global_position
+		var wfrom := wp + side * 2.2 + along * 3.0 + Vector3.UP * 1.6
+		main.rig.cinematic_shot(CameraRig.look_from(wfrom, wp + Vector3.UP * 1.3), CameraRig.look_from(wfrom, wp + Vector3.UP * 1.3), 999.0, 45.0, 45.0)
+		for i in 30:
+			wn.call("animate", 0.05, 0.0, true)
+		await wait(0.3)
+		await shot("crimen_testigo_llamando")
+		main.combat._aim_t = 0.0
+		for oi in [1, 3]:
+			main.set_outfit(oi)
+			from = pp - side * 2.4 + along * 2.2 + Vector3.UP * 1.3
+			main.rig.cinematic_shot(CameraRig.look_from(from, pp + Vector3.UP * 1.0), CameraRig.look_from(from, pp + Vector3.UP * 1.0), 999.0, 45.0, 45.0)
+			await wait(0.3)
+			await shot("crimen_ropa_%d" % oi)
+		main.set_outfit(0)
+		main.rig.end_cinematic()
 		if "--only-pose" in OS.get_cmdline_user_args():
 			get_tree().quit()
 			return
 	check(GameState.ammo == ammo_before - 1, "un disparo gasta una bala")
 	check(P.peds.size() == peds_before - 1 and P.downed.size() >= 1, "el peatón apuntado cae")
-	check(main.wanted >= 1, "disparar en la calle da estrellas (%d)" % main.wanted)
+	check(main.wanted == 0, "sin agentes delante no hay estrellas al instante")
+	check(float(wit.get("calling", 0.0)) > 0.0, "un testigo saca el móvil y llama")
+	check((wit["node"] as Node3D).get_node_or_null("Testigo") != null, "el testigo lleva el aviso sobre la cabeza")
 	var far_ped: Dictionary = P.peds[P.peds.size() - 1]
 	P.panic((far_ped["node"] as Node3D).global_position, 3.0)
 	check(float(far_ped.get("panic", 0.0)) > 0.0, "los peatones cercanos a un disparo huyen")
 	check(player.model.overlay.has("arm"), "pose de apuntar aplicada")
 
+	print("== Testigos y descripción")
+	if out == "":
+		await wait(1.5)
+		var wmp := wit["node"] as MixamoPerson
+		check(wmp._player.current_animation == "phone" and wmp._player.is_playing(), "el testigo reproduce la animación del móvil")
+		await wait(CrimeSystem.CALL_TIME)
+		check(main.wanted >= 1, "cuando el testigo cuelga llegan las estrellas (%d)" % main.wanted)
+		check(int(main.crime.description.get("outfit", -1)) == 0 and main.crime.matches(), "la descripción lleva la ropa del jugador")
+		check(is_equal_approx(main.crime.recognition_range(), CrimeSystem.RANGE_MATCH_FOOT), "si encajas te reconocen de lejos")
+		main.set_outfit(2)
+		check(not main.crime.matches() and is_equal_approx(main.crime.recognition_range(), CrimeSystem.RANGE_NO_MATCH_FOOT), "con otra ropa solo te reconocen de cerca")
+		# Un agente a 15 m con visión directa no reconoce al jugador cambiado de ropa...
+		main.police.clear()
+		main.police._spawn_cop(player.global_position + along * 15.0)
+		await wait(1.5)
+		check(main.police.sees_player_now() and not main.police.any_seen, "un agente a 15 m no reconoce al jugador con otra ropa")
+		check(main.hud._searching, "HUD en modo búsqueda (estrellas grises)")
+		# ...y sí en cuanto vuelve a vestir como en la descripción.
+		main.set_outfit(0)
+		await wait(1.0)
+		check(main.police.any_seen, "con la ropa de la descripción lo reconoce a 15 m")
+		main.police.clear()
+		# Testigo silenciado: no hay aviso.
+		main.set_wanted(0)
+		main.crime._loud_cd = 0.0
+		var wit2: Dictionary = P.peds[3]
+		(wit2["node"] as Node3D).position = player.global_position - along * 10.0
+		wit2["speed"] = 0.0
+		for q in P.peds:
+			q["calling"] = 0.0
+		var n_call: int = main.crime.commit(player.global_position, 1)
+		var silenced_id: int = main.crime._crime_n
+		check(n_call >= 1 and float(wit2.get("calling", 0.0)) > 0.0, "un delito con gente cerca tiene testigos (%d)" % n_call)
+		for i in range(P.peds.size() - 1, -1, -1):
+			if float(P.peds[i].get("calling", 0.0)) > 0.0:
+				P.strike(i, along, 2.0, 1.2)
+		await wait(CrimeSystem.CALL_TIME + 2.0)
+		check(not main.crime._reported_ids.has(silenced_id), "un testigo tumbado antes de colgar no da el aviso")
+		main.police.clear()
+		main.set_wanted(0)
+		for q in P.peds:
+			q["calling"] = 0.0
+
 	print("== Policía")
+	main.crime.last_known = player.global_position
+	main.crime.description = main.crime.current_look()
 	main.set_wanted(1)
 	var t := 0.0
 	while t < 8.0 and main.police.alive_count() < 2:
@@ -183,7 +253,6 @@ func _run() -> void:
 	await shot("combate_punetazo")
 	await wait(0.2)
 	check(P.peds.size() == peds_before - 1, "un puñetazo tumba al peatón de delante")
-	check(main.wanted >= 1, "pegar a un peatón da una estrella")
 
 	print("== Robo de coche")
 	main.police.clear()
@@ -198,13 +267,24 @@ func _run() -> void:
 	await physics(2)
 	main._update_interaction()
 	check(main.touch._interact_label == "Robar", "junto a un coche del tráfico aparece «Robar» (%s)" % main.touch._interact_label)
+	var wit3: Dictionary = P.peds[4]
+	(wit3["node"] as Node3D).position = player.global_position + left * 8.0
+	wit3["speed"] = 0.0
+	wit3["calling"] = 0.0
 	var peds_n := P.peds.size()
 	await tap("interact")
 	await wait(0.6)
 	check(main.current_vehicle != null and String(main.current_vehicle.vehicle_id).begins_with("stolen_"), "el jugador conduce el coche robado")
 	check(main.traffic.cars.size() == n_traffic, "el tráfico repone el coche (%d)" % main.traffic.cars.size())
 	check(P.peds.size() == peds_n + 1, "el conductor sale corriendo")
-	check(main.wanted >= 1, "robar un coche da una estrella")
+	var caller_found := false
+	for q in P.peds:
+		if float(q.get("calling", 0.0)) > 0.0 and String((q["report"]["look"] as Dictionary)["car"]).begins_with("stolen_"):
+			caller_found = true
+	check(caller_found or main.wanted >= 1, "el testigo del robo describe el coche robado")
+	# A una calle despejada para que el tráfico no lo bloquee.
+	main._place_car(main.current_vehicle, CityLayout.landmark("coral_checkpoint") + Vector3(0, 0, 3), Vector3(1, 0, 0))
+	await wait(0.5)
 	Controls.touch_move = Vector2(0, 1)
 	await wait(2.5)
 	Controls.touch_move = Vector2.ZERO
@@ -219,6 +299,11 @@ func _run() -> void:
 	GameState.weapon = "fist"
 	GameState.from_dict(d)
 	check(GameState.ammo == 33 and GameState.weapon == "pistol", "arma y munición se guardan")
+	GameState.outfit = 3
+	d = GameState.to_dict()
+	GameState.outfit = 0
+	GameState.from_dict(d)
+	check(GameState.outfit == 3, "la ropa se guarda")
 	check(Sfx.stream("shot").data.size() > 1000 and Sfx.stream("siren").loop_mode == AudioStreamWAV.LOOP_FORWARD, "efectos de sonido generados")
 
 	print("== Resultado combate: %d correctas, %d fallos" % [_passed, _failed])

@@ -286,6 +286,8 @@ func interaction(pos: Vector3, can_enter: bool) -> Dictionary:
 			ex = o
 		if Vector2(pos.x - ex.x, pos.z - ex.z).length() < 1.9:
 			return {"label": "Salir", "action": func() -> void: leave()}
+		if p["id"] == "house" and Vector2(pos.x - (o.x + 3.0), pos.z - (o.z + 4.0)).length() < 1.1:
+			return {"label": "Cambiarse de ropa", "action": func() -> void: main.change_outfit()}
 		if p["id"] == "house" and Vector2(pos.x - (o.x + 4.4), pos.z - (o.z + 3.2)).length() < 2.0:
 			return {"label": "Guardar partida", "action": func() -> void: _save_at_bed()}
 		return {}
@@ -500,10 +502,10 @@ func _respray(car) -> void:
 		guard += 1
 	car.repair()
 	car.repaint(color)
-	main.wanted = 0
-	main.hud.set_wanted(0)
+	# Repintar ya no borra las estrellas: hace que el coche deje de encajar con la descripción.
+	main.crime.look_changed()
 	await get_tree().create_timer(1.0).timeout
-	main.hud.toast("PINTA Y LISTO", "Coche reparado y pintado", 3.0)
+	main.hud.toast("PINTA Y LISTO", "Coche reparado y pintado: ya no es el que busca la policía", 3.0)
 	main.hud.fade_to(0.0, 0.6)
 	main.set_gameplay(true)
 	await get_tree().create_timer(0.6).timeout

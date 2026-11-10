@@ -340,6 +340,65 @@ func _set_phone(on: bool) -> void:
 		_phone.visible = on
 
 
+## Conjuntos de ropa del protagonista. El 0 es el del modelo (todo negro); el resto tiñe la
+## sudadera (top) y el pantalón (pants) con assets/shaders/outfit.gdshader. null = sin teñir.
+const OUTFITS := [
+	{"name": "Sudadera negra y pantalón negro", "top": null, "pants": null},
+	{"name": "Sudadera gris y vaqueros azules", "top": Color(0.62, 0.62, 0.65), "pants": Color(0.15, 0.22, 0.38)},
+	{"name": "Sudadera roja y pantalón negro", "top": Color(0.6, 0.07, 0.08), "pants": null},
+	{"name": "Sudadera blanca y pantalón caqui", "top": Color(0.9, 0.9, 0.87), "pants": Color(0.56, 0.48, 0.33)},
+	{"name": "Sudadera azul y pantalón gris", "top": Color(0.1, 0.24, 0.55), "pants": Color(0.4, 0.4, 0.43)},
+]
+const OUTFIT_SHADER := "res://assets/shaders/outfit.gdshader"
+
+static var _outfit_mats: Dictionary = {}
+var outfit: int = 0
+
+
+static func outfit_name(i: int) -> String:
+	return String(OUTFITS[clampi(i, 0, OUTFITS.size() - 1)]["name"])
+
+
+## Cambia la ropa de un personaje con modelo (solo tiene efecto en modelos con esqueleto).
+func set_outfit(i: int) -> void:
+	outfit = clampi(i, 0, OUTFITS.size() - 1)
+	if _skel == null:
+		return
+	var o: Dictionary = OUTFITS[outfit]
+	for n in _skel.get_parent().find_children("*", "MeshInstance3D", true, false):
+		var mi := n as MeshInstance3D
+		if mi.mesh == null or mi.skin == null:
+			continue
+		for s in mi.mesh.get_surface_count():
+			if o["top"] == null and o["pants"] == null:
+				mi.set_surface_override_material(s, null)
+				continue
+			var base := mi.mesh.surface_get_material(s) as BaseMaterial3D
+			if base == null or base.albedo_texture == null:
+				continue
+			var key := "%s_%d_%d" % [String(look.get("model", "")), s, outfit]
+			if not _outfit_mats.has(key):
+				var sm := ShaderMaterial.new()
+				sm.shader = load(OUTFIT_SHADER)
+				sm.set_shader_parameter("albedo_tex", base.albedo_texture)
+				sm.set_shader_parameter("use_normal", 1.0 if base.normal_enabled and base.normal_texture != null else 0.0)
+				if base.normal_texture != null:
+					sm.set_shader_parameter("normal_tex", base.normal_texture)
+				if base.roughness_texture != null:
+					sm.set_shader_parameter("rough_tex", base.roughness_texture)
+					var ch := [Color(1, 0, 0, 0), Color(0, 1, 0, 0), Color(0, 0, 1, 0), Color(0, 0, 0, 1), Color(0.333, 0.333, 0.333, 0)]
+					sm.set_shader_parameter("rough_channel", ch[clampi(int(base.roughness_texture_channel), 0, 4)])
+				sm.set_shader_parameter("roughness_scale", base.roughness)
+				sm.set_shader_parameter("top_amount", 0.0 if o["top"] == null else 1.0)
+				sm.set_shader_parameter("pants_amount", 0.0 if o["pants"] == null else 1.0)
+				if o["top"] != null:
+					sm.set_shader_parameter("top_color", o["top"])
+				if o["pants"] != null:
+					sm.set_shader_parameter("pants_color", o["pants"])
+				_outfit_mats[key] = sm
+			mi.set_surface_override_material(s, _outfit_mats[key])
+
+
 ## Pistola (dos cajas oscuras) en la mano derecha. Solo personajes con esqueleto o procedurales.
 func set_gun(on: bool) -> void:
 	if _static_model or not _built:
