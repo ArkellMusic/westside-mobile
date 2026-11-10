@@ -22,6 +22,7 @@ const SPACING := 60.0
 const VIS_END := 120.0
 const RESPRAY_PRICE := 100
 const HOSPITAL_BILL := 100
+const BUST_FINE := 150
 
 ## Referencia al nodo principal (main.gd). Se asigna antes de build().
 var main
@@ -390,25 +391,36 @@ func _save_at_bed() -> void:
 
 ## Fin de partida por salud: factura del hospital y reaparición en Westbrook General.
 func wasted_respawn() -> void:
+	await _respawn_at("HAS CAÍDO", "-$%d de factura del hospital" % HOSPITAL_BILL, HOSPITAL_BILL, hospital_respawn_point(), false)
+
+
+## Detenido: multa, la policía se queda la munición y sales por la puerta de la comisaría.
+func busted_respawn() -> void:
+	await _respawn_at("DETENIDO", "-$%d de multa · munición confiscada" % BUST_FINE, BUST_FINE, police_respawn_point(), true)
+
+
+func _respawn_at(title: String, sub: String, cost: int, t: Transform3D, confiscate: bool) -> void:
 	if _wasted_running or busy:
 		return
 	_wasted_running = true
 	busy = true
 	main.hud.fade_to(1.0, 0.8)
-	main.hud.toast("HAS CAÍDO", "-$%d de factura del hospital" % HOSPITAL_BILL, 3.0)
+	main.hud.toast(title, sub, 3.0)
 	if main.current_vehicle:
 		main.current_vehicle.linear_velocity = Vector3.ZERO
 		await main.leave_vehicle()
 	await get_tree().create_timer(1.6).timeout
-	GameState.add_money(-HOSPITAL_BILL)
-	main.wanted = 0
-	main.hud.set_wanted(0)
+	GameState.add_money(-cost)
+	if confiscate:
+		GameState.ammo = 0
+		main.combat.set_weapon("fist")
+	main.police.clear()
+	main.set_wanted(0)
 	if inside >= 0:
 		inside = -1
 		_restore_env()
 		for k in _roots:
 			(_roots[k] as Node3D).visible = false
-	var t := hospital_respawn_point()
 	main.player.place(t.origin, t.basis.get_euler().y)
 	_snap_camera(t.basis.get_euler().y, 4.2)
 	GameState.set_health(GameState.MAX_HEALTH)

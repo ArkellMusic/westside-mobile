@@ -61,7 +61,7 @@ docs/                    Mapas de referencia, biblia de misiones, fichas de pers
 | 3 | Coche conducible, entrar y salir | Hecho |
 | 4 | Misión 01 completa con diálogos, recompensa y guardado | Hecho |
 | 5 | HUD, radar, mapa (barrio y estado), pausa, ajustes | Hecho |
-| 6 | Personajes, tráfico, bandas, radio, más contenido | Parcial: 7 personajes y tráfico/peatones; sin radio ni combate |
+| 6 | Personajes, tráfico, bandas, radio, más contenido | Parcial: 7 personajes, tráfico/peatones, radio, combate (puños y pistola), policía con estrellas y robo de coches |
 | 7 | Optimizar, firmar, instalar y probar en iPhone | Pendiente: requiere tu iPhone |
 | 8 | IPA final y documentación | Documentación hecha; IPA final pendiente |
 
@@ -70,5 +70,5 @@ docs/                    Mapas de referencia, biblia de misiones, fichas de pers
 - **Modelos 3D reales:** los personajes y coches son procedurales y siguen las fichas (ropa, colores, accesorios). Para sustituirlos hacen falta GLB con esqueleto humanoide (por ejemplo, exportados de tus FBX).
 - **Voces en inglés:** los diálogos están escritos (EN + subtítulos ES), pero no hay audio grabado. Hay un punto de enganche en `main.gd → on_dialogue_line()`.
 - **Radio y música:** pendiente de pistas originales o con licencia.
-- **Combate y salud:** la barra de salud existe; el combate no está implementado todavía.
+- **Combate y policía** (`scripts/player/combat.gd`, `scripts/world/police.gd`, `scripts/audio/sfx.gd`): puños y pistola con apuntado automático, peatones que huyen, agentes que llegan en patrulla, detienen con 1 estrella y disparan con 2 o más; las estrellas bajan cuando nadie te ve. Se puede robar cualquier coche del tráfico. Pendiente: persecuciones en coche patrulla, más armas, tiendas de munición y animaciones de captura de movimiento para Mack (ahora sus gestos de combate son poses por código).
 - **El resto del estado:** San Cordova, Las Brisas, Northpoint, Bahía Solana y las islas solo existen como datos y en el mapa (bloqueadas por misión).

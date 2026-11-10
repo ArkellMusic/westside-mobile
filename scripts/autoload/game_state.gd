@@ -4,9 +4,14 @@ extends Node
 
 const MAX_HEALTH := 100.0
 const START_MONEY := 250
+const START_AMMO := 48
+const MAX_AMMO := 240
 
 var money: int = 0
 var health: float = MAX_HEALTH
+## Arma en la mano ("fist" | "pistol") y balas de pistola.
+var weapon: String = "fist"
+var ammo: int = START_AMMO
 var reputation: Dictionary = {}
 var completed_missions: Array = []
 var player_position: Vector3 = Vector3.ZERO
@@ -29,6 +34,8 @@ func _process(delta: float) -> void:
 func new_game() -> void:
 	money = START_MONEY
 	health = MAX_HEALTH
+	weapon = "fist"
+	ammo = START_AMMO
 	completed_missions = []
 	has_position = false
 	player_position = Vector3.ZERO
@@ -91,6 +98,8 @@ func to_dict() -> Dictionary:
 	return {
 		"money": money,
 		"health": health,
+		"weapon": weapon,
+		"ammo": ammo,
 		"reputation": reputation.duplicate(),
 		"completed_missions": completed_missions.duplicate(),
 		"player_position": [player_position.x, player_position.y, player_position.z],
@@ -106,6 +115,10 @@ func to_dict() -> Dictionary:
 func from_dict(d: Dictionary) -> void:
 	money = int(d.get("money", START_MONEY))
 	health = clampf(float(d.get("health", MAX_HEALTH)), 1.0, MAX_HEALTH)
+	weapon = String(d.get("weapon", "fist"))
+	if weapon != "pistol":
+		weapon = "fist"
+	ammo = clampi(int(d.get("ammo", START_AMMO)), 0, MAX_AMMO)
 	reputation = {}
 	var rep: Dictionary = d.get("reputation", {})
 	for k in rep:

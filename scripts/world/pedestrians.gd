@@ -65,6 +65,9 @@ func _physics_process(delta: float) -> void:
 			continue
 		var dir := d.normalized()
 		var speed: float = ped["speed"]
+		if float(ped.get("panic", 0.0)) > 0.0:
+			ped["panic"] = float(ped["panic"]) - delta
+			speed = 5.4
 		for n in danger:
 			var car := n as Node3D
 			if car == null or not car.is_visible_in_tree():
@@ -114,15 +117,89 @@ func _check_hits() -> void:
 			_knock_down(i, vel, spd)
 
 
-func _knock_down(i: int, car_vel: Vector3, spd: float) -> void:
+func _knock_down(i: int, car_vel: Vector3, spd: float, lift: float = 3.0) -> void:
 	var ped: Dictionary = peds[i]
 	peds.remove_at(i)
 	var h = ped["node"]
-	var v := car_vel * 0.8 + Vector3.UP * 3.0
+	var v := car_vel * 0.8 + Vector3.UP * lift
 	downed.append({"node": h, "ped": ped, "vel": v, "state": 0, "t": 0.0,
 		"spin": Vector3(rng.randf_range(4.0, 8.0), rng.randf_range(-3.0, 3.0), 0.0)})
 	h.animate(0.1, 0.0, false)
 	pedestrian_hit.emit(h.global_position, spd)
+
+
+## Golpe o disparo del jugador: el peatón `i` cae en la dirección `dir`.
+func strike(i: int, dir: Vector3, force: float, lift: float) -> void:
+	if i < 0 or i >= peds.size():
+		return
+	var d := Vector3(dir.x, 0, dir.z).normalized()
+	_knock_down(i, d * force / 0.8, force, lift)
+
+
+## Índice del peatón más cercano dentro de un cono (dir plano, cos del semiángulo); -1 si no hay.
+func nearest_in_cone(origin: Vector3, dir: Vector3, max_range: float, cos_half: float) -> int:
+	var best := -1
+	var best_score := INF
+	for i in peds.size():
+		var h: Node3D = peds[i]["node"]
+		var to := h.global_position - origin
+		to.y = 0.0
+		var dist := to.length()
+		if dist > max_range or dist < 0.05:
+			continue
+		var dot := to.normalized().dot(dir)
+		if dot < cos_half:
+			continue
+		var score := dist * (2.0 - dot)
+		if score < best_score:
+			best_score = score
+			best = i
+	return best
+
+
+## Pánico (disparos, pelea): los peatones cercanos corren por su acera alejándose de `center`.
+func panic(center: Vector3, radius: float, time: float = 7.0) -> void:
+	var c2 := Vector2(center.x, center.z)
+	for ped in peds:
+		var h: Node3D = ped["node"]
+		if Vector2(h.position.x, h.position.z).distance_to(c2) > radius:
+			continue
+		if float(ped.get("panic", 0.0)) <= 0.0:
+			var corners: Array = ped["corners"]
+			var nxt := int(ped["next"])
+			var prv := (nxt + 3) % 4
+			if (corners[prv] as Vector2).distance_to(c2) > (corners[nxt] as Vector2).distance_to(c2):
+				var rev := corners.duplicate()
+				rev.reverse()
+				ped["corners"] = rev
+				ped["next"] = 3 - prv
+		ped["panic"] = time
+
+
+## Persona que sale corriendo desde `pos` (conductor al que le roban el coche).
+func add_runner(pos: Vector3, threat: Vector3) -> void:
+	var best: Dictionary = {}
+	var best_d := INF
+	var p2 := Vector2(pos.x, pos.z)
+	for blk in CityLayout.blocks():
+		var r: Rect2 = (blk["rect"] as Rect2).grow(-CityLayout.SIDEWALK * 0.5)
+		var q := Vector2(clampf(p2.x, r.position.x, r.end.x), clampf(p2.y, r.position.y, r.end.y))
+		var dd := q.distance_to(p2)
+		if dd < best_d:
+			best_d = dd
+			best = {"r": r}
+	if best.is_empty():
+		return
+	var r2: Rect2 = best["r"]
+	var h: Node3D = _make_person()
+	h.position = Vector3(pos.x, 0.12, pos.z)
+	var corners := [r2.position, Vector2(r2.end.x, r2.position.y), r2.end, Vector2(r2.position.x, r2.end.y)]
+	var far := 0
+	var t2 := Vector2(threat.x, threat.z)
+	for i in 4:
+		if (corners[i] as Vector2).distance_to(t2) > (corners[far] as Vector2).distance_to(t2):
+			far = i
+	peds.append({"node": h, "corners": corners, "next": far, "speed": rng.randf_range(1.1, 1.6), "dodge": 0.0, "dodger": false, "panic": 9.0})
 
 
 func _update_downed(delta: float) -> void:
@@ -187,5 +264,6 @@ func _respawn(ped: Dictionary) -> void:
 	ped["corners"] = corners
 	ped["next"] = (start + 1) % 4
 	ped["dodge"] = 0.0
+	ped["panic"] = 0.0
 	ped["dodger"] = rng.randf() < 0.5
 	peds.append(ped)

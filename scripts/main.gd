@@ -15,6 +15,10 @@ var traffic: Traffic
 var radio: Radio
 var pedestrians: Pedestrians
 var impact_system: ImpactSystem
+var combat: Combat
+var police: Police
+var _stolen: Array = []           # coches robados al tráfico (se reciclan los más viejos)
+var _stolen_n: int = 0
 var interiors: Interiors
 var _radar_timer: float = 0.0
 var wanted: int = 0
@@ -120,6 +124,14 @@ func _ready() -> void:
 	add_child(rig)
 	rig.exclude(player)
 	traffic.obstacles.append(player)
+	combat = Combat.new()
+	combat.name = "Combat"
+	combat.main = self
+	add_child(combat)
+	police = Police.new()
+	police.name = "Police"
+	police.main = self
+	add_child(police)
 
 	_spawn_vehicles()
 	_spawn_actors()
@@ -166,6 +178,8 @@ func _ready() -> void:
 	title_menu.load_requested.connect(load_game)
 	_photo_rect = _make_photo_overlay()
 	theme_root.add_child(_photo_rect)
+	combat.weapon_changed.connect(_on_weapon_changed)
+	_on_weapon_changed(GameState.weapon)
 
 	_setup_ambient_talk()
 	_enter_title()
@@ -207,8 +221,17 @@ func _next_title_shot() -> void:
 	_title_shot += 1
 
 
+## Deja el mundo sin búsqueda ni agentes y el arma del jugador según la partida.
+func _reset_heat() -> void:
+	police.clear()
+	set_wanted(0)
+	combat.set_weapon(GameState.weapon)
+	combat.reset()
+
+
 func new_game() -> void:
 	GameState.new_game()
+	_reset_heat()
 	title_menu.visible = false
 	state = State.INTRO
 	GameState.in_game = true
@@ -228,6 +251,7 @@ func load_game(slot: int) -> void:
 		return
 	title_menu.visible = false
 	GameState.in_game = true
+	_reset_heat()
 	_reset_story_positions()
 	if parked_bus == null:
 		parked_bus = BusModel.build()
@@ -264,6 +288,8 @@ func _quit_to_title() -> void:
 	interiors.reset()
 	if current_vehicle:
 		_force_exit_vehicle()
+	police.clear()
+	set_wanted(0)
 	_enter_title()
 
 
@@ -327,11 +353,17 @@ func _process(delta: float) -> void:
 	if current_vehicle:
 		current_vehicle.set_lights(sky.night_amount() > 0.35)
 	if wanted > 0:
+		# Las estrellas solo bajan mientras ningún agente ve al jugador.
+		if police.any_seen:
+			_wanted_timer = maxf(_wanted_timer, WANTED_COOLDOWN)
 		_wanted_timer -= delta
 		if _wanted_timer <= 0.0:
-			wanted -= 1
-			_wanted_timer = 40.0
-			hud.set_wanted(wanted)
+			set_wanted(wanted - 1)
+	if not current_vehicle and _gameplay_on and interiors.inside < 0 and not interiors.busy:
+		combat.update(delta)
+	elif player.model:
+		player.model.overlay = {}
+	hud.set_ammo(GameState.ammo if GameState.weapon == "pistol" else -1)
 	var focus: Node3D = current_vehicle if current_vehicle else player
 	if not current_vehicle:
 		player.camera_yaw = rig.yaw
@@ -370,10 +402,83 @@ func _process(delta: float) -> void:
 	GameState.set_health(GameState.health)
 
 
+const WANTED_COOLDOWN := 18.0
+
+
 func _on_pedestrian_hit(_pos: Vector3, _speed: float) -> void:
-	wanted = mini(wanted + 1, 6)
-	_wanted_timer = 40.0
+	set_wanted(mini(wanted + 1, 6))
+
+
+## Fija el nivel de búsqueda (0-6) y reinicia la cuenta atrás para perder una estrella.
+func set_wanted(level: int) -> void:
+	wanted = clampi(level, 0, 6)
+	_wanted_timer = WANTED_COOLDOWN
 	hud.set_wanted(wanted)
+
+
+func refresh_wanted() -> void:
+	_wanted_timer = WANTED_COOLDOWN
+
+
+## Disparos en la calle: alguien llama a la policía.
+func on_gunfire() -> void:
+	if wanted < 1:
+		set_wanted(1)
+	else:
+		refresh_wanted()
+
+
+## Daño al jugador (balas de la policía): destello rojo, sacudida y, a cero, hospital.
+func damage_player(amount: float) -> void:
+	if GameState.health <= 0.0:
+		return
+	GameState.set_health(GameState.health - amount)
+	hud.damage_flash()
+	rig.shake(0.25)
+
+
+## Detenido por un agente (1 estrella): multa, sin munición y a la puerta de la comisaría.
+func busted() -> void:
+	interiors.busted_respawn()
+
+
+func _on_weapon_changed(kind: String) -> void:
+	hud.set_weapon_icon(kind)
+	touch.set_attack_label("Disparar" if kind == "pistol" else "Golpe")
+
+
+## Roba un coche del tráfico: lo sustituye por uno conducible igual y echa al conductor.
+func steal_traffic_car(tc: Traffic.TrafficCar) -> void:
+	if current_vehicle or not is_instance_valid(tc):
+		return
+	var xf := tc.global_transform
+	var heading := tc.heading
+	var style := tc.style
+	var color := tc.body_color
+	traffic.remove_car(tc, xf.origin)
+	_stolen_n += 1
+	var id := "stolen_%d" % _stolen_n
+	var car := Car.new()
+	car.name = id
+	add_child(car)
+	car.setup(style, color, id, "")
+	_place_car(car, xf.origin, heading)
+	vehicles[id] = car
+	_hook_car(car)
+	_stolen.append(id)
+	while _stolen.size() > 3:
+		var old: String = _stolen.pop_front()
+		var oc: Car = vehicles.get(old)
+		vehicles.erase(old)
+		if oc and is_instance_valid(oc):
+			oc.queue_free()
+	# El conductor sale por la izquierda y huye; con testigos, una estrella.
+	var left := Vector3(-heading.z, 0, heading.x) * -1.0
+	pedestrians.add_runner(xf.origin + left * 2.0, xf.origin)
+	pedestrians.panic(xf.origin, 14.0, 6.0)
+	if wanted < 1:
+		set_wanted(1)
+	await board(car, "driver")
 
 
 func _hook_car(car: Car) -> void:
@@ -414,6 +519,11 @@ func _update_interaction() -> void:
 				label = "Subir"
 				action = func() -> void: board(car, "driver")
 				break
+	if label == "" and allow_free_vehicles and not runner.running:
+		var tc := traffic.nearest_car(player.global_position, 3.6)
+		if tc != null and tc.speed < 6.0:
+			label = "Robar"
+			action = func() -> void: steal_traffic_car(tc)
 	if label == "":
 		for id in _ambient_talk:
 			var a: NPC = actors.get(id)
@@ -543,6 +653,7 @@ func board(car: Car, seat: String) -> void:
 	player.visible = false
 	player.process_mode = Node.PROCESS_MODE_DISABLED
 	player.collision_layer = 0
+	player.model.overlay = {}
 	_seat_model("player", GameData.character_look("mack"), car, seat)
 	rig.exclude(car)
 	rig.follow(car, true)
@@ -828,10 +939,21 @@ func _spawn_scenery_people() -> void:
 	var rng := RandomNumberGenerator.new()
 	rng.seed = 99
 	var spots := [Vector3(88, 0.12, -14), Vector3(110, 0.12, -16), Vector3(116, 0.12, -12), Vector3(94, 0.12, -20), Vector3(122, 0.12, -9)]
+	var real := MixamoPerson.available()
 	for p in spots:
-		var h := Humanoid.new()
-		add_child(h)
-		h.setup(Humanoid.random_look(rng))
+		var h: Node3D
+		if real:
+			var mp := MixamoPerson.new()
+			add_child(mp)
+			mp.setup(MixamoPerson.random_look(rng))
+			if rng.randf() < 0.4:
+				mp.pose_idle_stance("phone")
+			h = mp
+		else:
+			var hh := Humanoid.new()
+			add_child(hh)
+			hh.setup(Humanoid.random_look(rng))
+			h = hh
 		h.position = p
 		h.rotation.y = rng.randf() * TAU
 	for i in 2:

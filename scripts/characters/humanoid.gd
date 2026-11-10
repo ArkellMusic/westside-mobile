@@ -28,6 +28,9 @@ var _skel: Skeleton3D = null
 var _static_model: bool = false   # modelo sin esqueleto humanoide (se queda en su pose)
 var _bones: Dictionary = {}
 var _phone: Node3D = null   # móvil de la pose "phone"
+var _gun: Node3D = null     # pistola en la mano derecha (combate)
+## Pose superpuesta a la de andar (combate: apuntar, puñetazo). Mismas claves que _new_pose().
+var overlay: Dictionary = {}
 
 static var _mat_cache: Dictionary = {}
 static var _mesh_cache: Dictionary = {}
@@ -272,6 +275,14 @@ func animate(delta: float, speed: float, on_floor: bool) -> void:
 		p["torso_y"] = sw * 0.08 * walk
 		p["head_x"] = 0.12 * run
 		p["hip_y"] = -absf(cos(_phase)) * 0.04 * walk + sin(Time.get_ticks_msec() * 0.002) * 0.012 * (1.0 - walk)
+	for k in overlay:
+		var v = overlay[k]
+		if v is Array and p.has(k):
+			for i in 2:
+				if v[i] != null:
+					p[k][i] = v[i]
+		else:
+			p[k] = v
 	_apply(p)
 
 
@@ -327,6 +338,53 @@ func _set_phone(on: bool) -> void:
 		_phone = _make_phone()
 	if _phone != null:
 		_phone.visible = on
+
+
+## Pistola (dos cajas oscuras) en la mano derecha. Solo personajes con esqueleto o procedurales.
+func set_gun(on: bool) -> void:
+	if _static_model or not _built:
+		return
+	if on and _gun == null:
+		_gun = _make_gun()
+	if _gun != null:
+		_gun.visible = on
+
+
+func _make_gun() -> Node3D:
+	var root := Node3D.new()
+	root.name = "Pistola"
+	var m := StandardMaterial3D.new()
+	m.albedo_color = Color(0.05, 0.05, 0.06)
+	m.roughness = 0.35
+	m.metallic = 0.7
+	var slide := MeshInstance3D.new()
+	var sm := BoxMesh.new()
+	sm.material = m
+	slide.mesh = sm
+	var grip := MeshInstance3D.new()
+	var gm := BoxMesh.new()
+	gm.material = m
+	grip.mesh = gm
+	root.add_child(slide)
+	root.add_child(grip)
+	if _skel:
+		# Eje X local de la mano = dirección del antebrazo.
+		sm.size = Vector3(0.19, 0.035, 0.028)
+		slide.position = Vector3(0.14, -0.05, 0.0)
+		gm.size = Vector3(0.04, 0.10, 0.026)
+		grip.position = Vector3(0.07, -0.095, 0.0)
+		var att := BoneAttachment3D.new()
+		att.name = "PistolaAdjunta"
+		_skel.add_child(att)
+		att.bone_name = "r_hand"
+		att.add_child(root)
+		return att
+	sm.size = Vector3(0.028, 0.035, 0.19)
+	slide.position = Vector3(0.0, -0.36, -0.09)
+	gm.size = Vector3(0.026, 0.10, 0.04)
+	grip.position = Vector3(0.0, -0.33, -0.01)
+	_elbow[1].add_child(root)
+	return root
 
 
 func _make_phone() -> Node3D:

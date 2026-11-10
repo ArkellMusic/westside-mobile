@@ -35,6 +35,9 @@ var _wanted: int = 0
 var _wanted_blink: float = 0.0
 var _armor: float = 0.0
 var _weapon_kind: String = "fist"
+var _ammo: int = -1
+var _hurt: ColorRect
+var _hurt_tween: Tween
 var _health_value: float = -1.0
 var _loc_font: SystemFont
 var _objective_panel: PanelContainer
@@ -288,6 +291,14 @@ func _build() -> void:
 	_letter_bottom.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	add_child(_letter_bottom)
 
+	# Destello rojo al recibir daño
+	_hurt = ColorRect.new()
+	_hurt.color = Color(0.75, 0.0, 0.0, 0.0)
+	_hurt.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	_hurt.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_hurt.visible = false
+	add_child(_hurt)
+
 	# Fundido a negro
 	_fade = ColorRect.new()
 	_fade.color = Color(0, 0, 0, 0)
@@ -540,6 +551,25 @@ func set_weapon_icon(kind: String) -> void:
 		_cluster.queue_redraw()
 
 
+## Balas que se muestran bajo el arma; -1 las oculta (puños).
+func set_ammo(count: int) -> void:
+	if count == _ammo:
+		return
+	_ammo = count
+	if _cluster:
+		_cluster.queue_redraw()
+
+
+func damage_flash() -> void:
+	if _hurt_tween:
+		_hurt_tween.kill()
+	_hurt.visible = true
+	_hurt.color.a = 0.2
+	_hurt_tween = create_tween()
+	_hurt_tween.tween_property(_hurt, "color:a", 0.0, 0.45)
+	_hurt_tween.tween_callback(func() -> void: _hurt.visible = false)
+
+
 # ------------------------------------------------------------ Dibujo del cluster
 ## Todo se dibuja en coordenadas de referencia (REF_W x REF_H) con una transformación de escala.
 
@@ -688,6 +718,37 @@ func _draw_weapon_box(r: Rect2) -> void:
 	_cluster.draw_style_box(sb2, inner)
 	if _weapon_kind == "fist":
 		_draw_fist(r.get_center(), 2.15)
+	elif _weapon_kind == "pistol":
+		_draw_pistol(r.get_center() + Vector2(0, -8.0), 2.0)
+		if _ammo >= 0:
+			var font := UITheme.bold_font()
+			var txt := str(_ammo)
+			var fs := 26
+			var w := font.get_string_size(txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs).x
+			var pos := Vector2(r.end.x - 16.0 - w, r.end.y - 14.0)
+			_cluster.draw_string_outline(font, pos, txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, 6, Color(1, 1, 1))
+			_cluster.draw_string(font, pos, txt, HORIZONTAL_ALIGNMENT_LEFT, -1, fs, Color(0.08, 0.08, 0.1))
+
+
+## Pistola original dibujada por código: corredera, armazón, guardamonte y empuñadura.
+func _draw_pistol(c: Vector2, k: float) -> void:
+	var body := Color(0.13, 0.13, 0.15)
+	var shade := Color(0.3, 0.3, 0.33)
+	var parts: Array[PackedVector2Array] = [
+		PackedVector2Array([Vector2(-24, -13), Vector2(24, -13), Vector2(24, -4), Vector2(-24, -4)]),   # corredera
+		PackedVector2Array([Vector2(-22, -4), Vector2(18, -4), Vector2(18, 2), Vector2(-6, 2), Vector2(-22, 0)]),   # armazón
+		PackedVector2Array([Vector2(-22, -2), Vector2(-7, 0), Vector2(-11, 21), Vector2(-25, 21)]),   # empuñadura
+	]
+	for poly in parts:
+		var out := PackedVector2Array()
+		for v in poly:
+			out.append(c + v * k)
+		_cluster.draw_colored_polygon(out, body)
+	_cluster.draw_rect(Rect2(c + Vector2(-18, -11) * k, Vector2(30, 2.5) * k), shade)
+	for i in 4:
+		_cluster.draw_rect(Rect2(c + Vector2(-23.0 + i * 2.6, -12.0) * k, Vector2(1.2, 7.0) * k), shade)
+	_cluster.draw_arc(c + Vector2(-1.0, 4.0) * k, 5.0 * k, 0.0, PI, 12, body, 2.2 * k * 0.5, true)
+	_cluster.draw_line(c + Vector2(-2.5, 2.0) * k, c + Vector2(-3.5, 6.5) * k, body, 1.6 * k * 0.5, true)
 
 
 ## Puño original (dibujado por código): palma redondeada, cuatro nudillos y pulgar cruzado.

@@ -27,47 +27,82 @@ class TrafficCar:
 	var stopped_node: int = -1   # cruce donde ya paró por un STOP
 	var run_node: int = -1       # cruce que cruza en ámbar/rojo sin poder frenar
 	var wait_t: float = 0.0
+	var style: int = 0
+	var body_color: Color = Color.WHITE
 
 
 func setup(count: int) -> void:
 	rng.seed = 77
 	graph = CityLayout.road_graph()
 	var nodes: Array = graph["nodes"]
-	var colors := CityBuilder.CAR_COLORS
 	var used := {}
 	for i in count:
-		var tc := TrafficCar.new()
-		tc.sync_to_physics = false
-		var style: int = CarModel.TRAFFIC_STYLES[rng.randi() % CarModel.TRAFFIC_STYLES.size()]
-		var mi := MeshInstance3D.new()
-		mi.mesh = CarModel.build(style, colors[rng.randi() % colors.size()], true)
-		tc.add_child(mi)
-		var spec := CarModel.spec(style)
-		var shape := BoxShape3D.new()
-		shape.size = Vector3(float(spec["half_w"]) * 2.0, float(spec["height"]) - 0.3, spec["length"])
-		var cs := CollisionShape3D.new()
-		cs.shape = shape
-		cs.position.y = 0.3 + (float(spec["height"]) - 0.3) * 0.5
-		tc.add_child(cs)
-		tc.length = spec["length"]
-		tc.cruise = rng.randf_range(9.0, 13.0)
-		add_child(tc)
-		# Nodo inicial distinto para cada coche.
 		var start := rng.randi() % nodes.size()
 		while used.has(start):
 			start = (start + 1) % nodes.size()
 		used[start] = true
-		tc.from_node = start
-		var links: Array = graph["links"][start]
-		tc.to_node = links[rng.randi() % links.size()]
-		var a: Vector2 = nodes[tc.from_node]
-		var b: Vector2 = nodes[tc.to_node]
-		var dir := (b - a).normalized()
-		var p := a.lerp(b, rng.randf_range(0.3, 0.6)) + _right(dir) * _lane(dir)
-		tc.global_position = Vector3(p.x, 0.04, p.y)
-		tc.heading = Vector3(dir.x, 0, dir.y)
-		tc.path = _segment_points(tc.from_node, tc.to_node)
-		cars.append(tc)
+		_add_car(start)
+
+
+## Crea un coche de tráfico que sale del nodo `start`.
+func _add_car(start: int) -> void:
+	var nodes: Array = graph["nodes"]
+	var colors := CityBuilder.CAR_COLORS
+	var tc := TrafficCar.new()
+	tc.sync_to_physics = false
+	var style: int = CarModel.TRAFFIC_STYLES[rng.randi() % CarModel.TRAFFIC_STYLES.size()]
+	var color: Color = colors[rng.randi() % colors.size()]
+	tc.style = style
+	tc.body_color = color
+	var mi := MeshInstance3D.new()
+	mi.mesh = CarModel.build(style, color, true)
+	tc.add_child(mi)
+	var spec := CarModel.spec(style)
+	var shape := BoxShape3D.new()
+	shape.size = Vector3(float(spec["half_w"]) * 2.0, float(spec["height"]) - 0.3, spec["length"])
+	var cs := CollisionShape3D.new()
+	cs.shape = shape
+	cs.position.y = 0.3 + (float(spec["height"]) - 0.3) * 0.5
+	tc.add_child(cs)
+	tc.length = spec["length"]
+	tc.cruise = rng.randf_range(9.0, 13.0)
+	add_child(tc)
+	tc.from_node = start
+	var links: Array = graph["links"][start]
+	tc.to_node = links[rng.randi() % links.size()]
+	var a: Vector2 = nodes[tc.from_node]
+	var b: Vector2 = nodes[tc.to_node]
+	var dir := (b - a).normalized()
+	var p := a.lerp(b, rng.randf_range(0.3, 0.6)) + _right(dir) * _lane(dir)
+	tc.global_position = Vector3(p.x, 0.04, p.y)
+	tc.heading = Vector3(dir.x, 0, dir.y)
+	tc.path = _segment_points(tc.from_node, tc.to_node)
+	cars.append(tc)
+
+
+## Coche de tráfico parado o lento más cercano a `pos` (para robarlo); null si no hay.
+func nearest_car(pos: Vector3, max_dist: float) -> TrafficCar:
+	var best: TrafficCar = null
+	var best_d := max_dist
+	for tc in cars:
+		var car: TrafficCar = tc
+		var d := Vector2(car.global_position.x - pos.x, car.global_position.z - pos.z).length()
+		if d < best_d:
+			best_d = d
+			best = car
+	return best
+
+
+## Quita un coche del tráfico (robado) y mete otro lejos de `away` para mantener la densidad.
+func remove_car(tc: TrafficCar, away: Vector3) -> void:
+	cars.erase(tc)
+	tc.queue_free()
+	var nodes: Array = graph["nodes"]
+	for attempt in 12:
+		var n := rng.randi() % nodes.size()
+		if (nodes[n] as Vector2).distance_to(Vector2(away.x, away.z)) > 140.0:
+			_add_car(n)
+			return
 
 
 func _right(dir: Vector2) -> Vector2:

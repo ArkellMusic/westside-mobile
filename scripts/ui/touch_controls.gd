@@ -9,6 +9,7 @@ const DEADZONE := 0.08
 
 var _mode: String = "hidden"
 var _interact_label: String = ""
+var _attack_label: String = "Golpe"
 var _buttons: Array[Dictionary] = []
 
 var _joy_index: int = -1
@@ -51,6 +52,14 @@ func set_interact_label(text: String) -> void:
 	_layout()
 
 
+## Texto del botón de ataque según el arma ("Golpe" / "Disparar").
+func set_attack_label(text: String) -> void:
+	if text == _attack_label:
+		return
+	_attack_label = text
+	_layout()
+
+
 func _on_visibility_changed() -> void:
 	if not is_visible_in_tree():
 		_release_all()
@@ -85,8 +94,10 @@ func _layout() -> void:
 		if _mode == "foot":
 			_add_button("jump", "Saltar", pivot, 0.0, 0.0, 66.0, false)
 			_add_button("sprint", "Correr", pivot, 140.0, 8.0, 54.0, true)
+			_add_button("attack", _attack_label, pivot, 150.0, 52.0, 58.0, true)
+			_add_button("weapon", "Arma", pivot, 262.0, 30.0, 40.0, false)
 			if _interact_label != "":
-				_add_button("interact", _interact_label, pivot, 142.0, 78.0, 54.0, false)
+				_add_button("interact", _interact_label, pivot, 150.0, 96.0, 54.0, false)
 		else:
 			_add_button("gas", "Gas", pivot, 0.0, 0.0, 72.0, true)
 			_add_button("brake", "Freno", pivot, 152.0, 2.0, 58.0, true)

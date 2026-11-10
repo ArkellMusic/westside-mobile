@@ -21,6 +21,8 @@ const KEYS := {
 	"pause": [KEY_ESCAPE, KEY_P],
 	"map": [KEY_M],
 	"radio": [KEY_R],
+	"attack": [KEY_E, KEY_CTRL],
+	"weapon": [KEY_Q],
 }
 
 
