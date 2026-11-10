@@ -44,6 +44,7 @@ func current_look() -> Dictionary:
 	var car: Car = main.current_vehicle
 	return {
 		"outfit": GameState.outfit,
+		"head": GameState.head_style,
 		"car": car.vehicle_id if car else "",
 		"car_color": car.body_color if car else Color.BLACK,
 		"car_name": car.display_name if car else "",
@@ -52,6 +53,8 @@ func current_look() -> Dictionary:
 
 static func describe(look: Dictionary) -> String:
 	var txt := Humanoid.outfit_name(int(look.get("outfit", 0)))
+	if int(look.get("head", 0)) != 0:
+		txt += " · barba y gorra %s" % Humanoid.head_name(int(look.get("head", 0))).to_lower()
 	if String(look.get("car", "")) != "":
 		txt += " · en un %s" % String(look.get("car_name", "coche"))
 	return txt
@@ -64,7 +67,7 @@ func matches() -> bool:
 	var look := current_look()
 	if String(look["car"]) != "":
 		return look["car"] == description.get("car", "") and (look["car_color"] as Color).is_equal_approx(description.get("car_color", Color.BLACK))
-	return int(look["outfit"]) == int(description.get("outfit", -1))
+	return int(look["outfit"]) == int(description.get("outfit", -1)) and int(look["head"]) == int(description.get("head", 0))
 
 
 ## Distancia a la que un agente con línea de visión reconoce al jugador.

@@ -68,6 +68,120 @@ func _define_places() -> void:
 			"model": "res://assets/buildings/subway/subway.scn", "origin": Vector3(3600, 100, -3400),
 			"anchor": Vector2(40.0, -36.0), "floor_ymax": 12.2, "spawn": Vector3(0, 0.1, 2.5), "spawn_yaw": PI},
 	]
+	_define_shops()
+
+
+## Tiendas de servicios en locales a pie de calle de los edificios comerciales (CityBuilder.shop_sites):
+## ropa, barbería y tatuajes. Se eligen los tres locales más cercanos al Veyra Mart.
+const SHOPS := [
+	{"id": "clothes", "name": "Veyra Threads", "mark": "R", "color": Color(0.9, 0.35, 0.6), "ambient": Color(1.0, 0.93, 0.88), "service": "Comprar ropa"},
+	{"id": "barber", "name": "Fade Kings", "mark": "B", "color": Color(0.25, 0.6, 0.95), "ambient": Color(0.9, 0.95, 1.0), "service": "Corte y tinte"},
+	{"id": "tattoo", "name": "Ink Saints", "mark": "T", "color": Color(0.7, 0.3, 0.95), "ambient": Color(0.85, 0.75, 0.95), "service": "Tatuarse"},
+]
+var _shop_fronts: Array = []   # {id, pos: Vector3 (puerta en fachada), front: float, color, mark}
+
+
+func _define_shops() -> void:
+	_shop_fronts.clear()
+	if _city == null or _city.shop_sites.is_empty():
+		return
+	var ref := CityLayout.landmark("veyra_mart")
+	var sites: Array = _city.shop_sites.duplicate()
+	sites.sort_custom(func(a, b): return (a["c"] as Vector2).distance_to(Vector2(ref.x, ref.z)) < (b["c"] as Vector2).distance_to(Vector2(ref.x, ref.z)))
+	var used := 0
+	for site in sites:
+		if used >= SHOPS.size():
+			break
+		var c: Vector2 = site["c"]
+		var size: Vector3 = site["size"]
+		if size.x < 14.0:
+			continue
+		var f: float = site["front"]
+		var shop: Dictionary = SHOPS[used]
+		var face_z := c.y + f * size.z * 0.5
+		var door := Vector3(c.x, 0.0, face_z)
+		_places.append({"id": shop["id"], "name": shop["name"], "size": Vector2(11, 8), "height": 3.2, "door_x": 0.0,
+			"enter": door + Vector3(0, 0, f * 1.0), "radius": 2.0, "out": door + Vector3(0, 0.25, f * 1.6), "out_yaw": PI if f > 0.0 else 0.0,
+			"ambient": shop["ambient"], "energy": 0.55})
+		_shop_fronts.append({"id": shop["id"], "pos": door, "front": f, "color": shop["color"], "mark": shop["mark"]})
+		used += 1
+
+
+## Escaparates en la fachada: toldo, puerta de cristal iluminada, marco y el distintivo de cada
+## negocio (maniquíes con ropa, poste de barbero, neón del estudio de tatuajes). Sin rótulos de texto.
+func _build_shop_fronts() -> void:
+	for sf in _shop_fronts:
+		var root := Node3D.new()
+		root.name = "Escaparate_%s" % sf["id"]
+		add_child(root)
+		var f: float = sf["front"]
+		root.position = sf["pos"]
+		# El eje local +Z del escaparate mira a la calle.
+		root.rotation.y = 0.0 if f > 0.0 else PI
+		var col: Color = sf["color"]
+		var frame := _mat(Color(0.1, 0.1, 0.11), 0.5, 0.3)
+		var lit := _mat(Color(0.12, 0.14, 0.16), 0.06, 0.3, Color(1.0, 0.85, 0.65), 0.22)
+		_mesh_box(root, Vector3(0, 1.9, 0.12), Vector3(9.4, 3.8, 0.12), frame)
+		for wx: float in [-2.9, 2.9]:
+			_mesh_box(root, Vector3(wx, 1.5, 0.2), Vector3(3.0, 2.3, 0.06), lit)
+			_mesh_box(root, Vector3(wx, 0.3, 0.24), Vector3(3.1, 0.12, 0.08), frame)
+			_mesh_box(root, Vector3(wx, 2.25, 0.24), Vector3(3.0, 0.05, 0.05), frame)
+		_mesh_box(root, Vector3(0, 1.2, 0.2), Vector3(1.3, 2.4, 0.06), _mat(Color(0.25, 0.3, 0.33), 0.08, 0.1, col, 0.35))
+		_mesh_box(root, Vector3(0.45, 1.2, 0.25), Vector3(0.05, 0.5, 0.05), _mat(Color(0.8, 0.8, 0.82), 0.3, 0.8))
+		var awning := _mesh_box(root, Vector3(0, 3.15, 1.0), Vector3(9.8, 0.1, 2.0), _mat(col.darkened(0.25), 0.8))
+		awning.rotation.x = 0.22
+		_mesh_box(root, Vector3(0, 3.75, 0.2), Vector3(6.0, 0.5, 0.1), _mat(col, 0.4, 0.0, col, 2.2))
+		match String(sf["id"]):
+			"clothes":
+				# Maniquíes con sudaderas de colores en los dos escaparates.
+				var tones := [Color(0.6, 0.07, 0.08), Color(0.1, 0.24, 0.55), Color(0.9, 0.9, 0.87), Color(0.62, 0.62, 0.65)]
+				for k in 4:
+					var mx: float = -3.8 + 0.6 * k if k < 2 else 2.6 + 0.6 * (k - 2)
+					_mesh_box(root, Vector3(mx, 1.45, 0.0), Vector3(0.42, 0.62, 0.2), _mat(tones[k], 0.85))
+					_mesh_box(root, Vector3(mx, 0.75, 0.0), Vector3(0.36, 0.78, 0.18), _mat(Color(0.14, 0.16, 0.24), 0.85))
+					_mesh_box(root, Vector3(mx, 1.9, 0.0), Vector3(0.16, 0.2, 0.16), _mat(Color(0.85, 0.85, 0.86), 0.5))
+			"barber":
+				# Poste de barbero con franjas (rojo, blanco y azul) y tapa cromada.
+				for side: float in [-1.0, 1.0]:
+					for k in 8:
+						var stripe: Color = [Color(0.85, 0.1, 0.12), Color(0.95, 0.95, 0.95), Color(0.12, 0.25, 0.8), Color(0.95, 0.95, 0.95)][k % 4]
+						var seg := MeshInstance3D.new()
+						var cm := CylinderMesh.new()
+						cm.top_radius = 0.11
+						cm.bottom_radius = 0.11
+						cm.height = 0.11
+						cm.radial_segments = 10
+						cm.material = _mat(stripe, 0.4, 0.0, stripe, 0.6)
+						seg.mesh = cm
+						seg.position = Vector3(side * 1.15, 1.35 + 0.11 * k, 0.32)
+						root.add_child(seg)
+					_mesh_box(root, Vector3(side * 1.15, 2.26, 0.32), Vector3(0.28, 0.08, 0.28), _mat(Color(0.8, 0.8, 0.82), 0.25, 0.9))
+					_mesh_box(root, Vector3(side * 1.15, 1.27, 0.32), Vector3(0.28, 0.08, 0.28), _mat(Color(0.8, 0.8, 0.82), 0.25, 0.9))
+			"tattoo":
+				# Neón: rombo y dos dagas cruzadas en el escaparate.
+				var neon := _mat(Color(0.9, 0.3, 1.0), 0.3, 0.0, Color(0.85, 0.25, 1.0), 3.0)
+				var neon2 := _mat(Color(0.2, 0.9, 0.9), 0.3, 0.0, Color(0.2, 0.95, 0.95), 3.0)
+				for side: float in [-1.0, 1.0]:
+					for k in 4:
+						var bar := _mesh_box(root, Vector3(side * 2.9 + (0.35 if k % 2 == 0 else -0.35) * (1.0 if k < 2 else -1.0) * 0.0, 1.6, 0.26), Vector3(0.9, 0.05, 0.04), neon)
+						bar.rotation.z = PI * 0.25 + PI * 0.5 * k
+						bar.position += Vector3(cos(PI * 0.25 + PI * 0.5 * k + PI * 0.5), sin(PI * 0.25 + PI * 0.5 * k + PI * 0.5), 0) * 0.32
+					var d1 := _mesh_box(root, Vector3(side * 2.9, 1.6, 0.27), Vector3(0.05, 1.1, 0.04), neon2)
+					d1.rotation.z = 0.5
+					var d2 := _mesh_box(root, Vector3(side * 2.9, 1.6, 0.27), Vector3(0.05, 1.1, 0.04), neon2)
+					d2.rotation.z = -0.5
+		var lamp := OmniLight3D.new()
+		lamp.light_color = col.lerp(Color(1, 0.9, 0.8), 0.5)
+		lamp.light_energy = 1.2
+		lamp.omni_range = 7.0
+		lamp.shadow_enabled = false
+		lamp.position = Vector3(0, 2.6, 1.6)
+		lamp.distance_fade_enabled = true
+		lamp.distance_fade_begin = 45.0
+		lamp.distance_fade_length = 15.0
+		root.add_child(lamp)
+		for n in root.find_children("*", "GeometryInstance3D", true, false):
+			(n as GeometryInstance3D).visibility_range_end = 220.0
 
 
 func _origin(i: int) -> Vector3:
@@ -102,6 +216,7 @@ func build(city: CityBuilder) -> void:
 		city.night_changed.connect(kb.set_night)
 	_build_respray()
 	_build_police_exterior()
+	_build_shop_fronts()
 	# Edificios, vehículos y personajes reales (hospital, cárcel, aparcamiento, flota policial).
 	var rs := RealSites.new()
 	rs.name = "RealSites"
@@ -264,6 +379,8 @@ func radar_markers(from: Vector3) -> Array:
 		[Vector3(122.25, 0, -110.0), Color(0.2, 0.35, 0.95), "P"],
 		[Vector3(70.5, 0, -110.0), Color(0.2, 0.7, 0.3), "$"],
 	]
+	for sf in _shop_fronts:
+		defs.append([sf["pos"], sf["color"], sf["mark"]])
 	for d in defs:
 		var p: Vector3 = d[0]
 		if Vector2(p.x - from.x, p.z - from.z).length() < 150.0:
@@ -286,6 +403,15 @@ func interaction(pos: Vector3, can_enter: bool) -> Dictionary:
 			ex = o
 		if Vector2(pos.x - ex.x, pos.z - ex.z).length() < 1.9:
 			return {"label": "Salir", "action": func() -> void: leave()}
+		# Tiendas: el servicio se pide en el mostrador (centro de la sala, hacia el fondo).
+		if Vector2(pos.x - o.x, pos.z - (o.z - 1.2)).length() < 1.9:
+			match String(p["id"]):
+				"clothes":
+					return {"label": "Comprar ropa ($%d)" % main.OUTFIT_PRICE, "action": func() -> void: main.buy_outfit()}
+				"barber":
+					return {"label": "Corte y tinte ($%d)" % main.BARBER_PRICE, "action": func() -> void: main.buy_head_style()}
+				"tattoo":
+					return {"label": "Tatuarse ($%d)" % main.TATTOO_PRICE, "action": func() -> void: main.buy_tattoo()}
 		if p["id"] == "house" and Vector2(pos.x - (o.x + 3.0), pos.z - (o.z + 4.0)).length() < 1.1:
 			return {"label": "Cambiarse de ropa", "action": func() -> void: main.change_outfit()}
 		if p["id"] == "house" and Vector2(pos.x - (o.x + 4.4), pos.z - (o.z + 3.2)).length() < 2.0:
@@ -662,6 +788,15 @@ func _ensure_built(i: int) -> void:
 		"hospital":
 			_shell(root, size, h, float(p["door_x"]), _pbr("stucco", Color(0.92, 0.98, 0.98), 3.0), _mat(Color(0.95, 0.97, 0.97), 0.9), Color(0.88, 0.92, 0.98))
 			_fill_hospital(root, size)
+		"clothes":
+			_shell(root, size, h, float(p["door_x"]), _pbr("stucco", Color(1.0, 0.96, 0.93), 3.0), _mat(Color(0.96, 0.95, 0.93), 0.9), Color(0.72, 0.6, 0.48))
+			_fill_clothes(root, size)
+		"barber":
+			_shell(root, size, h, float(p["door_x"]), _pbr("brick", Color(0.92, 0.9, 0.88), 2.5), _mat(Color(0.94, 0.95, 0.97), 0.9), Color(0.25, 0.26, 0.3))
+			_fill_barber(root, size)
+		"tattoo":
+			_shell(root, size, h, float(p["door_x"]), _pbr("concrete_wall", Color(0.5, 0.46, 0.56), 3.0), _mat(Color(0.2, 0.19, 0.23), 0.9), Color(0.2, 0.2, 0.22))
+			_fill_tattoo(root, size)
 	if not p.has("model"):
 		for n in root.find_children("*", "GeometryInstance3D", true, false):
 			(n as GeometryInstance3D).visibility_range_end = VIS_END
@@ -814,6 +949,104 @@ func _fill_house(root: Node3D, size: Vector2) -> void:
 	_omni(root, Vector3(4.0, 2.4, 3.0), Color(1.0, 0.75, 0.5), 1.0, 5.5)
 	_ceiling_panel(root, Vector3(-2.6, h - 0.04, 0.0), Vector3(1.4, 0.06, 1.0), Color(1.0, 0.85, 0.65))
 	_ceiling_panel(root, Vector3(3.2, h - 0.04, -2.4), Vector3(1.2, 0.06, 0.8), Color(1.0, 0.88, 0.7))
+
+
+# ---- Tiendas ----
+
+## Dependiente de pie detrás del mostrador (peatón Mixamo en reposo).
+func _clerk(root: Node3D, pos: Vector3, model: int, tint: int) -> void:
+	if not MixamoPerson.available():
+		return
+	var m := MixamoPerson.new()
+	root.add_child(m)
+	m.setup({"model": model, "tint": tint, "scale": 1.0, "phase": 0.3})
+	m.position = pos
+	m.rotation.y = PI   # mira hacia la puerta (+Z)
+
+
+func _counter(root: Node3D, top: Color) -> void:
+	_rbox(root, Vector3(0, 0.5, -2.4), Vector3(3.2, 1.0, 0.7), _pbr("wood_planks", Color(0.7, 0.55, 0.42), 1.2))
+	_rbox(root, Vector3(0, 1.03, -2.4), Vector3(3.4, 0.06, 0.8), _mat(top, 0.35), false)
+	_rbox(root, Vector3(1.1, 1.18, -2.4), Vector3(0.4, 0.26, 0.36), _mat(Color(0.12, 0.12, 0.13), 0.5), false)
+
+
+func _fill_clothes(root: Node3D, size: Vector2) -> void:
+	var hd := size.y * 0.5
+	var hw := size.x * 0.5
+	_label(root, "VEYRA THREADS", Vector3(0, 2.55, -hd + 0.06), 0.0, 110, Color(1.0, 0.75, 0.85), 0.008)
+	_counter(root, Color(0.95, 0.94, 0.9))
+	_clerk(root, Vector3(0, 0.02, -3.2), 1, 2)
+	# Percheros a los lados con sudaderas y pantalones de los conjuntos que se venden.
+	var rail := _mat(Color(0.75, 0.75, 0.78), 0.3, 0.8)
+	for side: float in [-1.0, 1.0]:
+		var x: float = side * (hw - 0.6)
+		_rbox(root, Vector3(x, 1.75, 0.2), Vector3(0.05, 0.05, 5.0), rail, false)
+		for e: float in [-2.3, 2.7]:
+			_rbox(root, Vector3(x, 0.88, e), Vector3(0.05, 1.76, 0.05), rail, false)
+		var k := 0
+		var z := -2.0
+		while z <= 2.4:
+			var o: Dictionary = Humanoid.OUTFITS[1 + k % (Humanoid.OUTFITS.size() - 1)]
+			var top: Color = o["top"] if o["top"] != null else Color(0.08, 0.08, 0.09)
+			var pants: Color = o["pants"] if o["pants"] != null else Color(0.08, 0.08, 0.09)
+			_rbox(root, Vector3(x, 1.38 if side < 0.0 else 1.2, z), Vector3(0.5, 0.66 if side < 0.0 else 1.0, 0.07), _mat(top if side < 0.0 else pants, 0.9), false)
+			z += 0.36
+			k += 1
+	# Mesa central con ropa doblada, espejo y probador.
+	_prop(root, "coffeetable_01/CoffeeTable_01_1k.gltf", Vector3(0, 0, 1.0), 0.0, 1.3)
+	for k in 3:
+		_rbox(root, Vector3(-0.4 + 0.4 * k, 0.6, 1.0), Vector3(0.32, 0.1, 0.4), _mat([Color(0.6, 0.07, 0.08), Color(0.9, 0.9, 0.87), Color(0.1, 0.24, 0.55)][k], 0.9), false)
+	_rbox(root, Vector3(hw - 0.05, 1.3, -3.0), Vector3(0.04, 1.9, 0.9), _mat(Color(0.75, 0.8, 0.85), 0.03, 0.95), false)
+	_rbox(root, Vector3(-hw + 0.7, 1.2, -3.2), Vector3(1.3, 2.4, 0.06), _mat(Color(0.55, 0.1, 0.25), 0.9), false)
+	_omni(root, Vector3(0, 2.7, 0.5), Color(1.0, 0.92, 0.85), 1.6, 9.0, true)
+	_omni(root, Vector3(0, 2.6, -2.6), Color(1.0, 0.8, 0.85), 1.0, 6.0)
+	_ceiling_panel(root, Vector3(0, 3.16, 0.5), Vector3(2.4, 0.06, 1.0))
+
+
+func _fill_barber(root: Node3D, size: Vector2) -> void:
+	var hd := size.y * 0.5
+	var hw := size.x * 0.5
+	_label(root, "FADE KINGS", Vector3(0, 2.55, -hd + 0.06), 0.0, 120, Color(0.75, 0.88, 1.0), 0.008)
+	_counter(root, Color(0.1, 0.1, 0.12))
+	_clerk(root, Vector3(0, 0.02, -3.2), 3, 0)
+	# Tres puestos contra la pared: espejo con marco iluminado, repisa y sillón.
+	for k in 3:
+		var z := -1.6 + 2.0 * k
+		_rbox(root, Vector3(-hw + 0.05, 1.55, z), Vector3(0.04, 1.3, 1.1), _mat(Color(0.75, 0.8, 0.85), 0.03, 0.95), false)
+		_rbox(root, Vector3(-hw + 0.06, 2.26, z), Vector3(0.04, 0.06, 1.2), _glow(Color(1.0, 0.9, 0.7)), false)
+		_rbox(root, Vector3(-hw + 0.25, 0.9, z), Vector3(0.45, 0.06, 1.2), _mat(Color(0.12, 0.12, 0.13), 0.5), false)
+		_prop(root, "modern_arm_chair_01/modern_arm_chair_01_1k.gltf", Vector3(-hw + 1.5, 0, z), 90.0, 1.0)
+	# Sala de espera.
+	_prop(root, "sofa_01/Sofa_01_1k.gltf", Vector3(hw - 0.7, 0, 1.2), 270.0)
+	_prop(root, "side_table_01/side_table_01_1k.gltf", Vector3(hw - 0.6, 0, -0.6), 0.0)
+	_rbox(root, Vector3(hw - 0.05, 1.7, 1.2), Vector3(0.04, 0.9, 1.4), _mat(Color(0.85, 0.1, 0.12), 0.7), false)
+	_omni(root, Vector3(0, 2.7, 0.5), Color(0.95, 0.97, 1.0), 1.7, 9.0, true)
+	_omni(root, Vector3(-2.5, 2.5, -1.0), Color(1.0, 0.9, 0.75), 0.9, 6.0)
+	_ceiling_panel(root, Vector3(0, 3.16, 0.5), Vector3(2.4, 0.06, 1.0), Color(0.95, 0.97, 1.0))
+
+
+func _fill_tattoo(root: Node3D, size: Vector2) -> void:
+	var hd := size.y * 0.5
+	var hw := size.x * 0.5
+	_label(root, "INK SAINTS", Vector3(0, 2.55, -hd + 0.06), 0.0, 120, Color(0.9, 0.55, 1.0), 0.008)
+	_rbox(root, Vector3(0, 2.1, -hd + 0.05), Vector3(4.6, 0.05, 0.04), _glow(Color(0.85, 0.25, 1.0)), false)
+	_counter(root, Color(0.08, 0.08, 0.1))
+	_clerk(root, Vector3(0, 0.02, -3.2), 0, 4)
+	# Camilla de tatuar, taburete, carrito de tintas y láminas de diseños en la pared.
+	_prop(root, "vintage_day_bed/vintage_day_bed_1k.gltf", Vector3(-hw + 1.3, 0, 0.8), 0.0)
+	_prop(root, "tool_cart/tool_cart_1k.gltf", Vector3(-hw + 2.6, 0, -0.4), 20.0, 0.8)
+	_prop(root, "desk_lamp_arm_01/desk_lamp_arm_01_1k.gltf", Vector3(-hw + 2.6, 0.75, -0.4), 200.0, 1.0, false)
+	var inks := [Color(0.1, 0.1, 0.1), Color(0.75, 0.1, 0.12), Color(0.1, 0.3, 0.75), Color(0.1, 0.6, 0.3), Color(0.9, 0.75, 0.1)]
+	for k in 12:
+		var fx := hw - 0.05
+		var fz := -3.0 + 0.55 * (k % 6)
+		var fy := 1.35 + 0.6 * float(k / 6)
+		_rbox(root, Vector3(fx, fy, fz), Vector3(0.03, 0.46, 0.4), _mat(Color(0.93, 0.9, 0.84), 0.9), false)
+		_rbox(root, Vector3(fx - 0.02, fy, fz), Vector3(0.02, 0.26, 0.2), _mat(inks[k % inks.size()], 0.8), false)
+	_prop(root, "sofa_01/Sofa_01_1k.gltf", Vector3(hw - 0.7, 0, 2.4), 270.0)
+	_omni(root, Vector3(0, 2.6, 0.5), Color(0.8, 0.6, 1.0), 1.4, 9.0, true)
+	_omni(root, Vector3(-3.5, 2.2, 0.8), Color(1.0, 0.95, 0.9), 1.3, 5.0)
+	_ceiling_panel(root, Vector3(0, 3.16, 0.5), Vector3(1.8, 0.06, 0.8), Color(0.85, 0.7, 1.0))
 
 
 # ---- Vargas Auto Works ----

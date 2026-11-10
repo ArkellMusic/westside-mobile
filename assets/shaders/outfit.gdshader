@@ -14,6 +14,8 @@ uniform vec3 top_color : source_color = vec3(0.6, 0.6, 0.62);
 uniform vec3 pants_color : source_color = vec3(0.16, 0.22, 0.36);
 uniform float top_amount = 1.0;
 uniform float pants_amount = 1.0;
+uniform vec3 head_color : source_color = vec3(0.38, 0.24, 0.13);
+uniform float head_amount = 0.0;
 uniform float waist_y = 0.97;
 uniform float neck_y = 1.5;
 uniform float ankle_y = 0.09;
@@ -37,6 +39,9 @@ void fragment() {
 	vec3 dyed = c;
 	dyed = mix(dyed, top_color * shade, cloth * is_top * top_amount);
 	dyed = mix(dyed, pants_color * shade, cloth * is_pants * pants_amount);
+	// Barba, cejas y gorra (todo lo oscuro por encima del cuello).
+	float is_head = smoothstep(neck_y + 0.02, neck_y + 0.07, height);
+	dyed = mix(dyed, head_color * shade, cloth * is_head * head_amount);
 	ALBEDO = dyed;
 	ROUGHNESS = dot(texture(rough_tex, UV), rough_channel) * roughness_scale;
 	METALLIC = 0.0;

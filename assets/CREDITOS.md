@@ -118,3 +118,7 @@ queda **por confirmar (descargado por el usuario de Sketchfab)** antes de public
 `assets/props/trees/`: imágenes con transparencia renderizadas a partir de los modelos
 **jacaranda_tree** e **island_tree_02** de Poly Haven (https://polyhaven.com, licencia CC0).
 Se usan como dos planos cruzados (`scripts/world/tree_cards.gd`).
+
+## Tejados y madera (Poly Haven, CC0)
+
+- roof_clay: clay_roof_tiles_02 · roof_grey: grey_roof_tiles_02 · wood_planks: wood_planks_grey

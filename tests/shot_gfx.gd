@@ -94,6 +94,37 @@ func _run() -> void:
 		if only.size() == 1:
 			get_tree().quit()
 			return
+	# 8. Chalets, escaparates, cielo con nubes y luna.
+	if want("8"):
+		main.rig.cine_attrs.dof_blur_far_enabled = false
+		main.rig.cine_attrs.dof_blur_near_enabled = false
+		GameState.world_minutes = 15 * 60
+		var hs: Dictionary = main.city._houses[6]
+		var hc: Vector2 = hs["c"]
+		var hf: float = hs["front"]
+		var e8 := Vector3(hc.x + 16.0, 3.2, hc.y + hf * 17.0)
+		var a8 := Vector3(hc.x - 6.0, 3.2, hc.y)
+		main.rig.cinematic_shot(CameraRig.look_from(e8, a8), CameraRig.look_from(e8, a8), 999.0, 60.0, 60.0)
+		await wait(4.0)
+		await shot("8_chalets")
+		var sf: Dictionary = main.interiors._shop_fronts[1]
+		var sp: Vector3 = sf["pos"]
+		var ff: float = sf["front"]
+		var e9 := sp + Vector3(7.0, 2.0, ff * 9.0)
+		main.rig.cinematic_shot(CameraRig.look_from(e9, sp + Vector3(0, 2.0, 0)), CameraRig.look_from(e9, sp + Vector3(0, 2.0, 0)), 999.0, 60.0, 60.0)
+		await wait(3.0)
+		await shot("9_barberia")
+		GameState.world_minutes = 23 * 60
+		await wait(3.0)
+		var md: Vector3 = main.sky.sun.global_basis.z
+		var e10 := Vector3(-42, 2.0, 30)
+		main.rig.cinematic_shot(CameraRig.look_from(e10, e10 + md * 50.0 + Vector3(0, -6.0, 0)), CameraRig.look_from(e10, e10 + md * 50.0 + Vector3(0, -6.0, 0)), 999.0, 60.0, 60.0)
+		await wait(3.0)
+		await shot("10_luna")
+		main.rig.end_cinematic()
+		if only.size() == 1:
+			get_tree().quit()
+			return
 	# 1. Calle de día, a pie.
 	main.player.place(Vector3(-42, 0.3, 12), PI * 0.75)
 	main.rig.yaw = PI * 0.75 + PI

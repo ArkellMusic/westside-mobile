@@ -34,6 +34,13 @@
 - **Esc o P:** pausa.
 - **M:** mapa.
 
+## Tiendas (letras en el radar)
+
+- **R · Veyra Threads (ropa):** en el mostrador, cada compra ($45) te da y te pone un conjunto nuevo. En el armario de casa alternas entre los que tienes.
+- **B · Fade Kings (barbería):** corte y tinte ($25): cambia el color de la barba y la gorra. Cuenta para la descripción policial.
+- **T · Ink Saints (tatuajes):** cada tatuaje ($60, máximo 5) da +4 de respeto con los Westbrook Saints.
+- **$ · Vargas Auto Works / Pinta y Listo:** repara y repinta el coche ($100).
+
 ## Búsqueda policial
 
 - La policía no sabe quién eres hasta que alguien te ve. Si un agente presencia el delito, te identifica al momento. Si no, un **testigo** saca el móvil («LLAMANDO AL 911») y tarda unos 5 segundos en dar el aviso: si lo tumbas antes de que cuelgue, no hay denuncia.

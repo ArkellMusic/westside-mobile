@@ -14,6 +14,10 @@ var weapon: String = "fist"
 var ammo: int = START_AMMO
 ## Conjunto de ropa que lleva Mack (índice de Humanoid.OUTFITS).
 var outfit: int = 0
+## Conjuntos comprados (el 0 es el de serie), tinte de barbería y tatuajes hechos.
+var owned_outfits: Array = [0]
+var head_style: int = 0
+var tattoos: int = 0
 var reputation: Dictionary = {}
 var completed_missions: Array = []
 var player_position: Vector3 = Vector3.ZERO
@@ -39,6 +43,9 @@ func new_game() -> void:
 	weapon = "fist"
 	ammo = START_AMMO
 	outfit = 0
+	owned_outfits = [0]
+	head_style = 0
+	tattoos = 0
 	completed_missions = []
 	has_position = false
 	player_position = Vector3.ZERO
@@ -104,6 +111,9 @@ func to_dict() -> Dictionary:
 		"weapon": weapon,
 		"ammo": ammo,
 		"outfit": outfit,
+		"owned_outfits": owned_outfits.duplicate(),
+		"head_style": head_style,
+		"tattoos": tattoos,
 		"reputation": reputation.duplicate(),
 		"completed_missions": completed_missions.duplicate(),
 		"player_position": [player_position.x, player_position.y, player_position.z],
@@ -124,6 +134,14 @@ func from_dict(d: Dictionary) -> void:
 		weapon = "fist"
 	ammo = clampi(int(d.get("ammo", START_AMMO)), 0, MAX_AMMO)
 	outfit = clampi(int(d.get("outfit", 0)), 0, 4)
+	owned_outfits = [0]
+	for o in d.get("owned_outfits", [0]):
+		if not owned_outfits.has(int(o)):
+			owned_outfits.append(clampi(int(o), 0, 4))
+	if not owned_outfits.has(outfit):
+		owned_outfits.append(outfit)
+	head_style = clampi(int(d.get("head_style", 0)), 0, 3)
+	tattoos = clampi(int(d.get("tattoos", 0)), 0, 5)
 	reputation = {}
 	var rep: Dictionary = d.get("reputation", {})
 	for k in rep:

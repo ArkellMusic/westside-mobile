@@ -351,32 +351,52 @@ const OUTFITS := [
 ]
 const OUTFIT_SHADER := "res://assets/shaders/outfit.gdshader"
 
+## Tintes de la barbería: recolorean la barba, las cejas y la gorra a juego. 0 = original.
+const HEAD_STYLES := [
+	{"name": "Negro", "color": null},
+	{"name": "Castaño", "color": Color(0.4, 0.25, 0.13)},
+	{"name": "Gris ceniza", "color": Color(0.6, 0.6, 0.63)},
+	{"name": "Platino", "color": Color(0.86, 0.8, 0.6)},
+]
+
 static var _outfit_mats: Dictionary = {}
 var outfit: int = 0
+var head_style: int = 0
 
 
 static func outfit_name(i: int) -> String:
 	return String(OUTFITS[clampi(i, 0, OUTFITS.size() - 1)]["name"])
 
 
+static func head_name(i: int) -> String:
+	return String(HEAD_STYLES[clampi(i, 0, HEAD_STYLES.size() - 1)]["name"])
+
+
 ## Cambia la ropa de un personaje con modelo (solo tiene efecto en modelos con esqueleto).
 func set_outfit(i: int) -> void:
-	outfit = clampi(i, 0, OUTFITS.size() - 1)
+	set_look(i, head_style)
+
+
+## Ropa (OUTFITS) y tinte de barba y gorra (HEAD_STYLES) del personaje.
+func set_look(outfit_i: int, head_i: int) -> void:
+	outfit = clampi(outfit_i, 0, OUTFITS.size() - 1)
+	head_style = clampi(head_i, 0, HEAD_STYLES.size() - 1)
 	if _skel == null:
 		return
 	var o: Dictionary = OUTFITS[outfit]
+	var hc = HEAD_STYLES[head_style]["color"]
 	for n in _skel.get_parent().find_children("*", "MeshInstance3D", true, false):
 		var mi := n as MeshInstance3D
 		if mi.mesh == null or mi.skin == null:
 			continue
 		for s in mi.mesh.get_surface_count():
-			if o["top"] == null and o["pants"] == null:
+			if o["top"] == null and o["pants"] == null and hc == null:
 				mi.set_surface_override_material(s, null)
 				continue
 			var base := mi.mesh.surface_get_material(s) as BaseMaterial3D
 			if base == null or base.albedo_texture == null:
 				continue
-			var key := "%s_%d_%d" % [String(look.get("model", "")), s, outfit]
+			var key := "%s_%d_%d_%d" % [String(look.get("model", "")), s, outfit, head_style]
 			if not _outfit_mats.has(key):
 				var sm := ShaderMaterial.new()
 				sm.shader = load(OUTFIT_SHADER)
@@ -391,10 +411,13 @@ func set_outfit(i: int) -> void:
 				sm.set_shader_parameter("roughness_scale", base.roughness)
 				sm.set_shader_parameter("top_amount", 0.0 if o["top"] == null else 1.0)
 				sm.set_shader_parameter("pants_amount", 0.0 if o["pants"] == null else 1.0)
+				sm.set_shader_parameter("head_amount", 0.0 if hc == null else 1.0)
 				if o["top"] != null:
 					sm.set_shader_parameter("top_color", o["top"])
 				if o["pants"] != null:
 					sm.set_shader_parameter("pants_color", o["pants"])
+				if hc != null:
+					sm.set_shader_parameter("head_color", hc)
 				_outfit_mats[key] = sm
 			mi.set_surface_override_material(s, _outfit_mats[key])
 

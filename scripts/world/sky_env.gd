@@ -17,7 +17,7 @@ extends Node3D
 const GRADE_DEFAULTS := {
 	"sat": 1.06, "contrast": 1.05, "shadow_tint": Color(1, 1, 1), "high_tint": Color(1, 1, 1),
 	"vol": 0.004, "vol_albedo": Color(0.85, 0.85, 0.85), "vol_emit": 0.0, "height_fog": 0.0,
-	"wet": 0.0, "sun_size": 0.5, "scatter": 0.15, "aerial": 0.5,
+	"wet": 0.0, "sun_size": 0.5, "scatter": 0.15, "aerial": 0.5, "clouds": 0.45,
 }
 
 ## Ajustes cinematográficos por ambiente (se mezclan con PRESETS).
@@ -96,6 +96,7 @@ var _last_wet := -1.0
 var _grade_time := 0
 var sky_mat: ProceduralSkyMaterial
 var pano_mat: PanoramaSkyMaterial
+var cloud_mat: ShaderMaterial
 var sky: Sky
 var _hdri_cache: Dictionary = {}
 var city: CityBuilder:
@@ -124,6 +125,7 @@ func _ready() -> void:
 	sky_mat.energy_multiplier = 1.0
 	sky = Sky.new()
 	sky.sky_material = sky_mat
+	_make_cloud_sky()
 	sky.radiance_size = Sky.RADIANCE_SIZE_256
 	sky.process_mode = Sky.PROCESS_MODE_REALTIME if _is_rd() else Sky.PROCESS_MODE_AUTOMATIC
 	pano_mat = PanoramaSkyMaterial.new()
@@ -308,6 +310,45 @@ func _apply_quality() -> void:
 		_apply_values(current)
 
 
+## Cielo con nubes volumétricas, sol, luna y estrellas (assets/shaders/sky_clouds.gdshader).
+## El ruido 3D de las nubes se genera una vez al arrancar.
+func _make_cloud_sky() -> void:
+	var shader := load("res://assets/shaders/sky_clouds.gdshader") as Shader
+	if shader == null:
+		return
+	var noise := FastNoiseLite.new()
+	noise.noise_type = FastNoiseLite.TYPE_PERLIN
+	noise.fractal_type = FastNoiseLite.FRACTAL_FBM
+	noise.fractal_octaves = 4
+	noise.frequency = 0.045
+	noise.seed = 1971
+	var tex := NoiseTexture3D.new()
+	tex.width = 64
+	tex.height = 64
+	tex.depth = 64
+	tex.seamless = true
+	tex.seamless_blend_skirt = 0.25
+	tex.noise = noise
+	cloud_mat = ShaderMaterial.new()
+	cloud_mat.shader = shader
+	cloud_mat.set_shader_parameter("noise_tex", tex)
+	sky.sky_material = cloud_mat
+
+
+## Pasa al cielo los colores, la noche, la cobertura de nubes y la calidad.
+func _update_cloud_sky(p: Dictionary) -> void:
+	if cloud_mat == null:
+		return
+	sky.sky_material = cloud_mat
+	cloud_mat.set_shader_parameter("top_color", p["top"])
+	cloud_mat.set_shader_parameter("horizon_color", p["horizon"])
+	cloud_mat.set_shader_parameter("ground_color", p["ground"])
+	cloud_mat.set_shader_parameter("night", float(p.get("night", 0.0)))
+	cloud_mat.set_shader_parameter("cloud_cover", float(p.get("clouds", 0.45)))
+	cloud_mat.set_shader_parameter("cloud_steps", float(Settings.cloud_steps()))
+	cloud_mat.set_shader_parameter("cloud_time", Time.get_ticks_msec() * 0.001)
+
+
 func _spawn_grass() -> void:
 	if grass != null or city == null or not is_inside_tree():
 		return
@@ -330,9 +371,9 @@ func apply_preset(preset: String, duration: float) -> void:
 		if not _hdri_cache.has(hdri):
 			_hdri_cache[hdri] = load(hdri)
 		pano_mat.panorama = _hdri_cache[hdri]
-		sky.sky_material = pano_mat
+		sky.sky_material = cloud_mat if cloud_mat else pano_mat
 	else:
-		sky.sky_material = sky_mat
+		sky.sky_material = cloud_mat if cloud_mat else sky_mat
 	_duration = maxf(duration, 0.001)
 	_t = 0.0 if duration > 0.0 else 1.0
 	if duration <= 0.0:
@@ -352,6 +393,8 @@ static func preset_values(preset: String) -> Dictionary:
 
 func _process(delta: float) -> void:
 	_update_probe(delta)
+	if cloud_mat:
+		cloud_mat.set_shader_parameter("cloud_time", Time.get_ticks_msec() * 0.001)
 	_lamp_timer -= delta
 	if _lamp_timer <= 0.0:
 		_lamp_timer = 0.5
@@ -384,6 +427,7 @@ func _apply_values(p: Dictionary) -> void:
 	env.ambient_light_energy = p["ambient"]
 	env.ambient_light_color = (p["fog"] as Color).lerp(Color(1, 1, 1), 0.45)
 	env.tonemap_exposure = p["exposure"]
+	_update_cloud_sky(p)
 	_apply_grade(p)
 	if city:
 		city.set_night(float(p["night"]))
@@ -522,10 +566,10 @@ func set_time_of_day(minutes: float) -> void:
 			if not _hdri_cache.has(_seg_hdri):
 				_hdri_cache[_seg_hdri] = load(_seg_hdri)
 			pano_mat.panorama = _hdri_cache[_seg_hdri]
-			sky.sky_material = pano_mat
+			sky.sky_material = cloud_mat if cloud_mat else pano_mat
 		else:
 			_seg_hdri = ""
-			sky.sky_material = sky_mat
+			sky.sky_material = cloud_mat if cloud_mat else sky_mat
 	if _seg_hdri != "":
 		# Si el siguiente tramo no tiene panorama, se apaga poco a poco.
 		pano_mat.energy_multiplier = lerpf(1.0, 0.3, t) if String(k1["hdri"]) == "" else 1.0

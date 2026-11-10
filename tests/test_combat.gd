@@ -291,6 +291,49 @@ func _run() -> void:
 	check(main.current_vehicle.speed_kmh() > 8.0, "el coche robado se conduce (%.0f km/h)" % main.current_vehicle.speed_kmh())
 	await shot("combate_coche_robado")
 
+	print("== Tiendas")
+	if main.current_vehicle:
+		await main.leave_vehicle()
+	main.police.clear()
+	main.set_wanted(0)
+	var I: Interiors = main.interiors
+	check(I.place_index("clothes") >= 0 and I.place_index("barber") >= 0 and I.place_index("tattoo") >= 0, "hay tienda de ropa, barbería y estudio de tatuajes")
+	check(I._shop_fronts.size() == 3 and I.radar_markers(I._shop_fronts[0]["pos"]).size() >= 1, "las tiendas tienen escaparate y marca en el radar")
+	check(main.city._houses.size() > 20 and main.city.get_node_or_null("HouseDetails") != null, "chalets con tejado (%d casas y garajes)" % main.city._houses.size())
+	GameState.add_money(500)
+	GameState.owned_outfits = [0]
+	main.set_outfit(0)
+	var shop_door: Vector3 = I._places[I.place_index("clothes")]["enter"]
+	player.place(shop_door + Vector3.UP * 0.3, 0.0)
+	await physics(4)
+	main._update_interaction()
+	check(main.touch._interact_label == "Entrar", "se puede entrar en la tienda de ropa (%s)" % main.touch._interact_label)
+	await I.enter("clothes")
+	await wait(0.6)
+	check(I.inside == I.place_index("clothes"), "dentro de Veyra Threads")
+	var so: Vector3 = I._origin(I.inside)
+	player.place(so + Vector3(0, 0.2, -0.6), 0.0)
+	await physics(4)
+	var act: Dictionary = I.interaction(player.global_position, true)
+	check(String(act.get("label", "")).begins_with("Comprar ropa"), "el mostrador ofrece comprar ropa (%s)" % act.get("label", ""))
+	var m0 := GameState.money
+	main.buy_outfit()
+	check(GameState.money == m0 - main.OUTFIT_PRICE and GameState.outfit == 1 and GameState.owned_outfits.has(1), "comprar ropa cobra $%d y te pone el conjunto nuevo" % main.OUTFIT_PRICE)
+	main.change_outfit()
+	check(GameState.outfit == 0, "el armario alterna entre los conjuntos comprados")
+	await I.leave()
+	await wait(0.6)
+	m0 = GameState.money
+	main.buy_head_style()
+	check(GameState.head_style == 1 and GameState.money == m0 - main.BARBER_PRICE, "la barbería cambia el tinte y cobra")
+	main.crime.description = {"outfit": GameState.outfit, "head": 0, "car": "", "car_color": Color.BLACK, "car_name": ""}
+	check(not main.crime.matches(), "con otro tinte ya no encajas con la descripción policial")
+	var rep0 := int(GameState.reputation.get("westbrook_saints", 0))
+	main.buy_tattoo()
+	check(GameState.tattoos == 1 and int(GameState.reputation.get("westbrook_saints", 0)) == rep0 + 4, "un tatuaje da respeto con los Saints")
+	main.crime.clear()
+	check(main.sky.cloud_mat != null and main.sky.sky.sky_material == main.sky.cloud_mat, "cielo con nubes volumétricas, sol y luna activo")
+
 	print("== Guardado")
 	GameState.ammo = 33
 	GameState.weapon = "pistol"

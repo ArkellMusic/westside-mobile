@@ -140,6 +140,21 @@
       "id": "snow",
       "slug": "snow_02",
       "res": "2k"
+    },
+    {
+      "id": "roof_clay",
+      "slug": "clay_roof_tiles_02",
+      "res": "1k"
+    },
+    {
+      "id": "roof_grey",
+      "slug": "grey_roof_tiles_02",
+      "res": "1k"
+    },
+    {
+      "id": "wood_planks",
+      "slug": "wood_planks_grey",
+      "res": "1k"
     }
   ],
   "hdris": [

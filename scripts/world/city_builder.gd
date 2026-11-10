@@ -14,6 +14,9 @@ var pools: Array = []        # Rect2 de piscinas (mapa)
 var parked_spots: Array = [] # Transform3D de coches aparcados
 
 var _buildings: Array = []   # {center, size, color, kind}
+var _houses: Array = []      # chalets: {c: Vector2, size: Vector3, front: float (-1 norte, +1 sur), color, garage: bool}
+## Locales comerciales a pie de calle: {c: Vector2, size: Vector3, front: float}. Los usa Interiors para las tiendas.
+var shop_sites: Array = []
 var _box_nodes: Array = []   # nodos del MultiMesh de cajas (para rehacerlos sin los edificios del kit)
 ## Emitida al cambiar la noche (los edificios del kit encienden sus ventanas).
 signal night_changed(amount: float)
@@ -52,6 +55,7 @@ func build() -> void:
 	_build_terminal()
 	_build_veyra_mart()
 	_flush_buildings()
+	_build_house_details()
 	_build_beach_and_ocean()
 	_build_pier()
 	_build_vegetation()
@@ -316,12 +320,21 @@ func _fill_residential(inner: Rect2) -> void:
 				continue
 			var floors := 1 if rng.randf() < 0.55 else 2
 			var h := 3.6 if floors == 1 else 6.4
-			_add_building(c, Vector3(w, h, d), HOUSE_COLORS[rng.randi() % HOUSE_COLORS.size()], 0.15)
+			var hcol: Color = HOUSE_COLORS[rng.randi() % HOUSE_COLORS.size()]
+			var n_before := _buildings.size()
+			_add_building(c, Vector3(w, h, d), hcol, 0.15)
+			if _buildings.size() > n_before:
+				_houses.append({"c": c, "size": Vector3(w, h, d), "front": -1.0 if facing_north else 1.0, "color": hcol, "garage": false})
 			# Garaje anexo de una planta en algunas casas.
 			if rng.randf() < 0.45:
 				var gx := c.x + (w * 0.5 + 2.6) * (1.0 if rng.randf() < 0.5 else -1.0)
 				if absf(gx - lot_x) < frontage * 0.5 - 2.5:
-					_add_building(Vector2(gx, c.y - (d * 0.5 - 3.0) * (1.0 if facing_north else -1.0)), Vector3(5.0, 3.0, 6.0), HOUSE_COLORS[rng.randi() % HOUSE_COLORS.size()], 0.1)
+					var gc := Vector2(gx, c.y - (d * 0.5 - 3.0) * (1.0 if facing_north else -1.0))
+					var gcol: Color = HOUSE_COLORS[rng.randi() % HOUSE_COLORS.size()]
+					var g_before := _buildings.size()
+					_add_building(gc, Vector3(5.0, 3.0, 6.0), gcol, 0.1)
+					if _buildings.size() > g_before:
+						_houses.append({"c": gc, "size": Vector3(5.0, 3.0, 6.0), "front": -1.0 if facing_north else 1.0, "color": gcol, "garage": true})
 			# Piscina en el patio trasero.
 			if rng.randf() < 0.4:
 				var pz := c.y + (d * 0.5 + 4.5) * (1.0 if facing_north else -1.0)
@@ -341,7 +354,10 @@ func _fill_commercial(inner: Rect2, taller: bool) -> void:
 			var z := inner.position.y + d * 0.5 if row == 0 else inner.end.y - d * 0.5
 			var c := Vector2(x + w * 0.5, z)
 			if not _is_reserved(c):
+				var s_before := _buildings.size()
 				_add_building(c, Vector3(w - 0.6, h, d), SHOP_COLORS[rng.randi() % SHOP_COLORS.size()], 0.5)
+				if _buildings.size() > s_before:
+					shop_sites.append({"c": c, "size": Vector3(w - 0.6, h, d), "front": -1.0 if row == 0 else 1.0})
 			x += w
 	# Filas este y oeste entre medias (deja el centro como aparcamiento).
 	for col in 2:
@@ -387,6 +403,112 @@ func _textured(id: String, tint: Color, tile: float) -> StandardMaterial3D:
 		m.uv1_world_triplanar = true
 		m.uv1_scale = Vector3.ONE / tile
 	return m
+
+
+## Material PBR con UV normales (tejados): las UV van en metros / tamaño de baldosa.
+func _uv_textured(id: String, tint: Color) -> StandardMaterial3D:
+	var m := StandardMaterial3D.new()
+	m.albedo_color = tint
+	if ResourceLoader.exists(TEX + id + "/albedo.jpg"):
+		m.albedo_texture = load(TEX + id + "/albedo.jpg")
+		m.normal_enabled = true
+		m.normal_texture = load(TEX + id + "/normal.jpg")
+		m.roughness_texture = load(TEX + id + "/roughness.jpg")
+		m.roughness_texture_channel = BaseMaterial3D.TEXTURE_CHANNEL_GREEN
+	m.cull_mode = BaseMaterial3D.CULL_DISABLED
+	return m
+
+
+## Convierte las casas (cajas con ventanas) en chalets: tejado a dos aguas de teja real con
+## alero y hastiales, chimenea, porche con columnas, puerta y escalones; los garajes anexos
+## llevan su tejadillo y portón. Todo en una sola malla.
+func _build_house_details() -> void:
+	if _houses.is_empty():
+		return
+	var r := RandomNumberGenerator.new()
+	r.seed = SEED + 404
+	var b := MeshBuilder.new()
+	b.surface("clay", _uv_textured("roof_clay", Color(1.0, 0.95, 0.92)))
+	b.surface("slate", _uv_textured("roof_grey", Color(0.9, 0.92, 0.96)))
+	var stucco := _textured("stucco", Color.WHITE, 3.0)
+	b.surface("wall", stucco)
+	b.surface("brick", _textured("brick", Color(0.9, 0.8, 0.74), 2.0))
+	b.surface("trim", MeshBuilder.material(Color(0.93, 0.92, 0.9), 0.7))
+	b.surface("dark", MeshBuilder.material(Color(0.16, 0.15, 0.15), 0.6))
+	b.surface("wood", _textured("wood_planks", Color(0.75, 0.6, 0.48), 1.5))
+	b.surface("door", MeshBuilder.material(Color(0.33, 0.2, 0.12), 0.55))
+	b.surface("garage", MeshBuilder.material(Color(0.88, 0.88, 0.86), 0.5))
+	b.surface("glass", MeshBuilder.material(Color(0.1, 0.13, 0.17), 0.08, 0.2))
+	for hs in _houses:
+		var c2: Vector2 = hs["c"]
+		var size: Vector3 = hs["size"]
+		var f: float = hs["front"]
+		var col: Color = hs["color"]
+		var w := size.x
+		var h := size.y
+		var d := size.z
+		var is_garage: bool = hs["garage"]
+		var o := 0.4 if is_garage else 0.7
+		var rise := clampf(d * 0.24, 1.3, 2.8)
+		var base := Vector3(c2.x, 0.0, c2.y)
+		var roof: String = "clay" if r.randf() < 0.6 else "slate"
+		var x0 := -w * 0.5 - o
+		var x1 := w * 0.5 + o
+		var hd := d * 0.5 + o
+		var eave_y := h + 0.02
+		var slope_len := sqrt(hd * hd + rise * rise)
+		var tile := 1.6
+		# Dos faldones de teja.
+		for sgn: float in [-1.0, 1.0]:
+			var n := Vector3(0, hd, sgn * rise).normalized()
+			var p0 := base + Vector3(x0, eave_y, sgn * hd)
+			var p1 := base + Vector3(x1, eave_y, sgn * hd)
+			var p2 := base + Vector3(x1, eave_y + rise, 0)
+			var p3 := base + Vector3(x0, eave_y + rise, 0)
+			var uw := (x1 - x0) / tile
+			var uh := slope_len / tile
+			b.quad_uv(roof, [p0, p1, p2, p3], [Vector2(0, uh), Vector2(uw, uh), Vector2(uw, 0), Vector2(0, 0)], n)
+		# Hastiales (triángulos de pared bajo el tejado) y alero.
+		for sx: float in [-1.0, 1.0]:
+			var gx := sx * w * 0.5
+			var nx := Vector3(sx, 0, 0)
+			b.tri("wall", [base + Vector3(gx, h, -d * 0.5), base + Vector3(gx, h, d * 0.5), base + Vector3(gx, h + rise * (d * 0.5) / hd, 0)], [nx, nx, nx], [Vector2(0, 0), Vector2(1, 0), Vector2(0.5, 1)], col)
+		b.box("trim", base + Vector3(0, h - 0.06, 0), Vector3(w + o * 2.0, 0.14, d + o * 2.0))
+		b.box("trim", base + Vector3(0, eave_y + rise + 0.04, 0), Vector3(x1 - x0, 0.1, 0.22))
+		if is_garage:
+			# Portón seccional con cuatro paneles.
+			var gz := f * (d * 0.5 + 0.04)
+			b.box("garage", base + Vector3(0, 1.2, gz), Vector3(3.6, 2.4, 0.08))
+			for k in 3:
+				b.box("dark", base + Vector3(0, 0.6 + 0.6 * k, gz + f * 0.045), Vector3(3.6, 0.03, 0.02))
+			b.box("trim", base + Vector3(0, 2.48, gz), Vector3(3.9, 0.16, 0.12))
+			continue
+		# Chimenea de ladrillo.
+		var chx := (w * 0.28) * (1.0 if r.randf() < 0.5 else -1.0)
+		b.box("brick", base + Vector3(chx, h + rise * 0.5 + 0.5, -f * d * 0.18), Vector3(0.9, rise + 1.2, 0.9))
+		b.box("dark", base + Vector3(chx, h + rise + 1.15, -f * d * 0.18), Vector3(1.05, 0.12, 1.05))
+		# Porche: tarima, columnas, tejadillo, puerta con marco, farol y escalones.
+		var pw := clampf(w * 0.46, 4.0, 5.6)
+		var px := (w * 0.5 - pw * 0.5 - 0.6) * (1.0 if r.randf() < 0.5 else -1.0)
+		var pz := f * (d * 0.5 + 1.15)
+		b.box("wood", base + Vector3(px, 0.2, pz), Vector3(pw, 0.24, 2.3))
+		b.box("trim", base + Vector3(px, 2.95, pz), Vector3(pw + 0.5, 0.2, 2.7))
+		b.box(roof, base + Vector3(px, 3.1, pz), Vector3(pw + 0.6, 0.1, 2.8))
+		for sx: float in [-1.0, 1.0]:
+			b.box("trim", base + Vector3(px + sx * (pw * 0.5 - 0.2), 1.6, pz + f * 0.95), Vector3(0.24, 2.6, 0.24))
+			b.box("trim", base + Vector3(px + sx * (pw * 0.5 - 0.2), 0.7, pz), Vector3(0.08, 0.7, 2.1))
+		var dz := f * (d * 0.5 + 0.04)
+		b.box("trim", base + Vector3(px, 1.42, dz), Vector3(1.3, 2.4, 0.06))
+		b.box("door", base + Vector3(px, 1.37, dz + f * 0.03), Vector3(1.05, 2.2, 0.06))
+		b.box("glass", base + Vector3(px, 2.0, dz + f * 0.065), Vector3(0.5, 0.5, 0.02))
+		b.box("dark", base + Vector3(px + 0.4, 1.3, dz + f * 0.08), Vector3(0.06, 0.16, 0.05))
+		for k in 2:
+			b.box("wood", base + Vector3(px, 0.07 + 0.0 * k, pz + f * (1.3 + 0.3 * k)), Vector3(1.8, 0.14 - 0.06 * k, 0.3))
+		# Camino de losas hasta la acera.
+		b.box("trim", base + Vector3(px, 0.125, pz + f * 3.4), Vector3(1.3, 0.03, 3.6), Transform3D.IDENTITY, Color(0.75, 0.74, 0.72))
+		_collider_box(base + Vector3(px, 0.2, pz), Vector3(pw, 0.24, 2.3))
+	var mi := _mesh_instance(b.commit(), "HouseDetails")
+	mi.visibility_range_end = 420.0 * Settings.view_distance_scale()
 
 
 func _flush_buildings() -> void:

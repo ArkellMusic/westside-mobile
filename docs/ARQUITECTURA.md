@@ -59,6 +59,9 @@ docs/                    Mapas de referencia, biblia de misiones, fichas de pers
 - Resolución interna más alta (90 % en Alta, 77 % en Media, 75 % en Baja) con FSR más nítido, filtro anisotrópico 16x y sesgo de mipmaps negativo.
 - Distancia de dibujado de edificios y mobiliario multiplicada por nivel (x2,2 en Alta, x1,5 en Media) y sombras más lejanas.
 - Árboles de patios y del terreno con imágenes de modelos reales en planos cruzados (`TreeCards`).
+- **Cielo** (`assets/shaders/sky_clouds.gdshader`): nubes volumétricas por ray marching a un cuarto de resolución (14 / 10 / 6 pasos según calidad, `Settings.cloud_steps()`), sol con corona, luna con relieve y halo, y estrellas. El astro es la luz direccional de la escena, así que las sombras coinciden con el sol o la luna.
+- **Chalets** (`CityBuilder._build_house_details`): las casas llevan tejado a dos aguas con teja real (Poly Haven), hastiales, chimenea, porche con columnas, puerta y camino; los garajes, portón seccional.
+- **Tiendas** (`Interiors._define_shops`): Veyra Threads (ropa), Fade Kings (barbería) e Ink Saints (tatuajes) ocupan locales de edificios comerciales junto al Veyra Mart, con escaparate, interior y servicio. El taller Vargas Auto Works y Pinta y Listo ya existían.
 - Estos ajustes cuestan rendimiento: si en el iPhone no llega a 60 FPS, baja `render_scale()` y `view_distance_scale()` en `scripts/autoload/settings.gd`.
 
 ## Estado por fases

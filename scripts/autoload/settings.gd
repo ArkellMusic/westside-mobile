@@ -190,6 +190,16 @@ func render_scale() -> float:
 	return 0.77
 
 
+## Pasos del ray marching de las nubes volumétricas (0 = cielo sin nubes volumétricas).
+func cloud_steps() -> int:
+	match quality:
+		"low":
+			return 6
+		"high":
+			return 14
+	return 10
+
+
 ## Multiplicador de la distancia de dibujado de edificios y mobiliario urbano.
 func view_distance_scale() -> float:
 	match quality:

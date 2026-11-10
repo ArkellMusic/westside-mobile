@@ -438,16 +438,76 @@ func on_gunfire() -> void:
 	crime.commit(player.global_position, 1, true)
 
 
-## Mack se pone el siguiente conjunto de ropa (armario de su casa).
+const OUTFIT_PRICE := 45
+const BARBER_PRICE := 25
+const TATTOO_PRICE := 60
+const MAX_TATTOOS := 5
+
+
+## Mack se pone el siguiente conjunto de los que tiene (armario de su casa).
 func change_outfit() -> void:
-	set_outfit((GameState.outfit + 1) % Humanoid.OUTFITS.size())
+	var owned: Array = GameState.owned_outfits
+	if owned.size() < 2:
+		hud.toast("SOLO TIENES UN CONJUNTO", "Compra más ropa en Veyra Threads (R en el radar)", 3.0)
+		return
+	var i := owned.find(GameState.outfit)
+	set_outfit(int(owned[(i + 1) % owned.size()]))
 	hud.toast("ROPA CAMBIADA", Humanoid.outfit_name(GameState.outfit), 2.5)
 	crime.look_changed()
 
 
 func set_outfit(i: int) -> void:
 	GameState.outfit = clampi(i, 0, Humanoid.OUTFITS.size() - 1)
-	player.model.set_outfit(GameState.outfit)
+	if not GameState.owned_outfits.has(GameState.outfit):
+		GameState.owned_outfits.append(GameState.outfit)
+	player.model.set_look(GameState.outfit, GameState.head_style)
+
+
+func _pay(price: int, shop: String) -> bool:
+	if GameState.money < price:
+		hud.toast("Necesitas $%d" % price, shop, 2.5)
+		return false
+	GameState.add_money(-price)
+	return true
+
+
+## Tienda de ropa: compra el siguiente conjunto que no tengas y te lo pone.
+func buy_outfit() -> void:
+	var next := -1
+	for i in Humanoid.OUTFITS.size():
+		if not GameState.owned_outfits.has(i):
+			next = i
+			break
+	if next < 0:
+		change_outfit()
+		return
+	if not _pay(OUTFIT_PRICE, "Veyra Threads"):
+		return
+	set_outfit(next)
+	hud.toast("ROPA NUEVA  -$%d" % OUTFIT_PRICE, Humanoid.outfit_name(next), 3.0)
+	crime.look_changed()
+
+
+## Barbería: siguiente tinte de barba y gorra (cambia cómo te describe la policía).
+func buy_head_style() -> void:
+	if not _pay(BARBER_PRICE, "Fade Kings"):
+		return
+	GameState.head_style = (GameState.head_style + 1) % Humanoid.HEAD_STYLES.size()
+	player.model.set_look(GameState.outfit, GameState.head_style)
+	hud.toast("ESTILO NUEVO  -$%d" % BARBER_PRICE, "Barba y gorra: %s" % Humanoid.head_name(GameState.head_style), 3.0)
+	crime.look_changed()
+
+
+## Estudio de tatuajes: cada tatuaje da respeto con los Westbrook Saints (máximo MAX_TATTOOS).
+func buy_tattoo() -> void:
+	if GameState.tattoos >= MAX_TATTOOS:
+		hud.toast("NO TE QUEDA SITIO", "Ya llevas %d tatuajes" % MAX_TATTOOS, 2.5)
+		return
+	if not _pay(TATTOO_PRICE, "Ink Saints"):
+		return
+	GameState.tattoos += 1
+	GameState.change_reputation("westbrook_saints", 4)
+	hud.toast("TATUAJE NUEVO  -$%d" % TATTOO_PRICE, "+4 de respeto con los Westbrook Saints (%d/%d)" % [GameState.tattoos, MAX_TATTOOS], 3.5)
 
 
 ## Daño al jugador (balas de la policía): destello rojo, sacudida y, a cero, hospital.
@@ -772,7 +832,7 @@ func _seat_model(who: String, look: Dictionary, car: Car, seat: String) -> void:
 	car.add_child(h)
 	h.setup(look)
 	if who == "player":
-		h.set_outfit(GameState.outfit)
+		h.set_look(GameState.outfit, GameState.head_style)
 	h.set_seated(true)
 	h.set_meta("who", who)
 	h.position = Vector3(0.4 if seat == "driver" else -0.4, -0.52, -0.15)
