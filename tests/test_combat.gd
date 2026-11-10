@@ -291,6 +291,31 @@ func _run() -> void:
 	check(main.current_vehicle.speed_kmh() > 8.0, "el coche robado se conduce (%.0f km/h)" % main.current_vehicle.speed_kmh())
 	await shot("combate_coche_robado")
 
+	print("== Persecución en coche")
+	main.police.clear()
+	main.crime.description = main.crime.current_look()
+	main.crime.last_known = main.current_vehicle.global_position
+	main.set_wanted(2)
+	main.police._known_t = 3.0
+	var tq := 0.0
+	while tq < 8.0 and main.police.pursuits.is_empty():
+		main.police._known_t = 3.0
+		await wait(0.25)
+		tq += 0.25
+	check(main.police.pursuits.size() >= 1, "sale una patrulla en persecución cuando huyes en coche (%.1f s)" % tq)
+	if not main.police.pursuits.is_empty():
+		var pc: Car = main.police.pursuits[0]["car"]
+		var pd0 := pc.global_position.distance_to(main.current_vehicle.global_position)
+		for i in 24:
+			main.police._known_t = 3.0
+			main.refresh_wanted()
+			await wait(0.25)
+		var pd1 := pc.global_position.distance_to(main.current_vehicle.global_position)
+		check(pd1 < pd0 - 15.0, "la patrulla conduce hacia el jugador (%.0f m -> %.0f m)" % [pd0, pd1])
+		check(not main.vehicles.values().has(pc), "las patrullas en persecución no se pueden robar")
+	main.police.clear()
+	main.set_wanted(0)
+
 	print("== Tiendas")
 	if main.current_vehicle:
 		await main.leave_vehicle()

@@ -50,4 +50,5 @@
 - **1 estrella:** los agentes te persiguen a pie; si te alcanzan, quedas **DETENIDO** (multa de $150 y te confiscan la munición).
 - **2 estrellas o más:** disparan. Si te quedas sin vida, despiertas en el hospital (factura de $100).
 - Las estrellas bajan de una en una cuando ningún agente te reconoce durante unos 18 segundos.
+- Si huyes **en coche** y te tienen localizado, salen **patrullas en persecución** (1 con 1-2 estrellas, 2 con 3-4, 3 con 5-6): te siguen, te embisten y, si te bajas, frenan y bajan dos agentes.
 - Los agentes caídos sueltan balas.

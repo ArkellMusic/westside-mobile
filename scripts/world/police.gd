@@ -17,12 +17,18 @@ const HOLD_DIST := 11.0
 const SIGHT := 48.0
 const AMMO_DROP := 12
 const SEARCH_SPEED := 2.3
+## Coches patrulla en persecución por nivel de búsqueda (solo si el jugador va en coche).
+const PURSUIT_COUNT := [0, 1, 1, 2, 2, 3, 3]
 const SEARCH_RADIUS := 16.0
 
 ## Nodo principal (main.gd).
 var main
 var cops: Array = []          # Cop (vivos y caídos)
 var patrols: Array = []       # {"node": Node3D, "red": OmniLight3D, "blue": OmniLight3D}
+## Patrullas que persiguen: {"car": Car, "red", "blue", "stuck": float, "reverse": float, "unloaded": bool, "dead_t": float}
+var pursuits: Array = []
+var _pursuit_cd: float = 0.0
+var _pursuit_n: int = 0
 var any_seen: bool = false    # algún agente reconoce al jugador ahora (o hace un instante)
 var _known_t: float = 0.0     # segundos que la patrulla sigue sabiendo dónde está
 var rng := RandomNumberGenerator.new()
@@ -86,6 +92,10 @@ func clear() -> void:
 		if is_instance_valid(p["node"]):
 			(p["node"] as Node).queue_free()
 	patrols.clear()
+	for q in pursuits:
+		if is_instance_valid(q["car"]):
+			(q["car"] as Node).queue_free()
+	pursuits.clear()
 	any_seen = false
 	_known_t = 0.0
 	_spawn_cd = 0.0
@@ -210,7 +220,7 @@ func _spawn_patrol(pos: Vector3, dir: Vector3) -> void:
 
 func _physics_process(delta: float) -> void:
 	_blink += delta
-	for p in patrols:
+	for p in patrols + pursuits:
 		var on := fmod(_blink, 0.5) < 0.25
 		(p["red"] as OmniLight3D).visible = on
 		(p["blue"] as OmniLight3D).visible = not on
@@ -247,6 +257,7 @@ func _physics_process(delta: float) -> void:
 			cops.remove_at(i)
 			continue
 		_update_cop(c, delta, wanted, focus, dist)
+	_update_pursuits(delta, wanted, focus)
 	# Las patrullas se retiran cuando ya no hay búsqueda y el jugador se ha alejado.
 	for i in range(patrols.size() - 1, -1, -1):
 		var node: Node3D = patrols[i]["node"]
@@ -254,6 +265,145 @@ func _physics_process(delta: float) -> void:
 		if far > 150.0 or (wanted == 0 and (_calm_t > 9.0 or far > 70.0)):
 			node.queue_free()
 			patrols.remove_at(i)
+
+
+# ---------------------------------------------------------------- persecución en coche
+
+func _spawn_pursuit(ppos: Vector3) -> void:
+	var graph: Dictionary = main.traffic.graph
+	var nodes: Array = graph["nodes"]
+	var cam: Camera3D = get_viewport().get_camera_3d()
+	var cf := -cam.global_transform.basis.z if cam else Vector3.FORWARD
+	var p2 := Vector2(ppos.x, ppos.z)
+	var best := -1
+	var best_score := INF
+	for i in nodes.size():
+		var n: Vector2 = nodes[i]
+		var d := n.distance_to(p2)
+		if d < 55.0 or d > 110.0:
+			continue
+		var to := Vector3(n.x - ppos.x, 0, n.y - ppos.z).normalized()
+		var score := d + (60.0 if to.dot(cf) > 0.3 else 0.0) + rng.randf() * 15.0
+		if score < best_score:
+			best_score = score
+			best = i
+	if best < 0:
+		return
+	var a: Vector2 = nodes[best]
+	var heading := Vector3(ppos.x - a.x, 0, ppos.z - a.y).normalized()
+	_pursuit_n += 1
+	var car := Car.new()
+	car.name = "Patrulla%d" % _pursuit_n
+	add_child(car)
+	car.setup(5, Color.WHITE, "pd_%d" % _pursuit_n, "Patrulla")
+	car.global_transform = Transform3D(Basis.looking_at(-heading, Vector3.UP), Vector3(a.x, 0.2, a.y))
+	car.ai_enabled = true
+	car.max_engine_force = 7600.0
+	car.set_lights(true)
+	var red := OmniLight3D.new()
+	red.light_color = Color(1.0, 0.08, 0.08)
+	var blue := OmniLight3D.new()
+	blue.light_color = Color(0.1, 0.25, 1.0)
+	for l in [red, blue]:
+		l.omni_range = 16.0
+		l.light_energy = 5.0
+		l.shadow_enabled = false
+		car.add_child(l)
+	red.position = Vector3(-0.45, 1.75, 0.0)
+	blue.position = Vector3(0.45, 1.75, 0.0)
+	var siren := AudioStreamPlayer3D.new()
+	siren.stream = Sfx.stream("siren")
+	siren.volume_db = -6.0
+	siren.max_distance = 160.0
+	siren.unit_size = 14.0
+	car.add_child(siren)
+	siren.play()
+	pursuits.append({"car": car, "red": red, "blue": blue, "stuck": 0.0, "reverse": 0.0, "unloaded": false, "dead_t": 0.0})
+
+
+func _update_pursuits(delta: float, wanted: int, focus: Node3D) -> void:
+	var ppos := focus.global_position
+	var player_car: Car = main.current_vehicle
+	var known := _known_t > 0.0
+	_pursuit_cd -= delta
+	if wanted > 0 and player_car != null and known and main._gameplay_on and main.interiors.inside < 0 \
+			and pursuits.size() < int(PURSUIT_COUNT[clampi(wanted, 0, 6)]) and _pursuit_cd <= 0.0:
+		_pursuit_cd = 5.0
+		_spawn_pursuit(ppos)
+	for i in range(pursuits.size() - 1, -1, -1):
+		var q: Dictionary = pursuits[i]
+		var car: Car = q["car"]
+		if not is_instance_valid(car):
+			pursuits.remove_at(i)
+			continue
+		var to := ppos - car.global_position
+		var dist := Vector2(to.x, to.z).length()
+		var wrecked := car.damage >= 100.0
+		if wrecked or wanted == 0:
+			q["dead_t"] = float(q["dead_t"]) + delta
+		if dist > 220.0 or float(q["dead_t"]) > (14.0 if wrecked else 9.0) or (wanted == 0 and dist > 70.0):
+			car.queue_free()
+			pursuits.remove_at(i)
+			continue
+		if wrecked or wanted == 0:
+			car.ai_throttle = 0.0
+			car.ai_brake = 1.0
+			continue
+		# Ver el coche del jugador de cerca también cuenta como reconocerlo.
+		if dist < main.crime.recognition_range() and not main.combat.blocked(car.global_position + Vector3.UP * 1.2, ppos + Vector3.UP * 1.0, [car.get_rid(), main.player.get_rid(), focus.get_rid()] if focus is CollisionObject3D else [car.get_rid(), main.player.get_rid()]):
+			_known_t = 3.0
+			any_seen = true
+			main.crime.on_recognised(ppos)
+		# Objetivo: el jugador (adelantándose a su velocidad) o el último lugar conocido.
+		var target: Vector3 = ppos if _known_t > 0.0 else main.crime.last_known
+		if _known_t > 0.0 and focus is RigidBody3D:
+			target += (focus as RigidBody3D).linear_velocity * 0.45
+		var local: Vector3 = car.global_transform.affine_inverse() * target
+		var ang := atan2(local.x, local.z)   # el frente del coche es +Z; +X local queda a la izquierda
+		var speed := car.forward_speed()
+		var d_target := Vector2(local.x, local.z).length()
+		if float(q["reverse"]) > 0.0:
+			# Marcha atrás para salir de un atasco, girando al revés.
+			q["reverse"] = float(q["reverse"]) - delta
+			car.ai_throttle = 0.0
+			car.ai_brake = 1.0
+			car.ai_steer = clampf(ang * 1.6, -1.0, 1.0)
+			continue
+		# Jugador a pie y patrulla al lado: frena y bajan dos agentes.
+		if player_car == null and dist < 14.0:
+			car.ai_throttle = 0.0
+			car.ai_brake = 1.0
+			if not bool(q["unloaded"]) and absf(speed) < 2.0:
+				q["unloaded"] = true
+				var right := car.global_basis.x
+				for k in 2:
+					if alive_count() < 6:
+						_spawn_cop(car.global_position + right * (2.0 if k == 0 else -2.0))
+			continue
+		if d_target < 6.0 and _known_t <= 0.0:
+			car.ai_throttle = 0.0
+			car.ai_brake = 1.0
+			continue
+		car.ai_steer = clampf(-ang * 1.6, -1.0, 1.0)
+		var want := 14.0
+		if player_car != null and _known_t > 0.0:
+			want = clampf(player_car.linear_velocity.length() + 7.0, 14.0, 44.0)
+		if absf(ang) > 0.9:
+			want = minf(want, 9.0)
+		if speed < want:
+			car.ai_throttle = 1.0
+			car.ai_brake = 0.0
+		else:
+			car.ai_throttle = 0.0
+			car.ai_brake = 0.5 if speed > want + 4.0 else 0.0
+		# Atascado contra algo: un momento de marcha atrás.
+		if absf(speed) < 1.2:
+			q["stuck"] = float(q["stuck"]) + delta
+			if float(q["stuck"]) > 1.6:
+				q["stuck"] = 0.0
+				q["reverse"] = 1.4
+		else:
+			q["stuck"] = 0.0
 
 
 func _update_cop(c: Cop, delta: float, wanted: int, focus: Node3D, dist: float) -> void:

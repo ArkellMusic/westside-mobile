@@ -14,6 +14,11 @@ signal crashed(strength: float, point: Vector3, other: Node)
 var vehicle_id: String = ""
 var display_name: String = ""
 var has_driver: bool = false
+## Conducción por IA (coches patrulla): si ai_enabled, estas entradas sustituyen a los controles.
+var ai_enabled: bool = false
+var ai_steer: float = 0.0      # -1 izquierda .. 1 derecha
+var ai_throttle: float = 0.0
+var ai_brake: float = 0.0
 var max_engine_force: float = 6500.0
 var max_brake: float = 28.0
 var max_speed: float = 46.0       # m/s (~165 km/h)
@@ -176,7 +181,7 @@ func speed_kmh() -> float:
 func _physics_process(delta: float) -> void:
 	_crash_cd = maxf(0.0, _crash_cd - delta)
 	_prev_vel = linear_velocity
-	if not has_driver:
+	if not has_driver and not ai_enabled:
 		engine_force = 0.0
 		brake = 6.0 if linear_velocity.length() < 3.0 else 2.0
 		steering = move_toward(steering, 0.0, delta * 2.0)
@@ -185,6 +190,12 @@ func _physics_process(delta: float) -> void:
 	var throttle := 1.0 if Controls.is_down("gas") else clampf(mv.y, 0.0, 1.0)
 	var brake_in := 1.0 if Controls.is_down("brake") else clampf(-mv.y, 0.0, 1.0)
 	var handbrake := Controls.is_down("handbrake")
+	if ai_enabled:
+		mv = Vector2(clampf(ai_steer, -1.0, 1.0), 0.0)
+		throttle = clampf(ai_throttle, 0.0, 1.0)
+		brake_in = clampf(ai_brake, 0.0, 1.0)
+		handbrake = false
+		sleeping = false
 	var v := forward_speed()
 
 	# Dirección suavizada y limitada por velocidad.
