@@ -73,6 +73,23 @@ func _run() -> void:
 	main.hud.visible = false
 	main.touch.visible = false
 	GameState.world_minutes = 11 * 60
+	# 6. Mirador: vista lejana de la ciudad a mediodía (nitidez, neblina y distancia de dibujado).
+	if want("6"):
+		GameState.world_minutes = 12 * 60 + 30
+		var eye6 := Vector3(-150, 95, 230)
+		var at6 := Vector3(60, 0, -160)
+		main.rig.cinematic_shot(CameraRig.look_from(eye6, at6), CameraRig.look_from(eye6, at6), 999.0, 55.0, 55.0)
+		await wait(4.0)
+		await shot("6_mirador")
+		var eye7 := Vector3(-42, 1.7, 30)
+		var at7 := Vector3(-42, 3.0, -200)
+		main.rig.cinematic_shot(CameraRig.look_from(eye7, at7), CameraRig.look_from(eye7, at7), 999.0, 60.0, 60.0)
+		await wait(3.0)
+		await shot("7_avenida")
+		main.rig.end_cinematic()
+		if only.size() == 1:
+			get_tree().quit()
+			return
 	# 1. Calle de día, a pie.
 	main.player.place(Vector3(-42, 0.3, 12), PI * 0.75)
 	main.rig.yaw = PI * 0.75 + PI
