@@ -90,7 +90,7 @@ func _place(parts: Array, transforms: Array, node_name: String, view_dist: float
 		var mmi := MultiMeshInstance3D.new()
 		mmi.name = "%s_%d" % [node_name, i]
 		mmi.multimesh = mm
-		mmi.visibility_range_end = view_dist
+		mmi.visibility_range_end = view_dist * Settings.view_distance_scale()
 		mmi.visibility_range_end_margin = 10.0
 		mmi.visibility_range_fade_mode = GeometryInstance3D.VISIBILITY_RANGE_FADE_SELF
 		mmi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON if shadows else GeometryInstance3D.SHADOW_CASTING_SETTING_OFF

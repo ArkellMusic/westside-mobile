@@ -112,3 +112,9 @@ queda **por confirmar (descargado por el usuario de Sketchfab)** antes de public
 | Male police v1 | Agentes de policia (NPC); modelo Mixamo Fuse, sujeto a los terminos de Adobe/Mixamo | 34k -> 14k | licencia por confirmar (descargado por el usuario de Sketchfab) |
 | Doctor Pinch | Medico del hospital | 61k -> 15k | licencia por confirmar (descargado por el usuario de Sketchfab) |
 | Police (policia antiguo low-poly) | Guardia de la comisaria | 8k -> 8k | licencia por confirmar (descargado por el usuario de Sketchfab) |
+
+## Árboles (Poly Haven, CC0)
+
+`assets/props/trees/`: imágenes con transparencia renderizadas a partir de los modelos
+**jacaranda_tree** e **island_tree_02** de Poly Haven (https://polyhaven.com, licencia CC0).
+Se usan como dos planos cruzados (`scripts/world/tree_cards.gd`).

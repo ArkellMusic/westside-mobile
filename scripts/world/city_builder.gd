@@ -906,10 +906,19 @@ func _build_vegetation() -> void:
 			if _hits_footprint(p, 3.0) or _hits_pool(p, 3.0):
 				continue
 			trees.append(Transform3D(Basis(Vector3.UP, rng.randf() * TAU).scaled(Vector3.ONE * rng.randf_range(0.8, 1.25)), Vector3(p.x, 0.1, p.y)))
-	_multimesh(_tree_mesh(), trees, "YardTrees")
+	if TreeCards.available("jacaranda_tree") and TreeCards.available("island_tree_02"):
+		# Árboles reales (imagen de un modelo CC0 en dos planos cruzados), dos especies alternas.
+		var set_a: Array = []
+		var set_b: Array = []
+		for i in trees.size():
+			(set_a if i % 3 != 0 else set_b).append(trees[i])
+		_multimesh(TreeCards.mesh("jacaranda_tree"), set_a, "YardTrees")
+		_multimesh(TreeCards.mesh("island_tree_02"), set_b, "YardTreesB")
+	else:
+		_multimesh(_tree_mesh(), trees, "YardTrees")
 	# Setos delante de las casas.
 	var hedge := MeshBuilder.new()
-	hedge.surface("h", MeshBuilder.material(Color(0.16, 0.30, 0.12), 0.9))
+	hedge.surface("h", _textured("grass_mix", Color(0.42, 0.62, 0.3), 1.6))
 	for blk in CityLayout.blocks():
 		if blk["kind"] != "residential":
 			continue

@@ -76,6 +76,8 @@ func _run() -> void:
 	# 6. Mirador: vista lejana de la ciudad a mediodía (nitidez, neblina y distancia de dibujado).
 	if want("6"):
 		GameState.world_minutes = 12 * 60 + 30
+		main.rig.cine_attrs.dof_blur_far_enabled = false
+		main.rig.cine_attrs.dof_blur_near_enabled = false
 		var eye6 := Vector3(-150, 95, 230)
 		var at6 := Vector3(60, 0, -160)
 		main.rig.cinematic_shot(CameraRig.look_from(eye6, at6), CameraRig.look_from(eye6, at6), 999.0, 55.0, 55.0)
@@ -87,6 +89,8 @@ func _run() -> void:
 		await wait(3.0)
 		await shot("7_avenida")
 		main.rig.end_cinematic()
+		main.rig.cine_attrs.dof_blur_far_enabled = true
+		main.rig.cine_attrs.dof_blur_near_enabled = true
 		if only.size() == 1:
 			get_tree().quit()
 			return

@@ -128,7 +128,7 @@ func _update_post(delta: float) -> void:
 	_motion = lerpf(_motion, target_motion, clampf(delta * 3.0, 0.0, 1.0))
 	var m := _post.material as ShaderMaterial
 	m.set_shader_parameter("motion", _motion)
-	m.set_shader_parameter("vignette", 0.34 if cinematic else 0.26)
+	m.set_shader_parameter("vignette", 0.3 if cinematic else 0.12)
 
 
 func exclude(body: CollisionObject3D) -> void:

@@ -66,7 +66,7 @@ func build(city: CityBuilder) -> void:
 		taken[cand["index"]] = true
 		stats["buildings"] += 1
 	_flush()
-	city.rebuild_boxes(taken, VIS_END - 20.0)
+	city.rebuild_boxes(taken, VIS_END * Settings.view_distance_scale() - 20.0)
 	if not city.night_changed.is_connected(set_night):
 		city.night_changed.connect(set_night)
 	print("[KitBuildings] edificios=%d (prefabricados=%d) instancias=%d multimeshes=%d triangulos~%d" % [
@@ -151,7 +151,7 @@ func _try_prefab(c: Vector2, size: Vector3, side: int) -> bool:
 	mi.name = "Prefab_%s_%d" % [best, _prefab_count]
 	mi.mesh = _meshes[best]
 	mi.transform = Transform3D(basis, Vector3(c.x, GROUND_Y, c.y) - basis * local_c)
-	mi.visibility_range_end = PREFAB_VIS_END
+	mi.visibility_range_end = PREFAB_VIS_END * Settings.view_distance_scale()
 	mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 	add_child(mi)
 	_prefab_count += 1
@@ -358,7 +358,7 @@ func _flush() -> void:
 			var mi := MultiMeshInstance3D.new()
 			mi.name = "Kit_%d_%d_%s" % [key.x, key.y, mesh_name]
 			mi.multimesh = mm
-			mi.visibility_range_end = VIS_END
+			mi.visibility_range_end = VIS_END * Settings.view_distance_scale()
 			mi.cast_shadow = GeometryInstance3D.SHADOW_CASTING_SETTING_ON
 			add_child(mi)
 			stats["instances"] += xfs.size()

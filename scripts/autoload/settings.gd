@@ -73,7 +73,7 @@ func apply() -> void:
 		if forward_plus():
 			# FSR2 reconstruye a resolución completa y hace de TAA (sin MSAA ni FXAA).
 			vp.scaling_3d_mode = Viewport.SCALING_3D_MODE_FSR2 if quality != "low" else Viewport.SCALING_3D_MODE_BILINEAR
-			vp.fsr_sharpness = 0.35
+			vp.fsr_sharpness = 0.2
 			vp.use_taa = false
 			vp.msaa_3d = Viewport.MSAA_DISABLED
 			vp.screen_space_aa = Viewport.SCREEN_SPACE_AA_DISABLED if quality != "low" else Viewport.SCREEN_SPACE_AA_FXAA
@@ -184,10 +184,20 @@ func cycle_quality() -> void:
 func render_scale() -> float:
 	match quality:
 		"low":
-			return 0.67
+			return 0.75
 		"high":
-			return 0.8
-	return 0.7
+			return 0.9
+	return 0.77
+
+
+## Multiplicador de la distancia de dibujado de edificios y mobiliario urbano.
+func view_distance_scale() -> float:
+	match quality:
+		"low":
+			return 1.0
+		"high":
+			return 2.2
+	return 1.5
 
 
 func shadow_atlas_size() -> int:
@@ -204,8 +214,8 @@ func shadow_distance() -> float:
 		"low":
 			return 50.0
 		"high":
-			return 120.0
-	return 80.0
+			return 160.0
+	return 110.0
 
 
 ## Efectos de pantalla y de iluminación por nivel (los lee SkyEnv).

@@ -52,6 +52,15 @@ docs/                    Mapas de referencia, biblia de misiones, fichas de pers
 - Calidad Baja / Media / Alta: escala de render, sombras, MSAA, densidad de tráfico y peatones, límite de 30/60 FPS.
 - Texturas en ETC2/ASTC cuando entren los modelos reales.
 
+## Aspecto visual («look» nítido)
+
+- Cielo despejado procedural de día, niebla y niebla volumétrica muy reducidas y perspectiva aérea azulada solo a lo lejos.
+- Luz ambiente mezclada (cielo + color neutro) para que las sombras no queden negras; más saturación y contraste; menos viñeta y bloom.
+- Resolución interna más alta (90 % en Alta, 77 % en Media, 75 % en Baja) con FSR más nítido, filtro anisotrópico 16x y sesgo de mipmaps negativo.
+- Distancia de dibujado de edificios y mobiliario multiplicada por nivel (x2,2 en Alta, x1,5 en Media) y sombras más lejanas.
+- Árboles de patios y del terreno con imágenes de modelos reales en planos cruzados (`TreeCards`).
+- Estos ajustes cuestan rendimiento: si en el iPhone no llega a 60 FPS, baja `render_scale()` y `view_distance_scale()` en `scripts/autoload/settings.gd`.
+
 ## Estado por fases
 
 | Fase | Contenido | Estado |

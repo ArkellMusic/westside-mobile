@@ -497,7 +497,7 @@ func _make_veg_meshes() -> void:
 	bush.sphere("b", Vector3(0, 0.5, 0), Vector3(1.1, 0.7, 1.1), 3, 6)
 	_veg_meshes = {
 		"pine": {"mesh": pine.commit(), "vis": 1200.0, "shadow": true},
-		"tree": {"mesh": tree.commit(), "vis": 1000.0, "shadow": true},
+		"tree": {"mesh": TreeCards.mesh("jacaranda_tree") if TreeCards.available("jacaranda_tree") else tree.commit(), "vis": 1000.0, "shadow": true},
 		"palm": {"mesh": palm.commit(), "vis": 900.0, "shadow": true},
 		"cactus": {"mesh": cactus.commit(), "vis": 600.0, "shadow": false},
 		"rock": {"mesh": rock.commit(), "vis": 650.0, "shadow": false},

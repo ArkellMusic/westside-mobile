@@ -28,23 +28,23 @@ const GRADES := {
 	},
 	"night_city": {
 		"sat": 1.08, "contrast": 1.1, "shadow_tint": Color(0.84, 0.95, 1.18), "high_tint": Color(1.14, 0.98, 0.82),
-		"vol": 0.009, "vol_albedo": Color(0.6, 0.66, 0.85), "vol_emit": 0.012, "height_fog": 0.02, "wet": 0.75, "sun_size": 0.3, "scatter": 0.0, "aerial": 0.3,
+		"vol": 0.004, "vol_albedo": Color(0.6, 0.66, 0.85), "vol_emit": 0.012, "height_fog": 0.008, "wet": 0.75, "sun_size": 0.3, "scatter": 0.0, "aerial": 0.3,
 	},
 	"dusk": {
 		"sat": 1.1, "contrast": 1.08, "shadow_tint": Color(0.88, 0.9, 1.14), "high_tint": Color(1.14, 0.96, 0.9),
-		"vol": 0.008, "vol_albedo": Color(0.85, 0.66, 0.74), "vol_emit": 0.004, "height_fog": 0.015, "wet": 0.35, "sun_size": 0.6, "scatter": 0.3, "aerial": 0.6,
+		"vol": 0.003, "vol_albedo": Color(0.85, 0.66, 0.74), "vol_emit": 0.004, "height_fog": 0.006, "wet": 0.35, "sun_size": 0.6, "scatter": 0.3, "aerial": 0.6,
 	},
 	"dawn": {
 		"sat": 1.08, "contrast": 1.05, "shadow_tint": Color(0.9, 0.95, 1.12), "high_tint": Color(1.12, 0.98, 0.86),
-		"vol": 0.012, "vol_albedo": Color(1.0, 0.82, 0.7), "vol_emit": 0.0, "height_fog": 0.03, "wet": 0.3, "sun_size": 0.6, "scatter": 0.45, "aerial": 0.7,
+		"vol": 0.005, "vol_albedo": Color(1.0, 0.82, 0.7), "vol_emit": 0.0, "height_fog": 0.012, "wet": 0.3, "sun_size": 0.6, "scatter": 0.45, "aerial": 0.7,
 	},
 	"morning": {
-		"sat": 1.16, "contrast": 1.08, "shadow_tint": Color(0.97, 1.0, 1.05), "high_tint": Color(1.03, 1.0, 0.96),
-		"vol": 0.0025, "vol_albedo": Color(0.92, 0.9, 0.86), "vol_emit": 0.0, "height_fog": 0.006, "wet": 0.0, "sun_size": 0.5, "scatter": 0.12, "aerial": 0.55,
+		"sat": 1.24, "contrast": 1.12, "shadow_tint": Color(0.97, 1.0, 1.05), "high_tint": Color(1.03, 1.0, 0.96),
+		"vol": 0.0006, "vol_albedo": Color(0.92, 0.94, 0.98), "vol_emit": 0.0, "height_fog": 0.0, "wet": 0.0, "sun_size": 0.5, "scatter": 0.05, "aerial": 0.35,
 	},
 	"golden": {
 		"sat": 1.14, "contrast": 1.08, "shadow_tint": Color(0.9, 0.94, 1.12), "high_tint": Color(1.12, 0.98, 0.84),
-		"vol": 0.006, "vol_albedo": Color(1.0, 0.8, 0.62), "vol_emit": 0.0, "height_fog": 0.012, "wet": 0.1, "sun_size": 0.6, "scatter": 0.4, "aerial": 0.65,
+		"vol": 0.002, "vol_albedo": Color(1.0, 0.8, 0.62), "vol_emit": 0.0, "height_fog": 0.004, "wet": 0.1, "sun_size": 0.6, "scatter": 0.4, "aerial": 0.65,
 	},
 }
 
@@ -52,32 +52,32 @@ const PRESETS := {
 	"night_desert": {
 		"sun_yaw": -40.0, "sun_pitch": -35.0, "light": Color(0.62, 0.68, 0.85), "energy": 0.32,
 		"top": Color(0.02, 0.03, 0.08), "horizon": Color(0.10, 0.12, 0.22), "ground": Color(0.03, 0.03, 0.05),
-		"fog": Color(0.06, 0.07, 0.13), "fog_density": 0.0009, "ambient": 0.3, "night": 1.0, "exposure": 1.35, "sky_energy": 1.0,
+		"fog": Color(0.06, 0.07, 0.13), "fog_density": 0.0005, "ambient": 0.3, "night": 1.0, "exposure": 1.35, "sky_energy": 1.0,
 	},
 	"night_city": {
 		"sun_yaw": -40.0, "sun_pitch": -35.0, "light": Color(0.62, 0.7, 0.9), "energy": 0.45,
 		"top": Color(0.025, 0.045, 0.12), "horizon": Color(0.09, 0.13, 0.26), "ground": Color(0.03, 0.035, 0.07),
-		"fog": Color(0.07, 0.1, 0.19), "fog_density": 0.0008, "ambient": 0.55, "night": 1.0, "exposure": 1.45, "sky_energy": 1.0,
+		"fog": Color(0.07, 0.1, 0.19), "fog_density": 0.0004, "ambient": 0.55, "night": 1.0, "exposure": 1.45, "sky_energy": 1.0,
 	},
 	"dusk": {
 		"sun_yaw": -78.0, "sun_pitch": 3.0, "light": Color(0.9, 0.45, 0.4), "energy": 0.2,
 		"top": Color(0.09, 0.11, 0.3), "horizon": Color(0.8, 0.4, 0.46), "ground": Color(0.1, 0.08, 0.11),
-		"fog": Color(0.5, 0.33, 0.44), "fog_density": 0.0009, "ambient": 0.38, "night": 0.7, "exposure": 1.0, "sky_energy": 1.0,
+		"fog": Color(0.5, 0.33, 0.44), "fog_density": 0.0004, "ambient": 0.38, "night": 0.7, "exposure": 1.0, "sky_energy": 1.0,
 	},
 	"dawn": {
 		"sun_yaw": 95.0, "sun_pitch": -6.0, "light": Color(1.0, 0.55, 0.35), "energy": 0.9,
 		"top": Color(0.16, 0.22, 0.42), "horizon": Color(0.98, 0.58, 0.38), "ground": Color(0.16, 0.12, 0.1),
-		"fog": Color(0.85, 0.58, 0.46), "fog_density": 0.0011, "ambient": 0.45, "night": 0.55, "exposure": 1.05, "sky_energy": 1.0,
+		"fog": Color(0.85, 0.58, 0.46), "fog_density": 0.0005, "ambient": 0.45, "night": 0.55, "exposure": 1.05, "sky_energy": 1.0,
 	},
 	"morning": {
-		"sun_yaw": 110.0, "sun_pitch": -32.0, "light": Color(1.0, 0.9, 0.76), "energy": 1.15,
-		"top": Color(0.28, 0.48, 0.78), "horizon": Color(0.88, 0.80, 0.70), "ground": Color(0.25, 0.22, 0.18),
-		"fog": Color(0.86, 0.80, 0.72), "fog_density": 0.0006, "ambient": 0.35, "night": 0.05, "exposure": 0.78, "sky_energy": 1.0, "hdri": "res://assets/sky/day.hdr",
+		"sun_yaw": 110.0, "sun_pitch": -32.0, "light": Color(1.0, 0.95, 0.86), "energy": 1.6,
+		"top": Color(0.2, 0.43, 0.82), "horizon": Color(0.66, 0.81, 0.95), "ground": Color(0.3, 0.3, 0.3),
+		"fog": Color(0.7, 0.8, 0.93), "fog_density": 0.00012, "ambient": 1.15, "night": 0.05, "exposure": 1.0, "sky_energy": 1.0,
 	},
 	"golden": {
 		"sun_yaw": -80.0, "sun_pitch": -11.0, "light": Color(1.0, 0.66, 0.4), "energy": 1.25,
 		"top": Color(0.22, 0.32, 0.58), "horizon": Color(1.0, 0.66, 0.44), "ground": Color(0.2, 0.15, 0.12),
-		"fog": Color(0.95, 0.68, 0.5), "fog_density": 0.0008, "ambient": 0.4, "night": 0.35, "exposure": 1.0, "sky_energy": 1.0, "hdri": "res://assets/sky/sunset.hdr",
+		"fog": Color(0.95, 0.68, 0.5), "fog_density": 0.0003, "ambient": 0.4, "night": 0.35, "exposure": 1.0, "sky_energy": 1.0, "hdri": "res://assets/sky/sunset.hdr",
 	},
 }
 
@@ -130,10 +130,13 @@ func _ready() -> void:
 	env = Environment.new()
 	env.background_mode = Environment.BG_SKY
 	env.sky = sky
-	env.ambient_light_source = Environment.AMBIENT_SOURCE_SKY
+	# Luz ambiente: mezcla del cielo con un color neutro del ambiente, para que las sombras
+	# no queden negras ni teñidas del azul del cielo despejado.
+	env.ambient_light_source = Environment.AMBIENT_SOURCE_BG
+	env.ambient_light_sky_contribution = 0.45
 	env.reflected_light_source = Environment.REFLECTION_SOURCE_SKY
 	env.fog_enabled = true
-	env.fog_sky_affect = 0.35
+	env.fog_sky_affect = 0.1
 	env.adjustment_enabled = true
 	env.adjustment_contrast = 1.08
 	env.adjustment_saturation = 1.08
@@ -217,13 +220,13 @@ func _apply_quality() -> void:
 		env.tonemap_agx_white = 12.0
 		env.tonemap_agx_contrast = 1.3
 		cam_attrs.auto_exposure_enabled = true
-		cam_attrs.auto_exposure_scale = 0.3
+		cam_attrs.auto_exposure_scale = 0.4
 		cam_attrs.auto_exposure_min_sensitivity = 140.0
 		cam_attrs.auto_exposure_max_sensitivity = 420.0
 		# Bloom para farolas, faros, neón y ventanas iluminadas.
 		env.glow_enabled = true
 		env.glow_normalized = false
-		env.glow_intensity = 0.55
+		env.glow_intensity = 0.4
 		env.glow_strength = 1.0
 		env.glow_bloom = 0.02
 		env.glow_blend_mode = Environment.GLOW_BLEND_MODE_SCREEN
@@ -379,6 +382,7 @@ func _apply_values(p: Dictionary) -> void:
 	env.fog_light_color = p["fog"]
 	env.fog_density = p["fog_density"]
 	env.ambient_light_energy = p["ambient"]
+	env.ambient_light_color = (p["fog"] as Color).lerp(Color(1, 1, 1), 0.45)
 	env.tonemap_exposure = p["exposure"]
 	_apply_grade(p)
 	if city:
@@ -388,8 +392,8 @@ func _apply_values(p: Dictionary) -> void:
 ## Gradación de color, niebla y materiales que dependen de la hora.
 func _apply_grade(p: Dictionary) -> void:
 	if not Settings.use_screen_effects():
-		env.adjustment_contrast = 1.08
-		env.adjustment_saturation = 1.08
+		env.adjustment_contrast = 1.1
+		env.adjustment_saturation = 1.2
 		return
 	var night := float(p.get("night", 0.0))
 	env.adjustment_contrast = float(p.get("contrast", 1.05))
