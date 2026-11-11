@@ -1,0 +1,71 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+BOOT [  0.00 s] ---- arranque 2026-11-11T13:20:44 · Linux · GenericDevice · renderizador forward_plus (vulkan) ·  · 15982 MB RAM · calidad high
+BOOT [  0.01 s] pantalla de carga visible; construyendo el mundo
+BOOT [  0.02 s] cielo listo; ciudad
+[KitBuildings] edificios=123 (prefabricados=7) instancias=27700 multimeshes=200 triangulos~2425812
+BOOT [  1.47 s] ciudad y edificios listos; estado
+StateLayout: costa 70 ms, carreteras 4 ms, perfiles 33 ms
+BOOT [  3.26 s] estado listo; interiores y tiendas
+BOOT [  5.31 s] interiores listos; tráfico y peatones
+BOOT [  5.62 s] tráfico y peatones listos; jugador y sistemas
+BOOT [  5.71 s] vehículos y personajes listos; interfaz
+WARNING: Nodes with non-equal opposite anchors will have their size overridden after _ready(). 
+If you want to set size, change the anchors or consider using set_deferred().
+     at: _set_size (scene/gui/control.cpp:1519)
+     GDScript backtrace (most recent call first):
+         [0] _on_resized (res://scripts/ui/map_screen.gd:180)
+         [1] _ready (res://scripts/ui/map_screen.gd:81)
+         [2] _boot (res://scripts/main.gd:300)
+         [3] _boot_stage (res://scripts/main.gd:144)
+BOOT [  5.76 s] mundo construido; primeros fotogramas (compilación de shaders)
+BOOT [  5.83 s] arranque completo: menú principal
+== Las 80 misiones
+  OK   80 misiones cargan con pasos y puntos válidos
+     pasos: 2184 · líneas de diálogo: 2042
+== Motor de misiones (misión de prueba)
+ERROR: Invalid polygon data, triangulation failed.
+   at: canvas_item_add_polygon (servers/rendering/renderer_canvas_cull.cpp:1770)
+   GDScript backtrace (most recent call first):
+       [0] _draw_clipped (res://scripts/ui/radar.gd:350)
+       [1] _draw (res://scripts/ui/radar.gd:208)
+  OK   la misión de prueba termina (11 s)
+  OK   paso «scene» ejecutado
+  OK   paso «call» ejecutado
+  OK   paso «goto» ejecutado
+  OK   paso «collect» ejecutado
+  OK   paso «fight» ejecutado
+  OK   paso «sneak» ejecutado
+  OK   paso «chase» ejecutado
+  OK   paso «steal» ejecutado
+  OK   paso «timed_drive» ejecutado
+  OK   paso «lose_cops» ejecutado
+  OK   paso «defend» ejecutado
+  OK   la escena coloca a Dre y crea al secundario Nina Cho
+  OK   las peleas crean enemigos (4)
+  OK   recompensa y misión completada
+  OK   los enemigos de misión se retiran al acabar
+  OK   tras la misión 1 se ofrece la 02 con su marcador
+  OK   en el marcador aparece «Empezar misión» (Empezar misión)
+== Enemigos
+  OK   un enemigo armado ataca al jugador (vida 85)
+  OK   el apuntado automático elige al enemigo
+  OK   los enemigos mueren
+== Armas y armería
+  OK   la armería ofrece primero la escopeta
+  OK   se compran escopeta y subfusil
+  OK   se compra munición
+  OK   la escopeta pega más de cerca y gasta 3 balas
+  OK   el botón Arma recorre solo las armas que tienes
+  OK   agacharse baja la postura
+  OK   las armas se guardan
+== Actividades
+  OK   las actividades salen en el radar
+  OK   en su punto se puede empezar el reparto
+  OK   el reparto paga al completarlo (+$698)
+  OK   la guerra de bandas paga al limpiar las tres oleadas
+  OK   al hablar levanta las manos para gesticular (mano 1.30, cadera 0.94)
+  OK   esqueleto con huesos de dedos (37 huesos)
+  OK   cada dedo se mueve por separado (puño / señalar con el índice)
+  OK   los huesos de los dedos están en la mano
+== Resultado misiones: 37 correctas, 0 fallos

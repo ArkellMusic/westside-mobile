@@ -1,0 +1,89 @@
+Godot Engine v4.7.2.stable.official.ed1daf0bf - https://godotengine.org
+
+BOOT [  0.00 s] ---- arranque 2026-11-11T13:19:52 · Linux · GenericDevice · renderizador forward_plus (vulkan) ·  · 15982 MB RAM · calidad high
+BOOT [  0.01 s] pantalla de carga visible; construyendo el mundo
+BOOT [  0.02 s] cielo listo; ciudad
+[KitBuildings] edificios=123 (prefabricados=7) instancias=27700 multimeshes=200 triangulos~2425812
+BOOT [  1.47 s] ciudad y edificios listos; estado
+StateLayout: costa 70 ms, carreteras 4 ms, perfiles 33 ms
+BOOT [  3.24 s] estado listo; interiores y tiendas
+BOOT [  5.29 s] interiores listos; tráfico y peatones
+BOOT [  5.60 s] tráfico y peatones listos; jugador y sistemas
+BOOT [  5.69 s] vehículos y personajes listos; interfaz
+WARNING: Nodes with non-equal opposite anchors will have their size overridden after _ready(). 
+If you want to set size, change the anchors or consider using set_deferred().
+     at: _set_size (scene/gui/control.cpp:1519)
+     GDScript backtrace (most recent call first):
+         [0] _on_resized (res://scripts/ui/map_screen.gd:180)
+         [1] _ready (res://scripts/ui/map_screen.gd:81)
+         [2] _boot (res://scripts/main.gd:300)
+         [3] _boot_stage (res://scripts/main.gd:144)
+BOOT [  5.75 s] mundo construido; primeros fotogramas (compilación de shaders)
+BOOT [  5.82 s] arranque completo: menú principal
+== Armas
+  OK   empieza con puños y 48 balas
+  OK   el botón Arma cambia a pistola (HUD incluido)
+  OK   pistola visible en la mano de Mack
+== Disparo a un peatón
+  OK   un disparo gasta una bala
+  OK   el peatón apuntado cae
+  OK   sin agentes delante no hay estrellas al instante
+  OK   un testigo saca el móvil y llama
+  OK   el testigo lleva el aviso sobre la cabeza
+  OK   los peatones cercanos a un disparo huyen
+  OK   pose de apuntar aplicada
+== Testigos y descripción
+  OK   el testigo reproduce la animación del móvil
+  OK   cuando el testigo cuelga llegan las estrellas (1)
+  OK   la descripción lleva la ropa del jugador
+  OK   si encajas te reconocen de lejos
+  OK   con otra ropa solo te reconocen de cerca
+  OK   un agente a 15 m no reconoce al jugador con otra ropa
+  OK   HUD en modo búsqueda (estrellas grises)
+  OK   con la ropa de la descripción lo reconoce a 15 m
+  OK   un delito con gente cerca tiene testigos (1)
+  OK   un testigo tumbado antes de colgar no da el aviso
+== Policía
+  OK   llegan agentes con 1 estrella (2 en 0.2 s)
+  OK   con coche patrulla aparcado
+  OK   el agente corre hacia el jugador (69 m -> 62 m)
+  OK   los agentes hieren al jugador con 2 estrellas (vida 82 tras 0.2 s)
+  OK   la policía ve al jugador (las estrellas no bajan)
+  OK   las balas del jugador dañan a los agentes
+  OK   atacar a un agente mantiene o sube la búsqueda (4)
+  OK   la munición cambia (gasto y recogida)
+== Detención
+  OK   DETENIDO: multa de $150 y sin estrellas
+  OK   munición confiscada
+  OK   reaparece en la comisaría
+== Puñetazo
+  OK   un puñetazo tumba al peatón de delante
+== Robo de coche
+  OK   junto a un coche del tráfico aparece «Robar» (Robar)
+  OK   el jugador conduce el coche robado
+  OK   el tráfico repone el coche (16)
+  OK   el conductor sale corriendo
+  OK   el testigo del robo describe el coche robado
+  OK   el coche robado se conduce (63 km/h)
+== Persecución en coche
+  OK   sale una patrulla en persecución cuando huyes en coche (0.2 s)
+  OK   la patrulla conduce hacia el jugador (101 m -> 79 m)
+  OK   las patrullas en persecución no se pueden robar
+== Tiendas
+  OK   hay tienda de ropa, barbería y estudio de tatuajes
+  OK   las tiendas tienen escaparate y marca en el radar
+  OK   chalets con tejado (94 casas y garajes)
+  OK   se puede entrar en la tienda de ropa (Entrar)
+  OK   dentro de Veyra Threads
+  OK   el mostrador ofrece comprar ropa (Comprar ropa ($45))
+  OK   comprar ropa cobra $45 y te pone el conjunto nuevo
+  OK   el armario alterna entre los conjuntos comprados
+  OK   la barbería cambia el tinte y cobra
+  OK   con otro tinte ya no encajas con la descripción policial
+  OK   un tatuaje da respeto con los Saints
+  OK   cielo con nubes volumétricas, sol y luna activo
+== Guardado
+  OK   arma y munición se guardan
+  OK   la ropa se guarda
+  OK   efectos de sonido generados
+== Resultado combate: 56 correctas, 0 fallos
