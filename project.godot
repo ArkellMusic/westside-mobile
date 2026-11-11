@@ -16,6 +16,12 @@ boot_splash/show_image=false
 run/low_processor_mode=false
 config/project_settings_override="user://render_override.cfg"
 
+[debug]
+
+file_logging/enable_file_logging=true
+file_logging/log_path="user://logs/godot.log"
+file_logging/max_log_files=4
+
 [autoload]
 
 EventBus="*res://scripts/autoload/event_bus.gd"

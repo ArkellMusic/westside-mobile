@@ -36,6 +36,8 @@ func cam(from: Vector3, at: Vector3, fov: float = 55.0) -> void:
 
 
 func _run() -> void:
+	while not main.booted:
+		await get_tree().process_frame
 	await wait(2.0)
 	if mode == "intro":
 		await _intro()

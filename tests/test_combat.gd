@@ -56,6 +56,8 @@ func tap(action: String) -> void:
 
 
 func _run() -> void:
+	while not main.booted:
+		await get_tree().process_frame
 	await wait(1.0)
 	GameState.new_game()
 	main.title_menu.visible = false
@@ -306,7 +308,9 @@ func _run() -> void:
 	if not main.police.pursuits.is_empty():
 		var pc: Car = main.police.pursuits[0]["car"]
 		var pd0 := pc.global_position.distance_to(main.current_vehicle.global_position)
-		for i in 24:
+		for i in 32:
+			# El coche del jugador, parado: se mide solo lo que avanza la patrulla.
+			main.current_vehicle.linear_velocity = Vector3.ZERO
 			main.police._known_t = 3.0
 			main.refresh_wanted()
 			await wait(0.25)

@@ -12,6 +12,8 @@ func _ready() -> void:
 	_run.call_deferred()
 
 func _run() -> void:
+	while not main.booted:
+		await get_tree().process_frame
 	await get_tree().create_timer(2.0).timeout
 	GameState.new_game()
 	main.title_menu.visible = false

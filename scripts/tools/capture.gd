@@ -47,6 +47,8 @@ func press_interact() -> void:
 
 
 func _run() -> void:
+	while not world.booted:
+		await get_tree().process_frame
 	await wait(3.0)
 	await shot("menu_principal")
 

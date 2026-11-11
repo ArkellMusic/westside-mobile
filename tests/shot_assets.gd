@@ -34,6 +34,8 @@ func cam(pos: Vector3, at: Vector3, fov: float = 70.0) -> void:
 
 
 func _run() -> void:
+	while not main.booted:
+		await get_tree().process_frame
 	await wait(2.0)
 	GameState.new_game()
 	main.title_menu.visible = false

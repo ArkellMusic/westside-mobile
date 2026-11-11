@@ -35,6 +35,8 @@ func wait(t: float) -> void:
 
 
 func _run() -> void:
+	while not main.booted:
+		await get_tree().process_frame
 	await wait(1.0)
 	print("== Las 80 misiones")
 	var total_steps := 0

@@ -62,7 +62,116 @@ var _title_shot: int = 0
 var _gameplay_on: bool = false
 
 
+# ---------------------------------------------------------------- arranque
+
+const BOOT_LOG := "user://boot.log"
+const BOOT_FLAG := "user://booting.flag"
+## true cuando el mundo está construido y se han dibujado los primeros fotogramas.
+var booted: bool = false
+var _boot_layer: CanvasLayer
+var _boot_t0: int = 0
+
+
+## Registro de arranque en user://boot.log (se puede abrir desde la app Archivos): sirve para
+## saber en qué paso se queda la app si no llega al menú.
+func _boot_log(text: String) -> void:
+	var line := "[%6.2f s] %s" % [(Time.get_ticks_msec() - _boot_t0) / 1000.0, text]
+	print("BOOT ", line)
+	var f := FileAccess.open(BOOT_LOG, FileAccess.READ_WRITE) if FileAccess.file_exists(BOOT_LOG) else FileAccess.open(BOOT_LOG, FileAccess.WRITE)
+	if f:
+		f.seek_end()
+		f.store_line(line)
+		f.close()
+
+
+## Pantalla de carga: se dibuja ANTES de construir el mundo, para que el arranque nunca sea una
+## pantalla en negro (construir Westbrook y compilar los shaders tarda varios segundos).
+func _show_boot_screen() -> void:
+	_boot_layer = CanvasLayer.new()
+	_boot_layer.layer = 100
+	add_child(_boot_layer)
+	var bg := ColorRect.new()
+	bg.color = Color(0.039, 0.039, 0.055)
+	bg.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	_boot_layer.add_child(bg)
+	var box := VBoxContainer.new()
+	box.set_anchors_and_offsets_preset(Control.PRESET_CENTER)
+	box.grow_horizontal = Control.GROW_DIRECTION_BOTH
+	box.grow_vertical = Control.GROW_DIRECTION_BOTH
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	_boot_layer.add_child(box)
+	var title := Label.new()
+	title.text = "WESTSIDE LEGACY"
+	title.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	title.add_theme_font_size_override("font_size", 64)
+	title.add_theme_color_override("font_color", Color(0.96, 0.96, 0.96))
+	box.add_child(title)
+	var sub := Label.new()
+	sub.name = "Estado"
+	sub.text = "Cargando Westbrook…"
+	sub.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	sub.add_theme_font_size_override("font_size", 24)
+	sub.add_theme_color_override("font_color", Color(0.83, 0.65, 0.17))
+	box.add_child(sub)
+	var tip := Label.new()
+	tip.text = "La primera vez puede tardar hasta un minuto."
+	tip.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	tip.add_theme_font_size_override("font_size", 16)
+	tip.add_theme_color_override("font_color", Color(0.6, 0.6, 0.64))
+	box.add_child(tip)
+
+
+## Si el arranque anterior no llegó a terminar (la marca sigue ahí), baja la calidad gráfica:
+## esta vez se desactivan los efectos pesados y la próxima se usa el renderizador ligero.
+func _boot_safety() -> void:
+	if FileAccess.file_exists(BOOT_FLAG):
+		_boot_log("el arranque anterior no terminó: modo seguro (calidad baja)")
+		if Settings.quality != "low":
+			Settings.set_quality("low")
+	var f := FileAccess.open(BOOT_FLAG, FileAccess.WRITE)
+	if f:
+		f.store_line(Time.get_datetime_string_from_system())
+		f.close()
+
+
+## Anota la etapa, la muestra en la pantalla de carga y cede un fotograma para que se vea.
+func _boot_stage(log_text: String, shown: String) -> void:
+	_boot_log(log_text)
+	if _boot_layer:
+		var l := _boot_layer.find_child("Estado", true, false) as Label
+		if l:
+			l.text = shown
+	await get_tree().process_frame
+
+
 func _ready() -> void:
+	_boot_t0 = Time.get_ticks_msec()
+	if FileAccess.file_exists(BOOT_LOG) and FileAccess.open(BOOT_LOG, FileAccess.READ).get_length() > 60000:
+		DirAccess.remove_absolute(BOOT_LOG)
+	_boot_log("---- arranque %s · %s · %s · renderizador %s (%s) · %s · %d MB RAM · calidad %s" % [
+		Time.get_datetime_string_from_system(), OS.get_name(), OS.get_model_name(),
+		RenderingServer.get_current_rendering_method(), RenderingServer.get_current_rendering_driver_name(),
+		RenderingServer.get_video_adapter_name(), int(float(OS.get_memory_info().get("physical", 0)) / 1048576.0), Settings.quality])
+	_boot_safety()
+	_show_boot_screen()
+	# Tres fotogramas para que la pantalla de carga llegue a verse antes del trabajo pesado.
+	for i in 3:
+		await get_tree().process_frame
+	_boot_log("pantalla de carga visible; construyendo el mundo")
+	await _boot()
+	_boot_log("mundo construido; primeros fotogramas (compilación de shaders)")
+	for i in 6:
+		await get_tree().process_frame
+	if _boot_layer:
+		_boot_layer.queue_free()
+		_boot_layer = null
+	if FileAccess.file_exists(BOOT_FLAG):
+		DirAccess.remove_absolute(BOOT_FLAG)
+	booted = true
+	_boot_log("arranque completo: menú principal")
+
+
+func _boot() -> void:
 	ui_layer = CanvasLayer.new()
 	ui_layer.layer = 10
 	ui_layer.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -75,6 +184,7 @@ func _ready() -> void:
 
 	sky = SkyEnv.new()
 	add_child(sky)
+	await _boot_stage("cielo listo; ciudad", "Levantando Westbrook…")
 	city = CityBuilder.new()
 	city.name = "Westbrook"
 	add_child(city)
@@ -83,6 +193,7 @@ func _ready() -> void:
 	kit_buildings.name = "KitBuildings"
 	add_child(kit_buildings)
 	kit_buildings.build(city)
+	await _boot_stage("ciudad y edificios listos; estado", "Extendiendo el estado de Las Brisas…")
 	state_world = StateWorld.new()
 	state_world.name = "State"
 	add_child(state_world)
@@ -92,6 +203,7 @@ func _ready() -> void:
 	props.name = "StreetProps"
 	add_child(props)
 	props.build(city)
+	await _boot_stage("estado listo; interiores y tiendas", "Abriendo tiendas e interiores…")
 	interiors = Interiors.new()
 	interiors.name = "Interiors"
 	interiors.main = self
@@ -99,6 +211,7 @@ func _ready() -> void:
 	interiors.build(city)
 	sky.apply_preset("golden", 0.0)
 
+	await _boot_stage("interiores listos; tráfico y peatones", "Poniendo tráfico y gente en la calle…")
 	traffic = Traffic.new()
 	add_child(traffic)
 	traffic.setup(Settings.traffic_count())
@@ -122,6 +235,7 @@ func _ready() -> void:
 	impact_system.traffic = traffic
 	pedestrians.pedestrian_hit.connect(_on_pedestrian_hit)
 
+	await _boot_stage("tráfico y peatones listos; jugador y sistemas", "Preparando a Mack…")
 	player = Player.new()
 	player.name = "Mack"
 	add_child(player)
@@ -165,6 +279,7 @@ func _ready() -> void:
 	add_child(runner)
 	runner.mission_finished.connect(_on_mission_finished)
 
+	await _boot_stage("vehículos y personajes listos; interfaz", "Últimos ajustes…")
 	hud = HUD.new()
 	theme_root.add_child(hud)
 	hud.radar.footprints = city.footprints + state_world.footprints
@@ -557,6 +672,8 @@ func _prepare_resume(step: int) -> void:
 # ---------------------------------------------------------------- bucle
 
 func _process(delta: float) -> void:
+	if rig == null or hud == null:
+		return   # todavía cargando
 	if state == State.TITLE:
 		if rig._cine_t >= 1.0:
 			_next_title_shot()

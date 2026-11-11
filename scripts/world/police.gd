@@ -355,9 +355,16 @@ func _update_pursuits(delta: float, wanted: int, focus: Node3D) -> void:
 			any_seen = true
 			main.crime.on_recognised(ppos)
 		# Objetivo: el jugador (adelantándose a su velocidad) o el último lugar conocido.
-		var target: Vector3 = ppos if _known_t > 0.0 else main.crime.last_known
+		var goal: Vector3 = ppos if _known_t > 0.0 else main.crime.last_known
 		if _known_t > 0.0 and focus is RigidBody3D:
-			target += (focus as RigidBody3D).linear_velocity * 0.45
+			goal += (focus as RigidBody3D).linear_velocity * 0.45
+		# Ruta: si hay vía libre hasta el objetivo va directo; si no, por los cruces de la red de
+		# calles (el cruce a la vista que más acerca al objetivo), para no empotrarse en las manzanas.
+		q["route_cd"] = float(q.get("route_cd", 0.0)) - delta
+		if float(q["route_cd"]) <= 0.0:
+			q["route_cd"] = 0.4
+			q["via"] = _route_point(car, goal, focus)
+		var target: Vector3 = q.get("via", goal)
 		var local: Vector3 = car.global_transform.affine_inverse() * target
 		var ang := atan2(local.x, local.z)   # el frente del coche es +Z; +X local queda a la izquierda
 		var speed := car.forward_speed()
@@ -404,6 +411,35 @@ func _update_pursuits(delta: float, wanted: int, focus: Node3D) -> void:
 				q["reverse"] = 1.4
 		else:
 			q["stuck"] = 0.0
+
+
+## Punto hacia el que conducir: el objetivo si se ve en línea recta, o el mejor cruce visible.
+func _route_point(car: Car, goal: Vector3, focus: Node3D) -> Vector3:
+	var from := car.global_position + Vector3.UP * 0.9
+	var ex: Array = [car.get_rid(), main.player.get_rid()]
+	if focus is CollisionObject3D:
+		ex.append((focus as CollisionObject3D).get_rid())
+	for other in pursuits:
+		if is_instance_valid(other["car"]):
+			ex.append((other["car"] as Car).get_rid())
+	if not main.combat.blocked(from, goal + Vector3.UP * 0.9, ex):
+		return goal
+	var nodes: Array = main.traffic.graph["nodes"]
+	var best := goal
+	var best_score := INF
+	for n in nodes:
+		var p := Vector3((n as Vector2).x, 0.0, (n as Vector2).y)
+		var d := Vector2(p.x - car.global_position.x, p.z - car.global_position.z).length()
+		if d < 7.0 or d > 130.0:
+			continue
+		var score := Vector2(p.x - goal.x, p.z - goal.z).length() + d * 0.25
+		if score >= best_score:
+			continue
+		if main.combat.blocked(from, p + Vector3.UP * 0.9, ex):
+			continue
+		best_score = score
+		best = p
+	return best
 
 
 func _update_cop(c: Cop, delta: float, wanted: int, focus: Node3D, dist: float) -> void:

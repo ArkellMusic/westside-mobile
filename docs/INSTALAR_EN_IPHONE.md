@@ -133,3 +133,23 @@ Estas limitaciones son de Apple, no de la app.
 ### Caducó a los 7 días
 
 - Es el comportamiento normal con un Apple ID gratuito. Conecta el iPhone y vuelve a firmar la app con Sideloadly (Parte 2.4).
+
+---
+
+## Si la pantalla se queda en negro o la app no pasa de «Cargando»
+
+La app muestra una pantalla de carga con el paso en el que va. El primer arranque es el más lento
+(carga texturas y compila los shaders): puede tardar hasta un minuto.
+
+Si no llega al menú, la app deja dos registros en su carpeta de documentos:
+
+- `boot.log`: cada paso del arranque con su tiempo, el modelo de iPhone y el renderizador.
+- `logs/godot.log`: los errores del motor.
+
+Dónde encontrarlos:
+
+- **LiveContainer:** app Archivos → En mi iPhone → LiveContainer → `Data/Application/<carpeta de la app>/Documents`.
+- **Instalada con Sideloadly:** app Archivos → En mi iPhone → WESTSIDE LEGACY.
+
+Además, si un arranque no termina, el siguiente entra en **modo seguro**: baja la calidad gráfica
+y usa el renderizador ligero. Cierra la app del todo y ábrela otra vez (hasta dos veces).

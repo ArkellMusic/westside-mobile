@@ -77,6 +77,8 @@ func view(eye: Vector3, at: Vector3, fov: float = 60.0, max_wait: float = 60.0) 
 
 
 func _run() -> void:
+	while not main.booted:
+		await get_tree().process_frame
 	await wait(1.5)
 	GameState.new_game()
 	main.title_menu.visible = false

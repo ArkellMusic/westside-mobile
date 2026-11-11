@@ -17,6 +17,8 @@ func _ready() -> void:
 
 
 func _run() -> void:
+	while not main.booted:
+		await get_tree().process_frame
 	await get_tree().create_timer(2.0).timeout
 	main.title_menu.visible = false
 	main.new_game()
