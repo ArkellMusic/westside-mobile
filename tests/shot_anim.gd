@@ -73,4 +73,31 @@ func _run() -> void:
 	await RenderingServer.frame_post_draw
 	get_viewport().get_texture().get_image().save_png(out + "/anim.png")
 	print("SHOT anim")
+	# Primer plano de manos: relajada, puño, señalar, agarre del arma y abierta.
+	for h in figs:
+		(h as Node).queue_free()
+	var cam := get_viewport().get_camera_3d()
+	cam.size = 1.5
+	cam.global_transform = Transform3D(Basis.looking_at(Vector3(0, 0, 1), Vector3.UP), Vector3(0.03, 1.2, -8))
+	var poses := [["relax", "relax"], ["fist", "fist"], ["point", "open"], ["count", "hold"]]
+	var hfigs: Array = []
+	for i in poses.size():
+		var h := Humanoid.new()
+		add_child(h)
+		h.setup(GameData.character_look(["mack", "dre", "big_ray", "keisha"][i]))
+		h.position = Vector3(-1.05 + 0.72 * i, 0.0, 0.0)
+		h.rotation.y = 0.0
+		h.hand_pose = poses[i]
+		if i == 2:
+			h.set_gun(false)
+		# Brazos algo levantados para que las manos se vean de frente.
+		h.overlay = {"arm": [0.75, 0.75], "elbow": [1.2, 1.2], "arm_out": [0.25, 0.25]}
+		for k in 80:
+			h.animate(1.0 / 60.0, 0.0, true)
+		hfigs.append(h)
+	for k in 6:
+		await get_tree().process_frame
+	await RenderingServer.frame_post_draw
+	get_viewport().get_texture().get_image().save_png(out + "/manos.png")
+	print("SHOT manos")
 	get_tree().quit()

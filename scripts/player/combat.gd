@@ -275,6 +275,7 @@ func _fire_pistol() -> void:
 			_spark(end)
 	elif not hit.is_empty():
 		_spark(end)
+	p.model.pull_trigger()
 	fx_shot(muzzle, end, 2.0 if GameState.weapon == "shotgun" else 0.0)
 	main.rig.shake(0.3 if GameState.weapon == "shotgun" else (0.08 if GameState.weapon == "smg" else 0.16))
 	main.pedestrians.panic(p.global_position, 45.0, 9.0)
@@ -399,3 +400,6 @@ func _update_pose() -> void:
 		o["arm_out"] = out
 		o["torso_y"] = (0.35 if s == 1 else -0.35) * ext
 	p.model.overlay = o
+	# Puños cerrados durante el golpe y un momento después; el arma la agarra sola la mano derecha.
+	var fists := GameState.weapon == "fist" and _punch_t < 0.9
+	p.model.hand_pose = ["fist", "fist"] if fists else ["", ""]

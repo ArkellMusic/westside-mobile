@@ -15,6 +15,26 @@ var look: Dictionary = {}
 var _phase: float = 0.0
 var _pose: Dictionary = {}
 var _talking: bool = false
+## Dedos (solo modelos con huesos de dedos). Curvatura 0 = estirado, 1 = cerrado, por mano
+## [izquierda, derecha] y dedo [pulgar, índice, corazón, anular, meñique].
+const HAND_POSES := {
+	"relax": [0.22, 0.26, 0.34, 0.44, 0.54],
+	"loose": [0.45, 0.55, 0.62, 0.7, 0.76],
+	"fist": [0.85, 1.0, 1.0, 1.0, 1.0],
+	"grip": [0.6, 0.3, 1.0, 1.0, 1.0],
+	"trigger": [0.6, 0.62, 1.0, 1.0, 1.0],
+	"point": [0.75, 0.02, 0.95, 1.0, 1.0],
+	"open": [0.04, 0.04, 0.05, 0.08, 0.12],
+	"hold": [0.5, 0.72, 0.78, 0.8, 0.8],
+	"count": [0.1, 0.05, 0.08, 0.95, 1.0],
+}
+const FINGER_BONES := ["thumb", "index", "middle", "ring", "pinky"]
+var _fingers: Array = [[0.22, 0.26, 0.34, 0.44, 0.54], [0.22, 0.26, 0.34, 0.44, 0.54]]
+var _has_fingers: bool = false
+var _finger_seed: float = randf() * 50.0
+## Pose de mano forzada desde fuera ("" = automática): [izquierda, derecha].
+var hand_pose: Array = ["", ""]
+var trigger_pull: float = 0.0
 ## 0 de pie .. 1 agachado (lo fija Player).
 var crouch: float = 0.0
 var _talk_t: float = 0.0
@@ -105,6 +125,7 @@ func setup(appearance: Dictionary) -> void:
 			return
 		for i in _skel.get_bone_count():
 			_bones[_skel.get_bone_name(i)] = i
+		_has_fingers = _bones.has("r_index1") and _bones.has("l_index1")
 		_apply(_new_pose())
 		return
 	var b: float = look.get("build", 1.0)
@@ -385,6 +406,7 @@ func animate(delta: float, speed: float, on_floor: bool) -> void:
 		else:
 			p[k] = v
 	_apply(_smooth(p, delta))
+	_update_fingers(delta, run, on_floor)
 
 
 ## Mezcla la pose objetivo con la anterior para que no haya saltos entre gestos.
@@ -406,6 +428,78 @@ func _smooth(target: Dictionary, delta: float) -> Dictionary:
 		for i in 2:
 			_pose["arm_twist"][i] = lerpf(float(_pose["arm_twist"][i]), 0.0, k)
 	return _pose
+
+
+## Dedos independientes: cada mano elige su gesto (relajada, puño, agarre del arma, señalar,
+## abierta, contar...) y cada dedo va hacia su curvatura con un pequeño movimiento propio,
+## así que nunca se mueven como un bloque.
+func _update_fingers(delta: float, run: float, on_floor: bool) -> void:
+	if not _has_fingers:
+		return
+	var t := Time.get_ticks_msec() * 0.001 + _finger_seed
+	for h in 2:
+		var pose_name := "relax"
+		if run > 0.5 or not on_floor:
+			pose_name = "loose"
+		if _talking:
+			# Al hablar las manos cambian de gesto cada poco: abierta, señalar, contar, relajada.
+			var cycle := int(floor(_talk_t * 0.55 + float(h) * 1.7 + _idle_seed)) % 5
+			pose_name = ["open", "point", "open", "count", "relax"][cycle]
+		if h == 1 and _gun != null and _gun.visible:
+			pose_name = "trigger" if trigger_pull > 0.0 else "grip"
+		if h == 1 and _phone != null and _phone.visible:
+			pose_name = "hold"
+		var forced := String(hand_pose[h])
+		if forced != "" and HAND_POSES.has(forced):
+			pose_name = forced
+		var target: Array = HAND_POSES[pose_name]
+		var k := 1.0 - exp(-delta * (22.0 if pose_name == "fist" or pose_name == "trigger" else 9.0))
+		for f in 5:
+			# Cada dedo respira a su ritmo cuando la mano está suelta.
+			var wobble := 0.0
+			if pose_name == "relax" or pose_name == "loose" or pose_name == "open":
+				wobble = 0.05 * sin(t * (0.6 + 0.17 * float(f)) + float(f) * 1.9 + float(h) * 2.3) + 0.03 * sin(t * 1.9 + float(f) * 0.7)
+			_fingers[h][f] = lerpf(float(_fingers[h][f]), clampf(float(target[f]) + wobble, 0.0, 1.0), k)
+	trigger_pull = maxf(0.0, trigger_pull - delta)
+	_apply_fingers()
+
+
+func _apply_fingers() -> void:
+	if not _has_fingers:
+		return
+	for h in 2:
+		var pre := "l_" if h == 0 else "r_"
+		# En reposo la mano apunta a -X (izquierda) o +X (derecha): cerrar = girar sobre Z hacia la palma.
+		var sgn := 1.0 if h == 0 else -1.0
+		for f in 5:
+			var c := float(_fingers[h][f])
+			var b1: int = _bones.get(pre + FINGER_BONES[f] + "1", -1)
+			var b2: int = _bones.get(pre + FINGER_BONES[f] + "2", -1)
+			if b1 < 0 or b2 < 0:
+				continue
+			if f == 0:
+				# Pulgar: cruza por debajo de la palma girando sobre el eje de los dedos.
+				_skel.set_bone_pose_rotation(b1, Quaternion(Vector3.RIGHT, -c * 0.75) * Quaternion(Vector3.UP, -sgn * c * 0.35))
+				_skel.set_bone_pose_rotation(b2, Quaternion(Vector3.RIGHT, -c * 0.7))
+			else:
+				_skel.set_bone_pose_rotation(b1, Quaternion(Vector3.BACK, sgn * c * 1.3))
+				_skel.set_bone_pose_rotation(b2, Quaternion(Vector3.BACK, sgn * c * 1.5))
+
+
+## Fuerza un gesto de mano en las dos manos sin esperar al siguiente fotograma (poses fijas).
+func snap_hands(left: String, right: String) -> void:
+	if not _has_fingers:
+		return
+	for h in 2:
+		var n := left if h == 0 else right
+		if HAND_POSES.has(n):
+			_fingers[h] = (HAND_POSES[n] as Array).duplicate()
+	_apply_fingers()
+
+
+## El índice aprieta el gatillo un instante (lo llama Combat al disparar).
+func pull_trigger() -> void:
+	trigger_pull = 0.12
 
 
 ## El personaje gesticula con las manos mientras habla.
@@ -447,6 +541,13 @@ func pose_idle_stance(kind: String) -> void:
 			p["arm_twist"] = [0.0, -0.55]
 	_set_phone(kind == "phone")
 	_apply(p)
+	match kind:
+		"arms_crossed":
+			snap_hands("loose", "loose")
+		"phone":
+			snap_hands("relax", "hold")
+		_:
+			snap_hands("relax", "relax")
 
 
 ## Sentado (asiento del coche o del autobús).
@@ -456,6 +557,7 @@ func set_seated(on: bool) -> void:
 		return
 	_set_phone(false)
 	_apply(_seated_pose() if on else _new_pose())
+	snap_hands("hold" if on else "relax", "hold" if on else "relax")
 
 
 static func _seated_pose() -> Dictionary:

@@ -238,6 +238,17 @@ func _run() -> void:
 	var hand_y := sk.get_bone_global_pose(sk.find_bone("r_hand")).origin.y
 	var hip_y := sk.get_bone_global_pose(sk.find_bone("hips")).origin.y
 	check(hand_y > hip_y + 0.08, "al hablar levanta las manos para gesticular (mano %.2f, cadera %.2f)" % [hand_y, hip_y])
+	check(h._has_fingers and sk.get_bone_count() == 37, "esqueleto con huesos de dedos (%d huesos)" % sk.get_bone_count())
+	h.set_talking(false)
+	h.hand_pose = ["fist", "point"]
+	for i in 60:
+		h.animate(1.0 / 60.0, 0.0, true)
+	var lf: Array = h._fingers[0]
+	var rf: Array = h._fingers[1]
+	check(float(lf[1]) > 0.9 and float(rf[1]) < 0.15 and float(rf[2]) > 0.8, "cada dedo se mueve por separado (puño / señalar con el índice)")
+	var tip_rest := sk.get_bone_global_rest(sk.find_bone("r_index2")).origin
+	var tip_now := sk.get_bone_global_pose(sk.find_bone("l_index2")).origin
+	check(is_finite(tip_now.x) and tip_rest.distance_to(sk.get_bone_global_rest(sk.find_bone("r_hand")).origin) > 0.05, "los huesos de los dedos están en la mano")
 	h.queue_free()
 
 	print("== Resultado misiones: %d correctas, %d fallos" % [_passed, _failed])
