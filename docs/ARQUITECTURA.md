@@ -52,6 +52,14 @@ docs/                    Mapas de referencia, biblia de misiones, fichas de pers
 - Calidad Baja / Media / Alta: escala de render, sombras, MSAA, densidad de tráfico y peatones, límite de 30/60 FPS.
 - Texturas en ETC2/ASTC cuando entren los modelos reales.
 
+## Misiones, actividades y animación
+
+- **80 misiones** en `data/missions/m01.json` … `m80.json`, escritas a partir de `tools/biblia_80_misiones.json` con el formato de `docs/MISIONES_FORMATO.md` y comprobadas por `tools/validate_missions.py`. `MissionRunner` ejecuta pasos genéricos: escenas de diálogo con cámara al que habla, llamadas, ir/conducir, contrarreloj, robar coche, pelea, defensa por oleadas, sigilo, persecución a pie, recoger pruebas y perder a la policía. Tras cada misión, `main._offer_next_mission()` marca la siguiente.
+- **Enemigos** (`scripts/world/hostiles.gd`): pandilleros, matones y guardias con modelos Mixamo; armados o a puños, en alerta o de guardia, o que huyen.
+- **Actividades** (`scripts/world/activities.gd`): contrarreloj, reparto, taxi y guerra de bandas.
+- **Animación por código** (`Humanoid.animate`): modelo de marcha con cadencia y zancada según la velocidad, rodilla y tobillo por fases, pelvis y hombros en contrarrotación, inclinación al acelerar y girar, reposo con respiración, gestos al hablar, sacudida al recibir daño, agacharse y suavizado de toda la pose. `tests/shot_anim` saca fotogramas de control.
+- Las misiones de San Cordova, Las Brisas, Northpoint y las islas ocurren en esas zonas del mapa del estado, que hoy tienen terreno, carreteras y edificios lejanos pero no el detalle de Westbrook.
+
 ## Aspecto visual («look» nítido)
 
 - Cielo despejado procedural de día, niebla y niebla volumétrica muy reducidas y perspectiva aérea azulada solo a lo lejos.

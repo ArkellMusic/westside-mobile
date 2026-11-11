@@ -1,0 +1,306 @@
+{
+  "id": "m12",
+  "number": 12,
+  "title": "HARBOR RUN",
+  "title_es": "Carrera del puerto",
+  "act": "ACTO I",
+  "start": "vargas_front",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "loco",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Four cars, one strip, no rules except you don't kill the crowd. Winner takes the pot and the bragging.",
+          "es": "Cuatro coches, un paseo, ninguna regla salvo no matar al público. El ganador se lleva el bote y las fanfarrias.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who am I racing?",
+          "es": "¿Contra quién corro?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Jinx from the east side. Tavo, he drives like his mother's chasing him. And a Kings kid called Dash.",
+          "es": "Jinx, del lado este. Tavo, que conduce como si su madre le persiguiera. Y un chaval de los Kings llamado Dash.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Kings.",
+          "es": "Kings.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Everybody races, Mack. Even snakes like adrenaline.",
+          "es": "Todos corren, Mack. Hasta las serpientes quieren adrenalina.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I don't like it. Strip belongs to Viper's cousins.",
+          "es": "No me gusta. El paseo es de los primos de Viper.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "Strip belongs to whoever crosses the line. Besides, I need the prize money to fix my roof.",
+          "es": "El paseo es de quien cruza la meta. Además, necesito el premio para arreglar el techo.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Roof, huh?",
+          "es": "¿El techo, eh?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Fire code. Somebody reported a violation. The same somebody who reported half the block.",
+          "es": "Código de incendios. Alguien denunció una infracción. El mismo que denunció medio barrio.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Meridian.",
+          "es": "Meridian.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "I don't know names. I know my bills.",
+          "es": "Yo no sé de nombres. Sé de mis facturas.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Pick a car you can bend and not break.",
+          "es": "Elige un coche que puedas doblar sin romper.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": "vargas_front",
+      "objective": "Revisa el coche con Loco antes de la carrera"
+    },
+    {
+      "type": "steal",
+      "objective": "Elige un coche permitido para la carrera"
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        -220,
+        -100
+      ],
+      "objective": "Haz la vuelta de reconocimiento con Loco antes de la salida",
+      "time": 70
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "give",
+      "ammo": 12,
+      "money": 0,
+      "toast": "Munición de reserva por si hay problemas"
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        -150,
+        -210
+      ],
+      "objective": "Compite: muelles, curvas cerradas y carretera industrial",
+      "time": 90
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dash",
+          "en": "Truck on the left! You blind or what?",
+          "es": "¡Camión a la izquierda! ¿Estás ciego o qué?",
+          "t": 2.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dammit, a delivery truck on a closed strip.",
+          "es": "Maldita sea, un camión de reparto en una pista cerrada.",
+          "t": 3.0
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        -60,
+        -200
+      ],
+      "objective": "Esquiva el camión del cruce industrial sin perder el control",
+      "time": 50
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Mack, the cones on the third turn weren't there at rehearsal. Somebody moved them.",
+          "es": "Mack, los conos de la tercera curva no estaban en el ensayo. Alguien los movió.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Moved them where?",
+          "es": "¿Los movieron adónde?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Toward the pylons. Toward a crash.",
+          "es": "Hacia los postes. Hacia un accidente.",
+          "t": 2.4
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        0,
+        -200
+      ],
+      "objective": "Cruza la meta y no pierdas de vista a Dash"
+    },
+    {
+      "type": "chase",
+      "at": [
+        30,
+        -205
+      ],
+      "objective": "Persigue al saboteador hasta la zona logística",
+      "toast": "Lleva un pasamontañas colgando del cuello."
+    },
+    {
+      "type": "fight",
+      "at": [
+        30,
+        -205
+      ],
+      "count": 3,
+      "objective": "Reduce a Dash y sus colegas en el muelle de carga",
+      "faction": "redline_kings",
+      "armed": false
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "Dash",
+        "loco",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Dash",
+          "en": "Alright, alright! Kings paid me to flip the cones. Said you'd crash and call it an accident!",
+          "es": "¡Vale, vale! Los Kings me pagaron para mover los conos. Dijeron que chocarías y lo llamarían accidente.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who gave you the money?",
+          "es": "¿Quién te dio el dinero?",
+          "t": 2
+        },
+        {
+          "speaker": "Dash",
+          "en": "A guy called Bishop. He drives a green coupe, silver rims. He's Viper's driver, I swear.",
+          "es": "Un tío llamado Bishop. Conduce un cupé verde con llantas plateadas. Es el conductor de Viper, lo juro.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Green coupe. I've heard that engine. Same sound at the laundromat last spring.",
+          "es": "Cupé verde. Conozco ese motor. El mismo sonido en la lavandería la primavera pasada.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then Viper's arranging accidents now.",
+          "es": "Entonces Viper organiza accidentes ahora.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Or someone's arranging them through Viper.",
+          "es": "O alguien los organiza a través de Viper.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "The prize money's yours, Mack. And you've earned a favor.",
+          "es": "El premio es tuyo, Mack. Y te has ganado un favor.",
+          "t": 4.0
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 540,
+      "reputation": {
+        "westbrook_saints": 3,
+        "redline_kings": -5
+      },
+      "toast": "+$540 · Carrera del puerto"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CROSSED STREETS (M en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,423 @@
+{
+  "id": "m62",
+  "number": 62,
+  "title": "NORTHBOUND",
+  "title_es": "Rumbo al norte",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": 30,
+    "dz": 50
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 30,
+        "dz": 50
+      },
+      "cast": [
+        "dre",
+        "ghost",
+        "keisha",
+        "Pruitt",
+        "Detective Hale"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Convoy leaves at midnight. Three cars, one route, no stops. Walter, that means you don't ask to pee at the first gas station.",
+          "es": "El convoy sale a medianoche. Tres coches, una ruta, sin paradas. Walter, eso significa que no pidas ir al baño en la primera gasolinera.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "I kept Cross Meridian's books for eleven years. I know what they do to people who talk.",
+          "es": "Llevé la contabilidad de Cross Meridian once años. Sé lo que le hacen a quien habla.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "And that's why you're worth more alive than any ledger. The county can't hold you. Northpoint can.",
+          "es": "Y por eso vales más vivo que cualquier libro de cuentas. El condado no puede protegerte. Northpoint sí.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Northpoint. Rain, pine trees and cops who don't know our faces. I don't love it, but I get it.",
+          "es": "Northpoint. Lluvia, pinos y policías que no conocen nuestras caras. No me entusiasma, pero lo entiendo.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "The Syndicate knows he's alive. Somebody inside this room or near it told them about the safehouse.",
+          "es": "The Syndicate sabe que está vivo. Alguien de esta sala o de por aquí cerca les habló de la casa franca.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Not me.",
+          "es": "Yo no.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Nobody said it was. Yet.",
+          "es": "Nadie ha dicho que fueras tú. Todavía.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Then keep your eyes on the road, not on me.",
+          "es": "Pues mira la carretera, no a mí.",
+          "t": 3.0
+        },
+        {
+          "speaker": "K",
+          "en": "Enough. Walter's the only man who can tie Cross's signature to the cash. Lose him and we lose the case.",
+          "es": "Basta. Walter es el único que puede unir la firma de Cross con el dinero. Si lo perdemos, perdemos el caso.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "I have kids in Ohio, Mr. Johnson. They think I sell insurance. If they come for them...",
+          "es": "Tengo hijos en Ohio, señor Johnson. Creen que vendo seguros. Si van a por ellos...",
+          "t": 6.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nobody's touching your kids. I'm not making you a promise I can't keep, Walter. I'm making you a deal. You breathe, I drive.",
+          "es": "Nadie toca a tus hijos. No te hago una promesa que no pueda cumplir, Walter. Te hago un trato. Tú respiras, yo conduzco.",
+          "t": 8.7
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Mountain pass, tunnel, checkpoint. If we're clean at the checkpoint, I can wave you through on my authority.",
+          "es": "Paso de montaña, túnel, control. Si llegamos limpios al control, os dejo pasar con mi autoridad.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "And if we're not clean?",
+          "es": "¿Y si no llegamos limpios?",
+          "t": 2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Then you'll be glad you loaded those magazines. Move.",
+          "es": "Entonces os alegraréis de haber cargado esos cargadores. Moveos.",
+          "t": 3.7
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 20,
+        "dz": 40
+      },
+      "objective": "Reúnete con Keisha en el garaje de la casa franca",
+      "hint": "Pruitt espera dentro. Acércate al garaje.",
+      "radius": 8
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 12,
+        "dz": 34
+      },
+      "count": 3,
+      "label": "Equipo",
+      "objective": "Carga radios, chalecos y munición en el maletero",
+      "hint": "Examina cada bulto de la mesa."
+    },
+    {
+      "type": "give",
+      "ammo": 60,
+      "money": 0,
+      "toast": "Munición para el viaje"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Hale's pass only opens a checkpoint he can see from his own car. We need two support vehicles, plain ones.",
+          "es": "El pase de Hale solo abre un control que vea desde su coche. Necesitamos dos vehículos de apoyo, discretos.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Loco",
+          "en": "Already on it. Two sedans that look like grandma's church ride. I filed off the numbers.",
+          "es": "Ya estoy en ello. Dos berlinas que parecen coche de misa de abuela. Les he limado los números.",
+          "t": 6.2
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche de apoyo sin llamar la atención"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": -30
+      },
+      "objective": "Conduce hasta el desvío del corredor norte y comprueba que el paso está abierto"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Pruitt's in the middle car. Mack takes point, I take the tail. Ghost, you ride with the witness.",
+          "es": "Pruitt va en el coche del medio. Mack abre, yo cierro. Ghost, tú vas con el testigo.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Fine.",
+          "es": "Bien.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "And Ghost? He gets out of that car alive. Both of you.",
+          "es": "Y Ghost, él sale de ese coche vivo. Los dos.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 100,
+        "dz": -100
+      },
+      "objective": "Conduce el convoy por el tramo de montaña antes del relevo de patrullas",
+      "time": 100
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Two headlights have been matching your speed for ten miles. Black SUV, no plates.",
+          "es": "Dos faros llevan diez millas igualando vuestra velocidad. SUV negro, sin matrícula.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tunnel's coming up. Dre, when we go dark, swap the order. They'll pick the wrong car.",
+          "es": "Viene el túnel. Dre, cuando nos quedemos a oscuras, cambia el orden. Elegirán el coche equivocado.",
+          "t": 6.0
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 120,
+        "dz": -140
+      },
+      "objective": "Entra en el túnel y cambia el orden de los coches"
+    },
+    {
+      "type": "give",
+      "ammo": 120,
+      "money": 0,
+      "toast": "Munición para la emboscada"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 125,
+        "dz": -148
+      },
+      "count": 5,
+      "objective": "Elimina a los sicarios que os cierran la salida del túnel",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 150,
+        "dz": -165
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 40,
+      "objective": "Protege a Pruitt mientras Hale abre el control",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 158,
+        "dz": -170
+      },
+      "objective": "Escolta a Pruitt hasta el control autorizado"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "time",
+      "hour": 22
+    },
+    {
+      "type": "toast",
+      "title": "NORTHPOINT",
+      "subtitle": "El bosque y la lluvia se cierran sobre la carretera"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 172,
+        "dz": -176
+      },
+      "objective": "Cruza el paso bajo la lluvia"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 178,
+        "dz": -178
+      },
+      "objective": "Alcanza el primer refugio con Pruitt",
+      "hint": "Sigue la marca del radar.",
+      "radius": 6
+    },
+    {
+      "type": "toast",
+      "title": "REGIÓN DESBLOQUEADA",
+      "subtitle": "NORTHPOINT"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 178,
+        "dz": -178
+      },
+      "cast": [
+        "dre",
+        "keisha",
+        "Pruitt",
+        "Detective Hale"
+      ],
+      "lines": [
+        {
+          "speaker": "Pruitt",
+          "en": "I can smell pine. I forgot places like this existed.",
+          "es": "Huelo a pino. Había olvidado que existían sitios así.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Don't unpack. Two nights here, then we move you again.",
+          "es": "No deshagas la maleta. Dos noches aquí y te movemos otra vez.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Tunnel job was clean. Too clean. Those guys knew which car to hit.",
+          "es": "Lo del túnel salió limpio. Demasiado limpio. Sabían a qué coche disparar.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "I saw it too. Somebody gave them the order of the cars before we even left.",
+          "es": "Yo también lo vi. Alguien les dio el orden de los coches antes de salir.",
+          "t": 5.3
+        },
+        {
+          "speaker": "K",
+          "en": "Then the leak isn't in the garage. It's in this convoy.",
+          "es": "Entonces la filtración no estaba en el garaje. Está en este convoy.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "I'm not calling anybody a rat tonight. But I'm sleeping with my boots on.",
+          "es": "Esta noche no llamo rata a nadie. Pero duermo con las botas puestas.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "Whatever you decide, thank you. Nobody ever drove for me before.",
+          "es": "Decidáis lo que decidáis, gracias. Nadie había conducido por mí antes.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Get some sleep, Walter. Tomorrow the rain starts.",
+          "es": "Duerme, Walter. Mañana empieza la lluvia.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3700,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -6
+      },
+      "toast": "+$3,700 · Pruitt a salvo, el norte se abre"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: RAIN IN NORTHPOINT (M en el radar)"
+    }
+  ]
+}

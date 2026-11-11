@@ -1,0 +1,385 @@
+{
+  "id": "m59",
+  "number": 59,
+  "title": "NOBODY GETS CLEAN",
+  "title_es": "Nadie sale limpio",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -140,
+    "dz": -60
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "I don't want him sleeping under the same roof as us. We keep him, we keep a mole.",
+          "es": "No quiero que duerma bajo el mismo techo que nosotros. Si lo mantenemos, mantenemos un topo.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I gave you the story. I stand in front of you with no gun. What more do you want?",
+          "es": "Os di la historia. Me planto delante de vosotros sin pistola. ¿Qué más queréis?",
+          "t": 5.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Enough. Everybody sit down. I drove six hours to hear grown men fight like kids.",
+          "es": "Basta. Todos sentados. Conduje seis horas para oír a hombres hechos peleándose como críos.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray, you shouldn't have come.",
+          "es": "Ray, no deberías haber venido.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Somebody had to. I held this block together for thirty years.",
+          "es": "Alguien tenía que hacerlo. Mantuve este barrio unido treinta años.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "You also kept secrets. Old deals. I've heard the whispers.",
+          "es": "También guardaste secretos. Acuerdos viejos. He oído los rumores.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Whispers are cheap. You want truth, you earn it.",
+          "es": "Los rumores son baratos. Si queréis verdad, os la ganáis.",
+          "t": 3.4
+        },
+        {
+          "speaker": "K",
+          "en": "Truth costs time. And we've got two versions on the table: Ghost's story, and the recording.",
+          "es": "La verdad cuesta tiempo. Y tenemos dos versiones sobre la mesa: la historia de Ghost y la grabación.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "We split. Dre takes the document he swears will settle it. Ray and I check the old debt.",
+          "es": "Nos separamos. Dre coge el documento que jura que lo resolverá. Ray y yo comprobamos la deuda vieja.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "And Ghost?",
+          "es": "¿Y Ghost?",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'll do whatever you ask.",
+          "es": "Haré lo que me pidáis.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then you drive. Eyes forward.",
+          "es": "Pues conduces. Ojos al frente.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 11
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "I split the recording. Version A has Ghost refusing. Version B, same voice, the same minute, agrees. One of these is spliced.",
+          "es": "Separé la grabación. La versión A tiene a Ghost negándose. La versión B, la misma voz, el mismo minuto, acepta. Una está empalmada.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Which one?",
+          "es": "¿Cuál?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Working on it. Go.",
+          "es": "Estoy en ello. Id.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 40,
+        "dz": 60
+      },
+      "objective": "Conduce con Dre hasta el despacho del notario"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 46,
+        "dz": 66
+      },
+      "guards": 3,
+      "objective": "Entra con Dre a la oficina del notario para recuperar el documento",
+      "label": "Despacho del notario"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 48,
+        "dz": 68
+      },
+      "count": 4,
+      "objective": "Los hombres del notario protegen el archivo: rómpelos",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 52,
+        "dz": 72
+      },
+      "objective": "El notario huye con la copia del contrato: alcánzalo",
+      "toast": "El notario corre hacia el aparcamiento"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": -40
+      },
+      "objective": "Lleva a Big Ray a comprobar el origen de la vieja deuda"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": -40
+      },
+      "cast": [
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Fifteen years ago I signed a paper with a man who said he was building a clinic. I never read the last page.",
+          "es": "Hace quince años firmé un papel con un hombre que decía que construía una clínica. Nunca leí la última página.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "What was on the last page?",
+          "es": "¿Qué había en la última página?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Not now. First we find the paper.",
+          "es": "Ahora no. Primero encontramos el papel.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're not telling me everything.",
+          "es": "No me lo estás contando todo.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'm telling you what I can carry today.",
+          "es": "Te cuento lo que puedo cargar hoy.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Reúne al grupo en el motel y decide el plan"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Document says the Syndicate paid Ghost's rent. Dates cover three years. It proves his story, but not his innocence.",
+          "es": "El documento dice que el Syndicate pagó el alquiler de Ghost. Las fechas cubren tres años. Prueba su historia, pero no su inocencia.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "There's a debt in that paper too. Mine. Don't ask me yet.",
+          "es": "También hay una deuda en ese papel. La mía. No me preguntéis aún.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "We decide tonight. Together. Or we don't decide at all.",
+          "es": "Lo decidimos esta noche. Juntos. O no lo decidimos.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "count": 6,
+      "waves": 3,
+      "time": 70,
+      "objective": "Una emboscada rodea el motel: coordina posiciones y resiste"
+    },
+    {
+      "type": "give",
+      "ammo": 50,
+      "money": 0,
+      "toast": "Munición del grupo: +50"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -95,
+        "dz": 98
+      },
+      "count": 4,
+      "objective": "Rematan los últimos atacantes en el aparcamiento",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "You still holding that grudge?",
+          "es": "¿Sigues guardando ese rencor?",
+          "t": 2.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm holding the line. That's different.",
+          "es": "Mantengo la línea. Es diferente.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I stand by my sister. And by you. I'll make it right.",
+          "es": "Me quedo con mi hermana. Y con vosotros. Lo arreglaré.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "You're all fools. Me too. But fools together outlast clever men alone.",
+          "es": "Sois todos unos necios. Yo también. Pero los necios juntos duran más que los listos solos.",
+          "t": 4.9
+        },
+        {
+          "speaker": "K",
+          "en": "Group chat is closed. From now on, voice only. No texts, no notes.",
+          "es": "El chat del grupo está cerrado. Desde ahora solo voz. Sin mensajes, sin notas.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Stay close. Stay quiet. Next, we go after Viper.",
+          "es": "Estad cerca. Estad callados. Lo siguiente es ir a por Viper.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3460,
+      "reputation": {
+        "westbrook_saints": 1,
+        "the_syndicate": -6
+      },
+      "toast": "MISIÓN COMPLETADA · Nadie sale limpio"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: VIPER'S FALL (60 en el radar)"
+    }
+  ]
+}

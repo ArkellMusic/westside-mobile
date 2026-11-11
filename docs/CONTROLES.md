@@ -9,7 +9,8 @@
 - **Saltar:** botón Saltar.
 - **Acción contextual:** botón Subir / Hablar / Robar, según lo que tengas delante.
 - **Golpe / Disparar:** ataca con el arma que lleves. Con pistola, mantén pulsado para seguir disparando; apunta sola al objetivo que tengas delante de la cámara.
-- **Arma:** cambia entre puños y pistola.
+- **Arma:** recorre las armas que tienes (puños, pistola, escopeta, subfusil).
+- **Agachar:** te agachas; vas más lento pero a los enemigos les cuesta el doble acertarte.
 
 **En coche**
 - **Gas:** botón Gas.
@@ -30,15 +31,22 @@
 - **F o Enter:** interactuar, subir o bajar, robar un coche.
 - **E o Ctrl:** golpear / disparar.
 - **Q:** cambiar de arma.
+- **C:** agacharse.
 - **W / S:** gas y freno en coche.
 - **Esc o P:** pausa.
 - **M:** mapa.
+
+## Historia y actividades
+
+- La **siguiente misión** aparece como **M** en el radar y en el mapa: ve al punto y pulsa **Empezar misión**. Las 80 misiones de la historia van seguidas; cada una abre con una escena de diálogo (toca la pantalla para pasar una frase).
+- Actividades libres (letra en el radar): **C** contrarreloj callejera, **E** reparto, **X** taxi, **G** guerra de bandas contra los Redline Kings. Todas pagan dinero; la guerra de bandas también da respeto.
 
 ## Tiendas (letras en el radar)
 
 - **R · Veyra Threads (ropa):** en el mostrador, cada compra ($45) te da y te pone un conjunto nuevo. En el armario de casa alternas entre los que tienes.
 - **B · Fade Kings (barbería):** corte y tinte ($25): cambia el color de la barba y la gorra. Cuenta para la descripción policial.
 - **T · Ink Saints (tatuajes):** cada tatuaje ($60, máximo 5) da +4 de respeto con los Westbrook Saints.
+- **A · Iron Sights (armería):** munición en el mostrador ($40 por 36 balas) y, en el expositor de la izquierda, escopeta ($700) y subfusil ($900).
 - **$ · Vargas Auto Works / Pinta y Listo:** repara y repinta el coche ($100).
 
 ## Búsqueda policial

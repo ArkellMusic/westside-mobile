@@ -81,6 +81,6 @@
       {"speaker": "Big Ray", "en": "Thirty days, Mack. Welcome home.", "es": "Treinta días, Mack. Bienvenido a casa.", "t": 3.5}
     ]},
     {"type": "reward", "money": 200, "reputation": {"westbrook_saints": 5}, "toast": "+$200 · Big Ray te presta para empezar"},
-    {"type": "complete", "next_objective": "Explora Westbrook · Próxima misión: OLD KEYS (en desarrollo)"}
+    {"type": "complete", "next_objective": "Siguiente misión: OLD KEYS (M en el radar)"}
   ]
 }

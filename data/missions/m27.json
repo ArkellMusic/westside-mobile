@@ -1,0 +1,335 @@
+{
+  "id": "m27",
+  "number": 27,
+  "title": "SILENT DOCKS",
+  "title_es": "Muelles silenciosos",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -20,
+    "dz": 0
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -90,
+        "dz": -60
+      },
+      "cast": [
+        "Nina Cho",
+        "Marta Duarte"
+      ],
+      "lines": [
+        {
+          "speaker": "Marta Duarte",
+          "en": "Emilio works the night shift on pier nine. Eleven years. He came home every morning smelling like rust and coffee.",
+          "es": "Emilio trabaja el turno de noche en el muelle nueve. Once años. Volvía cada mañana oliendo a óxido y café.",
+          "t": 8.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "When did he stop coming home?",
+          "es": "¿Cuándo dejó de volver?",
+          "t": 2
+        },
+        {
+          "speaker": "Marta Duarte",
+          "en": "Fourteen days ago. He called me at two a.m. He said, 'Don't open the door to anyone with a clipboard.'",
+          "es": "Hace catorce días. Me llamó a las dos de la madrugada. Dijo: «No abras la puerta a nadie con portapapeles».",
+          "t": 7.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "That's the shift from Mack's folder. The silent one.",
+          "es": "Ese es el turno de la carpeta de Mack. El silencioso.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Marta Duarte",
+          "en": "The police said he ran off with another woman. Emilio, with another woman. He cries at commercials.",
+          "es": "La policía dijo que se había fugado con otra mujer. Emilio, con otra mujer. Si llora con los anuncios.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm sorry. I know what it is to hear nothing for years.",
+          "es": "Lo siento. Sé lo que es oír nada durante años.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Marta Duarte",
+          "en": "You don't look like the police.",
+          "es": "No pareces de la policía.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm worse. I'm someone who doesn't give up.",
+          "es": "Soy peor. Soy alguien que no se rinde.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "His locker, his notes, his partner at the dock. That's where we start.",
+          "es": "Su taquilla, sus notas, su compañero del muelle. Por ahí empezamos.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Marta Duarte",
+          "en": "Bring him home. Please. The kids keep setting his place at the table.",
+          "es": "Tráelo a casa. Por favor. Los niños siguen poniendo su sitio en la mesa.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll bring him. You have my word.",
+          "es": "Lo traeré. Tiene mi palabra.",
+          "t": 2.3
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -90,
+        "dz": -60
+      },
+      "objective": "Visita la vivienda del estibador desaparecido"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -92,
+        "dz": -62
+      },
+      "count": 3,
+      "label": "Pista",
+      "objective": "Reconstruye su último turno con lo que dejó en casa",
+      "hint": "Cuaderno, recibos, una llave."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "A key to a locker at the dock. And a note: 'Tug 7, ask Pablo.'",
+          "es": "Una llave de una taquilla del muelle. Y una nota: «Remolcador 7, pregunta a Pablo».",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Pablo knows more than he said to the police.",
+          "es": "Pablo sabe más de lo que le dijo a la policía.",
+          "t": 3.1
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -60,
+        "dz": -110
+      },
+      "objective": "Conduce hasta los muelles de la zona cerrada"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -65,
+        "dz": -115
+      },
+      "guards": 3,
+      "objective": "Entra en el almacén cerrado siguiendo las notas de su compañero",
+      "label": "Almacén"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Pablo",
+          "en": "Don't use the front. The new guards rotate every ten minutes, and they don't wave.",
+          "es": "No uses la entrada. Los guardias nuevos rotan cada diez minutos y no saludan.",
+          "t": 5.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -68,
+        "dz": -118
+      },
+      "count": 2,
+      "label": "Teléfono",
+      "objective": "Encuentra su teléfono y una señal de que sigue vivo",
+      "hint": "Revisa las taquillas de los operarios."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Last text: 'tug 7, hiding, tell M.' He's alive, Mack.",
+          "es": "Último mensaje: «remolcador 7, escondido, avisad a M.». Está vivo, Mack.",
+          "t": 3.7
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -100,
+        "dz": -130
+      },
+      "objective": "Localiza el remolcador 7 en reparación"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -100,
+        "dz": -130
+      },
+      "count": 4,
+      "objective": "Elimina a los guardias que vigilan el remolcador",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -102,
+        "dz": -132
+      },
+      "objective": "Saca a Emilio del compartimento de máquinas"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue una furgoneta para sacar a Emilio de los muelles"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -10,
+        "dz": 10
+      },
+      "objective": "Lleva a Emilio hasta Nina evitando dos vehículos de vigilancia"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Despista a los vehículos que os siguen"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -10,
+        "dz": 10
+      },
+      "cast": [
+        "Nina Cho",
+        "Emilio Duarte"
+      ],
+      "lines": [
+        {
+          "speaker": "Emilio Duarte",
+          "en": "They had a man on the pier. Gray coat, no uniform. He gave orders to the harbor police like a landlord.",
+          "es": "Tenían a un hombre en el muelle. Abrigo gris, sin uniforme. Daba órdenes a la policía del puerto como un casero.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Can you describe his face?",
+          "es": "¿Puedes describir su cara?",
+          "t": 2
+        },
+        {
+          "speaker": "Emilio Duarte",
+          "en": "Cold. He looked at my hands like they were somebody else's problem. And there was a ring. Silver, square.",
+          "es": "Fría. Me miró las manos como si fueran el problema de otro. Y tenía un anillo. Plateado, cuadrado.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Square ring. I'll remember it.",
+          "es": "Anillo cuadrado. Lo recordaré.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Emilio Duarte",
+          "en": "Why are you helping me? I'm nobody.",
+          "es": "¿Por qué me ayudas? No soy nadie.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nobody is who they come for first. Go see your wife.",
+          "es": "Los que no son nadie son los primeros a los que vienen. Ve a ver a tu mujer.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1300,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -5
+      },
+      "toast": "+$1300"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: HILLSIDE SHADOWS (M en el radar)"
+    }
+  ]
+}

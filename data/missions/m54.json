@@ -1,0 +1,326 @@
+{
+  "id": "m54",
+  "number": 54,
+  "title": "FALSE ACCOUNTS",
+  "title_es": "Cuentas falsas",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -105,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "I followed the money while you were running around. Four weeks of transfers. Small ones, fifty here, eighty there. Thousands of them.",
+          "es": "Seguí el dinero mientras vosotros corríais. Cuatro semanas de transferencias. Pequeñas, cincuenta aquí, ochenta allá. Miles.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Structuring. They split big money so the bank doesn't blink.",
+          "es": "Fraccionan. Parten el dinero grande para que el banco no parpadee.",
+          "t": 4.2
+        },
+        {
+          "speaker": "K",
+          "en": "And all of them clean up through one tax adviser. Walter Prade, Prade & Associates. He certifies the books of the casinos.",
+          "es": "Y todo se limpia en un solo asesor fiscal. Walter Prade, Prade y Asociados. Certifica las cuentas de los casinos.",
+          "t": 8.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "A man who certifies for the Syndicate.",
+          "es": "Un hombre que certifica para el Syndicate.",
+          "t": 2.7
+        },
+        {
+          "speaker": "K",
+          "en": "A man who hasn't slept in a week. He called Nina's tip line. He wants out.",
+          "es": "Un hombre que no ha dormido en una semana. Llamó a la línea de Nina. Quiere salir.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Out is expensive.",
+          "es": "Salir es caro.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "He wants protection and a lawyer. He'll give us everything.",
+          "es": "Quiere protección y un abogado. Nos dará todo.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "Or he walks us into a trap.",
+          "es": "O nos mete en una trampa.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Possible. That's why I want the three of you present.",
+          "es": "Posible. Por eso os quiero a los tres presentes.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "We bring him in. Nobody follows.",
+          "es": "Lo traemos. Que nadie nos siga.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "I'll cover the street. Ghost stays with K.",
+          "es": "Yo cubro la calle. Ghost se queda con K.",
+          "t": 2.9
+        }
+      ],
+      "title_card": true,
+      "hour": 14
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 80,
+        "dz": 80
+      },
+      "objective": "Recoge los registros de la asesoría de Prade"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 82,
+        "dz": 82
+      },
+      "count": 3,
+      "label": "Recoger registros",
+      "objective": "Recoge tres cajas de registros de la asesoría"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 84,
+        "dz": 84
+      },
+      "count": 3,
+      "objective": "Los vigilantes del café te han seguido: noquéalos",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Walter Prade",
+          "en": "They're watching me. I see the same two men in the café across from my office every morning.",
+          "es": "Me vigilan. Veo a los mismos dos hombres en el café de enfrente de mi oficina cada mañana.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Don't look at the window. Leave by the garage.",
+          "es": "No mires a la ventana. Sal por el garaje.",
+          "t": 3.2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Lleva los registros al motel"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -108,
+        "dz": 92
+      },
+      "count": 2,
+      "label": "Cruzar datos",
+      "objective": "Cruza transferencias con compras de propiedades y casinos",
+      "hint": "Pon las hojas sobre la mesa."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -108,
+        "dz": 92
+      },
+      "cast": [
+        "keisha",
+        "Walter Prade"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Here. A bridge company. 'Meridian Sands Trading'. Every transfer passes through it for one second, then it dissolves again.",
+          "es": "Aquí. Una empresa puente. «Meridian Sands Trading». Cada transferencia pasa por ella un segundo y luego se disuelve de nuevo.",
+          "t": 8.6
+        },
+        {
+          "speaker": "Walter Prade",
+          "en": "I signed those. God forgive me. I signed them because they said it was routine.",
+          "es": "Yo firmé eso. Que Dios me perdone. Lo firmé porque dijeron que era rutina.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Routine is a good word to hide behind.",
+          "es": "Rutina es una buena palabra para esconderse.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 100
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 60,
+      "objective": "Los hombres de Cross llegan al motel por Prade: defiéndelo"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche limpio para llevar a Prade"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 150,
+        "dz": -10
+      },
+      "objective": "Lleva a Prade a la cita con Nina sin dejar rastro",
+      "time": 90
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 150,
+        "dz": -10
+      },
+      "cast": [
+        "Nina Cho",
+        "Walter Prade",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Mr. Prade, I'm Nina Cho. Nobody here gets named until you decide.",
+          "es": "Señor Prade, soy Nina Cho. Aquí nadie sale nombrado hasta que usted decida.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Walter Prade",
+          "en": "Everything connects. Las Brisas, South Veyra, Northpoint. The same money runs through the three.",
+          "es": "Todo conecta. Las Brisas, South Veyra, Northpoint. El mismo dinero pasa por las tres.",
+          "t": 6.7
+        },
+        {
+          "speaker": "K",
+          "en": "Northpoint. The Whitlock trust. It matches.",
+          "es": "Northpoint. El fideicomiso de Whitlock. Coincide.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "We stay here, he goes north, and the rest of us dig.",
+          "es": "Nos quedamos aquí, él va al norte y el resto cavamos.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "I'll arrange safe passage in a few days. Don't do anything stupid.",
+          "es": "Organizo un paso seguro en unos días. No hagáis ninguna estupidez.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Define stupid.",
+          "es": "Defina estúpido.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3120,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -10
+      },
+      "toast": "MISIÓN COMPLETADA · Cuentas falsas"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE SETUP (55 en el radar)"
+    }
+  ]
+}

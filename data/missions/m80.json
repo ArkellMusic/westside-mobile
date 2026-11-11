@@ -1,0 +1,536 @@
+{
+  "id": "m80",
+  "number": 80,
+  "title": "WESTSIDE LEGACY",
+  "title_es": "El legado de Westside",
+  "act": "ACTO VI",
+  "start": "mack_house_curb",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "mack_house_curb",
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray",
+        "keisha",
+        "loco",
+        "okafor"
+      ],
+      "title_card": true,
+      "hour": 3,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Nina's broadcast is set for sunrise, live from the pier. The court is waiting on the Order Book original. If both land, Cross has nowhere to stand.",
+          "es": "La emisión de Nina está fijada para el amanecer, en directo desde el muelle. El tribunal espera el original del Libro de Órdenes. Si llegan las dos cosas, Cross se queda sin dónde apoyarse.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "And if either one fails?",
+          "es": "¿Y si falla alguna?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Then she buys a month. A month is all she needs to burn everything and start over under a new name.",
+          "es": "Entonces gana un mes. Un mes es todo lo que necesita para quemarlo todo y empezar de nuevo con otro nombre.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "She's flying out of San Cordova at dawn. Private strip, two jets, one pilot with a sick kid and a very big bribe.",
+          "es": "Sale volando de San Cordova al amanecer. Pista privada, dos aviones, un piloto con un hijo enfermo y un soborno muy gordo.",
+          "t": 7.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I know that pilot. He'll wait if he gets a better offer. I'll make one.",
+          "es": "Conozco a ese piloto. Esperará si recibe una oferta mejor. Se la haré yo.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'm going with the evidence. I'll testify before the first coffee is poured.",
+          "es": "Voy con las pruebas. Declararé antes de que sirvan el primer café.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Okafor",
+          "en": "And I'll feed the street. Nobody fights on an empty stomach.",
+          "es": "Y yo daré de comer a la calle. Nadie pelea con el estómago vacío.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Mack, say something. This is the last time we're all in one yard.",
+          "es": "Mack, di algo. Es la última vez que estamos todos en un mismo patio.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Eight years ago I got on a bus because I thought staying would kill me. I came back because I figured I owed a house.",
+          "es": "Hace ocho años subí a un autobús porque pensé que quedarme me mataría. Volví porque creí que le debía una casa a alguien.",
+          "t": 8.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I don't owe a house anymore. I owe all of you. That's the only debt I plan to carry.",
+          "es": "Ya no debo una casa. Os debo a todos vosotros. Es la única deuda que pienso llevar.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Careful. That sounded like a speech.",
+          "es": "Cuidado. Eso ha sonado a discurso.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then somebody get me a drink.",
+          "es": "Pues que alguien me dé una copa.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Later. Tonight we drive.",
+          "es": "Después. Esta noche conducimos.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Hale's warrant came through. Signed, real, countersigned. Ready when you are.",
+          "es": "La orden de Hale ha salido. Firmada, real, refrendada. Lista cuando queráis.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then let's end it. Properly.",
+          "es": "Pues terminemos. Como es debido.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nobody turns around. Nobody stays behind. Move.",
+          "es": "Nadie mira atrás. Nadie se queda. En marcha.",
+          "t": 3.3
+        }
+      ]
+    },
+    {
+      "type": "give",
+      "ammo": 200,
+      "money": 0,
+      "toast": "Munición para la operación final"
+    },
+    {
+      "type": "goto",
+      "target": "mack_house_curb",
+      "objective": "Sube al coche con tus aliados",
+      "hint": "Pon en marcha el último plan.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "drive_to",
+      "target": "comisaria",
+      "objective": "Escolta el traslado de las pruebas hasta la comisaría"
+    },
+    {
+      "type": "defend",
+      "at": "comisaria",
+      "count": 6,
+      "waves": 3,
+      "time": 60,
+      "objective": "Protege el traslado mientras la intervención legal entra en el edificio",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Warrant executed. Cross Meridian's Westbrook offices are sealed. Federal agents at the front door. Your neighborhood is no longer a crime scene.",
+          "es": "Orden ejecutada. Las oficinas de Cross Meridian en Westbrook están selladas. Agentes federales en la puerta. Vuestro barrio ya no es escena de un crimen.",
+          "t": 9
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": "terminal",
+      "guards": 3,
+      "objective": "Impide que los hombres de Cross saquen documentos por la terminal",
+      "label": "Guardias de la terminal"
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        100,
+        -24
+      ],
+      "objective": "Persigue la furgoneta que huye con las cajas de la terminal",
+      "time": 65
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "San Cordova's in position. Trucks across the road. Cross can't get off the freeway.",
+          "es": "San Cordova en posición. Camiones cruzados en la carretera. Cross no puede salir de la autopista.",
+          "t": 5.8
+        },
+        {
+          "speaker": "K",
+          "en": "Northpoint is live. Hale's people arrested Caldwell. Bahía Solana is dry-docking the Meridian Tide right now.",
+          "es": "Northpoint está en directo. La gente de Hale ha detenido a Caldwell. En Bahía Solana están inmovilizando el Meridian Tide ahora mismo.",
+          "t": 7.6
+        }
+      ]
+    },
+    {
+      "type": "lose_cops",
+      "stars": 4,
+      "objective": "Los policías comprados te persiguen hacia la autopista: despístalos"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": -80
+      },
+      "objective": "Conduce hasta la pista privada de Evelyn Cross en San Cordova"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 104,
+        "dz": -84
+      },
+      "count": 6,
+      "objective": "Despeja la pista de la guardia privada de Cross",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 3
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 110,
+        "dz": -90
+      },
+      "objective": "Evelyn Cross huye hacia su avión: no la dejes escapar",
+      "toast": "Atrápala antes de que arranque el avión"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 110,
+        "dz": -90
+      },
+      "cast": [
+        "Evelyn Cross",
+        "Detective Hale"
+      ],
+      "lines": [
+        {
+          "speaker": "Evelyn Cross",
+          "en": "You can't take this, Mr. Johnson. I built Westbrook's streetlights. I built its bridge. I built the bank that keeps your mother's lights on.",
+          "es": "No puede quitarme esto, señor Johnson. Construí las farolas de Westbrook. Construí su puente. Construí el banco que mantiene encendidas las luces de su madre.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "You didn't build it. You financed the cracks. And you owned the repair.",
+          "es": "No lo construiste. Financiaste las grietas. Y eras dueña de la reparación.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Every street needs a landlord. Mine just never got a face.",
+          "es": "Toda calle necesita un casero. La mía nunca tuvo cara.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Evelyn Cross, you are under arrest. Conspiracy, extortion, arson, witness tampering. You have the right to remain silent.",
+          "es": "Evelyn Cross, queda usted detenida. Conspiración, extorsión, incendio, manipulación de testigos. Tiene derecho a guardar silencio.",
+          "t": 8.5
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Silence is what I sold. I'm not buying it back.",
+          "es": "El silencio es lo que yo vendía. No pienso recomprarlo.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You'll get a trial. A real one. Neighbors in the front row. That's the thing you could never buy.",
+          "es": "Tendrás un juicio. Uno de verdad. Con vecinos en primera fila. Es lo único que no pudiste comprar.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "People forget, Mr. Johnson. They always forget.",
+          "es": "La gente olvida, señor Johnson. Siempre olvida.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Not this time. We wrote it down.",
+          "es": "Esta vez no. Lo hemos escrito.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "timed_drive",
+      "target": "pier",
+      "objective": "Lleva el original del Libro de Órdenes hasta el muelle antes del amanecer",
+      "time": 120
+    },
+    {
+      "type": "defend",
+      "at": "pier",
+      "count": 6,
+      "waves": 3,
+      "time": 60,
+      "objective": "Protege el escenario de la emisión de los últimos fieles de Cross",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "pier",
+      "objective": "Sube al escenario con Dre y Nina",
+      "hint": "El amanecer empieza a tocar el agua.",
+      "radius": 8
+    },
+    {
+      "type": "scene",
+      "at": "pier",
+      "cast": [
+        "dre",
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Eight minutes. Live in eight minutes. Mack, you don't have to speak.",
+          "es": "Ocho minutos. En directo dentro de ocho minutos. Mack, no hace falta que hables.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll speak. But I want Dre next to me.",
+          "es": "Hablaré. Pero quiero a Dre a mi lado.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "I was never going to let you stand there alone. I'm too proud of how this turned out.",
+          "es": "Nunca iba a dejarte plantado ahí solo. Estoy demasiado orgulloso de cómo ha salido.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "You told me once that a block is only as free as the people willing to stand on its corner.",
+          "es": "Una vez me dijiste que una manzana solo es libre cuanto lo sean los que se plantan en su esquina.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "And you told me I'd never leave this block. You were half right. I won't. But it's not a cage anymore.",
+          "es": "Y tú me dijiste que nunca dejaría esta manzana. Tenías medio razón. No la dejaré. Pero ya no es una jaula.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I was wrong about leaving. I was wrong about a lot of things.",
+          "es": "Me equivoqué al irme. Me equivoqué en muchas cosas.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "You were right about one thing. We decide together.",
+          "es": "Tuviste razón en una cosa. Decidimos juntos.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Always. Even the hard ones.",
+          "es": "Siempre. Hasta las difíciles.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Teo called this morning. The sentence review is open. First time in nine years.",
+          "es": "Teo llamó esta mañana. Han abierto la revisión de su condena. La primera vez en nueve años.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then this was never just about a house.",
+          "es": "Entonces esto nunca fue solo por una casa.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "It was about everyone who ever got told to sell. And didn't.",
+          "es": "Fue por todos a quienes dijeron que vendieran. Y no lo hicieron.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Thirty seconds. Whatever you want the world to hear, say it now.",
+          "es": "Treinta segundos. Lo que queráis que oiga el mundo, decidlo ahora.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Westbrook's not for sale. Not today. Not ever.",
+          "es": "Westbrook no está en venta. Hoy no. Nunca.",
+          "t": 3.2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "time",
+      "hour": 7
+    },
+    {
+      "type": "toast",
+      "title": "MUNDO LIBRE",
+      "subtitle": "Westbrook y las cinco ciudades ya no tienen bloqueos"
+    },
+    {
+      "type": "goto",
+      "target": "mack_door",
+      "objective": "Vuelve a casa, a la puerta de tu madre",
+      "hint": "El sol sale sobre el porche.",
+      "radius": 8
+    },
+    {
+      "type": "scene",
+      "at": "mack_door",
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray",
+        "keisha",
+        "loco",
+        "okafor"
+      ],
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "Veyra Mart opens Monday. Free coffee for the whole block, in a paper cup with your name on it, Mack.",
+          "es": "Veyra Mart abre el lunes. Café gratis para toda la manzana, en un vaso de papel con tu nombre, Mack.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "Vargas Auto Works too. New sign. 'Vargas and Sons, Honest Wrenches.'",
+          "es": "También Vargas Auto Works. Letrero nuevo. «Vargas e Hijos, Llaves Honestas».",
+          "t": 4.8
+        },
+        {
+          "speaker": "K",
+          "en": "Cross Meridian froze its accounts this morning. Seven hundred properties are back in escrow. Mrs. Pearl's is first.",
+          "es": "Cross Meridian ha congelado sus cuentas esta mañana. Setecientas propiedades vuelven a depósito. La de la señora Pearl es la primera.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Imani starts school Monday. Real school. I walked her to the gate.",
+          "es": "Imani empieza el colegio el lunes. Un colegio de verdad. La acompañé hasta la puerta.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I turned myself in. A judge gave me an eighteen-month sentence, suspended, plus testimony for the rest of my life. I'll take it.",
+          "es": "Me entregué. Un juez me dio dieciocho meses, suspendidos, más declarar el resto de mi vida. Lo acepto.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Saints keep the corner. Not for fighting. For watching. Anyone leaves a kid out here after dark, they call me.",
+          "es": "Los Saints guardan la esquina. No para pelear. Para vigilar. Si dejan a un chaval fuera al caer la noche, me llaman.",
+          "t": 7.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Mama's front door. The paint's still red. I'm going to scrub it clean one weekend.",
+          "es": "La puerta de mi madre. La pintura sigue roja. Un fin de semana la dejaré limpia.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "You do that. And Mack... welcome home. For real this time.",
+          "es": "Hazlo. Y Mack... bienvenido a casa. De verdad esta vez.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "It's good to be home, Dre. It's good to be home.",
+          "es": "Es bueno estar en casa, Dre. Es muy bueno estar en casa.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 10000,
+      "reputation": {
+        "westbrook_saints": 25,
+        "the_syndicate": -15
+      },
+      "toast": "+$10,000 · Westbrook es libre"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Historia completada. Westbrook es tuyo: sigue explorando."
+    }
+  ]
+}

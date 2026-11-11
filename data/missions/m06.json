@@ -1,0 +1,338 @@
+{
+  "id": "m06",
+  "number": 6,
+  "title": "WALLS TALK",
+  "title_es": "Las paredes hablan",
+  "act": "ACTO I",
+  "start": "dre_corner",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Look at the wall. Somebody tagged it overnight.",
+          "es": "Mira la pared. Alguien la pintó anoche.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Red crown, three spikes. Kings.",
+          "es": "Corona roja, tres pinchos. Los Kings.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "And under it, a date. Friday.",
+          "es": "Y debajo, una fecha. Viernes.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "They want my corner by Friday or they take it, that's what it says.",
+          "es": "Quieren mi esquina el viernes o se la llevan, eso dice.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "They're daring you to start a war.",
+          "es": "Te están retando a empezar una guerra.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Or daring somebody to start it for me.",
+          "es": "O retando a alguien a empezarla por mí.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Two streets over, same crown. Nobody on this block saw anything.",
+          "es": "Dos calles más allá, la misma corona. Nadie en esta manzana ha visto nada.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Everybody sees something. They just don't say it.",
+          "es": "Todo el mundo ve algo. Solo que no lo dicen.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then ask. You're the one nobody's afraid of yet.",
+          "es": "Entonces pregunta. Eres al que aún nadie teme.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Ask politely. Then not politely.",
+          "es": "Pregunta con educación. Luego sin ella.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "No shooting. The mural's new. The kids painted it. Touch that and I'll bury you myself.",
+          "es": "Sin disparos. El mural es nuevo. Lo pintaron los críos. Tócalo y te entierro yo mismo.",
+          "t": 6.1
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        -80,
+        70
+      ],
+      "count": 3,
+      "label": "Testimonio",
+      "objective": "Pregunta a los residentes en las dos calles en disputa",
+      "hint": "Habla con cada vecino que veas en el portal."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "They won't give me a name, but they gave me a direction. Alley behind the church.",
+          "es": "No dan un nombre, pero sí una dirección. El callejón detrás de la iglesia.",
+          "t": 5.7
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "chase",
+      "at": [
+        -70,
+        50
+      ],
+      "objective": "Intercepta al chaval que reparte amenazas, sin disparar",
+      "toast": "Es rápido: no pierdas la línea de visión."
+    },
+    {
+      "type": "fight",
+      "at": [
+        -70,
+        50
+      ],
+      "count": 2,
+      "objective": "Reduce a sus dos compañeros sin armas",
+      "faction": "redline_kings",
+      "armed": false
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Mural! They're heading for the mural!",
+          "es": "¡El mural! ¡Van hacia el mural!",
+          "t": 2.6
+        }
+      ]
+    },
+    {
+      "type": "defend",
+      "at": [
+        -50,
+        95
+      ],
+      "count": 3,
+      "waves": 2,
+      "time": 60,
+      "objective": "Defiende el mural vecinal de la banda rival"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "lose_cops",
+      "stars": 1,
+      "objective": "Escapa de la patrulla que cree que has empezado la pelea"
+    },
+    {
+      "type": "goto",
+      "target": [
+        -60,
+        120
+      ],
+      "objective": "Refúgiate en el garaje de los Saints hasta que pase la patrulla"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "dre_corner",
+      "objective": "Vuelve con Dre y decide el mensaje público"
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "So what do we say? Paint over it? Paint back?",
+          "es": "¿Y qué decimos? ¿Lo tapamos? ¿Respondemos?",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Neither. We leave the wall alone and put a sign under it: 'Mural by Westbrook kids. Hands off.'",
+          "es": "Ninguna. Dejamos la pared y ponemos un cartel debajo: «Mural de los niños de Westbrook. Manos fuera».",
+          "t": 6.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Soft.",
+          "es": "Blando.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Smart. Soft in front, hard behind.",
+          "es": "Listo. Suave por delante, duro por detrás.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Exactly.",
+          "es": "Exacto.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "collect",
+      "at": [
+        -40,
+        105
+      ],
+      "count": 1,
+      "label": "Cámara",
+      "objective": "Revisa la cámara de la esquina para ver quién pintó la pared"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Camera shows a man in a gray suit on the wall at 3 a.m. Not a Kings colors in sight.",
+          "es": "La cámara muestra a un hombre con traje gris en la pared a las 3 de la madrugada. Ni un color de los Kings.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "So the Kings didn't paint it.",
+          "es": "Así que los Kings no lo pintaron.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "The Kings were paid to look guilty.",
+          "es": "A los Kings les pagaron para parecer culpables.",
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Somebody wants a war between us and Viper.",
+          "es": "Alguien quiere una guerra entre nosotros y Viper.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Somebody with money and a lot of patience.",
+          "es": "Alguien con dinero y mucha paciencia.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Meridian.",
+          "es": "Meridian.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Say it again quieter.",
+          "es": "Dilo otra vez, más bajo.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "If it's them, we're not fighting Viper. We're fighting the man holding Viper's leash.",
+          "es": "Si son ellos, no peleamos con Viper. Peleamos con quien le sujeta la correa.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we stop swinging at the dog.",
+          "es": "Entonces dejamos de pegar al perro.",
+          "t": 2.3
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 310,
+      "reputation": {
+        "westbrook_saints": 4,
+        "redline_kings": -3
+      },
+      "toast": "+$310 · Las paredes hablan"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: K KNOWS (M en el radar)"
+    }
+  ]
+}

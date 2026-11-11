@@ -1,0 +1,378 @@
+{
+  "id": "m68",
+  "number": 68,
+  "title": "OLD PROMISES",
+  "title_es": "Viejas promesas",
+  "act": "ACTO IV",
+  "start": {
+    "zone": "northpoint",
+    "dx": 20,
+    "dz": -30
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 10,
+        "dz": 10
+      },
+      "cast": [
+        "big_ray",
+        "dre"
+      ],
+      "title_card": true,
+      "hour": 6,
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "I need a ride. Not a lecture, a ride. Two hours north, a lake house.",
+          "es": "Necesito que me lleves. No un sermón, un viaje. Dos horas al norte, una casa junto a un lago.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "You haven't asked me for anything since I came back, Ray. So who lives at that lake?",
+          "es": "No me has pedido nada desde que volví, Ray. ¿Quién vive en ese lago?",
+          "t": 5.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "A woman named Odessa Wray. Years back, we worked the same side of a deal. That's all you need.",
+          "es": "Una mujer llamada Odessa Wray. Hace años trabajamos en el mismo lado de un trato. Eso es todo lo que necesitas.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Same side of a deal. In my neighborhood we called that a partner.",
+          "es": "El mismo lado de un trato. En mi barrio eso se llama socio.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Don't use that tone with me, boy. I raised half your block.",
+          "es": "No uses ese tono conmigo, chaval. Crie a medio vuestro barrio.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "You raised us. You also never explained why Cross Meridian knew your name before I did.",
+          "es": "Nos criaste. Pero nunca explicaste por qué Cross Meridian conocía tu nombre antes que yo.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Because I was careful. And then I wasn't.",
+          "es": "Porque fui cuidadoso. Y luego no lo fui.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray, whatever it is, I need to hear it before it gets used against us.",
+          "es": "Ray, sea lo que sea, necesito oírlo antes de que lo usen contra nosotros.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "She keeps something of mine. A guarantee. Without it, I can't tell you what I'm about to tell you.",
+          "es": "Ella guarda algo mío. Una garantía. Sin eso no puedo contarte lo que voy a contarte.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "I'm coming.",
+          "es": "Voy.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "No. Dre stays with the witnesses. The less eyes on this, the better.",
+          "es": "No. Dre se queda con los testigos. Cuantos menos ojos, mejor.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "You're hiding something, old man, and I'm tired of being polite about it.",
+          "es": "Escondes algo, viejo, y estoy cansado de ser educado.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then be impolite when you hear it. Not before.",
+          "es": "Pues sé maleducado cuando lo oigas. No antes.",
+          "t": 3.2
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche resistente para la carretera de montaña"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": 110,
+        "dz": 60
+      },
+      "objective": "Conduce a Big Ray hacia la casa junto al lago"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": 160,
+        "dz": 90
+      },
+      "objective": "Llega a la casa rural"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 160,
+        "dz": 90
+      },
+      "cast": [
+        "big_ray",
+        "Odessa Wray"
+      ],
+      "lines": [
+        {
+          "speaker": "Odessa Wray",
+          "en": "Ray Dalton. You got old.",
+          "es": "Ray Dalton. Te has hecho viejo.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And you got quiet. That's worse.",
+          "es": "Y tú te has callado. Eso es peor.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Odessa Wray",
+          "en": "I was never loud. You were. Tell the boy what you promised me in 2009.",
+          "es": "Yo nunca fui ruidosa. Tú sí. Cuéntale al chico lo que me prometiste en 2009.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Promised what?",
+          "es": "¿Prometió qué?",
+          "t": 2
+        },
+        {
+          "speaker": "Odessa Wray",
+          "en": "That the signatures on the easements would never touch a family house. He lied. Cash was easier.",
+          "es": "Que las firmas de las servidumbres nunca tocarían una casa familiar. Mintió. El dinero era más fácil.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Odessa.",
+          "es": "Odessa.",
+          "t": 2
+        },
+        {
+          "speaker": "Odessa Wray",
+          "en": "No. He's going to hear all of it.",
+          "es": "No. Va a oírlo todo.",
+          "t": 2.3
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": 164,
+        "dz": 94
+      },
+      "count": 3,
+      "label": "Testimonio",
+      "objective": "Revisa las cartas y fotos que sostienen su versión",
+      "hint": "Examina cada objeto sobre la mesa."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Odessa Wray",
+          "en": "The guarantee is in the boathouse. Under the third plank. I never wanted to touch it again.",
+          "es": "La garantía está en el cobertizo del bote. Bajo la tercera tabla. No quise tocarla nunca más.",
+          "t": 6.4
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": 172,
+        "dz": 100
+      },
+      "count": 1,
+      "label": "Garantía",
+      "objective": "Recupera la caja de garantía bajo el suelo del cobertizo",
+      "hint": "Levanta la tercera tabla."
+    },
+    {
+      "type": "give",
+      "ammo": 100,
+      "money": 0,
+      "toast": "Munición para la huida"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Mack. Two trucks passed Ingrid's turn-off twenty minutes ago. They're headed up your road.",
+          "es": "Mack. Dos camionetas pasaron el desvío de Ingrid hace veinte minutos. Van por tu carretera.",
+          "t": 6.3
+        }
+      ]
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "northpoint",
+        "dx": 164,
+        "dz": 94
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 45,
+      "objective": "Defiende a Odessa y la casa de los hombres de Cross",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "northpoint",
+        "dx": 168,
+        "dz": 98
+      },
+      "count": 4,
+      "objective": "Rechaza al último grupo en el muelle",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "northpoint",
+        "dx": 20,
+        "dz": 40
+      },
+      "objective": "Baja por la carretera de montaña antes de que la tormenta cierre el paso",
+      "time": 110
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Despista a los coches de Cross en el barro y la lluvia"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 20,
+        "dz": 40
+      },
+      "cast": [
+        "big_ray",
+        "Odessa Wray"
+      ],
+      "lines": [
+        {
+          "speaker": "Odessa Wray",
+          "en": "Don't take me for a saint, Mack. I took the money too. Half of it.",
+          "es": "No me tomes por santa, Mack. Yo también cogí el dinero. La mitad.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "She's telling the truth. I'm done pretending I was the only one.",
+          "es": "Dice la verdad. Se acabó fingir que era el único.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray, I don't care who took what. I care that my mother's house is a sentence on Cross's desk.",
+          "es": "Ray, me da igual quién cogió qué. Me importa que la casa de mi madre sea una sentencia en la mesa de Cross.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And it was my signature that put it there.",
+          "es": "Y fue mi firma la que la puso ahí.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tell me everything. All of it. Tomorrow, at the overlook, no cars between us.",
+          "es": "Cuéntamelo todo. Todo. Mañana, en el mirador, sin coches entre nosotros.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Tomorrow. And boy, bring a bottle. You'll want one.",
+          "es": "Mañana. Y, chaval, trae una botella. La vas a querer.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 5800,
+      "reputation": {
+        "westbrook_saints": 6,
+        "the_syndicate": -8
+      },
+      "toast": "+$5,800 · Ray acepta contarlo todo"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: BIG RAY'S CONFESSION (M en el radar)"
+    }
+  ]
+}

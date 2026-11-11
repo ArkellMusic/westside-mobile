@@ -1,0 +1,372 @@
+{
+  "id": "m22",
+  "number": 22,
+  "title": "AURELIO BRIDGE",
+  "title_es": "Puente Aurelio",
+  "act": "ACTO I",
+  "start": "dre_corner",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "keisha",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Three months. The city says the Aurelio Bridge has been 'under inspection' for three months. Nobody has inspected anything.",
+          "es": "Tres meses. La ciudad dice que el puente Aurelio está «en inspección» desde hace tres meses. Nadie ha inspeccionado nada.",
+          "t": 8.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then why's there a checkpoint on it, K? Guys in vests, cones, a clipboard. Looks real enough to me.",
+          "es": "Entonces, ¿por qué hay un control en el puente, K? Tíos con chaleco, conos, un portapapeles. A mí me parece bastante real.",
+          "t": 6.9
+        },
+        {
+          "speaker": "K",
+          "en": "Because that's the idea. Looks real, costs nothing, and keeps Westbrook in a box. I pulled the permits. They're forged.",
+          "es": "Porque esa es la idea. Parece real, no cuesta nada y mantiene a Westbrook encerrado en una caja. He sacado los permisos. Son falsos.",
+          "t": 8.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Same suits that bought the laundromat. Same suits that bought the lot. They don't want us leaving, they want us tired.",
+          "es": "Los mismos trajes que compraron la lavandería. Los mismos que compraron el solar. No quieren que nos vayamos, quieren que nos cansemos.",
+          "t": 8.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tired people sell. Tired people sign.",
+          "es": "La gente cansada vende. La gente cansada firma.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Look who learned to read a room. Eight years and you still talk like you're the one running it.",
+          "es": "Mira quién ha aprendido a leer el ambiente. Ocho años y sigues hablando como si mandaras tú.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm not running anything, Dre. I'm trying to keep a roof over my mother's head.",
+          "es": "No mando en nada, Dre. Intento que mi madre conserve un techo.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "You left her under that roof. I stayed. I painted that door, remember? You didn't call, you didn't write.",
+          "es": "La dejaste bajo ese techo. Me quedé yo. Yo pinté esa puerta, ¿recuerdas? No llamaste, no escribiste.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Not today, boys. Keep the fight for the people selling us out.",
+          "es": "Hoy no, chicos. Guardad la pelea para los que nos están vendiendo.",
+          "t": 4.3
+        },
+        {
+          "speaker": "K",
+          "en": "There's a hearing tonight at the Pinta Listo hall. If I get the original file from the site office, I can bust the whole thing open.",
+          "es": "Esta noche hay una audiencia vecinal en el local de Pinta Listo. Si consigo el expediente original de la oficina de obra, puedo reventarlo todo.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "My boys can watch the block. The site office is your problem, Mack. Make yourself useful.",
+          "es": "Mis chicos vigilan la manzana. La oficina de obra es cosa tuya, Mack. Hazte útil.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Always was my problem. Send me the address, K.",
+          "es": "Siempre fue cosa mía. Mándame la dirección, K.",
+          "t": 3.2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Reúnete con Keisha para ver los documentos",
+      "hint": "K te espera en su punto de siempre."
+    },
+    {
+      "type": "collect",
+      "at": [
+        60,
+        70
+      ],
+      "count": 3,
+      "label": "Documento",
+      "objective": "Recoge tres copias de los permisos falsos del puente",
+      "hint": "Hay carteles y buzones con avisos del cierre."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Third permit, same signature, three different dates. Whoever forged it got lazy.",
+          "es": "El tercer permiso, la misma firma, tres fechas distintas. Quien lo falsificó se confió.",
+          "t": 5.6
+        },
+        {
+          "speaker": "K",
+          "en": "The real file is in the site office by the bridge. Foreman keeps it in a gray cabinet.",
+          "es": "El expediente real está en la oficina de obra junto al puente. El capataz lo guarda en un armario gris.",
+          "t": 6.0
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Four guards on that lot, Mack. Contractors with guns are never just contractors.",
+          "es": "Cuatro guardias en esa obra, Mack. Los contratistas con pistolas nunca son solo contratistas.",
+          "t": 5.6
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": [
+        250,
+        150
+      ],
+      "guards": 3,
+      "objective": "Cuélate en la oficina de obra sin que te vean",
+      "label": "Expediente"
+    },
+    {
+      "type": "collect",
+      "at": [
+        252,
+        152
+      ],
+      "count": 1,
+      "label": "Expediente",
+      "objective": "Coge el expediente original del armario gris"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "toast",
+      "title": "ALERTA",
+      "subtitle": "El supervisor ha dado la voz"
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un vehículo de servicio para salir de la obra"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Despista a los guardias y a la policía"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "You got it? Tell me you got it. They just posted a patrol on every road out.",
+          "es": "¿Lo tienes? Dime que lo tienes. Acaban de poner patrullas en todas las salidas.",
+          "t": 5.3
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "timed_drive",
+      "target": "pinta_listo",
+      "objective": "Llega a la audiencia vecinal antes de que cierren la sala",
+      "time": 100
+    },
+    {
+      "type": "scene",
+      "at": "pinta_listo",
+      "cast": [
+        "keisha",
+        "okafor"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Order's in. Okafor, you ready to say it out loud?",
+          "es": "La orden está entregada. Okafor, ¿listo para decirlo en voz alta?",
+          "t": 3.4
+        },
+        {
+          "speaker": "Okafor",
+          "en": "They broke my window to make me sell. I'll say it to a judge, to a priest, to the moon.",
+          "es": "Me rompieron el escaparate para que vendiera. Se lo diré a un juez, a un cura, a la luna.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Hand it over, K. Everything we've got.",
+          "es": "Dáselo, K. Todo lo que tenemos.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The board is voting. Forged permits, void. The checkpoint comes down at midnight.",
+          "es": "La junta está votando. Permisos falsos, anulados. El control se levanta a medianoche.",
+          "t": 5.7
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": "bridge",
+      "objective": "Conduce hasta el puente mientras retiran el control"
+    },
+    {
+      "type": "fight",
+      "at": "bridge",
+      "count": 4,
+      "objective": "Aparta a los matones que se niegan a irse del control",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": "bridge",
+      "objective": "Cruza el puente con Big Ray",
+      "hint": "Big Ray va de copiloto."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Eight years you waited to cross this. Look at the lights down there, kid.",
+          "es": "Ocho años esperando cruzar esto. Mira las luces de allá abajo, chico.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Voice",
+          "en": "Mr. Johnson. You cost the people upstairs a lot of money tonight.",
+          "es": "Señor Johnson. Esta noche ha costado mucho dinero a la gente de arriba.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who is this?",
+          "es": "¿Quién es?",
+          "t": 2
+        },
+        {
+          "speaker": "Voice",
+          "en": "Nobody you'll meet. Cross the bridge if you like. We'll be waiting on the other side.",
+          "es": "Nadie a quien vaya a conocer. Cruce el puente si quiere. Le esperaremos al otro lado.",
+          "t": 6.0
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "at": "bridge",
+      "cast": [
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "San Cordova. Another world. Fog, trams, money. And the same crooks, just better dressed.",
+          "es": "San Cordova. Otro mundo. Niebla, tranvías, dinero. Y los mismos ladrones, mejor vestidos.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Whoever's buying Westbrook is buying over there too.",
+          "es": "Quien compra Westbrook también compra allí.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "That was a threat with a tie on. They know your name, Mack.",
+          "es": "Eso era una amenaza con corbata. Saben cómo te llamas, Mack.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then they know I'm coming. Good. I'm tired of fighting shadows.",
+          "es": "Pues saben que voy. Bien. Estoy harto de pelear contra sombras.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Your mama's house is safe for now. Don't let that make you reckless.",
+          "es": "La casa de tu madre está a salvo por ahora. Que eso no te vuelva temerario.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Reckless is how I got here. Drive, Ray.",
+          "es": "Ser temerario es lo que me trajo aquí. Conduce, Ray.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1000,
+      "reputation": {
+        "westbrook_saints": 6,
+        "the_syndicate": -4
+      },
+      "toast": "+$1000"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CITY OF FOG (M en el radar)"
+    }
+  ]
+}

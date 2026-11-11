@@ -1,0 +1,336 @@
+{
+  "id": "m49",
+  "number": 49,
+  "title": "ONE NIGHT WITH LOCO",
+  "title_es": "Una noche con Loco",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -140,
+        "dz": 100
+      },
+      "cast": [
+        "loco",
+        "dre",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Mack. You look like a man who's forgotten what a Friday is. Get in. We're going to buy a car.",
+          "es": "Mack. Tienes cara de haber olvidado qué es un viernes. Sube. Vamos a comprar un coche.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "We don't have a car budget.",
+          "es": "No tenemos presupuesto para coches.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Who said anything about buying?",
+          "es": "¿Quién ha dicho nada de comprar?",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Loco. Whatever it is, it's legal by the next sunrise or I never met you.",
+          "es": "Loco. Sea lo que sea, que sea legal al amanecer o no te conozco.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "Legal is a mood.",
+          "es": "Lo legal es un estado de ánimo.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "There's a man in Dunes Gardens selling a coupe with a busted gearbox. Garage owner owes Loco a favor.",
+          "es": "Hay un hombre en Dunes Gardens que vende un cupé con la caja de cambios rota. El dueño del taller le debe un favor a Loco.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Loco",
+          "en": "He owes me three favors. Tonight I collect two.",
+          "es": "Me debe tres favores. Esta noche cobro dos.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm in. But if the night ends with sirens I'm blaming you.",
+          "es": "Me apunto. Pero si la noche termina con sirenas, te culpo a ti.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Loco",
+          "en": "Of course you are. That's what friends are for.",
+          "es": "Claro que sí. Para eso están los amigos.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Phone on. Always on.",
+          "es": "Móvil encendido. Siempre.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Always on, Dre. Go sleep.",
+          "es": "Siempre, Dre. Ve a dormir.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 23
+    },
+    {
+      "type": "steal",
+      "objective": "Roba una grúa o un coche de remolque para la noche"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -80,
+        "dz": -60
+      },
+      "objective": "Conduce hasta el taller de Dunes Gardens"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -82,
+        "dz": -62
+      },
+      "count": 4,
+      "objective": "Unos matones quieren cobrar al dueño del taller: échalos",
+      "faction": "midnight_locos",
+      "armed": false
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -84,
+        "dz": -64
+      },
+      "count": 2,
+      "label": "Cargar coche",
+      "objective": "Carga el cupé en la grúa con Loco"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 20,
+        "dz": -90
+      },
+      "objective": "Remolca el cupé hasta la carretera de circunvalación"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 24,
+        "dz": -92
+      },
+      "count": 1,
+      "label": "Coger maletín",
+      "objective": "Abre el cupé: hay un maletín de cuero en el maletero",
+      "hint": "Está debajo de una manta."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "That's not our briefcase. That's a bad idea in a nice handle.",
+          "es": "Ese no es nuestro maletín. Es una mala idea con una asa bonita.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "There's a name tag. 'Whitlock, Cross Meridian'.",
+          "es": "Hay una etiqueta con un nombre. «Whitlock, Cross Meridian».",
+          "t": 3.3
+        },
+        {
+          "speaker": "Loco",
+          "en": "Okay, now it's a good idea.",
+          "es": "Vale, ahora sí es una buena idea.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 40,
+        "dz": -80
+      },
+      "objective": "Whitlock sale corriendo de un bar: alcánzalo y devuélvele el maletín",
+      "toast": "Whitlock sale del bar"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 110,
+        "dz": 110
+      },
+      "objective": "Sigue el coche de Whitlock hasta su destino"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 115,
+        "dz": 115
+      },
+      "count": 2,
+      "label": "Fotografiar",
+      "objective": "Fotografía el edificio y las matrículas de la entrada",
+      "hint": "Es una torre de oficinas con un parking cerrado."
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 116,
+        "dz": 114
+      },
+      "count": 5,
+      "objective": "Han descubierto que Loco ha visto demasiado: salid a tiros",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Los hombres de Cross han avisado a la policía: pierde a las patrullas"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Vuelve al motel con Loco"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "loco",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "I'm bleeding on the seat. Don't tell the mechanic.",
+          "es": "Estoy sangrando en el asiento. No se lo digas al mecánico.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "You are the mechanic.",
+          "es": "El mecánico eres tú.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Then don't tell me.",
+          "es": "Pues no me lo digas.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "I copied the briefcase files. Whitlock moves payments between Aurum Freight and a trust in Northpoint. Real names, real dates.",
+          "es": "He copiado los archivos del maletín. Whitlock mueve pagos entre Aurum Freight y un fideicomiso en Northpoint. Nombres reales, fechas reales.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "So this isn't about Dunes Gardens or a coupe. It's a trail.",
+          "es": "Así que no iba de Dunes Gardens ni de un cupé. Es un rastro.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Loco",
+          "en": "I told you. Legal is a mood.",
+          "es": "Te lo dije. Lo legal es un estado de ánimo.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2780,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -8,
+        "midnight_locos": 5
+      },
+      "toast": "MISIÓN COMPLETADA · Una noche con Loco"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: DESERT FOOTPRINTS (50 en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,392 @@
+{
+  "id": "m51",
+  "number": 51,
+  "title": "THE FACE OF CROSS",
+  "title_es": "El rostro de Cross",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 100
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "loco",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Meridian Tower. Thursday, seven p.m. 'Renewal Forum'. Evelyn Cross speaks. Closed to press, open to donors.",
+          "es": "Torre Meridian. Jueves, siete de la tarde. «Foro de Renovación». Habla Evelyn Cross. Cerrado a la prensa, abierto a donantes.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "The woman who signs our neighbours' eviction notices, giving a speech about 'renewal'.",
+          "es": "La mujer que firma los desahucios de nuestros vecinos, dando un discurso sobre «renovación».",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "I want to see her face.",
+          "es": "Quiero verle la cara.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "You'll see it from forty metres away, behind two guards and a podium. But your invitation says 'Mr. Callaway'. Be Callaway.",
+          "es": "La verás a cuarenta metros, detrás de dos guardias y un atril. Pero tu invitación dice «señor Callaway». Sé Callaway.",
+          "t": 8.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Not Mack Johnson, ex-con.",
+          "es": "No Mack Johnson, expresidiario.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Callaway sounds like someone who doesn't stay long.",
+          "es": "Callaway suena a alguien que no se queda mucho.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "I steal a valet jacket and I'm in the parking structure with the car running.",
+          "es": "Robo una chaqueta de aparcacoches y estoy en el parking con el coche en marcha.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I walk the perimeter. Anyone recognizes you, I'll know before you do.",
+          "es": "Recorro el perímetro. Si alguien te reconoce, lo sabré antes que tú.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Do not start a fight in a room full of donors.",
+          "es": "No empieces una pelea en una sala llena de donantes.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I only start fights in rooms full of enemies.",
+          "es": "Solo empiezo peleas en salas llenas de enemigos.",
+          "t": 3.2
+        },
+        {
+          "speaker": "K",
+          "en": "Careful, Mack. She's the first person I've researched whose name every shell company hides behind.",
+          "es": "Cuidado, Mack. Es la primera persona que investigo cuyo nombre esconden todas las pantallas.",
+          "t": 6.9
+        }
+      ],
+      "title_card": true,
+      "hour": 16
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -10,
+        "dz": -30
+      },
+      "objective": "Recoge la invitación falsa de Callaway con el falsificador"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -12,
+        "dz": -34
+      },
+      "count": 3,
+      "label": "Identificar pantallas",
+      "objective": "Identifica las tres sociedades pantalla que controlan Meridian Tower",
+      "hint": "Las placas del vestíbulo cambian por plantas."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": 20
+      },
+      "guards": 3,
+      "objective": "Entra a la sala del foro sin que te reconozcan",
+      "label": "Torre Meridian"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": 20
+      },
+      "cast": [
+        "Evelyn Cross"
+      ],
+      "lines": [
+        {
+          "speaker": "Evelyn Cross",
+          "en": "We do not build towers. We build tomorrow. A neighbourhood that is allowed to decay is a neighbourhood that has been failed.",
+          "es": "No construimos torres. Construimos el mañana. Un barrio al que se le permite pudrirse es un barrio al que se ha fallado.",
+          "t": 8.7
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "We offer the ones who stay a fair price, a clean home, a future. We will not apologize for ambition.",
+          "es": "A quienes se quedan les ofrecemos un precio justo, un hogar limpio, un futuro. No pediremos perdón por la ambición.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fair price. Clean home. Same words on the notes they nailed to my mama's door.",
+          "es": "Precio justo. Hogar limpio. Las mismas palabras de las notas que clavaron en la puerta de mi madre.",
+          "t": 5.5
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Mack, her assistant just left the stage with a phone. Follow. Audio through your earpiece.",
+          "es": "Mack, su ayudante acaba de dejar el escenario con un teléfono. Síguelo. Audio por tu auricular.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Assistant",
+          "en": "Mrs. Cross wants Westbrook finished by quarter's end. The Johnson house is the last holdout.",
+          "es": "La señora Cross quiere Westbrook terminado antes del fin del trimestre. La casa de los Johnson es la última que se resiste.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Then make the offer unbearable.",
+          "es": "Entonces haced la oferta insoportable.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 70,
+        "dz": 30
+      },
+      "guards": 3,
+      "objective": "Sigue al ayudante hasta la sala privada",
+      "label": "Pasillo VIP"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Security's pulling photos. They've got a face match with a bus-terminal camera. Get out now.",
+          "es": "Seguridad está sacando fotos. Tienen una coincidencia facial con una cámara de la terminal. Sal ya.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Loco",
+          "en": "Engine's running. Ten seconds.",
+          "es": "El motor está en marcha. Diez segundos.",
+          "t": 2.1
+        }
+      ],
+      "objective": "Sal de la torre"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 75,
+        "dz": 35
+      },
+      "count": 5,
+      "objective": "Abre paso por el vestíbulo",
+      "faction": "guards",
+      "armed": true
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 110
+      },
+      "objective": "Huye hasta el motel"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Reúnete con K"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "I've mapped every shell. Forty-one companies. Every one routes to a single holding: Cross Meridian Holdings. Chair: Evelyn Cross.",
+          "es": "He cartografiado todas las pantallas. Cuarenta y una empresas. Todas desembocan en una sola sociedad: Cross Meridian Holdings. Presidenta: Evelyn Cross.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Not a puppet. The hand.",
+          "es": "No es un títere. Es la mano.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "She didn't need Viper. Viper was a gloved hand.",
+          "es": "No necesitaba a Viper. Viper era un guante.",
+          "t": 3.3
+        },
+        {
+          "speaker": "K",
+          "en": "And she knows your name now, Mack. Not 'Johnson'. 'The Johnson house'. It's personal.",
+          "es": "Y ya sabe tu nombre, Mack. No «Johnson». «La casa de los Johnson». Es personal.",
+          "t": 6.0
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Queda con el grupo para decidir el siguiente paso"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "dre",
+        "ghost",
+        "loco",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Evelyn Cross. Face like a banker. Voice like a priest. Heart like a locked door.",
+          "es": "Evelyn Cross. Cara de banquera. Voz de sacerdote. Corazón de puerta cerrada.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "She said it herself. Ambition. She won't stop for pity.",
+          "es": "Lo dijo ella misma. Ambición. No parará por compasión.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Then we stop her. With paper, with fists, with whatever's left.",
+          "es": "Pues la paramos. Con papeles, con puños, con lo que quede.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Loco",
+          "en": "And a very fast car.",
+          "es": "Y un coche muy rápido.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Warning: people like her don't retaliate with bullets first. They send lawyers. Then bullets.",
+          "es": "Aviso: gente como ella no responde primero con balas. Mandan abogados. Luego balas.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tonight we sleep. Tomorrow we plan the next hit.",
+          "es": "Esta noche dormimos. Mañana planeamos el siguiente golpe.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2920,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -12
+      },
+      "toast": "MISIÓN COMPLETADA · El rostro de Cross"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NO ROAD BACK (52 en el radar)"
+    }
+  ]
+}

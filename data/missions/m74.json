@@ -1,0 +1,407 @@
+{
+  "id": "m74",
+  "number": 74,
+  "title": "K'S SIGNAL",
+  "title_es": "La señal de K",
+  "act": "ACTO V",
+  "start": {
+    "zone": "isla_coral",
+    "dx": -150,
+    "dz": -140
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -30,
+        "dz": 20
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "ghost",
+        "Dani Ocampo"
+      ],
+      "title_card": true,
+      "hour": 19,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Everything we have fits in one file. Cross's trust chain, Pruitt's ledger, Tavo's map. Four hundred megabytes. If it goes public, she can't buy it back.",
+          "es": "Todo lo que tenemos cabe en un archivo. La cadena de Cross, el libro de Pruitt, el mapa de Tavo. Cuatrocientos megas. Si sale a la luz, no podrá recomprarlo.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "So why haven't you pressed send?",
+          "es": "Entonces, ¿por qué no le has dado a enviar?",
+          "t": 2.2
+        },
+        {
+          "speaker": "K",
+          "en": "Because every broadcast tower in this bay is monitored by one of her companies. The signal dies before it leaves the island.",
+          "es": "Porque cada torre de difusión de esta bahía la vigila una de sus empresas. La señal muere antes de salir de la isla.",
+          "t": 8.7
+        },
+        {
+          "speaker": "Dani Ocampo",
+          "en": "I work in the main relay station. I can open the back door for forty minutes. Forty. After that I'm a corpse with a swipe card.",
+          "es": "Trabajo en la estación principal de relés. Puedo abrir la puerta trasera cuarenta minutos. Cuarenta. Después soy un cadáver con una tarjeta.",
+          "t": 8.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Forty minutes to push four hundred megabytes. We can do forty.",
+          "es": "Cuarenta minutos para subir cuatrocientos megas. Podemos hacerlo.",
+          "t": 4.3
+        },
+        {
+          "speaker": "K",
+          "en": "Three relay points need checking first. If one's compromised, the whole thing fails.",
+          "es": "Primero hay que revisar tres puntos de relé. Si uno está comprometido, todo falla.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "And Dani? Who guarantees she's not the compromised point?",
+          "es": "¿Y Dani? ¿Quién garantiza que no es ella el punto comprometido?",
+          "t": 4.0
+        },
+        {
+          "speaker": "Dani Ocampo",
+          "en": "Nobody. You'd have to trust a stranger. That's the only way.",
+          "es": "Nadie. Tendríais que confiar en una desconocida. Es la única manera.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I've been trusting strangers my whole life. Most of them lied. A few didn't.",
+          "es": "He confiado en desconocidos toda la vida. La mayoría mintió. Algunos no.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "And what about you, Ghost? Who are you trusting tonight?",
+          "es": "¿Y tú, Ghost? ¿En quién confías esta noche?",
+          "t": 3.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "The people in this room. Same as yesterday.",
+          "es": "En la gente de esta sala. Igual que ayer.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we move at dusk. Keisha, you run comms. Ghost, you're with me on the roof. Dre, you cover Dani.",
+          "es": "Entonces salimos al anochecer. Keisha, tú las comunicaciones. Ghost, conmigo en la azotea. Dre, cubre a Dani.",
+          "t": 7.0
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -30,
+        "dz": 20
+      },
+      "objective": "Reúnete con Keisha y repasa el plan de transmisión",
+      "hint": "Entra en el local de Keisha.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 20,
+        "dz": -30
+      },
+      "count": 3,
+      "label": "Relé",
+      "objective": "Verifica los tres puntos de transmisión",
+      "hint": "Examina cada torre marcada en el radar."
+    },
+    {
+      "type": "give",
+      "ammo": 90,
+      "money": 0,
+      "toast": "Munición para la operación"
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue una furgoneta de mantenimiento como tapadera"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Rooftop is the Palmera Tower. Antenna housing on the east wing. The guards rotate every six minutes.",
+          "es": "La azotea es la torre Palmera. La caja de antenas en el ala este. Los guardias rotan cada seis minutos.",
+          "t": 7.0
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 60,
+        "dz": -50
+      },
+      "guards": 3,
+      "objective": "Lleva el equipo de transmisión a la azotea sin ser detectado",
+      "label": "Guardias de la torre"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Mack. Cross's man just called me. He has my sister Imani. He says he'll let her go if I give him the access code.",
+          "es": "Mack. El hombre de Cross acaba de llamarme. Tiene a mi hermana Imani. Dice que la soltará si le doy el código de acceso.",
+          "t": 7.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ghost. Look at me. Don't answer him. Give me ten minutes.",
+          "es": "Ghost. Mírame. No le contestes. Dame diez minutos.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I've had ten minutes my whole life, Mack.",
+          "es": "Toda la vida he tenido diez minutos, Mack.",
+          "t": 2.9
+        }
+      ]
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 60,
+        "dz": -50
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 45,
+      "objective": "Protege a Dani mientras Ghost decide",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 60,
+        "dz": -50
+      },
+      "cast": [
+        "ghost",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "He's calling, Ghost. The code or her. Whatever you pick, I'll understand.",
+          "es": "Te está llamando, Ghost. El código o ella. Elijas lo que elijas, lo entenderé.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "No. You won't. You'll understand a little and then you won't.",
+          "es": "No. No lo entenderás. Entenderás un poco y luego no.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Imani isn't on that roof. If you give him the code, he kills you, Dani, and then her.",
+          "es": "Imani no está en esa azotea. Si le das el código, te mata a ti, a Dani y luego a ella.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Ghost",
+          "en": "...I'm staying. Tell him the code is wrong. Tell him it's changed every ten minutes. Buy us time.",
+          "es": "...Me quedo. Dile que el código es erróneo. Dile que cambia cada diez minutos. Gánanos tiempo.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "That's a hell of a lie, Ghost.",
+          "es": "Menuda mentira, Ghost.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I learned from the best liars on earth. Cross's men.",
+          "es": "Aprendí de los mejores mentirosos del mundo. Los hombres de Cross.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Send Dani out by the canal side. A boat's waiting at the third bridge. Radio check every two minutes.",
+          "es": "Saca a Dani por el lado del canal. Una barca espera en el tercer puente. Control de radio cada dos minutos.",
+          "t": 7.1
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 20,
+        "dz": -100
+      },
+      "objective": "Coordina la extracción de Dani por calles y canales siguiendo la radio",
+      "time": 80
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 60,
+        "dz": -50
+      },
+      "count": 5,
+      "objective": "Despeja la azotea mientras sube el archivo",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Upload at eighty percent. Eighty-five. Mack, they're cutting the line from below. Hold the antenna.",
+          "es": "Subida al ochenta por ciento. Ochenta y cinco. Mack, cortan la línea desde abajo. Sujeta la antena.",
+          "t": 6.9
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -120,
+        "dz": 40
+      },
+      "objective": "Sal del edificio en coche mientras el archivo termina de enviarse"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -120,
+        "dz": 40
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "ghost",
+        "Dani Ocampo"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "It's out. Eleven newsrooms, two court dockets, one archive nobody can recall. It's public.",
+          "es": "Está fuera. Once redacciones, dos juzgados, un archivo que nadie puede retirar. Es público.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Dani Ocampo",
+          "en": "I'm alive. I didn't think I'd say that tonight.",
+          "es": "Estoy viva. No creía que lo diría esta noche.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "But we're not clean. We left the roof burned and Ghost nearly gave the code to the other side. I won't forget that.",
+          "es": "Pero no estamos limpios. Dejamos la azotea quemada y Ghost casi dio el código al otro bando. Eso no lo olvido.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I didn't. I stayed.",
+          "es": "No lo hice. Me quedé.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "You stayed after you stood there deciding. That's the difference.",
+          "es": "Te quedaste después de quedarte ahí decidiendo. Esa es la diferencia.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Keisha's signal is live. Imani's alive. We're not done, and we're not united. But we're still here.",
+          "es": "La señal de Keisha está viva. Imani está viva. No hemos terminado y no estamos unidos. Pero seguimos aquí.",
+          "t": 6.9
+        },
+        {
+          "speaker": "K",
+          "en": "The alliance is on a thread. Next island, we find out which side of the thread holds.",
+          "es": "La alianza pende de un hilo. En la próxima isla veremos de qué lado aguanta el hilo.",
+          "t": 6.0
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 7850,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -10
+      },
+      "toast": "+$7,850 · La prueba es pública"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NÁCAR NIGHT (M en el radar)"
+    }
+  ]
+}

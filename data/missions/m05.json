@@ -1,0 +1,324 @@
+{
+  "id": "m05",
+  "number": 5,
+  "title": "THE PRICE OF HOME",
+  "title_es": "El precio del hogar",
+  "act": "ACTO I",
+  "start": "veyra_mart",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "veyra_mart",
+      "cast": [
+        "okafor",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "Third offer this month. Triple the market, cash, signed in an hour. Funny thing about generous men, they always bring friends.",
+          "es": "Tercera oferta este mes. El triple del mercado, en efectivo, firmado en una hora. Los hombres generosos siempre traen amigos.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "What did you tell them?",
+          "es": "¿Qué les dijiste?",
+          "t": 2
+        },
+        {
+          "speaker": "Okafor",
+          "en": "That my father bought this counter in a country he was never allowed to go back to. I'm not selling it to a suit.",
+          "es": "Que mi padre compró este mostrador en un país al que nunca le dejaron volver. No se lo vendo a un traje.",
+          "t": 7.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "They paint, they smash, then they send a letter of apology with a bigger number.",
+          "es": "Pintan, rompen y luego mandan una carta de disculpa con un número mayor.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Okafor",
+          "en": "I want proof. Not for me, for the rest of the street. Three shops are shaking.",
+          "es": "Quiero pruebas. No para mí, para el resto de la calle. Tres tiendas están temblando.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "The barber, the laundromat, who else?",
+          "es": "El barbero, la lavandería, ¿quién más?",
+          "t": 2.6
+        },
+        {
+          "speaker": "Okafor",
+          "en": "Ms. Ferreira's bakery. Old Tran's phone repair. They've all had visitors.",
+          "es": "La panadería de la señora Ferreira. La reparación de móviles del viejo Tran. Todos han tenido visitas.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "K can use this. She's tracking buyers. Photos, dates, names if you can.",
+          "es": "K puede usar esto. Sigue a los compradores. Fotos, fechas, nombres si puedes.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Okafor",
+          "en": "And Marcus. They know your face already. Be careful who's behind you.",
+          "es": "Y Marcus. Ya conocen tu cara. Cuidado con quién tienes detrás.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll be careful.",
+          "es": "Tendré cuidado.",
+          "t": 2
+        },
+        {
+          "speaker": "Okafor",
+          "en": "You were never careful. You were lucky.",
+          "es": "Nunca fuiste cuidadoso. Tuviste suerte.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        -60,
+        -30
+      ],
+      "count": 3,
+      "label": "Prueba",
+      "objective": "Visita los tres locales amenazados y anota las señales de presión",
+      "hint": "Fotografía pintadas, cristales y cartas."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Send me the photos. Dates matter more than faces.",
+          "es": "Mándame las fotos. Las fechas importan más que las caras.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "On it.",
+          "es": "Voy.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": [
+        -30,
+        -90
+      ],
+      "guards": 2,
+      "objective": "Acércate al edificio trasero y fotografía a los agentes privados",
+      "label": "edificio trasero"
+    },
+    {
+      "type": "collect",
+      "at": [
+        -30,
+        -90
+      ],
+      "count": 2,
+      "label": "Foto",
+      "objective": "Fotografía a los agentes entrando",
+      "hint": "Mantente agachado detrás del contenedor."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche para llevar a Okafor a la reunión vecinal"
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        20,
+        40
+      ],
+      "objective": "Lleva a Okafor a la reunión vecinal mientras los vehículos te acosan",
+      "time": 75
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "fight",
+      "at": [
+        20,
+        40
+      ],
+      "count": 3,
+      "objective": "Frena a los matones que bloquean la puerta sin sacar armas",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "Neighbors are coming out. Look at that, they came.",
+          "es": "Los vecinos están saliendo. Mira, han venido.",
+          "t": 3.5
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "collect",
+      "at": [
+        20,
+        40
+      ],
+      "count": 2,
+      "label": "Contrato",
+      "objective": "Revisa los contratos de la sala y busca el mismo sello",
+      "hint": "Examina las carpetas de la mesa."
+    },
+    {
+      "type": "scene",
+      "at": "veyra_mart",
+      "cast": [
+        "okafor",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "Same seal on every one. Cross... something. Meridian.",
+          "es": "El mismo sello en todos. Cross... algo. Meridian.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "A seal that expensive doesn't print itself.",
+          "es": "Un sello tan caro no se imprime solo.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Take it all to K.",
+          "es": "Llévaselo todo a K.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Entrega la información a Keisha"
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "okafor",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Receipts, dates, a corporate seal. You did my job for free.",
+          "es": "Recibos, fechas, un sello corporativo. Has hecho mi trabajo gratis.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Pay me in answers.",
+          "es": "Págame en respuestas.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Meridian is a shell inside a shell. Give me a week.",
+          "es": "Meridian es una pantalla dentro de otra. Dame una semana.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Okafor",
+          "en": "The street will remember this.",
+          "es": "La calle se acordará de esto.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "The street remembers everything. That's both the good news and the problem.",
+          "es": "La calle se acuerda de todo. Esa es la buena noticia y el problema.",
+          "t": 5.3
+        },
+        {
+          "speaker": "K",
+          "en": "Marcus, one rule. You don't go back to those stores alone. Not tonight, not this week.",
+          "es": "Marcus, una regla. No vuelvas a esas tiendas solo. Ni esta noche ni esta semana.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "You worried about me?",
+          "es": "¿Te preocupas por mí?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "I'm worried about my paperwork. Dead witnesses don't testify.",
+          "es": "Me preocupa mi papeleo. Los testigos muertos no declaran.",
+          "t": 4.3
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 270,
+      "reputation": {
+        "westbrook_saints": 4,
+        "redline_kings": -2
+      },
+      "toast": "+$270 · El precio del hogar"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: WALLS TALK (M en el radar)"
+    }
+  ]
+}

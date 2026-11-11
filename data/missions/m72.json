@@ -1,0 +1,335 @@
+{
+  "id": "m72",
+  "number": 72,
+  "title": "A VOICE FROM WESTBROOK",
+  "title_es": "Una voz desde Westbrook",
+  "act": "ACTO V",
+  "start": {
+    "zone": "isla_brava",
+    "dx": -100,
+    "dz": -80
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -60,
+        "dz": -40
+      },
+      "cast": [
+        "dre",
+        "ghost",
+        "okafor"
+      ],
+      "title_card": true,
+      "hour": 20,
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "Mack? Mack, it's Okafor. Listen to me, I don't have long. They came back. Three vans, in daylight. They're taping notices to every door on Crenwood.",
+          "es": "¿Mack? Mack, soy Okafor. Escúchame, no tengo mucho tiempo. Han vuelto. Tres furgonetas, a plena luz del día. Están pegando avisos en todas las puertas de Crenwood.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "What kind of notices?",
+          "es": "¿Qué tipo de avisos?",
+          "t": 2
+        },
+        {
+          "speaker": "Okafor",
+          "en": "Thirty-day vacate. All of South Veyra Row. They say it's a safety condemnation. The building inspector didn't even get out of the car.",
+          "es": "Desalojo en treinta días. Toda South Veyra Row. Dicen que es una condena por seguridad. El inspector ni se bajó del coche.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Who's got the corner? Who's holding the block while we're here playing detective?",
+          "es": "¿Quién tiene la esquina? ¿Quién guarda la manzana mientras nosotros jugamos a detectives?",
+          "t": 5.7
+        },
+        {
+          "speaker": "Okafor",
+          "en": "Nobody, Dre. The Saints you left behind are scared and half of them are working for hire now.",
+          "es": "Nadie, Dre. Los Saints que dejaste están asustados y la mitad trabajan por encargo.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "That's my fault. I told them to hold and I left.",
+          "es": "Eso es culpa mía. Les dije que aguantaran y me fui.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "It's not fault, it's a map. We were looking at the roots in the islands. The branches were growing at home.",
+          "es": "No es culpa, es un mapa. Mirábamos las raíces en las islas. Las ramas crecían en casa.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Okafor",
+          "en": "Mrs. Pearl's window got broken. Old man Hendry won't come out of his apartment. I can't fix this with a mop.",
+          "es": "A la señora Pearl le rompieron la ventana. El viejo Hendry no sale de su piso. Esto no lo arreglo con una fregona.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "We're coming. Tonight. Hold the lights on. Tell them Johnson's boy is on his way.",
+          "es": "Vamos. Esta noche. Mantened las luces encendidas. Decidles que el chico de los Johnson va de camino.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Okafor",
+          "en": "They'll like that. They've been waiting on you for a while.",
+          "es": "Les gustará. Hace tiempo que te esperan.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ghost, you drive. I want to look at the road the whole way and remember what I walked away from.",
+          "es": "Ghost, conduces tú. Quiero mirar la carretera todo el camino y recordar de qué me fui.",
+          "t": 6.7
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -60,
+        "dz": -40
+      },
+      "objective": "Prepara el viaje y sal de Bahía Solana",
+      "hint": "Sube al coche de Dre.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "drive_to",
+      "target": "bridge",
+      "objective": "Conduce de vuelta hacia el puente de Westbrook"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Eight years ago I left this road and swore I'd never come back for a fight. Now I'm coming back for one.",
+          "es": "Hace ocho años dejé esta carretera y juré no volver por una pelea. Ahora vuelvo por una.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You didn't leave, Dre. I did. You stayed. Remember who stayed.",
+          "es": "Tú no te fuiste, Dre. Me fui yo. Tú te quedaste. Recuerda quién se quedó.",
+          "t": 4.3
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": "veyra_mart",
+      "objective": "Reúnete con Okafor y los vecinos delante de Veyra Mart",
+      "hint": "Okafor te espera en la puerta.",
+      "radius": 6
+    },
+    {
+      "type": "collect",
+      "at": [
+        -60,
+        -40
+      ],
+      "count": 3,
+      "label": "Aviso",
+      "objective": "Examina los avisos de desalojo pegados en las puertas de Crenwood",
+      "hint": "Cada aviso está marcado en el radar."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "The meeting's tonight at the corner. Forty families. The inspector's lawyer says it's illegal to gather in a condemned block.",
+          "es": "La reunión es esta noche en la esquina. Cuarenta familias. El abogado del inspector dice que es ilegal reunirse en una manzana condenada.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "I'll tell him what's illegal.",
+          "es": "Ya le diré yo lo que es ilegal.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "give",
+      "ammo": 100,
+      "money": 0,
+      "toast": "Munición para la reunión"
+    },
+    {
+      "type": "defend",
+      "at": "dre_corner",
+      "count": 5,
+      "waves": 2,
+      "time": 45,
+      "objective": "Protege la reunión vecinal de la gente de Cross",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "fight",
+      "at": [
+        -50,
+        100
+      ],
+      "count": 4,
+      "objective": "Retira la amenaza inmediata: los hombres con bidones frente a la tienda",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "A black sedan just left the old real estate office with three file boxes. They're moving the originals out of the neighborhood.",
+          "es": "Un sedán negro acaba de salir de la vieja inmobiliaria con tres cajas de archivos. Se llevan los originales fuera del barrio.",
+          "t": 8.9
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche para seguir al sedán con los documentos"
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        100,
+        -110
+      ],
+      "objective": "Sigue al sedán hasta el taller Vargas antes de que cambie de coche",
+      "time": 70
+    },
+    {
+      "type": "chase",
+      "at": [
+        104,
+        -114
+      ],
+      "objective": "Alcanza al mensajero que huye a pie con una caja",
+      "toast": "El mensajero corre hacia los callejones"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Entrega las copias de los documentos a Keisha",
+      "hint": "Sigue hacia su oficina.",
+      "radius": 6
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "dre",
+        "ghost",
+        "keisha",
+        "okafor"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "It's all here. Eviction scripts, forged inspection orders. A letter of authority with an 'EC' initialed in the corner.",
+          "es": "Está todo aquí. Guiones de desalojo, órdenes de inspección falsificadas. Una carta de autoridad con unas «EC» en la esquina.",
+          "t": 8.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "She's reaching into my neighborhood from across the water. As if we were an item on her checklist.",
+          "es": "Está metiendo la mano en mi barrio desde el otro lado del agua. Como si fuéramos un punto de su lista.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Okafor",
+          "en": "The families can organize. Mrs. Pearl said she'll lead the meeting herself.",
+          "es": "Las familias pueden organizarse. La señora Pearl dijo que dirigirá ella misma la reunión.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Funny how I spent eight years running from this block, and the minute I go away, I'm dragged right back.",
+          "es": "Qué curioso: pasé ocho años huyendo de esta manzana y, en cuanto me alejo, me arrastran de vuelta.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Home isn't something you leave. It's something that waits.",
+          "es": "El hogar no es algo que se deja. Es algo que espera.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then we don't leave it again. We finish what Cross started and finish it here too.",
+          "es": "Entonces no lo dejamos otra vez. Terminamos lo que empezó Cross y lo terminamos aquí también.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "One more thing. In three days, Keisha's got a lead on the next island. Coral. We leave when the lights hold.",
+          "es": "Una cosa más. En tres días, Keisha tiene una pista de la próxima isla. Coral. Nos vamos cuando las luces aguanten.",
+          "t": 7.6
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 7200,
+      "reputation": {
+        "westbrook_saints": 9,
+        "the_syndicate": -8
+      },
+      "toast": "+$7,200 · Westbrook resiste"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CORAL CURRENT (M en el radar)"
+    }
+  ]
+}

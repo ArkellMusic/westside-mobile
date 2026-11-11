@@ -1,0 +1,300 @@
+{
+  "id": "m19",
+  "number": 19,
+  "title": "SMOKE TRAIL",
+  "title_es": "Rastro de humo",
+  "act": "ACTO I",
+  "start": "vargas_front",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "loco",
+        "keisha",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Disc is half burnt. But look: a flatbed. Hargrove decals scraped off.",
+          "es": "El disco está medio quemado. Pero mira: una plataforma. Con las pegatinas de Hargrove rascadas.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "They scraped the name.",
+          "es": "Rascaron el nombre.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Not the cargo tag. Thermal fuel. Industrial grade. Whoever bought it paid cash through an intermediary.",
+          "es": "Pero no la etiqueta de carga. Combustible térmico. De grado industrial. Quien lo compró pagó en efectivo a través de un intermediario.",
+          "t": 7.2
+        },
+        {
+          "speaker": "K",
+          "en": "I can trace the shipping company through a chemical manifest. Look at the dates.",
+          "es": "Puedo rastrear la naviera por un manifiesto de químicos. Mira las fechas.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Delivered three days before the fire.",
+          "es": "Entregado tres días antes del incendio.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "That's an arson budget. Somebody planned it.",
+          "es": "Eso es un presupuesto de incendio. Alguien lo planificó.",
+          "t": 3.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Where's the warehouse?",
+          "es": "¿Dónde está el almacén?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Industrial strip, east of the harbor. Night shift changes at eleven.",
+          "es": "Zona industrial, al este del puerto. El cambio de turno es a las once.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'm coming.",
+          "es": "Voy yo.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're staying with your garage, Loco.",
+          "es": "Te quedas con tu garaje, Loco.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "What garage? Fine. I'll lend you the van and the tools.",
+          "es": "¿Qué garaje? Vale. Te dejo la furgoneta y las herramientas.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Eyes sharp, Mack. They burn a shop and think nobody will follow.",
+          "es": "Ojos abiertos, Mack. Queman un taller y creen que nadie los seguirá.",
+          "t": 4.5
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "time",
+      "hour": 22
+    },
+    {
+      "type": "steal",
+      "objective": "Coge la furgoneta prestada de Loco"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        180,
+        -170
+      ],
+      "objective": "Conduce hasta la zona industrial al este del puerto"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": [
+        185,
+        -175
+      ],
+      "guards": 2,
+      "objective": "Sube a un tejado accesible para vigilar la nave",
+      "label": "tejado"
+    },
+    {
+      "type": "collect",
+      "at": [
+        185,
+        -175
+      ],
+      "count": 2,
+      "label": "Foto",
+      "objective": "Fotografía a los camiones que entran y salen",
+      "hint": "Anota las matrículas y el tipo de carga."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": [
+        190,
+        -180
+      ],
+      "guards": 4,
+      "objective": "Entra en la nave mientras los empleados cambian de turno",
+      "label": "nave"
+    },
+    {
+      "type": "collect",
+      "at": [
+        190,
+        -180
+      ],
+      "count": 3,
+      "label": "Registro de envío",
+      "objective": "Busca los registros de envío en la oficina",
+      "hint": "Los archivadores están al fondo."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Guard",
+          "en": "Somebody's in the dispatch office!",
+          "es": "¡Hay alguien en la oficina de despacho!",
+          "t": 2.4
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": [
+        190,
+        -185
+      ],
+      "count": 3,
+      "objective": "Sal por la zona de carga contra los guardias de seguridad",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "give",
+      "ammo": 20,
+      "money": 0,
+      "toast": "Munición de la furgoneta de Loco"
+    },
+    {
+      "type": "timed_drive",
+      "target": "vargas_front",
+      "objective": "Conduce la furgoneta con las pruebas en el maletero",
+      "time": 70
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Despista a la patrulla que te sigue con las pruebas a bordo"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "keisha",
+        "loco",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Manifest numbers match the port container you photographed on Night Shift. Same seal series.",
+          "es": "Los números del manifiesto coinciden con el contenedor del puerto que fotografiaste en el turno de noche. La misma serie de precintos.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "So the harbor feeds the arson.",
+          "es": "Así que el puerto alimenta el incendio.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Loco",
+          "en": "They burned my shop to scare the neighborhood, then bought the lot.",
+          "es": "Quemaron mi taller para asustar al barrio y luego compraron el solar.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Fire, then a letter. Predictable.",
+          "es": "Fuego y luego una carta. Predecible.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "And the carrier is registered under Blackwater.",
+          "es": "Y el transportista está registrado a nombre de Blackwater.",
+          "t": 3.3
+        },
+        {
+          "speaker": "K",
+          "en": "That ties it. Westbrook's being eaten from the harbor in.",
+          "es": "Eso lo une todo. A Westbrook se la comen desde el puerto hacia dentro.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "Then we cut the harbor.",
+          "es": "Entonces cortamos el puerto.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Slowly, Loco. Slowly.",
+          "es": "Despacio, Loco. Despacio.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 820,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -4
+      },
+      "toast": "+$820 · Rastro de humo"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: OLD DEBTS (M en el radar)"
+    }
+  ]
+}

@@ -509,6 +509,8 @@ func _cop_fire(c: Cop, focus: Node3D, dist: float, in_car: bool) -> void:
 		chance *= 0.6
 	if in_car:
 		chance *= 0.8
+	if not in_car and main.player.crouching:
+		chance *= 0.5
 	var hit := rng.randf() < chance
 	var end := target
 	if not hit:

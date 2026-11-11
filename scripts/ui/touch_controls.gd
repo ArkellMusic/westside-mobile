@@ -96,6 +96,7 @@ func _layout() -> void:
 			_add_button("sprint", "Correr", pivot, 140.0, 8.0, 54.0, true)
 			_add_button("attack", _attack_label, pivot, 150.0, 52.0, 58.0, true)
 			_add_button("weapon", "Arma", pivot, 262.0, 30.0, 40.0, false)
+			_add_button("crouch", "Agachar", pivot, 262.0, 62.0, 40.0, false)
 			if _interact_label != "":
 				_add_button("interact", _interact_label, pivot, 150.0, 96.0, 54.0, false)
 		else:

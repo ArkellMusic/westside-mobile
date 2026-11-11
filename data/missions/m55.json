@@ -1,0 +1,316 @@
+{
+  "id": "m55",
+  "number": 55,
+  "title": "THE SETUP",
+  "title_es": "La encerrona",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 90
+      },
+      "cast": [
+        "dre",
+        "keisha",
+        "ghost",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "I got a message from a guy who says he has the Pike report. Real one, not the doctored version.",
+          "es": "Me ha escrito un tío que dice tener el informe de Pike. El de verdad, no la versión manipulada.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Name?",
+          "es": "¿Nombre?",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "He signed 'Acorn'. Old Westbrook code. A Saints informant from my corner days.",
+          "es": "Firmó «Bellota». Código antiguo de Westbrook. Un informante de los Saints de mis tiempos de esquina.",
+          "t": 5.5
+        },
+        {
+          "speaker": "K",
+          "en": "Never heard of him.",
+          "es": "Nunca he oído hablar de él.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Because he was before your time, K.",
+          "es": "Porque era anterior a ti, K.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "And you trust him?",
+          "es": "¿Y confías en él?",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Nobody's earned trust anymore. But I trust the code.",
+          "es": "Nadie se ha ganado la confianza ya. Pero confío en el código.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "The code is eleven years old.",
+          "es": "El código tiene once años.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then he's a patient man.",
+          "es": "Entonces es un hombre paciente.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'll be at the Sandstone gas station. Where it's bright and people can see me.",
+          "es": "Estaré en la gasolinera de Sandstone. Donde hay luz y la gente puede verme.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dre and I go. Ghost, K stay put.",
+          "es": "Dre y yo vamos. Ghost, K, quietos.",
+          "t": 2.2
+        }
+      ],
+      "title_card": true,
+      "hour": 19
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 130,
+        "dz": 130
+      },
+      "objective": "Conduce con Dre hasta el edificio de la cita"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 132,
+        "dz": 132
+      },
+      "objective": "Examina los alrededores del edificio",
+      "hint": "Mira ventanas, coches y puertas."
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 133,
+        "dz": 133
+      },
+      "count": 2,
+      "label": "Detectar señales",
+      "objective": "Busca señales de vigilancia",
+      "hint": "Las cámaras apuntan a la entrada, no a la calle."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "There's no light. No car. No guard. This is a trap.",
+          "es": "No hay luz. Ni coche. Ni guardia. Esto es una trampa.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Or an honest man hiding. Come on.",
+          "es": "O un hombre honrado escondido. Vamos.",
+          "t": 2.3
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 136,
+        "dz": 135
+      },
+      "guards": 2,
+      "objective": "Entra en el edificio y comprueba que está vacío",
+      "label": "Edificio abandonado"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 136,
+        "dz": 136
+      },
+      "count": 6,
+      "waves": 3,
+      "time": 60,
+      "objective": "La emboscada: aguanta hasta encontrar una salida"
+    },
+    {
+      "type": "give",
+      "ammo": 40,
+      "money": 0,
+      "toast": "Munición recogida de los caídos: +40"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un vehículo del aparcamiento cercano"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Whoever told them we were here knows the code. That's one of ours.",
+          "es": "Quien les dijo dónde estábamos conoce el código. Es uno de los nuestros.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Drive first. Accuse later.",
+          "es": "Conduce primero. Acusa después.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Los atacantes os siguen: pierde a los coches"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -20,
+        "dz": 160
+      },
+      "objective": "Llega a la gasolinera de Sandstone, donde espera Loco"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -20,
+        "dz": 160
+      },
+      "cast": [
+        "loco",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Look at you two. Who's bleeding? Is it Dre? It's Dre.",
+          "es": "Mirad qué pinta. ¿Quién sangra? ¿Es Dre? Es Dre.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "It's a graze.",
+          "es": "Es un rasguño.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "The message came from inside. Only four of us knew Dre had it.",
+          "es": "El mensaje vino de dentro. Solo cuatro sabíamos que Dre lo tenía.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Loco",
+          "en": "Me, you, Dre, K. And Ghost, if you count the guy who listens at doors.",
+          "es": "Yo, tú, Dre, K. Y Ghost, si cuentas al que escucha tras las puertas.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Say it plain, Loco.",
+          "es": "Dilo claro, Loco.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'm saying everybody here looks guilty.",
+          "es": "Digo que todos aquí parecen culpables.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we stop looking at each other. We look for the leak.",
+          "es": "Pues dejamos de mirarnos entre nosotros. Buscamos la fuga.",
+          "t": 4.0
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3190,
+      "reputation": {
+        "westbrook_saints": -3,
+        "the_syndicate": -8
+      },
+      "toast": "MISIÓN COMPLETADA · La encerrona"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: K'S RECORDING (56 en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,344 @@
+{
+  "id": "m61",
+  "number": 61,
+  "title": "CARDS ON THE TABLE",
+  "title_es": "Las cartas sobre la mesa",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "Nina Cho",
+        "Detective Hale",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Two hundred and twelve documents, fourteen recordings, eleven witness statements. All stacked in a room that smells like cold coffee.",
+          "es": "Doscientos doce documentos, catorce grabaciones, once declaraciones de testigos. Todo apilado en una sala que huele a café frío.",
+          "t": 9
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "I need chain of custody for every page. If a defence lawyer finds one gap, Cross walks.",
+          "es": "Necesito cadena de custodia para cada página. Si un abogado defensor encuentra un hueco, Cross sale libre.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I'll certify what I can. The rest needs a witness who'll swear under oath.",
+          "es": "Certificaré lo que pueda. El resto necesita un testigo que jure bajo juramento.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "We have Prade. He's willing.",
+          "es": "Tenemos a Prade. Está dispuesto.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "One witness isn't a case. Prade validates numbers. We need someone who validates orders.",
+          "es": "Un testigo no es un caso. Prade valida números. Necesitamos a alguien que valide órdenes.",
+          "t": 6.2
+        },
+        {
+          "speaker": "K",
+          "en": "There's a man named Hector Ames. Former chief clerk at Meridian Sands. He's the only one who saw the final memo.",
+          "es": "Hay un hombre llamado Héctor Ames. Antiguo jefe de oficina en Meridian Sands. Es el único que vio la nota final.",
+          "t": 7.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Where is he?",
+          "es": "¿Dónde está?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "A print shop across town. Closing down tonight. Somebody's shutting everything before we can reach him.",
+          "es": "Una imprenta al otro lado de la ciudad. Cierra esta noche. Alguien está cerrándolo todo antes de que podamos llegar a él.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we stop the closing.",
+          "es": "Pues paramos el cierre.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "And be careful. Every page you touch is evidence. Gloves.",
+          "es": "Y con cuidado. Cada página que tocas es una prueba. Guantes.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "I only know gloves for fighting.",
+          "es": "Solo conozco los guantes para pelear.",
+          "t": 2.2
+        }
+      ],
+      "title_card": true,
+      "hour": 15
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -108,
+        "dz": 92
+      },
+      "count": 4,
+      "label": "Ordenar pruebas",
+      "objective": "Ordena las pruebas por tema: contratos, grabaciones, testimonios y pagos",
+      "hint": "Sigue las etiquetas de K."
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 100,
+        "dz": 100
+      },
+      "objective": "Lleva el último lote a la oficina cifrada de Nina"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Chain of custody log is clean. But the recording from the casino is twelve seconds short.",
+          "es": "El registro de cadena de custodia está limpio. Pero la grabación del casino dura doce segundos menos.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Find the missing piece in the original recorder. I'll hold the paperwork.",
+          "es": "Encuentra la pieza que falta en la grabadora original. Yo me ocupo del papeleo.",
+          "t": 5.1
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 104,
+        "dz": 102
+      },
+      "count": 3,
+      "label": "Recuperar copias",
+      "objective": "Recupera las copias de seguridad del casino en la oficina de Nina"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 40,
+        "dz": -130
+      },
+      "objective": "Ve al local de Héctor Ames"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 42,
+        "dz": -132
+      },
+      "count": 4,
+      "objective": "Hay hombres del Syndicate en la puerta de la imprenta: elimínalos",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 44,
+        "dz": -134
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 60,
+      "objective": "Defiende la imprenta mientras Ames da su declaración"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -80,
+        "dz": -90
+      },
+      "objective": "Lleva a Ames a la oficina de Nina antes de que cierren el local",
+      "time": 85
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Cross ha movilizado a la policía contra la oficina de Nina: despista a las patrullas"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 100,
+        "dz": 100
+      },
+      "cast": [
+        "Hector Ames",
+        "Nina Cho",
+        "Detective Hale",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Hector Ames",
+          "en": "The memo said: 'Targets by sector. Priority: the Johnson property. Cooperation optional.' Signed E.C.",
+          "es": "La nota decía: «Objetivos por sector. Prioridad: la propiedad Johnson. Cooperación opcional.» Firmada E.C.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "That is direct. That's an order, not an accident.",
+          "es": "Eso es directo. Es una orden, no un accidente.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "It ties the shells, the payments and the violence in one document.",
+          "es": "Une las pantallas, los pagos y la violencia en un solo documento.",
+          "t": 4.6
+        },
+        {
+          "speaker": "K",
+          "en": "Cross Meridian Holdings sits at the top. Beneath it, Meridian Sands, Aurum Freight, Red Mesa. Beneath those, everyone we met.",
+          "es": "Cross Meridian Holdings está arriba. Debajo, Meridian Sands, Aurum Freight, Red Mesa. Debajo de esas, todos los que conocimos.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Pictured on a wall, it looks like a tree. A rotten one.",
+          "es": "Dibujado en una pared parece un árbol. Uno podrido.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 100,
+        "dz": 100
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "dre",
+        "big_ray",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "I'm going to the grand jury in Northpoint. Walter Prade has to testify in person. Someone has to get him there alive.",
+          "es": "Voy al gran jurado de Northpoint. Walter Prade tiene que testificar en persona. Alguien tiene que llevarlo allí con vida.",
+          "t": 8.2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Cross will know the moment he moves. Every road north will be watched.",
+          "es": "Cross lo sabrá en cuanto se mueva. Cada carretera al norte estará vigilada.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "We take him. We've dealt with worse.",
+          "es": "Lo llevamos nosotros. Hemos pasado por cosas peores.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Convoy. Three cars. Tunnel switch. We don't stop until the border.",
+          "es": "Convoy. Tres coches. Cambio en el túnel. No paramos hasta la frontera.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Make it quiet. Make it clean.",
+          "es": "Que sea silencioso. Que sea limpio.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Nobody gets clean in this. But we get close.",
+          "es": "Nadie sale limpio de esto. Pero nos acercamos.",
+          "t": 3.1
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3600,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -12
+      },
+      "toast": "MISIÓN COMPLETADA · Las cartas sobre la mesa"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NORTHBOUND (62 en el radar)"
+    }
+  ]
+}

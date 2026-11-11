@@ -1,0 +1,348 @@
+{
+  "id": "m50",
+  "number": 50,
+  "title": "DESERT FOOTPRINTS",
+  "title_es": "Huellas en el desierto",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -120,
+        "dz": 110
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "loco",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The Aurum Freight trucks don't enter the city. Fuel docket says they park in Salinas Wells for six hours. What does a freight truck do for six hours?",
+          "es": "Los camiones de Aurum Freight no entran en la ciudad. El albarán de combustible dice que aparcan en Salinas Wells seis horas. ¿Qué hace un camión de carga seis horas?",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Unloads. Or loads. Either way, somebody out there is waiting.",
+          "es": "Descarga. O carga. De cualquier forma, alguien allí está esperando.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dusty towns. Three houses and a gas station. Perfect place to hide a supply line.",
+          "es": "Pueblos polvorientos. Tres casas y una gasolinera. El sitio perfecto para esconder una línea de suministro.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "Gas station girl knows every trucker. I'll bring a bribe. A good one. Pastries.",
+          "es": "La chica de la gasolinera conoce a todos los camioneros. Llevo un soborno. Uno bueno. Bollos.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Be serious, Loco.",
+          "es": "Habla en serio, Loco.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'm always serious about pastries.",
+          "es": "Siempre hablo en serio de los bollos.",
+          "t": 2.4
+        },
+        {
+          "speaker": "K",
+          "en": "The mechanic at Salinas, a man named Pruitt, has a record for drunk driving and a grudge against the fuel company.",
+          "es": "El mecánico de Salinas, un tal Pruitt, tiene antecedentes por conducir ebrio y un rencor contra la empresa de combustible.",
+          "t": 8.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Perfect witness.",
+          "es": "Testigo perfecto.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Remember: they can't know we're asking. The Syndicate pays for eyes in places like this.",
+          "es": "Recordad: no pueden saber que preguntamos. El Syndicate paga por ojos en sitios como este.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ghost, you're on the roof of the motel. Keep watch.",
+          "es": "Ghost, tú en la azotea del motel. Vigila.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Fine.",
+          "es": "Vale.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 9
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -40,
+        "dz": -170
+      },
+      "objective": "Conduce hasta el pueblo de Salinas Wells"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -35,
+        "dz": -175
+      },
+      "objective": "Habla con el mecánico y la empleada de la gasolinera"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -35,
+        "dz": -175
+      },
+      "cast": [
+        "Pruitt",
+        "Dana"
+      ],
+      "lines": [
+        {
+          "speaker": "Pruitt",
+          "en": "Grey trucks, every second Thursday. They load crates with no label. Nobody opens them. I get paid to look the other way.",
+          "es": "Camiones grises, cada dos jueves. Cargan cajas sin etiqueta. Nadie las abre. Me pagan por mirar a otro lado.",
+          "t": 8.4
+        },
+        {
+          "speaker": "Dana",
+          "en": "Last week they left tyre marks heading east along the old mine road. Night shift guys wear no patches.",
+          "es": "La semana pasada dejaron marcas de neumáticos hacia el este por la antigua carretera minera. Los del turno de noche no llevan parches.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nothing on a uniform. Professionals.",
+          "es": "Ningún emblema. Profesionales.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "They'll know I told you. You better be worth it.",
+          "es": "Sabrán que os lo dije. Más vale que merezcáis la pena.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -10,
+        "dz": -160
+      },
+      "count": 3,
+      "label": "Rastros de neumáticos",
+      "objective": "Sigue los rastros de neumáticos y las manchas de combustible",
+      "hint": "Mira los surcos en el polvo."
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 40,
+        "dz": -120
+      },
+      "objective": "Sigue el camino de tierra hasta la antigua mina"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 80,
+        "dz": -90
+      },
+      "guards": 3,
+      "objective": "Llega a la mina convertida en almacén sin alertar a los vigilantes",
+      "label": "Antigua mina"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 84,
+        "dz": -86
+      },
+      "count": 3,
+      "label": "Fotografiar cajas",
+      "objective": "Fotografía las cajas y la orden de compra comprometida",
+      "hint": "Hay una caja abierta con rifles nuevos."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Rifles, ammo, and that purchase order. Signed by an assistant of Cross Meridian. We have our paper!",
+          "es": "Rifles, munición y esa orden de compra. Firmada por un asistente de Cross Meridian. ¡Ya tenemos el papel!",
+          "t": 6.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "Great, now leave before they find the paper's missing.",
+          "es": "Genial, ahora sal antes de que descubran que falta el papel.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 82,
+        "dz": -88
+      },
+      "count": 5,
+      "objective": "Te han descubierto: rompe el cerco",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -20,
+        "dz": -60
+      },
+      "objective": "Escapa por el lecho seco del río con poca visibilidad",
+      "time": 80
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Vuelve a Las Brisas"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Purchase order cross-references a shipment that left San Cordova port in March. Container twelve, bonded warehouse.",
+          "es": "La orden de compra coincide con un envío que salió del puerto de San Cordova en marzo. Contenedor doce, almacén aduanero.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Port Authority. We were there. The same ledger.",
+          "es": "Autoridad Portuaria. Estuvimos allí. El mismo libro.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "So the guns come by sea, the money by tables, and the people by trucks.",
+          "es": "Así que las armas vienen por mar, el dinero por mesas y la gente por camiones.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "A neat little pipeline.",
+          "es": "Una tubería bien apañada.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Someone designed every pipe. Time we met them.",
+          "es": "Alguien diseñó cada tubería. Es hora de conocerlo.",
+          "t": 3.2
+        },
+        {
+          "speaker": "K",
+          "en": "Then you'll need someone who can walk into a tower in a good suit. Think about that.",
+          "es": "Entonces necesitaréis a alguien que pueda entrar en una torre con buen traje. Pensadlo.",
+          "t": 5.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2850,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -10
+      },
+      "toast": "MISIÓN COMPLETADA · Huellas en el desierto"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE FACE OF CROSS (51 en el radar)"
+    }
+  ]
+}

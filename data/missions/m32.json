@@ -1,0 +1,323 @@
+{
+  "id": "m32",
+  "number": 32,
+  "title": "DIRTY FAVORS",
+  "title_es": "Favores sucios",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -20,
+    "dz": 0
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 60,
+        "dz": 60
+      },
+      "cast": [
+        "Nina Cho",
+        "Silas Venn"
+      ],
+      "lines": [
+        {
+          "speaker": "Silas Venn",
+          "en": "You want information. I want a favor. That's how the whole city works, so don't look offended.",
+          "es": "Queréis información. Yo quiero un favor. Así funciona toda la ciudad, no pongáis cara de ofendidos.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "What kind of favor?",
+          "es": "¿Qué tipo de favor?",
+          "t": 2
+        },
+        {
+          "speaker": "Silas Venn",
+          "en": "A legal packet. My brother-in-law's lease. A crooked clerk is holding it hostage until someone pays for the stamp.",
+          "es": "Un paquete legal. El contrato de alquiler de mi cuñado. Un empleado corrupto lo retiene hasta que alguien pague el sello.",
+          "t": 8.0
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "How do we know you're not one of theirs?",
+          "es": "¿Cómo sabemos que no eres uno de ellos?",
+          "t": 2.8
+        },
+        {
+          "speaker": "Silas Venn",
+          "en": "You don't. That's why you check.",
+          "es": "No lo sabéis. Por eso lo comprobáis.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "You sell to whoever pays. I know your type.",
+          "es": "Vendes al que paga. Conozco a los de tu clase.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Silas Venn",
+          "en": "I sell to whoever survives. Bring me my packet and I'll give you the name of the one man in that police station who still has a spine.",
+          "es": "Vendo al que sobrevive. Tráeme mi paquete y te daré el nombre del único hombre de esa comisaría que aún tiene espina dorsal.",
+          "t": 9
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Why should we trust a man who rents his silence?",
+          "es": "¿Por qué fiarnos de un hombre que alquila su silencio?",
+          "t": 3.4
+        },
+        {
+          "speaker": "Silas Venn",
+          "en": "Because silence is the only thing in this town you can't forge.",
+          "es": "Porque el silencio es lo único de esta ciudad que no se puede falsificar.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fine. Give me the address.",
+          "es": "Vale. Dame la dirección.",
+          "t": 2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Venn did three years for fraud. Released early. Somebody leaned on a judge.",
+          "es": "Venn cumplió tres años por fraude. Salió antes de tiempo. Alguien presionó a un juez.",
+          "t": 5.3
+        },
+        {
+          "speaker": "K",
+          "en": "He's slimy but he's consistent. Consistent is worth something.",
+          "es": "Es un baboso, pero es coherente. Eso vale algo.",
+          "t": 4.3
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 60,
+        "dz": 60
+      },
+      "objective": "Comprueba sus antecedentes reuniéndote con Nina"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 110,
+        "dz": 40
+      },
+      "objective": "Llega a la oficina corrupta donde retienen el paquete"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 115,
+        "dz": 45
+      },
+      "guards": 3,
+      "objective": "Entra sin llamar la atención de los vigilantes",
+      "label": "Oficina"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 118,
+        "dz": 48
+      },
+      "count": 1,
+      "label": "Paquete",
+      "objective": "Recupera el paquete legal retenido"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": -20
+      },
+      "objective": "Transporta una copia con discreción hasta el intermediario",
+      "stop": true
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Silas Venn",
+          "en": "You didn't open it? Of course you did. Everybody does.",
+          "es": "¿No lo abriste? Claro que sí. Todos lo hacen.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -35,
+        "dz": -25
+      },
+      "count": 2,
+      "label": "Documento",
+      "objective": "Descubre la ruta de contrabando dentro de la entrega",
+      "hint": "Mira entre las páginas del paquete."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "This isn't a lease. This is a shipping manifest. Silas, you're moving guns.",
+          "es": "Esto no es un contrato. Es un manifiesto de carga. Silas, mueves armas.",
+          "t": 5.3
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -35,
+        "dz": -25
+      },
+      "count": 4,
+      "objective": "Silas ha vendido tu posición: acaba con sus guardaespaldas",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Silas Venn",
+          "en": "I didn't sell you. They followed you. I'm sorry, I'm sorry, I'm sorry.",
+          "es": "No te vendí. Te siguieron. Lo siento, lo siento, lo siento.",
+          "t": 4.9
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -35,
+        "dz": -25
+      },
+      "objective": "Exige a Silas el nombre prometido"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -35,
+        "dz": -25
+      },
+      "cast": [
+        "Silas Venn",
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "You promised me a name. Now.",
+          "es": "Me prometiste un nombre. Ya.",
+          "t": 2
+        },
+        {
+          "speaker": "Silas Venn",
+          "en": "Detective Hale. Third precinct. He asks questions people don't want. His superiors hate him.",
+          "es": "El detective Hale. Tercera comisaría. Hace preguntas que la gente no quiere. Sus superiores lo odian.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Why is he still alive?",
+          "es": "¿Por qué sigue vivo?",
+          "t": 2
+        },
+        {
+          "speaker": "Silas Venn",
+          "en": "Because the city likes to keep one honest man on display. It's good for appearances.",
+          "es": "Porque la ciudad se guarda a un hombre honrado en el escaparate. Queda bien.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "You hand over the manifest to Nina and you vanish. Understood?",
+          "es": "Entregas el manifiesto a Nina y desapareces. ¿Entendido?",
+          "t": 4.3
+        },
+        {
+          "speaker": "Silas Venn",
+          "en": "I never existed. That's my best talent.",
+          "es": "Nunca existí. Es mi mejor talento.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1600,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -6
+      },
+      "toast": "+$1600"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE DETECTIVE (M en el radar)"
+    }
+  ]
+}

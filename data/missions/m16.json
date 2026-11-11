@@ -1,0 +1,310 @@
+{
+  "id": "m16",
+  "number": 16,
+  "title": "FALSE NUMBERS",
+  "title_es": "Números falsos",
+  "act": "ACTO I",
+  "start": "keisha",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Eleven new files. Every business sold since January. I need help matching names to prices.",
+          "es": "Once archivos nuevos. Cada negocio vendido desde enero. Necesito ayuda para cruzar nombres y precios.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Is this the boring part?",
+          "es": "¿Esta es la parte aburrida?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "This is the part that gets you killed or gets you a lawyer. Sit.",
+          "es": "Esta es la parte que te mata o te consigue un abogado. Siéntate.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Barber got double his price. Laundromat got triple.",
+          "es": "El barbero recibió el doble. La lavandería, el triple.",
+          "t": 3.6
+        },
+        {
+          "speaker": "K",
+          "en": "Too generous. Real buyers don't overpay unless the money's dirty and needs a home.",
+          "es": "Demasiado generoso. Los compradores reales no pagan de más salvo que el dinero sea sucio y busque casa.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Wash by buying.",
+          "es": "Lavar comprando.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Exactly. Overpay, then the seller gives some of it back, quietly, to somebody upstairs.",
+          "es": "Exacto. Pagas de más, el vendedor devuelve una parte a alguien de arriba.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "They did that in my day. With bars.",
+          "es": "Eso se hacía en mi época. Con bares.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray, your day sounds busy.",
+          "es": "Ray, tu época suena ajetreada.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I was a busy man.",
+          "es": "Era un hombre ocupado.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Two of the sellers say they were forced. I need you to see them.",
+          "es": "Dos de los vendedores dicen que los obligaron. Necesito que los veas.",
+          "t": 4.5
+        },
+        {
+          "speaker": "K",
+          "en": "And a saleswoman signed every one. Her name's Delacroix. Follow her.",
+          "es": "Y una vendedora firmó todos. Se llama Delacroix. Síguela.",
+          "t": 4.8
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        -100,
+        15
+      ],
+      "count": 3,
+      "label": "Expediente",
+      "objective": "Ordena los expedientes y cruza direcciones, importes y nombres",
+      "hint": "Une cada nombre con su dirección y precio."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": [
+        -40,
+        -60
+      ],
+      "objective": "Visita al primer propietario coaccionado"
+    },
+    {
+      "type": "goto",
+      "target": [
+        60,
+        -80
+      ],
+      "objective": "Visita al segundo propietario y confirma la coacción"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Owner",
+          "en": "They said it was legal. They smiled while they said it.",
+          "es": "Dijeron que era legal. Sonreían mientras lo decían.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Anything in writing?",
+          "es": "¿Algo por escrito?",
+          "t": 2
+        },
+        {
+          "speaker": "Owner",
+          "en": "The clause is. Page nine. 'Voluntary assignment.' It was not voluntary.",
+          "es": "La cláusula. Página nueve. «Cesión voluntaria». No fue voluntaria.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "steal",
+      "objective": "Coge un coche discreto para seguir a la representante"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        150,
+        -30
+      ],
+      "objective": "Sigue a la representante comercial hasta el edificio corporativo"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "sneak",
+      "target": [
+        155,
+        -25
+      ],
+      "guards": 3,
+      "objective": "Fotografía la reunión desde el parking sin ser descubierto",
+      "label": "parking"
+    },
+    {
+      "type": "collect",
+      "at": [
+        155,
+        -25
+      ],
+      "count": 2,
+      "label": "Foto",
+      "objective": "Fotografía a los asistentes de la reunión",
+      "hint": "No uses flash: confía en el reflejo de la farola."
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Guard",
+          "en": "Hey! Black coupe, over there!",
+          "es": "¡Eh! ¡El cupé negro, ahí!",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "lose_cops",
+      "stars": 1,
+      "objective": "Escapa de seguridad después de que identifiquen tu vehículo"
+    },
+    {
+      "type": "fight",
+      "at": [
+        130,
+        -20
+      ],
+      "count": 2,
+      "objective": "Quita de en medio a los dos guardas que te bloquean la salida",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Entrega las fotos a Keisha"
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Delacroix is Marguerite Delacroix. She's been on a San Cordova board before. Same contract style as these.",
+          "es": "Delacroix es Marguerite Delacroix. Estuvo en un consejo de San Cordova. El mismo estilo de contrato que estos.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "San Cordova's three miles of fog away.",
+          "es": "San Cordova está a tres millas de niebla.",
+          "t": 2.7
+        },
+        {
+          "speaker": "K",
+          "en": "Fog is where companies hide.",
+          "es": "La niebla es donde se esconden las empresas.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Whoever's behind this isn't local.",
+          "es": "Quien esté detrás no es de aquí.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we go where they live.",
+          "es": "Pues vamos a donde viven.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Not yet. Westbrook first. Stay alive while I count.",
+          "es": "Todavía no. Primero Westbrook. Mantente vivo mientras cuento.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'll make sure he does.",
+          "es": "Yo me aseguro.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 700,
+      "reputation": {
+        "westbrook_saints": 3,
+        "redline_kings": -1
+      },
+      "toast": "+$700 · Números falsos"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE HOUSE NEXT DOOR (M en el radar)"
+    }
+  ]
+}

@@ -38,6 +38,12 @@ jobs:
           ./godot --headless --path . res://tests/test_combat.tscn 2>&1 | tee combat.log
           if grep -q "SCRIPT ERROR\|Parse Error" combat.log; then echo "Errores de script"; exit 1; fi
           grep -q "Resultado combate: .* 0 fallos" combat.log
+      - name: Pruebas de misiones, actividades y armas
+        run: |
+          python3 tools/validate_missions.py 2 80
+          ./godot --headless --path . res://tests/test_missions.tscn 2>&1 | tee missions.log
+          if grep -q "SCRIPT ERROR\|Parse Error" missions.log; then echo "Errores de script"; exit 1; fi
+          grep -q "Resultado misiones: .* 0 fallos" missions.log
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -46,6 +52,7 @@ jobs:
             import.log
             test.log
             combat.log
+            missions.log
 
   ios:
     name: Compilar IPA (macOS)

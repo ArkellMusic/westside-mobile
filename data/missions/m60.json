@@ -1,0 +1,357 @@
+{
+  "id": "m60",
+  "number": 60,
+  "title": "VIPER'S FALL",
+  "title_es": "La caída de Viper",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 100
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "big_ray",
+        "loco",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Redline Kings own a compound on the north edge. Viper's been hiding there since Westbrook went cold.",
+          "es": "Los Redline Kings tienen un recinto en el borde norte. Viper se esconde allí desde que Westbrook se enfrió.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "He's been paying taxes to somebody. I traced the transfers. Eighty thousand a month, to a shell I know.",
+          "es": "Ha estado pagando impuestos a alguien. Rastreé las transferencias. Ochenta mil al mes, a una pantalla que conozco.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Meridian Sands.",
+          "es": "Meridian Sands.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "The same. He's not the head. He's a tenant.",
+          "es": "La misma. No es la cabeza. Es un inquilino.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Doesn't matter. He killed people on our block. He gets his reckoning.",
+          "es": "No importa. Mató a gente de nuestra manzana. Tendrá su ajuste de cuentas.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Loco",
+          "en": "Convoy of vehicles moves tonight. Twelve cars to a new site. The perfect window.",
+          "es": "Un convoy de vehículos se mueve esta noche. Doce coches a un nuevo sitio. La ventana perfecta.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I take the high ground. My sister's rented a room for three nights. I owe you.",
+          "es": "Cojo el terreno alto. Mi hermana tiene una habitación alquilada tres noches. Os debo una.",
+          "t": 5.5
+        },
+        {
+          "speaker": "K",
+          "en": "Remember the staff, drivers, kitchen. Civilians. Keep them out of the line.",
+          "es": "Recordad al personal, los conductores, la cocina. Civiles. Manteneos fuera de su línea.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "We take Viper alive.",
+          "es": "Cogemos a Viper vivo.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "If he's alive, he talks. If he talks, he sinks the people above him.",
+          "es": "Si está vivo, habla. Si habla, hunde a los de arriba.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then make him talk.",
+          "es": "Pues haced que hable.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 22
+    },
+    {
+      "type": "give",
+      "ammo": 80,
+      "money": 0,
+      "toast": "Munición para el recinto: +80"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -60,
+        "dz": 170
+      },
+      "objective": "Revisa las rutas de acceso al recinto de Viper"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -58,
+        "dz": 172
+      },
+      "count": 3,
+      "label": "Marcar accesos",
+      "objective": "Marca las puertas y evita zonas con civiles",
+      "hint": "Cocina, garaje, pasillo de servicio."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -40,
+        "dz": 176
+      },
+      "guards": 4,
+      "objective": "Entra al recinto durante el traslado de vehículos",
+      "label": "Recinto de los Redline Kings"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -35,
+        "dz": 178
+      },
+      "count": 6,
+      "objective": "Elimina a los guardias y aísla a Viper",
+      "faction": "redline_kings",
+      "armed": true,
+      "waves": 3
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -20,
+        "dz": 172
+      },
+      "objective": "Viper huye por las instalaciones de servicio: persíguelo",
+      "toast": "¡Viper corre a los túneles!"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -10,
+        "dz": 170
+      },
+      "cast": [
+        "viper",
+        "dre",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Viper",
+          "en": "You won't live out the week, Johnson. You hear? You're a ghost walking.",
+          "es": "No vivirás ni la semana, Johnson. ¿Me oyes? Eres un fantasma andando.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're the one on the floor.",
+          "es": "Eres tú el que está en el suelo.",
+          "t": 2
+        },
+        {
+          "speaker": "Viper",
+          "en": "I'm a tenant, you stupid kid. I pay rent to a landlord you can't reach.",
+          "es": "Soy un inquilino, chaval. Pago alquiler a un casero al que no puedes llegar.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "Name.",
+          "es": "Nombre.",
+          "t": 2
+        },
+        {
+          "speaker": "Viper",
+          "en": "Evelyn Cross. Everything runs through her. The cars, the cash, the cops. I was just the loud one.",
+          "es": "Evelyn Cross. Todo pasa por ella. Los coches, el dinero, los polis. Yo solo era el ruidoso.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "You took my block. You took my friends.",
+          "es": "Te llevaste mi barrio. Te llevaste a mis amigos.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Viper",
+          "en": "I took orders. Same as you took them, old man.",
+          "es": "Yo recibí órdenes. Igual que tú las recibiste, viejo.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "What did you say?",
+          "es": "¿Qué has dicho?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray. Not now.",
+          "es": "Ray. Ahora no.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -9,
+        "dz": 171
+      },
+      "count": 2,
+      "label": "Recoger pruebas",
+      "objective": "Recoge su teléfono y las órdenes de transferencia"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "El recinto arde y llegan patrullas: huye con Viper"
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Entrega a Viper al detective Hale"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "Detective Hale",
+        "keisha",
+        "dre",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "I can book him on assault and arms. The rest depends on how well his phone behaves.",
+          "es": "Puedo detenerlo por agresión y armas. Lo demás depende de cómo se porte su teléfono.",
+          "t": 5.8
+        },
+        {
+          "speaker": "K",
+          "en": "The phone is already cloned. Three hundred messages with Cross Meridian's chief of staff.",
+          "es": "El teléfono ya está clonado. Trescientos mensajes con el jefe de gabinete de Cross Meridian.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Viper was never the boss. He was the weapon.",
+          "es": "Viper nunca fue el jefe. Fue el arma.",
+          "t": 3.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "And weapons get replaced. Someone will pick up the pieces.",
+          "es": "Y las armas se sustituyen. Alguien recogerá las piezas.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "The Kings are done. The threat above them isn't.",
+          "es": "Los Kings están acabados. La amenaza que tienen encima no.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Welcome to the real fight, Johnson.",
+          "es": "Bienvenido a la pelea de verdad, Johnson.",
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3530,
+      "reputation": {
+        "westbrook_saints": 8,
+        "redline_kings": -40,
+        "the_syndicate": -6
+      },
+      "toast": "MISIÓN COMPLETADA · La caída de Viper"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CARDS ON THE TABLE (61 en el radar)"
+    }
+  ]
+}

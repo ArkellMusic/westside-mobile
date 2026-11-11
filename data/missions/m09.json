@@ -1,0 +1,294 @@
+{
+  "id": "m09",
+  "number": 9,
+  "title": "FIRST WARNING",
+  "title_es": "Primer aviso",
+  "act": "ACTO I",
+  "start": "mack_door",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "mack_door",
+      "cast": [
+        "big_ray",
+        "dre",
+        "ghost"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Message on the door at dawn. Nail through the paper, real polite.",
+          "es": "Mensaje en la puerta al amanecer. Un clavo atravesando el papel, muy educado.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "'Pier six, noon. Alone. — Viper.'",
+          "es": "«Muelle seis, mediodía. Solo. —Viper».",
+          "t": 2.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "That's not an invitation. That's a funeral announcement.",
+          "es": "Eso no es una invitación. Es un anuncio de funeral.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "If I don't show, he sends somebody to this house.",
+          "es": "Si no aparezco, manda a alguien a esta casa.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Or I send somebody to him. Say the word.",
+          "es": "O mando yo a alguien a por él. Di la palabra.",
+          "t": 2.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "You'll start the war he wants.",
+          "es": "Empezarás la guerra que quiere.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then you'd better not die at his door.",
+          "es": "Entonces más vale que no mueras en su puerta.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Take the Saints' spare pistol. Nobody knows you have it.",
+          "es": "Llévate la pistola de repuesto de los Saints. Nadie sabe que la tienes.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm not here to shoot a king.",
+          "es": "No estoy aquí para disparar a un rey.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Nobody ever is, until the king brings his own friends.",
+          "es": "Nadie lo está, hasta que el rey trae a sus amigos.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Pier six. Noon. Drive fast and come back breathing.",
+          "es": "Muelle seis. Mediodía. Conduce rápido y vuelve respirando.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "give",
+      "ammo": 30,
+      "money": 0,
+      "toast": "Munición para la cita"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche rápido"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -215,
+        90
+      ],
+      "objective": "Conduce hasta el punto de encuentro del muelle"
+    },
+    {
+      "type": "fight",
+      "at": [
+        -215,
+        90
+      ],
+      "count": 3,
+      "objective": "Es una emboscada: sobrevive al ataque de los Redline Kings",
+      "faction": "redline_kings",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        -150,
+        60
+      ],
+      "objective": "Esquiva el coche que intenta bloquear la carretera y sal del muelle",
+      "time": 45
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "chase",
+      "at": [
+        -140,
+        50
+      ],
+      "objective": "Alcanza al testigo herido que huye a pie",
+      "toast": "Lleva un brazo ensangrentado: no te dejes engañar por el callejón."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Tomás",
+          "en": "They paid me to open the gate. I didn't know it'd be a hit.",
+          "es": "Me pagaron por abrir la puerta. No sabía que era un golpe.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who paid you?",
+          "es": "¿Quién te pagó?",
+          "t": 2
+        },
+        {
+          "speaker": "Tomás",
+          "en": "A man in a suit. Gloves. He never gave a name.",
+          "es": "Un hombre de traje. Con guantes. Nunca dio un nombre.",
+          "t": 3.2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -90,
+        40
+      ],
+      "objective": "Escapa de la persecución por las calles secundarias del oeste"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "La policía se ha sumado a la persecución: despístala"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": "hospital",
+      "objective": "Lleva a Tomás a un centro seguro, el hospital"
+    },
+    {
+      "type": "fight",
+      "at": "hospital",
+      "count": 3,
+      "objective": "Despega a los Kings que te han seguido hasta la entrada",
+      "faction": "redline_kings",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "hospital",
+      "cast": [
+        "dre",
+        "ghost",
+        "Tomás",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "He alive?",
+          "es": "¿Está vivo?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "He'll walk. Maybe not tonight.",
+          "es": "Caminará. Quizá esta noche no.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Stitches, cops, paperwork. Worst place to hide a witness.",
+          "es": "Puntos, polis, papeleo. El peor sitio para esconder a un testigo.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Tomás",
+          "en": "Man in the suit said one thing. 'Tell the old man the account is closed.'",
+          "es": "El hombre del traje dijo una cosa. «Dile al viejo que la cuenta está cerrada».",
+          "t": 5.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "(under his breath) Closed.",
+          "es": "(entre dientes) Cerrada.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray, what account?",
+          "es": "Ray, ¿qué cuenta?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Old business. Not here.",
+          "es": "Negocios viejos. Aquí no.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "The trouble isn't Viper, Marcus. It's whoever Viper answers to.",
+          "es": "El problema no es Viper, Marcus. Es a quien responde Viper.",
+          "t": 4.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 430,
+      "reputation": {
+        "westbrook_saints": 4,
+        "redline_kings": -6
+      },
+      "toast": "+$430 · Primer aviso"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE MEETING (M en el radar)"
+    }
+  ]
+}

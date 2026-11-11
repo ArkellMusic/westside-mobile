@@ -1,0 +1,327 @@
+{
+  "id": "m53",
+  "number": 53,
+  "title": "EMPTY SAFE",
+  "title_es": "Caja vacía",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 90
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "ghost",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Before the wipe I managed to copy one thing. A transport slip with the address of a storage vault. Vault 9, Moon Street.",
+          "es": "Antes del borrado conseguí copiar una cosa. Un albarán con la dirección de una cámara acorazada. Cámara 9, Calle Luna.",
+          "t": 8.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "If the files are anywhere, they're there.",
+          "es": "Si los archivos están en algún sitio, es allí.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Or it's bait.",
+          "es": "O es un cebo.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "It's bait if it's too easy.",
+          "es": "Es un cebo si es demasiado fácil.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Hey, I like easy.",
+          "es": "Eh, a mí me gusta lo fácil.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "You like easy, Loco, and that's why you've been shot twice.",
+          "es": "Te gusta lo fácil, Loco, y por eso te han disparado dos veces.",
+          "t": 4.1
+        },
+        {
+          "speaker": "K",
+          "en": "Detective Hale called. His contact in the city says the vault company closed a weekend ago. Why close a vault you've just paid to fill?",
+          "es": "Llamó el detective Hale. Su contacto en la ciudad dice que la empresa de la cámara cerró hace un fin de semana. ¿Por qué cerrar una cámara que acabas de pagar para llenar?",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Because you moved what was in it.",
+          "es": "Porque moviste lo que había dentro.",
+          "t": 2.3
+        },
+        {
+          "speaker": "K",
+          "en": "Exactly. Find who moved it, you find who ordered it.",
+          "es": "Exacto. Encuentra quién lo movió y encontrarás quién lo ordenó.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "The courier convoy. Follow its path. Then the vault.",
+          "es": "El convoy de mensajería. Sigue su ruta. Luego la cámara.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "One step at a time.",
+          "es": "Paso a paso.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 6
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -40,
+        "dz": 20
+      },
+      "objective": "Investiga la oficina de transporte de las obras"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -42,
+        "dz": 22
+      },
+      "count": 2,
+      "label": "Recoger registros",
+      "objective": "Recoge los registros de GPS de los camiones de la empresa de seguridad"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un coche para seguir la ruta del convoy"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 40,
+        "dz": -80
+      },
+      "objective": "Sigue la ruta del convoy por las avenidas del este"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": -100
+      },
+      "guards": 3,
+      "objective": "Entra a la cámara auxiliar por el muelle de carga",
+      "label": "Cámara auxiliar"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 63,
+        "dz": -103
+      },
+      "count": 3,
+      "label": "Examinar estantes",
+      "objective": "Examina los estantes: están vaciados y limpiados",
+      "hint": "Hay polvo en el suelo pero no en los estantes."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Empty. Not stolen. Cleaned. Somebody scrubbed it with bleach.",
+          "es": "Vacía. No robada. Limpiada. Alguien la fregó con lejía.",
+          "t": 4.3
+        },
+        {
+          "speaker": "K",
+          "en": "Check the door panel. Every vault logs openings.",
+          "es": "Revisa el panel de la puerta. Cada cámara registra aperturas.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 61,
+        "dz": -101
+      },
+      "count": 1,
+      "label": "Copiar registro",
+      "objective": "Extrae el registro de aperturas del panel",
+      "hint": "La última apertura es de anoche a las 2:40."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": -100
+      },
+      "count": 5,
+      "objective": "Los limpiadores aún están dentro: acaba con ellos",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Sal del edificio y pierde a los perseguidores"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -120,
+        "dz": 60
+      },
+      "objective": "Atraviesa el hotel en construcción para despistar a los coches"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Regresa al motel"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "ghost",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The last opening used a manager key. Not a hacked key, a real one. Issued to… 'G. Whitaker'. Alias, not real.",
+          "es": "La última apertura usó una llave de gerente. No hackeada, real. Emitida a… «G. Whitaker». Alias, no real.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ghost's old fake name. The one he used in Westbrook for the paperwork.",
+          "es": "El nombre falso antiguo de Ghost. El que usaba en Westbrook para los papeles.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "That's not me. I never touched that vault.",
+          "es": "Ese no soy yo. Nunca toqué esa cámara.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "I didn't say it was.",
+          "es": "No dije que lo fueras.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Somebody wants us to look at Ghost.",
+          "es": "Alguien quiere que miremos a Ghost.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "Or somebody wants us to stop trusting each other.",
+          "es": "O alguien quiere que dejemos de confiar unos en otros.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Both can be true. Keep your eyes open and your mouths shut.",
+          "es": "Las dos cosas pueden ser ciertas. Ojos abiertos y bocas cerradas.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3050,
+      "reputation": {
+        "westbrook_saints": -2,
+        "the_syndicate": -8
+      },
+      "toast": "MISIÓN COMPLETADA · Caja vacía"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: FALSE ACCOUNTS (54 en el radar)"
+    }
+  ]
+}

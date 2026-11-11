@@ -1,0 +1,333 @@
+{
+  "id": "m28",
+  "number": 28,
+  "title": "HILLSIDE SHADOWS",
+  "title_es": "Sombras en las colinas",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -10,
+    "dz": 10
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": 100
+      },
+      "cast": [
+        "Nina Cho",
+        "Emilio Duarte"
+      ],
+      "lines": [
+        {
+          "speaker": "Emilio Duarte",
+          "en": "The man with the square ring went up the hills. There's a row of houses with cameras on every porch. He met people there.",
+          "es": "El hombre del anillo cuadrado subía a las colinas. Hay una hilera de casas con cámaras en cada porche. Se veía con gente allí.",
+          "t": 8.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Cameras means evidence. But neighbors don't love strangers pointing lenses at their kids.",
+          "es": "Cámaras significan pruebas. Pero a los vecinos no les gusta que unos desconocidos apunten con lentes a sus hijos.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then I knock on doors and ask nice.",
+          "es": "Entonces llamo a las puertas y pregunto con educación.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "You? Nice?",
+          "es": "¿Tú? ¿Educado?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I can do polite when somebody's life depends on it.",
+          "es": "Puedo ser educado cuando la vida de alguien depende de ello.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Emilio Duarte",
+          "en": "I'll stay with my family. But one thing: the meetings are always at a lookout. Past the stairs.",
+          "es": "Me quedo con mi familia. Pero una cosa: las reuniones siempre son en un mirador. Pasadas las escaleras.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Take the small car. The hill streets eat big ones.",
+          "es": "Coge el coche pequeño. Las calles de las colinas se comen a los grandes.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "What am I listening for?",
+          "es": "¿Qué tengo que escuchar?",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Any name. Any company. Any date. The men who ride up there think nobody's up there with them.",
+          "es": "Cualquier nombre. Cualquier empresa. Cualquier fecha. Los hombres que suben allí creen que no hay nadie con ellos.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "People like that always talk too much with the view in front of them.",
+          "es": "Los de esa calaña siempre hablan de más con la vista delante.",
+          "t": 4.8
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche pequeño para las cuestas"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 110,
+        "dz": 110
+      },
+      "objective": "Sube a las viviendas de las colinas"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 115,
+        "dz": 115
+      },
+      "count": 3,
+      "label": "Cámara",
+      "objective": "Examina las cámaras de los portales sin asustar a los residentes",
+      "hint": "Habla con calma, mira los ángulos."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Resident",
+          "en": "Lady across the street saw a car with no plates park there every Tuesday.",
+          "es": "La señora de enfrente vio un coche sin matrícula aparcar ahí todos los martes.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tuesday. Lookout. Thanks.",
+          "es": "Martes. Mirador. Gracias.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 140,
+        "dz": 130
+      },
+      "objective": "Identifica el encuentro clandestino junto al mirador"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 160,
+        "dz": 140
+      },
+      "guards": 3,
+      "objective": "Avanza por escaleras y callejones manteniendo la cobertura",
+      "label": "Mirador"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Get closer to the railing. You need the audio on the third man.",
+          "es": "Acércate a la barandilla. Necesitas el audio del tercer hombre.",
+          "t": 4.4
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 162,
+        "dz": 142
+      },
+      "count": 1,
+      "label": "Grabación",
+      "objective": "Graba el acuerdo con tu teléfono",
+      "hint": "Quédate agachado tras el muro."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Man in Gray",
+          "en": "The deal stays inside Cross Meridian. Nothing on paper before the vote.",
+          "es": "El trato se queda dentro de Cross Meridian. Nada en papel antes de la votación.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Official",
+          "en": "And my cut?",
+          "es": "¿Y mi parte?",
+          "t": 2
+        },
+        {
+          "speaker": "Man in Gray",
+          "en": "Cash. In the usual box.",
+          "es": "En efectivo. En la caja de siempre.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "give",
+      "ammo": 14,
+      "money": 0,
+      "toast": "Cargador de repuesto"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 160,
+        "dz": 140
+      },
+      "count": 3,
+      "objective": "Te han visto: rechaza a los escoltas",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 0
+      },
+      "objective": "Baja las curvas cerradas con el coche pequeño y escapa",
+      "time": 70
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 0
+      },
+      "objective": "Entrega el audio a Nina"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 0
+      },
+      "cast": [
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "That's a voice I know. The second man. He sits on the harbor commission.",
+          "es": "Esa es una voz que conozco. El segundo hombre. Está en la comisión del puerto.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "An official. On the take.",
+          "es": "Un funcionario. Comprado.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "And 'Cross Meridian' is the first time I've heard the name outside a paper.",
+          "es": "Y «Cross Meridian» es la primera vez que oigo ese nombre fuera de un papel.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Same people from upstairs. They've got a name now.",
+          "es": "La gente de arriba. Ya tienen nombre.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "A name is a handle. You can pull a handle until the door opens.",
+          "es": "Un nombre es un asa. Puedes tirar de un asa hasta que se abra la puerta.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Or until it pulls back.",
+          "es": "O hasta que la puerta tire de ti.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1360,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -6
+      },
+      "toast": "+$1360"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NAMES ON PAPER (M en el radar)"
+    }
+  ]
+}

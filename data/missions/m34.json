@@ -1,0 +1,318 @@
+{
+  "id": "m34",
+  "number": 34,
+  "title": "GRAVEYARD SHIFT",
+  "title_es": "Turno de madrugada",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": 20,
+    "dz": 100
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": -100
+      },
+      "cast": [
+        "Detective Hale",
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "The money moves at night. Three vans leave the same office at two a.m. Each one is a different shell company.",
+          "es": "El dinero se mueve de noche. Tres furgonetas salen de la misma oficina a las dos de la mañana. Cada una de una empresa distinta.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "And only one carries the cash.",
+          "es": "Y solo una lleva el efectivo.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Maybe none of them. They like decoys. Two can be empty. All three can be empty.",
+          "es": "Quizá ninguna. Les gustan los señuelos. Dos pueden ir vacías. Las tres pueden ir vacías.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "I'll watch from the roof across the street. Mack, you take the car.",
+          "es": "Yo vigilo desde la azotea de enfrente. Mack, tú llevas el coche.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "If I pick the wrong van?",
+          "es": "¿Y si escojo la furgoneta equivocada?",
+          "t": 2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Then you lose a night and gain nothing. Pick right.",
+          "es": "Entonces pierdes una noche y no ganas nada. Elige bien.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "There's a temporary safe box in the industrial lot. Metal door, no name.",
+          "es": "Hay una caja de seguridad temporal en la zona industrial. Puerta metálica, sin nombre.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I'll cover the cameras for ten minutes. After that, you're a ghost or a headline.",
+          "es": "Cubriré las cámaras diez minutos. Después, eres un fantasma o un titular.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll be a ghost. I've had practice.",
+          "es": "Seré un fantasma. Tengo práctica.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Not funny. Stay alive.",
+          "es": "No tiene gracia. Mantente vivo.",
+          "t": 2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "time",
+      "hour": 1
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": -100
+      },
+      "objective": "Toma posición para vigilar el movimiento de fondos"
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche discreto para seguir a las furgonetas"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 150,
+        "dz": -60
+      },
+      "objective": "Sigue a las tres furgonetas sin elegir la equivocada"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Van one turned left. Van two is stalling. The third has plates that don't match the registry.",
+          "es": "La primera furgoneta giró a la izquierda. La segunda se hace la remolona. La tercera lleva una matrícula que no cuadra con el registro.",
+          "t": 6.5
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 165,
+        "dz": -80
+      },
+      "objective": "Localiza la caja de seguridad temporal en la zona industrial"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 170,
+        "dz": -85
+      },
+      "guards": 3,
+      "objective": "Acércate a la caja mientras Hale cubre las cámaras",
+      "label": "Caja"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 172,
+        "dz": -88
+      },
+      "count": 3,
+      "label": "Registro",
+      "objective": "Accede a los registros mientras el detective cubre la operación",
+      "hint": "Tres carpetas con recibos."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Eight minutes left on the cameras. Make it count.",
+          "es": "Quedan ocho minutos en las cámaras. Que cuenten.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Alarm. A silent one. Lights on the fence.",
+          "es": "Alarma. Una silenciosa. Luces en la valla.",
+          "t": 2.9
+        }
+      ]
+    },
+    {
+      "type": "give",
+      "ammo": 16,
+      "money": 0,
+      "toast": "Cargador de repuesto"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 172,
+        "dz": -88
+      },
+      "count": 4,
+      "objective": "Rechaza a los vigilantes que cierran el perímetro",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": -40
+      },
+      "objective": "Recorre el perímetro improvisando la ruta de salida",
+      "time": 50
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": 100
+      },
+      "objective": "Entrega las matrículas y los recibos antes de que desaparezcan",
+      "stop": true
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": 100
+      },
+      "cast": [
+        "Detective Hale",
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "These receipts match no real project. They pay for ghosts.",
+          "es": "Estos recibos no corresponden a ningún proyecto real. Pagan fantasmas.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Shell payroll. Nobody on the list exists. Somebody is cleaning dirty money through paper companies.",
+          "es": "Nómina fantasma. Nadie de la lista existe. Alguien lava dinero sucio a través de empresas de papel.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Whose money?",
+          "es": "¿El dinero de quién?",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Funding for the same group that's been burning Westbrook. The cash starts in the desert.",
+          "es": "Financiación para el mismo grupo que ha estado quemando Westbrook. El efectivo empieza en el desierto.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "This is bigger than my badge. Bigger than your neighborhood.",
+          "es": "Esto es más grande que mi placa. Más grande que tu barrio.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we make it bigger than their lawyers.",
+          "es": "Pues lo hacemos más grande que sus abogados.",
+          "t": 2.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1720,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -7
+      },
+      "toast": "+$1720"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE PRICE OF SILENCE (M en el radar)"
+    }
+  ]
+}

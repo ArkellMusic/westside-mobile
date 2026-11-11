@@ -1,0 +1,345 @@
+{
+  "id": "m52",
+  "number": 52,
+  "title": "NO ROAD BACK",
+  "title_es": "Sin vuelta atrás",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 100
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "Marisol",
+        "loco",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Logistics depot, east freight zone. Four warehouses, one lockbox room. Everything Pike moved is on a server there.",
+          "es": "Depósito logístico, zona de carga este. Cuatro almacenes, una sala de cajas fuertes. Todo lo que movió Pike está en un servidor allí.",
+          "t": 8.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "If we take the server we take their map. If they take us, we stop existing.",
+          "es": "Si cogemos el servidor, cogemos su mapa. Si nos cogen a nosotros, dejamos de existir.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Shift change at 3:10. Guards swap radios and nobody listens for four minutes. I'll walk you through the gate.",
+          "es": "El cambio de turno es a las 3:10. Los guardias cambian radios y nadie escucha cuatro minutos. Yo os llevo por la puerta.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Why would you risk your neck?",
+          "es": "¿Por qué arriesgas el cuello?",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Because I carry their envelopes and I'm tired of not knowing what's inside.",
+          "es": "Porque llevo sus sobres y estoy harta de no saber qué hay dentro.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'll be outside with the van. Engine running, doors unlocked, music off. Thrilling.",
+          "es": "Estaré fuera con la furgoneta. Motor en marcha, puertas abiertas, música apagada. Emocionante.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I take the roof. Two shots if I see a problem. One if it's worse.",
+          "es": "Yo cojo la azotea. Dos disparos si veo un problema. Uno si es peor.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Everybody knows their exit. If it goes wrong we don't wait for each other.",
+          "es": "Todos sabéis vuestra salida. Si sale mal no nos esperamos.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "We wait for each other.",
+          "es": "Nos esperamos.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Brother, that's how people die.",
+          "es": "Hermano, así es como muere la gente.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we die together. Let's go.",
+          "es": "Pues morimos juntos. Vamos.",
+          "t": 2.2
+        }
+      ],
+      "title_card": true,
+      "hour": 1
+    },
+    {
+      "type": "give",
+      "ammo": 60,
+      "money": 0,
+      "toast": "Munición para el depósito: +60"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 100,
+        "dz": -150
+      },
+      "objective": "Reúnete con Loco en la furgoneta"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 120,
+        "dz": -140
+      },
+      "objective": "Coloca la furgoneta junto a la valla este y fija el punto de extracción"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 135,
+        "dz": -150
+      },
+      "guards": 3,
+      "objective": "Cruza el depósito entre turnos hasta la sala de cajas",
+      "label": "Depósito logístico"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 138,
+        "dz": -153
+      },
+      "count": 2,
+      "label": "Cargar servidor",
+      "objective": "Extrae los discos del servidor"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Mack, they're moving! Floodlights on! Somebody called it in!",
+          "es": "¡Mack, se mueven! ¡Focos encendidos! ¡Alguien avisó!",
+          "t": 4.2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "I didn't! I swear I didn't!",
+          "es": "¡Yo no! ¡Lo juro!",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Nobody says a word. Run!",
+          "es": "Nadie habla. ¡Corred!",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 136,
+        "dz": -152
+      },
+      "count": 6,
+      "waves": 3,
+      "time": 60,
+      "objective": "Aguanta en la sala de cajas mientras Ghost despeja la salida"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 110,
+        "dz": -130
+      },
+      "objective": "Escapa con los discos hasta la furgoneta",
+      "time": 60
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "La seguridad privada y la policía os persiguen: perdedlas"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Count off. Mack?",
+          "es": "Cuenta. ¿Mack?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Here.",
+          "es": "Aquí.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Here.",
+          "es": "Aquí.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Marisol? Marisol!",
+          "es": "¿Marisol? ¡Marisol!",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 130,
+        "dz": -148
+      },
+      "objective": "Vuelve a la sala de cajas a buscar a Marisol",
+      "hint": "El corredor está lleno de humo."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Regresa al motel"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "loco",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Disks are damaged. Half the files are gone. And the other half… an automatic wipe ran as we left.",
+          "es": "Los discos están dañados. La mitad de los archivos ha desaparecido. Y la otra mitad… se ejecutó un borrado automático cuando salimos.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Someone talked. Someone told them the time.",
+          "es": "Alguien habló. Alguien les dio la hora.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "Marisol is gone. Her phone's on, the signal's dead. We left a woman in a burning building.",
+          "es": "Marisol ha desaparecido. Su teléfono está encendido, la señal muerta. Dejamos a una mujer en un edificio en llamas.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "We lost her because somebody sold us. That's on the person, not the plan.",
+          "es": "La perdimos porque alguien nos vendió. Eso es culpa de la persona, no del plan.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "We are out of money, out of safe houses, and out of friends in this city.",
+          "es": "Estamos sin dinero, sin pisos francos y sin amigos en esta ciudad.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we find out who sold us before anyone else bleeds.",
+          "es": "Pues averiguamos quién nos vendió antes de que sangre alguien más.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2980,
+      "reputation": {
+        "westbrook_saints": -3,
+        "the_syndicate": -6
+      },
+      "toast": "MISIÓN COMPLETADA · Sin vuelta atrás"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: EMPTY SAFE (53 en el radar)"
+    }
+  ]
+}

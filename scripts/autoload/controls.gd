@@ -23,6 +23,7 @@ const KEYS := {
 	"radio": [KEY_R],
 	"attack": [KEY_E, KEY_CTRL],
 	"weapon": [KEY_Q],
+	"crouch": [KEY_C],
 }
 
 

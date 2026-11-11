@@ -1,0 +1,320 @@
+{
+  "id": "m37",
+  "number": 37,
+  "title": "DEAD END STREET",
+  "title_es": "Calle sin salida",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -100,
+    "dz": 80
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -40,
+        "dz": 40
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Rico Alvarez. Forty-six. Clerk at the planning office. He called me from a payphone and said, 'I have the bribe ledger.'",
+          "es": "Rico Álvarez. Cuarenta y seis años. Funcionario en urbanismo. Me llamó desde una cabina y dijo: «Tengo el libro de sobornos».",
+          "t": 8.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "And then?",
+          "es": "¿Y luego?",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "And then nothing. His phone is off. His apartment is empty. His mailbox is full.",
+          "es": "Y luego nada. Su teléfono está apagado. Su piso, vacío. Su buzón, lleno.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I checked missing persons. No report filed. Somebody doesn't want him found, or doesn't want him counted.",
+          "es": "He mirado desaparecidos. Ninguna denuncia. Alguien no quiere que lo encuentren, o no quiere que lo cuenten.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "A man who knows everything and trusts nobody. He's running.",
+          "es": "Un hombre que lo sabe todo y no se fía de nadie. Está huyendo.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "He'd run somewhere he knows. Old neighborhood. Old streets.",
+          "es": "Huiría a un sitio que conoce. Barrio viejo. Calles viejas.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "The shop cameras around his apartment are on a private network. I can't pull them. You can.",
+          "es": "Las cámaras de los comercios cerca de su piso están en una red privada. Yo no puedo acceder. Tú sí.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll ask politely. Or loudly.",
+          "es": "Preguntaré con educación. O a gritos.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Be quick. If Cross's people find him first, there's no ledger and no Rico.",
+          "es": "Date prisa. Si la gente de Cross lo encuentra antes, ya no habrá libro ni Rico.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then they'll have to catch me first.",
+          "es": "Pues tendrán que cogerme a mí primero.",
+          "t": 2.5
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -60,
+        "dz": 50
+      },
+      "objective": "Localiza al informante desaparecido en el barrio viejo"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -62,
+        "dz": 52
+      },
+      "count": 3,
+      "label": "Cámara",
+      "objective": "Rastrea su último trayecto con las cámaras de los comercios",
+      "hint": "Pregunta en la panadería, la tintorería y el bar."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Baker",
+          "en": "A man in a bad coat, carrying a briefcase. Went into the shut-down garage on Dead End Street.",
+          "es": "Un hombre con un mal abrigo, con un maletín. Entró en el taller cerrado de la calle Sin Salida.",
+          "t": 6.5
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -80,
+        "dz": 70
+      },
+      "objective": "Conduce hasta el taller abandonado de la calle Sin Salida"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -85,
+        "dz": 75
+      },
+      "guards": 2,
+      "objective": "Entra en el taller sin alertar a posibles vigilantes",
+      "label": "Taller"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -88,
+        "dz": 78
+      },
+      "objective": "Convence a Rico de que salga"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Rico Alvarez",
+          "en": "They're coming. I can hear it. Black cars, doors that don't slam.",
+          "es": "Vienen. Lo oigo. Coches negros, puertas que no dan portazo.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we leave right now. Walk with me.",
+          "es": "Entonces nos vamos ahora mismo. Camina conmigo.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Coge un coche para evacuar a Rico"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -88,
+        "dz": 78
+      },
+      "count": 4,
+      "waves": 2,
+      "time": 35,
+      "objective": "Aguanta mientras Rico sube al coche",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 0
+      },
+      "objective": "Elige una ruta entre dos calles cortadas",
+      "time": 55
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Pierde la vigilancia entre aparcamientos y tráfico normal"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Rico Alvarez",
+          "en": "I always said the traffic would kill me. It saved me instead.",
+          "es": "Siempre dije que el tráfico me mataría. Me ha salvado.",
+          "t": 4.3
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 0
+      },
+      "objective": "Deja a Rico a salvo con Nina",
+      "stop": true
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 0
+      },
+      "cast": [
+        "Nina Cho",
+        "Rico Alvarez"
+      ],
+      "lines": [
+        {
+          "speaker": "Rico Alvarez",
+          "en": "The ledger isn't in my case. It's in my head. Names, dates, amounts.",
+          "es": "El libro no está en mi maleta. Está en mi cabeza. Nombres, fechas, cantidades.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "What can you tell us about who's running the city?",
+          "es": "¿Qué puedes decirnos de quién manda en la ciudad?",
+          "t": 3.5
+        },
+        {
+          "speaker": "Rico Alvarez",
+          "en": "Nobody runs it. A dozen companies do. They look different, but they all pay the same bank.",
+          "es": "Nadie la manda. Lo hacen una docena de empresas. Parecen distintas, pero todas pagan al mismo banco.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Which bank?",
+          "es": "¿Qué banco?",
+          "t": 2
+        },
+        {
+          "speaker": "Rico Alvarez",
+          "en": "Meridian Trust. The building with the glass crown.",
+          "es": "Meridian Trust. El edificio con la corona de cristal.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Financial district. Okay. That's our next stop.",
+          "es": "Distrito financiero. Vale. Esa es la próxima parada.",
+          "t": 3.3
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1900,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -7
+      },
+      "toast": "+$1900"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: INVISIBLE HAND (M en el radar)"
+    }
+  ]
+}

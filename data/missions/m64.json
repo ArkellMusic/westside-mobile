@@ -1,0 +1,413 @@
+{
+  "id": "m64",
+  "number": 64,
+  "title": "ABOVE THE CITY",
+  "title_es": "Sobre la ciudad",
+  "act": "ACTO IV",
+  "start": {
+    "zone": "northpoint",
+    "dx": 120,
+    "dz": -120
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -40,
+        "dz": 60
+      },
+      "cast": [
+        "dre",
+        "Lucian Brandt"
+      ],
+      "title_card": true,
+      "hour": 16,
+      "lines": [
+        {
+          "speaker": "Lucian Brandt",
+          "en": "I've never done this in daylight. Or in rain. Or in front of men who look like you.",
+          "es": "Nunca he hecho esto de día. Ni con lluvia. Ni delante de hombres como vosotros.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Men who look like us are the only ones who showed up when you called.",
+          "es": "Los hombres como nosotros fueron los únicos que se presentaron cuando llamaste.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Lucian Brandt",
+          "en": "I drafted zoning licenses for the city for nineteen years. Then three parcels in the hills got rezoned in one night.",
+          "es": "Redacté licencias urbanísticas para la ciudad diecinueve años. Y una noche recalificaron tres parcelas en las colinas.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "By who?",
+          "es": "¿Quién?",
+          "t": 2
+        },
+        {
+          "speaker": "Lucian Brandt",
+          "en": "By a signature I know better than my own wife's. Councilwoman Sorell. Who never signs anything without cash on the table.",
+          "es": "Por una firma que conozco mejor que la de mi esposa. La concejala Sorell. Que nunca firma nada sin dinero sobre la mesa.",
+          "t": 8.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Cross money.",
+          "es": "Dinero de Cross.",
+          "t": 2
+        },
+        {
+          "speaker": "Lucian Brandt",
+          "en": "Cross Meridian doesn't pay in cash. They pay in contracts. Roads, drainage, a stadium nobody asked for.",
+          "es": "Cross Meridian no paga en efectivo. Paga en contratos. Carreteras, drenajes, un estadio que nadie pidió.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "And the parcels?",
+          "es": "¿Y las parcelas?",
+          "t": 2
+        },
+        {
+          "speaker": "Lucian Brandt",
+          "en": "Three lots above the city. I never saw a building permit. Only trucks. Trucks at night.",
+          "es": "Tres solares sobre la ciudad. Nunca vi un permiso de obra. Solo camiones. Camiones de noche.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "You're telling us you got scared.",
+          "es": "Nos dices que te dio miedo.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Lucian Brandt",
+          "en": "I'm telling you my brother-in-law's brakes failed last week. On a flat road.",
+          "es": "Os digo que a mi cuñado le fallaron los frenos la semana pasada. En una carretera llana.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we do it your way. Show us the lots. We take pictures, you stay out of the frame.",
+          "es": "Entonces a tu manera. Enséñanos los solares. Hacemos las fotos, tú te quedas fuera de plano.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Lucian Brandt",
+          "en": "Sorell meets someone at the Highmarch Tower tonight. A car with a city seal. Follow it.",
+          "es": "Sorell se ve con alguien esta noche en la Torre Highmarch. Un coche con sello municipal. Seguidlo.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "Go. I'll watch the street. If anyone wearing a suit looks at you twice, call me.",
+          "es": "Ve. Yo vigilo la calle. Si alguien de traje te mira dos veces, llámame.",
+          "t": 5.6
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": -40,
+        "dz": 60
+      },
+      "objective": "Acompaña a Brandt hasta tu coche en el mirador",
+      "hint": "Es el único testigo político: no lo pierdas de vista.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": 30,
+        "dz": 100
+      },
+      "objective": "Sube por las avenidas elevadas hacia las colinas"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Lucian Brandt",
+          "en": "Left at the water tower. Don't speed, there are cameras on the ridge.",
+          "es": "A la izquierda en el depósito de agua. No corras, hay cámaras en la cresta.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Cameras watching a hill? Who's the audience?",
+          "es": "¿Cámaras vigilando una colina? ¿Para quién actúan?",
+          "t": 3.1
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": 60,
+        "dz": 130
+      },
+      "count": 4,
+      "label": "Parcela",
+      "objective": "Fotografía las cuatro parcelas señaladas por Brandt",
+      "hint": "Acércate a cada marca y examínala."
+    },
+    {
+      "type": "give",
+      "ammo": 50,
+      "money": 0,
+      "toast": "Munición de reserva"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Plate on the official car is municipal fleet. Leaves the city hall garage in two minutes. Don't lose it.",
+          "es": "La matrícula del coche oficial es de flota municipal. Sale del garaje del ayuntamiento en dos minutos. No lo pierdas.",
+          "t": 7.3
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche discreto para seguir al vehículo oficial"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "northpoint",
+        "dx": -70,
+        "dz": -20
+      },
+      "objective": "Sigue el vehículo oficial hasta la Torre Highmarch",
+      "time": 75
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "northpoint",
+        "dx": -84,
+        "dz": -30
+      },
+      "guards": 3,
+      "objective": "Entra por el parking subterráneo hasta la sala de reuniones",
+      "label": "Guardias de Highmarch"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": -90,
+        "dz": -36
+      },
+      "count": 2,
+      "label": "Escucha",
+      "objective": "Coloca el micro y graba la reunión desde el conducto",
+      "hint": "Mantente agachado junto a la pared."
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -90,
+        "dz": -36
+      },
+      "cast": [
+        "Councilwoman Sorell",
+        "Evelyn Cross"
+      ],
+      "lines": [
+        {
+          "speaker": "Councilwoman Sorell",
+          "en": "The lots are rezoned. The paperwork says residential. I'd like to know what is actually going up there.",
+          "es": "Los solares están recalificados. El papel dice residencial. Me gustaría saber qué se construye en realidad.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Nothing you will ever need to know. You'll have your seat for another term, Margit. That's the entire arrangement.",
+          "es": "Nada que vayas a necesitar saber. Tendrás tu escaño otro mandato, Margit. Ese es todo el acuerdo.",
+          "t": 8.0
+        },
+        {
+          "speaker": "Councilwoman Sorell",
+          "en": "There's a man in my office who keeps asking questions. Brandt.",
+          "es": "Hay un hombre en mi oficina que no deja de hacer preguntas. Brandt.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Brandt has a family. A nice family. Families are so easy to remind of things.",
+          "es": "Brandt tiene familia. Una familia agradable. A las familias es muy fácil recordarles cosas.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Councilwoman Sorell",
+          "en": "I won't be part of anything with blood on it.",
+          "es": "No formaré parte de nada que tenga sangre.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "You already are. You only prefer not to read the invoice.",
+          "es": "Ya formas parte. Solo prefieres no leer la factura.",
+          "t": 4.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Mack, they're locking the garage. Black SUVs on both exits and a cop car pulling traffic into the hills.",
+          "es": "Mack, cierran el garaje. SUV negros en las dos salidas y un coche patrulla desviando el tráfico a las colinas.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Cross knows someone was in the room.",
+          "es": "Cross sabe que había alguien en la sala.",
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "northpoint",
+        "dx": -86,
+        "dz": -34
+      },
+      "count": 5,
+      "objective": "Abre paso entre los agentes privados de la salida del parking",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "El bloqueo te manda hacia las colinas: despista a las patrullas"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": 100,
+        "dz": 90
+      },
+      "objective": "Reúnete con Brandt y Dre en el mirador",
+      "hint": "Sube hacia las luces de las colinas.",
+      "radius": 8
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 100,
+        "dz": 90
+      },
+      "cast": [
+        "dre",
+        "Lucian Brandt"
+      ],
+      "lines": [
+        {
+          "speaker": "Lucian Brandt",
+          "en": "You heard her. She said it herself. Evelyn Cross. In the room.",
+          "es": "La oíste. Lo dijo ella misma. Evelyn Cross. En la sala.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Cross walked into a city official's meeting and told her to stay quiet. We have the recording.",
+          "es": "Cross entró en una reunión con una funcionaria y le ordenó callar. Tenemos la grabación.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "And a rezoned hill. Trucks, nights, a thin line between contracts and shell companies.",
+          "es": "Y una colina recalificada. Camiones, noches, una línea fina entre contratos y empresas pantalla.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Lucian Brandt",
+          "en": "She's going to come for me.",
+          "es": "Va a venir a por mí.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then you go where Walter is. Two witnesses are harder to quiet than one.",
+          "es": "Entonces vas donde está Walter. Dos testigos son más difíciles de callar que uno.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "Funny thing about politicians. They always fall the hardest after they flinch.",
+          "es": "Lo curioso de los políticos es que caen más fuerte cuando se echan atrás.",
+          "t": 5.5
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 4400,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -7
+      },
+      "toast": "+$4,400 · La conexión política queda grabada"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: IRON AND ICE (M en el radar)"
+    }
+  ]
+}

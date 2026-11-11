@@ -1,0 +1,350 @@
+{
+  "id": "m24",
+  "number": 24,
+  "title": "THE REPORTER",
+  "title_es": "La periodista",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": 155,
+    "dz": 155
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 60
+      },
+      "cast": [
+        "Nina Cho",
+        "Tomas Reyes"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "You're late. And you walked in the front door. The lobby's wired, genius.",
+          "es": "Llegas tarde. Y has entrado por la puerta principal. El vestíbulo está pinchado, genio.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tomas said you'd be nervous. He didn't say rude.",
+          "es": "Tomas dijo que estarías nerviosa. No dijo que fueras borde.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Nervous people live longer. Three of my sources stopped answering their phones this month.",
+          "es": "Los nerviosos viven más. Tres de mis fuentes han dejado de contestar al teléfono este mes.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "Mack's from Westbrook. Same companies are burning his street.",
+          "es": "Mack es de Westbrook. Las mismas empresas le están quemando la calle.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Westbrook. Then you know what a zoning variance looks like when it's written in blood.",
+          "es": "Westbrook. Entonces sabes lo que parece una variación urbanística escrita con sangre.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "I know what a threat looks like. I want the names behind it.",
+          "es": "Yo sé lo que es una amenaza. Quiero los nombres que hay detrás.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Names don't exist yet. Only contractors, shell firms and a wall of lawyers. I need proof before they bury it.",
+          "es": "Los nombres aún no existen. Solo contratistas, empresas pantalla y un muro de abogados. Necesito pruebas antes de que lo entierren.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "And she needs a pair of hands that don't work for the paper.",
+          "es": "Y necesita un par de manos que no trabajen para el periódico.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Photos to verify, three testimonies to cross, and a dock worker who might talk. Can you keep up?",
+          "es": "Fotos que verificar, tres testimonios que contrastar y un estibador que quizá hable. ¿Puedes seguirme el ritmo?",
+          "t": 6.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "I kept up with worse people than you.",
+          "es": "He seguido el ritmo a gente peor que tú.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "We'll see. Eyes open. If a van parks twice, it's not a coincidence.",
+          "es": "Ya veremos. Ojos abiertos. Si una furgoneta aparca dos veces, no es casualidad.",
+          "t": 4.7
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 60
+      },
+      "objective": "Entra en la redacción por la puerta de servicio"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 70
+      },
+      "count": 3,
+      "label": "Testimonio",
+      "objective": "Contrasta tres testimonios y verifica las fotografías",
+      "hint": "Mira las notas pegadas en el tablón."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Two testimonies match. The third was edited. Somebody leaned on him.",
+          "es": "Dos testimonios coinciden. El tercero fue retocado. Alguien le apretó las tuercas.",
+          "t": 4.8
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 40,
+        "dz": 100
+      },
+      "objective": "Lleva a Nina al muelle para entrevistar al estibador"
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 80,
+        "dz": 120
+      },
+      "objective": "Acompaña a Nina hasta el estibador"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dock Worker",
+          "en": "Contracts get signed at night. Two shifts, same crew, different company name each week.",
+          "es": "Los contratos se firman de noche. Dos turnos, la misma cuadrilla, distinto nombre de empresa cada semana.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Write nothing down. Remember it.",
+          "es": "No escribas nada. Recuérdalo.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Hear that click on my phone? That's not the line. That's someone listening.",
+          "es": "¿Oyes ese clic en mi teléfono? No es la línea. Es alguien escuchando.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we stop using it. Right now.",
+          "es": "Entonces dejamos de usarlo. Ahora mismo.",
+          "t": 2.3
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Cambia de vehículo para despistar a quien os escucha"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 85,
+        "dz": 125
+      },
+      "count": 3,
+      "objective": "Aparta a los que te esperaban en el aparcamiento",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 10,
+        "dz": 20
+      },
+      "objective": "Lleva el material de Nina a un equipo seguro",
+      "stop": true
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Safe house is a laundromat. Not funny, I know. Don't laugh.",
+          "es": "El piso seguro es una lavandería. No tiene gracia, ya lo sé. No te rías.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 10,
+        "dz": 20
+      },
+      "objective": "Entra en el piso seguro con las pruebas"
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 60,
+        "dz": 40
+      },
+      "objective": "Alcanza al que ha estado siguiendo a Nina",
+      "toast": "Un hombre huye por las cuestas"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Despista a la policía tras la persecución"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "The contractor from the port shares a director with a harbor firm. Same signature, different paper.",
+          "es": "El contratista del puerto comparte director con una empresa portuaria. La misma firma, distinto papel.",
+          "t": 6.9
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 10,
+        "dz": 20
+      },
+      "cast": [
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Contractors, port companies, shell firms. They're all feeding the same pipe.",
+          "es": "Contratistas, empresas del puerto, empresas pantalla. Todas alimentan la misma tubería.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then follow the pipe to the mouth. Where does it end?",
+          "es": "Pues sigue la tubería hasta la boca. ¿Dónde acaba?",
+          "t": 3.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Port. Commercial side. Three containers nobody wants to talk about.",
+          "es": "El puerto. El lado comercial. Tres contenedores de los que nadie quiere hablar.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll go look.",
+          "es": "Iré a mirar.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "You just got hired, Mack. I don't pay much. But I don't lie.",
+          "es": "Acabas de contratarte, Mack. No pago mucho. Pero no miento.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "That's already better than most employers I've had.",
+          "es": "Eso ya es mejor que casi todos los jefes que he tenido.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1120,
+      "reputation": {
+        "westbrook_saints": 2,
+        "the_syndicate": -4
+      },
+      "toast": "+$1120"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: BEHIND THE PORT (M en el radar)"
+    }
+  ]
+}

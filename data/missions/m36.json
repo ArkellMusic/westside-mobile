@@ -1,0 +1,338 @@
+{
+  "id": "m36",
+  "number": 36,
+  "title": "CALL FROM DRE",
+  "title_es": "Llamada de Dre",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -100,
+    "dz": 80
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Mack. It's me. Don't hang up. Please just once, don't hang up.",
+          "es": "Mack. Soy yo. No cuelgues. Por favor, por una vez, no cuelgues.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm listening.",
+          "es": "Te escucho.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Somebody burned the Calhoun barber shop. Kids are lining up for a fight. I can't stop it alone. Come home.",
+          "es": "Alguien quemó la barbería de Calhoun. Los chavales se están alineando para pelear. No puedo parar esto solo. Vuelve a casa.",
+          "t": 7.4
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": "bridge",
+      "objective": "Regresa a Westbrook para reunirte con Dre"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Look at you. Forty-pound coat in this weather. You dress like a stranger now.",
+          "es": "Mírate. Un abrigo de veinte kilos con este tiempo. Vistes como un forastero.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "I came because you asked.",
+          "es": "He venido porque me lo pediste.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "That's the first time I ever asked you for anything and you actually showed up. Remember that.",
+          "es": "Es la primera vez que te pido algo y vienes de verdad. Acuérdate de eso.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Boys. We have a barber shop in ashes and fifteen kids with bats who think they're soldiers.",
+          "es": "Chicos. Tenemos una barbería en cenizas y quince críos con bates que se creen soldados.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "The Redlines started it. Or someone dressed like Redlines. Either way, my corner pays.",
+          "es": "Empezaron los Redline. O alguien vestido de Redline. En cualquier caso, mi esquina paga.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Someone's been testing you. They want a war between you and the Kings.",
+          "es": "Alguien te está probando. Quieren una guerra entre vosotros y los Kings.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Tell me something I don't know.",
+          "es": "Dime algo que no sepa.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Walk the old contacts. Somebody saw the guy who lit the match.",
+          "es": "Visitad a los viejos contactos. Alguien vio al tipo que encendió la cerilla.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Fine. Let's do it. Like we used to.",
+          "es": "Vale. Hagámoslo. Como antes.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Not like we used to. Smarter.",
+          "es": "No como antes. Con más cabeza.",
+          "t": 2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": "veyra_mart",
+      "objective": "Visita a Okafor, que vio pasar un coche sospechoso"
+    },
+    {
+      "type": "goto",
+      "target": "vargas_front",
+      "objective": "Pregunta a Loco en el taller de Vargas"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Black sedan, no plates, wheels like Redline's. But the guy driving wore Saints gold. Somebody wants us fighting ourselves.",
+          "es": "Berlina negra, sin matrículas, llantas de los Redline. Pero el conductor llevaba el oro de los Saints. Alguien quiere que nos peleemos entre nosotros.",
+          "t": 8.5
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "goto",
+      "target": [
+        20,
+        60
+      ],
+      "objective": "Corre al callejón donde se reúnen los jóvenes"
+    },
+    {
+      "type": "fight",
+      "at": [
+        20,
+        65
+      ],
+      "count": 4,
+      "objective": "Evita que los chavales entren en la pelea preparada",
+      "faction": "midnight_locos",
+      "armed": false
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Put the bats down. The streets don't need you dead, they need you smart.",
+          "es": "Soltad los bates. Las calles no os necesitan muertos, os necesitan listos.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": "dre_corner",
+      "objective": "Recoge a Dre en la esquina"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -130,
+        20
+      ],
+      "objective": "Lleva a Dre al sitio donde empezó su desconfianza",
+      "stop": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "scene",
+      "at": [
+        -130,
+        20
+      ],
+      "cast": [
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "This is where you told me you were leaving. Right on this step. Night before you went, you said you'd write.",
+          "es": "Aquí me dijiste que te ibas. Justo en este escalón. La noche antes de marcharte, dijiste que escribirías.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "I wrote. I wrote nineteen letters. I never sent a single one.",
+          "es": "Escribí. Diecinueve cartas. No mandé ninguna.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Why?",
+          "es": "¿Por qué?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Because every time I wrote 'I'm sorry,' it sounded like a lie. And you deserved better than a lie.",
+          "es": "Porque cada vez que escribía «lo siento», sonaba a mentira. Y tú merecías algo mejor que una mentira.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "You left me with a crew and a mother's debts. Yours and mine. Eight years of looking at your door.",
+          "es": "Me dejaste con una banda y las deudas de una madre. De la tuya y de la mía. Ocho años mirando tu puerta.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm here now.",
+          "es": "Estoy aquí ahora.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": [
+        -130,
+        20
+      ],
+      "objective": "Quédate con Dre mientras amanece"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "I'm not saying we're good. But you showed up. That counts.",
+          "es": "No digo que estemos bien. Pero has venido. Eso cuenta.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll call you every week. I mean it this time.",
+          "es": "Te llamaré cada semana. Esta vez va en serio.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Don't promise. Just call.",
+          "es": "No prometas. Llama.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dre, someone's using your name to start this war. Watch Ghost.",
+          "es": "Dre, alguien usa tu nombre para empezar esta guerra. Vigila a Ghost.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ghost? He's been quiet since you left. That's all.",
+          "es": "¿Ghost? Está callado desde que te fuiste. Nada más.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Quiet is how snakes work.",
+          "es": "Callado es como trabajan las serpientes.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -100,
+        "dz": 80
+      },
+      "objective": "Regresa a San Cordova cruzando el puente"
+    },
+    {
+      "type": "reward",
+      "money": 1840,
+      "reputation": {
+        "westbrook_saints": 9,
+        "the_syndicate": -4
+      },
+      "toast": "+$1840"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: DEAD END STREET (M en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,359 @@
+{
+  "id": "m58",
+  "number": 58,
+  "title": "FAMILY FIRST",
+  "title_es": "La familia primero",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 100
+      },
+      "cast": [
+        "ghost",
+        "dre",
+        "keisha",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Lena called. Someone left a photograph under her door. My nephew Theo walking home from school.",
+          "es": "Lena llamó. Alguien dejó una foto bajo su puerta. Mi sobrino Theo volviendo del colegio.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "That's how they keep you quiet.",
+          "es": "Así es como te mantienen callado.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "It's how they kept me quiet for three years.",
+          "es": "Así me mantuvieron callado tres años.",
+          "t": 3.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Where does she live?",
+          "es": "¿Dónde vive?",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Palm Court. A quiet block. Quiet is a lie.",
+          "es": "Palm Court. Una manzana tranquila. Tranquila es una mentira.",
+          "t": 2.9
+        },
+        {
+          "speaker": "K",
+          "en": "If they're watching her, they're watching us. Whatever we do, we do it slow and calm.",
+          "es": "Si la vigilan a ella, nos vigilan a nosotros. Hagamos lo que hagamos, lento y calmado.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "Two cars. One decoy, one family. And a house that looks lived in after they leave.",
+          "es": "Dos coches. Uno señuelo, uno para la familia. Y una casa que parezca habitada cuando se vayan.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'll do the decoy. Give me a hat.",
+          "es": "Hago de señuelo. Dadme un sombrero.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You'll draw them toward the highway, nowhere near the neighbourhood.",
+          "es": "Los llevarás hacia la autopista, lejos del barrio.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Thank you. All of you. I know I don't deserve it.",
+          "es": "Gracias. A todos. Sé que no lo merezco.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "It's not for you. It's for Theo.",
+          "es": "No es por ti. Es por Theo.",
+          "t": 2.2
+        }
+      ],
+      "title_card": true,
+      "hour": 8
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -90,
+        "dz": -110
+      },
+      "objective": "Conduce hasta Palm Court"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -92,
+        "dz": -114
+      },
+      "objective": "Revisa el domicilio de Lena",
+      "hint": "Mira las ventanas y la puerta trasera."
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -93,
+        "dz": -116
+      },
+      "count": 2,
+      "label": "Examinar vigilancia",
+      "objective": "Busca micrófonos y huellas de vigilancia en la casa",
+      "hint": "Revisa el buzón y la cocina."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -95,
+        "dz": -118
+      },
+      "guards": 3,
+      "objective": "Entra por el patio trasero y evacúa a Lena y Theo sin alarmar a los vecinos",
+      "label": "Patio de Palm Court"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Lena",
+          "en": "I don't want to leave my house. Ghost, what did you do?",
+          "es": "No quiero dejar mi casa. Ghost, ¿qué has hecho?",
+          "t": 3.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'll explain. Please, Lena, take Theo's school bag.",
+          "es": "Te lo explico. Por favor, Lena, coge la mochila de Theo.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un segundo coche para el señuelo"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": -170
+      },
+      "objective": "Lleva el coche señuelo por la carretera urbana hacia la autopista",
+      "time": 75
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 55,
+        "dz": -165
+      },
+      "count": 5,
+      "objective": "Los perseguidores caen en el señuelo: intercéptalos",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -140,
+        "dz": -60
+      },
+      "objective": "Lleva a todos a un refugio en las afueras"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -140,
+        "dz": -60
+      },
+      "cast": [
+        "ghost",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "The first money was not for Lena's treatment. It was for the apartment. I wanted somewhere safe and I took a loan with a face I never saw.",
+          "es": "El primer dinero no fue para el tratamiento de Lena. Fue para el piso. Quería un sitio seguro y pedí un préstamo con una cara que nunca vi.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "You told us half of it at the ridge.",
+          "es": "Nos contaste la mitad en la cresta.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'm telling the rest now. They asked for the Westbrook name. Not yours, Dre. The house. The Johnson house.",
+          "es": "Os cuento el resto ahora. Pidieron el nombre de Westbrook. No el tuyo, Dre. La casa. La casa de los Johnson.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "You gave them my mother's address.",
+          "es": "Les diste la dirección de mi madre.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "It was already in their papers. I confirmed which door.",
+          "es": "Ya estaba en sus papeles. Confirmé qué puerta.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Say that again.",
+          "es": "Repítelo.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I confirmed which door.",
+          "es": "Confirmé qué puerta.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -138,
+        "dz": -58
+      },
+      "objective": "Habla con Ghost fuera, bajo el porche"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -138,
+        "dz": -58
+      },
+      "cast": [
+        "ghost",
+        "dre",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "I should break your jaw.",
+          "es": "Debería romperte la mandíbula.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'd let you.",
+          "es": "Te dejaría.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Stop. Both of you. Theo's inside.",
+          "es": "Parad. Los dos. Theo está dentro.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "I understand why you did it. Doesn't mean I forget it.",
+          "es": "Entiendo por qué lo hiciste. No significa que lo olvide.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "That's fair.",
+          "es": "Es justo.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "From now on, nobody carries a secret alone. That's the price of staying.",
+          "es": "A partir de ahora nadie carga un secreto solo. Ese es el precio de quedarse.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3390,
+      "reputation": {
+        "westbrook_saints": 2,
+        "the_syndicate": -8
+      },
+      "toast": "MISIÓN COMPLETADA · La familia primero"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NOBODY GETS CLEAN (59 en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,394 @@
+{
+  "id": "m77",
+  "number": 77,
+  "title": "THE FINAL EVIDENCE",
+  "title_es": "La prueba final",
+  "act": "ACTO VI",
+  "start": "dre_corner",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 0,
+        "dz": 0
+      },
+      "cast": [
+        "keisha",
+        "Nina Cho",
+        "Detective Hale"
+      ],
+      "title_card": true,
+      "hour": 9,
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "I can run what we have. It's strong. Testimony, ledgers, tapes, a councilwoman in cuffs. But Cross's lawyers will say it's fragments. Stolen, unauthenticated, a mosaic.",
+          "es": "Puedo publicar lo que tenemos. Es sólido. Testimonios, libros de cuentas, grabaciones, una concejala esposada. Pero los abogados de Cross dirán que son fragmentos. Robados, sin autenticar, un mosaico.",
+          "t": 9
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "She's right. A court wants one document that ties her signature to the order that hurt someone. Not a hundred documents that hint at it.",
+          "es": "Tiene razón. Un tribunal quiere un documento que una su firma con la orden que hirió a alguien. No cien documentos que lo insinúen.",
+          "t": 9
+        },
+        {
+          "speaker": "K",
+          "en": "There's one. The Meridian Order Book. Every directive she approved, in sequence. Not in the Calder vault. It's in a secondary archive in San Cordova, behind a freight company front.",
+          "es": "Hay uno. El Libro de Órdenes de Meridian. Cada directriz que aprobó, en secuencia. No está en la bóveda del Calder. Está en un archivo secundario en San Cordova, tras una empresa de transporte de fachada.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Meaning she kept her own confession in a cabinet.",
+          "es": "O sea, guardó su propia confesión en un archivador.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Arrogant people always write things down. It's how they prove to themselves they're in charge.",
+          "es": "Los arrogantes siempre lo apuntan todo. Así se demuestran a sí mismos que mandan.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I can get Mack and Keisha a courier's credentials. Real ones. Issued by the county. But if the Order Book leaves San Cordova without a clean chain of custody, a judge throws it out.",
+          "es": "Puedo conseguirle a Mack y a Keisha credenciales de mensajero. De verdad. Expedidas por el condado. Pero si el Libro sale de San Cordova sin cadena de custodia limpia, un juez lo descarta.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "So I steal it in a way a judge would like.",
+          "es": "O sea que lo robo de un modo que le guste a un juez.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Not steal. Retrieve. In front of a witness. Detective, you ride along.",
+          "es": "No robar. Recuperar. Delante de un testigo. Detective, usted va con él.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I'm retiring in eleven months. I'd like to retire after something worth it.",
+          "es": "Me jubilo dentro de once meses. Me gustaría jubilarme después de algo que valga la pena.",
+          "t": 5.3
+        },
+        {
+          "speaker": "K",
+          "en": "And I'll be your eyes. Secure link, encrypted, the whole thing logged for the court.",
+          "es": "Y yo seré vuestros ojos. Enlace seguro, cifrado, todo registrado para el tribunal.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then let's go build the one document that doesn't need to be believed.",
+          "es": "Pues vayamos a construir el único documento al que no hace falta creer.",
+          "t": 4.9
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": 4,
+        "dz": 4
+      },
+      "objective": "Recoge las credenciales de mensajero con el detective Hale",
+      "hint": "Hale te espera junto a su coche.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche de mensajería para el viaje al sur"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -60,
+        "dz": -50
+      },
+      "objective": "Viaja a San Cordova por el enlace seguro hacia el archivo secundario"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Staff badge inside the lobby locker. Administrative floor is fourth. Blend in. Sit at a desk and look bored.",
+          "es": "Tarjeta de personal en la taquilla del vestíbulo. La planta administrativa es la cuarta. Mézclate. Siéntate en una mesa y pon cara de aburrido.",
+          "t": 7.6
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -40,
+        "dz": -30
+      },
+      "guards": 3,
+      "objective": "Infíltrate entre el personal administrativo hasta el archivo",
+      "label": "Personal de seguridad"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -36,
+        "dz": -26
+      },
+      "count": 2,
+      "label": "Pieza",
+      "objective": "Localiza el tomo que falta del Libro de Órdenes",
+      "hint": "Examina las estanterías de la cuarta planta."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -34,
+        "dz": -24
+      },
+      "count": 3,
+      "label": "Copia",
+      "objective": "Fotocopia y autentica los archivos con el detective",
+      "hint": "Hale firma cada página."
+    },
+    {
+      "type": "give",
+      "ammo": 150,
+      "money": 0,
+      "toast": "Munición para la salida"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -34,
+        "dz": -24
+      },
+      "cast": [
+        "Detective Hale"
+      ],
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Page 114. 'Terminate Hartwell contract. Make the lights go out in the east side. Approved, E. Cross.'",
+          "es": "Página 114. «Terminar contrato Hartwell. Que se apaguen las luces del lado este. Aprobado, E. Cross».",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "That's the outage. That's Fern Hill freezing. In her handwriting.",
+          "es": "Ese es el apagón. Es Fern Hill congelándose. En su letra.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Page 201. 'Acquire Johnson residence. Use Dalton signature.'",
+          "es": "Página 201. «Adquirir la residencia Johnson. Usar la firma Dalton».",
+          "t": 4.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "...My mama's house. A sentence in a book.",
+          "es": "...La casa de mi madre. Una frase en un libro.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Witnessed, dated and sworn. Take a breath. It's the best thing that has ever happened to this case.",
+          "es": "Testificado, fechado y jurado. Respira. Es lo mejor que le ha pasado a este caso.",
+          "t": 6.9
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Four cars just pulled in on the north ramp. Private security, no plates. They know you have the book.",
+          "es": "Cuatro coches acaban de entrar por la rampa norte. Seguridad privada, sin matrícula. Saben que tienes el libro.",
+          "t": 7.1
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -38,
+        "dz": -28
+      },
+      "count": 5,
+      "objective": "Abre paso entre los agentes privados que cierran el archivo",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 60,
+        "dz": 60
+      },
+      "objective": "Lleva el libro al mensajero por la salida sur antes de que lo intercepten",
+      "time": 80
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Despista a los coches que persiguen al mensajero"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": -10,
+        "dz": -10
+      },
+      "objective": "Vuelve a Northpoint con la cadena de custodia intacta"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -10,
+        "dz": -10
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Hash matches. Seal intact. Witness signature, countersigned. The county will hold this.",
+          "es": "El hash coincide. Sello intacto. Firma del testigo, refrendada. El condado lo guardará.",
+          "t": 6.1
+        },
+        {
+          "speaker": "K",
+          "en": "Four hundred and six directives. Every one has her initials in the margin.",
+          "es": "Cuatrocientas seis directrices. Todas con sus iniciales en el margen.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "If a judge reads page 114 and page 201 in the same sitting, they won't need a jury.",
+          "es": "Si un juez lee la página 114 y la 201 en la misma sesión, no necesitará jurado.",
+          "t": 5.8
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -10,
+        "dz": -10
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Publishing in thirty-six hours. Front page, six outlets, simultaneous. By then the court will have the original.",
+          "es": "Publicamos dentro de treinta y seis horas. Portada, seis medios, simultáneo. Para entonces el tribunal tendrá el original.",
+          "t": 7.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "She'll know the minute the first outlet breaks. She'll hit everything we love.",
+          "es": "Lo sabrá en cuanto el primer medio publique. Atacará todo lo que queremos.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Then you need to be home when it happens. Westbrook first. That's where she'll start.",
+          "es": "Entonces necesitas estar en casa cuando ocurra. Westbrook primero. Ahí empezará.",
+          "t": 6.0
+        },
+        {
+          "speaker": "K",
+          "en": "This is it, Mack. For the first time, the end of Cross Meridian is a real possibility.",
+          "es": "Esto es, Mack. Por primera vez, el fin de Cross Meridian es una posibilidad real.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Take the night to sleep. Tomorrow, nobody sleeps.",
+          "es": "Aprovechad la noche para dormir. Mañana no duerme nadie.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then let's go home before she remembers where we live.",
+          "es": "Entonces volvamos a casa antes de que recuerde dónde vivimos.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 8900,
+      "reputation": {
+        "westbrook_saints": 6,
+        "the_syndicate": -11
+      },
+      "toast": "+$8,900 · La red de Cross puede caer"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NIGHT OF SIEGE (M en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,315 @@
+{
+  "id": "m33",
+  "number": 33,
+  "title": "THE DETECTIVE",
+  "title_es": "El detective",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -35,
+    "dz": -25
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 20,
+        "dz": 100
+      },
+      "cast": [
+        "Detective Hale",
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "You've been poking at my city for two weeks. Pier nine, the hill meetings, the shredder. I have a file on you.",
+          "es": "Llevas dos semanas hurgando en mi ciudad. Muelle nueve, las reuniones de la colina, la trituradora. Tengo un expediente sobre ti.",
+          "t": 7.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then arrest me or shake my hand.",
+          "es": "Pues arréstame o dame la mano.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Not here. Cameras. Public park, noon, lunch crowd. Pretend we're talking about a parking ticket.",
+          "es": "Aquí no. Cámaras. Un parque público, mediodía, gente comiendo. Haced como si habláramos de una multa.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "You have doubts about your own people?",
+          "es": "¿Tienes dudas sobre los tuyos?",
+          "t": 2.7
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I have seventeen arrest reports with the same stamp and no witness. I have an evidence room that loses things.",
+          "es": "Tengo diecisiete atestados con el mismo sello y ningún testigo. Tengo una sala de pruebas que pierde cosas.",
+          "t": 7.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "What do you need from me?",
+          "es": "¿Qué necesitas de mí?",
+          "t": 2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Nothing I can put in a report. You walk where I can't. You see what I can't be seen seeing.",
+          "es": "Nada que pueda poner en un informe. Tú caminas por donde yo no puedo. Ves lo que yo no puedo ser visto viendo.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "He's offering to be a source and a shield. At the same time.",
+          "es": "Se ofrece como fuente y como escudo. A la vez.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Don't misread me. I'm not your friend. I'm a cop who's tired of burying people.",
+          "es": "No me malinterpretes. No soy tu amigo. Soy un poli harto de enterrar a gente.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tired of burying people. I can work with that.",
+          "es": "Harto de enterrar a gente. Con eso puedo trabajar.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Good. First, you read what I'm not allowed to show you.",
+          "es": "Bien. Primero, vas a leer lo que no puedo enseñarte.",
+          "t": 3.9
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 20,
+        "dz": 100
+      },
+      "objective": "Acude a la cita pública con el detective"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 25,
+        "dz": 105
+      },
+      "count": 3,
+      "label": "Informe",
+      "objective": "Revisa los informes de detenciones y reconoce los patrones",
+      "hint": "Todos llevan el mismo sello."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Look at the date stamps. Every raid happened the night before a Cross Meridian vote. Coincidence?",
+          "es": "Mira los sellos de fecha. Cada redada ocurrió la noche antes de un voto de Cross Meridian. ¿Coincidencia?",
+          "t": 6.8
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 80,
+        "dz": 120
+      },
+      "objective": "Acompaña al detective al depósito policial"
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 85,
+        "dz": 125
+      },
+      "objective": "Entra en el depósito con la autorización limitada"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 90,
+        "dz": 130
+      },
+      "guards": 3,
+      "objective": "Recorre el depósito sin que te vean los agentes de turno",
+      "label": "Depósito"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "The log shows three items checked out yesterday. The drawers are empty.",
+          "es": "El registro muestra tres objetos retirados ayer. Los cajones están vacíos.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 92,
+        "dz": 132
+      },
+      "count": 2,
+      "label": "Copia",
+      "objective": "Recupera las copias físicas de las pruebas borradas",
+      "hint": "Busca en las carpetas de la oficina del fondo."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 92,
+        "dz": 132
+      },
+      "count": 3,
+      "objective": "Rechaza a los agentes que vienen a quitarte las copias",
+      "faction": "guards",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Escapa de la presión institucional: los agentes dan la voz"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "If they stop you, you don't know me. You never met me.",
+          "es": "Si te paran, no me conoces. Nunca me has visto.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 20,
+        "dz": 100
+      },
+      "objective": "Vuelve al parque donde espera Hale"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 20,
+        "dz": 100
+      },
+      "cast": [
+        "Detective Hale"
+      ],
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "You kept them. Most people drop the copies and run.",
+          "es": "Las has guardado. La mayoría las suelta y huye.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "I don't run from paper. People, sometimes.",
+          "es": "No huyo de los papeles. De la gente, a veces.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I'll work with you. Under conditions. You don't kill anyone on my turf. You tell me before you move.",
+          "es": "Trabajaré contigo. Con condiciones. No matas a nadie en mi terreno. Me avisas antes de moverte.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "And if somebody tries to kill me first?",
+          "es": "¿Y si alguien intenta matarme antes?",
+          "t": 2.7
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Then survive politely.",
+          "es": "Entonces sobrevive con educación.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll try. Where do we start?",
+          "es": "Lo intentaré. ¿Por dónde empezamos?",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1660,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -6
+      },
+      "toast": "+$1660"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: GRAVEYARD SHIFT (M en el radar)"
+    }
+  ]
+}

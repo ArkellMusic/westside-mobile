@@ -1,0 +1,367 @@
+{
+  "id": "m03",
+  "number": 3,
+  "title": "DRE DON'T FORGET",
+  "title_es": "Dre, no lo olvides",
+  "act": "ACTO I",
+  "start": "dre_corner",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "You think a phone call fixes eight years?",
+          "es": "¿Crees que una llamada arregla ocho años?",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I think I'm standing here instead of hiding. That counts for something.",
+          "es": "Creo que estar aquí en vez de esconderme cuenta para algo.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "It counts for exactly one conversation. Use it well.",
+          "es": "Cuenta para exactamente una conversación. Aprovéchala.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then say what you need.",
+          "es": "Entonces dime qué necesitas.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Somebody lifted a watch off one of my boys. Silver, engraved, belonged to my old man.",
+          "es": "Alguien le levantó un reloj a uno de mis chicos. De plata, grabado, era de mi viejo.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Courier took it. Runs messages for the Kings, cuts through the alleys behind Marlow.",
+          "es": "Un mensajero lo cogió. Lleva recados para los Kings, corta por los callejones de detrás de Marlow.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "So why not send your own people?",
+          "es": "¿Y por qué no mandas a los tuyos?",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Because if a Saint steps on that block, it's a war. If a ghost from the past does it, it's a stray dog.",
+          "es": "Porque si un Saint pisa esa manzana, es una guerra. Si lo hace un fantasma del pasado, es un perro perdido.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm the stray dog.",
+          "es": "El perro perdido soy yo.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "You said it, not me.",
+          "es": "Lo has dicho tú, no yo.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "He'll be at the laundromat in ten minutes. Stay on the rooftops.",
+          "es": "Estará en la lavandería en diez minutos. Quédate en los tejados.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Bring it back clean. No bodies. You understand?",
+          "es": "Tráelo limpio. Sin muertos. ¿Entendido?",
+          "t": 3.3
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": [
+        -40,
+        100
+      ],
+      "objective": "Sube a las azoteas de Marlow para vigilar el callejón",
+      "hint": "Busca la escalera de incendios."
+    },
+    {
+      "type": "chase",
+      "at": [
+        -20,
+        80
+      ],
+      "objective": "Sigue al mensajero por los callejones sin que te vea",
+      "toast": "Mantente a distancia: si corre, corre."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "He's turning on you. Don't lose him.",
+          "es": "Se está girando hacia ti. No lo pierdas.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "I've got him, I've got him.",
+          "es": "Lo tengo, lo tengo.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": [
+        10,
+        60
+      ],
+      "guards": 2,
+      "objective": "Cruza el patio trasero hasta el escondite del mensajero sin ser visto",
+      "label": "patio"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "fight",
+      "at": [
+        10,
+        60
+      ],
+      "count": 2,
+      "objective": "Recupera el reloj del mensajero y de su colega sin armas de fuego",
+      "faction": "redline_kings",
+      "armed": false
+    },
+    {
+      "type": "collect",
+      "at": [
+        10,
+        60
+      ],
+      "count": 1,
+      "label": "Reloj",
+      "objective": "Coge el reloj plateado del suelo"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Got it. Two Kings saw my face though.",
+          "es": "Lo tengo. Pero dos Kings me han visto la cara.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Then they'll talk. Move.",
+          "es": "Entonces hablarán. Muévete.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "lose_cops",
+      "stars": 1,
+      "objective": "Despista a la patrulla que ha oído el follón"
+    },
+    {
+      "type": "goto",
+      "target": [
+        -10,
+        90
+      ],
+      "objective": "Escóndete en el callejón de Marlow hasta que se vayan",
+      "hint": "Quédate quieto en las sombras."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "dre_corner",
+      "objective": "Entrega el reloj a Dre"
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "This was my father's. He wore it the day they took him in.",
+          "es": "Era de mi padre. Lo llevaba el día que se lo llevaron.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm sorry about Mr. Simms. I should've been here.",
+          "es": "Siento lo del señor Simms. Debí estar aquí.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "You should have. You wrote twice, then nothing. I buried him without you.",
+          "es": "Debiste. Escribiste dos veces y luego nada. Lo enterré sin ti.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I was running from my own mess.",
+          "es": "Yo huía de mi propio lío.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Everybody's got a mess. Some of us stayed and cleaned it.",
+          "es": "Todos tenemos un lío. Algunos nos quedamos a limpiarlo.",
+          "t": 4.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": [
+        -45,
+        100
+      ],
+      "objective": "Vuelve junto a Dre bajo la farola de la esquina"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Two Kings talking on the corner of Vance. They know a stranger took the watch.",
+          "es": "Dos Kings hablando en la esquina de Vance. Saben que un extraño cogió el reloj.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Let them talk.",
+          "es": "Que hablen.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "I'm not forgiving you, Marcus.",
+          "es": "No te perdono, Marcus.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I didn't ask.",
+          "es": "No te lo he pedido.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Good. But Sunday, my mother's cooking. You eat, you listen, you don't talk.",
+          "es": "Bien. Pero el domingo cocina mi madre. Comes, escuchas y no hablas.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "I can do that.",
+          "es": "Puedo hacerlo.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "You never could. We'll see.",
+          "es": "Nunca pudiste. Ya veremos.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Dre. The Kings don't forget a face.",
+          "es": "Dre. Los Kings no olvidan una cara.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then Marcus better learn to watch his back again.",
+          "es": "Entonces Marcus tendrá que volver a mirar por encima del hombro.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "I never stopped. That's why I left.",
+          "es": "Nunca dejé de hacerlo. Por eso me fui.",
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 190,
+      "reputation": {
+        "westbrook_saints": 6,
+        "redline_kings": -2
+      },
+      "toast": "+$190 · Dre, no lo olvides"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: VARGAS AUTO WORKS (M en el radar)"
+    }
+  ]
+}

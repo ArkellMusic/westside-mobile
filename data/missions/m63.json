@@ -1,0 +1,473 @@
+{
+  "id": "m63",
+  "number": 63,
+  "title": "RAIN IN NORTHPOINT",
+  "title_es": "Lluvia en Northpoint",
+  "act": "ACTO IV",
+  "start": {
+    "zone": "las_brisas",
+    "dx": 178,
+    "dz": -170
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 10,
+        "dz": 10
+      },
+      "cast": [
+        "dre",
+        "ghost",
+        "Pruitt",
+        "Ingrid Halvorsen"
+      ],
+      "title_card": true,
+      "hour": 19,
+      "lines": [
+        {
+          "speaker": "Ingrid Halvorsen",
+          "en": "Bring him in, bring him in. Mind the step, the whole porch floods when it rains like this.",
+          "es": "Metedlo, metedlo. Cuidado con el escalón, todo el porche se inunda cuando llueve así.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "Sorry. I'm shaking. I haven't slept in two days.",
+          "es": "Perdón. Estoy temblando. Llevo dos días sin dormir.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Ingrid Halvorsen",
+          "en": "You're burning up, is what you are. Hale said a witness. He didn't say a sick one.",
+          "es": "Lo que tienes es fiebre. Hale dijo un testigo. No dijo que estuviera enfermo.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "He's got a heart thing. Pills ran out at the tunnel. They're in a bag in the burned car.",
+          "es": "Tiene algo del corazón. Las pastillas se acabaron en el túnel. Están en una bolsa en el coche quemado.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "So we need a pharmacy and we need it tonight. Somewhere nobody asks for a name.",
+          "es": "O sea que necesitamos una farmacia y la necesitamos esta noche. Sin que nadie pregunte nombres.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Ingrid Halvorsen",
+          "en": "Rennick's, down on Cold Harbor Street. Old man owes me a favor. Don't let him sell you aspirin for a heart.",
+          "es": "Rennick, en Cold Harbor Street. El viejo me debe un favor. Que no te venda aspirinas para el corazón.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'll go with him.",
+          "es": "Voy con él.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "No. You stay with the witness. All night. Door locked.",
+          "es": "No. Tú te quedas con el testigo. Toda la noche. Con la puerta cerrada.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "You're keeping me on the leash.",
+          "es": "Me tienes con correa.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "I'm keeping the only man who knows what we're hiding where I can see him. Don't take it personal.",
+          "es": "Tengo al único que sabe qué escondemos donde pueda verlo. No te lo tomes a pecho.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I take everything personal. That's why I talk so little.",
+          "es": "Yo me lo tomo todo a pecho. Por eso hablo tan poco.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Ingrid Halvorsen",
+          "en": "Boys. The man's dying on my sofa. Go.",
+          "es": "Chicos. El hombre se me muere en el sofá. Id.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Back in an hour. Don't open for anybody who knocks twice.",
+          "es": "Vuelvo en una hora. No abráis a nadie que llame dos veces.",
+          "t": 4.0
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": 40,
+        "dz": 30
+      },
+      "objective": "Llega al refugio antes de que la tormenta cierre las calles"
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": -20,
+        "dz": 10
+      },
+      "objective": "Sal a la calle y orientate bajo la lluvia",
+      "hint": "La visibilidad es mala. Sigue la marca del radar.",
+      "radius": 8
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ingrid Halvorsen",
+          "en": "Take Ash Row, it's the only street the drains don't swallow. Rennick's has a green door.",
+          "es": "Coge Ash Row, la única calle que los desagües no se tragan. Rennick tiene la puerta verde.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Green door. Copy.",
+          "es": "Puerta verde. Entendido.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": -60,
+        "dz": 40
+      },
+      "objective": "Habla con Rennick en la farmacia de Cold Harbor Street",
+      "hint": "Entra por la puerta verde.",
+      "radius": 5
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -60,
+        "dz": 40
+      },
+      "cast": [
+        "Rennick"
+      ],
+      "lines": [
+        {
+          "speaker": "Rennick",
+          "en": "Heart pills, no prescription, a stranger's face. You know what that sounds like, son?",
+          "es": "Pastillas del corazón, sin receta, cara de forastero. ¿Sabes cómo suena eso, hijo?",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "It sounds like a man who'll pay double.",
+          "es": "Suena a un hombre que paga el doble.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Rennick",
+          "en": "It sounds like Cross Meridian's people came by this morning asking about exactly that.",
+          "es": "Suena a que la gente de Cross Meridian pasó esta mañana preguntando justo por eso.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "What did you tell them?",
+          "es": "¿Qué les dijiste?",
+          "t": 2
+        },
+        {
+          "speaker": "Rennick",
+          "en": "Nothing. Cost me a window. Back room. Third shelf. Take it and forget my name.",
+          "es": "Nada. Me costó un cristal. Trastienda. Tercer estante. Cógelo y olvida mi nombre.",
+          "t": 5.5
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": -66,
+        "dz": 46
+      },
+      "count": 3,
+      "label": "Suministros",
+      "objective": "Recoge los medicamentos y vendajes de la trastienda",
+      "hint": "Examina los estantes marcados."
+    },
+    {
+      "type": "give",
+      "ammo": 40,
+      "money": 0,
+      "toast": "Munición de reserva"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Ghost says there's a gray van parked across from the house. Engine running for an hour.",
+          "es": "Ghost dice que hay una furgoneta gris frente a la casa. Lleva una hora con el motor en marcha.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who sits an hour in the rain on purpose? Those are not cops.",
+          "es": "¿Quién se pasa una hora bajo la lluvia a propósito? Esos no son polis.",
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "northpoint",
+        "dx": 80,
+        "dz": -30
+      },
+      "guards": 2,
+      "objective": "Acércate a la furgoneta de vigilancia sin que te vean",
+      "label": "Furgoneta"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "northpoint",
+        "dx": 82,
+        "dz": -34
+      },
+      "count": 4,
+      "objective": "Neutraliza a los vigilantes de la furgoneta",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Move him now. They've already radioed the plate of Hale's car. Back road, east of the rail yard.",
+          "es": "Muévelo ya. Ya han radiado la matrícula del coche de Hale. Camino trasero, al este de la estación de maniobras.",
+          "t": 6.7
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche limpio para trasladar a Pruitt"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Una patrulla te ha visto con el testigo: despístala por calles poco transitadas"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": -110,
+        "dz": -40
+      },
+      "objective": "Lleva a Pruitt al nuevo alojamiento, una cabaña tras el cementerio de barcos"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -110,
+        "dz": -40
+      },
+      "cast": [
+        "ghost",
+        "Pruitt"
+      ],
+      "lines": [
+        {
+          "speaker": "Pruitt",
+          "en": "I don't want to testify. There. I said it.",
+          "es": "No quiero declarar. Ya está. Lo he dicho.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then why'd you copy the ledger?",
+          "es": "Entonces, ¿por qué copiaste el libro de cuentas?",
+          "t": 2.2
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "Because I was a coward for eleven years and I wanted one thing in my life that wasn't.",
+          "es": "Porque fui un cobarde once años y quise una sola cosa en mi vida que no lo fuera.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Fear doesn't leave. You just carry it where it can't see your hands shake.",
+          "es": "El miedo no se va. Solo lo llevas donde no vea cómo te tiemblan las manos.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "You speak like a man who knows.",
+          "es": "Hablas como quien sabe.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I know.",
+          "es": "Sé.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Walter's copy of the ledger has a footer. Coordinates. They point to a plant north of the river.",
+          "es": "La copia del libro de Walter tiene una nota al pie. Coordenadas. Apuntan a una planta al norte del río.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Cold storage? In a city that's already cold?",
+          "es": "¿Cámaras frigoríficas? ¿En una ciudad que ya es fría?",
+          "t": 3.1
+        },
+        {
+          "speaker": "K",
+          "en": "Cold storage doesn't need heat. It needs secrets. Go look.",
+          "es": "Las cámaras frías no necesitan calor. Necesitan secretos. Ve a mirar.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": 120,
+        "dz": -120
+      },
+      "objective": "Sube al mirador y observa la instalación industrial entre la lluvia",
+      "hint": "El humo de las chimeneas marca el lugar.",
+      "radius": 10
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 120,
+        "dz": -120
+      },
+      "cast": [
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "That's no fish plant. Trucks every ten minutes and not one has a company name.",
+          "es": "Eso no es una planta de pescado. Un camión cada diez minutos y ninguno lleva nombre de empresa.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Rain's covering it. Same rain that hides us.",
+          "es": "La lluvia lo tapa. La misma lluvia que nos esconde a nosotros.",
+          "t": 3.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I count eleven guards on the east fence. Two dogs.",
+          "es": "Cuento once guardias en la valla este. Dos perros.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "You counted that from here?",
+          "es": "¿Has contado eso desde aquí?",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Eight years in worse places than here.",
+          "es": "Ocho años en sitios peores que este.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tomorrow we find out who signs their paychecks. Tonight, we sleep in shifts.",
+          "es": "Mañana averiguamos quién les paga. Esta noche dormimos por turnos.",
+          "t": 5.3
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 4050,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -6
+      },
+      "toast": "+$4,050 · Pruitt estable y oculto"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: ABOVE THE CITY (M en el radar)"
+    }
+  ]
+}

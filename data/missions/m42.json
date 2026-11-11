@@ -1,0 +1,379 @@
+{
+  "id": "m42",
+  "number": 42,
+  "title": "ROAD TO LAS BRISAS",
+  "title_es": "El camino a Las Brisas",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": 40,
+    "dz": 60
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 40,
+        "dz": 60
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "The Transport Board sits at nine. If we walk in with half a file, they bury us in procedure.",
+          "es": "La Junta de Transporte se reúne a las nueve. Si entramos con medio expediente, nos entierran en trámites.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Half a file is generous. Somebody lifted the permit stamp off the desert corridor. On paper, that road doesn't exist.",
+          "es": "Medio expediente es ser generoso. Alguien le quitó el sello al permiso del corredor del desierto. En el papel, esa carretera no existe.",
+          "t": 8.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Roads don't vanish. Somebody paid to make it vanish.",
+          "es": "Las carreteras no desaparecen. Alguien pagó para que desapareciera.",
+          "t": 3.6
+        },
+        {
+          "speaker": "K",
+          "en": "Paid, and paid well. Three shell firms bid on the repairs, all three signed by the same notary.",
+          "es": "Pagó, y bien. Tres empresas pantalla pujaron por las obras, las tres firmadas por el mismo notario.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Meaning if we open the road, we open the books. That's why they're sweating.",
+          "es": "Es decir, si abrimos la carretera, abrimos los libros. Por eso sudan.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I'm sticking my badge in a blender here, Johnson. My captain already asked why I keep pulling desert files.",
+          "es": "Me juego la placa en esto, Johnson. Mi capitán ya me preguntó por qué sigo sacando expedientes del desierto.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we move before he asks twice.",
+          "es": "Pues nos movemos antes de que pregunte dos veces.",
+          "t": 2.4
+        },
+        {
+          "speaker": "K",
+          "en": "Warning: the Syndicate has a clerk inside the Board. Pale tie, bad haircut, watches the door like a lookout.",
+          "es": "Aviso: el Syndicate tiene un empleado dentro de la Junta. Corbata pálida, mal corte de pelo, vigila la puerta como un puerta.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Whatever you do, nobody gets hurt in front of cameras. I have to print this with a straight face.",
+          "es": "Hagas lo que hagas, que nadie salga herido delante de las cámaras. Yo tengo que publicarlo con cara de póker.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "No promises about the cameras.",
+          "es": "De las cámaras no prometo nada.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Past that desert there's a city that eats people like us. Las Brisas. Once the stamp is back, you drive. I'll ride behind.",
+          "es": "Más allá del desierto hay una ciudad que se come a gente como nosotros. Las Brisas. Cuando recuperemos el sello, conduces tú. Yo voy detrás.",
+          "t": 8.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Eight years I ran from home. Now I'm running toward the next mess.",
+          "es": "Ocho años huyendo de casa. Y ahora corro hacia el siguiente lío.",
+          "t": 4.6
+        }
+      ],
+      "title_card": true,
+      "hour": 7
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 30,
+        "dz": 50
+      },
+      "count": 3,
+      "label": "Examinar expediente",
+      "objective": "Reúne las tres copias de los expedientes de obra en el archivo",
+      "hint": "Cada copia lleva una firma del mismo notario."
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -60,
+        "dz": 40
+      },
+      "objective": "Ve a la Junta de Transporte"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -80,
+        "dz": 20
+      },
+      "guards": 3,
+      "objective": "Llega al registro sin que el empleado del Syndicate te vea",
+      "label": "Archivo de la Junta"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -85,
+        "dz": 15
+      },
+      "count": 4,
+      "objective": "El empleado ha dado la alarma: noquea a sus matones",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Stamp's real. The date on it is real too. Somebody blocked this road with a forged hold. Get out of there.",
+          "es": "El sello es auténtico. La fecha también. Alguien bloqueó la carretera con una retención falsa. Sal de ahí.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Move. I'll hold the lobby cops with a story about a fire drill.",
+          "es": "Muévete. Yo aguanto a los vigilantes con el cuento de un simulacro.",
+          "t": 4.4
+        }
+      ],
+      "objective": "Sal del edificio con el permiso"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un vehículo para el convoy"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 60,
+        "dz": -20
+      },
+      "objective": "Únete al convoy oficial en la salida de la autopista"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": -60
+      },
+      "objective": "Mantén el convoy a la vista por la carretera vigilada"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Eyes up. Two pickups behind the truck. Same plates as the repair firms, I'd bet my pension.",
+          "es": "Ojo. Dos pickups detrás del camión. Las mismas matrículas de las constructoras, apuesto mi pensión.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "They're not following. They're herding.",
+          "es": "No nos siguen. Nos pastorean.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 130,
+        "dz": -70
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 70,
+      "objective": "Defiende el camión con los expedientes del ataque"
+    },
+    {
+      "type": "toast",
+      "title": "EXPEDIENTES A SALVO",
+      "subtitle": "Una carpeta quemada. El resto sigue contigo."
+    },
+    {
+      "type": "give",
+      "ammo": 40,
+      "money": 0,
+      "toast": "Munición del convoy: +40"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 165,
+        "dz": 100
+      },
+      "objective": "Llega al punto de control antes de su cierre administrativo",
+      "time": 110
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Seven minutes. The clerk locks the barrier at the top of the hour and the stamp dies with it.",
+          "es": "Siete minutos. El funcionario cierra la barrera en punto y el sello muere con ella.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then I'll make sure he's a minute slow.",
+          "es": "Pues me aseguro de que llegue un minuto tarde.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 175,
+        "dz": 150
+      },
+      "objective": "Cruza el primer cañón del desierto"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 180,
+        "dz": 180
+      },
+      "objective": "Detente en el mirador del desierto"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 180,
+        "dz": 180
+      },
+      "cast": [
+        "Detective Hale",
+        "Nina Cho",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Barrier's lifted. For the first time in two years, a car can legally cross to Las Brisas.",
+          "es": "La barrera está levantada. Por primera vez en dos años un coche puede cruzar legalmente a Las Brisas.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "And the first thing they'll find is a casino ledger. I found a chip tucked inside the permit folder.",
+          "es": "Y lo primero que encontrarán es un libro de casino. Encontré una ficha escondida en la carpeta del permiso.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dorado Sol. Gold chip, red seal.",
+          "es": "Dorado Sol. Ficha de oro, sello rojo.",
+          "t": 2.2
+        },
+        {
+          "speaker": "K",
+          "en": "Casino. Of course it's a casino. Somebody's washing the desert through the tables.",
+          "es": "Casino. Claro que es un casino. Alguien lava el desierto por las mesas.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "This is where I stop. My jurisdiction ends at the dust. You walk in as a private citizen.",
+          "es": "Aquí paro yo. Mi jurisdicción termina en el polvo. Tú entras como ciudadano particular.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Private citizen with a bad history. Perfect cover.",
+          "es": "Ciudadano particular con malos antecedentes. Tapadera perfecta.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Stay alive. I need a source who files nothing and remembers everything.",
+          "es": "Sigue vivo. Necesito una fuente que no firme nada y lo recuerde todo.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2300,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -6
+      },
+      "toast": "MISIÓN COMPLETADA · El camino a Las Brisas"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NEON AND DUST (43 en el radar)"
+    }
+  ]
+}

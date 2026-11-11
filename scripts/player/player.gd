@@ -11,6 +11,8 @@ const TURN_SPEED := 10.0
 var model: Humanoid
 var camera_yaw: float = 0.0
 var input_enabled: bool = true
+## Agachado: más lento y más difícil de acertar.
+var crouching: bool = false
 var gravity: float = float(ProjectSettings.get_setting("physics/3d/default_gravity", 9.8))
 
 
@@ -43,6 +45,9 @@ func _physics_process(delta: float) -> void:
 		target_speed = lerpf(WALK_SPEED, JOG_SPEED, clampf((amount - 0.3) / 0.6, 0.0, 1.0))
 		if input_enabled and Controls.is_down("sprint"):
 			target_speed = SPRINT_SPEED
+			crouching = false
+		if crouching:
+			target_speed = minf(target_speed, 1.9)
 	var horizontal := Vector3(velocity.x, 0, velocity.z)
 	var accel := 18.0 if is_on_floor() else 4.0
 	horizontal = horizontal.move_toward(dir * target_speed, accel * delta)
@@ -58,6 +63,7 @@ func _physics_process(delta: float) -> void:
 	if horizontal.length() > 0.3:
 		var target_yaw := atan2(-horizontal.x, -horizontal.z)
 		model.rotation.y = lerp_angle(model.rotation.y, target_yaw, clampf(TURN_SPEED * delta, 0.0, 1.0))
+	model.crouch = move_toward(model.crouch, 1.0 if crouching and is_on_floor() else 0.0, delta * 5.0)
 	model.animate(delta, horizontal.length(), is_on_floor())
 
 	# Si cae al mar (lejos de la orilla) vuelve a la arena.

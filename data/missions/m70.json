@@ -1,0 +1,389 @@
+{
+  "id": "m70",
+  "number": 70,
+  "title": "TROPICAL ARRIVAL",
+  "title_es": "Llegada tropical",
+  "act": "ACTO V",
+  "start": {
+    "zone": "northpoint",
+    "dx": 150,
+    "dz": -20
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -150,
+        "dz": -120
+      },
+      "cast": [
+        "big_ray",
+        "dre",
+        "ghost"
+      ],
+      "title_card": true,
+      "hour": 17,
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Look at that water. Seven hours ago we were freezing in the pines. Now it's postcards.",
+          "es": "Mira ese agua. Hace siete horas nos congelábamos entre pinos. Ahora son postales.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Postcards are how you hide a laundromat. Pretty sunsets, ugly accounts.",
+          "es": "Las postales son como se esconde una lavandería. Atardeceres bonitos, cuentas feas.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I count three black SUVs behind us since the bridge.",
+          "es": "Cuento tres SUV negros detrás de nosotros desde el puente.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nobody hits the brakes. Drift into traffic. We find a place to sleep before we find a fight.",
+          "es": "Que nadie frene. Mézclate con el tráfico. Buscamos dónde dormir antes de buscar pelea.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "And how do we know the first place we pick isn't wired?",
+          "es": "¿Y cómo sabemos que el primer sitio que elijamos no está pinchado?",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "We don't. That's why we're picking something stupid. A rental shack above a bait shop.",
+          "es": "No lo sabemos. Por eso elegiremos algo tonto. Una cabaña de alquiler encima de una tienda de cebo.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "The bait shop owner owes me a favor. His brother ran a boat for Cross's trust until he got tired of lying.",
+          "es": "El dueño de la tienda de cebo me debe un favor. Su hermano llevó un barco para el fideicomiso de Cross hasta que se cansó de mentir.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Still sound like old debts to me.",
+          "es": "A mí sigue sonándome a viejas deudas.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Old debts are the only currency I've got left, boy. Use them or lose them.",
+          "es": "Las viejas deudas son la única moneda que me queda, chaval. Úsalas o piérdelas.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Left at the palms. Slow. Don't look at the mirrors.",
+          "es": "A la izquierda en las palmeras. Despacio. No mires los retrovisores.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Welcome to paradise. Keep your gun under the towel.",
+          "es": "Bienvenidos al paraíso. Con la pistola bajo la toalla.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -120,
+        "dz": -90
+      },
+      "objective": "Cruza el puente costero y entra en Bahía Solana"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -80,
+        "dz": -60
+      },
+      "guards": 2,
+      "objective": "Llega a la cabaña sin que te sigan los SUV",
+      "label": "Vigilantes en moto"
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -70,
+        "dz": -50
+      },
+      "objective": "Instálate en la base provisional sobre la tienda de cebo",
+      "hint": "Sube por la escalera exterior.",
+      "radius": 6
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -70,
+        "dz": -50
+      },
+      "cast": [
+        "big_ray",
+        "Marisol Quintero"
+      ],
+      "lines": [
+        {
+          "speaker": "Marisol Quintero",
+          "en": "Nobody told me you'd come with a ghost story, Ray.",
+          "es": "Nadie me dijo que vendrías con una historia de fantasmas, Ray.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "This is Marisol. She notarized half the shell companies in the bay before she woke up.",
+          "es": "Esta es Marisol. Notarizó la mitad de las empresas pantalla de la bahía antes de despertar.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Marisol Quintero",
+          "en": "I stamped what I was handed. Names I'd never met, addresses that were just mailboxes. I told myself it was paperwork.",
+          "es": "Sellaba lo que me daban. Nombres que nunca conocí, direcciones que eran buzones. Me decía que era papeleo.",
+          "t": 8.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "And now?",
+          "es": "¿Y ahora?",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol Quintero",
+          "en": "Now I know one of those boxes owns a yacht. The Meridian Tide. It anchors where the hotels end and the canals begin.",
+          "es": "Ahora sé que uno de esos buzones es dueño de un yate. El Meridian Tide. Fondea donde acaban los hoteles y empiezan los canales.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "What do you need from us?",
+          "es": "¿Qué necesitas de nosotros?",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol Quintero",
+          "en": "Don't use my name. And bring me proof it's what I think it is, so I can sleep.",
+          "es": "No uséis mi nombre. Y traedme la prueba de que es lo que creo, para poder dormir.",
+          "t": 5.5
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -20,
+        "dz": 0
+      },
+      "objective": "Recorre los hoteles del paseo marítimo"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 20,
+        "dz": 20
+      },
+      "count": 3,
+      "label": "Pista",
+      "objective": "Reúne pistas en hotel, canal y puerto deportivo",
+      "hint": "Examina los puntos marcados."
+    },
+    {
+      "type": "give",
+      "ammo": 70,
+      "money": 0,
+      "toast": "Munición de reserva"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Marisol's list has one vessel that never leaves port and has a crew of eleven. A yacht nobody rents.",
+          "es": "La lista de Marisol tiene un buque que nunca sale de puerto y tiene una tripulación de once. Un yate que nadie alquila.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Meridian Tide. I see her. Stern light's on, windows covered.",
+          "es": "Meridian Tide. La veo. Luz de popa encendida, ventanas tapadas.",
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 80,
+        "dz": 40
+      },
+      "guards": 3,
+      "objective": "Acércate al amarre del yate corporativo",
+      "label": "Marineros de guardia"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 86,
+        "dz": 44
+      },
+      "count": 2,
+      "label": "Foto",
+      "objective": "Fotografía el casco, el registro y la lista de pasajeros",
+      "hint": "Usa la cámara desde el muelle."
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "They spotted the flash. Two jet skis and a white sedan. Go.",
+          "es": "Han visto el flash. Dos motos de agua y un sedán blanco. Corre.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -120,
+        "dz": -70
+      },
+      "objective": "Escapa de la vigilancia por avenidas y calzadas hasta el puente",
+      "time": 85
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Pierde a la patrulla marítima y a los coches del yate"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -70,
+        "dz": -50
+      },
+      "objective": "Vuelve con Marisol y entrega las fotos",
+      "hint": "Sube a la base.",
+      "radius": 6
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -70,
+        "dz": -50
+      },
+      "cast": [
+        "big_ray",
+        "Marisol Quintero",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Marisol Quintero",
+          "en": "That's the owner's trust. Meridian Tide is registered to Solana Meridian Trust. I can open the maritime registry, island by island.",
+          "es": "Es el fideicomiso del dueño. El Meridian Tide está registrado a Solana Meridian Trust. Puedo abrir el registro marítimo, isla por isla.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Islands. How many?",
+          "es": "Islas. ¿Cuántas?",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol Quintero",
+          "en": "Four that matter. Brava is first. It has a bridge that was closed 'for repairs' fourteen months ago. Nobody repaired anything.",
+          "es": "Cuatro que importan. Brava es la primera. Tiene un puente cerrado «por reparaciones» desde hace catorce meses. Nadie reparó nada.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Water keeps secrets better than land.",
+          "es": "El agua guarda mejor los secretos que la tierra.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Then we learn to swim.",
+          "es": "Pues aprendemos a nadar.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Marisol, you got your proof. Now get out of this bay for a week. I'll send someone.",
+          "es": "Marisol, ya tienes tu prueba. Ahora sal de esta bahía una semana. Mandaré a alguien.",
+          "t": 5.8
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 6500,
+      "reputation": {
+        "westbrook_saints": 5,
+        "the_syndicate": -9
+      },
+      "toast": "+$6,500 · Bahía Solana: base y primeras pistas"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: BRAVA CROSSING (M en el radar)"
+    }
+  ]
+}

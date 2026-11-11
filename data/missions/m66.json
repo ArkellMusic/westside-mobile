@@ -1,0 +1,349 @@
+{
+  "id": "m66",
+  "number": 66,
+  "title": "CROSS FILES",
+  "title_es": "Los archivos de Cross",
+  "act": "ACTO IV",
+  "start": {
+    "zone": "northpoint",
+    "dx": -60,
+    "dz": -150
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 0,
+        "dz": -10
+      },
+      "cast": [
+        "keisha",
+        "Ada Whitlock",
+        "Detective Hale"
+      ],
+      "title_card": true,
+      "hour": 10,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Meridian Vault Primary is on the ninth floor of the Calder Building. Fourth tenant down: Hartwell Records, Inc. Pure shell.",
+          "es": "Meridian Vault Primary está en la planta nueve del edificio Calder. Cuarto inquilino: Hartwell Records, S.A. Pura pantalla.",
+          "t": 8.6
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I can't walk in with a warrant. A judge in this county golfs with Cross's lawyers.",
+          "es": "No puedo entrar con una orden. Un juez de este condado juega al golf con los abogados de Cross.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Ada Whitlock",
+          "en": "That's where I come in. I've cleaned the Calder Building's records for six years. I have a visitor pass authority and a conscience.",
+          "es": "Ahí entro yo. Llevo seis años limpiando los registros del edificio Calder. Tengo autoridad para pases de visitante y una conciencia.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Why risk it, Ms. Whitlock?",
+          "es": "¿Por qué arriesgarse, señora Whitlock?",
+          "t": 2
+        },
+        {
+          "speaker": "Ada Whitlock",
+          "en": "Because my husband delivered mail to that ninth floor for twenty years. Last winter they said he'd retired. He hadn't. They hired a man who doesn't ask questions.",
+          "es": "Porque mi marido repartió el correo en esa novena planta veinte años. El invierno pasado dijeron que se había jubilado. No era verdad. Contrataron a uno que no pregunta.",
+          "t": 9
+        },
+        {
+          "speaker": "K",
+          "en": "Where is he now?",
+          "es": "¿Dónde está ahora?",
+          "t": 2
+        },
+        {
+          "speaker": "Ada Whitlock",
+          "en": "Gone. Sunday dinner, one day, and then a call from a number I didn't know. Nobody says what happened.",
+          "es": "Desaparecido. Una cena de domingo, un día, y luego una llamada de un número que no conocía. Nadie dice qué pasó.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we get what's behind that door and we find out.",
+          "es": "Entonces cogemos lo que hay tras esa puerta y lo averiguamos.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Temporary pass is good for ninety minutes. After that your face is a crime scene.",
+          "es": "El pase temporal vale noventa minutos. Después tu cara es una escena del crimen.",
+          "t": 5.7
+        },
+        {
+          "speaker": "K",
+          "en": "I'll be in your ear the whole time. Servers first, paper second. If I say walk, you walk.",
+          "es": "Estaré en tu oído todo el rato. Servidores primero, papel después. Si digo camina, caminas.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Ada Whitlock",
+          "en": "There's a chance this works. That's more than I've had since Sunday.",
+          "es": "Hay una posibilidad de que funcione. Es más de lo que he tenido desde el domingo.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "We'll make it count.",
+          "es": "Haremos que cuente.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": -10,
+        "dz": -20
+      },
+      "objective": "Conduce hasta el edificio Calder en el centro"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": -14,
+        "dz": -26
+      },
+      "objective": "Recoge el pase temporal de manos de Ada Whitlock",
+      "hint": "Ada espera junto a la cafetería de la esquina.",
+      "radius": 5
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "northpoint",
+        "dx": -24,
+        "dz": -34
+      },
+      "objective": "Un ratero se lleva tu sobre con el pase: alcánzalo",
+      "toast": "Atrápalo antes de que desaparezca"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "northpoint",
+        "dx": -30,
+        "dz": -40
+      },
+      "guards": 3,
+      "objective": "Cruza el vestíbulo y sube hasta la novena planta",
+      "label": "Vigilantes del Calder"
+    },
+    {
+      "type": "give",
+      "ammo": 60,
+      "money": 0,
+      "toast": "Munición para el piso nueve"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Server rack on the left. Data's encrypted but the printouts aren't. The restricted room has a badge reader, no guard.",
+          "es": "Rack de servidores a la izquierda. Los datos están cifrados pero los impresos no. La sala restringida tiene lector de tarjeta, sin guardia.",
+          "t": 8.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Without a guard? On the ninth floor of Cross's own paper?",
+          "es": "¿Sin guardia? ¿En la novena planta del papel de la propia Cross?",
+          "t": 4.0
+        },
+        {
+          "speaker": "K",
+          "en": "Where nobody should ever be. That's the guard.",
+          "es": "Donde nadie debería estar nunca. Ese es el guardia.",
+          "t": 3.2
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": -34,
+        "dz": -44
+      },
+      "count": 3,
+      "label": "Carpeta",
+      "objective": "Examina los armarios y toma las tres carpetas de la sala restringida",
+      "hint": "Cada armario está marcado en el radar."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Download is at forty percent. Forty. If anyone walks through that door, it halts.",
+          "es": "La descarga va al cuarenta por ciento. Cuarenta. Si alguien cruza esa puerta, se detiene.",
+          "t": 5.7
+        }
+      ]
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "northpoint",
+        "dx": -34,
+        "dz": -44
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 50,
+      "objective": "Mantén la sala mientras Keisha termina la descarga",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Mack, an audit crew just walked in. Cross's compliance office. Fifteen of them. Get out through the service stairs.",
+          "es": "Mack, acaba de entrar un equipo de auditoría. La oficina de cumplimiento de Cross. Quince. Sal por las escaleras de servicio.",
+          "t": 8.1
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "northpoint",
+        "dx": -30,
+        "dz": -38
+      },
+      "count": 5,
+      "objective": "Abre paso por la escalera de servicio contra los guardias de refuerzo",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Sal del edificio y despista a las patrullas corporativas"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": 60,
+        "dz": 60
+      },
+      "objective": "Llega al punto de encuentro con las carpetas",
+      "hint": "Cruza el puente hacia la estación.",
+      "radius": 8
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 60,
+        "dz": 60
+      },
+      "cast": [
+        "keisha",
+        "Detective Hale"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "It's all here. Meeting minutes. A purchase order for a site in San Cordova signed 'EC'. A memo ordering the closing of a clinic. All directly from her.",
+          "es": "Está todo aquí. Actas de reuniones. Una orden de compra para un solar de San Cordova firmada «EC». Un memorándum que ordena cerrar una clínica. Todo directamente de ella.",
+          "t": 9
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "That's not a staffer's hand. Evelyn Cross signed the decisions herself.",
+          "es": "Esa no es mano de un empleado. Evelyn Cross firmó las decisiones ella misma.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "She wanted a paper trail so nobody could steal her empire. She never imagined someone would steal the paper.",
+          "es": "Quería un rastro de papel para que nadie le robara su imperio. Nunca imaginó que alguien robaría el papel.",
+          "t": 7.6
+        },
+        {
+          "speaker": "K",
+          "en": "There's one more page. A note in the margin about Ada's husband. 'Resolved.'",
+          "es": "Hay una página más. Una nota al margen sobre el marido de Ada. «Resuelto».",
+          "t": 5.3
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "I'll tell her myself. She deserves to hear it from a person, not a file.",
+          "es": "Se lo diré yo. Merece oírlo de una persona, no de un archivo.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "We make Cross pay for every word in that margin.",
+          "es": "Haremos que Cross pague cada palabra de ese margen.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 5100,
+      "reputation": {
+        "westbrook_saints": 5,
+        "the_syndicate": -8
+      },
+      "toast": "+$5,100 · Decisiones de Cross en tus manos"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CONTROLLED CITY (M en el radar)"
+    }
+  ]
+}

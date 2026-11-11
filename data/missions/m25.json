@@ -1,0 +1,328 @@
+{
+  "id": "m25",
+  "number": 25,
+  "title": "BEHIND THE PORT",
+  "title_es": "Tras el puerto",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": 10,
+    "dz": 20
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 60,
+        "dz": -60
+      },
+      "cast": [
+        "Nina Cho",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "I booked you a loading slot as an auditor. Fake badge, real clipboard. Don't talk more than you have to.",
+          "es": "Te he reservado un turno de carga como auditor. Placa falsa, portapapeles de verdad. No hables más de lo necesario.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "I've been a lot of things. Auditor's new.",
+          "es": "He sido muchas cosas. Auditor es nuevo.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "I got a cousin in customs. He says container numbers end in the same two digits. Always the same two.",
+          "es": "Tengo un primo en aduanas. Dice que los números de contenedor acaban en las mismas dos cifras. Siempre las mismas.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Since when are you in San Cordova, Loco?",
+          "es": "¿Desde cuándo estás en San Cordova, Loco?",
+          "t": 2.8
+        },
+        {
+          "speaker": "Loco",
+          "en": "Since your girl on the phone said there was money in watching boxes. Don't make it weird.",
+          "es": "Desde que tu chica del teléfono dijo que había pasta en vigilar cajas. No lo hagas raro.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "He's not my anything. He's a contact with a truck.",
+          "es": "No es nada mío. Es un contacto con camión.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "Truck, tools, and a temper. I charge for all three.",
+          "es": "Camión, herramientas y mal genio. Cobro los tres.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Focus. Three containers. Numbers, photos, the shift schedule, and out before lunch.",
+          "es": "Concentraos. Tres contenedores. Números, fotos, el horario de turnos y fuera antes de comer.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "The port police don't hate trespassers. The ones that pay them hate witnesses.",
+          "es": "A la policía portuaria no le molestan los intrusos. A los que les pagan les molestan los testigos.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "So we're witnesses with a bad reputation. Perfect.",
+          "es": "O sea, somos testigos con mala fama. Perfecto.",
+          "t": 3.5
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 60,
+        "dz": -60
+      },
+      "objective": "Entra en la zona de carga con la cita falsa"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 80,
+        "dz": -70
+      },
+      "count": 3,
+      "label": "Contenedor",
+      "objective": "Anota la numeración de tres contenedores sospechosos",
+      "hint": "Repasa las cajas rojas y azules."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": -90
+      },
+      "guards": 3,
+      "objective": "Llega a la consola logística sin que te vean",
+      "label": "Consola"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Move the transfer slot to the late shift. The route runs across the bay.",
+          "es": "Mueve el turno de traslado al turno de tarde. La ruta cruza la bahía.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Done. The crane's moving.",
+          "es": "Hecho. La grúa se mueve.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -100,
+        "dz": -100
+      },
+      "objective": "Sigue al camión de mercancías hasta la nave del otro extremo"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Keep one car between us. They ain't stupid, just paid.",
+          "es": "Deja un coche entre nosotros. No son tontos, solo están pagados.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -120,
+        "dz": -110
+      },
+      "objective": "Acércate a la nave en el otro extremo de la bahía"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -125,
+        "dz": -115
+      },
+      "count": 2,
+      "label": "Foto",
+      "objective": "Fotografía la reunión entre el agente portuario y el intermediario",
+      "hint": "Hazlo desde detrás de las cajas."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Port agent hands an envelope. Middleman counts it twice. Greedy and nervous.",
+          "es": "El agente del puerto entrega un sobre. El intermediario lo cuenta dos veces. Codicioso y nervioso.",
+          "t": 5.3
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "give",
+      "ammo": 18,
+      "money": 0,
+      "toast": "Munición para el escape"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -125,
+        "dz": -115
+      },
+      "count": 4,
+      "objective": "Rechaza a los guardias que te han descubierto",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -140,
+        "dz": -130
+      },
+      "objective": "Llega al embarcadero y sube a la lancha auxiliar"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -170,
+        "dz": -120
+      },
+      "objective": "Cruza la bahía en la lancha hasta el embarcadero seguro",
+      "time": 60
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -170,
+        "dz": -120
+      },
+      "cast": [
+        "Nina Cho",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "We got out wet and alive. In my book that's a clean job.",
+          "es": "Salimos mojados y vivos. En mi libro eso es un trabajo limpio.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "I've got the numbers, the photos and the envelope on camera. That's a front page.",
+          "es": "Tengo los números, las fotos y el sobre en vídeo. Eso es una portada.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Front pages don't stop men with envelopes. Who's the middleman?",
+          "es": "Las portadas no paran a hombres con sobres. ¿Quién es el intermediario?",
+          "t": 4.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "A fixer. He rides the last tram every night. Same seat, same briefcase.",
+          "es": "Un enlace. Coge el último tranvía cada noche. El mismo asiento, el mismo maletín.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "Tram tail. Easy. Just don't get on the same car as me, I stand out.",
+          "es": "Seguir un tranvía. Fácil. Solo no subas en mi mismo vagón, yo destaco.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "You stand out in a closet, Loco.",
+          "es": "Tú destacas hasta en un armario, Loco.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1180,
+      "reputation": {
+        "westbrook_saints": 2,
+        "the_syndicate": -5
+      },
+      "toast": "+$1180"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: MIDNIGHT TRAM (M en el radar)"
+    }
+  ]
+}

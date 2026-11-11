@@ -1,0 +1,349 @@
+{
+  "id": "m39",
+  "number": 39,
+  "title": "VIPER'S DEAL",
+  "title_es": "El trato de Viper",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -30,
+    "dz": 10
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 30
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Viper left Westbrook on a train two days ago. That's never happened. He hasn't left South Veyra since before you left.",
+          "es": "Viper salió de Westbrook en tren hace dos días. Nunca había pasado. No salía de South Veyra desde antes de que tú te fueras.",
+          "t": 8.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then he's not working alone. A man like him doesn't travel unless somebody pays the ticket.",
+          "es": "Entonces no trabaja solo. Un hombre como él no viaja si nadie paga el billete.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "The tip came from an anonymous source. It could be a trap.",
+          "es": "El aviso vino de una fuente anónima. Podría ser una trampa.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Or a gift. Either way, we go.",
+          "es": "O un regalo. En cualquier caso, vamos.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "If Viper's meeting corporate people, we get proof the Redline Kings are somebody's puppets.",
+          "es": "Si Viper se reúne con gente corporativa, tenemos la prueba de que los Redline Kings son marionetas de alguien.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "I always thought he was just a dog with a good collar.",
+          "es": "Siempre pensé que era un perro con buen collar.",
+          "t": 3.8
+        },
+        {
+          "speaker": "K",
+          "en": "Keep your distance. A man like that can smell fear.",
+          "es": "Mantén la distancia. Un hombre así huele el miedo.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm not afraid of Viper.",
+          "es": "No le tengo miedo a Viper.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "You should be afraid of whoever's holding his leash.",
+          "es": "Deberías tener miedo de quien le sujeta la correa.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Photos, audio, and out. No heroics.",
+          "es": "Fotos, audio y fuera. Sin heroicidades.",
+          "t": 2.5
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 30
+      },
+      "objective": "Investiga por qué Viper ha salido de South Veyra"
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche para seguir a Viper"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 80,
+        "dz": 60
+      },
+      "objective": "Sigue el coche de Viper desde la estación"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 140,
+        "dz": 50
+      },
+      "objective": "No pierdas a Viper hasta el edificio corporativo",
+      "stop": true
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Black glass, no sign out front. Three armed doormen. This isn't a bank.",
+          "es": "Cristal negro, sin letrero en la entrada. Tres porteros armados. Esto no es un banco.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 145,
+        "dz": 55
+      },
+      "guards": 3,
+      "objective": "Entra por el aparcamiento hasta la sala de reuniones",
+      "label": "Sala"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Viper",
+          "en": "Ten crates, nine thousand a crate. Same as last time, but more guns.",
+          "es": "Diez cajas, nueve mil la caja. Igual que la última vez, pero con más armas.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Man in Gray",
+          "en": "You get your money. You get your protection. You keep Westbrook busy.",
+          "es": "Recibes tu dinero. Recibes tu protección. Mantienes Westbrook ocupado.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Viper",
+          "en": "And Johnson?",
+          "es": "¿Y Johnson?",
+          "t": 2
+        },
+        {
+          "speaker": "Man in Gray",
+          "en": "Leave him to us.",
+          "es": "Déjanoslo a nosotros.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 150,
+        "dz": 60
+      },
+      "count": 3,
+      "label": "Foto",
+      "objective": "Fotografía a los asistentes sin arriesgar a los civiles",
+      "hint": "Hay empleados y visitantes cerca."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "One of them wears Saints gold on his lapel. Ghost's friend? Who is that?",
+          "es": "Uno lleva el oro de los Saints en la solapa. ¿Un amigo de Ghost? ¿Quién es ese?",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Guard",
+          "en": "Camera on the third floor! Somebody's in the vents!",
+          "es": "¡Cámara en la tercera planta! ¡Hay alguien en los conductos!",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": 65
+      },
+      "objective": "Corre por los pasillos de servicio mientras te persiguen",
+      "toast": "Un guardia te corta el paso"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": 65
+      },
+      "count": 3,
+      "objective": "Abre paso entre los guardias del pasillo",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un coche de empleado en el garaje"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Pierde a los perseguidores y llega a una posición segura"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 30
+      },
+      "objective": "Entrega las pruebas a Nina en lugar seguro",
+      "stop": true
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 30
+      },
+      "cast": [
+        "Nina Cho",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Photos, audio, a signed receipt. It's all here.",
+          "es": "Fotos, audio, un recibo firmado. Está todo aquí.",
+          "t": 3.3
+        },
+        {
+          "speaker": "K",
+          "en": "I ran the lapel pin. Black and gold. A Saints pin. The man is called Merrick. He drinks with Ghost every Sunday.",
+          "es": "He cruzado el pin de la solapa. Negro y oro. Un pin de los Saints. Se llama Merrick. Bebe con Ghost todos los domingos.",
+          "t": 7.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ghost.",
+          "es": "Ghost.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Don't jump to conclusions.",
+          "es": "No saltes a conclusiones.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I won't. But I'll keep an eye on every quiet man I know.",
+          "es": "No lo haré. Pero vigilaré a cada hombre callado que conozca.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Careful. A man like Ghost can disappear inside his own silence.",
+          "es": "Cuidado. Un hombre como Ghost puede desaparecer dentro de su propio silencio.",
+          "t": 4.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2020,
+      "reputation": {
+        "westbrook_saints": 4,
+        "redline_kings": -4,
+        "the_syndicate": -8
+      },
+      "toast": "+$2020"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: PORT AUTHORITY (M en el radar)"
+    }
+  ]
+}

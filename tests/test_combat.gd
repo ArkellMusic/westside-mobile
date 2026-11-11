@@ -323,7 +323,7 @@ func _run() -> void:
 	main.set_wanted(0)
 	var I: Interiors = main.interiors
 	check(I.place_index("clothes") >= 0 and I.place_index("barber") >= 0 and I.place_index("tattoo") >= 0, "hay tienda de ropa, barbería y estudio de tatuajes")
-	check(I._shop_fronts.size() == 3 and I.radar_markers(I._shop_fronts[0]["pos"]).size() >= 1, "las tiendas tienen escaparate y marca en el radar")
+	check(I._shop_fronts.size() == 4 and I.place_index("guns") >= 0 and I.radar_markers(I._shop_fronts[0]["pos"]).size() >= 1, "las tiendas tienen escaparate y marca en el radar")
 	check(main.city._houses.size() > 20 and main.city.get_node_or_null("HouseDetails") != null, "chalets con tejado (%d casas y garajes)" % main.city._houses.size())
 	GameState.add_money(500)
 	GameState.owned_outfits = [0]

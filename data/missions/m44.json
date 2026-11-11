@@ -1,0 +1,397 @@
+{
+  "id": "m44",
+  "number": 44,
+  "title": "CASINO CONTACT",
+  "title_es": "Contacto en el casino",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "Marisol",
+        "dre",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Marisol",
+          "en": "Dorado Sol has one rule above all: nobody carries what they came with. Guns, wires, grudges, everything stays outside.",
+          "es": "Dorado Sol tiene una regla por encima de todas: nadie entra con lo que trajo. Armas, micros, rencores, todo se queda fuera.",
+          "t": 8.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "And the informant?",
+          "es": "¿Y el informante?",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Teddy Voss. Floor manager, three kids, one gambling habit. He keeps a second ledger in a safe nobody counts.",
+          "es": "Teddy Voss. Jefe de sala, tres hijos, un vicio con el juego. Guarda un segundo libro en una caja fuerte que nadie cuenta.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "A man who owes the house tells the house's secrets. Classic.",
+          "es": "Un hombre que le debe a la casa cuenta los secretos de la casa. Un clásico.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "He doesn't tell. He sells. Dress sharp, order a drink you don't finish, and don't look at the cameras like you hate them.",
+          "es": "No los cuenta. Los vende. Vístete elegante, pide una copa que no te acabes y no mires las cámaras como si las odiaras.",
+          "t": 8.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "I hate everything that blinks.",
+          "es": "Odio todo lo que parpadea.",
+          "t": 2.1
+        },
+        {
+          "speaker": "K",
+          "en": "I'll be in your ear from the motel. Dorado Sol's wifi has a ghost network for staff. I'll ride it.",
+          "es": "Estaré en tu oreja desde el motel. El wifi de Dorado Sol tiene una red fantasma para el personal. Me monto en ella.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Voss will wear a green pin. When he touches it twice, he's ready.",
+          "es": "Voss llevará un pin verde. Cuando lo toque dos veces, está listo.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Let me guess. If it goes wrong we're on our own.",
+          "es": "Déjame adivinar. Si sale mal, estamos solos.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Marisol",
+          "en": "In this city that's called Tuesday.",
+          "es": "En esta ciudad eso se llama martes.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Suit first. Then the lion's den.",
+          "es": "Primero el traje. Luego la guarida del león.",
+          "t": 2.2
+        }
+      ],
+      "title_card": true,
+      "hour": 18
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -80,
+        "dz": 30
+      },
+      "objective": "Ve a la sastrería de Calle Cobre",
+      "hint": "Marisol dijo que el sastre acepta efectivo y no hace preguntas."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -82,
+        "dz": 26
+      },
+      "count": 3,
+      "objective": "Dos cobradores le están apretando al sastre: sácalos",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -84,
+        "dz": 28
+      },
+      "count": 2,
+      "label": "Coger traje",
+      "objective": "Elige el traje y los zapatos",
+      "hint": "Un traje oscuro y zapatos que no chirríen."
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 20,
+        "dz": 10
+      },
+      "guards": 2,
+      "objective": "Entra en el casino con la invitación y sin llamar la atención",
+      "label": "Entrada de Dorado Sol"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 35,
+        "dz": 5
+      },
+      "count": 3,
+      "label": "Buscar a Voss",
+      "objective": "Recorre los salones buscando al jefe de sala del pin verde",
+      "hint": "Cruza la ruleta, el póker y la barra."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Pin check. Third table from the bar. He's sweating through his collar. Touch the glass, he'll react.",
+          "es": "Revisa el pin. Tercera mesa desde la barra. Suda por el cuello. Toca el vaso y reaccionará.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Easy, K. I'm walking.",
+          "es": "Tranquila, K. Estoy caminando.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 40,
+        "dz": 0
+      },
+      "cast": [
+        "Teddy Voss",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Teddy Voss",
+          "en": "Not here. You see the card in the pit boss's coat? That's the access card for the lift. Get it and I talk upstairs.",
+          "es": "Aquí no. ¿Ves la tarjeta en el abrigo del jefe de mesa? Es la del ascensor. Consíguela y hablo arriba.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "You want me to rob a pit boss in front of three hundred tourists.",
+          "es": "¿Quieres que robe a un jefe de mesa delante de trescientos turistas?",
+          "t": 4.6
+        },
+        {
+          "speaker": "Teddy Voss",
+          "en": "Loco's got the distraction at ten. When the slot floor goes dark, take it.",
+          "es": "Loco tiene la distracción a las diez. Cuando la zona de tragaperras se apague, cógela.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Wait for the alarm. I promise it'll be beautiful.",
+          "es": "Espera la alarma. Te prometo que será bonita.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 45,
+        "dz": -10
+      },
+      "objective": "El jefe de mesa huye con la tarjeta: alcánzalo",
+      "toast": "¡Que no llegue a seguridad!"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 46,
+        "dz": -12
+      },
+      "count": 1,
+      "label": "Coger tarjeta",
+      "objective": "Recupera la tarjeta de acceso del suelo"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 50,
+        "dz": -30
+      },
+      "guards": 3,
+      "objective": "Sube en el ascensor de servicio hasta la oficina de Voss",
+      "label": "Ala de oficinas"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 52,
+        "dz": -34
+      },
+      "count": 2,
+      "label": "Copiar libro",
+      "objective": "Fotografía las páginas del segundo libro de la caja fuerte",
+      "hint": "El libro lleva tres columnas: entrada, comisión, destino."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Teddy Voss",
+          "en": "The third column. Those are Cross Meridian codes. Every dollar that touches the felt leaves under one of them.",
+          "es": "La tercera columna. Son códigos de Cross Meridian. Cada dólar que toca el fieltro sale bajo uno de ellos.",
+          "t": 7.7
+        },
+        {
+          "speaker": "K",
+          "en": "I'm copying it live. Keep him talking. Keep him alive.",
+          "es": "Lo estoy copiando en directo. Mantenlo hablando. Mantenlo vivo.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 55,
+        "dz": -35
+      },
+      "count": 5,
+      "objective": "Seguridad os ha pillado: abre paso a golpes",
+      "faction": "guards",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "El casino avisa a la policía local: despista a las patrullas"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Vuelve al motel con las páginas"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "Teddy Voss",
+        "Marisol"
+      ],
+      "lines": [
+        {
+          "speaker": "Teddy Voss",
+          "en": "I have a name. Anders Pike. He's the intermediary who signs for Cross Meridian's chips. He lives for the next big night.",
+          "es": "Tengo un nombre. Anders Pike. Es el intermediario que firma las fichas de Cross Meridian. Vive para la próxima gran noche.",
+          "t": 8.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "What big night?",
+          "es": "¿Qué gran noche?",
+          "t": 2
+        },
+        {
+          "speaker": "Teddy Voss",
+          "en": "Friday. A fundraiser at the Opal Theatre. Cash goes in as ticket money and out as 'consulting fees'.",
+          "es": "El viernes. Una gala benéfica en el Teatro Ópalo. El dinero entra como entradas y sale como «honorarios de consultoría».",
+          "t": 7.0
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Voss, you leave town tonight. I've got a bus ticket and a cousin who doesn't ask.",
+          "es": "Voss, te vas de la ciudad esta noche. Tengo un billete de autobús y un primo que no pregunta.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Teddy Voss",
+          "en": "If they find the book is gone, they'll come for my kids first.",
+          "es": "Si descubren que falta el libro, irán primero a por mis hijos.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we move before they count.",
+          "es": "Pues nos movemos antes de que cuenten.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2440,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -10
+      },
+      "toast": "MISIÓN COMPLETADA · Contacto en el casino"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: DOUBLE OR NOTHING (45 en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,382 @@
+{
+  "id": "m71",
+  "number": 71,
+  "title": "BRAVA CROSSING",
+  "title_es": "Cruce a Brava",
+  "act": "ACTO V",
+  "start": {
+    "zone": "bahia_solana",
+    "dx": -70,
+    "dz": -50
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 60,
+        "dz": 60
+      },
+      "cast": [
+        "loco",
+        "keisha",
+        "Marisol Quintero"
+      ],
+      "title_card": true,
+      "hour": 9,
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Eleven hours I drove. Eleven. Radiator screaming the whole damn way. Somebody tell me this city has good coffee.",
+          "es": "Once horas conduciendo. Once. El radiador gritando todo el camino. Que alguien me diga que esta ciudad tiene buen café.",
+          "t": 7.8
+        },
+        {
+          "speaker": "K",
+          "en": "Loco, focus. The harbor manifests. Marisol, show him.",
+          "es": "Loco, concéntrate. Los manifiestos del puerto. Marisol, enséñaselos.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Marisol Quintero",
+          "en": "Forty-two containers in six weeks, all destined for Isla Brava. None declared. Every one passes through a port office that stamps without opening.",
+          "es": "Cuarenta y dos contenedores en seis semanas, todos con destino Isla Brava. Ninguno declarado. Todos pasan por una oficina del puerto que sella sin abrir.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "What's in them?",
+          "es": "¿Qué hay dentro?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "That's the question. Pallets of what the manifest calls 'heritage documents' and 'cold goods'.",
+          "es": "Esa es la pregunta. Palés de lo que el manifiesto llama «documentos patrimoniales» y «mercancía fría».",
+          "t": 6.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "Cold goods in a tropical island. Bro, that's not groceries.",
+          "es": "Mercancía fría en una isla tropical. Tío, eso no son víveres.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Marisol Quintero",
+          "en": "The only road in is a bridge that Cross's people blocked fourteen months ago. By water you can reach the south dock.",
+          "es": "La única carretera de entrada es un puente que la gente de Cross bloqueó hace catorce meses. Por agua se llega al muelle sur.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we do both. Boat to see, car to carry.",
+          "es": "Entonces hacemos las dos cosas. Barco para ver, coche para llevar.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "I can prep a truck by dawn. But I'm not getting on a boat unless somebody swears it floats.",
+          "es": "Puedo preparar una camioneta para el amanecer. Pero no subo a una barca si alguien no jura que flota.",
+          "t": 6.4
+        },
+        {
+          "speaker": "K",
+          "en": "Loco, you drove across a desert in a car you called 'barely alive'. A boat will be fine.",
+          "es": "Loco, cruzaste un desierto en un coche que llamabas «apenas vivo». Una barca estará bien.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "There's a freighter leaving in two hours. The Perla Gris. If she sails, the evidence sails with her.",
+          "es": "Hay un carguero que sale en dos horas. El Perla Gris. Si zarpa, la prueba zarpa con él.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "Then I'll swear it floats. Barely.",
+          "es": "Entonces juro que flota. Apenas.",
+          "t": 2.4
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 80,
+        "dz": 70
+      },
+      "objective": "Revisa los manifiestos con Marisol en la oficina portuaria",
+      "hint": "Entra a las oficinas del puerto.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue una lancha auxiliar para el desembarco"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 120,
+        "dz": 90
+      },
+      "objective": "Lleva el vehículo hasta el embarcadero del puerto deportivo"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The Perla Gris just cast off. Small coaster, red stripe. Follow her through the canals but don't crowd her.",
+          "es": "El Perla Gris acaba de soltar amarras. Carguero pequeño, franja roja. Síguelo por los canales sin agobiarlo.",
+          "t": 7.5
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 150,
+        "dz": 110
+      },
+      "objective": "Sigue al barco sospechoso por los canales costeros",
+      "time": 95
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 160,
+        "dz": 120
+      },
+      "guards": 3,
+      "objective": "Entra en el almacén pesquero antes de que el barco zarpe",
+      "label": "Estibadores armados"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 164,
+        "dz": 124
+      },
+      "count": 3,
+      "label": "Prueba",
+      "objective": "Busca pruebas entre las cajas del almacén pesquero",
+      "hint": "Abre los contenedores marcados."
+    },
+    {
+      "type": "give",
+      "ammo": 100,
+      "money": 0,
+      "toast": "Munición para el almacén"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 166,
+        "dz": 126
+      },
+      "count": 5,
+      "objective": "Rechaza a la tripulación que cierra el almacén",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Marisol Quintero",
+          "en": "Harbormaster Pires can sign the order to lift the blockade. He's scared of Cross, but he hates what happened to his brother more.",
+          "es": "El capitán de puerto Pires puede firmar la orden para levantar el bloqueo. Le teme a Cross, pero odia más lo que le pasó a su hermano.",
+          "t": 9
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 100,
+        "dz": 130
+      },
+      "objective": "Convence al capitán de puerto Pires de levantar el bloqueo",
+      "hint": "Su oficina está al final del muelle.",
+      "radius": 6
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 100,
+        "dz": 130
+      },
+      "cast": [
+        "Harbormaster Pires"
+      ],
+      "lines": [
+        {
+          "speaker": "Harbormaster Pires",
+          "en": "You show me forty-two containers and a dead brother's name and you expect me to sign?",
+          "es": "Me traes cuarenta y dos contenedores y el nombre de un hermano muerto, y esperas que firme.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "I expect you to remember he was a man who couldn't keep quiet.",
+          "es": "Espero que recuerdes que era un hombre que no sabía callar.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Harbormaster Pires",
+          "en": "...Fine. I'll file it as an emergency inspection. The checkpoint will open at dusk. Not a minute before.",
+          "es": "...Está bien. Lo registraré como una inspección de emergencia. El control se abrirá al anochecer. Ni un minuto antes.",
+          "t": 7.3
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "isla_brava",
+        "dx": -150,
+        "dz": -130
+      },
+      "objective": "Cruza el puente abierto hacia el interior de Isla Brava"
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "isla_brava",
+        "dx": -140,
+        "dz": -120
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 40,
+      "objective": "Aguanta en la entrada de la isla mientras llegan refuerzos",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "isla_brava",
+        "dx": -100,
+        "dz": -80
+      },
+      "objective": "Entrega las pruebas a la contacta isleña",
+      "hint": "Sigue la carretera de la costa.",
+      "radius": 8
+    },
+    {
+      "type": "toast",
+      "title": "REGIÓN DESBLOQUEADA",
+      "subtitle": "ISLA BRAVA"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "isla_brava",
+        "dx": -100,
+        "dz": -80
+      },
+      "cast": [
+        "loco",
+        "keisha",
+        "Inés Calloway"
+      ],
+      "lines": [
+        {
+          "speaker": "Inés Calloway",
+          "en": "You crossed the bridge? Nobody's crossed that bridge in fourteen months.",
+          "es": "¿Habéis cruzado el puente? Nadie lo cruza hace catorce meses.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "The harbormaster signed. He didn't want to. But he did.",
+          "es": "El capitán de puerto firmó. No quería. Pero firmó.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Inés Calloway",
+          "en": "This island thinks it's been forgotten. It hasn't. It's been inventoried.",
+          "es": "Esta isla cree que la han olvidado. No es así. La han inventariado.",
+          "t": 5.1
+        },
+        {
+          "speaker": "K",
+          "en": "We'll publish what you give us. Names, dates, containers.",
+          "es": "Publicaremos lo que nos des. Nombres, fechas, contenedores.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "And if the island wakes up angry?",
+          "es": "¿Y si la isla despierta enfadada?",
+          "t": 2.3
+        },
+        {
+          "speaker": "Inés Calloway",
+          "en": "Then it'll finally sound like itself.",
+          "es": "Entonces por fin sonará como ella misma.",
+          "t": 2.6
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 6850,
+      "reputation": {
+        "westbrook_saints": 5,
+        "the_syndicate": -9
+      },
+      "toast": "+$6,850 · El puente de Brava vuelve a abrirse"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: A VOICE FROM WESTBROOK (M en el radar)"
+    }
+  ]
+}

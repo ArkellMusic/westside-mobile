@@ -1,0 +1,360 @@
+{
+  "id": "m43",
+  "number": 43,
+  "title": "NEON AND DUST",
+  "title_es": "Neón y polvo",
+  "act": "ACTO III",
+  "start": {
+    "zone": "san_cordova",
+    "dx": 180,
+    "dz": 180
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -150,
+        "dz": 140
+      },
+      "cast": [
+        "Marisol",
+        "dre",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Marisol",
+          "en": "You smell like road dust and trouble. Perfect, that's the only perfume this town takes seriously.",
+          "es": "Hueles a polvo de carretera y a problemas. Perfecto, es el único perfume que esta ciudad se toma en serio.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're the contact?",
+          "es": "¿Tú eres el contacto?",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "I'm Marisol. I move envelopes for people who can't afford to be seen holding them. You're the new envelope.",
+          "es": "Soy Marisol. Muevo sobres para gente que no puede permitirse que la vean con ellos. Tú eres el sobre nuevo.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Cute. You always talk like that or only to men with guns?",
+          "es": "Qué mona. ¿Siempre hablas así o solo con hombres con pistola?",
+          "t": 4.0
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Only to the ones who plan to stay. Pay attention, Westbrook. Strip's lit, sidewalks aren't safe.",
+          "es": "Solo con los que piensan quedarse. Atento, Westbrook. El Strip está iluminado, las aceras no son seguras.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "Man, I counted four black sedans from the arch to here. Four. They park like they're charging rent.",
+          "es": "Tío, he contado cuatro sedanes negros desde el arco hasta aquí. Cuatro. Aparcan como si cobraran alquiler.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Because they do. Every block belongs to somebody's lender. Mine owns the motel. You owe him nothing, I do.",
+          "es": "Porque lo hacen. Cada manzana es de algún prestamista. El mío es dueño del motel. Tú no le debes nada, yo sí.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "What's the price of a room?",
+          "es": "¿Cuánto cuesta una habitación?",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "One small favor tonight. A package, clean hands, no questions. You prove you can be quiet.",
+          "es": "Un favor pequeño esta noche. Un paquete, manos limpias, sin preguntas. Demuestras que sabes callar.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "We're not couriers.",
+          "es": "No somos mensajeros.",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Everyone's a courier in Las Brisas. The difference is who signs the receipt.",
+          "es": "Todos son mensajeros en Las Brisas. La diferencia es quién firma el recibo.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fine. One favor. Then you talk.",
+          "es": "Vale. Un favor. Luego hablas.",
+          "t": 2.2
+        }
+      ],
+      "title_card": true,
+      "hour": 21
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -120,
+        "dz": 100
+      },
+      "objective": "Registra el motel y deja el equipaje en la habitación"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 90
+      },
+      "count": 2,
+      "label": "Revisar habitación",
+      "objective": "Comprueba la habitación: micros, cerraduras, salidas",
+      "hint": "Mira bajo la cama y en el aire acondicionado."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -60,
+        "dz": 60
+      },
+      "objective": "Encuentra a Marisol en el aparcamiento de la tienda de neón"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Marisol",
+          "en": "Blue case, sealed. Leave it at the loading door of Aurum Freight. Don't open it, don't smile.",
+          "es": "Maletín azul, sellado. Déjalo en la puerta de carga de Aurum Freight. No lo abras, no sonrías.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "I never smile.",
+          "es": "Yo nunca sonrío.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un coche discreto para la entrega"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": -40
+      },
+      "objective": "Lleva el maletín a Aurum Freight sin llamar la atención",
+      "time": 100
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 65,
+        "dz": -45
+      },
+      "count": 1,
+      "label": "Mirar el albarán",
+      "objective": "Lee el albarán pegado al maletín",
+      "hint": "Una sola etiqueta: Cross Meridian Holdings."
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 65,
+        "dz": -45
+      },
+      "cast": [
+        "dre",
+        "Guard"
+      ],
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Cross Meridian. Letterhead says Aurum Freight, billing says Cross Meridian.",
+          "es": "Cross Meridian. La cabecera dice Aurum Freight, la facturación dice Cross Meridian.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Same name on the Westbrook letters. Same hands on the deeds. That's not coincidence, that's a signature.",
+          "es": "El mismo nombre de las cartas de Westbrook. Las mismas manos en las escrituras. Eso no es casualidad, es una firma.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Guard",
+          "en": "Hey! You're not on the list. Hands where I can see them.",
+          "es": "¡Eh! No estás en la lista. Manos donde pueda verlas.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Wrong door, brother. Leaving.",
+          "es": "Puerta equivocada, hermano. Ya me voy.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 70,
+        "dz": -50
+      },
+      "count": 4,
+      "objective": "Quítate de encima a los guardias de la nave",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "La alarma ha saltado: despista a la policía privada"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -20,
+        "dz": -100
+      },
+      "objective": "Cambia de coche en el aparcamiento subterráneo del hotel"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -40,
+        "dz": -110
+      },
+      "guards": 2,
+      "objective": "Sal del parking sin que la cámara te vea",
+      "label": "Aparcamiento del hotel"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Vuelve al motel"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "Marisol",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Marisol",
+          "en": "You touched the albarán. I can tell by the way you stopped breathing when you came in.",
+          "es": "Leíste el albarán. Lo noto en cómo dejaste de respirar al entrar.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Cross Meridian owns the freight company. And you knew.",
+          "es": "Cross Meridian es dueño de la empresa de carga. Y tú lo sabías.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Marisol",
+          "en": "I knew. I needed you to know too. Nobody believes a girl who says it first.",
+          "es": "Lo sabía. Necesitaba que lo supieras tú. Nadie le cree a una chica que lo dice primero.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "You used us as a test.",
+          "es": "Nos has usado como prueba.",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Everybody does. Be glad it was me. Next: Dorado Sol. Someone inside keeps a book. I get you through the front door.",
+          "es": "Todos lo hacen. Da gracias de que fuera yo. Lo siguiente: Dorado Sol. Alguien dentro guarda un libro. Yo os llevo por la puerta principal.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Tomorrow night. Wear something that doesn't scream 'ex-con'.",
+          "es": "Mañana por la noche. Ponte algo que no grite «expresidiario».",
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2370,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -8
+      },
+      "toast": "MISIÓN COMPLETADA · Neón y polvo"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CASINO CONTACT (44 en el radar)"
+    }
+  ]
+}

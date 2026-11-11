@@ -1,0 +1,379 @@
+{
+  "id": "m07",
+  "number": 7,
+  "title": "K KNOWS",
+  "title_es": "K lo sabe",
+  "act": "ACTO I",
+  "start": "keisha",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Sit. Don't touch the red pins, they're the ones I'm sure about.",
+          "es": "Siéntate. No toques los pines rojos, son de los que estoy segura.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "This whole wall is red.",
+          "es": "Toda la pared es roja.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Forty-one properties in Westbrook changed hands in eighteen months. Barber, laundromat, the lot behind Vargas. Seven different buyers.",
+          "es": "Cuarenta y una propiedades de Westbrook cambiaron de manos en dieciocho meses. Barbería, lavandería, el solar tras Vargas. Siete compradores distintos.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Seven names.",
+          "es": "Siete nombres.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Seven letterheads. Zero people. Every one of them pays through the same courier, Hargrove Parcel.",
+          "es": "Siete membretes. Cero personas. Todos pagan por el mismo mensajero, Hargrove Parcel.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Hargrove. I've seen that van. White, no plates on the right side half the time.",
+          "es": "Hargrove. He visto esa furgoneta. Blanca, sin matrícula a la derecha la mitad de las veces.",
+          "t": 5.5
+        },
+        {
+          "speaker": "K",
+          "en": "Public registry has the deed copies. I can't walk in, I'm flagged. You can.",
+          "es": "El registro público tiene las copias de las escrituras. Yo no puedo entrar, estoy fichada. Tú sí.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Flagged for what?",
+          "es": "¿Fichada por qué?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Asking questions in the wrong building.",
+          "es": "Por hacer preguntas en el edificio equivocado.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "She also bit a clerk once.",
+          "es": "Además mordió a un funcionario una vez.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "He grabbed my notebook.",
+          "es": "Me quitó la libreta.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fine. Registry, deeds, then the van.",
+          "es": "Vale. Registro, escrituras y luego la furgoneta.",
+          "t": 2.5
+        },
+        {
+          "speaker": "K",
+          "en": "Camera and gloves are in the bag. Be boring. Boring is invisible.",
+          "es": "Cámara y guantes en la bolsa. Sé aburrido. Lo aburrido es invisible.",
+          "t": 4.6
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": [
+        60,
+        40
+      ],
+      "objective": "Ve al registro público de la propiedad"
+    },
+    {
+      "type": "sneak",
+      "target": [
+        62,
+        44
+      ],
+      "guards": 2,
+      "objective": "Entra en el archivo trasero sin que te vean los vigilantes del registro",
+      "label": "archivo"
+    },
+    {
+      "type": "collect",
+      "at": [
+        62,
+        44
+      ],
+      "count": 3,
+      "label": "Escritura",
+      "objective": "Fotografía las copias de las escrituras",
+      "hint": "Busca los archivadores marcados con «Westbrook»."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Hargrove van just left the loading bay. White, rear window taped. Take it, I can't follow.",
+          "es": "La furgoneta de Hargrove acaba de salir del muelle de carga. Blanca, luna trasera con cinta. Síguela, yo no puedo.",
+          "t": 6.3
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche discreto para seguir la furgoneta"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        140,
+        -20
+      ],
+      "objective": "Sigue a la furgoneta de Hargrove hasta su destino sin acercarte demasiado"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": [
+        150,
+        -30
+      ],
+      "guards": 3,
+      "objective": "Infíltrate en el vestíbulo de la oficina sospechosa",
+      "label": "vestíbulo"
+    },
+    {
+      "type": "collect",
+      "at": [
+        150,
+        -30
+      ],
+      "count": 2,
+      "label": "Foto de agenda",
+      "objective": "Fotografía la agenda de reuniones del mostrador",
+      "hint": "No te quedes mirando: dos fotos y fuera."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "What do you see?",
+          "es": "¿Qué ves?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Three names: Cross, Delacroix, Mr. Stern. Thursday, ten p.m., 'port review'.",
+          "es": "Tres nombres: Cross, Delacroix, el señor Stern. Jueves, 22:00, «revisión portuaria».",
+          "t": 5.3
+        },
+        {
+          "speaker": "K",
+          "en": "Get out. Now.",
+          "es": "Sal. Ya.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "sneak",
+      "target": [
+        128,
+        -20
+      ],
+      "guards": 3,
+      "objective": "Sal del edificio sin activar la seguridad",
+      "label": "salida de servicio"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 1,
+      "objective": "Despista a la seguridad privada que sale en tu persecución"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Lleva el material a casa de Keisha"
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Okay. Seven companies, one registered agent, one mailing address in a building that doesn't exist.",
+          "es": "Vale. Siete empresas, un agente registrado, una dirección postal en un edificio que no existe.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "So we're fighting a mailbox.",
+          "es": "Así que peleamos contra un buzón.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "We're fighting what's under the mailbox. Look. Delacroix Logistics, Stern Capital, Crestline, they all file the same quarterly number.",
+          "es": "Peleamos contra lo que hay bajo el buzón. Mira. Delacroix Logistics, Stern Capital, Crestline, todas declaran la misma cifra trimestral.",
+          "t": 9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Same accountant.",
+          "es": "El mismo contable.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Or the same pocket.",
+          "es": "O el mismo bolsillo.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Last file. Every company routes its final payment to one account. Harbor Authority parking permit.",
+          "es": "Último archivo. Todas las empresas envían el pago final a una cuenta. Un permiso de aparcamiento de la Autoridad Portuaria.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "So the money goes to the port.",
+          "es": "Así que el dinero va al puerto.",
+          "t": 2.1
+        },
+        {
+          "speaker": "K",
+          "en": "Tonight, a shift is hiring warehouse hands. Lucky you.",
+          "es": "Esta noche contratan gente para un turno de almacén. Qué suerte la tuya.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "big_ray",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Pretty girl, big brain, no regard for her own neck.",
+          "es": "Chica guapa, gran cerebro y ningún respeto por su cuello.",
+          "t": 3.6
+        },
+        {
+          "speaker": "K",
+          "en": "I heard that.",
+          "es": "Te he oído.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "She's right about the port, Ray.",
+          "es": "Tiene razón con lo del puerto, Ray.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I know she is. That's what scares me.",
+          "es": "Ya lo sé. Eso es lo que me da miedo.",
+          "t": 2.6
+        },
+        {
+          "speaker": "K",
+          "en": "Be at the gate at midnight. Fake badge in your pocket.",
+          "es": "Estate en la puerta a medianoche. Con la placa falsa en el bolsillo.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "And if I get caught?",
+          "es": "¿Y si me cogen?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Then you were never my friend.",
+          "es": "Entonces nunca fuiste mi amigo.",
+          "t": 2.1
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 350,
+      "reputation": {
+        "westbrook_saints": 4
+      },
+      "toast": "+$350 · K lo sabe"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: NIGHT SHIFT (M en el radar)"
+    }
+  ]
+}

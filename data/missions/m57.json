@@ -1,0 +1,377 @@
+{
+  "id": "m57",
+  "number": 57,
+  "title": "TWO SIDES",
+  "title_es": "Dos versiones",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -105,
+        "dz": 95
+      },
+      "cast": [
+        "ghost",
+        "dre",
+        "keisha",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "I'll tell you. Not here. Somewhere nobody counts the cars. The lookout above Salt Ridge. Sunset.",
+          "es": "Os lo contaré. Aquí no. En un sitio donde nadie cuente los coches. El mirador sobre Salt Ridge. Al atardecer.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "You expect me to climb a ridge to hear a lie?",
+          "es": "¿Esperas que suba una cresta para oír una mentira?",
+          "t": 3.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I expect you to climb a ridge to hear a story. You decide what it is after.",
+          "es": "Espero que subas una cresta para oír una historia. Tú decides qué es después.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Why there?",
+          "es": "¿Por qué allí?",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Because from there I can see anyone coming for forty miles. And because I want to say it to the sky, not to a wall.",
+          "es": "Porque desde allí veo a cualquiera que venga a cuarenta millas. Y porque quiero decirlo al cielo, no a una pared.",
+          "t": 8.1
+        },
+        {
+          "speaker": "K",
+          "en": "If you run, I track you. Phone stays on. Always.",
+          "es": "Si huyes, te rastreo. El móvil se queda encendido. Siempre.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Always.",
+          "es": "Siempre.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'll lend you a car. It's not pretty. It's not fast. It's got character.",
+          "es": "Te presto un coche. No es bonito. No es rápido. Tiene carácter.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "A car with character means a car that dies.",
+          "es": "Un coche con carácter es un coche que se muere.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "Then it dies with dignity.",
+          "es": "Pues se muere con dignidad.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "We go. All of us hear it.",
+          "es": "Vamos. Todos lo oímos.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 17
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 160,
+        "dz": -40
+      },
+      "objective": "Conduce con Ghost hasta el mirador de Salt Ridge"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 165,
+        "dz": -45
+      },
+      "objective": "Camina con Ghost por el sendero entre miradores"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 165,
+        "dz": -45
+      },
+      "cast": [
+        "ghost",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Three years ago my sister Lena got a diagnosis. I borrowed money from the wrong people. It wasn't Viper's money. It was cleaner. It came in an envelope with no name.",
+          "es": "Hace tres años mi hermana Lena recibió un diagnóstico. Pedí dinero a la gente equivocada. No era dinero de Viper. Era más limpio. Vino en un sobre sin nombre.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "And they've been asking for repayment ever since.",
+          "es": "Y desde entonces te piden que lo devuelvas.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I gave them small things. Routes. Names of bartenders. I thought it was harmless.",
+          "es": "Les di cosas pequeñas. Rutas. Nombres de camareros. Pensé que era inofensivo.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "Routes. Names. That's what killed Marisol.",
+          "es": "Rutas. Nombres. Eso mató a Marisol.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I did not give them the depot. I swear on my sister's life.",
+          "es": "Yo no les di el depósito. Lo juro por la vida de mi hermana.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Called two Saints contacts in Westbrook. Both confirm Ghost's sister was at Mercy General in March. Treatment was paid in cash.",
+          "es": "He llamado a dos contactos de los Saints en Westbrook. Ambos confirman que la hermana de Ghost estuvo en Mercy General en marzo. El tratamiento se pagó en efectivo.",
+          "t": 8.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "That part's real. Doesn't mean the rest is.",
+          "es": "Esa parte es real. No significa que el resto lo sea.",
+          "t": 3.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 168,
+        "dz": -47
+      },
+      "count": 5,
+      "waves": 3,
+      "time": 60,
+      "objective": "Un grupo intenta silenciar a Ghost: protégelo"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 170,
+        "dz": -48
+      },
+      "count": 5,
+      "objective": "Remata a los atacantes que quedan",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "steal",
+      "objective": "Coge el coche de Loco, mal preparado para la arena"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 100,
+        "dz": -100
+      },
+      "objective": "Abandona la zona en el coche por la pista de arena"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Vuelve al motel con Ghost en el coche"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "dre",
+        "keisha",
+        "ghost",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "He told the story well. Too well. A man who rehearsed a story is a man who's lied before.",
+          "es": "Contó bien la historia. Demasiado bien. Un hombre que ensaya una historia es un hombre que ha mentido antes.",
+          "t": 6.2
+        },
+        {
+          "speaker": "K",
+          "en": "But the hospital facts hold. The dates hold. Only the part about 'small things' I can't check.",
+          "es": "Pero los hechos del hospital cuadran. Las fechas cuadran. Solo la parte de las «cosas pequeñas» no puedo comprobarla.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Small things add up.",
+          "es": "Las cosas pequeñas se suman.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Believe whatever you need to believe.",
+          "es": "Creed lo que necesitéis creer.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "Ghost, nobody believes you. But nobody's shooting you either. That's better than most.",
+          "es": "Ghost, nadie te cree. Pero nadie te dispara tampoco. Es mejor que lo de muchos.",
+          "t": 6.0
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -105,
+        "dz": 92
+      },
+      "objective": "Habla con Dre a solas"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -105,
+        "dz": 92
+      },
+      "cast": [
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "I can't forgive what I can't verify.",
+          "es": "No puedo perdonar lo que no puedo verificar.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then verify. But don't bury him before the facts.",
+          "es": "Pues verifica. Pero no lo entierres antes de los hechos.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "You sound like Big Ray.",
+          "es": "Hablas como Big Ray.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Big Ray taught me to keep my enemies visible. And my friends closer.",
+          "es": "Big Ray me enseñó a mantener a mis enemigos a la vista. Y a mis amigos más cerca.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Closer is where knives live.",
+          "es": "Más cerca es donde viven los cuchillos.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Exactly.",
+          "es": "Exacto.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3330,
+      "reputation": {
+        "westbrook_saints": -2,
+        "the_syndicate": -8
+      },
+      "toast": "MISIÓN COMPLETADA · Dos versiones"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: FAMILY FIRST (58 en el radar)"
+    }
+  ]
+}

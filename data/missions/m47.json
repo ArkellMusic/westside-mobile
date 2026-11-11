@@ -1,0 +1,325 @@
+{
+  "id": "m47",
+  "number": 47,
+  "title": "DESERT ENGINES",
+  "title_es": "Motores del desierto",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -150,
+        "dz": 120
+      },
+      "cast": [
+        "loco",
+        "dre",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Look at her. Dune-runner frame, reinforced axle, tires that eat gravel for breakfast. I built her in two nights.",
+          "es": "Mírala. Chasis de dunas, eje reforzado, neumáticos que desayunan grava. La construí en dos noches.",
+          "t": 7.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "She looks like she wants to kill me.",
+          "es": "Parece que me quiere matar.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "She wants to kill everybody. That's her charm.",
+          "es": "Quiere matar a todo el mundo. Ese es su encanto.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "We need the desert roads, Loco. The Syndicate moves parts and fuel on a route nobody maps.",
+          "es": "Necesitamos las carreteras del desierto, Loco. El Syndicate mueve piezas y combustible por una ruta que nadie cartografía.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Loco",
+          "en": "There's a local street race on the outskirts tonight. Every driver there knows a back road. I buy them a beer, I buy their secrets.",
+          "es": "Esta noche hay una carrera ilegal en las afueras. Todos los pilotos conocen un camino trasero. Les pago una cerveza y les compro sus secretos.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "And if they recognize you?",
+          "es": "¿Y si te reconocen?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Then I lose on purpose and let them feel generous.",
+          "es": "Pues pierdo a propósito y dejo que se sientan generosos.",
+          "t": 3.5
+        },
+        {
+          "speaker": "K",
+          "en": "Reminder: private patrols. Not police. They shoot first, they read the permit later.",
+          "es": "Recordatorio: patrullas privadas. No policía. Disparan primero y leen el permiso después.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "We take two cars. Nobody drives alone.",
+          "es": "Vamos con dos coches. Nadie conduce solo.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "Mack, you're with me. If you throw up, do it out the window.",
+          "es": "Mack, tú conmigo. Si vomitas, hazlo por la ventanilla.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Just drive, Loco.",
+          "es": "Tú conduce, Loco.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 17
+    },
+    {
+      "type": "give",
+      "ammo": 30,
+      "money": 0,
+      "toast": "Munición para la salida: +30"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -120,
+        "dz": 130
+      },
+      "objective": "Sube al buggy de Loco",
+      "hint": "El coche está en el taller de Loco, al oeste del motel."
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -60,
+        "dz": 170
+      },
+      "objective": "Gana la carrera de reconocimiento en las afueras",
+      "time": 75
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Third driver from the left said it: a fuel convoy leaves Quarry Road at dusk. Grey tanker, two escorts.",
+          "es": "El tercer piloto por la izquierda lo dijo: un convoy de combustible sale de Quarry Road al anochecer. Cisterna gris, dos escoltas.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Get me on its tail, Loco.",
+          "es": "Ponme a su cola, Loco.",
+          "t": 2
+        }
+      ],
+      "objective": "Sigue al convoy"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -10,
+        "dz": 150
+      },
+      "objective": "Sigue al convoy de combustible sin ser visto"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": 140
+      },
+      "objective": "No pierdas el convoy en el desvío del polígono"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 120,
+        "dz": 60
+      },
+      "objective": "Abandona el asfalto y cruza el lecho seco"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 150,
+        "dz": 40
+      },
+      "guards": 2,
+      "objective": "Pasa a pie por el borde del cañón sin alertar a los escoltas",
+      "label": "Cañón seco"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 160,
+        "dz": 35
+      },
+      "count": 1,
+      "label": "Recuperar paquete",
+      "objective": "Recupera el paquete caído del camión",
+      "hint": "Está bajo una roca, junto al cauce."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 158,
+        "dz": 38
+      },
+      "count": 5,
+      "objective": "La patrulla privada ha llegado: rechaza el ataque",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 60,
+        "dz": -60
+      },
+      "objective": "Cruza la presa por el tramo de coronación antes de que la patrulla te corte",
+      "time": 100
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Vuelve a la ciudad con el paquete"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Inside the package: maintenance keys, a map with the corner of a lake circled, and a receipt for sixty cots.",
+          "es": "Dentro del paquete: llaves de mantenimiento, un mapa con la esquina de un lago marcada y un recibo por sesenta catres.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "Sixty cots. That's not a warehouse. That's a barracks.",
+          "es": "Sesenta catres. Eso no es un almacén. Es un cuartel.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Loco",
+          "en": "Temporary base. Gravel road, no tower lights. They didn't want satellites to count the trucks.",
+          "es": "Base temporal. Camino de grava, sin luces de torre. No querían que los satélites contaran los camiones.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who pays sixty men to sit in the desert?",
+          "es": "¿Quién paga a sesenta hombres para sentarse en el desierto?",
+          "t": 2.8
+        },
+        {
+          "speaker": "K",
+          "en": "Somebody who expects a war and wants it fought on someone else's land.",
+          "es": "Alguien que espera una guerra y quiere que se libre en terreno ajeno.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then we make sure the war doesn't start where they want it.",
+          "es": "Pues nos aseguramos de que la guerra no empiece donde ellos quieren.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2640,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -8,
+        "midnight_locos": 3
+      },
+      "toast": "MISIÓN COMPLETADA · Motores del desierto"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: GHOST'S DEBT (48 en el radar)"
+    }
+  ]
+}

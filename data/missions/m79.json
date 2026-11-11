@@ -1,0 +1,463 @@
+{
+  "id": "m79",
+  "number": 79,
+  "title": "THE PRICE OF LEGACY",
+  "title_es": "El precio del legado",
+  "act": "ACTO VI",
+  "start": "hospital",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "terminal",
+      "cast": [
+        "big_ray"
+      ],
+      "title_card": true,
+      "hour": 6,
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Here. Same bay, same bench. Eight years and the paint's still peeling.",
+          "es": "Aquí. La misma dársena, el mismo banco. Ocho años y la pintura sigue pelándose.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "You picked me up right here. I thought you'd be the one friendly face.",
+          "es": "Me recogiste aquí mismo. Pensé que serías la única cara amiga.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I was the friendliest face. And the guiltiest. That's what they don't tell you about guilt. It can sit right next to love in a car.",
+          "es": "Era la cara más amable. Y la más culpable. Eso no te cuentan de la culpa. Puede sentarse junto al cariño en un coche.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I read the Order Book. Page 201. 'Use Dalton signature.'",
+          "es": "Leí el Libro de Órdenes. Página 201. «Usar la firma Dalton».",
+          "t": 3.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I know the page. I've read it so many times the letters bleed.",
+          "es": "Conozco la página. La he leído tantas veces que las letras sangran.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Do I forgive you? I've been asking myself since the lake.",
+          "es": "¿Te perdono? Me lo pregunto desde el lago.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And?",
+          "es": "¿Y?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I don't know yet. But I know I want you at the trial. In a clean shirt. Where my mama can see you.",
+          "es": "Todavía no lo sé. Pero sé que te quiero en el juicio. Con una camisa limpia. Donde mi madre pueda verte.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then I'll iron two.",
+          "es": "Entonces plancharé dos.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Walk with me. I want to see every place that made me come back. Before tomorrow takes it.",
+          "es": "Camina conmigo. Quiero ver cada lugar que me hizo volver. Antes de que el mañana se lo lleve.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Start with Okafor's. Or what's left.",
+          "es": "Empieza por la de Okafor. O lo que queda.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "And then the house. And then I stop running from anything.",
+          "es": "Y luego la casa. Y luego dejo de huir de todo.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I believe you. Finally.",
+          "es": "Te creo. Por fin.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": "veyra_mart",
+      "objective": "Recorre las cenizas de Veyra Mart, donde empezó todo",
+      "hint": "Okafor limpia el escaparate roto.",
+      "radius": 8
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": "dre_corner",
+      "objective": "Habla con Dre en su esquina",
+      "hint": "Dre te espera junto al muro del mural.",
+      "radius": 6
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Tomorrow there's no coming back for any of us. Say it now. If you've got something left to say.",
+          "es": "Mañana ya no hay vuelta atrás para ninguno. Dilo ahora. Si te queda algo por decir.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Imani is home. Because of you. That's all.",
+          "es": "Imani está en casa. Gracias a ti. Eso es todo.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "You didn't give them the code. That's why she's home.",
+          "es": "No les diste el código. Por eso está en casa.",
+          "t": 3.7
+        },
+        {
+          "speaker": "K",
+          "en": "The story is everywhere. Even people who don't read the news. My phone hasn't stopped buzzing for two days.",
+          "es": "La historia está en todas partes. Hasta quien no lee noticias. Mi teléfono no para de sonar desde hace dos días.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "One favor, Mack. If I'm not around after tomorrow, someone takes Teo's letters to his lawyer.",
+          "es": "Un favor, Mack. Si después de mañana no estoy, alguien lleva las cartas de Teo a su abogado.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "You'll take them yourself. We both will.",
+          "es": "Las llevarás tú. Las llevaremos los dos.",
+          "t": 2.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then I'll be there.",
+          "es": "Entonces estaré allí.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Aldous Penn",
+          "en": "Mr. Johnson. This is Cross Meridian's counsel. A letter of release is waiting for you at the Pinta Listo lot. Your mother's house, paid in full, plus two million.",
+          "es": "Señor Johnson. Le habla el asesor legal de Cross Meridian. Le espera una carta de liberación en el solar de Pinta Listo. La casa de su madre, pagada por completo, más dos millones.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "In exchange for what?",
+          "es": "¿A cambio de qué?",
+          "t": 2
+        },
+        {
+          "speaker": "Aldous Penn",
+          "en": "Silence, and your signature on the Westbrook settlement. Walk away and your neighbors keep the pavement under their feet.",
+          "es": "Silencio y su firma en el acuerdo de Westbrook. Márchese y sus vecinos conservarán el suelo bajo los pies.",
+          "t": 8.5
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": "pinta_listo",
+      "objective": "Acude a la reunión con el abogado de Cross en el solar de Pinta Listo",
+      "hint": "Lleva el micrófono de Keisha.",
+      "radius": 8
+    },
+    {
+      "type": "scene",
+      "at": "pinta_listo",
+      "cast": [
+        "Aldous Penn"
+      ],
+      "lines": [
+        {
+          "speaker": "Aldous Penn",
+          "en": "Two million. Ms. Cross is not a vindictive woman. She's practical.",
+          "es": "Dos millones. La señora Cross no es vengativa. Es práctica.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Practical. That's the word she used with Ray.",
+          "es": "Práctica. Es la palabra que usó con Ray.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Aldous Penn",
+          "en": "Your neighbors won't thank you for being noble. They'll thank you for the money.",
+          "es": "Sus vecinos no le agradecerán la nobleza. Le agradecerán el dinero.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "My neighbors are standing behind you right now. Turn around.",
+          "es": "Mis vecinos están justo detrás de usted. Dese la vuelta.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Aldous Penn",
+          "en": "...Mr. Johnson, you're making a mistake.",
+          "es": "...Señor Johnson, está cometiendo un error.",
+          "t": 2.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Debt's settled, Mr. Penn. Tell Evelyn I'm not for sale.",
+          "es": "La deuda está saldada, señor Penn. Dígale a Evelyn que no estoy en venta.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": "pinta_listo",
+      "count": 4,
+      "objective": "Responde a los guardaespaldas de Penn que intentan retenerte",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": [
+        -40,
+        60
+      ],
+      "count": 3,
+      "label": "Firma",
+      "objective": "Recoge las firmas de los vecinos que respaldarán la última operación",
+      "hint": "Habla con cada vecino marcado."
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un vehículo para cargar apoyo y suministros"
+    },
+    {
+      "type": "drive_to",
+      "target": "vargas_front",
+      "objective": "Lleva el apoyo hasta lo que queda del taller Vargas"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "There's an old woman on the corner with a pot of beans and a banner. Kids with tape on their jackets. The whole street's out, Mack.",
+          "es": "Hay una señora en la esquina con una olla de alubias y una pancarta. Chavales con cinta en las chaquetas. Toda la calle ha salido, Mack.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Is that what I think it is?",
+          "es": "¿Es lo que creo que es?",
+          "t": 2
+        },
+        {
+          "speaker": "Okafor",
+          "en": "That's everyone. Everyone you didn't think was watching.",
+          "es": "Es todo el mundo. Todos los que no pensabas que miraban.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": "beach",
+      "objective": "Atraviesa Westbrook hasta la playa mientras el barrio sale a la calle"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "comisaria",
+      "objective": "Acompaña a Big Ray a la comisaría para que declare",
+      "hint": "Ray quiere entrar por su propio pie.",
+      "radius": 8
+    },
+    {
+      "type": "scene",
+      "at": "comisaria",
+      "cast": [
+        "big_ray",
+        "Detective Hale"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "I came to sign. I'm not going to run. Take whatever I have.",
+          "es": "He venido a firmar. No voy a huir. Llévense lo que tengo.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "A statement. Not an arrest. Not tonight. We need you free to testify tomorrow.",
+          "es": "Una declaración. No una detención. No esta noche. Te necesitamos libre para declarar mañana.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then write it down. Every name. Every date.",
+          "es": "Pues anótalo. Cada nombre. Cada fecha.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray. Whatever they do to you after... I'll be there.",
+          "es": "Ray. Hagan lo que hagan contigo después... Estaré allí.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Son. You already were. Eight years ago, in my head. Go.",
+          "es": "Hijo. Ya lo estabas. Hace ocho años, en mi cabeza. Ve.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": "mack_house_curb",
+      "objective": "Vuelve a la casa de tu madre para la reunión final",
+      "hint": "La casa de las llaves viejas.",
+      "radius": 8
+    },
+    {
+      "type": "scene",
+      "at": "mack_house_curb",
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray",
+        "keisha",
+        "loco",
+        "okafor"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Coordinates. Cross's residence is on Nácar. She flies to San Cordova at dawn. Her lawyers are packing the cars.",
+          "es": "Coordenadas. La residencia de Cross está en Nácar. Vuela a San Cordova al amanecer. Sus abogados están cargando los coches.",
+          "t": 7.8
+        },
+        {
+          "speaker": "Loco",
+          "en": "I've got a plane, two trucks and a plan I won't say out loud.",
+          "es": "Tengo un avión, dos camiones y un plan que no diré en voz alta.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Saints take the roads. Neighbors hold the corner.",
+          "es": "Los Saints toman las carreteras. Los vecinos sostienen la esquina.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I take the evidence to the court. Nobody touches it.",
+          "es": "Yo llevo las pruebas al tribunal. Nadie las toca.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And I stand in a room where I can't hide anymore.",
+          "es": "Y yo estaré en una sala donde ya no puedo esconderme.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Okafor",
+          "en": "And I'm reopening on Monday. That's not a plan, it's a promise.",
+          "es": "Y yo reabro el lunes. No es un plan, es una promesa.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "We end this. Not tomorrow. Tonight. For my mama's porch. For Teo. For every sign on every door.",
+          "es": "Esto acaba. No mañana. Esta noche. Por el porche de mi madre. Por Teo. Por cada cartel de cada puerta.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "Five cities, one network, one legacy. Let's go write it.",
+          "es": "Cinco ciudades, una red, un legado. Vamos a escribirlo.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 9600,
+      "reputation": {
+        "westbrook_saints": 15,
+        "the_syndicate": -12
+      },
+      "toast": "+$9,600 · Las alianzas se sellan"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: WESTSIDE LEGACY (M en el radar)"
+    }
+  ]
+}

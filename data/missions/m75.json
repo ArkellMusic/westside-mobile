@@ -1,0 +1,390 @@
+{
+  "id": "m75",
+  "number": 75,
+  "title": "NÁCAR NIGHT",
+  "title_es": "Noche de Nácar",
+  "act": "ACTO V",
+  "start": {
+    "zone": "bahia_solana",
+    "dx": -120,
+    "dz": 40
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -100,
+        "dz": 60
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "loco"
+      ],
+      "title_card": true,
+      "hour": 17,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The Meridian Founders' Gala. Once a year, every partner Cross trusts sits in one room on Nácar. Rented orchids, string quartet, armed men dressed as waiters.",
+          "es": "La gala de Fundadores de Meridian. Una vez al año, cada socio de confianza de Cross se sienta en una sala de Nácar. Orquídeas alquiladas, un cuarteto de cuerda, hombres armados disfrazados de camareros.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "And you want Mack in a tuxedo.",
+          "es": "Y quieres a Mack con esmoquin.",
+          "t": 2.1
+        },
+        {
+          "speaker": "K",
+          "en": "A man called Anselm Voight keeps the master list of the remaining archives. He'll be there, drinking. We get close, we copy it, we leave.",
+          "es": "Un hombre llamado Anselm Voight guarda la lista maestra de los archivos que quedan. Estará allí, bebiendo. Nos acercamos, la copiamos, nos vamos.",
+          "t": 9
+        },
+        {
+          "speaker": "Loco",
+          "en": "I got the getaway. A boat with a name so stupid nobody'll suspect it. 'Sea Bass Dreams.'",
+          "es": "Yo me encargo de la huida. Un barco con un nombre tan tonto que nadie sospechará. «Sueños de Lubina».",
+          "t": 6.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "You named a getaway boat after fish.",
+          "es": "Has bautizado un barco de huida con pescado.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "It came with the name, bro. Bad luck to change it.",
+          "es": "Ya traía el nombre, hermano. Da mala suerte cambiarlo.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "This is a stupid plan. Rich people don't forget faces. Faces like ours.",
+          "es": "Es un plan estúpido. Los ricos no olvidan las caras. Caras como las nuestras.",
+          "t": 5.0
+        },
+        {
+          "speaker": "K",
+          "en": "Which is why you stay on the boat, and Mack walks in under a stolen name. 'Julian Ash, consultant.'",
+          "es": "Por eso tú te quedas en el barco y Mack entra con un nombre robado. «Julian Ash, consultor».",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Julian Ash. Sounds like a man who owes money.",
+          "es": "Julian Ash. Suena a un hombre que debe dinero.",
+          "t": 3.2
+        },
+        {
+          "speaker": "K",
+          "en": "Everybody on that island owes money. That's how they keep each other polite.",
+          "es": "Todos en esa isla deben dinero. Así se mantienen educados entre ellos.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "I'm still not talking to you about Ghost. After this.",
+          "es": "Todavía no te hablo de Ghost. Después de esto.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "After this. One thing at a time.",
+          "es": "Después de esto. Una cosa cada vez.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -90,
+        "dz": 70
+      },
+      "objective": "Visita la sastrería de Keisha para preparar tu disfraz",
+      "hint": "Busca el local con la luz azul.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -80,
+        "dz": 76
+      },
+      "count": 3,
+      "label": "Disfraz",
+      "objective": "Recoge esmoquin, invitación falsa y pinganillo",
+      "hint": "Examina cada prenda."
+    },
+    {
+      "type": "give",
+      "ammo": 50,
+      "money": 0,
+      "toast": "Pistola oculta (munición)"
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche de lujo para llegar al embarque"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "isla_nacar",
+        "dx": -140,
+        "dz": -100
+      },
+      "objective": "Cruza hacia el complejo de lujo de Nácar"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "isla_nacar",
+        "dx": -100,
+        "dz": -70
+      },
+      "guards": 2,
+      "objective": "Pasa el control de invitados sin llamar la atención",
+      "label": "Seguridad del acceso"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "isla_nacar",
+        "dx": -80,
+        "dz": -50
+      },
+      "count": 3,
+      "label": "Socio",
+      "objective": "Identifica y fotografía a los principales socios de Cross",
+      "hint": "Acércate con la cámara oculta."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Voight just left the terrace. East corridor, white door, no handle. Biometric lock. Use the hostess's ring.",
+          "es": "Voight acaba de dejar la terraza. Pasillo este, puerta blanca, sin picaporte. Cerradura biométrica. Usa el anillo de la anfitriona.",
+          "t": 7.5
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "isla_nacar",
+        "dx": -60,
+        "dz": -30
+      },
+      "guards": 4,
+      "objective": "Llega a la sala donde guardan las ubicaciones de los archivos",
+      "label": "Escolta de Voight"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "isla_nacar",
+        "dx": -56,
+        "dz": -26
+      },
+      "count": 1,
+      "label": "Lista maestra",
+      "objective": "Copia la lista maestra de ubicaciones de archivos",
+      "hint": "Conecta la unidad al terminal."
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "isla_nacar",
+        "dx": -56,
+        "dz": -26
+      },
+      "cast": [
+        "Anselm Voight"
+      ],
+      "lines": [
+        {
+          "speaker": "Anselm Voight",
+          "en": "Julian Ash. I don't recall the name on the guest list.",
+          "es": "Julian Ash. No recuerdo el nombre en la lista de invitados.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Consultant. Last-minute invitation.",
+          "es": "Consultor. Invitación de última hora.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Anselm Voight",
+          "en": "Funny. Evelyn only invites people she's already bought.",
+          "es": "Curioso. Evelyn solo invita a gente que ya ha comprado.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then she bought me cheap.",
+          "es": "Entonces me compró barato.",
+          "t": 2
+        },
+        {
+          "speaker": "Anselm Voight",
+          "en": "...Guards. Close the doors.",
+          "es": "...Guardias. Cerrad las puertas.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "isla_nacar",
+        "dx": -120,
+        "dz": -90
+      },
+      "objective": "Abandona el evento antes de que cierren la seguridad",
+      "time": 50
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "isla_nacar",
+        "dx": -122,
+        "dz": -92
+      },
+      "count": 5,
+      "objective": "Despeja la salida del muelle de servicio",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Escapa por la marina y la carretera costera sin atropellar a los invitados"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "isla_nacar",
+        "dx": -150,
+        "dz": -120
+      },
+      "objective": "Embarca con Loco en el barco de huida",
+      "hint": "Sube al Sueños de Lubina.",
+      "radius": 6
+    },
+    {
+      "type": "toast",
+      "title": "REGIÓN DESBLOQUEADA",
+      "subtitle": "ISLA NÁCAR"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "isla_nacar",
+        "dx": -150,
+        "dz": -120
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The master list. Four archives left. Westbrook's old rail office, the Calder vault, San Cordova, and Cross's own residence.",
+          "es": "La lista maestra. Quedan cuatro archivos. La vieja oficina del ferrocarril de Westbrook, la bóveda del Calder, San Cordova y la residencia de la propia Cross.",
+          "t": 8.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "One of them in my own neighborhood. Right under our noses.",
+          "es": "Uno de ellos en mi propio barrio. Justo debajo de nuestras narices.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "They need to be taken at once. If we go one by one, she moves the rest.",
+          "es": "Hay que tomarlos a la vez. Si vamos de uno en uno, ella mueve el resto.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "So you're saying we have a lot of boats and drives coming up.",
+          "es": "O sea que nos esperan muchos barcos y mucha carretera.",
+          "t": 4.3
+        },
+        {
+          "speaker": "K",
+          "en": "I'm saying we need every ally we have. Including the ones you don't like, Dre.",
+          "es": "Digo que necesitamos a todos los aliados. Incluidos los que no te gustan, Dre.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "...Fine. Five cities, one plan. Call everyone. Even Ghost.",
+          "es": "...Vale. Cinco ciudades, un plan. Llamad a todos. Incluso a Ghost.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 8200,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -10
+      },
+      "toast": "+$8,200 · La lista maestra es tuya"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: FIVE CITIES, ONE NETWORK (M en el radar)"
+    }
+  ]
+}

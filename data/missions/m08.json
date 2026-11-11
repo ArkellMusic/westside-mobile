@@ -1,0 +1,347 @@
+{
+  "id": "m08",
+  "number": 8,
+  "title": "NIGHT SHIFT",
+  "title_es": "Turno de noche",
+  "act": "ACTO I",
+  "start": "pier",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "time",
+      "hour": 23
+    },
+    {
+      "type": "scene",
+      "at": "pier",
+      "cast": [
+        "keisha",
+        "big_ray",
+        "Pruitt"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The foreman's name is Pruitt. He needs bodies, not résumés. Don't say your real name.",
+          "es": "El capataz se llama Pruitt. Necesita cuerpos, no currículums. No des tu nombre real.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Marcus Johnson. Got it. Not Marcus Johnson.",
+          "es": "Marcus Johnson. Entendido. No Marcus Johnson.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Use Ray's nephew. Everyone's got a nephew.",
+          "es": "Usa al sobrino de Ray. Todo el mundo tiene un sobrino.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "You the new hire? Hands, ears, no questions. Pay is cash, nobody signs.",
+          "es": "¿El nuevo? Manos, orejas y sin preguntas. Se paga en metálico, nadie firma.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Suits me fine.",
+          "es": "Me viene bien.",
+          "t": 2
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "Containers on the left are clean. Containers on the right, you don't touch unless I say so.",
+          "es": "Los contenedores de la izquierda están limpios. Los de la derecha no los tocas si yo no lo digo.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "What's in the right ones?",
+          "es": "¿Qué hay en los de la derecha?",
+          "t": 2
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "Paperwork. Same as everything else on this dock.",
+          "es": "Papeleo. Como todo lo demás en este muelle.",
+          "t": 3.4
+        },
+        {
+          "speaker": "K",
+          "en": "Keep him talking. I'm on the radio.",
+          "es": "Mantenlo hablando. Estoy en la radio.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Where do I start?",
+          "es": "¿Por dónde empiezo?",
+          "t": 2
+        },
+        {
+          "speaker": "Pruitt",
+          "en": "Forklift bay. And kid, if the night guard asks, you were here since six.",
+          "es": "Zona de carretillas. Y chaval, si el guarda nocturno pregunta, llevas aquí desde las seis.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": [
+        -215,
+        20
+      ],
+      "objective": "Preséntate en el muelle y coge la carretilla"
+    },
+    {
+      "type": "steal",
+      "objective": "Sube a la carretilla del muelle"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -225,
+        40
+      ],
+      "objective": "Lleva los palés de mercancía a la nave 3",
+      "stop": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "collect",
+      "at": [
+        -228,
+        35
+      ],
+      "count": 2,
+      "label": "Etiqueta",
+      "objective": "Fotografía el contenedor mal etiquetado sin que lo noten",
+      "hint": "Una foto rápida a la etiqueta y al número de precinto."
+    },
+    {
+      "type": "sneak",
+      "target": [
+        -232,
+        60
+      ],
+      "guards": 2,
+      "objective": "Acércate a la zona de contenedores de la derecha",
+      "label": "zona restringida"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Two cars at the north gate. Not dock traffic.",
+          "es": "Dos coches en la puerta norte. No es tráfico del muelle.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I see them. Men in suits, no hardhats.",
+          "es": "Los veo. Hombres de traje, sin casco.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": [
+        -235,
+        65
+      ],
+      "count": 3,
+      "label": "Prueba",
+      "objective": "Presencia el trato desde detrás de la grúa y captura lo que veas",
+      "hint": "No te asomes: usa la grúa como cobertura."
+    },
+    {
+      "type": "scene",
+      "at": "pier",
+      "cast": [
+        "Stern",
+        "Ironhand",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Stern",
+          "en": "Fourteen crates, as agreed. Counted and sealed.",
+          "es": "Catorce cajas, como acordamos. Contadas y selladas.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Ironhand",
+          "en": "Boss wants the second shipment Thursday. The same number, same stamp.",
+          "es": "El jefe quiere el segundo envío el jueves. El mismo número, el mismo sello.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Stern",
+          "en": "Tell him we're a ghost line. We don't exist on any manifest.",
+          "es": "Dile que somos una línea fantasma. No existimos en ningún manifiesto.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "(whisper) Ghost line. Write that down, K.",
+          "es": "(susurrando) Línea fantasma. Apúntalo, K.",
+          "t": 2.9
+        },
+        {
+          "speaker": "K",
+          "en": "Already did.",
+          "es": "Ya lo hice.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Pruitt",
+          "en": "Who's on the north crane? Somebody tripped the alarm!",
+          "es": "¿Quién está en la grúa norte? ¡Alguien ha activado la alarma!",
+          "t": 3.7
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": [
+        -215,
+        -20
+      ],
+      "guards": 4,
+      "objective": "Sal del muelle por la ruta sur antes del cierre de puertas",
+      "label": "ruta de salida"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Los guardas han llamado a la policía: escapa con dos estrellas"
+    },
+    {
+      "type": "goto",
+      "target": [
+        -110,
+        10
+      ],
+      "objective": "Esconde el coche cerca de la casa de tu madre"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "time",
+      "hour": 1
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Entrega a Keisha la primera prueba material"
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Container number, seal number, stamp. You were a good nephew.",
+          "es": "Número de contenedor, precinto, sello. Fuiste un buen sobrino.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray's nephew is going to want a raise.",
+          "es": "El sobrino de Ray va a querer un aumento.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Ray's nephew is going to want to live.",
+          "es": "El sobrino de Ray va a querer vivir.",
+          "t": 2.7
+        },
+        {
+          "speaker": "K",
+          "en": "Same stamp as the Hargrove invoices. It's the same operation, Marcus.",
+          "es": "El mismo sello que las facturas de Hargrove. Es la misma operación, Marcus.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then it's one hand, many fingers.",
+          "es": "Entonces es una sola mano con muchos dedos.",
+          "t": 2.3
+        },
+        {
+          "speaker": "K",
+          "en": "And now they know a stranger was on the dock.",
+          "es": "Y ahora saben que un extraño estuvo en el muelle.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then the Kings will come knocking. Sleep with your shoes on.",
+          "es": "Entonces los Kings vendrán a llamar. Duerme con los zapatos puestos.",
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 390,
+      "reputation": {
+        "westbrook_saints": 3
+      },
+      "toast": "+$390 · Turno de noche"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: FIRST WARNING (M en el radar)"
+    }
+  ]
+}

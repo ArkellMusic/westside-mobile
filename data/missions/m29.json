@@ -1,0 +1,323 @@
+{
+  "id": "m29",
+  "number": 29,
+  "title": "NAMES ON PAPER",
+  "title_es": "Nombres en papel",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -30,
+    "dz": 0
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 20
+      },
+      "cast": [
+        "Nina Cho",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "I printed everything. Contracts, deeds, three LLCs that share one mailbox. Most pages are missing.",
+          "es": "Lo he imprimido todo. Contratos, escrituras, tres sociedades que comparten buzón. Faltan casi todas las páginas.",
+          "t": 6.9
+        },
+        {
+          "speaker": "K",
+          "en": "Missing pages means somebody wants them missing. Old papers sit in the city archive. Books of incorporations.",
+          "es": "Páginas que faltan significa que alguien las quiere perdidas. Los papeles viejos están en el archivo municipal. Los libros de sociedades.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "So we need the books. How hard is that?",
+          "es": "Entonces necesitamos los libros. ¿Cómo de difícil es?",
+          "t": 2.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "The archivist hates reporters, and the files aren't in any order. It's a maze of dust.",
+          "es": "El archivero odia a los periodistas y los expedientes no tienen orden. Es un laberinto de polvo.",
+          "t": 6.0
+        },
+        {
+          "speaker": "K",
+          "en": "I can match signatures if you photograph them. Handwriting doesn't change much, not even in a lie.",
+          "es": "Yo cruzo las firmas si las fotografías. La letra no cambia mucho, ni cuando se miente.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "And if the archivist calls the cops?",
+          "es": "¿Y si el archivero llama a la policía?",
+          "t": 2.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Then be a very polite researcher with a very small bribe.",
+          "es": "Entonces sé un investigador muy educado con un soborno muy pequeño.",
+          "t": 4.0
+        },
+        {
+          "speaker": "K",
+          "en": "I miss the days when it was just a corner and a bad neighbor.",
+          "es": "Echo de menos cuando todo era una esquina y un mal vecino.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You don't miss anything about those days, K. Quit lying.",
+          "es": "No echas de menos nada de esos días, K. Deja de mentir.",
+          "t": 3.9
+        },
+        {
+          "speaker": "K",
+          "en": "Fine. I miss the music. Go.",
+          "es": "Vale. Echo de menos la música. Ve.",
+          "t": 2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 40,
+        "dz": -60
+      },
+      "objective": "Visita el archivo municipal"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 45,
+        "dz": -65
+      },
+      "count": 3,
+      "label": "Libro",
+      "objective": "Localiza los libros de sociedades entre las estanterías",
+      "hint": "Busca las etiquetas rojas."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Archivist",
+          "en": "No pictures, no pens, no phones. Rules.",
+          "es": "Nada de fotos, ni bolígrafos, ni teléfonos. Normas.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 48,
+        "dz": -70
+      },
+      "guards": 2,
+      "objective": "Resuelve el orden de los expedientes sin que el archivero te vea",
+      "label": "Archivo"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Third shelf from the left is by year. The next one is by street. That's how you break the order.",
+          "es": "La tercera estantería por la izquierda va por años. La siguiente, por calles. Así se rompe el orden.",
+          "t": 6.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 70,
+        "dz": -45
+      },
+      "objective": "Sal del archivo y sigue a la mensajera hasta la calle"
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 80,
+        "dz": -50
+      },
+      "objective": "Alcanza a la mensajera que se lleva los originales",
+      "toast": "La mensajera sale corriendo del archivo"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Courier",
+          "en": "I just deliver. I don't read. Please.",
+          "es": "Yo solo entrego. No leo. Por favor.",
+          "t": 2.6
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 85,
+        "dz": -55
+      },
+      "count": 1,
+      "label": "Página",
+      "objective": "Recupera la página clave sin romper los otros registros",
+      "hint": "Cuidado con las cajas."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 85,
+        "dz": -55
+      },
+      "count": 3,
+      "objective": "Sacúdete a los hombres que van a recoger los originales",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 20
+      },
+      "objective": "Vuelve con Nina para la videollamada"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "On the screen now. Look at the third name on the page: 'E. Cross.' It matches the Westbrook deeds.",
+          "es": "En pantalla ahora. Mira el tercer nombre de la página: «E. Cross». Coincide con las escrituras de Westbrook.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Cross Meridian Holdings. A holding company, a chain of boxes.",
+          "es": "Cross Meridian Holdings. Una sociedad matriz, una cadena de cajas.",
+          "t": 4.3
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 20
+      },
+      "cast": [
+        "Nina Cho",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Every shell company in Westbrook links to Cross Meridian. Every single one.",
+          "es": "Cada sociedad pantalla de Westbrook enlaza con Cross Meridian. Todas.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "So Cross Meridian is the owner behind the owners.",
+          "es": "O sea, Cross Meridian es el dueño detrás de los dueños.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who's Cross?",
+          "es": "¿Quién es Cross?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "I only see an initial and a lawyer. No face. No voice.",
+          "es": "Solo veo una inicial y un abogado. Ni cara. Ni voz.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "The people at the top never leave fingerprints. They leave nothing.",
+          "es": "Los de arriba nunca dejan huellas. No dejan nada.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we find out what they take away when we hit them.",
+          "es": "Pues averiguaremos qué se llevan cuando les golpeemos.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1420,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -6
+      },
+      "toast": "+$1420"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: TUNNEL RUN (M en el radar)"
+    }
+  ]
+}

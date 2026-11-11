@@ -1,0 +1,292 @@
+{
+  "id": "m10",
+  "number": 10,
+  "title": "THE MEETING",
+  "title_es": "La reunión",
+  "act": "ACTO I",
+  "start": "dre_corner",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Everyone's here. Sit. Marcus, you speak when I say.",
+          "es": "Estamos todos. Sentaos. Marcus, hablas cuando yo diga.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "He's a guest. Guests don't vote.",
+          "es": "Es un invitado. Los invitados no votan.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I don't want a vote. I want to know who's burning my mama's block.",
+          "es": "No quiero votar. Quiero saber quién quema la manzana de mi madre.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "We lost two corners last week. We lost the barber. We lose more every day you hang around.",
+          "es": "Perdimos dos esquinas la semana pasada. Perdimos al barbero. Perdemos más cada día que estás por aquí.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ghost.",
+          "es": "Ghost.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'm saying what everyone thinks. He left. He comes back and the Kings escalate.",
+          "es": "Digo lo que todos piensan. Se fue. Vuelve y los Kings escalan.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "The Kings were escalating before I stepped off the bus.",
+          "es": "Los Kings escalaban antes de que me bajara del autobús.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "He's right. The pressure started before.",
+          "es": "Tiene razón. La presión empezó antes.",
+          "t": 2.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Ray, you've been quiet about a lot of things lately.",
+          "es": "Ray, últimamente has callado muchas cosas.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'm old. I talk when it's worth it.",
+          "es": "Soy viejo. Hablo cuando merece la pena.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Enough. We map the block tonight: eyes, routes, who we can trust. Marcus, you help.",
+          "es": "Basta. Esta noche cartografiamos el barrio: ojos, rutas, en quién confiar. Marcus, ayudas.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "And if he's the leak?",
+          "es": "¿Y si es él la filtración?",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then I'll say it to his face. Not yours.",
+          "es": "Entonces se lo diré a la cara. No a la tuya.",
+          "t": 2.8
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "I don't trust him yet. Prove me wrong by tonight.",
+          "es": "Todavía no confío en él. Demuéstrame que me equivoco antes de esta noche.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": [
+        -30,
+        95
+      ],
+      "objective": "Recorre los puntos de vigilancia de los Saints con Dre"
+    },
+    {
+      "type": "collect",
+      "at": [
+        -30,
+        95
+      ],
+      "count": 3,
+      "label": "Posición",
+      "objective": "Marca posiciones y rutas de escape en el mapa de la manzana"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mrs. Okoye",
+          "en": "Those boys are fighting in my yard again!",
+          "es": "¡Esos chicos se están peleando otra vez en mi patio!",
+          "t": 2.9
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": [
+        -70,
+        60
+      ],
+      "count": 3,
+      "objective": "Separa a una pelea entre dos chavales y los vecinos sin hacer daño",
+      "armed": false
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": "dre_corner",
+      "objective": "Regresa al local de los Saints"
+    },
+    {
+      "type": "sneak",
+      "target": "dre_corner",
+      "guards": 2,
+      "objective": "Acércate sin que te vea el coche desconocido que vigila la entrada",
+      "label": "entrada"
+    },
+    {
+      "type": "give",
+      "ammo": 24,
+      "money": 0,
+      "toast": "Munición del arsenal de los Saints"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "fight",
+      "at": "dre_corner",
+      "count": 4,
+      "objective": "Rechaza al grupo que baja del coche y asalta el local",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "defend",
+      "at": "dre_corner",
+      "count": 3,
+      "waves": 2,
+      "time": 50,
+      "objective": "Evacúa a un aliado herido mientras aguantas la entrada"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": "big_ray",
+      "objective": "Habla con Big Ray en el callejón"
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "big_ray",
+        "ghost",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Marcus. Not a word of the 'account is closed' thing to anyone.",
+          "es": "Marcus. Ni una palabra a nadie sobre lo de «la cuenta está cerrada».",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You gonna tell me what it means?",
+          "es": "¿Me vas a decir qué significa?",
+          "t": 2.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "When I can say it without somebody dying.",
+          "es": "Cuando pueda decirlo sin que muera alguien.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "(from the dark) You two whisper like thieves.",
+          "es": "(desde la oscuridad) Susurráis como ladrones.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ghost. How long have you been standing there?",
+          "es": "Ghost. ¿Cuánto llevas ahí?",
+          "t": 3.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Long enough. I see what I see.",
+          "es": "Lo suficiente. Veo lo que veo.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ghost sees everything. That's why I keep him close.",
+          "es": "Ghost lo ve todo. Por eso lo mantengo cerca.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 470,
+      "reputation": {
+        "westbrook_saints": 6,
+        "redline_kings": -2
+      },
+      "toast": "+$470 · La reunión"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: HONEST MONEY (M en el radar)"
+    }
+  ]
+}

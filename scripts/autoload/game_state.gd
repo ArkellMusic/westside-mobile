@@ -12,6 +12,8 @@ var health: float = MAX_HEALTH
 ## Arma en la mano ("fist" | "pistol") y balas de pistola.
 var weapon: String = "fist"
 var ammo: int = START_AMMO
+## Armas que tiene Mack (ids de Combat.STATS; los puños siempre).
+var weapons: Array = ["fist", "pistol"]
 ## Conjunto de ropa que lleva Mack (índice de Humanoid.OUTFITS).
 var outfit: int = 0
 ## Conjuntos comprados (el 0 es el de serie), tinte de barbería y tatuajes hechos.
@@ -42,6 +44,7 @@ func new_game() -> void:
 	health = MAX_HEALTH
 	weapon = "fist"
 	ammo = START_AMMO
+	weapons = ["fist", "pistol"]
 	outfit = 0
 	owned_outfits = [0]
 	head_style = 0
@@ -110,6 +113,7 @@ func to_dict() -> Dictionary:
 		"health": health,
 		"weapon": weapon,
 		"ammo": ammo,
+		"weapons": weapons.duplicate(),
 		"outfit": outfit,
 		"owned_outfits": owned_outfits.duplicate(),
 		"head_style": head_style,
@@ -129,8 +133,12 @@ func to_dict() -> Dictionary:
 func from_dict(d: Dictionary) -> void:
 	money = int(d.get("money", START_MONEY))
 	health = clampf(float(d.get("health", MAX_HEALTH)), 1.0, MAX_HEALTH)
+	weapons = ["fist", "pistol"]
+	for w in d.get("weapons", []):
+		if ["smg", "shotgun"].has(String(w)) and not weapons.has(String(w)):
+			weapons.append(String(w))
 	weapon = String(d.get("weapon", "fist"))
-	if weapon != "pistol":
+	if not weapons.has(weapon):
 		weapon = "fist"
 	ammo = clampi(int(d.get("ammo", START_AMMO)), 0, MAX_AMMO)
 	outfit = clampi(int(d.get("outfit", 0)), 0, 4)

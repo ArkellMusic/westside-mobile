@@ -1,0 +1,378 @@
+{
+  "id": "m73",
+  "number": 73,
+  "title": "CORAL CURRENT",
+  "title_es": "Corriente de coral",
+  "act": "ACTO V",
+  "start": "keisha",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": 20,
+        "dz": 70
+      },
+      "cast": [
+        "keisha",
+        "loco",
+        "Dr. Lena Marchetti"
+      ],
+      "title_card": true,
+      "hour": 8,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Ship tracking pings every four hours. This one doesn't. The 'Coral Dawn' goes dark ten miles off Isla Coral, then reappears two days later.",
+          "es": "El rastreo de barcos hace ping cada cuatro horas. Este no. El «Coral Dawn» se apaga a diez millas de Isla Coral y reaparece dos días después.",
+          "t": 9
+        },
+        {
+          "speaker": "Dr. Lena Marchetti",
+          "en": "I study reef systems out there. Two seasons ago, half the coral bleached in a straight line. Like a chemical wash. Then a fence went up around the northern cove.",
+          "es": "Estudio sistemas de arrecifes allí. Hace dos temporadas, la mitad del coral se blanqueó en línea recta. Como un lavado químico. Luego levantaron una valla en la cala norte.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "What kind of fence?",
+          "es": "¿Qué clase de valla?",
+          "t": 2
+        },
+        {
+          "speaker": "Dr. Lena Marchetti",
+          "en": "Fresh timber painted to look old. Armed men who say they're surveyors.",
+          "es": "Madera nueva pintada para parecer vieja. Hombres armados que dicen ser topógrafos.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "Surveyors. In swim trunks with rifles. Sure.",
+          "es": "Topógrafos. En bañador y con fusiles. Claro.",
+          "t": 3.1
+        },
+        {
+          "speaker": "K",
+          "en": "The cargo from Brava, the cold goods, they're stored there. That's the second link in the chain.",
+          "es": "La carga de Brava, las mercancías frías, se almacena allí. Es el segundo eslabón de la cadena.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "And one witness, right? You said somebody on that island knows.",
+          "es": "Y un testigo, ¿no? Dijiste que alguien en esa isla lo sabe.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Dr. Lena Marchetti",
+          "en": "Tavo. He cleans the boats. He called me, crying, and then his phone died.",
+          "es": "Tavo. Limpia los barcos. Me llamó llorando y luego se le apagó el teléfono.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Loco",
+          "en": "Boats again. I swear I'm going to start charging for sea sickness.",
+          "es": "Barcos otra vez. Juro que voy a empezar a cobrar por los mareos.",
+          "t": 4.6
+        },
+        {
+          "speaker": "K",
+          "en": "And you, Mack. You're quiet.",
+          "es": "Y tú, Mack, estás callado.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I was thinking about the porch back home. About being scared for something small and then realizing nothing's small.",
+          "es": "Pensaba en el porche de casa. En tener miedo de algo pequeño y comprender que nada es pequeño.",
+          "t": 8.1
+        },
+        {
+          "speaker": "K",
+          "en": "Then let's go save something big.",
+          "es": "Pues vamos a salvar algo grande.",
+          "t": 2.3
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 24,
+        "dz": 80
+      },
+      "objective": "Reúnete con la doctora Marchetti en el embarcadero",
+      "hint": "Trae el equipo básico.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue una embarcación para salir de Bahía Solana"
+    },
+    {
+      "type": "give",
+      "ammo": 80,
+      "money": 0,
+      "toast": "Equipo y munición básica"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "isla_coral",
+        "dx": -150,
+        "dz": -140
+      },
+      "objective": "Cruza el canal rumbo a Isla Coral"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dr. Lena Marchetti",
+          "en": "Stay low along the mangroves. The warehouse is the long gray building behind the dead reef.",
+          "es": "Mantente bajo entre los manglares. El almacén es el edificio gris y largo tras el arrecife muerto.",
+          "t": 6.4
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "isla_coral",
+        "dx": -120,
+        "dz": -110
+      },
+      "guards": 3,
+      "objective": "Recorre la costa de Isla Coral hasta el almacén camuflado",
+      "label": "Falsos topógrafos"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "isla_coral",
+        "dx": -80,
+        "dz": -70
+      },
+      "objective": "Explora a pie la zona natural, entre senderos y casas pequeñas",
+      "hint": "Sigue el camino de tierra.",
+      "radius": 8
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "isla_coral",
+        "dx": -70,
+        "dz": -60
+      },
+      "count": 3,
+      "label": "Indicio",
+      "objective": "Examina las casas y las cajas de muestras del sendero",
+      "hint": "Cada indicio está marcado."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "isla_coral",
+        "dx": -50,
+        "dz": -40
+      },
+      "count": 2,
+      "label": "Registro",
+      "objective": "Recupera los registros del almacén sin dañar el entorno",
+      "hint": "Copia los discos con cuidado."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "isla_coral",
+        "dx": -46,
+        "dz": -36
+      },
+      "count": 5,
+      "objective": "Rescata a Tavo de los guardias del almacén",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "isla_coral",
+        "dx": -46,
+        "dz": -36
+      },
+      "cast": [
+        "loco",
+        "Dr. Lena Marchetti",
+        "Tavo"
+      ],
+      "lines": [
+        {
+          "speaker": "Tavo",
+          "en": "They brought crates at night. Wooden crates. Paper inside. And once, a girl with a suitcase. She never came back.",
+          "es": "Traían cajas por la noche. Cajas de madera. Papel dentro. Y una vez, una chica con una maleta. Nunca volvió.",
+          "t": 7.9
+        },
+        {
+          "speaker": "Dr. Lena Marchetti",
+          "en": "Tavo, you're safe now. Breathe.",
+          "es": "Tavo, ya estás a salvo. Respira.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Can he walk? We need to move. Those sirens are not for a picnic.",
+          "es": "¿Puede andar? Hay que moverse. Esas sirenas no son para un picnic.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Tavo",
+          "en": "In the safe, there's a brass key and a map. I stole it before they took my phone.",
+          "es": "En la caja fuerte hay una llave de latón y un mapa. Los cogí antes de que me quitaran el teléfono.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then that's our piece. Let's go.",
+          "es": "Entonces esa es nuestra pieza. Vamos.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Despista a las lanchas de los guardias mientras vuelves al muelle"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "isla_coral",
+        "dx": -150,
+        "dz": -140
+      },
+      "objective": "Vuelve al muelle sorteando la persecución por agua",
+      "time": 95
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "isla_coral",
+        "dx": -150,
+        "dz": -140
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 35,
+      "objective": "Resiste en el muelle hasta que Loco arranque el motor",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "toast",
+      "title": "REGIÓN DESBLOQUEADA",
+      "subtitle": "ISLA CORAL"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "isla_coral",
+        "dx": -150,
+        "dz": -140
+      },
+      "cast": [
+        "keisha",
+        "loco",
+        "Dr. Lena Marchetti"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "A brass key. A hand-drawn map. And on the back, a stamp: 'Property of Nacar Residential Holdings'.",
+          "es": "Una llave de latón. Un mapa dibujado a mano. Y en el reverso, un sello: «Propiedad de Nácar Residential Holdings».",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nácar. The rich island. That's where the chain ends.",
+          "es": "Nácar. La isla de los ricos. Ahí acaba la cadena.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Dr. Lena Marchetti",
+          "en": "Cross can drain a reef and call it surveying. I need that to be on record somewhere.",
+          "es": "Cross puede vaciar un arrecife y llamarlo topografía. Necesito que conste en algún sitio.",
+          "t": 5.9
+        },
+        {
+          "speaker": "K",
+          "en": "It will. We have your samples and Tavo's testimony.",
+          "es": "Constará. Tenemos tus muestras y el testimonio de Tavo.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "Also we have a boat that smells like fish. Can we talk about that?",
+          "es": "Y también tenemos un barco que huele a pescado. ¿Podemos hablar de eso?",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Later. First, a tuxedo. Because we're going to a party.",
+          "es": "Luego. Primero, un esmoquin. Porque vamos a una fiesta.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 7500,
+      "reputation": {
+        "westbrook_saints": 5,
+        "the_syndicate": -9
+      },
+      "toast": "+$7,500 · La llave de Nácar en tu poder"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: K'S SIGNAL (M en el radar)"
+    }
+  ]
+}

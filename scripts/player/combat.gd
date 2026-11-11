@@ -5,7 +5,13 @@ extends Node3D
 ## También dibuja los efectos compartidos de disparo (fogonazo, trazadora, chispas), que usa
 ## la policía con fx_shot().
 
-const WEAPONS := ["fist", "pistol"]
+const WEAPONS := ["fist", "pistol", "smg", "shotgun"]
+## Armas de fuego: cadencia (s), daño, alcance, balas por disparo, dispersión y precio en la armería.
+const STATS := {
+	"pistol": {"name": "Pistola", "rate": 0.30, "damage": 34.0, "range": 55.0, "ammo": 1, "spread": 0.0, "price": 0},
+	"smg": {"name": "Subfusil", "rate": 0.09, "damage": 15.0, "range": 45.0, "ammo": 1, "spread": 0.035, "price": 900},
+	"shotgun": {"name": "Escopeta", "rate": 0.85, "damage": 95.0, "range": 28.0, "ammo": 3, "spread": 0.0, "price": 700},
+}
 const PISTOL_RANGE := 55.0
 const PISTOL_DAMAGE := 34.0
 const PISTOL_RATE := 0.30
@@ -54,19 +60,35 @@ func set_weapon(kind: String) -> void:
 
 
 func cycle_weapon() -> void:
-	var i := WEAPONS.find(GameState.weapon)
-	set_weapon(WEAPONS[(i + 1) % WEAPONS.size()])
+	var owned: Array = []
+	for w in WEAPONS:
+		if w == "fist" or GameState.weapons.has(w):
+			owned.append(w)
+	var i := owned.find(GameState.weapon)
+	set_weapon(String(owned[(i + 1) % owned.size()]))
+
+
+func stat(key: String) -> float:
+	return float((STATS.get(GameState.weapon, STATS["pistol"]) as Dictionary)[key])
+
+
+## Daño del arma actual a `dist` metros (la escopeta pierde fuerza con la distancia).
+func weapon_damage(dist: float = 0.0) -> float:
+	var d := stat("damage")
+	if GameState.weapon == "shotgun":
+		d *= clampf(1.0 - (dist - 8.0) / 22.0, 0.3, 1.0)
+	return d
 
 
 ## ¿Lleva el arma a la vista? (la policía dispara antes a alguien armado)
 func armed() -> bool:
-	return GameState.weapon == "pistol"
+	return GameState.weapon != "fist"
 
 
 func _refresh_model() -> void:
 	var p: Player = main.player
 	if p and p.model:
-		p.model.set_gun(GameState.weapon == "pistol")
+		p.model.set_gun(GameState.weapon != "fist", GameState.weapon)
 
 
 ## Llamado por main cada fotograma mientras se juega a pie.
@@ -76,7 +98,9 @@ func update(delta: float) -> void:
 	_aim_t = maxf(0.0, _aim_t - delta)
 	if Controls.just_pressed("weapon"):
 		cycle_weapon()
-	if GameState.weapon == "pistol":
+	if Controls.just_pressed("crouch"):
+		main.player.crouching = not main.player.crouching
+	if GameState.weapon != "fist":
 		var want := Controls.is_down("attack")
 		if Controls.just_pressed("attack"):
 			want = true
@@ -123,6 +147,22 @@ func find_target(origin: Vector3, dir: Vector3, max_range: float, cos_half: floa
 			if score < best_score:
 				best_score = score
 				best = {"kind": "cop", "cop": c, "pos": c.global_position}
+	if main.hostiles:
+		for u in main.hostiles.units:
+			if u.dead or u.caught:
+				continue
+			var toh: Vector3 = u.global_position - origin
+			toh.y = 0.0
+			var disth := toh.length()
+			if disth > max_range or disth < 0.05:
+				continue
+			var doth := toh.normalized().dot(dir)
+			if doth < cos_half:
+				continue
+			var scoreh := disth * (2.0 - doth) * 0.6
+			if scoreh < best_score:
+				best_score = scoreh
+				best = {"kind": "hostile", "cop": u, "pos": u.global_position}
 	var pi: int = main.pedestrians.nearest_in_cone(origin, dir, max_range, cos_half)
 	if pi >= 0:
 		var h: Node3D = main.pedestrians.peds[pi]["node"]
@@ -162,6 +202,9 @@ func _punch() -> void:
 		var c = t["cop"]
 		if is_instance_valid(c):
 			main.police.hurt(c, PUNCH_DAMAGE, dir)
+	elif t["kind"] == "hostile":
+		if is_instance_valid(t["cop"]):
+			main.hostiles.hurt(t["cop"], PUNCH_DAMAGE, dir)
 	else:
 		# Los índices pueden haber cambiado: se vuelve a buscar al peatón de delante.
 		var pi: int = main.pedestrians.nearest_in_cone(origin, dir, PUNCH_RANGE + 0.4, 0.2)
@@ -174,20 +217,21 @@ func _punch() -> void:
 
 func _fire_pistol() -> void:
 	var p: Player = main.player
-	if GameState.ammo <= 0:
+	if GameState.ammo < int(stat("ammo")):
 		_cd = 0.4
 		Sfx.play_at(main, p.global_position + Vector3.UP * 1.3, "click", -4.0, 20.0)
 		if not _empty_warned:
 			_empty_warned = true
-			main.hud.toast("SIN MUNICIÓN", "Los agentes caídos sueltan balas", 3.0)
+			main.hud.toast("SIN MUNICIÓN", "Compra balas en Iron Sights (A en el radar)", 3.0)
 		return
 	_empty_warned = false
-	GameState.ammo -= 1
-	_cd = PISTOL_RATE
+	GameState.ammo -= int(stat("ammo"))
+	_cd = stat("rate")
+	var w_range := stat("range")
 	_aim_t = 1.6
 	var fwd := _camera_forward()
 	var origin := p.global_position + Vector3.UP * 1.42
-	var t := find_target(origin, fwd, PISTOL_RANGE, PISTOL_CONE)
+	var t := find_target(origin, fwd, w_range, PISTOL_CONE)
 	var dir := fwd
 	var aim_pos := Vector3.INF
 	if not t.is_empty():
@@ -197,33 +241,45 @@ func _fire_pistol() -> void:
 		# Sin objetivo: la bala sigue la cámara (un poco por encima del horizonte de la mira).
 		var pitch: float = main.rig.pitch
 		dir = (fwd * cos(pitch + 0.2) + Vector3.UP * sin(pitch + 0.2)).normalized()
+	var spread := stat("spread")
+	if spread > 0.0:
+		dir = (dir + Vector3(randf_range(-spread, spread), randf_range(-spread, spread), randf_range(-spread, spread))).normalized()
 	var flat := Vector3(dir.x, 0, dir.z).normalized()
 	p.set_facing(atan2(-flat.x, -flat.z))
 	var muzzle := origin + flat * 0.55
-	var end := origin + dir * PISTOL_RANGE
+	var end := origin + dir * w_range
 	var hit := _ray(origin, end, [p.get_rid()])
 	var hit_cop = null
 	if not hit.is_empty():
 		end = hit["position"]
 		if main.police and main.police.is_cop(hit["collider"]):
 			hit_cop = hit["collider"]
+	var hit_hostile = null
+	if not hit.is_empty() and main.hostiles and main.hostiles.is_unit(hit["collider"]):
+		hit_hostile = hit["collider"]
 	if hit_cop != null:
-		main.police.hurt(hit_cop, PISTOL_DAMAGE, flat)
+		main.police.hurt(hit_cop, weapon_damage(origin.distance_to(end)), flat)
+	elif hit_hostile != null:
+		main.hostiles.hurt(hit_hostile, weapon_damage(origin.distance_to(end)), flat)
 	elif not t.is_empty():
 		var d_target := origin.distance_to(aim_pos)
 		if hit.is_empty() or origin.distance_to(end) > d_target - 0.6:
 			end = aim_pos
 			if t["kind"] == "cop" and is_instance_valid(t["cop"]):
-				main.police.hurt(t["cop"], PISTOL_DAMAGE, flat)
+				main.police.hurt(t["cop"], weapon_damage(d_target), flat)
+			elif t["kind"] == "hostile" and is_instance_valid(t["cop"]):
+				main.hostiles.hurt(t["cop"], weapon_damage(d_target), flat)
 			elif t["kind"] == "ped":
 				main.pedestrians.strike(int(t["ped"]), flat, 2.2, 1.2)
 		else:
 			_spark(end)
 	elif not hit.is_empty():
 		_spark(end)
-	fx_shot(muzzle, end, 0.0)
-	main.rig.shake(0.16)
+	fx_shot(muzzle, end, 2.0 if GameState.weapon == "shotgun" else 0.0)
+	main.rig.shake(0.3 if GameState.weapon == "shotgun" else (0.08 if GameState.weapon == "smg" else 0.16))
 	main.pedestrians.panic(p.global_position, 45.0, 9.0)
+	if main.hostiles:
+		main.hostiles.alarm(p.global_position, 45.0)
 	main.on_gunfire()
 
 
@@ -319,7 +375,7 @@ func _update_pose() -> void:
 	if p == null or p.model == null:
 		return
 	var o: Dictionary = {}
-	if GameState.weapon == "pistol" and _aim_t > 0.0:
+	if GameState.weapon != "fist" and _aim_t > 0.0:
 		# Brazo derecho extendido al frente; el izquierdo sigue el paso.
 		o["arm"] = [null, 1.5]
 		o["elbow"] = [null, 0.08]

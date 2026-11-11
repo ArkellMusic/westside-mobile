@@ -1,0 +1,352 @@
+{
+  "id": "m38",
+  "number": 38,
+  "title": "INVISIBLE HAND",
+  "title_es": "La mano invisible",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -30,
+    "dz": 0
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": 0
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "I mapped the municipal votes. Zoning change, harbor lease, a traffic study. Three decisions, three shell companies.",
+          "es": "He cartografiado las votaciones municipales. Un cambio de zonificación, un arrendamiento del puerto, un estudio de tráfico. Tres decisiones, tres empresas pantalla.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "All three companies link to the same law firm. The same four partners.",
+          "es": "Las tres empresas enlazan con el mismo bufete. Los mismos cuatro socios.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Which sit on the same boards. Which meet on Thursdays at noon in the plaza.",
+          "es": "Que se sientan en los mismos consejos. Que se reúnen los jueves a mediodía en la plaza.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "In public.",
+          "es": "En público.",
+          "t": 2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "The best place to hide is in front of everybody. They think nobody reads faces.",
+          "es": "El mejor sitio para esconderse es delante de todos. Creen que nadie lee caras.",
+          "t": 5.5
+        },
+        {
+          "speaker": "K",
+          "en": "I'll run facial matches from your photos, Mack. Don't wave.",
+          "es": "Cruzaré las caras con tus fotos, Mack. No saludes.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I don't wave.",
+          "es": "Yo no saludo.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Next, a delivery. Fake courier. You walk into the corporate tower with a box.",
+          "es": "Después, una entrega. Mensajero falso. Entras en la torre corporativa con una caja.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "I walk in with a box. I walk out with the board's schedule.",
+          "es": "Entro con una caja. Salgo con el horario de la junta.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Don't steal anything irrelevant. A broken lock gets us a warrant against ourselves.",
+          "es": "No robes nada irrelevante. Una cerradura rota nos consigue una orden contra nosotros.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Understood. Eyes only.",
+          "es": "Entendido. Solo ojos.",
+          "t": 2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": 0
+      },
+      "count": 3,
+      "label": "Decisión",
+      "objective": "Relaciona tres decisiones municipales con empresas vinculadas",
+      "hint": "Mira el tablón de la alcaldía."
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 125,
+        "dz": 5
+      },
+      "objective": "Fotografía una reunión desde la plaza pública"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 130,
+        "dz": 8
+      },
+      "count": 2,
+      "label": "Foto",
+      "objective": "Fotografía a los asistentes de la reunión",
+      "hint": "Hazlo con disimulo."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "steal",
+      "objective": "Roba una furgoneta de reparto para la entrega falsa"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 150,
+        "dz": 20
+      },
+      "objective": "Conduce hasta la torre corporativa",
+      "stop": true
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Receptionist",
+          "en": "Third floor. Sign here. Badge goes on your left pocket.",
+          "es": "Planta tres. Firme aquí. La acreditación en el bolsillo izquierdo.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": 25
+      },
+      "guards": 3,
+      "objective": "Entra al despacho de la junta con tu caja de reparto",
+      "label": "Despacho"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 157,
+        "dz": 27
+      },
+      "count": 1,
+      "label": "Horario",
+      "objective": "Copia el horario de la junta sin tocar nada más"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Guard",
+          "en": "This courier's badge expired Tuesday! Lock the floor!",
+          "es": "¡La acreditación de este mensajero caducó el martes! ¡Cierren la planta!",
+          "t": 3.7
+        }
+      ]
+    },
+    {
+      "type": "give",
+      "ammo": 16,
+      "money": 0,
+      "toast": "Munición para el garaje"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": 25
+      },
+      "count": 4,
+      "objective": "Rechaza a los guardias en el aparcamiento",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 10
+      },
+      "objective": "Escapa por el aparcamiento antes de que cierren las salidas",
+      "time": 50
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Despista a las patrullas del distrito financiero"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 10
+      },
+      "objective": "Contrasta el esquema con Nina"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -30,
+        "dz": 10
+      },
+      "cast": [
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "The schedule shows one board giving orders to a dozen sub-boards. A hidden hand.",
+          "es": "El horario muestra una junta dando órdenes a una docena de subjuntas. Una mano oculta.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who benefits?",
+          "es": "¿A quién beneficia?",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Whoever's sitting at the head. But their name is never written.",
+          "es": "Quien se siente en la cabecera. Pero su nombre nunca está escrito.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "We keep pulling the thread.",
+          "es": "Seguimos tirando del hilo.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Rico was right. Meridian Trust again. It never stops.",
+          "es": "Rico tenía razón. Meridian Trust otra vez. No acaba nunca.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then someone needs to knock on that glass crown.",
+          "es": "Pues alguien tiene que llamar a esa corona de cristal.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Voice",
+          "en": "Mack. Don't hang up. Your man Viper is making a deal. Tonight. He's not alone.",
+          "es": "Mack. No cuelgues. Tu amigo Viper cierra un trato. Esta noche. No está solo.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who is this?",
+          "es": "¿Quién es?",
+          "t": 2
+        },
+        {
+          "speaker": "Voice",
+          "en": "Someone who owes Westbrook. Go to the old rail station.",
+          "es": "Alguien que le debe algo a Westbrook. Ve a la vieja estación de tren.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1960,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -8
+      },
+      "toast": "+$1960"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: VIPER'S DEAL (M en el radar)"
+    }
+  ]
+}

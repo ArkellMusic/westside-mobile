@@ -69,5 +69,5 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0.0
 	move_and_slide()
-	if speed > 0.0 or stance == "":
+	if speed > 0.0 or stance == "" or model._talking:
 		model.animate(delta, speed, true)

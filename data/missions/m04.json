@@ -1,0 +1,352 @@
+{
+  "id": "m04",
+  "number": 4,
+  "title": "VARGAS AUTO WORKS",
+  "title_es": "Vargas Auto Works",
+  "act": "ACTO I",
+  "start": "vargas_front",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "loco",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Ray says you used to drive like you'd stolen it. Looks like you stole a whole city's worth of attitude since.",
+          "es": "Ray dice que conducías como si lo hubieras robado. Parece que desde entonces te has llevado el carácter de toda una ciudad.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're Diego.",
+          "es": "Tú eres Diego.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Loco. Diego's my taxes. This is Vargas Auto Works, three generations of bad decisions and good brakes.",
+          "es": "Loco. Diego es para mis impuestos. Esto es Vargas Auto Works, tres generaciones de malas decisiones y buenos frenos.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "He's got a project. Tell him the project.",
+          "es": "Tiene un proyecto. Cuéntale el proyecto.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "Customer left a coupe half-built and a bill unpaid. Owner's gone. Might not come back.",
+          "es": "Un cliente dejó un cupé a medio montar y la factura sin pagar. Ha desaparecido. Puede que no vuelva.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Gone how?",
+          "es": "¿Desaparecido cómo?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Gone like the people who said no to the suits. Don't ask me where, I'm not stupid.",
+          "es": "Como la gente que dijo que no a los trajes. No me preguntes dónde, no soy tonto.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Marcus needs wheels and work. You need hands and a driver.",
+          "es": "Marcus necesita ruedas y trabajo. Tú necesitas manos y un conductor.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Loco",
+          "en": "I need somebody who doesn't flinch at a red light. Can you drive?",
+          "es": "Necesito a alguien que no se acobarde en un semáforo en rojo. ¿Sabes conducir?",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "I drove for people I'd rather not name.",
+          "es": "Conduje para gente que prefiero no nombrar.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "Good. I don't like names. Bumper first, then the road.",
+          "es": "Bien. No me gustan los nombres. Primero el parachoques, luego la carretera.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        100,
+        -110
+      ],
+      "count": 3,
+      "label": "Pieza",
+      "objective": "Inspecciona neumáticos, luces y carrocería del cupé",
+      "hint": "Rodea el coche y revisa cada parte."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Tires are bald, left headlight's glass dust. Whoever built it cared more about the paint than the stopping.",
+          "es": "Neumáticos lisos, el faro izquierdo es polvo de cristal. Quien lo montó se preocupó más de la pintura que de frenar.",
+          "t": 7.5
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "steal",
+      "objective": "Sube al cupé de prueba"
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        60,
+        -70
+      ],
+      "objective": "Haz el circuito urbano de prueba: curvas y semáforos",
+      "time": 70
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Behind you! Reckless fool in the black sedan!",
+          "es": "¡Detrás de ti! ¡Un imprudente en el sedán negro!",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "He clipped the door. Dammit.",
+          "es": "Me ha rozado la puerta. Maldita sea.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": [
+        60,
+        -70
+      ],
+      "count": 2,
+      "objective": "Echa del lugar a los dos conductores que te han embestido",
+      "faction": "redline_kings",
+      "armed": false
+    },
+    {
+      "type": "drive_to",
+      "target": "vargas_front",
+      "objective": "Vuelve al taller para reparar el golpe"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        140,
+        -150
+      ],
+      "objective": "Ve al almacén por las piezas (la calle principal está cortada)"
+    },
+    {
+      "type": "collect",
+      "at": [
+        140,
+        -150
+      ],
+      "count": 2,
+      "label": "Caja de piezas",
+      "objective": "Carga las cajas de piezas en el coche"
+    },
+    {
+      "type": "timed_drive",
+      "target": "vargas_front",
+      "objective": "Lleva las piezas al taller por la ruta alternativa",
+      "time": 80
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        90,
+        -100
+      ],
+      "objective": "Aparca el cupé reparado en el elevador",
+      "stop": true
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "loco",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Smooth. You don't drive like a man, you drive like a getaway.",
+          "es": "Suave. No conduces como un hombre, conduces como una huida.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Old habit.",
+          "es": "Vieja costumbre.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Habit with a past.",
+          "es": "Costumbre con pasado.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Everybody's got one. Mine's the harbor strip, Friday nights. Cash prizes, no cops, a lot of ego.",
+          "es": "Todos tenemos uno. El mío es el paseo del puerto, los viernes. Premios en efectivo, sin polis y mucho ego.",
+          "t": 6.7
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Basic repair's yours free now. And the harbor run has a spot if you want it.",
+          "es": "La reparación básica es tuya gratis. Y en la carrera del puerto hay un hueco si lo quieres.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Free? Nothing's free in Westbrook.",
+          "es": "¿Gratis? Nada es gratis en Westbrook.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Loco",
+          "en": "Free in sweat. You'll learn.",
+          "es": "Gratis en sudor. Ya aprenderás.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": "loco",
+      "objective": "Habla con Loco antes de irte"
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "loco",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Friday. Harbor. Bring a car that can take a hit.",
+          "es": "El viernes. Puerto. Trae un coche que aguante un golpe.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "He'll bring one.",
+          "es": "Lo traerá.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "What are the stakes?",
+          "es": "¿Qué se juega?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Pride, cash, and whoever you scratch might scratch back.",
+          "es": "Orgullo, dinero y quien rasques puede rascarte a ti.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And Kings run that strip too. Viper's people take a cut of the pot.",
+          "es": "Y los Kings también controlan ese paseo. La gente de Viper se lleva parte del bote.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Of course they do.",
+          "es": "Claro que sí.",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Don't worry. My cousin's a sheriff's deputy in a town that doesn't exist. Nobody checks.",
+          "es": "Tranquilo. Mi primo es agente en un pueblo que no existe. Nadie comprueba nada.",
+          "t": 6.2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 230,
+      "reputation": {
+        "westbrook_saints": 2,
+        "redline_kings": -2
+      },
+      "toast": "+$230 · Vargas Auto Works"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE PRICE OF HOME (M en el radar)"
+    }
+  ]
+}

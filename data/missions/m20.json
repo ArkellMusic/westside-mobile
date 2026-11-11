@@ -1,0 +1,383 @@
+{
+  "id": "m20",
+  "number": 20,
+  "title": "OLD DEBTS",
+  "title_es": "Viejas deudas",
+  "act": "ACTO I",
+  "start": "mack_door",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "mack_door",
+      "cast": [
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Get in the car. I want to show you something. Don't ask where we're going.",
+          "es": "Sube al coche. Quiero enseñarte algo. No preguntes adónde vamos.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're being strange, Ray.",
+          "es": "Estás raro, Ray.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'm being old. Different thing.",
+          "es": "Estoy viejo. Es distinto.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Three weeks I've been home and you've deflected every question.",
+          "es": "Llevo tres semanas en casa y has esquivado todas las preguntas.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Because answers have prices, Marcus. I'm trying to pay them one at a time.",
+          "es": "Porque las respuestas tienen precio, Marcus. Intento pagarlas de una en una.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "What price?",
+          "es": "¿Qué precio?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "The kind that takes from someone I owe.",
+          "es": "De los que se cobran a alguien a quien debo.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Is this about Viper's 'ask the old man'?",
+          "es": "¿Es por lo de Viper, «pregúntaselo al viejo»?",
+          "t": 2.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Partly. There's a woman, Odette. She kept books for a man I worked for. She wants something before she'll talk.",
+          "es": "En parte. Hay una mujer, Odette. Llevaba la contabilidad de un hombre para el que trabajé. Quiere algo antes de hablar.",
+          "t": 7.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "What?",
+          "es": "¿El qué?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "A show of good faith. A missing document. She'll tell you why in her own words.",
+          "es": "Una muestra de buena fe. Un documento perdido. Ella te dirá por qué con sus palabras.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Drive.",
+          "es": "Conduce.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Coge el coche de Big Ray"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -120,
+        60
+      ],
+      "objective": "Primer lugar: el viejo bar de Marlow"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Marlow Lounge. Where I first met the man. Twenty-two years ago.",
+          "es": "Marlow Lounge. Donde conocí al hombre. Hace veintidós años.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Two bad weeks and I owed him for life.",
+          "es": "Dos malas semanas y le debía de por vida.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -30,
+        -130
+      ],
+      "objective": "Segundo lugar: el almacén abandonado del sur"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        60,
+        -120
+      ],
+      "objective": "Tercer lugar: la casa de Odette"
+    },
+    {
+      "type": "scene",
+      "at": "comisaria",
+      "cast": [
+        "Odette",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Odette",
+          "en": "So this is Ruth's boy.",
+          "es": "Así que este es el hijo de Ruth.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "You knew my mother.",
+          "es": "Conocía a mi madre.",
+          "t": 2
+        },
+        {
+          "speaker": "Odette",
+          "en": "Everybody did. Ray owes me. I want to see you fix it.",
+          "es": "Todos la conocían. Ray me debe. Quiero ver cómo lo arreglas.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Odette.",
+          "es": "Odette.",
+          "t": 2
+        },
+        {
+          "speaker": "Odette",
+          "en": "There's a ledger page missing from 1999. Kept in a deposit box downtown. Bring it.",
+          "es": "Falta una página de un libro de 1999. Guardada en una caja de seguridad del centro. Tráela.",
+          "t": 5.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        40,
+        -10
+      ],
+      "objective": "Ve al banco del centro a por la caja de seguridad"
+    },
+    {
+      "type": "sneak",
+      "target": [
+        45,
+        -8
+      ],
+      "guards": 3,
+      "objective": "Cruza el banco hasta la cámara acorazada sin ser visto",
+      "label": "cámara"
+    },
+    {
+      "type": "collect",
+      "at": [
+        45,
+        -8
+      ],
+      "count": 1,
+      "label": "Página",
+      "objective": "Coge la página del libro de cuentas"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Black sedan behind us. P.I. plates. That's Whitlock's man.",
+          "es": "Sedán negro detrás. Matrícula de detective privado. Es el hombre de Whitlock.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "lose_cops",
+      "stars": 1,
+      "objective": "Despista al investigador privado que sigue tus movimientos"
+    },
+    {
+      "type": "fight",
+      "at": [
+        40,
+        -15
+      ],
+      "count": 3,
+      "objective": "Sacude a los hombres de Whitlock que os cortan el paso",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": "comisaria",
+      "objective": "Lleva la página de vuelta a Odette"
+    },
+    {
+      "type": "scene",
+      "at": "comisaria",
+      "cast": [
+        "Odette",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Odette",
+          "en": "1999. A deal with a man named Cross's lawyer. Ray signed as a witness. He carried the cash to Harlan Court.",
+          "es": "1999. Un acuerdo con el abogado de un tal Cross. Ray firmó como testigo. Llevó el dinero a Harlan Court.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray?",
+          "es": "¿Ray?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I told them it was a loan. It wasn't. It was payment for a handshake that built half this territory.",
+          "es": "Les dije que era un préstamo. No lo era. Era el pago de un apretón de manos que levantó la mitad de este territorio.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "You helped them buy Westbrook.",
+          "es": "Ayudaste a comprar Westbrook.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I helped them lease a corner. Twenty years ago. I didn't know what it would become.",
+          "es": "Ayudé a que alquilaran una esquina. Hace veinte años. No sabía en qué se convertiría.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Odette",
+          "en": "He knew. He didn't want to.",
+          "es": "Lo sabía. No quería saberlo.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "And the account that's closed?",
+          "es": "¿Y la cuenta que se cerró?",
+          "t": 2.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "That's the rest. Not tonight.",
+          "es": "Eso es el resto. Esta noche no.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "drive_to",
+      "target": "mack_house_curb",
+      "objective": "Vuelve a casa con Ray",
+      "stop": true
+    },
+    {
+      "type": "scene",
+      "at": "mack_house_curb",
+      "cast": [
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "I'm not asking you to forgive me. I'm asking you to let me finish.",
+          "es": "No te pido que me perdones. Te pido que me dejes terminar.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're holding something back.",
+          "es": "Te estás guardando algo.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "One name. I protect it with my life. It's not mine to give.",
+          "es": "Un nombre. Lo protejo con mi vida. No es mío para darlo.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fine. For now.",
+          "es": "Vale. Por ahora.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 860,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -3
+      },
+      "toast": "+$860 · Viejas deudas"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: WESTBROOK NIGHT (M en el radar)"
+    }
+  ]
+}

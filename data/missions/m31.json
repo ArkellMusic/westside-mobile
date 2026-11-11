@@ -1,0 +1,312 @@
+{
+  "id": "m31",
+  "number": 31,
+  "title": "MISSING RECORDS",
+  "title_es": "Registros perdidos",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -150,
+    "dz": -140
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -40,
+        "dz": 60
+      },
+      "cast": [
+        "Nina Cho",
+        "Lucia Ward"
+      ],
+      "lines": [
+        {
+          "speaker": "Lucia Ward",
+          "en": "I work nights at the document warehouse. Last Thursday trucks came at three a.m. They took ten pallets.",
+          "es": "Trabajo de noche en el almacén de documentos. El jueves pasado vinieron camiones a las tres de la mañana. Se llevaron diez palés.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Which pallets?",
+          "es": "¿Qué palés?",
+          "t": 2
+        },
+        {
+          "speaker": "Lucia Ward",
+          "en": "The port records. Land titles. Everything from the years the harbor changed hands.",
+          "es": "Los registros del puerto. Títulos de propiedad. Todo de los años en que el puerto cambió de manos.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Where do they go?",
+          "es": "¿Adónde van?",
+          "t": 2
+        },
+        {
+          "speaker": "Lucia Ward",
+          "en": "To the destruction depot outside town. A shredder the size of a bus. They run it at dawn.",
+          "es": "Al depósito de destrucción a las afueras. Una trituradora del tamaño de un autobús. La ponen en marcha al amanecer.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Lucia, why tell us?",
+          "es": "Lucía, ¿por qué nos lo cuentas?",
+          "t": 2
+        },
+        {
+          "speaker": "Lucia Ward",
+          "en": "Because my manager told me to forget I saw it. People who forget get fired. People who talk get found in the harbor.",
+          "es": "Porque mi jefe me dijo que me olvidara de lo que vi. Los que olvidan los despiden. Los que hablan aparecen en el puerto.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then you're braver than me.",
+          "es": "Entonces eres más valiente que yo.",
+          "t": 2
+        },
+        {
+          "speaker": "Lucia Ward",
+          "en": "I'm not brave. I'm angry. There's a difference.",
+          "es": "No soy valiente. Estoy enfadada. Hay diferencia.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "The shredder runs at dawn. We have five hours.",
+          "es": "La trituradora funciona al amanecer. Tenemos cinco horas.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then let's not sleep.",
+          "es": "Pues no durmamos.",
+          "t": 2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "time",
+      "hour": 3
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche para seguir al camión de destrucción"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": -70
+      },
+      "objective": "Sigue al vehículo de destrucción hasta las afueras"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Don't tailgate. Three trucks, one decoy. Which one is it?",
+          "es": "No te pegues. Tres camiones, un señuelo. ¿Cuál es?",
+          "t": 4.0
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 150,
+        "dz": -100
+      },
+      "guards": 3,
+      "objective": "Entra en el depósito mientras la maquinaria clasifica cajas",
+      "label": "Depósito"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Lucia Ward",
+          "en": "The belt runs left to right. Stop it at box twelve and the shredder jams.",
+          "es": "La cinta va de izquierda a derecha. Pásala en la caja doce y la trituradora se atasca.",
+          "t": 5.1
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": -105
+      },
+      "count": 4,
+      "label": "Caja",
+      "objective": "Salva los documentos antes de que entren en la trituradora",
+      "hint": "Las cajas con etiqueta verde."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": -105
+      },
+      "count": 4,
+      "objective": "Detén a los operarios de la trituradora",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": -105
+      },
+      "count": 3,
+      "waves": 2,
+      "time": 40,
+      "objective": "Protege a Lucia mientras graba la denuncia",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Lucia Ward",
+          "en": "It's recording. Get me out of here. Please just get me out of here.",
+          "es": "Está grabando. Sácame de aquí. Por favor, sácame de aquí.",
+          "t": 4.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "steal",
+      "objective": "Coge una furgoneta para salir del depósito"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Pierde a los vigilantes entre las calles industriales"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 0
+      },
+      "objective": "Lleva los documentos y a Lucia al piso seguro",
+      "stop": true
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 0
+      },
+      "cast": [
+        "Nina Cho",
+        "Lucia Ward"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Titles, bills of sale, payments. I count nine of ten pallets.",
+          "es": "Títulos, facturas, pagos. Cuento nueve de diez palés.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Lucia Ward",
+          "en": "The tenth was gone before I got there.",
+          "es": "El décimo ya no estaba cuando llegué.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "One record is missing. The one that would tie the harbor sale to a name.",
+          "es": "Falta un registro. El que ataría la venta del puerto a un nombre.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Somebody took the one page that mattered and left us the rest.",
+          "es": "Alguien se llevó la única página que importaba y nos dejó el resto.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Lucia Ward",
+          "en": "Is this going to get me killed?",
+          "es": "¿Esto me va a costar la vida?",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Not while I'm standing here.",
+          "es": "No mientras yo esté aquí.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1540,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -7
+      },
+      "toast": "+$1540"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: DIRTY FAVORS (M en el radar)"
+    }
+  ]
+}

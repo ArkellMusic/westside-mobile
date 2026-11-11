@@ -1,0 +1,431 @@
+{
+  "id": "m76",
+  "number": 76,
+  "title": "FIVE CITIES, ONE NETWORK",
+  "title_es": "Cinco ciudades, una red",
+  "act": "ACTO VI",
+  "start": {
+    "zone": "isla_nacar",
+    "dx": -150,
+    "dz": -120
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "bahia_solana",
+        "dx": -60,
+        "dz": -40
+      },
+      "cast": [
+        "keisha",
+        "loco",
+        "ghost",
+        "big_ray"
+      ],
+      "title_card": true,
+      "hour": 6,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Four archives. Five cities. Seventy-two hours before she realizes the master list is in our hands and starts burning paper. We go at once, everywhere, on the same minute.",
+          "es": "Cuatro archivos. Cinco ciudades. Setenta y dos horas antes de que se dé cuenta de que tenemos la lista maestra y empiece a quemar papel. Vamos a la vez, en todas partes, en el mismo minuto.",
+          "t": 9
+        },
+        {
+          "speaker": "Loco",
+          "en": "San Cordova is mine. Port Authority, Veyra freight yard. I take the trucks, you take the rest.",
+          "es": "San Cordova es mío. Autoridad portuaria, la estación de mercancías de Veyra. Yo me quedo con los camiones, vosotros con el resto.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Hale's moving on Sorell in Northpoint. Her arrest will be live on the morning news. And I'm testifying whether I'm ready or not.",
+          "es": "Hale se mueve contra Sorell en Northpoint. Su detención saldrá en directo en las noticias de la mañana. Y yo voy a declarar esté preparado o no.",
+          "t": 9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Calder vault is a cathedral. Nine floors. I take it with Hale's men.",
+          "es": "La bóveda del Calder es una catedral. Nueve plantas. La tomo con los hombres de Hale.",
+          "t": 4.8
+        },
+        {
+          "speaker": "K",
+          "en": "That leaves Westbrook. The old rail office, the one Ray signed for. Mack, that's yours.",
+          "es": "Eso deja Westbrook. La vieja oficina del ferrocarril, la que firmó Ray. Mack, es tuya.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dre's there. We haven't said a real word to each other in weeks.",
+          "es": "Dre está allí. No hemos dicho una palabra de verdad en semanas.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then say it. Before the rail office burns, say it. Don't be me. Don't wait eight years.",
+          "es": "Pues dilo. Antes de que arda la oficina del ferrocarril, dilo. No seas como yo. No esperes ocho años.",
+          "t": 6.1
+        },
+        {
+          "speaker": "K",
+          "en": "First, the drive. Data courier leaves Bahía in forty minutes. If the signal fails, we need a physical copy in Westbrook.",
+          "es": "Primero, la unidad. El mensajero de datos sale de Bahía en cuarenta minutos. Si la señal falla, necesitamos una copia física en Westbrook.",
+          "t": 8.4
+        },
+        {
+          "speaker": "Loco",
+          "en": "Mack, driving that thing is like driving a piano on fire. Don't stop for lights.",
+          "es": "Mack, conducir eso es como conducir un piano en llamas. No pares en los semáforos.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Everybody lives. Everybody breathes. And nobody plays hero.",
+          "es": "Todos viven. Todos respiran. Y nadie se hace el héroe.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Understood. I'll try.",
+          "es": "Entendido. Lo intentaré.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Five cities. One network. Make her feel it.",
+          "es": "Cinco ciudades. Una red. Haced que lo sienta.",
+          "t": 3.0
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": -60,
+        "dz": -30
+      },
+      "objective": "Recoge la copia física del archivo de manos de Keisha",
+      "hint": "Está en la mesa del fondo.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue el coche más rápido del puerto para llevar la copia"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "bahia_solana",
+        "dx": 60,
+        "dz": -60
+      },
+      "objective": "Lleva el disco al mensajero antes de que zarpe",
+      "time": 75
+    },
+    {
+      "type": "give",
+      "ammo": 120,
+      "money": 0,
+      "toast": "Munición para el frente de Westbrook"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "San Cordova's done. Two trucks stopped, drivers talking to the Port Authority. Told you, piano on fire.",
+          "es": "San Cordova está hecho. Dos camiones detenidos, los conductores hablan con la Autoridad portuaria. Os lo dije, piano en llamas.",
+          "t": 7.2
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Sorell is in handcuffs, live on the news. Nobody's pretending now. One down, Mack.",
+          "es": "Sorell está esposada, en directo en las noticias. Nadie finge ya. Una menos, Mack.",
+          "t": 5.7
+        }
+      ]
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Calder vault secured. Nine floors. Not a shot fired. Imani's with Hale's people. She's safe.",
+          "es": "Bóveda del Calder asegurada. Nueve plantas. Ni un disparo. Imani está con la gente de Hale. Está a salvo.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Good. Good, Ghost. Hold that thought.",
+          "es": "Bien. Bien, Ghost. Aférrate a eso.",
+          "t": 2.6
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "drive_to",
+      "target": "bridge",
+      "objective": "Conduce hasta el puente de Westbrook, punto de enlace con los otros frentes"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "All fronts confirm. Westbrook is the last. Something's moving at the rail office. Smoke on the cameras.",
+          "es": "Todos los frentes confirman. Westbrook es el último. Algo se mueve en la oficina del ferrocarril. Humo en las cámaras.",
+          "t": 7.2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        100,
+        150
+      ],
+      "objective": "Corre hasta la antigua oficina del ferrocarril en Westbrook"
+    },
+    {
+      "type": "fight",
+      "at": [
+        102,
+        152
+      ],
+      "count": 5,
+      "objective": "Detén a los incendiarios antes de que quemen el archivo",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        104,
+        156
+      ],
+      "count": 3,
+      "label": "Caja de archivo",
+      "objective": "Saca las cajas de la oficina antes de que el fuego se extienda",
+      "hint": "Examina cada caja marcada."
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "dre_corner",
+      "objective": "Encuentra a Dre en su esquina para hablar de una vez",
+      "hint": "Sigue la marca hasta el rincón de siempre.",
+      "radius": 6
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "You came back for the paper. Fine. I'm glad. But you didn't come back for me.",
+          "es": "Volviste por el papel. Vale. Me alegro. Pero no volviste por mí.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "I came back for my mama's house. And then I stayed for you. I don't know which of those I'm prouder of.",
+          "es": "Volví por la casa de mi madre. Y luego me quedé por ti. No sé de cuál de las dos cosas estoy más orgulloso.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Eight years, Mack. Teo went inside and you were on a bus that same night.",
+          "es": "Ocho años, Mack. Teo entró en prisión y tú estabas en un autobús esa misma noche.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "I thought if I stayed I'd bury you or you'd bury me. I thought leaving was mercy.",
+          "es": "Pensé que si me quedaba te enterraría o me enterrarías. Pensé que irme era una forma de piedad.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "It wasn't mercy. It was a head start.",
+          "es": "No era piedad. Era ventaja.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "...Yeah. It was. I'm sorry. I should've said it eight years ago.",
+          "es": "...Sí. Lo era. Lo siento. Debí decírtelo hace ocho años.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "I wanted to burn her down. All of it. Make Cross feel what it's like to lose the roof over your head.",
+          "es": "Yo quería quemarla entera. Todo. Que Cross sintiera lo que es perder el techo sobre tu cabeza.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "And that would make us exactly what she says we are. Dre, I need her in a courtroom. With cameras. With the whole block watching.",
+          "es": "Y eso nos haría exactamente lo que ella dice que somos. Dre, la necesito en un juzgado. Con cámaras. Con toda la manzana mirando.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "A courtroom doesn't bring Teo back.",
+          "es": "Un juzgado no trae de vuelta a Teo.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "No. But it keeps the next Teo from going in. Boys, I can't fix the past. I can sit in front of a judge.",
+          "es": "No. Pero evita que entre el próximo Teo. Chicos, no puedo arreglar el pasado. Puedo sentarme ante un juez.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Alright. Here's my deal, Mack. We decide together. No more solo moves, no more secrets, no more leaving.",
+          "es": "Muy bien. Este es mi trato, Mack. Decidimos juntos. Se acabaron las jugadas en solitario, los secretos y las despedidas.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Together. Every move.",
+          "es": "Juntos. Cada movimiento.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then I stand with you. And Ray... I'm not there yet. But I'll sit in the courtroom.",
+          "es": "Entonces estoy contigo. Y Ray... aún no llego. Pero me sentaré en el juzgado.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "That's more than I deserve, son.",
+          "es": "Es más de lo que merezco, hijo.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "keisha",
+        "Evelyn Cross"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Every front confirmed. Network exposed. Eleven offices, four archives, three arrests. It's all on the air.",
+          "es": "Todos los frentes confirmados. Red expuesta. Once oficinas, cuatro archivos, tres detenciones. Todo en antena.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Mr. Johnson. I've been called many things in this business. Dishonest was never one of them.",
+          "es": "Señor Johnson. Me han llamado muchas cosas en este negocio. Deshonesta nunca fue una.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're on speaker, Evelyn. Everybody here can hear you.",
+          "es": "Estás en el altavoz, Evelyn. Todos aquí te oyen.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Good. Then everybody hears this. I built this city before you were born. I'll bury it before I let you rename it.",
+          "es": "Bien. Entonces todos oyen esto. Construí esta ciudad antes de que nacieras. La enterraré antes de dejar que le cambies el nombre.",
+          "t": 7.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "She's scared. She wouldn't call otherwise.",
+          "es": "Tiene miedo. Si no, no llamaría.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Evelyn Cross",
+          "en": "Scared is for people with something left to lose. I'm preparing a defense that will take your entire family tree to answer.",
+          "es": "El miedo es para quien aún tiene algo que perder. Preparo una defensa que necesitará a todo tu árbol genealógico para responder.",
+          "t": 8.6
+        },
+        {
+          "speaker": "K",
+          "en": "She's going to hit every witness. Every archive. At once.",
+          "es": "Va a golpear a todos los testigos. A todos los archivos. A la vez.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Let her. We know where she's going to look now.",
+          "es": "Que lo intente. Ahora sabemos dónde va a mirar.",
+          "t": 3.3
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 8550,
+      "reputation": {
+        "westbrook_saints": 10,
+        "the_syndicate": -10
+      },
+      "toast": "+$8,550 · La red de Cross queda expuesta"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE FINAL EVIDENCE (M en el radar)"
+    }
+  ]
+}

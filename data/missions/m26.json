@@ -1,0 +1,318 @@
+{
+  "id": "m26",
+  "number": 26,
+  "title": "MIDNIGHT TRAM",
+  "title_es": "Tranvía de medianoche",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -170,
+    "dz": -120
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 20,
+        "dz": -30
+      },
+      "cast": [
+        "Nina Cho",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "I put the middleman's name through every database I've got. 'Aldous Pryor.' Forty-one. Never a ticket, never a loan, never a lie on paper.",
+          "es": "He pasado el nombre del intermediario por todas mis bases. «Aldous Pryor». Cuarenta y uno. Ni una multa, ni un préstamo, ni una mentira en papeles.",
+          "t": 9
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Nobody is that clean. Clean means scrubbed.",
+          "es": "Nadie es tan limpio. Limpio significa borrado.",
+          "t": 3.0
+        },
+        {
+          "speaker": "K",
+          "en": "Exactly. And my buyers in Westbrook all signed through the same lawyer. Same lawyer, same stamp.",
+          "es": "Exacto. Y mis compradores de Westbrook firmaron con el mismo abogado. El mismo abogado, el mismo sello.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "So Pryor carries the envelope. The lawyer stamps it. And somebody above cashes it.",
+          "es": "Así que Pryor lleva el sobre. El abogado lo sella. Y alguien más arriba lo cobra.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "That's the theory. A midnight tram, a seat and a briefcase is how we prove it.",
+          "es": "Esa es la teoría. Un tranvía de medianoche, un asiento y un maletín es cómo lo demostramos.",
+          "t": 5.5
+        },
+        {
+          "speaker": "K",
+          "en": "Don't take your phone on the tram. They triangulate, Mack.",
+          "es": "No te lleves el teléfono al tranvía. Triangulan, Mack.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "You make it sound like a war.",
+          "es": "Lo haces sonar como una guerra.",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "It is a war. The side with better lawyers just doesn't call it one.",
+          "es": "Lo es. Solo que el bando con mejores abogados no la llama así.",
+          "t": 4.7
+        },
+        {
+          "speaker": "K",
+          "en": "I'll be your ears from Westbrook. If you lose him, call. If they take you, call louder.",
+          "es": "Seré tus oídos desde Westbrook. Si le pierdes, llama. Si te cogen, llama más fuerte.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "If they take me, don't bring flowers.",
+          "es": "Si me cogen, no traigas flores.",
+          "t": 2.6
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "time",
+      "hour": 23
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 20,
+        "dz": -30
+      },
+      "objective": "Vigila la estación donde Pryor coge el último tranvía",
+      "hint": "Mantente entre la gente."
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 25,
+        "dz": -35
+      },
+      "guards": 2,
+      "objective": "Sube al tranvía sin que Pryor te reconozca",
+      "label": "Tranvía"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Pryor",
+          "en": "Tell him Thursday works. Tell him I don't like the extra eyes at the dock.",
+          "es": "Dile que el jueves me va bien. Dile que no me gustan los ojos de más en el muelle.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Thursday. Dock. Eyes.",
+          "es": "Jueves. Muelle. Ojos.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 70,
+        "dz": 10
+      },
+      "objective": "Sigue a Pryor durante tres paradas manteniendo la distancia"
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": 40
+      },
+      "objective": "Baja en la parada de Pryor sin que te vea"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 140,
+        "dz": 60
+      },
+      "objective": "Persigue a Pryor a pie por cuestas y callejones",
+      "toast": "Pryor se aleja entre las escaleras"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Pryor",
+          "en": "I'm not your guy. I'm anyone's guy. Leave me be.",
+          "es": "No soy tu hombre. Soy el hombre de cualquiera. Déjame en paz.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 150,
+        "dz": 70
+      },
+      "count": 1,
+      "label": "Carpeta",
+      "objective": "Recupera la carpeta que Pryor ha tirado a la basura",
+      "hint": "Un cómplice se acerca por detrás."
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 150,
+        "dz": 70
+      },
+      "count": 3,
+      "objective": "Quítate de encima al cómplice y a sus amigos",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Esquiva el control policial sin perder la carpeta"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Where are you? There's a roadblock on the hill. Don't drop it, whatever you do.",
+          "es": "¿Dónde estás? Hay un control en la cuesta. No la sueltes, pase lo que pase.",
+          "t": 5.5
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 0
+      },
+      "objective": "Entrega la carpeta a Nina en el piso seguro"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": 0
+      },
+      "cast": [
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Shipping schedules. Dock numbers. A silent night shift at Silent Docks.",
+          "es": "Calendarios de envío. Números de muelle. Un turno de noche en silencio en Silent Docks.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Silent Docks. Sounds like a place you go to disappear.",
+          "es": "Silent Docks. Suena a sitio donde uno desaparece.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "One worker went missing from that shift two weeks ago. His wife's been to the police four times.",
+          "es": "Un trabajador desapareció de ese turno hace dos semanas. Su mujer ha ido cuatro veces a la policía.",
+          "t": 6.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "And the police?",
+          "es": "¿Y la policía?",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Four reports, four filing cabinets.",
+          "es": "Cuatro denuncias, cuatro archivadores.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then I'll find him before the cabinets do.",
+          "es": "Pues le encontraré antes que los archivadores.",
+          "t": 2.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1240,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -5
+      },
+      "toast": "+$1240"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: SILENT DOCKS (M en el radar)"
+    }
+  ]
+}

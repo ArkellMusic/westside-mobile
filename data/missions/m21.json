@@ -1,0 +1,357 @@
+{
+  "id": "m21",
+  "number": 21,
+  "title": "WESTBROOK NIGHT",
+  "title_es": "Noche en Westbrook",
+  "act": "ACTO I",
+  "start": "dre_corner",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "time",
+      "hour": 21
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost",
+        "keisha",
+        "big_ray",
+        "loco"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Power went out three times in an hour. Every block dark.",
+          "es": "La luz se fue tres veces en una hora. Todas las manzanas a oscuras.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Not an accident. Transformers on Fifth, Marlow, Kingsley. Cut clean.",
+          "es": "No es un accidente. Transformadores en la Quinta, Marlow, Kingsley. Cortados limpios.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Somebody's testing our response.",
+          "es": "Alguien prueba nuestra respuesta.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Or covering something.",
+          "es": "O tapando algo.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Phones are hitting a jammer on the east grid. Calls drop. I'm patching you through the radio.",
+          "es": "Los teléfonos chocan con un inhibidor en la red este. Las llamadas caen. Os conecto por radio.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'm with the old folks at the church hall. Buses stranded at Delmar.",
+          "es": "Estoy con los ancianos en el salón de la iglesia. Hay autobuses atascados en Delmar.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Loco",
+          "en": "I've got my truck and four extinguishers. Tell me where.",
+          "es": "Tengo mi camión y cuatro extintores. Decidme dónde.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dre, you take the corners. Ghost, the shelter. Loco, the buses. K stays on the radio.",
+          "es": "Dre, tú las esquinas. Ghost, el refugio. Loco, los autobuses. K se queda en la radio.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "Since when do you give orders?",
+          "es": "¿Desde cuándo das órdenes tú?",
+          "t": 2.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Since the lights went out.",
+          "es": "Desde que se fue la luz.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Fine. Move.",
+          "es": "Vale. Muévete.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Everyone survives tonight. That's the plan.",
+          "es": "Esta noche sobrevive todo el mundo. Ese es el plan.",
+          "t": 3.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        -60,
+        100
+      ],
+      "count": 3,
+      "label": "Vecino",
+      "objective": "Ayuda a los vecinos atrapados en los bloques sin luz",
+      "hint": "Usa la linterna para guiarlos."
+    },
+    {
+      "type": "steal",
+      "objective": "Coge un coche para sacar al autobús atrapado"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        20,
+        80
+      ],
+      "objective": "Guía al autobús atrapado fuera del barrio"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Dre, Loco, Ray, can you hear me? Delmar and Fifth are blocked by a burning dumpster.",
+          "es": "Dre, Loco, Ray, ¿me oís? Delmar y la Quinta están bloqueadas por un contenedor ardiendo.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "Copy. Rerouting along Kingsley.",
+          "es": "Recibido. Voy por Kingsley.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Marlow's clear. Moving the families.",
+          "es": "Marlow despejada. Muevo a las familias.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Church hall's full. Send blankets.",
+          "es": "El salón de la iglesia está lleno. Mandad mantas.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Blankets, copy.",
+          "es": "Mantas, recibido.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": [
+        -20,
+        -20
+      ],
+      "count": 2,
+      "label": "Suministro",
+      "objective": "Recoge mantas y agua en Veyra Mart para el refugio",
+      "hint": "Okafor deja la tienda abierta."
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        -40,
+        100
+      ],
+      "objective": "Lleva los suministros al refugio por la ruta con calles cortadas",
+      "time": 85
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "give",
+      "ammo": 30,
+      "money": 0,
+      "toast": "Munición para defender el refugio"
+    },
+    {
+      "type": "defend",
+      "at": [
+        -40,
+        100
+      ],
+      "count": 4,
+      "waves": 2,
+      "time": 60,
+      "objective": "Defiende el acceso al refugio sin poner en peligro a los civiles"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "sneak",
+      "target": [
+        -70,
+        120
+      ],
+      "guards": 3,
+      "objective": "Sigue a los hombres que sacan cajas de un edificio a oscuras",
+      "label": "callejón"
+    },
+    {
+      "type": "collect",
+      "at": [
+        -70,
+        120
+      ],
+      "count": 2,
+      "label": "Documento",
+      "objective": "Examina las cajas con documentos que se llevan",
+      "hint": "Hojea las carpetas sin que te vean."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Marcus, the blackout isn't a blackout. They emptied the county records annex.",
+          "es": "Marcus, el apagón no es un apagón. Han vaciado el anexo de registros del condado.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "They burned the lights to move the paper.",
+          "es": "Apagaron las luces para mover el papel.",
+          "t": 2.9
+        },
+        {
+          "speaker": "K",
+          "en": "One box got dropped. A Port Authority memo. 'Aurelio Bridge, tolls and checkpoints.'",
+          "es": "Se cayó una caja. Un memorando de la Autoridad Portuaria. «Puente Aurelio, peajes y controles».",
+          "t": 5.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "The bridge.",
+          "es": "El puente.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost",
+        "loco",
+        "big_ray",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "The whole neighborhood lived through that. Nobody died.",
+          "es": "Todo el barrio sobrevivió. Nadie murió.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "We got lucky.",
+          "es": "Tuvimos suerte.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "We got organized. That's different.",
+          "es": "Nos organizamos. Es distinto.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "Truck smells like smoke, but the old folks are warm.",
+          "es": "El camión huele a humo, pero los viejos están calientes.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'll say it. Marcus, you did good. Your mother would've said the same.",
+          "es": "Lo diré. Marcus, lo hiciste bien. Tu madre habría dicho lo mismo.",
+          "t": 4.9
+        },
+        {
+          "speaker": "K",
+          "en": "The bridge memo's real. Whatever is moving across it, it's the end of the line for them.",
+          "es": "El memorando del puente es real. Sea lo que sea lo que cruza, es el final de la línea para ellos.",
+          "t": 6.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then that's where we end it.",
+          "es": "Entonces es donde se acaba.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Together.",
+          "es": "Juntos.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 900,
+      "reputation": {
+        "westbrook_saints": 8,
+        "redline_kings": 0,
+        "the_syndicate": -4
+      },
+      "toast": "+$900 · Noche en Westbrook"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: AURELIO BRIDGE (M en el radar)"
+    }
+  ]
+}

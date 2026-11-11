@@ -1,0 +1,336 @@
+{
+  "id": "m46",
+  "number": 46,
+  "title": "THE PEOPLE BEHIND IT",
+  "title_es": "La gente detrás",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 100
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "I cross-checked the ledger with the business registry. Three offices keep paying the same security firm. Red Mesa Consulting.",
+          "es": "He cruzado el libro con el registro mercantil. Tres oficinas pagan a la misma empresa de seguridad. Red Mesa Consulting.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Syndicate in a suit. Nice.",
+          "es": "Syndicate con corbata. Qué bonito.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "We visit all three. Look at invoices, contracts, who signs the rent.",
+          "es": "Visitamos las tres. Miramos facturas, contratos y quién firma el alquiler.",
+          "t": 4.8
+        },
+        {
+          "speaker": "K",
+          "en": "Rule one: nothing leaves with us. Photos only. The minute we steal paper, they know we were there.",
+          "es": "Regla uno: nada sale con nosotros. Solo fotos. En el momento en que robemos papel, sabrán que estuvimos.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "You make it sound like an exam.",
+          "es": "Hablas como si fuera un examen.",
+          "t": 2.2
+        },
+        {
+          "speaker": "K",
+          "en": "It is an exam. And the grade is somebody not getting shot.",
+          "es": "Lo es. Y la nota es que nadie reciba un tiro.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "I've got a source in the Chamber of Commerce. There's a closed reception tonight. Cross Meridian shows its people there.",
+          "es": "Tengo una fuente en la Cámara de Comercio. Esta noche hay una recepción cerrada. Cross Meridian enseña a su gente ahí.",
+          "t": 8.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Invitation?",
+          "es": "¿Invitación?",
+          "t": 2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "One. For a man named Bellamy. He won't need it. He's going to have a very bad evening.",
+          "es": "Una. A nombre de un tal Bellamy. No la necesitará. Va a tener una noche muy mala.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "You don't hurt him.",
+          "es": "No le hagas daño.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'll hurt his schedule.",
+          "es": "Solo le haré daño a su agenda.",
+          "t": 2
+        }
+      ],
+      "title_card": true,
+      "hour": 10
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -30,
+        "dz": -20
+      },
+      "objective": "Visita la primera oficina: Red Mesa Consulting"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -28,
+        "dz": -22
+      },
+      "count": 2,
+      "label": "Fotografiar facturas",
+      "objective": "Fotografía facturas y contratos de la primera oficina"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 40,
+        "dz": -60
+      },
+      "objective": "Visita la segunda oficina: una gestoría en el distrito empresarial"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 44,
+        "dz": -64
+      },
+      "guards": 3,
+      "objective": "Entra a la tercera oficina sin que el recepcionista te vea",
+      "label": "Oficina de Red Mesa"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 110,
+        "dz": 20
+      },
+      "objective": "Encuentra a Bellamy en el aparcamiento del hotel"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 112,
+        "dz": 22
+      },
+      "count": 2,
+      "objective": "Quita la invitación de Bellamy sin que grite",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 130,
+        "dz": 40
+      },
+      "guards": 4,
+      "objective": "Entra en la recepción cerrada y fotografía a los representantes",
+      "label": "Salón de recepciones"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 132,
+        "dz": 42
+      },
+      "count": 3,
+      "label": "Fotografiar a Syndicate",
+      "objective": "Fotografía a los tres representantes del Syndicate",
+      "hint": "Mantén el móvil a la altura del pecho."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "They're shredding the attendance list! Third floor, conference room, paper shredder on a trolley!",
+          "es": "¡Están destruyendo la lista de asistentes! ¡Tercera planta, sala de juntas, trituradora en un carrito!",
+          "t": 6.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Move or we lose names.",
+          "es": "Muévete o perdemos nombres.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 135,
+        "dz": 50
+      },
+      "objective": "Alcanza al ayudante que se lleva la lista",
+      "toast": "El ayudante corre con la lista"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 138,
+        "dz": 52
+      },
+      "count": 5,
+      "objective": "Frena a los escoltas del salón",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "La policía privada ha cerrado el edificio: sal de allí"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 100
+      },
+      "objective": "Vuelve al motel con la copia"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 100
+      },
+      "cast": [
+        "Nina Cho",
+        "keisha",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "Seven names. Seven titles. Not one of them signs anything. Nobody at that table is the boss.",
+          "es": "Siete nombres. Siete cargos. Ninguno firma nada. Nadie en esa mesa es el jefe.",
+          "t": 6.4
+        },
+        {
+          "speaker": "K",
+          "en": "They report upward. Each one mentions 'the board' without saying who sits on it.",
+          "es": "Informan hacia arriba. Cada uno menciona «el consejo» sin decir quién se sienta en él.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "So it's a pyramid. And we're looking at the base.",
+          "es": "Es una pirámide. Y estamos mirando la base.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Base is enough to start a war. The top will be loud when it bleeds.",
+          "es": "La base basta para empezar una guerra. La cima gritará cuando sangre.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Send me the copy. I'll put it somewhere safe with a lawyer who hates the sunlight.",
+          "es": "Mándame la copia. La guardaré en un sitio seguro con una abogada que odia la luz del sol.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Whoever sits at the very top is watching this table right now. I can feel it.",
+          "es": "Quien esté en lo más alto está mirando esta mesa ahora mismo. Lo noto.",
+          "t": 5.4
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2570,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -12
+      },
+      "toast": "MISIÓN COMPLETADA · La gente detrás"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: DESERT ENGINES (47 en el radar)"
+    }
+  ]
+}

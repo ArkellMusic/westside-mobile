@@ -1,0 +1,316 @@
+{
+  "id": "m78",
+  "number": 78,
+  "title": "NIGHT OF SIEGE",
+  "title_es": "Noche de asedio",
+  "act": "ACTO VI",
+  "start": "bridge",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray",
+        "keisha",
+        "loco",
+        "okafor"
+      ],
+      "title_card": true,
+      "hour": 23,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Nina's story drops in nine hours. Cross just made her move early. Seven simultaneous attacks. Witness houses, the rail office, Ray's apartment, the Vargas lot.",
+          "es": "La historia de Nina sale en nueve horas. Cross se ha adelantado. Siete ataques simultáneos. Casas de testigos, la oficina del ferrocarril, el piso de Ray, el solar de Vargas.",
+          "t": 9
+        },
+        {
+          "speaker": "Dre",
+          "en": "She's coming into my block. Finally. She wants to see my face.",
+          "es": "Entra en mi manzana. Por fin. Quiere ver mi cara.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Loco",
+          "en": "There's twelve black vans in the lot behind my shop. Twelve. They're not even trying to hide.",
+          "es": "Hay doce furgonetas negras en el solar detrás de mi taller. Doce. Ni siquiera intentan esconderse.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Okafor",
+          "en": "My store is forty feet from the corner. If this starts, they'll burn it first.",
+          "es": "Mi tienda está a doce metros de la esquina. Si esto empieza, la quemarán primero.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nobody burns anything tonight. We split the neighborhood in three. Dre holds the corner, Ghost the rooftops, Loco keeps the roads open.",
+          "es": "Esta noche nadie quema nada. Dividimos el barrio en tres. Dre sostiene la esquina, Ghost las azoteas, Loco mantiene abiertas las carreteras.",
+          "t": 9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And I stay with the witnesses. I'm too old for the front, but I'll block a door.",
+          "es": "Y yo me quedo con los testigos. Soy muy viejo para el frente, pero sé tapar una puerta.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "You're not too old for anything, Ray. You're too stubborn.",
+          "es": "No eres demasiado viejo para nada, Ray. Eres demasiado terco.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'll take that as a compliment, son.",
+          "es": "Lo tomaré como un cumplido, hijo.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Rooftop access on Crenwood, Vargas and the old movie theater. I'll see them before they see us.",
+          "es": "Acceso a azoteas en Crenwood, Vargas y el viejo cine. Los veré antes de que nos vean.",
+          "t": 6.7
+        },
+        {
+          "speaker": "K",
+          "en": "Evacuation lines are green on your phones. Hospital is the last safe building, comisaría second. Nobody goes to the bridge, it's blocked.",
+          "es": "Las rutas de evacuación están en verde en vuestros teléfonos. El hospital es el último edificio seguro, la comisaría el segundo. Nadie va al puente, está cortado.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Four hours. We hold four hours and the story lands. Then she can't deny it.",
+          "es": "Cuatro horas. Aguantamos cuatro horas y la historia sale. Entonces no podrá negarlo.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "Four hours in my house. Let's make it the longest four hours of her life.",
+          "es": "Cuatro horas en mi casa. Hagamos que sean las cuatro horas más largas de su vida.",
+          "t": 5.1
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": "dre_corner",
+      "objective": "Reúnete con Dre y los Saints en la esquina",
+      "hint": "Todos están listos.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        -30,
+        -10
+      ],
+      "count": 3,
+      "label": "Barricada",
+      "objective": "Organiza las defensas: coloca las tres barricadas del barrio",
+      "hint": "Examina cada punto marcado."
+    },
+    {
+      "type": "give",
+      "ammo": 160,
+      "money": 0,
+      "toast": "Munición para la noche"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un vehículo para que Loco mueva el coche de apoyo"
+    },
+    {
+      "type": "defend",
+      "at": "veyra_mart",
+      "count": 5,
+      "waves": 2,
+      "time": 45,
+      "objective": "Protege Veyra Mart y la entrada del refugio",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "Mack, Mrs. Pearl is trapped in her building on Crenwood. They're coming up the stairs.",
+          "es": "Mack, la señora Pearl está atrapada en su edificio de Crenwood. Suben por las escaleras.",
+          "t": 6.0
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        -60,
+        10
+      ],
+      "objective": "Cruza la ciudad hasta el edificio de la señora Pearl",
+      "time": 70
+    },
+    {
+      "type": "fight",
+      "at": [
+        -62,
+        12
+      ],
+      "count": 5,
+      "objective": "Rescata a la señora Pearl de los hombres de Cross",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "They're inside the rail office. Fuel on the floor. The archive boxes are in the basement. Hold the stairs.",
+          "es": "Están dentro de la oficina del ferrocarril. Combustible en el suelo. Las cajas del archivo están en el sótano. Defended las escaleras.",
+          "t": 7.4
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": [
+        100,
+        150
+      ],
+      "objective": "Corre a la oficina del ferrocarril, cerca del archivo",
+      "hint": "Sigue la marca.",
+      "radius": 6
+    },
+    {
+      "type": "defend",
+      "at": [
+        102,
+        152
+      ],
+      "count": 6,
+      "waves": 3,
+      "time": 60,
+      "objective": "Evita la destrucción de las pruebas durante el asedio",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": "hospital",
+      "objective": "Lleva a los testigos al hospital, el lugar protegido"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 4,
+      "objective": "Los refuerzos de Cross y la policía te cercan: despístalos"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "hospital",
+      "cast": [
+        "dre",
+        "ghost",
+        "big_ray",
+        "keisha",
+        "loco",
+        "okafor"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The story is live. The assault failed in every neighborhood. But we paid for it.",
+          "es": "La historia está en antena. El ataque fracasó en todos los barrios. Pero lo hemos pagado.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Okafor",
+          "en": "The store is gone. All of it. Forty years of shelves.",
+          "es": "La tienda ha desaparecido. Toda. Cuarenta años de estanterías.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "The garage is a crater. Vargas. My father's tools.",
+          "es": "El taller es un cráter. Vargas. Las herramientas de mi padre.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I took a round, but it's a flesh wound. Don't cry over me, it's embarrassing.",
+          "es": "Me dieron un balazo, pero es un rasguño. No lloréis por mí, da vergüenza.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "She wanted a siege. She got a neighborhood that doesn't scare.",
+          "es": "Quería un asedio. Se encontró con un barrio que no se asusta.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "And now she knows exactly where we are. Tomorrow she either runs or comes herself.",
+          "es": "Y ahora sabe exactamente dónde estamos. Mañana o huye o viene ella misma.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Then tomorrow we finish it.",
+          "es": "Entonces mañana lo acabamos.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 9200,
+      "reputation": {
+        "westbrook_saints": 12,
+        "the_syndicate": -12
+      },
+      "toast": "+$9,200 · Westbrook resiste el asedio"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE PRICE OF LEGACY (M en el radar)"
+    }
+  ]
+}

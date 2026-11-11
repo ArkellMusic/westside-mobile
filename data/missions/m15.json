@@ -1,0 +1,334 @@
+{
+  "id": "m15",
+  "number": 15,
+  "title": "VIPER'S MESSAGE",
+  "title_es": "El mensaje de Viper",
+  "act": "ACTO I",
+  "start": "pinta_listo",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "pinta_listo",
+      "cast": [
+        "big_ray",
+        "dre",
+        "ghost",
+        "keisha"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Invitation came with a basketball. Flat. A rusted court on Harlan. Guess who wants to talk.",
+          "es": "La invitación llegó con un balón. Pinchado. Una cancha oxidada en Harlan. Adivina quién quiere hablar.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Viper.",
+          "es": "Viper.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Walking into his court is stupid.",
+          "es": "Entrar en su cancha es una estupidez.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Not going is worse. He says if I don't, he comes to the clinic.",
+          "es": "No ir es peor. Dice que si no voy, irá a la clínica.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "He knows your mother's in that clinic.",
+          "es": "Sabe que tu madre está en esa clínica.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "He knows a lot. That's the point.",
+          "es": "Sabe mucho. Esa es la idea.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Guards at the front, two roofs, one in the alley. There's a back fence. Weak.",
+          "es": "Guardias en la entrada, dos tejados, uno en el callejón. Hay una valla trasera. Débil.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'll go with you. He asked for me too.",
+          "es": "Iré contigo. También me pidió a mí.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray?",
+          "es": "¿Ray?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Said, 'bring the old man.' Didn't say why.",
+          "es": "Dijo: «Trae al viejo». No dijo por qué.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Dre",
+          "en": "That worries me more than the guards.",
+          "es": "Eso me preocupa más que los guardias.",
+          "t": 2.6
+        },
+        {
+          "speaker": "K",
+          "en": "Take my recorder. Pocket it. I want every word.",
+          "es": "Llévate mi grabadora. Guárdala. Quiero cada palabra.",
+          "t": 3.3
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "give",
+      "ammo": 24,
+      "money": 0,
+      "toast": "Munición para la cancha"
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche y dirígete a la cancha de Harlan"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        150,
+        -170
+      ],
+      "objective": "Acércate a la cancha abandonada de Harlan"
+    },
+    {
+      "type": "sneak",
+      "target": [
+        159,
+        -185
+      ],
+      "guards": 4,
+      "objective": "Entra por la valla trasera esquivando a los vigías",
+      "label": "valla trasera"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "scene",
+      "at": "viper",
+      "cast": [
+        "viper",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Viper",
+          "en": "Marcus Johnson. The prodigal son. Look at him, Ray, he looks like his mother.",
+          "es": "Marcus Johnson. El hijo pródigo. Míralo, Ray, se parece a su madre.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Viper.",
+          "es": "Viper.",
+          "t": 2
+        },
+        {
+          "speaker": "Viper",
+          "en": "I like men with manners. Here's the deal: Westbrook has new management. You stay out of it, Ray stays out of it, everybody breathes.",
+          "es": "Me gustan los hombres con modales. El trato es: Westbrook tiene nueva dirección. Tú te apartas, Ray se aparta y todos respiran.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Whose management?",
+          "es": "¿De qué dirección?",
+          "t": 2
+        },
+        {
+          "speaker": "Viper",
+          "en": "Ask the old man. He knows how it works. He's seen the books.",
+          "es": "Pregúntaselo al viejo. Sabe cómo funciona. Ha visto los libros.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I haven't seen a ledger in twenty years.",
+          "es": "No veo un libro de cuentas hace veinte años.",
+          "t": 2.8
+        },
+        {
+          "speaker": "Viper",
+          "en": "You see one every time you look in the mirror.",
+          "es": "Ves uno cada vez que te miras al espejo.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray, what's he talking about?",
+          "es": "Ray, ¿de qué habla?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Ancient history.",
+          "es": "Historia antigua.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "fight",
+      "at": [
+        159,
+        -185
+      ],
+      "count": 3,
+      "objective": "Rechaza a los matones cuando la reunión se convierte en intimidación",
+      "faction": "redline_kings",
+      "armed": true
+    },
+    {
+      "type": "chase",
+      "at": [
+        159,
+        -195
+      ],
+      "objective": "Protege a Ray y escapa con él hacia la salida",
+      "toast": "Ray cojea: no te alejes mucho."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        100,
+        -150
+      ],
+      "objective": "Huye de la cancha entre obstáculos y tráfico hostil"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "La policía ha oído los disparos: despístala"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "collect",
+      "at": [
+        140,
+        -170
+      ],
+      "count": 1,
+      "label": "Grabadora",
+      "objective": "Recupera la grabadora dañada que has dejado caer en la huida"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "pinta_listo",
+      "cast": [
+        "keisha",
+        "dre",
+        "big_ray",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The recording is half noise, but I got 'new management' and the phrase 'ask the old man.'",
+          "es": "La grabación es medio ruido, pero tengo «nueva dirección» y la frase «pregúntaselo al viejo».",
+          "t": 6.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ray. What did he mean?",
+          "es": "Ray. ¿Qué quiso decir?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I once worked with some people on Harlan Court. People like Viper's father. It's long dead.",
+          "es": "Una vez trabajé con gente de Harlan Court. Gente como el padre de Viper. Está muerto y enterrado.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Doesn't sound dead to me.",
+          "es": "A mí no me suena a muerto.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Marcus. Not now.",
+          "es": "Marcus. Ahora no.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'm putting it on the table. Ray has a past he isn't sharing.",
+          "es": "Lo pongo sobre la mesa. Ray tiene un pasado que no comparte.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "We all do, Ghost.",
+          "es": "Todos lo tenemos, Ghost.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 660,
+      "reputation": {
+        "westbrook_saints": 4,
+        "redline_kings": -6
+      },
+      "toast": "+$660 · El mensaje de Viper"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: FALSE NUMBERS (M en el radar)"
+    }
+  ]
+}

@@ -1,0 +1,336 @@
+{
+  "id": "m17",
+  "number": 17,
+  "title": "THE HOUSE NEXT DOOR",
+  "title_es": "La casa de al lado",
+  "act": "ACTO I",
+  "start": "mack_house_curb",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "mack_house_curb",
+      "cast": [
+        "Mrs. Okoye",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Mrs. Okoye",
+          "en": "Marcus. Baby, they put a notice on my door. Eviction in four days.",
+          "es": "Marcus. Cariño, me han puesto un aviso en la puerta. Desahucio en cuatro días.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Mrs. Okoye, you've paid on time since '98.",
+          "es": "Señora Okoye, paga puntualmente desde el 98.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mrs. Okoye",
+          "en": "The paper says I haven't paid in two years. I have the receipts in a shoebox.",
+          "es": "El papel dice que no pago hace dos años. Tengo los recibos en una caja de zapatos.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Notice signed by a county clerk who has never set foot on this block.",
+          "es": "Aviso firmado por un funcionario del condado que no ha pisado esta manzana.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Somebody signed without looking.",
+          "es": "Alguien firmó sin mirar.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mrs. Okoye",
+          "en": "My grandson sleeps in that back room. Where do we go?",
+          "es": "Mi nieto duerme en ese cuarto de atrás. ¿Adónde vamos?",
+          "t": 3.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nowhere. Nobody's moving on my watch.",
+          "es": "A ningún sitio. Nadie se muda mientras yo esté.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Big words from a man with a mortgage of his own.",
+          "es": "Grandes palabras de un hombre con su propia hipoteca.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then I owe it twice. Let's go see the clerk.",
+          "es": "Entonces la debo dos veces. Vamos a ver al funcionario.",
+          "t": 3.1
+        },
+        {
+          "speaker": "Mrs. Okoye",
+          "en": "God bless you.",
+          "es": "Dios te bendiga.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Don't bless him yet. He hasn't done anything.",
+          "es": "No lo bendigas todavía. No ha hecho nada.",
+          "t": 3.2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "collect",
+      "at": [
+        -110,
+        10
+      ],
+      "count": 3,
+      "label": "Declaración",
+      "objective": "Habla con tres vecinos sobre la notificación",
+      "hint": "Pregunta quién más ha recibido el mismo papel."
+    },
+    {
+      "type": "goto",
+      "target": "comisaria",
+      "objective": "Ve a la oficina del condado, junto a la comisaría"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "chase",
+      "at": [
+        115,
+        -125
+      ],
+      "objective": "Alcanza al funcionario que huye por la puerta trasera",
+      "toast": "Sale de la oficina corriendo con una carpeta."
+    },
+    {
+      "type": "scene",
+      "at": "comisaria",
+      "cast": [
+        "Clerk Dunn"
+      ],
+      "lines": [
+        {
+          "speaker": "Clerk Dunn",
+          "en": "I signed what they put in front of me! Fifty a signature, no questions!",
+          "es": "¡Firmé lo que me pusieron delante! ¡Cincuenta por firma, sin preguntas!",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who is 'they'?",
+          "es": "¿Quiénes son «ellos»?",
+          "t": 2
+        },
+        {
+          "speaker": "Clerk Dunn",
+          "en": "A company courier. Hargrove something. The originals are in the basement.",
+          "es": "Un mensajero de empresa. Hargrove algo. Los originales están en el sótano.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "And the basement is being cleaned out tonight.",
+          "es": "Y el sótano se vacía esta noche.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Clerk Dunn",
+          "en": "Please don't tell them I talked.",
+          "es": "Por favor, no les digas que hablé.",
+          "t": 2.2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "steal",
+      "objective": "Coge un coche rápido para llegar antes que los guardias"
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        118,
+        -122
+      ],
+      "objective": "Llega al sótano de archivos antes de que destruyan los papeles",
+      "time": 55
+    },
+    {
+      "type": "sneak",
+      "target": [
+        120,
+        -125
+      ],
+      "guards": 3,
+      "objective": "Recupera la copia auténtica evitando a los guardas del sótano",
+      "label": "sótano"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "give",
+      "ammo": 24,
+      "money": 0,
+      "toast": "Munición para defender la casa"
+    },
+    {
+      "type": "defend",
+      "at": "mack_house_curb",
+      "count": 4,
+      "waves": 2,
+      "time": 60,
+      "objective": "Defiende la casa de la señora Okoye contra los guardias privados"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": "comisaria",
+      "objective": "Acompaña a la familia a presentar la denuncia"
+    },
+    {
+      "type": "scene",
+      "at": "comisaria",
+      "cast": [
+        "Det. Hale",
+        "Mrs. Okoye"
+      ],
+      "lines": [
+        {
+          "speaker": "Det. Hale",
+          "en": "Authentic copy, original stamp. This is a forged notice.",
+          "es": "Copia auténtica, sello original. Esto es un aviso falsificado.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mrs. Okoye",
+          "en": "So we stay?",
+          "es": "¿Entonces nos quedamos?",
+          "t": 2
+        },
+        {
+          "speaker": "Det. Hale",
+          "en": "You stay. And the clerk talks to me.",
+          "es": "Se quedan. Y el funcionario habla conmigo.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Detective, who benefits?",
+          "es": "Detective, ¿quién se beneficia?",
+          "t": 2
+        },
+        {
+          "speaker": "Det. Hale",
+          "en": "A holding group on paper. Keep quiet about this, Mr. Johnson.",
+          "es": "Un grupo de inversión sobre el papel. Mantenga esto en silencio, señor Johnson.",
+          "t": 4.3
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Lleva a Keisha el nombre que aparece en la copia"
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "big_ray",
+        "Mrs. Okoye"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "'Blackwater Partners.' Not seen it before. Registered to a P.O. box in San Cordova.",
+          "es": "«Blackwater Partners.» No lo había visto. Registrada en un apartado de correos en San Cordova.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Another mask.",
+          "es": "Otra máscara.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Same lawyer as Crestline and Stern Capital. The lawyer's name is on every page.",
+          "es": "El mismo abogado que Crestline y Stern Capital. Su nombre aparece en cada página.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "We're getting closer. Which means they're getting closer too.",
+          "es": "Nos acercamos. Lo que significa que ellos también.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Mrs. Okoye",
+          "en": "I made pie. You'll eat pie.",
+          "es": "He hecho tarta. Os la vais a comer.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Yes, ma'am.",
+          "es": "Sí, señora.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 740,
+      "reputation": {
+        "westbrook_saints": 5,
+        "redline_kings": -1,
+        "the_syndicate": -3
+      },
+      "toast": "+$740 · La casa de al lado"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: FIRE AT VARGAS (M en el radar)"
+    }
+  ]
+}

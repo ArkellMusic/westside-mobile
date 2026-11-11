@@ -1,0 +1,1442 @@
+[
+ {
+  "n": 1,
+  "title": "BACK TO WESTBROOK",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Westbrook",
+  "premise": "Mack llega en autobús; Big Ray lo recoge, conoce Westbrook, llega a casa; sin desbloquear puentes.",
+  "mech": "Conducción",
+  "phases": [
+   "Ver el autobús entrar al intercambiador mientras la radio cuenta pequeños problemas en Westbrook.",
+   "Recuperar la bolsa de Mack y aprender movimiento, cámara e interacción sin combate.",
+   "Encontrar a Big Ray entre taxis y viajeros mediante una breve conversación de reconocimiento.",
+   "Viajar como pasajero mientras Big Ray presenta el barrio, negocios y viejas tensiones.",
+   "Hacer una parada en Veyra Mart, conocer a un vecino y comprobar el primer punto de interés.",
+   "Conducir el último tramo por una ruta tranquila, aparcar ante la casa y explorar la entrada.",
+   "Cinemática íntima frente a la puerta; aparece la primera pista sobre Dre sin abrir ninguna región."
+  ]
+ },
+ {
+  "n": 2,
+  "title": "OLD KEYS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Casa de Mack",
+  "premise": "Recupera sus objetos, ordena la vivienda inicial y aprende a guardar.",
+  "mech": "Diálogos",
+  "phases": [
+   "Explorar una vivienda semivacía y reconocer fotografías, cartas y objetos del protagonista.",
+   "Hablar con Big Ray sobre las cuentas pendientes y elegir qué recuerdos guardar.",
+   "Ir a un trastero local, resolver un problema de acceso y recoger dos cajas.",
+   "Transportarlas sin perderlas, introduciendo carga sencilla y uso del maletero.",
+   "Regresar, ordenar la casa y descubrir una nota que alude a Dre.",
+   "Probar armario, descanso y punto de guardado manual.",
+   "Cerrar la misión con una llamada que propone un encuentro incómodo."
+  ]
+ },
+ {
+  "n": 3,
+  "title": "DRE DON'T FORGET",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Westbrook",
+  "premise": "Reencuentro difícil con Dre; pequeño favor para recuperar su confianza.",
+  "mech": "Persecución, Diálogos",
+  "phases": [
+   "Llegar al antiguo punto de reunión y observar cómo ha cambiado el barrio.",
+   "Encontrar a Dre, mantener un diálogo tenso y aceptar una prueba de confianza.",
+   "Seguir a un mensajero por callejones y azoteas sin levantar sospechas.",
+   "Recuperar una pequeña pertenencia robada sin iniciar una guerra de bandas.",
+   "Escapar cuando aparecen patrullas, utilizando un callejón y escondite.",
+   "Entregar la pertenencia a Dre y escuchar su versión del pasado.",
+   "Cinemática final: Dre no perdona a Mack, pero acepta volver a hablar."
+  ]
+ },
+ {
+  "n": 4,
+  "title": "VARGAS AUTO WORKS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Taller Vargas",
+  "premise": "Conoce a Loco, el taller, conducción y reparaciones.",
+  "mech": "Conducción, Costa / puerto",
+  "phases": [
+   "Conocer a Loco mientras repara un coche sin terminar.",
+   "Realizar una inspección guiada de neumáticos, luces y desperfectos.",
+   "Probar un vehículo en un circuito urbano breve con curvas y semáforos.",
+   "Reparar daños básicos tras un percance provocado por un conductor imprudente.",
+   "Llevar piezas del almacén al taller evitando una vía cerrada.",
+   "Probar el vehículo reparado y aparcar en un elevador.",
+   "Desbloquear reparación básica y recibir una invitación a las carreras del puerto."
+  ]
+ },
+ {
+  "n": 5,
+  "title": "THE PRICE OF HOME",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Comercio local",
+  "premise": "Ayuda a un comerciante presionado para vender su negocio.",
+  "mech": "Conducción, Investigación, Diálogos, Protección",
+  "phases": [
+   "Hablar con un tendero al que una sociedad quiere forzar a vender.",
+   "Visitar tres locales amenazados y documentar señales de presión.",
+   "Fotografiar a agentes privados entrando en un edificio trasero.",
+   "Conducir al tendero a una reunión vecinal mientras unos vehículos les intimidan.",
+   "Proteger el negocio mediante una confrontación no letal y la llegada de vecinos.",
+   "Revisar un contrato y descubrir el mismo sello empresarial en varios locales.",
+   "Entregar la información a Keisha y ganar la confianza de la comunidad."
+  ]
+ },
+ {
+  "n": 6,
+  "title": "WALLS TALK",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Territorio",
+  "premise": "Primeras tensiones de territorio y amenazas de bandas.",
+  "mech": "Persecución, Investigación, Protección",
+  "phases": [
+   "Descubrir mensajes pintados sobre una fachada del barrio.",
+   "Preguntar a residentes y seguir pistas a dos calles en disputa.",
+   "Interceptar a jóvenes que transmiten amenazas sin convertirlo en tiroteo.",
+   "Defender un mural vecinal mientras aparece una banda rival.",
+   "Escapar de una patrulla que interpreta mal la situación.",
+   "Volver con Dre y decidir qué mensaje público dejar para evitar una escalada.",
+   "Una cámara registra al verdadero instigador y anticipa una trama mayor."
+  ]
+ },
+ {
+  "n": 7,
+  "title": "K KNOWS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Archivo inmobiliario",
+  "premise": "Keisha investiga compras sospechosas de inmuebles.",
+  "mech": "Conducción, Sigilo, Persecución, Investigación",
+  "phases": [
+   "Reunirse con Keisha y estudiar un mapa de compras de propiedades.",
+   "Entrar en un registro público y obtener copias de escrituras.",
+   "Seguir una furgoneta de mensajería hasta una oficina sospechosa.",
+   "Infiltrarse en el vestíbulo y fotografiar la agenda de reuniones.",
+   "Salir sin activar seguridad o afrontar una huida alternativa.",
+   "Comparar empresas pantalla en casa de Keisha mediante una secuencia interactiva.",
+   "La última sociedad conduce hasta el puerto y da pie a Night Shift."
+  ]
+ },
+ {
+  "n": 8,
+  "title": "NIGHT SHIFT",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Puerto de noche",
+  "premise": "Trabajo nocturno e incidente inesperado, introducción gradual de la policía.",
+  "mech": "Sigilo, Persecución, Investigación, Costa / puerto",
+  "phases": [
+   "Aceptar un turno legítimo para entrar en el puerto sin levantar sospechas.",
+   "Aprender a manejar una pequeña tarea logística y entregar mercancía.",
+   "Detectar un contenedor mal etiquetado y fotografiarlo discretamente.",
+   "Presenciar una transacción ilegal desde una posición segura.",
+   "Una alarma obliga a abandonar el muelle por varias rutas.",
+   "Experimentar el nivel de búsqueda policial y escapar sin dañar civiles.",
+   "Regresar a Westbrook con la primera prueba material de la operación."
+  ]
+ },
+ {
+  "n": 9,
+  "title": "FIRST WARNING",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Autopista urbana",
+  "premise": "Persecución tras amenaza de Redline Kings; sube el conflicto.",
+  "mech": "Conducción, Persecución, Diálogos",
+  "phases": [
+   "Recibir un mensaje de amenaza firmado por Redline Kings.",
+   "Conducir hasta un punto de encuentro y descubrir que es una emboscada.",
+   "Esquivar un vehículo que intenta bloquear la carretera.",
+   "Recoger a un testigo herido y salir del barrio por calles secundarias.",
+   "Superar una persecución breve con tráfico y un cierre de calle dinámico.",
+   "Llevar al testigo a un centro seguro y despistar a los perseguidores.",
+   "Escuchar la advertencia final: los problemas vienen de más arriba."
+  ]
+ },
+ {
+  "n": 10,
+  "title": "THE MEETING",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Local de Saints",
+  "premise": "Reunión de Saints; presentación de Ghost y tensiones internas.",
+  "mech": "Conducción, Sigilo, Persecución, Diálogos",
+  "phases": [
+   "Llegar a una reunión del grupo y conocer las distintas posturas.",
+   "Participar en un diálogo donde Ghost cuestiona las decisiones recientes.",
+   "Ayudar a Dre a revisar posiciones del barrio y rutas de escape.",
+   "Resolver una disputa sin atacar a vecinos ajenos al conflicto.",
+   "Regresar al local mientras un coche desconocido vigila la entrada.",
+   "Coordinar una respuesta defensiva y evacuar a un aliado vulnerable.",
+   "Big Ray pide discreción y Ghost es presentado como socio difícil de leer."
+  ]
+ },
+ {
+  "n": 11,
+  "title": "HONEST MONEY",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Trabajos locales",
+  "premise": "Trabajos legales/semilegales de Mack; pequeñas recompensas económicas.",
+  "mech": "Exploración, narrativa, interacción",
+  "phases": [
+   "Aceptar tres encargos cortos de distintos vecinos como una ruta única.",
+   "Transportar herramientas al taller respetando el tráfico urbano.",
+   "Ayudar en una mudanza donde una furgoneta debe maniobrar con cuidado.",
+   "Entregar un pedido urgente antes del cierre de un mercado.",
+   "Detectar que alguien intenta utilizar los trabajos como tapadera.",
+   "Rechazar la entrega sospechosa y seguir la matrícula del intermediario.",
+   "Cobrar, mejorar reputación y descubrir una vía legal para ganar dinero."
+  ]
+ },
+ {
+  "n": 12,
+  "title": "HARBOR RUN",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Puerto",
+  "premise": "Carrera vinculada al taller y al puerto con Loco.",
+  "mech": "Conducción, Persecución, Costa / puerto",
+  "phases": [
+   "Conocer a pilotos locales y elegir un vehículo permitido.",
+   "Practicar la ruta en una vuelta de reconocimiento con Loco.",
+   "Competir por muelles, curvas cerradas y una carretera industrial.",
+   "Resolver una incidencia de tráfico sin perder el control del coche.",
+   "Descubrir que un rival ha alterado el trazado para provocar un accidente.",
+   "Terminar la carrera y perseguir al saboteador hasta una zona logística.",
+   "Obtener una pista relacionada con vehículos usados por Redline Kings."
+  ]
+ },
+ {
+  "n": 13,
+  "title": "CROSSED STREETS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Fiesta vecinal",
+  "premise": "Celebración vecinal interrumpida por un conflicto; proteger a civiles.",
+  "mech": "Exploración, narrativa, interacción",
+  "phases": [
+   "Llegar a una celebración local con música y puestos.",
+   "Ayudar a montar luces y atender una pequeña actividad comunitaria.",
+   "Notar la presencia de varios provocadores que dividen a los vecinos.",
+   "Apartar a civiles cuando empieza un altercado en varias calles.",
+   "Acompañar a familias a una salida segura mientras el tráfico colapsa.",
+   "Colaborar con Dre para impedir daños en el escenario y los comercios.",
+   "La fiesta termina antes de tiempo; un testigo reconoce un automóvil."
+  ]
+ },
+ {
+  "n": 14,
+  "title": "THE WITNESS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Mercados",
+  "premise": "Localizar un testigo relacionado con incidentes del barrio.",
+  "mech": "Conducción, Sigilo, Persecución, Investigación",
+  "phases": [
+   "Buscar al vecino que identificó el coche de la celebración.",
+   "Seguir tres pistas en mercados y paradas de autobús sin alertar perseguidores.",
+   "Encontrar al testigo, que se niega a hablar por miedo a represalias.",
+   "Organizar una salida discreta usando un vehículo poco llamativo.",
+   "Perder a dos perseguidores mediante un desvío por zona residencial.",
+   "Llevarlo a Keisha y escuchar la descripción de los responsables.",
+   "La declaración apunta a Viper y a un conductor contratado."
+  ]
+ },
+ {
+  "n": 15,
+  "title": "VIPER'S MESSAGE",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Redline Kings",
+  "premise": "Primera aparición directa de Viper como antagonista callejero.",
+  "mech": "Sigilo, Persecución, Diálogos, Protección",
+  "phases": [
+   "Recibir una invitación provocadora en una cancha abandonada.",
+   "Buscar una entrada segura tras hallar vigilantes en los accesos.",
+   "Escuchar a Viper imponer condiciones y reconocer que conoce a Big Ray.",
+   "Proteger a un aliado cuando la reunión se convierte en intimidación.",
+   "Escapar por un entorno urbano con obstáculos y tráfico hostil.",
+   "Recuperar una grabación dañada de la conversación.",
+   "Big Ray reconoce una expresión vinculada a sus viejos contactos."
+  ]
+ },
+ {
+  "n": 16,
+  "title": "FALSE NUMBERS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Oficina de Keisha",
+  "premise": "Keisha detecta irregularidades en contratos y propiedades.",
+  "mech": "Conducción, Sigilo, Persecución, Investigación",
+  "phases": [
+   "Ordenar expedientes de negocios adquiridos en el barrio.",
+   "Cruzar direcciones, importes y nombres mediante una interfaz sencilla.",
+   "Acudir a dos propiedades para confirmar que sus dueños fueron coaccionados.",
+   "Seguir a una representante comercial hasta un edificio corporativo.",
+   "Fotografiar una reunión desde un parking sin ser descubierto.",
+   "Escapar después de que seguridad identifique el vehículo de Mack.",
+   "Keisha encuentra coincidencias con contratos de San Cordova."
+  ]
+ },
+ {
+  "n": 17,
+  "title": "THE HOUSE NEXT DOOR",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Vivienda vecina",
+  "premise": "Defender a una familia afectada por la especulación.",
+  "mech": "Investigación, Diálogos, Protección",
+  "phases": [
+   "Una familia pide ayuda ante un desalojo irregular.",
+   "Investigar la notificación y hablar con varios vecinos.",
+   "Localizar al funcionario que firmó el documento sin visitar la vivienda.",
+   "Recuperar una copia auténtica antes de que destruyan los archivos.",
+   "Defender la vivienda durante una confrontación con guardias privados.",
+   "Acompañar a la familia a presentar una denuncia y recuperar el acceso.",
+   "Keisha obtiene un nuevo nombre de empresa pantalla."
+  ]
+ },
+ {
+  "n": 18,
+  "title": "FIRE AT VARGAS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Vargas Auto Works",
+  "premise": "Incendio sospechoso del taller; escena de emergencias.",
+  "mech": "Conducción, Persecución, Protección",
+  "phases": [
+   "Llegar al taller para encontrar humo y herramientas ardiendo.",
+   "Ayudar a Loco a sacar a un aprendiz antes de que el fuego se extienda.",
+   "Cortar la electricidad y retirar bidones peligrosos bajo presión temporal.",
+   "Guiar a los bomberos hasta la zona afectada entre obstáculos.",
+   "Rescatar un disco de cámaras y llevarlo a un lugar seguro.",
+   "Seguir al vehículo que huye de la escena sin perseguirlo temerariamente.",
+   "El taller queda dañado y Loco jura descubrir al responsable."
+  ]
+ },
+ {
+  "n": 19,
+  "title": "SMOKE TRAIL",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Polígono industrial",
+  "premise": "Investigar el origen del incendio en la zona industrial.",
+  "mech": "Conducción, Sigilo, Investigación, Costa / puerto",
+  "phases": [
+   "Analizar imágenes parciales del incendio con Loco.",
+   "Identificar un cargamento de acelerante y su empresa de transporte.",
+   "Vigilar una nave industrial desde un tejado accesible.",
+   "Entrar a buscar registros de envío mientras los empleados cambian de turno.",
+   "Salir por una zona de carga cuando llega seguridad.",
+   "Conducir un vehículo prestado con pruebas en el maletero.",
+   "Los números del manifiesto conectan con una operación de puerto."
+  ]
+ },
+ {
+  "n": 20,
+  "title": "OLD DEBTS",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Casa de Big Ray",
+  "premise": "Big Ray revela parte de su relación con antiguos negocios.",
+  "mech": "Conducción, Investigación, Diálogos, Protección",
+  "phases": [
+   "Big Ray invita a Mack a un lugar ligado al pasado.",
+   "Conducir juntos por tres lugares donde cuenta fragmentos de su historia.",
+   "Visitar a una antigua socia que exige una muestra de buena fe.",
+   "Cumplir un favor que implica recuperar un documento extraviado.",
+   "Sortear a un investigador privado que sigue sus movimientos.",
+   "Escuchar la confesión parcial sobre negocios y promesas incumplidas.",
+   "Big Ray guarda un dato clave para proteger a una persona de su pasado."
+  ]
+ },
+ {
+  "n": 21,
+  "title": "WESTBROOK NIGHT",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Westbrook de noche",
+  "premise": "Gran crisis en el barrio y cooperación del grupo.",
+  "mech": "Investigación, Protección",
+  "phases": [
+   "Una sucesión de apagones provoca caos en varios bloques.",
+   "Ayudar a vecinos y guiar a un autobús atrapado fuera del barrio.",
+   "Coordinar por teléfono a Dre, Keisha, Loco y Big Ray.",
+   "Transportar suministros por una ruta con calles cortadas.",
+   "Defender el acceso a un refugio sin poner en peligro a civiles.",
+   "Descubrir que los apagones encubren una retirada de documentos.",
+   "La noche termina con una prueba que apunta al Puente Aurelio."
+  ]
+ },
+ {
+  "n": 22,
+  "title": "AURELIO BRIDGE",
+  "act": "ACTO I",
+  "zone": "WESTBROOK",
+  "loc": "South Veyra / Puente Aurelio",
+  "premise": "Investigación y final de acto: se levantan las restricciones fraudulentas; se abre San Cordova.",
+  "mech": "Conducción, Sigilo, Persecución, Investigación",
+  "phases": [
+   "Keisha reúne documentos sobre el cierre fraudulento del puente.",
+   "Infiltrarse en una oficina de obra para conseguir el expediente original.",
+   "Escapar en vehículo de servicio mientras un supervisor activa una alerta.",
+   "Llevar las pruebas a una audiencia vecinal en tiempo límite.",
+   "Conducir hasta el puente mientras se retira el último control ilegal.",
+   "Atravesarlo con Big Ray en una secuencia cinematográfica de apertura.",
+   "Desbloquear SOLO San Cordova y cerrar el acto con una amenaza empresarial. REGIÓN DESBLOQUEADA: SAN CORDOVA"
+  ]
+ },
+ {
+  "n": 23,
+  "title": "CITY OF FOG",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Centro y bahía",
+  "premise": "Llegada a San Cordova, exploración y contactos nuevos.",
+  "mech": "Conducción, Investigación, Diálogos, Costa / puerto",
+  "phases": [
+   "Llegar a San Cordova con una ruta panorámica sobre la bahía.",
+   "Conocer los tranvías, las pendientes y las reglas de tráfico locales.",
+   "Buscar alojamiento y un punto de reunión de contactos.",
+   "Conducir por una cuesta empinada en una breve misión de encargo.",
+   "Presenciar cómo una firma compra un almacén junto al puerto.",
+   "Seguir a un nuevo contacto hasta un barrio alto sin provocar incidentes.",
+   "Recibir un nombre: Nina Cho, la periodista que investiga el caso."
+  ]
+ },
+ {
+  "n": 24,
+  "title": "THE REPORTER",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Redacción",
+  "premise": "Nina Cho investiga empresas implicadas.",
+  "mech": "Conducción, Sigilo, Diálogos, Costa / puerto",
+  "phases": [
+   "Encontrar a Nina Cho en una redacción bajo vigilancia.",
+   "Ayudarla a verificar fotografías y contrastar tres testimonios.",
+   "Acompañarla a entrevistar a un trabajador de muelle.",
+   "Percibir que alguien intercepta sus comunicaciones.",
+   "Cambiar de vehículo y llevar el material a un equipo seguro.",
+   "Superar una persecución discreta por calles empinadas.",
+   "Nina identifica una relación entre contratistas y empresas portuarias."
+  ]
+ },
+ {
+  "n": 25,
+  "title": "BEHIND THE PORT",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Puerto comercial",
+  "premise": "Actividad sospechosa en el puerto comercial.",
+  "mech": "Persecución, Investigación, Diálogos, Costa / puerto",
+  "phases": [
+   "Acceder a una zona de carga usando una cita programada.",
+   "Observar grúas, contenedores y el recorrido de mercancías.",
+   "Localizar la numeración de tres contenedores sospechosos.",
+   "Manipular una consola logística para obtener un turno de traslado.",
+   "Seguir la mercancía hasta una nave al otro extremo de la bahía.",
+   "Fotografiar una reunión entre un agente portuario y un intermediario.",
+   "Escapar por una lancha auxiliar hacia un embarcadero seguro."
+  ]
+ },
+ {
+  "n": 26,
+  "title": "MIDNIGHT TRAM",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Línea de tranvía",
+  "premise": "Seguimiento nocturno de un intermediario.",
+  "mech": "Sigilo, Persecución, Investigación, Diálogos",
+  "phases": [
+   "Vigilar discretamente a un intermediario en una estación.",
+   "Subir al tranvía y conservar la distancia durante varias paradas.",
+   "Escuchar fragmentos de una conversación sin alertar al objetivo.",
+   "Cambiar al seguimiento a pie por cuestas y callejones.",
+   "Recuperar una carpeta descartada antes de que la recoja un cómplice.",
+   "Escapar de un control policial sin perder los documentos.",
+   "La carpeta contiene horarios que apuntan a Silent Docks."
+  ]
+ },
+ {
+  "n": 27,
+  "title": "SILENT DOCKS",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Muelles",
+  "premise": "Buscar a un trabajador desaparecido con información.",
+  "mech": "Conducción, Sigilo, Diálogos, Costa / puerto",
+  "phases": [
+   "Visitar la vivienda de un trabajador portuario desaparecido.",
+   "Hablar con su familia y reconstruir su último turno.",
+   "Explorar un almacén cerrado usando las notas de un compañero.",
+   "Encontrar su teléfono y una señal de que sigue vivo.",
+   "Localizarlo en un remolcador en reparación y organizar su salida.",
+   "Conducirlo hasta Nina evitando dos vehículos de vigilancia.",
+   "El trabajador recuerda un rostro relacionado con el puerto."
+  ]
+ },
+ {
+  "n": 28,
+  "title": "HILLSIDE SHADOWS",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Colinas",
+  "premise": "Investigación en barrios de las colinas.",
+  "mech": "Conducción, Persecución, Diálogos",
+  "phases": [
+   "Seguir las indicaciones del trabajador hasta viviendas en las colinas.",
+   "Examinar cámaras de varios portales sin intimidar a los residentes.",
+   "Identificar un encuentro clandestino junto a un mirador.",
+   "Avanzar por escaleras y callejones para mantener cobertura.",
+   "Escuchar un acuerdo donde se menciona Cross Meridian.",
+   "Escapar por una ruta de curvas cerradas con un vehículo pequeño.",
+   "Entregar el audio y detectar que uno de los participantes es funcionario."
+  ]
+ },
+ {
+  "n": 29,
+  "title": "NAMES ON PAPER",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Archivo",
+  "premise": "Conexiones corporativas con Cross Meridian Holdings.",
+  "mech": "Investigación, Diálogos",
+  "phases": [
+   "Nina entrega copias de documentos corporativos incompletos.",
+   "Visitar un archivo para localizar los libros de sociedades.",
+   "Resolver el orden de expedientes y firmas mediante pistas visuales.",
+   "Seguir a una mensajera que transporta los originales.",
+   "Recuperar una página clave sin destruir otros registros.",
+   "Reunirse con Keisha por videollamada para conectar los nombres.",
+   "Aparece por primera vez una cadena clara hacia Cross Meridian Holdings."
+  ]
+ },
+ {
+  "n": 30,
+  "title": "TUNNEL RUN",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Túneles",
+  "premise": "Persecución/conducción por túneles con Loco.",
+  "mech": "Conducción, Persecución, Investigación, Costa / puerto",
+  "phases": [
+   "Loco llega con un coche preparado para un encuentro urgente.",
+   "Realizar una entrega por la ciudad mientras cambia el tráfico.",
+   "Descubrir un túnel bloqueado y buscar un acceso secundario.",
+   "Atravesar un tramo subterráneo con iluminación limitada.",
+   "Escapar de vehículos que intentan encerrarlos entre dos salidas.",
+   "Llegar al muelle con el coche dañado y salvar la carga documental.",
+   "Loco advierte que los perseguidores usaban información interna."
+  ]
+ },
+ {
+  "n": 31,
+  "title": "MISSING RECORDS",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Almacén documental",
+  "premise": "Desaparición de archivos fundamentales.",
+  "mech": "Conducción, Sigilo, Investigación, Protección",
+  "phases": [
+   "Nina descubre que un lote de archivos fue retirado de noche.",
+   "Seguir el vehículo de destrucción hasta las afueras.",
+   "Entrar en el depósito mientras la maquinaria clasifica cajas.",
+   "Salvar documentos antes de que entren en la trituradora.",
+   "Proteger a una empleada que decide denunciar la operación.",
+   "Salir en una furgoneta y perder a los vigilantes entre calles industriales.",
+   "Confirmar que falta un registro especialmente comprometedor."
+  ]
+ },
+ {
+  "n": 32,
+  "title": "DIRTY FAVORS",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Barrio alto",
+  "premise": "Intermediario intercambia información por ayuda.",
+  "mech": "Sigilo, Diálogos, Protección",
+  "phases": [
+   "Conocer a un intermediario que ofrece información a cambio de ayuda.",
+   "Comprobar sus antecedentes con Nina antes de confiar en él.",
+   "Recuperar un paquete legal retenido en una oficina corrupta.",
+   "Transportar una copia de manera discreta hasta el intermediario.",
+   "Descubrir que la entrega también revela una ruta de contrabando.",
+   "Exigir la información prometida y decidir cómo proteger la fuente.",
+   "La pista apunta hacia un detective dispuesto a hablar."
+  ]
+ },
+ {
+  "n": 33,
+  "title": "THE DETECTIVE",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Comisaría",
+  "premise": "Contacto con un detective que sospecha de corrupción.",
+  "mech": "Sigilo, Persecución",
+  "phases": [
+   "Contactar con un detective que sospecha de sus superiores.",
+   "Acudir a una cita pública para evitar vigilancia directa.",
+   "Revisar informes de detenciones y reconocer patrones de corrupción.",
+   "Acompañarlo a visitar un depósito policial con autorización limitada.",
+   "Detectar que alguien ha borrado pruebas del sistema.",
+   "Recuperar copias físicas y escapar de una presión institucional.",
+   "El detective acepta convertirse en aliado, con condiciones."
+  ]
+ },
+ {
+  "n": 34,
+  "title": "GRAVEYARD SHIFT",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Zona industrial nocturna",
+  "premise": "Operación nocturna relacionada con dinero y empresas.",
+  "mech": "Conducción, Sigilo, Investigación",
+  "phases": [
+   "Participar en una vigilancia nocturna del movimiento de fondos.",
+   "Seguir tres vehículos que salen de una oficina sin seguir al equivocado.",
+   "Localizar una caja de seguridad temporal en zona industrial.",
+   "Acceder a los registros mientras el detective cubre la operación.",
+   "Una alarma fuerza a improvisar un recorrido por el perímetro.",
+   "Entregar las matrículas y recibos antes de que desaparezcan.",
+   "Los movimientos revelan financiación ilegal de empresas pantalla."
+  ]
+ },
+ {
+  "n": 35,
+  "title": "THE PRICE OF SILENCE",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Barrio residencial",
+  "premise": "Un personaje es presionado para abandonar la investigación.",
+  "mech": "Sigilo, Investigación, Diálogos",
+  "phases": [
+   "Nina recibe la denuncia de una persona presionada para callar.",
+   "Conseguirle transporte discreto hasta un lugar seguro.",
+   "Investigar quién ha vigilado su casa y desde cuándo.",
+   "Visitar una oficina donde existen copias de la amenaza firmada.",
+   "Salir cuando aparecen guardias privados y bloquear una persecución.",
+   "Convencer a la fuente de entregar su testimonio completo.",
+   "Queda claro que el caso amenaza a personas fuera de San Cordova."
+  ]
+ },
+ {
+  "n": 36,
+  "title": "CALL FROM DRE",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "South Veyra / Westbrook",
+  "premise": "Retorno temporal a South Veyra; continúan historias antiguas.",
+  "mech": "Conducción, Diálogos",
+  "phases": [
+   "Regresar temporalmente al barrio sin abrir nuevos territorios.",
+   "Reunirse con Dre y descubrir nuevos intentos de intimidación.",
+   "Recorrer antiguos contactos para reconstruir un incidente local.",
+   "Evitar que unos jóvenes entren en una pelea preparada.",
+   "Conducir a Dre al lugar donde empezó su desconfianza.",
+   "Compartir una conversación sobre el pasado y las lealtades.",
+   "Regresar a San Cordova con una relación ligeramente reparada."
+  ]
+ },
+ {
+  "n": 37,
+  "title": "DEAD END STREET",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Barrio viejo",
+  "premise": "Localizar y proteger a un informante.",
+  "mech": "Sigilo, Persecución, Protección",
+  "phases": [
+   "Localizar a un informante desaparecido tras llamar a Nina.",
+   "Rastrear su último trayecto con cámaras de comercios.",
+   "Descubrir que se ha ocultado en un taller abandonado.",
+   "Convencerlo de salir antes de que lleguen los perseguidores.",
+   "Escoger una ruta de evacuación entre dos calles cortadas.",
+   "Perder la vigilancia utilizando aparcamientos y tráfico normal.",
+   "La fuente entrega un dato sobre las empresas que controlan la ciudad."
+  ]
+ },
+ {
+  "n": 38,
+  "title": "INVISIBLE HAND",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Distrito financiero",
+  "premise": "Primeras pruebas de organización empresarial coordinada.",
+  "mech": "Persecución, Investigación, Diálogos",
+  "phases": [
+   "Relacionar tres decisiones municipales con empresas vinculadas.",
+   "Fotografiar una reunión desde una plaza pública.",
+   "Hacer una entrega falsa para entrar en un edificio corporativo.",
+   "Acceder al horario de una junta sin robar información irrelevante.",
+   "Escapar por el aparcamiento cuando descubren la identidad falsa.",
+   "Contrastar con Nina el esquema de poder y los intereses reales.",
+   "Una llamada anónima avisa de un trato de Viper."
+  ]
+ },
+ {
+  "n": 39,
+  "title": "VIPER'S DEAL",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Encuentro clandestino",
+  "premise": "Viper recibe recursos de personas externas a la banda.",
+  "mech": "Conducción, Persecución, Investigación, Diálogos",
+  "phases": [
+   "Investigar por qué Viper ha viajado fuera de South Veyra.",
+   "Seguir su coche desde una estación hasta un edificio corporativo.",
+   "Escuchar una negociación en la que recibe dinero y protección.",
+   "Fotografiar a los asistentes sin arriesgar a los civiles presentes.",
+   "Ser descubierto y escapar a pie por pasillos de servicio.",
+   "Tomar un coche y llegar a una posición segura con las pruebas.",
+   "Ghost aparece indirectamente relacionado con uno de los asistentes."
+  ]
+ },
+ {
+  "n": 40,
+  "title": "PORT AUTHORITY",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Autoridad portuaria",
+  "premise": "Pruebas sobre cargamentos y negocios del desierto.",
+  "mech": "Persecución, Investigación, Costa / puerto",
+  "phases": [
+   "Entrar en una comparecencia pública sobre rutas comerciales.",
+   "Identificar datos de envío que no cuadran con las cifras oficiales.",
+   "Seguir un camión registrado a una empresa vinculada al desierto.",
+   "Acceder al registro de báscula y descubrir cargas duplicadas.",
+   "Escape por muelles cuando intentan confiscar la documentación.",
+   "Entregar a Nina pruebas de negocios en Las Brisas.",
+   "Preparar una operación mayor sobre la ruta de transporte."
+  ]
+ },
+ {
+  "n": 41,
+  "title": "INTERCEPTED ROUTE",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Autopista",
+  "premise": "Operación de transporte complicada.",
+  "mech": "Conducción, Sigilo, Investigación, Protección",
+  "phases": [
+   "Acompañar un cargamento de pruebas bajo protección discreta.",
+   "Elegir el vehículo y la carretera con el detective.",
+   "Detectar un desvío inesperado que busca llevarlos a una emboscada.",
+   "Proteger la furgoneta mientras atraviesa un túnel y un peaje.",
+   "Cambiar de conductor tras un incidente en la autopista.",
+   "Llegar al destino con una parte de los documentos intactos.",
+   "El resto de pruebas señala el corredor hacia Las Brisas."
+  ]
+ },
+ {
+  "n": 42,
+  "title": "ROAD TO LAS BRISAS",
+  "act": "ACTO II",
+  "zone": "SAN CORDOVA",
+  "loc": "San Cordova / Paso del desierto",
+  "premise": "Final de acto: se habilita el corredor del desierto; Las Brisas accesible.",
+  "mech": "Conducción, Sigilo, Diálogos",
+  "phases": [
+   "Reunir pruebas para justificar la apertura del corredor.",
+   "Conseguir la autorización que la empresa había bloqueado fraudulentamente.",
+   "Conducir en convoy a través de una carretera aún vigilada.",
+   "Evitar un ataque contra el transporte oficial con los expedientes.",
+   "Llegar al punto de control justo antes de su cierre administrativo.",
+   "Atravesar el primer cañón del desierto en una secuencia panorámica.",
+   "Desbloquear SOLO Las Brisas y revelar una pista sobre los casinos. REGIÓN DESBLOQUEADA: LAS BRISAS"
+  ]
+ },
+ {
+  "n": 43,
+  "title": "NEON AND DUST",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Strip",
+  "premise": "Llegada a Las Brisas y primeros contactos.",
+  "mech": "Conducción, Sigilo, Persecución",
+  "phases": [
+   "Entrar por carretera en la ciudad iluminada del desierto.",
+   "Encontrar alojamiento y una nueva base de operaciones.",
+   "Conocer al primer contacto entre casinos y servicios nocturnos.",
+   "Transportar una pequeña entrega para demostrar discreción.",
+   "Descubrir que el destino es una empresa vinculada a Cross Meridian.",
+   "Escapar de la vigilancia tras cambiar de vehículo en un parking.",
+   "El contacto propone entrar en un casino para conseguir pruebas."
+  ]
+ },
+ {
+  "n": 44,
+  "title": "CASINO CONTACT",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Casino",
+  "premise": "Información procedente del mundo empresarial y nocturno.",
+  "mech": "Diálogos",
+  "phases": [
+   "Obtener ropa adecuada e instrucciones para una reunión privada.",
+   "Entrar al casino sin levantar sospechas y conocer sus reglas.",
+   "Localizar al informante entre salones y zonas de servicio.",
+   "Recuperar una tarjeta de acceso durante una distracción planificada.",
+   "Visitar una oficina superior sin molestar a clientes.",
+   "Salir tras sospechas del equipo de seguridad.",
+   "El contacto revela un intermediario relacionado con una gran operación."
+  ]
+ },
+ {
+  "n": 45,
+  "title": "DOUBLE OR NOTHING",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Noche",
+  "premise": "Operación en la vida nocturna.",
+  "mech": "Persecución",
+  "phases": [
+   "Preparar una operación durante una noche de gran afluencia.",
+   "Coordinar a Mack y Loco para entrar por rutas distintas.",
+   "Seguir a un intermediario desde un espectáculo hasta un garaje.",
+   "Interceptar una conversación y conseguir la localización de una caja.",
+   "Elegir el mejor momento para recoger su contenido sin hacer ruido.",
+   "Escapar por una rampa mientras seguridad cierra el aparcamiento.",
+   "Descubrir que el dinero procede de una organización más amplia."
+  ]
+ },
+ {
+  "n": 46,
+  "title": "THE PEOPLE BEHIND IT",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Distrito empresarial",
+  "premise": "Identificar intermediarios de The Syndicate.",
+  "mech": "Sigilo, Persecución, Investigación",
+  "phases": [
+   "Investigar la identidad de quienes financian a los intermediarios.",
+   "Visitar tres locales para comparar facturas y contratos.",
+   "Conseguir una invitación a un acto empresarial cerrado.",
+   "Fotografiar discretamente a representantes de The Syndicate.",
+   "Evitar que destruyan la lista de asistentes.",
+   "Escapar con el registro y devolver una copia a Nina.",
+   "La investigación revela jerarquías sin mostrar aún al máximo responsable."
+  ]
+ },
+ {
+  "n": 47,
+  "title": "DESERT ENGINES",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Carreteras del desierto",
+  "premise": "Conducción por carreteras del desierto.",
+  "mech": "Conducción, Sigilo",
+  "phases": [
+   "Loco prepara un coche resistente para una salida por carretera.",
+   "Participar en una carrera de reconocimiento fuera de la ciudad.",
+   "Seguir un convoy que transporta piezas y combustible sin ser visto.",
+   "Abandonar el asfalto para cruzar un lecho seco y un cañón.",
+   "Recuperar un paquete caído antes de que lo alcance una patrulla privada.",
+   "Regresar por una presa con un tramo de conducción exigente.",
+   "Hallan indicios de una base temporal de la organización."
+  ]
+ },
+ {
+  "n": 48,
+  "title": "GHOST'S DEBT",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Motel remoto",
+  "premise": "Se descubre que Ghost oculta acuerdos.",
+  "mech": "Conducción, Persecución, Diálogos",
+  "phases": [
+   "Ghost pide hablar lejos del grupo y evita concretar su motivo.",
+   "Seguirlo a un motel mientras Dre observa otro vehículo.",
+   "Descubrir una reunión que no había contado a nadie.",
+   "Escuchar su explicación parcial y registrar contradicciones.",
+   "Escapar de hombres que intentan intervenir la conversación.",
+   "Regresar por una carretera desértica mientras las tensiones crecen.",
+   "Queda abierta la duda sobre si Ghost protege al grupo o a sí mismo."
+  ]
+ },
+ {
+  "n": 49,
+  "title": "ONE NIGHT WITH LOCO",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Noche con Loco",
+  "premise": "Aventura con Loco que revela información.",
+  "mech": "Conducción, Persecución",
+  "phases": [
+   "Salir con Loco a recoger un coche para el taller.",
+   "Participar en una actividad nocturna ligera que termina en un incidente.",
+   "Encontrar un maletín olvidado en un vehículo ajeno.",
+   "Seguir a su propietario para devolverlo sin comprometerse.",
+   "El dueño conduce hasta una localización vinculada a Cross Meridian.",
+   "Escapar cuando descubren que Loco ha visto demasiado.",
+   "La noche termina con una pista útil y una amistad reforzada."
+  ]
+ },
+ {
+  "n": 50,
+  "title": "DESERT FOOTPRINTS",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Pueblos del desierto",
+  "premise": "Investigación de pueblos aislados.",
+  "mech": "Persecución, Investigación, Costa / puerto",
+  "phases": [
+   "Investigar una ruta de suministros hacia pueblos aislados.",
+   "Entrevistar a un mecánico y una empleada de gasolinera.",
+   "Rastrear neumáticos y combustible por un camino de tierra.",
+   "Llegar a un antiguo complejo minero convertido en almacén.",
+   "Fotografiar cajas y encontrar una orden de compra comprometida.",
+   "Escapar por un lecho de río seco con poca visibilidad.",
+   "La ruta coincide con los registros del puerto de San Cordova."
+  ]
+ },
+ {
+  "n": 51,
+  "title": "THE FACE OF CROSS",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Torre corporativa",
+  "premise": "Se revela la importancia de Evelyn Cross.",
+  "mech": "Investigación, Diálogos",
+  "phases": [
+   "Conseguir una invitación a una presentación empresarial.",
+   "Identificar quién controla varias sociedades pantalla.",
+   "Entrar al acto y escuchar a Evelyn Cross hablar de regeneración urbana.",
+   "Rastrear una conversación privada que contradice su discurso público.",
+   "Salir antes de que seguridad reconozca a Mack.",
+   "Reunirse con Keisha para interpretar documentos y relaciones.",
+   "Evelyn Cross queda presentada como centro del entramado."
+  ]
+ },
+ {
+  "n": 52,
+  "title": "NO ROAD BACK",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Zona de carga",
+  "premise": "Fracasa una operación y el grupo pierde a un aliado.",
+  "mech": "Conducción, Sigilo, Persecución",
+  "phases": [
+   "Planear la recuperación de pruebas en un depósito logístico.",
+   "Organizar la entrada, vehículos y punto de extracción.",
+   "Infiltrarse entre turnos mientras Loco coordina desde fuera.",
+   "La operación fracasa porque alguien ha avisado a los guardias.",
+   "Improvisar una huida para salvar a los compañeros.",
+   "Descubrir que un aliado ha desaparecido durante el caos.",
+   "La pérdida tiene consecuencias narrativas y económicas reales."
+  ]
+ },
+ {
+  "n": 53,
+  "title": "EMPTY SAFE",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Cámara de seguridad",
+  "premise": "Un golpe para recuperar pruebas llega demasiado tarde.",
+  "mech": "Persecución, Investigación",
+  "phases": [
+   "Investigar qué ocurrió con las pruebas que faltan.",
+   "Seguir el trayecto del convoy que trasladó su contenido.",
+   "Entrar en una cámara auxiliar creyendo que conserva los archivos.",
+   "Descubrir que el depósito está vacío y fue limpiado antes.",
+   "Recuperar un registro de apertura para identificar al responsable.",
+   "Perder a los perseguidores por un hotel en construcción.",
+   "La frustración aumenta las sospechas internas."
+  ]
+ },
+ {
+  "n": 54,
+  "title": "FALSE ACCOUNTS",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Finanzas",
+  "premise": "Keisha descubre movimiento de fondos.",
+  "mech": "Investigación, Diálogos",
+  "phases": [
+   "Keisha convoca una reunión para examinar movimientos de capital.",
+   "Recoger registros de una asesoría que puede certificar operaciones.",
+   "Cruzar transferencias con compras de propiedades y casinos.",
+   "Identificar una empresa puente usada para esconder fondos.",
+   "Mantener a salvo al contable que decide colaborar.",
+   "Llevar la información a Nina sin dejar rastros del traslado.",
+   "El dinero conecta Las Brisas con South Veyra y Northpoint."
+  ]
+ },
+ {
+  "n": 55,
+  "title": "THE SETUP",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Carretera",
+  "premise": "Mack y Dre caen en una emboscada por una filtración.",
+  "mech": "Conducción, Persecución, Protección",
+  "phases": [
+   "Mack y Dre quedan para recuperar un informe prometido.",
+   "Observar inconsistencias en el lugar y sospechar una filtración.",
+   "Entrar en el edificio y comprobar que está vacío.",
+   "Defenderse de una emboscada y buscar una salida alternativa.",
+   "Robar un vehículo funcional de un aparcamiento cercano.",
+   "Huir hacia una estación de servicio donde espera Loco.",
+   "Mack y Dre sospechan que alguien de su círculo dio la ubicación."
+  ]
+ },
+ {
+  "n": 56,
+  "title": "K'S RECORDING",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Almacén",
+  "premise": "Grabación incriminatoria relacionada con Ghost.",
+  "mech": "Sigilo, Persecución, Investigación, Diálogos",
+  "phases": [
+   "Keisha localiza una grabación oculta de una conversación.",
+   "Preparar un ordenador aislado para recuperar el archivo dañado.",
+   "Seguir las pistas de audio hasta un almacén en el borde de la ciudad.",
+   "Encontrar el dispositivo original y copiarlo antes de que llegue seguridad.",
+   "Huir por caminos secundarios hacia un puesto seguro.",
+   "Escuchar a Ghost hablar con un intermediario bajo presión.",
+   "Decidir enfrentarlo cuando exista un contexto más completo."
+  ]
+ },
+ {
+  "n": 57,
+  "title": "TWO SIDES",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Mirador nocturno",
+  "premise": "Ghost cuenta su versión sin disipar todas las dudas.",
+  "mech": "Conducción, Protección",
+  "phases": [
+   "Ghost acuerda contar su historia en un punto aislado.",
+   "Caminar con él entre miradores mientras explica sus decisiones.",
+   "Comprobar algunas afirmaciones mediante llamadas a aliados.",
+   "Proteger a Ghost de un grupo que intenta silenciarlo.",
+   "Abandonar la zona en un coche mal preparado para la arena.",
+   "Debatir con Dre y Keisha qué partes son creíbles.",
+   "Mantener su lealtad en duda sin resolver la trama abruptamente."
+  ]
+ },
+ {
+  "n": 58,
+  "title": "FAMILY FIRST",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Barrio residencial",
+  "premise": "Las amenazas sobre familiares explican parte de sus decisiones.",
+  "mech": "Conducción, Sigilo, Diálogos, Protección",
+  "phases": [
+   "Ghost revela amenazas dirigidas a sus allegados.",
+   "Visitar el domicilio y comprobar que ha sido vigilado.",
+   "Organizar una evacuación temporal sin alarmar a los vecinos.",
+   "Conducir un segundo coche como señuelo por una carretera urbana.",
+   "Interceptar a quienes siguen al vehículo de la familia.",
+   "Llevar a todos a un refugio y escuchar una confesión más honesta.",
+   "El grupo entiende el motivo de Ghost, pero sigue desconfiando."
+  ]
+ },
+ {
+  "n": 59,
+  "title": "NOBODY GETS CLEAN",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Refugio del grupo",
+  "premise": "Conflicto interno entre Mack, Dre, Ghost y Big Ray.",
+  "mech": "Investigación, Diálogos",
+  "phases": [
+   "La discusión entre Mack, Dre, Ghost y Big Ray se vuelve insostenible.",
+   "Investigar por separado dos versiones contradictorias.",
+   "Acompañar a Dre a recuperar un documento que considera decisivo.",
+   "Ayudar a Big Ray a comprobar el origen de una vieja deuda.",
+   "Reunir a todos ante un riesgo compartido y tomar una decisión táctica.",
+   "Superar una emboscada coordinando posiciones distintas.",
+   "La alianza queda dañada, pero el grupo decide seguir unido."
+  ]
+ },
+ {
+  "n": 60,
+  "title": "VIPER'S FALL",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Recinto de Viper",
+  "premise": "Enfrentamiento con Viper; se revela que no dirigía todo.",
+  "mech": "Conducción, Persecución, Investigación",
+  "phases": [
+   "Localizar a Viper tras cruzar registros de su financiación.",
+   "Revisar rutas de acceso y reducir riesgos a civiles.",
+   "Entrar en el recinto durante el traslado de vehículos.",
+   "Enfrentarse a guardias y aislar a Viper de sus acompañantes.",
+   "Perseguirlo cuando huye por instalaciones de servicio.",
+   "Interrogarlo y obtener pruebas de su subordinación a otros intereses.",
+   "Viper deja de ser el principal enemigo; la amenaza superior permanece."
+  ]
+ },
+ {
+  "n": 61,
+  "title": "CARDS ON THE TABLE",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Oficina de pruebas",
+  "premise": "Pruebas contra Cross Meridian Holdings.",
+  "mech": "Investigación, Diálogos, Protección",
+  "phases": [
+   "Ordenar las pruebas reunidas desde Westbrook.",
+   "Convocar a Nina, Keisha y el detective a una reunión cifrada.",
+   "Clasificar testimonios, contratos y grabaciones sin perder la cadena de custodia.",
+   "Visitar a un testigo que puede validar el último documento.",
+   "Evitar que una empresa cierre su local antes de obtener la declaración.",
+   "Exponer la estructura de Cross Meridian Holdings al grupo.",
+   "El siguiente objetivo será proteger a un testigo en el norte."
+  ]
+ },
+ {
+  "n": 62,
+  "title": "NORTHBOUND",
+  "act": "ACTO III",
+  "zone": "LAS BRISAS",
+  "loc": "Las Brisas / Corredor norte",
+  "premise": "Proteger a un testigo y abrir el corredor hacia Northpoint.",
+  "mech": "Conducción, Protección",
+  "phases": [
+   "Preparar el traslado de un testigo hacia una nueva región.",
+   "Conseguir vehículos de apoyo y comprobar que el paso está disponible.",
+   "Conducir en convoy por un tramo de montaña y desierto.",
+   "Detectar seguimiento y usar un túnel para cambiar el orden de coches.",
+   "Escoltar al testigo hasta un control que se abre con la autorización.",
+   "Entrar en el paisaje boscoso de Northpoint bajo la lluvia.",
+   "Desbloquear SOLO Northpoint y alcanzar el primer refugio. REGIÓN DESBLOQUEADA: NORTHPOINT"
+  ]
+ },
+ {
+  "n": 63,
+  "title": "RAIN IN NORTHPOINT",
+  "act": "ACTO IV",
+  "zone": "NORTHPOINT",
+  "loc": "Northpoint / Ciudad lluviosa",
+  "premise": "Llegada al norte y refugio para el testigo.",
+  "mech": "Conducción, Sigilo, Diálogos",
+  "phases": [
+   "Llegar al refugio con el testigo mientras empeora el tiempo.",
+   "Conocer a un contacto local y las calles húmedas.",
+   "Conseguir medicamentos y suministros para pasar la noche.",
+   "Detectar un vehículo de vigilancia cerca del edificio.",
+   "Cambiar al testigo de alojamiento mediante una ruta poco transitada.",
+   "Entregarlo con seguridad y hablar sobre su miedo a declarar.",
+   "La lluvia oculta una señal hacia una instalación industrial."
+  ]
+ },
+ {
+  "n": 64,
+  "title": "ABOVE THE CITY",
+  "act": "ACTO IV",
+  "zone": "NORTHPOINT",
+  "loc": "Northpoint / Zona alta",
+  "premise": "Investigación política y empresarial.",
+  "mech": "Conducción, Persecución, Investigación, Diálogos",
+  "phases": [
+   "Reunirse con un asesor que conoce licencias urbanísticas.",
+   "Ascender en coche por avenidas elevadas y miradores.",
+   "Fotografiar instalaciones y parcelas señaladas por el asesor.",
+   "Seguir la ruta de un vehículo oficial hacia una reunión secreta.",
+   "Acceder al edificio desde un parking y escuchar el encuentro.",
+   "Escapar mientras un bloqueo desvía el tráfico a las colinas.",
+   "Revelar la conexión política entre contratos y empresas."
+  ]
+ },
+ {
+  "n": 65,
+  "title": "IRON AND ICE",
+  "act": "ACTO IV",
+  "zone": "NORTHPOINT",
+  "loc": "Northpoint / Complejo industrial",
+  "premise": "Instalaciones industriales y operaciones ocultas.",
+  "mech": "Sigilo, Investigación, Protección",
+  "phases": [
+   "Investigar una instalación con turnos nocturnos y almacenes fríos.",
+   "Buscar planos y credenciales entre empleados dispuestos a ayudar.",
+   "Entrar al complejo a través de una ruta de mantenimiento.",
+   "Atravesar una sección industrial con maquinaria en funcionamiento.",
+   "Copiar registros de transporte y confirmar instalaciones ocultas.",
+   "Evacuar por un acceso cubierto de nieve cuando llega seguridad.",
+   "Encontrar una referencia al archivo principal de Evelyn Cross."
+  ]
+ },
+ {
+  "n": 66,
+  "title": "CROSS FILES",
+  "act": "ACTO IV",
+  "zone": "NORTHPOINT",
+  "loc": "Northpoint / Archivo empresarial",
+  "premise": "Documentos decisivos sobre Evelyn Cross.",
+  "mech": "Persecución, Investigación",
+  "phases": [
+   "Seguir la pista del archivo en un edificio de oficinas.",
+   "Obtener un pase temporal mediante un contacto legítimo.",
+   "Buscar el servidor y las copias impresas sin activar alarmas.",
+   "Descubrir que parte del material está en una sala restringida.",
+   "Hacer una extracción coordinada con Keisha a distancia.",
+   "Escapar por escaleras de servicio al aparecer una auditoría sorpresa.",
+   "Los documentos demuestran decisiones directas de Evelyn Cross."
+  ]
+ },
+ {
+  "n": 67,
+  "title": "CONTROLLED CITY",
+  "act": "ACTO IV",
+  "zone": "NORTHPOINT",
+  "loc": "Northpoint / Servicios públicos",
+  "premise": "Dimensión del control empresarial sobre servicios locales.",
+  "mech": "Investigación",
+  "phases": [
+   "Examinar por qué varios servicios municipales comparten contratistas.",
+   "Visitar una estación de transporte y una subestación.",
+   "Comparar fallos técnicos con órdenes administrativas sospechosas.",
+   "Ayudar a restablecer un servicio afectado para ganar cooperación vecinal.",
+   "Acceder a una sala de supervisión y recopilar registros.",
+   "Resistir intentos de bloquear la divulgación de datos.",
+   "Confirmar el alcance del control corporativo sin atribuirlo a todos los funcionarios."
+  ]
+ },
+ {
+  "n": 68,
+  "title": "OLD PROMISES",
+  "act": "ACTO IV",
+  "zone": "NORTHPOINT",
+  "loc": "Northpoint / Zona rural",
+  "premise": "Encuentro con figura del pasado de Big Ray.",
+  "mech": "Conducción, Diálogos, Protección",
+  "phases": [
+   "Big Ray solicita una reunión con alguien de su pasado.",
+   "Conducir a una casa rural junto a un lago.",
+   "Escuchar testimonios que contradicen parte de su historia.",
+   "Localizar un objeto guardado como garantía hace años.",
+   "Proteger al propietario de una amenaza antes de salir.",
+   "Regresar por carretera de montaña en una tormenta.",
+   "Big Ray acepta que debe contar toda la verdad a Mack."
+  ]
+ },
+ {
+  "n": 69,
+  "title": "BIG RAY'S CONFESSION",
+  "act": "ACTO IV",
+  "zone": "NORTHPOINT",
+  "loc": "Northpoint / Mirador y costa",
+  "premise": "Big Ray admite su papel en acuerdos antiguos; revela documentos que conectan Cross Meridian con Bahía Solana. La misión desbloquea SOLO Bahía Solana al concluir.",
+  "mech": "Sigilo, Investigación, Diálogos, Protección",
+  "phases": [
+   "Reunirse con Big Ray en un mirador alejado de la ciudad.",
+   "Viajar a tres lugares relacionados con sus acuerdos antiguos.",
+   "Escuchar cómo Cross Meridian obtuvo acceso a rutas y propiedades.",
+   "Recuperar la documentación que Big Ray había ocultado.",
+   "Proteger a una antigua colaboradora que valida la historia.",
+   "Entregar las pruebas a Nina y encontrar vínculos con Bahía Solana.",
+   "Desbloquear SOLO Bahía Solana tras completar la misión, con consecuencias emocionales. REGIÓN DESBLOQUEADA: BAHÍA SOLANA"
+  ]
+ },
+ {
+  "n": 70,
+  "title": "TROPICAL ARRIVAL",
+  "act": "ACTO V",
+  "zone": "BAHÍA E ISLAS",
+  "loc": "Bahía Solana / Centro tropical",
+  "premise": "Mack viaja a Bahía Solana, conoce a nuevos aliados, rastrea una empresa pantalla y experimenta su ambiente tropical.",
+  "mech": "Sigilo, Persecución, Investigación, Diálogos",
+  "phases": [
+   "Entrar en Bahía Solana por un puente costero con vistas a sus playas.",
+   "Encontrar una base provisional sin despertar atención.",
+   "Reunirse con un aliado que conoce empresas pantalla de la zona.",
+   "Recorrer hoteles, canales y un puerto deportivo para seguir la pista.",
+   "Identificar un barco corporativo asociado a las cuentas falsas.",
+   "Escapar de vigilancia en una ruta de avenidas y causeways.",
+   "El contacto ofrece acceso a registros marítimos y a las islas."
+  ]
+ },
+ {
+  "n": 71,
+  "title": "BRAVA CROSSING",
+  "act": "ACTO V",
+  "zone": "BAHÍA E ISLAS",
+  "loc": "Bahía Solana / Puente a Brava",
+  "premise": "Investigación en puerto/carretera; el grupo obtiene acceso al puente hacia Isla Brava, con misión náutica y terrestre. Isla Brava desbloqueada al final.",
+  "mech": "Conducción, Investigación, Costa / puerto",
+  "phases": [
+   "Examinar documentación portuaria que liga cargamentos a Isla Brava.",
+   "Preparar una lancha auxiliar y un vehículo para el desembarco.",
+   "Seguir un barco sospechoso por canales costeros.",
+   "Buscar pruebas en un pequeño almacén pesquero antes de que zarpe.",
+   "Obtener autorización para levantar el bloqueo del puente insular.",
+   "Conducir al interior de Isla Brava y entregar pruebas a un contacto.",
+   "Desbloquear SOLO Isla Brava al final de la misión. REGIÓN DESBLOQUEADA: ISLA BRAVA"
+  ]
+ },
+ {
+  "n": 72,
+  "title": "A VOICE FROM WESTBROOK",
+  "act": "ACTO V",
+  "zone": "BAHÍA E ISLAS",
+  "loc": "South Veyra / Regreso",
+  "premise": "Una llamada obliga a Mack a regresar temporalmente a South Veyra para proteger a sus antiguos vecinos; los conflictos no desaparecieron.",
+  "mech": "Conducción, Investigación, Diálogos, Protección",
+  "phases": [
+   "Recibir una llamada angustiada durante la investigación tropical.",
+   "Viajar de regreso a South Veyra por un trayecto narrativo coherente.",
+   "Reencontrarse con vecinos y descubrir que la presión inmobiliaria continúa.",
+   "Proteger una reunión de afectados y retirar una amenaza inmediata.",
+   "Seguir un coche que lleva documentos desde el barrio.",
+   "Entregar copias a Keisha y garantizar que la comunidad puede organizarse.",
+   "Mack comprende que los conflictos de Westbrook no habían terminado."
+  ]
+ },
+ {
+  "n": 73,
+  "title": "CORAL CURRENT",
+  "act": "ACTO V",
+  "zone": "BAHÍA E ISLAS",
+  "loc": "Isla Coral / Costa y naturaleza",
+  "premise": "Keisha sigue una ruta de documentos y cargamentos hacia Isla Coral; búsqueda marina/ecológica. Desbloqueo de Isla Coral al terminar.",
+  "mech": "Investigación, Protección, Costa / puerto",
+  "phases": [
+   "Seguir una ruta marítima de cargamentos vinculada a la investigación.",
+   "Salir desde Bahía Solana con una embarcación y equipo básico.",
+   "Recorrer la costa de Isla Coral y encontrar un almacén camuflado.",
+   "Explorar a pie una zona natural con caminos y pequeñas viviendas.",
+   "Recuperar registros sin dañar el entorno y rescatar a un testigo.",
+   "Volver al muelle sorteando una persecución por agua.",
+   "Desbloquear SOLO Isla Coral y obtener una pieza clave del caso. REGIÓN DESBLOQUEADA: ISLA CORAL"
+  ]
+ },
+ {
+  "n": 74,
+  "title": "K'S SIGNAL",
+  "act": "ACTO V",
+  "zone": "BAHÍA E ISLAS",
+  "loc": "Bahía Solana / Red de comunicaciones",
+  "premise": "Keisha coordina una extracción segura y difusión de una prueba clave, mientras Ghost debe demostrar su lealtad y el grupo se divide.",
+  "mech": "Sigilo, Investigación, Protección",
+  "phases": [
+   "Keisha planea difundir una prueba y rescatar una fuente.",
+   "Verificar tres puntos de transmisión antes de iniciar la operación.",
+   "Llevar un equipo a una azotea sin ser detectado.",
+   "Proteger a la fuente mientras Ghost debe escoger entre dos lealtades.",
+   "Coordinar una extracción por calles y canales utilizando la radio.",
+   "Transmitir el archivo y salir mientras el grupo discute las consecuencias.",
+   "Keisha mantiene la prueba pública, pero la alianza queda al límite."
+  ]
+ },
+ {
+  "n": 75,
+  "title": "NÁCAR NIGHT",
+  "act": "ACTO V",
+  "zone": "BAHÍA E ISLAS",
+  "loc": "Isla Nácar / Complejo de lujo",
+  "premise": "Infiltración social en la lujosa Isla Nácar; Mack obtiene la ubicación de los archivos restantes. Isla Nácar desbloqueada tras misión.",
+  "mech": "Conducción, Sigilo, Persecución, Investigación",
+  "phases": [
+   "Conseguir acceso discreto a un acto social de la isla de lujo.",
+   "Vestirse y preparar una identidad de invitado con ayuda de Keisha.",
+   "Entrar al complejo y observar a los principales socios de Cross.",
+   "Localizar la sala donde guardan las ubicaciones de los archivos restantes.",
+   "Copiar la información y abandonar el evento antes del cierre de seguridad.",
+   "Escapar por marina y carretera costera sin causar daños a invitados.",
+   "Desbloquear SOLO Isla Nácar y preparar la operación final. REGIÓN DESBLOQUEADA: ISLA NÁCAR"
+  ]
+ },
+ {
+  "n": 76,
+  "title": "FIVE CITIES, ONE NETWORK",
+  "act": "ACTO VI",
+  "zone": "EL LEGADO",
+  "loc": "Cinco ciudades / Operación coordinada",
+  "premise": "Gran operación que conecta aliados, medios de transporte y amenazas de las cinco ciudades; Mack y Dre resuelven su desacuerdo.",
+  "mech": "Conducción, Investigación, Diálogos",
+  "phases": [
+   "Organizar aliados en distintas regiones y fijar objetivos simultáneos.",
+   "Mack empieza en Bahía Solana y coordina una entrega urgente.",
+   "Cambiar de perspectiva a acciones de apoyo narradas por comunicaciones.",
+   "Conducir a un punto de enlace mientras otros frentes confirman resultados.",
+   "Impedir que destruyan un archivo vinculado a South Veyra.",
+   "Reunirse con Dre y resolver su enfrentamiento mediante decisiones compartidas.",
+   "La red queda expuesta y Evelyn Cross prepara su defensa."
+  ]
+ },
+ {
+  "n": 77,
+  "title": "THE FINAL EVIDENCE",
+  "act": "ACTO VI",
+  "zone": "EL LEGADO",
+  "loc": "Northpoint y San Cordova / Pruebas",
+  "premise": "Consiguen pruebas definitivas para desmantelar la red de Evelyn Cross.",
+  "mech": "Sigilo, Investigación, Diálogos",
+  "phases": [
+   "Localizar el documento definitivo que une testimonios y órdenes.",
+   "Viajar a un archivo secundario mediante un enlace seguro.",
+   "Infiltrarse entre personal administrativo para localizar la pieza que falta.",
+   "Copiar y autenticar archivos con ayuda del detective.",
+   "Evitar que agentes privados intercepten al mensajero de las pruebas.",
+   "Entregar el material a Nina y comprobar su integridad.",
+   "Queda abierta la posibilidad real de desmantelar la red de Cross."
+  ]
+ },
+ {
+  "n": 78,
+  "title": "NIGHT OF SIEGE",
+  "act": "ACTO VI",
+  "zone": "EL LEGADO",
+  "loc": "South Veyra / Múltiples localizaciones",
+  "premise": "Defender pruebas y testigos frente a una ofensiva coordinada; varias localizaciones.",
+  "mech": "Conducción, Investigación, Protección",
+  "phases": [
+   "La organización inicia ataques coordinados contra testigos y archivos.",
+   "Mack organiza defensas y rutas de evacuación con el grupo.",
+   "Proteger una primera localización mientras Loco mueve un vehículo de apoyo.",
+   "Atravesar la ciudad para rescatar a una persona aislada.",
+   "Evitar la destrucción de pruebas durante un asedio en un edificio.",
+   "Llevar a los testigos a un lugar protegido bajo presión.",
+   "La ofensiva fracasa, pero deja consecuencias que preparan el final."
+  ]
+ },
+ {
+  "n": 79,
+  "title": "THE PRICE OF LEGACY",
+  "act": "ACTO VI",
+  "zone": "EL LEGADO",
+  "loc": "South Veyra / Lugares de la historia",
+  "premise": "Mack afronta consecuencias personales, las alianzas y el poder de Cross; preparación del desenlace.",
+  "mech": "Diálogos",
+  "phases": [
+   "Mack visita los lugares que marcaron su regreso.",
+   "Hablar con Dre, Big Ray, Ghost y Keisha para preparar el desenlace.",
+   "Resolver el destino de una deuda personal sin traicionar a los vecinos.",
+   "Conseguir apoyo para la última operación mediante acciones distintas.",
+   "Atravesar Westbrook mientras la comunidad reacciona a las noticias.",
+   "Cerrar las decisiones pendientes antes de enfrentar a Cross.",
+   "Una última cinemática reúne a los aliados y establece el plan final."
+  ]
+ },
+ {
+  "n": 80,
+  "title": "WESTSIDE LEGACY",
+  "act": "ACTO VI",
+  "zone": "EL LEGADO",
+  "loc": "Cinco ciudades / Final",
+  "premise": "Misión final cinematográfica, resoluciones y epílogo; mundo libre y contenido secundario siguen disponibles.",
+  "mech": "Conducción, Sigilo, Investigación, Protección",
+  "phases": [
+   "Iniciar una operación coordinada para exponer a Evelyn Cross.",
+   "Proteger el traslado de pruebas mientras se produce una intervención legal.",
+   "Alternar investigación, conducción, sigilo y protección de aliados.",
+   "Afrontar la reacción final de Cross y las consecuencias de las decisiones.",
+   "Llevar la prueba decisiva a un lugar donde pueda hacerse pública.",
+   "Escena final con Mack y Dre; el legado de Westbrook cambia de significado.",
+   "Epílogo, cierre de personajes y mundo libre sin nuevos bloqueos artificiales."
+  ]
+ }
+]

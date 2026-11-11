@@ -18,6 +18,11 @@ var impact_system: ImpactSystem
 var combat: Combat
 var police: Police
 var crime: CrimeSystem
+var hostiles: Hostiles
+var activities: Activities
+var _extras: Dictionary = {}       # nombre -> MixamoPerson (personajes secundarios de escena)
+var _speaking: Node3D = null
+var _next_mission: Dictionary = {}  # {"id", "title", "pos"} de la misión disponible
 var _stolen: Array = []           # coches robados al tráfico (se reciclan los más viejos)
 var _stolen_n: int = 0
 var interiors: Interiors
@@ -133,6 +138,14 @@ func _ready() -> void:
 	police.name = "Police"
 	police.main = self
 	add_child(police)
+	hostiles = Hostiles.new()
+	hostiles.name = "Hostiles"
+	hostiles.main = self
+	add_child(hostiles)
+	activities = Activities.new()
+	activities.name = "Activities"
+	activities.main = self
+	add_child(activities)
 	crime = CrimeSystem.new()
 	crime.name = "Crime"
 	crime.main = self
@@ -232,6 +245,10 @@ func _next_title_shot() -> void:
 ## Deja el mundo sin búsqueda ni agentes y el arma del jugador según la partida.
 func _reset_heat() -> void:
 	police.clear()
+	hostiles.clear()
+	activities.stop()
+	clear_extras()
+	_next_mission = {}
 	set_wanted(0)
 	set_outfit(GameState.outfit)
 	combat.set_weapon(GameState.weapon)
@@ -267,7 +284,10 @@ func load_game(slot: int) -> void:
 		add_child(parked_bus)
 		parked_bus.global_transform = Transform3D(Basis.looking_at(Vector3(1, 0, 0), Vector3.UP), CityLayout.landmark("bus_bay") + Vector3(0, 0.05, 0))
 	if GameState.active_mission != "":
-		_prepare_resume(GameState.mission_step)
+		if GameState.active_mission == "m01":
+			_prepare_resume(GameState.mission_step)
+		elif GameState.has_position:
+			player.place(GameState.player_position + Vector3.UP * 0.3, GameState.player_yaw)
 		_start_play()
 		runner.start(GameState.active_mission, GameState.mission_step)
 	else:
@@ -275,7 +295,7 @@ func load_game(slot: int) -> void:
 			player.place(GameState.player_position + Vector3.UP * 0.3, GameState.player_yaw)
 		_start_play()
 		_after_mission_world()
-		hud.set_objective("Explora Westbrook · Próxima misión: OLD KEYS (en desarrollo)")
+		_offer_next_mission()
 
 
 func _start_play() -> void:
@@ -304,6 +324,193 @@ func _quit_to_title() -> void:
 
 func _on_mission_finished(_id: String) -> void:
 	_after_mission_world()
+	_offer_next_mission()
+
+
+# ---------------------------------------------------------------- misiones 02-80
+
+const CITY_BOUNDS := Rect2(-260.0, -260.0, 580.0, 520.0)
+const ZONE_ALIASES := {"westbrook": "south_veyra", "south_veyra": "south_veyra", "san_cordova": "san_cordova", "las_brisas": "las_brisas",
+	"northpoint": "northpoint", "bahia_solana": "bahia_solana", "isla_brava": "isla_brava", "isla_coral": "isla_coral", "isla_nacar": "isla_nacar"}
+
+
+## Altura del suelo en un punto (Westbrook es llano; fuera manda el terreno del estado).
+func ground_height(p: Vector3) -> float:
+	if CITY_BOUNDS.has_point(Vector2(p.x, p.z)):
+		return 0.12
+	# Fuera del barrio: lo que haya construido encima (muelle, puente) manda sobre el terreno.
+	if is_inside_tree():
+		var q := PhysicsRayQueryParameters3D.create(Vector3(p.x, 80.0, p.z), Vector3(p.x, -6.0, p.z))
+		var hit := get_world_3d().direct_space_state.intersect_ray(q)
+		if not hit.is_empty() and (hit["position"] as Vector3).y > StateLayout.SEA:
+			return (hit["position"] as Vector3).y + 0.12
+	return maxf(StateLayout.height_at(p.x, p.z), StateLayout.SEA) + 0.15
+
+
+## Punto de una misión: nombre de lugar, "player", [x, z] o {"zone": id, "dx": m, "dz": m}.
+## Dentro de Westbrook los puntos sueltos se ajustan a la esquina de acera más cercana (a pie)
+## o al cruce (en coche), para que nunca caigan dentro de un edificio.
+func mission_point(target: Variant, on_foot: bool) -> Vector3:
+	var p := Vector3.ZERO
+	var snap := true
+	if typeof(target) == TYPE_DICTIONARY:
+		var zid := String(ZONE_ALIASES.get(String((target as Dictionary).get("zone", "south_veyra")), "south_veyra"))
+		var c: Vector2 = StateLayout.zone_center(zid)
+		p = Vector3(c.x + float((target as Dictionary).get("dx", 0.0)), 0.0, c.y + float((target as Dictionary).get("dz", 0.0)))
+	elif typeof(target) == TYPE_ARRAY:
+		var a: Array = target
+		p = Vector3(float(a[0]), 0.0, float(a[a.size() - 1]))
+	else:
+		var id := String(target)
+		if id == "player":
+			var f: Node3D = current_vehicle if current_vehicle else player
+			return f.global_position
+		p = resolve_point(id)
+		snap = false
+	if snap and CITY_BOUNDS.has_point(Vector2(p.x, p.z)):
+		var nodes: Array = traffic.graph["nodes"]
+		var best := Vector2(p.x, p.z)
+		var bd := INF
+		for n in nodes:
+			var d := (n as Vector2).distance_to(Vector2(p.x, p.z))
+			if d < bd:
+				bd = d
+				best = n
+		if on_foot:
+			var sx := 1.0 if p.x >= best.x else -1.0
+			var sz := 1.0 if p.z >= best.y else -1.0
+			p = Vector3(best.x + sx * 8.0, 0.0, best.y + sz * 8.0)
+		else:
+			p = Vector3(best.x, 0.0, best.y)
+	elif snap and not CITY_BOUNDS.has_point(Vector2(p.x, p.z)):
+		p = _nearest_land(p)
+	p.y = ground_height(p)
+	return p
+
+
+## Fuera de Westbrook: si el punto cae en el agua, busca tierra firme cerca (en anillos).
+func _nearest_land(p: Vector3) -> Vector3:
+	var limit := StateLayout.SEA + 1.0
+	if StateLayout.height_at(p.x, p.z) > limit:
+		return p
+	for ring in range(1, 26):
+		var r := 20.0 * ring
+		for k in 16:
+			var a := TAU * float(k) / 16.0
+			var q := Vector3(p.x + cos(a) * r, 0.0, p.z + sin(a) * r)
+			if StateLayout.height_at(q.x, q.z) > limit:
+				return q
+	return p
+
+
+## Coloca al reparto de una escena en corro alrededor de `at`, mirando al centro. Los nombres que
+## no son personajes de la historia se crean como secundarios (peatones Mixamo) con ese nombre.
+func stage_cast(cast: Array, at: Vector3) -> void:
+	player.place(at + Vector3(0, 0.25, 1.5), 0.0)
+	player.visible = true
+	var n := cast.size()
+	for i in n:
+		var id := String(cast[i])
+		var ang := PI + (float(i) - float(n - 1) * 0.5) * 0.85
+		var pos := at + Vector3(sin(ang) * 1.9, 0.0, cos(ang) * 1.9 + 0.4)
+		var yaw := atan2(-(at.x - pos.x), -(at.z + 0.6 - pos.z))
+		if actors.has(id):
+			_set_actor_present(id, true)
+			var a: NPC = actors[id]
+			a.global_position = pos + Vector3.UP * 0.2
+			a.velocity = Vector3.ZERO
+			a.model.rotation.y = yaw
+			a.look_at_player = false
+		else:
+			var m: Node3D = _extras.get(id)
+			if m == null or not is_instance_valid(m):
+				if MixamoPerson.available():
+					var mp := MixamoPerson.new()
+					add_child(mp)
+					mp.setup({"model": absi(id.hash()) % MixamoPerson.MODELS.size(), "tint": absi(id.hash() / 7) % 7, "scale": 1.0, "phase": 0.2})
+					m = mp
+				else:
+					var hh := Humanoid.new()
+					add_child(hh)
+					hh.setup(Humanoid.random_look(RandomNumberGenerator.new()))
+					m = hh
+				_extras[id] = m
+			m.global_position = pos + Vector3.UP * 0.05
+			m.rotation.y = yaw
+	var d := at + Vector3(0, 0, -0.6) - player.global_position
+	player.set_facing(atan2(-d.x, -d.z))
+
+
+func clear_extras() -> void:
+	for k in _extras:
+		if is_instance_valid(_extras[k]):
+			(_extras[k] as Node).queue_free()
+	_extras.clear()
+	for id in actors:
+		(actors[id] as NPC).look_at_player = true
+
+
+## Nodo del personaje que dice una frase (por alias: "Mack", "Dre", "Big Ray"... o secundario).
+func speaker_node(speaker: String) -> Node3D:
+	var key := speaker.to_lower()
+	if key == "mack":
+		return player
+	for id in actors:
+		if GameData.character_name(String(id)).to_lower() == key or String(id) == key.replace(" ", "_"):
+			var a: Node3D = actors[id]
+			return a if a.visible else null
+	if _extras.has(speaker) and is_instance_valid(_extras[speaker]):
+		return _extras[speaker]
+	return null
+
+
+## El que habla gesticula con las manos mientras dura su frase.
+func set_speaking(node: Node3D, on: bool) -> void:
+	var model: Node = null
+	if node == player:
+		model = player.model
+	elif node is NPC:
+		model = (node as NPC).model
+	if model and model.has_method("set_talking"):
+		model.call("set_talking", on)
+		if not on or node != player:
+			model.call("animate", 0.016, 0.0, true)
+		if not on and node is NPC and (node as NPC).stance != "":
+			model.call("pose_idle_stance", (node as NPC).stance)
+	_speaking = node if on else null
+
+
+## Tras cada misión (o al cargar partida) deja disponible la siguiente en su punto de inicio.
+func _offer_next_mission() -> void:
+	_next_mission = {}
+	var n := GameState.next_mission_number()
+	if n < 2 or n > 80 or runner.running:
+		return
+	var id := "m%02d" % n
+	if not FileAccess.file_exists("res://data/missions/%s.json" % id):
+		return
+	var m := GameData.load_mission(id)
+	if m.is_empty():
+		return
+	var pos := mission_point(m.get("start", "mack_door"), true)
+	_next_mission = {"id": id, "title": String(m.get("title", id)), "pos": pos}
+	hud.set_objective("Siguiente misión: %s (M en el radar)" % String(m.get("title", id)))
+	set_marker(pos)
+
+
+func start_next_mission() -> void:
+	if _next_mission.is_empty() or runner.running or activities.active != "":
+		return
+	var id: String = _next_mission["id"]
+	_next_mission = {}
+	set_marker(Vector3.INF)
+	police.clear()
+	set_wanted(0)
+	for a in actors:
+		_set_actor_present(String(a), false)
+	GameState.active_mission = id
+	GameState.mission_step = 0
+	runner.start(id)
 
 
 func _after_mission_world() -> void:
@@ -374,7 +581,7 @@ func _process(delta: float) -> void:
 		combat.update(delta)
 	elif player.model:
 		player.model.overlay = {}
-	hud.set_ammo(GameState.ammo if GameState.weapon == "pistol" else -1)
+	hud.set_ammo(GameState.ammo if GameState.weapon != "fist" else -1)
 	var focus: Node3D = current_vehicle if current_vehicle else player
 	if not current_vehicle:
 		player.camera_yaw = rig.yaw
@@ -488,6 +695,42 @@ func buy_outfit() -> void:
 	crime.look_changed()
 
 
+const AMMO_PRICE := 40
+const AMMO_PACK := 36
+
+
+## Armería: caja de munición.
+func buy_ammo() -> void:
+	if GameState.ammo >= GameState.MAX_AMMO:
+		hud.toast("NO CABE MÁS MUNICIÓN", "", 2.0)
+		return
+	if not _pay(AMMO_PRICE, "Iron Sights"):
+		return
+	GameState.ammo = mini(GameState.ammo + AMMO_PACK, GameState.MAX_AMMO)
+	hud.toast("+%d BALAS  -$%d" % [AMMO_PACK, AMMO_PRICE], "", 2.0)
+
+
+## Armería: siguiente arma que no tengas (escopeta y subfusil).
+func next_weapon_for_sale() -> String:
+	for w in ["shotgun", "smg"]:
+		if not GameState.weapons.has(w):
+			return w
+	return ""
+
+
+func buy_weapon() -> void:
+	var w := next_weapon_for_sale()
+	if w == "":
+		hud.toast("YA TIENES TODO EL ARSENAL", "", 2.0)
+		return
+	var st: Dictionary = Combat.STATS[w]
+	if not _pay(int(st["price"]), "Iron Sights"):
+		return
+	GameState.weapons.append(w)
+	combat.set_weapon(w)
+	hud.toast("%s COMPRADA  -$%d" % [String(st["name"]).to_upper(), int(st["price"])], "Cambia de arma con el botón Arma", 3.0)
+
+
 ## Barbería: siguiente tinte de barba y gorra (cambia cómo te describe la policía).
 func buy_head_style() -> void:
 	if not _pay(BARBER_PRICE, "Fade Kings"):
@@ -517,6 +760,8 @@ func damage_player(amount: float) -> void:
 	GameState.set_health(GameState.health - amount)
 	hud.damage_flash()
 	rig.shake(0.25)
+	if player.model:
+		player.model.flinch(1.0 if randf() < 0.5 else -1.0)
 
 
 ## Detenido por un agente (1 estrella): multa, sin munición y a la puerta de la comisaría.
@@ -526,7 +771,7 @@ func busted() -> void:
 
 func _on_weapon_changed(kind: String) -> void:
 	hud.set_weapon_icon(kind)
-	touch.set_attack_label("Disparar" if kind == "pistol" else "Golpe")
+	touch.set_attack_label("Disparar" if kind != "fist" else "Golpe")
 
 
 ## Roba un coche del tráfico: lo sustituye por uno conducible igual y echa al conductor.
@@ -601,7 +846,15 @@ func _update_interaction() -> void:
 				label = "Subir"
 				action = func() -> void: board(car, "driver")
 				break
-	if label == "" and allow_free_vehicles and not runner.running:
+	if label == "" and not runner.running and interiors.inside < 0:
+		var act := activities.interaction(player.global_position)
+		if not act.is_empty():
+			label = act["label"]
+			action = act["action"]
+	if label == "" and not _next_mission.is_empty() and not runner.running and activities.active == "" and _flat_dist(player.global_position, _next_mission["pos"]) < 4.0:
+		label = "Empezar misión"
+		action = func() -> void: start_next_mission()
+	if label == "" and allow_free_vehicles:
 		var tc := traffic.nearest_car(player.global_position, 3.6)
 		if tc != null and tc.speed < 6.0:
 			label = "Robar"
@@ -680,6 +933,10 @@ func _refresh_radar_markers() -> void:
 		markers.append({"pos": _marker_pos, "color": Color(0.95, 0.78, 0.2), "label": "!"})
 	if interiors.inside < 0:
 		markers.append_array(interiors.radar_markers(player.global_position))
+		if activities:
+			markers.append_array(activities.radar_markers(player.global_position))
+		if not _next_mission.is_empty() and _marker_pos == Vector3.INF:
+			markers.append({"pos": _next_mission["pos"], "color": Color(0.95, 0.78, 0.2), "label": "M"})
 	hud.radar.markers = markers
 
 

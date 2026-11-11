@@ -1,0 +1,504 @@
+{
+  "id": "m69",
+  "number": 69,
+  "title": "BIG RAY'S CONFESSION",
+  "title_es": "La confesión de Big Ray",
+  "act": "ACTO IV",
+  "start": {
+    "zone": "northpoint",
+    "dx": 20,
+    "dz": 40
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 150,
+        "dz": -20
+      },
+      "cast": [
+        "big_ray"
+      ],
+      "title_card": true,
+      "hour": 17,
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Sit down, Mack. Not there, the wind eats you there. Here. Behind the rail.",
+          "es": "Siéntate, Mack. Ahí no, ahí te come el viento. Aquí. Detrás de la barandilla.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I brought the bottle. You said bring one.",
+          "es": "He traído la botella. Dijiste que trajera una.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Put it down. I need my hands steady for what I say.",
+          "es": "Déjala. Necesito las manos firmes para lo que voy a decir.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Two thousand and nine. Your daddy's been gone four years. Your mama is working doubles. My Loretta is sick. Real sick. The kind of sick that costs more than a house.",
+          "es": "Dos mil nueve. Hace cuatro años que tu padre no está. Tu madre hace turnos dobles. Mi Loretta está enferma. De verdad enferma. De las que cuestan más que una casa.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I remember Loretta. She used to give me peaches.",
+          "es": "Recuerdo a Loretta. Me daba melocotones.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "A man from a firm called Cross Meridian found me at the clinic. Nice suit. Said the neighborhood was about to be 'modernized' and they needed a trusted face to collect signatures.",
+          "es": "Un hombre de una firma llamada Cross Meridian me encontró en la clínica. Buen traje. Dijo que el barrio iba a «modernizarse» y necesitaban una cara de confianza para recoger firmas.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "You knew what you were signing?",
+          "es": "¿Sabías lo que firmabas?",
+          "t": 2.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I knew it was money. Easements, right-of-way, access to the old rail lots. I told them it'd never touch a family house. They said of course not.",
+          "es": "Sabía que era dinero. Servidumbres, derechos de paso, acceso a los solares del ferrocarril. Les dije que nunca tocaría una casa familiar. Dijeron que claro que no.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "And Loretta?",
+          "es": "¿Y Loretta?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "The money bought her eleven more months. I'd sell my soul again for eleven more months. That's the part I can't say sorry for.",
+          "es": "El dinero le compró once meses más. Volvería a vender mi alma por otros once meses. Esa es la parte por la que no puedo pedir perdón.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "But my mama's house.",
+          "es": "Pero la casa de mi madre.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Those same easements became the lever. Cross Meridian bought the note on your mama's mortgage through three shells. The first shell had my signature on the paperwork.",
+          "es": "Esas mismas servidumbres se convirtieron en la palanca. Cross Meridian compró la hipoteca de tu madre mediante tres empresas pantalla. La primera llevaba mi firma en los papeles.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "You let me walk into that house thinking you were the one fighting for it.",
+          "es": "Me dejaste entrar en esa casa pensando que eras tú el que luchaba por ella.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I was fighting for it. I was also the reason it was falling. Both are true.",
+          "es": "Luchaba por ella. Y también era la razón por la que caía. Las dos cosas son verdad.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Where's the proof, Ray? Not your word. Paper.",
+          "es": "¿Dónde está la prueba, Ray? No tu palabra. Papel.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I kept copies. Everything. Hidden in three places because I never trusted myself to burn them. Come on. I'll show you.",
+          "es": "Guardé copias. De todo. Escondidas en tres sitios porque nunca confié en mí para quemarlas. Vamos. Te los enseño.",
+          "t": 8.3
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": 150,
+        "dz": -20
+      },
+      "objective": "Quédate con Big Ray y sube al coche",
+      "hint": "Ray espera junto a la barandilla.",
+      "radius": 6
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": 100,
+        "dz": -60
+      },
+      "objective": "Primera parada: el viejo garaje donde se firmaron las servidumbres"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Here. Folding table, fluorescent light. Eleven men signed in an afternoon. I shook every hand.",
+          "es": "Aquí. Mesa plegable, luz fluorescente. Once hombres firmaron en una tarde. Les estreché la mano a todos.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Did any of them know?",
+          "es": "¿Alguno lo sabía?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Two did. They're dead now.",
+          "es": "Dos lo sabían. Ahora están muertos.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": 40,
+        "dz": -120
+      },
+      "objective": "Segunda parada: la antigua clínica de Loretta"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Room 214. I came here every day for eleven months. The firm paid for the room. Rent for my silence.",
+          "es": "Habitación 214. Vine aquí cada día durante once meses. La firma pagaba la habitación. El alquiler de mi silencio.",
+          "t": 6.9
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": -40,
+        "dz": -150
+      },
+      "objective": "Tercera parada: el muelle de carga donde se guardaban las copias"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -40,
+        "dz": -150
+      },
+      "cast": [
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Cross never showed her face at that first table. Her man did. But Evelyn herself called me once. One minute. She said, 'Mr. Dalton, thank you for being practical.' Practical.",
+          "es": "Cross nunca dio la cara en aquella primera mesa. Su hombre sí. Pero Evelyn me llamó una vez. Un minuto. Dijo: «Señor Dalton, gracias por ser práctico». Práctico.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "She turned your wife's illness into a leash.",
+          "es": "Convirtió la enfermedad de tu mujer en una correa.",
+          "t": 3.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Rail lots, then docks, then a trust across the water. That's how it grows. She never takes. She waits until you offer.",
+          "es": "Solares del ferrocarril, luego muelles, luego un fideicomiso al otro lado del agua. Así crece. Nunca toma. Espera a que tú ofrezcas.",
+          "t": 8.3
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "northpoint",
+        "dx": -50,
+        "dz": -160
+      },
+      "guards": 3,
+      "objective": "Llega a la consigna del muelle sin que te vea la gente de Cross",
+      "label": "Vigilantes del muelle"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": -54,
+        "dz": -164
+      },
+      "count": 2,
+      "label": "Documento",
+      "objective": "Recupera la documentación que Ray tenía escondida en la consigna",
+      "hint": "Abre las dos taquillas con la llave de Ray."
+    },
+    {
+      "type": "give",
+      "ammo": 120,
+      "money": 0,
+      "toast": "Munición para la defensa"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Odessa Wray",
+          "en": "Ray, they found me. Black trucks at the gate. I said my name on the phone to the wrong man.",
+          "es": "Ray, me han encontrado. Camionetas negras en la verja. Dije mi nombre al teléfono al hombre equivocado.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "She's the only other living signer who can vouch for me. Mack, please.",
+          "es": "Es la otra firmante viva que puede avalarme. Mack, por favor.",
+          "t": 4.9
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "northpoint",
+        "dx": -110,
+        "dz": -60
+      },
+      "objective": "Llega hasta el refugio de Odessa antes de que la alcancen",
+      "time": 90
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "northpoint",
+        "dx": -114,
+        "dz": -64
+      },
+      "count": 6,
+      "waves": 2,
+      "time": 50,
+      "objective": "Protege a Odessa de los sicarios de Cross",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": 20,
+        "dz": -20
+      },
+      "objective": "Lleva a Ray, Odessa y los documentos a ver a Nina Cho"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 20,
+        "dz": -20
+      },
+      "cast": [
+        "big_ray",
+        "Nina Cho",
+        "Odessa Wray"
+      ],
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "I've been waiting three years for someone to put this on my desk. Ray, you understand that once I publish, there's no taking it back.",
+          "es": "Llevo tres años esperando que alguien me ponga esto en la mesa. Ray, entiendes que cuando publique no hay vuelta atrás.",
+          "t": 9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I understand. Print my name first.",
+          "es": "Lo entiendo. Imprime mi nombre primero.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Odessa, can you confirm the signatures?",
+          "es": "Odessa, ¿puedes confirmar las firmas?",
+          "t": 2.7
+        },
+        {
+          "speaker": "Odessa Wray",
+          "en": "Every one. I stood next to him. I held the pen.",
+          "es": "Todas. Estuve a su lado. Sostuve el bolígrafo.",
+          "t": 3.3
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Wait. This page. The trust that bought the rail lots shares a registered agent with a holding company in Bahía Solana. 'Solana Meridian Trust'.",
+          "es": "Espera. Esta página. El fideicomiso que compró los solares del ferrocarril comparte agente registrado con una sociedad en Bahía Solana. «Solana Meridian Trust».",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Bahía Solana. That's where the money goes to sleep.",
+          "es": "Bahía Solana. Ahí es donde el dinero se echa a dormir.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "And now I have a name on it. A real one.",
+          "es": "Y ahora tengo un nombre en ello. Uno real.",
+          "t": 2.8
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": 150,
+        "dz": -20
+      },
+      "objective": "Vuelve con Ray al mirador donde empezó todo",
+      "hint": "Dre llega desde el refugio.",
+      "radius": 8
+    },
+    {
+      "type": "toast",
+      "title": "REGIÓN DESBLOQUEADA",
+      "subtitle": "BAHÍA SOLANA"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 150,
+        "dz": -20
+      },
+      "cast": [
+        "big_ray",
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Say it again. All of it. I want to hear it with my own ears.",
+          "es": "Dilo otra vez. Todo. Quiero oírlo con mis propios oídos.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I took money to sign what ended up taking your mother's block, Dre. Not on purpose. But I did.",
+          "es": "Cogí dinero por firmar lo que acabó quitándole la manzana a tu madre, Dre. No fue a propósito. Pero lo hice.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Dre",
+          "en": "You taught me to throw a punch behind that rail. You taught me what a promise cost.",
+          "es": "Me enseñaste a pegar un puñetazo detrás de esa barandilla. Me enseñaste lo que costaba una promesa.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And I broke mine. I'll say it to a judge. I'll say it to Nina's camera. I won't ask you to forgive me.",
+          "es": "Y rompí la mía. Lo diré ante un juez. Lo diré ante la cámara de Nina. No te pido que me perdones.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "I can't look at you right now. I'm not saying never. I'm saying not today.",
+          "es": "Ahora mismo no puedo mirarte. No digo que nunca. Digo que hoy no.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "He's still the man who showed up at your mother's door when nobody else did. Both are true.",
+          "es": "Sigue siendo el hombre que llamó a la puerta de tu madre cuando nadie más lo hizo. Las dos cosas son verdad.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Don't. Not you. Not today.",
+          "es": "No. Tú no. Hoy no.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ray. You come with us. South. Bahía Solana. You don't get to hide in a cabin and rot.",
+          "es": "Ray. Vienes con nosotros. Al sur. Bahía Solana. No te vas a esconder en una cabaña a pudrirte.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then I come as a witness. And as a man who owes you everything.",
+          "es": "Entonces voy como testigo. Y como un hombre que os lo debe todo.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Bring the bottle. We're gonna need it.",
+          "es": "Trae la botella. La vamos a necesitar.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 6150,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -9
+      },
+      "toast": "+$6,150 · La verdad sobre Ray cambia el rumbo"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: TROPICAL ARRIVAL (M en el radar)"
+    }
+  ]
+}

@@ -13,6 +13,18 @@ extends Node3D
 
 var look: Dictionary = {}
 var _phase: float = 0.0
+var _pose: Dictionary = {}
+var _talking: bool = false
+## 0 de pie .. 1 agachado (lo fija Player).
+var crouch: float = 0.0
+var _talk_t: float = 0.0
+var _idle_t: float = randf() * 20.0
+var _idle_seed: float = randf() * TAU
+var _flinch: float = 0.0
+var _flinch_side: float = 1.0
+var _accel_lean: float = 0.0
+var _turn_lean: float = 0.0
+var _last_yaw: float = 0.0
 var _blend_speed: float = 0.0
 
 var _hips: Node3D
@@ -241,40 +253,129 @@ static func _new_pose() -> Dictionary:
 	return {"leg": [0.0, 0.0], "knee": [0.05, 0.05], "arm": [0.0, 0.0], "elbow": [0.15, 0.15], "arm_out": [0.08, 0.08], "torso_x": 0.0, "torso_y": 0.0, "head_x": 0.0, "hip_y": 0.0}
 
 
+## Animación por código con modelo de marcha (no son clips grabados):
+## - cadencia y longitud de zancada calculadas a partir de la velocidad real, para que los pies
+##   no patinen; rodilla que flexiona en el balanceo y amortigua en el apoyo; tobillo que
+##   levanta la punta al pisar y empuja al despegar;
+## - pelvis que sube y baja dos veces por ciclo, rota y bascula; hombros en contrarrotación;
+##   cabeza estabilizada; brazos en oposición con el codo más cerrado al correr;
+## - inclinación al acelerar, frenar y girar; reposo con respiración y cambio de peso;
+## - gestos de manos al hablar (set_talking) y sacudida al recibir un golpe (flinch);
+## - toda la pose se suaviza en el tiempo, así que apuntar, golpear o parar no dan saltos.
 ## speed en m/s, on_floor para la pose aérea.
 func animate(delta: float, speed: float, on_floor: bool) -> void:
 	if not _built or _seated:
 		return
 	if _phone != null and _phone.visible:
 		_phone.visible = false
+	var prev_speed := _blend_speed
 	_blend_speed = lerpf(_blend_speed, speed, clampf(delta * 8.0, 0.0, 1.0))
 	var s := _blend_speed
-	var run := clampf((s - 3.0) / 3.0, 0.0, 1.0)
-	var walk := clampf(s / 2.0, 0.0, 1.0)
-	var freq := lerpf(1.6, 2.6, run) * TAU * (0.4 + clampf(s / 6.0, 0.0, 1.0) * 0.6)
-	_phase = fposmod(_phase + delta * freq, TAU)
-	var sw := sin(_phase)
-	var amp := lerpf(0.45, 0.85, run) * walk
+	var accel := (s - prev_speed) / maxf(delta, 0.001)
+	_accel_lean = lerpf(_accel_lean, clampf(accel * 0.02, -0.12, 0.16), clampf(delta * 5.0, 0.0, 1.0))
+	# Velocidad de giro (para inclinarse hacia dentro de la curva).
+	var yaw_now := global_rotation.y
+	var yaw_rate := wrapf(yaw_now - _last_yaw, -PI, PI) / maxf(delta, 0.001)
+	_last_yaw = yaw_now
+	_turn_lean = lerpf(_turn_lean, clampf(yaw_rate * 0.05 * clampf(s / 4.0, 0.0, 1.0), -0.22, 0.22), clampf(delta * 6.0, 0.0, 1.0))
+	_idle_t += delta
+	_talk_t += delta
+	_flinch = maxf(0.0, _flinch - delta * 3.5)
+	var run := clampf((s - 3.2) / 3.0, 0.0, 1.0)
+	var move := clampf(s / 1.0, 0.0, 1.0)
+	# Cadencia (ciclos por segundo) y amplitud de la zancada según la velocidad.
+	var cadence := lerpf(0.82, 1.62, clampf(s / 6.8, 0.0, 1.0))
+	_phase = fposmod(_phase + delta * cadence * TAU * (0.35 + 0.65 * move), TAU)
+	var step_len := s / (2.0 * cadence)
+	var amp := asin(clampf(step_len / 1.76, 0.0, 0.82)) * lerpf(1.0, 0.95, run)
 	var p := _new_pose()
+	p["foot"] = [0.0, 0.0]
+	p["torso_z"] = 0.0
+	p["hip_z"] = 0.0
+	p["hip_yaw"] = 0.0
+	p["head_y"] = 0.0
 	if not on_floor:
-		p["leg"] = [0.55, -0.3]
-		p["knee"] = [0.9, 0.35]
-		p["arm"] = [0.5, 0.5]
-		p["arm_out"] = [0.6, 0.6]
-		p["elbow"] = [0.5, 0.5]
-		p["torso_x"] = -0.1
+		p["leg"] = [0.6, -0.35]
+		p["knee"] = [1.0, 0.45]
+		p["foot"] = [-0.3, -0.5]
+		p["arm"] = [-0.5, 0.6]
+		p["arm_out"] = [0.45, 0.45]
+		p["elbow"] = [0.9, 0.7]
+		p["torso_x"] = -0.12
 	else:
 		for i in 2:
-			var side := sw if i == 0 else -sw
-			p["leg"][i] = side * amp
-			p["knee"][i] = maxf(0.0, -side) * amp * 1.4 + 0.05
-			p["arm"][i] = -side * amp * 0.9
-			p["arm_out"][i] = 0.08 + 0.05 * run
-			p["elbow"][i] = (0.25 + 0.9 * run) * walk + 0.12
-		p["torso_x"] = -0.18 * run - 0.03 * walk
-		p["torso_y"] = sw * 0.08 * walk
-		p["head_x"] = 0.12 * run
-		p["hip_y"] = -absf(cos(_phase)) * 0.04 * walk + sin(Time.get_ticks_msec() * 0.002) * 0.012 * (1.0 - walk)
+			var ph := _phase if i == 0 else _phase + PI
+			var sw := sin(ph)
+			var cw := cos(ph)   # > 0: la pierna va hacia delante (fase de balanceo)
+			p["leg"][i] = sw * amp + 0.2 * run
+			# Rodilla: flexión grande a mitad del balanceo y pequeña al cargar el peso.
+			var swing := maxf(0.0, cos(ph - 0.35))
+			var load := maxf(0.0, -cos(ph - 2.6))
+			p["knee"][i] = 0.06 + pow(swing, 1.3) * lerpf(0.95, 1.4, run) * move + load * lerpf(0.18, 0.4, run) * move
+			# Tobillo: punta arriba al apoyar el talón (pierna delante), empuje al despegar (pierna atrás).
+			p["foot"][i] = (0.28 * maxf(0.0, sw) - 0.42 * maxf(0.0, -sw) * maxf(0.0, cw + 0.4)) * move - 0.25 * pow(swing, 2.0) * run
+			# Brazos en oposición a las piernas; al correr, codo a unos 90 grados.
+			var asw := -sw
+			p["arm"][i] = asw * amp * lerpf(0.75, 1.05, run) + 0.05 * run
+			p["arm_out"][i] = 0.07 + 0.06 * run
+			p["elbow"][i] = 0.16 + move * (0.22 + 0.25 * maxf(0.0, asw)) + run * (1.05 + 0.25 * asw)
+		var sw0 := sin(_phase)
+		# Pelvis: baja en el doble apoyo, sube a mitad de paso; rota con la pierna que avanza
+		# y bascula hacia la pierna que está en el aire.
+		p["hip_y"] = -absf(sw0) * lerpf(0.035, 0.075, run) * move
+		p["hip_yaw"] = sw0 * lerpf(0.10, 0.16, run) * move
+		p["hip_z"] = cos(_phase) * 0.045 * move
+		# Hombros en contrarrotación y cabeza que mira al frente.
+		p["torso_y"] = -sw0 * lerpf(0.16, 0.26, run) * move
+		p["head_y"] = sw0 * lerpf(0.05, 0.08, run) * move
+		p["torso_x"] = -0.035 * move - 0.2 * run - _accel_lean
+		p["head_x"] = 0.02 * move + 0.14 * run + _accel_lean * 0.6
+		p["torso_z"] = _turn_lean
+		# Reposo: respiración, cambio lento de peso de una pierna a otra y mirada que se mueve.
+		var idle := 1.0 - move
+		if idle > 0.0:
+			var breath := sin(_idle_t * 1.7)
+			var shift := sin(_idle_t * 0.37 + _idle_seed)
+			p["torso_x"] += (0.012 * breath - 0.02) * idle
+			p["hip_z"] += shift * 0.05 * idle
+			p["torso_z"] += -shift * 0.035 * idle
+			p["hip_y"] += (-0.012 * absf(shift) + 0.004 * breath) * idle
+			p["knee"][0] += maxf(0.0, shift) * 0.14 * idle
+			p["knee"][1] += maxf(0.0, -shift) * 0.14 * idle
+			p["head_y"] += sin(_idle_t * 0.23 + _idle_seed * 2.0) * 0.16 * idle
+			p["head_x"] += sin(_idle_t * 0.31) * 0.03 * idle
+			for i in 2:
+				p["arm"][i] += (0.03 * breath + 0.04) * idle
+				p["elbow"][i] += (0.14 + 0.03 * breath) * idle
+				p["arm_out"][i] += 0.03 * idle
+	if crouch > 0.01 and on_floor:
+		# Agachado: caderas abajo, rodillas muy flexionadas y tronco hacia delante.
+		for i in 2:
+			p["leg"][i] = lerpf(float(p["leg"][i]), 0.95 + float(p["leg"][i]) * 0.4, crouch)
+			p["knee"][i] = lerpf(float(p["knee"][i]), 1.75 + float(p["knee"][i]) * 0.3, crouch)
+			p["foot"][i] = lerpf(float(p["foot"][i]), 0.6, crouch)
+		p["hip_y"] += -0.42 * crouch
+		p["torso_x"] += -0.3 * crouch
+		p["head_x"] += 0.25 * crouch
+	if _talking and on_floor:
+		# Hablar con las manos: antebrazos levantados, golpes de énfasis alternos y cabeceo.
+		var t := _talk_t
+		var beat := sin(t * 5.3) * 0.5 + 0.5
+		var beat2 := sin(t * 3.9 + 1.3) * 0.5 + 0.5
+		var lead := 0.5 + 0.5 * sin(t * 0.9 + _idle_seed)
+		p["arm"] = [0.32 + 0.22 * beat * lead, 0.34 + 0.24 * beat2 * (1.0 - lead * 0.6)]
+		p["elbow"] = [1.25 + 0.4 * beat * lead, 1.3 + 0.42 * beat2]
+		p["arm_out"] = [0.16 + 0.12 * beat2, 0.18 + 0.14 * beat]
+		p["arm_twist"] = [0.25 * beat, -0.25 * beat2]
+		p["head_x"] += 0.05 * sin(t * 5.3) + 0.02
+		p["head_y"] += 0.1 * sin(t * 1.7)
+		p["torso_y"] += 0.06 * sin(t * 1.1)
+		p["torso_x"] += -0.03
+	if _flinch > 0.0:
+		p["torso_x"] += 0.3 * _flinch
+		p["head_x"] += -0.25 * _flinch
+		p["torso_y"] += 0.2 * _flinch * _flinch_side
+		p["hip_y"] += -0.05 * _flinch
 	for k in overlay:
 		var v = overlay[k]
 		if v is Array and p.has(k):
@@ -283,7 +384,41 @@ func animate(delta: float, speed: float, on_floor: bool) -> void:
 					p[k][i] = v[i]
 		else:
 			p[k] = v
-	_apply(p)
+	_apply(_smooth(p, delta))
+
+
+## Mezcla la pose objetivo con la anterior para que no haya saltos entre gestos.
+func _smooth(target: Dictionary, delta: float) -> Dictionary:
+	if _pose.is_empty():
+		_pose = target.duplicate(true)
+		return _pose
+	var k := 1.0 - exp(-delta * 20.0)
+	for key in target:
+		var tv = target[key]
+		if tv is Array:
+			if not _pose.has(key):
+				_pose[key] = (tv as Array).duplicate()
+			for i in 2:
+				_pose[key][i] = lerpf(float(_pose[key][i]), float(tv[i]), k)
+		else:
+			_pose[key] = lerpf(float(_pose.get(key, tv)), float(tv), k)
+	if not target.has("arm_twist") and _pose.has("arm_twist"):
+		for i in 2:
+			_pose["arm_twist"][i] = lerpf(float(_pose["arm_twist"][i]), 0.0, k)
+	return _pose
+
+
+## El personaje gesticula con las manos mientras habla.
+func set_talking(on: bool) -> void:
+	if on and not _talking:
+		_talk_t = 0.0
+	_talking = on
+
+
+## Sacudida al recibir un golpe o una bala (side: -1 izquierda, 1 derecha).
+func flinch(side: float = 1.0) -> void:
+	_flinch = 1.0
+	_flinch_side = side
 
 
 ## Posturas de espera para personajes quietos.
@@ -423,13 +558,18 @@ func set_look(outfit_i: int, head_i: int) -> void:
 
 
 ## Pistola (dos cajas oscuras) en la mano derecha. Solo personajes con esqueleto o procedurales.
-func set_gun(on: bool) -> void:
+func set_gun(on: bool, kind: String = "pistol") -> void:
 	if _static_model or not _built:
 		return
 	if on and _gun == null:
 		_gun = _make_gun()
 	if _gun != null:
 		_gun.visible = on
+		# Las armas largas alargan la corredera (subfusil y escopeta).
+		var root: Node3D = _gun.get_node_or_null("Pistola") if _gun.name != "Pistola" else _gun
+		if root:
+			var k := 1.0 if kind == "pistol" else (1.7 if kind == "smg" else 2.6)
+			root.scale = Vector3(k, 1.0, 1.0) if _skel else Vector3(1.0, 1.0, k)
 
 
 func _make_gun() -> Node3D:
@@ -516,16 +656,30 @@ func _apply(p: Dictionary) -> void:
 
 func _apply_rigged(p: Dictionary) -> void:
 	var b := _bones
+	var tz := float(p.get("torso_z", 0.0))
+	var hz := float(p.get("hip_z", 0.0))
+	var hyaw := float(p.get("hip_yaw", 0.0))
+	var heady := float(p.get("head_y", 0.0))
 	_skel.set_bone_pose_position(b["hips"], _skel.get_bone_rest(b["hips"]).origin + Vector3(0, p["hip_y"], 0))
-	var tq := Quaternion(Vector3.RIGHT, float(p["torso_x"]) * 0.5) * Quaternion(Vector3.UP, float(p["torso_y"]) * 0.5)
+	_skel.set_bone_pose_rotation(b["hips"], Quaternion(Vector3.UP, hyaw) * Quaternion(Vector3.BACK, hz))
+	# La columna deshace el giro de la pelvis y reparte la contrarrotación de los hombros.
+	var ty := float(p["torso_y"]) - hyaw
+	var tq := Quaternion(Vector3.RIGHT, float(p["torso_x"]) * 0.5) * Quaternion(Vector3.UP, ty * 0.5) * Quaternion(Vector3.BACK, (tz - hz) * 0.5)
 	_skel.set_bone_pose_rotation(b["spine"], tq)
 	_skel.set_bone_pose_rotation(b["chest"], tq)
-	_skel.set_bone_pose_rotation(b["head"], Quaternion(Vector3.RIGHT, p["head_x"]))
+	var hq := Quaternion(Vector3.RIGHT, float(p["head_x"]) * 0.5) * Quaternion(Vector3.UP, (heady - float(p["torso_y"]) * 0.6) * 0.5) * Quaternion(Vector3.BACK, -tz * 0.4)
+	if b.has("neck"):
+		_skel.set_bone_pose_rotation(b["neck"], hq)
+		_skel.set_bone_pose_rotation(b["head"], hq)
+	else:
+		_skel.set_bone_pose_rotation(b["head"], hq * hq)
 	for i in 2:
 		var pre := "l_" if i == 0 else "r_"
 		var sgn := 1.0 if i == 0 else -1.0
 		_skel.set_bone_pose_rotation(b[pre + "thigh"], Quaternion(Vector3.RIGHT, p["leg"][i]))
 		_skel.set_bone_pose_rotation(b[pre + "shin"], Quaternion(Vector3.RIGHT, -float(p["knee"][i])))
+		if b.has(pre + "foot") and p.has("foot"):
+			_skel.set_bone_pose_rotation(b[pre + "foot"], Quaternion(Vector3.RIGHT, float(p["foot"][i])))
 		var hang := sgn * (PI * 0.5 - float(p["arm_out"][i]))
 		var tw: float = float((p["arm_twist"] as Array)[i]) if p.has("arm_twist") else 0.0
 		_skel.set_bone_pose_rotation(b[pre + "upperarm"], Quaternion(Vector3.RIGHT, p["arm"][i]) * Quaternion(Vector3.BACK, hang) * Quaternion(Vector3.RIGHT, tw))

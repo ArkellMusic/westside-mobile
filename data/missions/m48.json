@@ -1,0 +1,403 @@
+{
+  "id": "m48",
+  "number": 48,
+  "title": "GHOST'S DEBT",
+  "title_es": "La deuda de Ghost",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 110
+      },
+      "cast": [
+        "ghost",
+        "dre",
+        "keisha"
+      ],
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Walk with me, Mack. Not here. Walls got ears.",
+          "es": "Camina conmigo, Mack. Aquí no. Las paredes tienen orejas.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ghost, you don't ask for walks. What's wrong?",
+          "es": "Ghost, tú no pides paseos. ¿Qué pasa?",
+          "t": 3.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Nothing. Something. I need you to trust me with a thing I can't explain.",
+          "es": "Nada. Algo. Necesito que confíes en mí con algo que no puedo explicar.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "That sentence usually ends in a body bag.",
+          "es": "Esa frase suele acabar en una bolsa de plástico.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Dre. Not now.",
+          "es": "Dre. Ahora no.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "I've known you since sixth grade. You never asked me to stay behind before.",
+          "es": "Te conozco desde sexto. Nunca antes me pediste que me quedara.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Ghost",
+          "en": "This time I am.",
+          "es": "Esta vez te lo pido.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fine. I'll go. Dre, you stay on the motel and watch the lot. Anybody circles twice, you call.",
+          "es": "Vale. Voy. Dre, tú te quedas en el motel vigilando el aparcamiento. Si alguien da dos vueltas, llamas.",
+          "t": 6.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "That grey SUV already did. Twice.",
+          "es": "Ese todoterreno gris ya lo hizo. Dos veces.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Then we leave from the back.",
+          "es": "Pues salimos por detrás.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "I'll trace the plate. Mack, don't let him out of your sight.",
+          "es": "Rastrearé la matrícula. Mack, no lo pierdas de vista.",
+          "t": 4.2
+        }
+      ],
+      "title_card": true,
+      "hour": 22
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche para seguir a Ghost"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 120,
+        "dz": -120
+      },
+      "objective": "Sigue el coche de Ghost hasta un motel de carretera"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "The grey SUV is on you, Mack. Two men. They're not hiding.",
+          "es": "El todoterreno gris va tras de ti, Mack. Dos hombres. No se esconden.",
+          "t": 4.1
+        },
+        {
+          "speaker": "K",
+          "en": "Plate belongs to a rental company registered to Red Mesa. Same shell family.",
+          "es": "La matrícula es de una empresa de alquiler registrada a Red Mesa. La misma familia de pantallas.",
+          "t": 5.3
+        }
+      ],
+      "objective": "Despista al todoterreno"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "El todoterreno gris te ha seguido: pierde a los matones"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 130,
+        "dz": -130
+      },
+      "guards": 2,
+      "objective": "Llega a la ventana del motel sin que te vean",
+      "label": "Motel de carretera"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 130,
+        "dz": -130
+      },
+      "cast": [
+        "Rourke",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Rourke",
+          "en": "You're late, Ghost. Boss doesn't like waiting for men who owe him.",
+          "es": "Llegas tarde, Ghost. Al jefe no le gusta esperar a los hombres que le deben.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I came. That's what matters.",
+          "es": "He venido. Eso es lo que importa.",
+          "t": 2
+        },
+        {
+          "speaker": "Rourke",
+          "en": "You have a number. Pay it down, or we find other ways of collecting. A sister is a good collateral.",
+          "es": "Tienes una cifra. Págala, o buscamos otras formas de cobrar. Una hermana es un buen aval.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Don't talk about her.",
+          "es": "No hables de ella.",
+          "t": 2
+        },
+        {
+          "speaker": "Rourke",
+          "en": "Then talk about Westbrook. Tell me who sleeps where.",
+          "es": "Pues habla de Westbrook. Dime quién duerme dónde.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Ghost.",
+          "es": "Ghost.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 131,
+        "dz": -129
+      },
+      "count": 4,
+      "objective": "Interrumpe la reunión: Rourke y sus hombres",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 130,
+        "dz": -130
+      },
+      "cast": [
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "I owe a man in this city. I took money three years ago. For my sister's treatment. It was from Cross.",
+          "es": "Le debo a un hombre de esta ciudad. Cogí dinero hace tres años. Para el tratamiento de mi hermana. Era de Cross.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "And since then they own you.",
+          "es": "Y desde entonces te tienen cogido.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Not own. Borrow. A name here, a ride there. Nothing that hurt you.",
+          "es": "No me tienen. Me piden prestado. Un nombre aquí, un favor allá. Nada que te hiciera daño.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "You said 'nothing that hurt me'. That's a new way to lie.",
+          "es": "Has dicho «nada que te hiciera daño». Es una manera nueva de mentir.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'm telling you part of it. The rest isn't mine to tell yet.",
+          "es": "Te cuento una parte. El resto aún no es mío para contarlo.",
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 132,
+        "dz": -128
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 60,
+      "objective": "Más hombres cierran el motel: aguanta hasta que Ghost arranque"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -20,
+        "dz": 130
+      },
+      "objective": "Regresa a Las Brisas por la carretera del desierto con Ghost"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Where's Ghost? You with him? Answer me!",
+          "es": "¿Dónde está Ghost? ¿Estás con él? ¡Respóndeme!",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Alive, Dre. And lying to me with a straight face.",
+          "es": "Vivo, Dre. Y mintiéndome con cara de póker.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Then bring him home. We'll sort the lies after.",
+          "es": "Pues tráelo a casa. Ya resolveremos las mentiras después.",
+          "t": 3.3
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Llega al motel"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "dre",
+        "keisha",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "He's not talking?",
+          "es": "¿No habla?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "He talked. He just left things out.",
+          "es": "Habló. Dejó cosas fuera.",
+          "t": 2.5
+        },
+        {
+          "speaker": "K",
+          "en": "Rourke's phone shows twelve calls to a number in the Dorado Sol building. Maybe the pit boss. Maybe higher.",
+          "es": "El móvil de Rourke tiene doce llamadas a un número del edificio de Dorado Sol. Puede que el jefe de mesa. Puede que alguien más alto.",
+          "t": 7.5
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Dre. I never gave them your name.",
+          "es": "Dre. Nunca les di tu nombre.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "You never gave me an honest answer either. We'll see which one weighs more.",
+          "es": "Tampoco me diste una respuesta honesta a mí. Veremos cuál pesa más.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Nobody sleeps alone tonight. Understood?",
+          "es": "Esta noche nadie duerme solo. ¿Entendido?",
+          "t": 2.8
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2710,
+      "reputation": {
+        "westbrook_saints": -2,
+        "the_syndicate": -8
+      },
+      "toast": "MISIÓN COMPLETADA · La deuda de Ghost"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: ONE NIGHT WITH LOCO (49 en el radar)"
+    }
+  ]
+}

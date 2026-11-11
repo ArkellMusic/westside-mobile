@@ -1,0 +1,315 @@
+{
+  "id": "m14",
+  "number": 14,
+  "title": "THE WITNESS",
+  "title_es": "El testigo",
+  "act": "ACTO I",
+  "start": "keisha",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "big_ray",
+        "ghost"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Neighbor on Delmar saw the black sedan. Name's Mr. Albright, sells fruit on the corner.",
+          "es": "Un vecino de Delmar vio el sedán negro. Se llama el señor Albright, vende fruta en la esquina.",
+          "t": 6.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "So I go and ask.",
+          "es": "Pues voy y pregunto.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "He's scared. Two men showed him a photo of his daughter outside her school.",
+          "es": "Tiene miedo. Dos hombres le enseñaron una foto de su hija a la puerta del colegio.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "They threatened a kid.",
+          "es": "Amenazaron a una niña.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "They don't say 'threat.' They say 'We care about his family.'",
+          "es": "No dicen «amenaza». Dicen «Nos importa su familia».",
+          "t": 4.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Don't push him. Walk him out, don't drag him.",
+          "es": "No le presiones. Sácalo con calma, no a rastras.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "What if the suits are watching?",
+          "es": "¿Y si los trajes están mirando?",
+          "t": 2.2
+        },
+        {
+          "speaker": "K",
+          "en": "Then you lose them. That's why you're the one going.",
+          "es": "Entonces los pierdes. Por eso vas tú.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Take the delivery van. Nobody looks at a delivery van.",
+          "es": "Llévate la furgoneta de reparto. Nadie mira una furgoneta de reparto.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Funny. I had a plan like that once.",
+          "es": "Qué gracia. Yo tuve un plan así una vez.",
+          "t": 2.5
+        },
+        {
+          "speaker": "K",
+          "en": "How'd it end?",
+          "es": "¿Cómo acabó?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Eight years away.",
+          "es": "Ocho años fuera.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Coge la furgoneta de reparto"
+    },
+    {
+      "type": "collect",
+      "at": [
+        60,
+        60
+      ],
+      "count": 3,
+      "label": "Pista",
+      "objective": "Sigue tres pistas en mercados y paradas de autobús",
+      "hint": "Pregunta con discreción, sin alertar a nadie."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "sneak",
+      "target": [
+        80,
+        95
+      ],
+      "guards": 3,
+      "objective": "Llega al piso de Albright sin que lo noten los vigilantes",
+      "label": "portal"
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "Albright"
+      ],
+      "lines": [
+        {
+          "speaker": "Albright",
+          "en": "Go away. I didn't see anything.",
+          "es": "Váyase. No he visto nada.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Mr. Albright, I'm Ruth Johnson's boy.",
+          "es": "Señor Albright, soy el hijo de Ruth Johnson.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Albright",
+          "en": "Ruth. Lord. She paid my wife's funeral.",
+          "es": "Ruth. Dios mío. Pagó el entierro de mi mujer.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then let me pay it back. Come with me, quiet.",
+          "es": "Entonces déjame devolvérselo. Venga conmigo, en silencio.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Albright",
+          "en": "If they see me, they'll hurt my girl.",
+          "es": "Si me ven, harán daño a mi niña.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "They won't see you. I promise.",
+          "es": "No le verán. Se lo prometo.",
+          "t": 2.1
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "goto",
+      "target": [
+        80,
+        95
+      ],
+      "objective": "Sal con Albright por la puerta de servicio"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        40,
+        30
+      ],
+      "objective": "Saca a Albright del barrio con un vehículo poco llamativo"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Two cars behind you. Grey sedan and a motorcycle.",
+          "es": "Dos coches detrás de ti. Un sedán gris y una moto.",
+          "t": 3.4
+        }
+      ]
+    },
+    {
+      "type": "lose_cops",
+      "stars": 1,
+      "objective": "Pierde a los dos perseguidores por la zona residencial"
+    },
+    {
+      "type": "fight",
+      "at": [
+        60,
+        0
+      ],
+      "count": 2,
+      "objective": "Neutraliza al motorista y su compañero cuando te cierran el paso",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": "keisha",
+      "objective": "Lleva a Albright a casa de Keisha"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "Albright",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Mr. Albright, take your time.",
+          "es": "Señor Albright, tómese su tiempo.",
+          "t": 2
+        },
+        {
+          "speaker": "Albright",
+          "en": "Two men. One older with a scar over the left eye. He called the other 'Bishop'.",
+          "es": "Dos hombres. Uno mayor con una cicatriz sobre el ojo izquierdo. Llamó al otro «Bishop».",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Bishop. Viper's driver.",
+          "es": "Bishop. El conductor de Viper.",
+          "t": 2
+        },
+        {
+          "speaker": "Albright",
+          "en": "The older one gave orders. Said, 'Viper wants the Saints' block quiet by Friday.'",
+          "es": "El mayor daba órdenes. Dijo: «Viper quiere la manzana de los Saints callada para el viernes».",
+          "t": 5.7
+        },
+        {
+          "speaker": "K",
+          "en": "So Viper's in it. And a hired driver.",
+          "es": "Así que Viper está en esto. Y un conductor contratado.",
+          "t": 2.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "A snake with a chauffeur. Funny.",
+          "es": "Una serpiente con chófer. Qué gracia.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Mr. Albright stays in the back room. Nobody touches him.",
+          "es": "El señor Albright se queda en la trastienda. Nadie lo toca.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 620,
+      "reputation": {
+        "westbrook_saints": 4,
+        "redline_kings": -3
+      },
+      "toast": "+$620 · El testigo"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: VIPER'S MESSAGE (M en el radar)"
+    }
+  ]
+}

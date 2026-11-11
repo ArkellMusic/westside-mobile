@@ -1,0 +1,434 @@
+{
+  "id": "m02",
+  "number": 2,
+  "title": "OLD KEYS",
+  "title_es": "Llaves viejas",
+  "act": "ACTO I",
+  "start": "mack_door",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "mack_door",
+      "cast": [
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Thirty days on the notice. Twenty-nine now. You gonna stand on the porch all morning?",
+          "es": "Treinta días en el aviso. Ya van veintinueve. ¿Te vas a quedar en el porche toda la mañana?",
+          "t": 6.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Eight years, Ray. I can still smell her cooking in the walls.",
+          "es": "Ocho años, Ray. Todavía huelo su comida en las paredes.",
+          "t": 4.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "That's the damp. Your mama's been in the clinic since spring and nobody's aired the place.",
+          "es": "Es la humedad. Tu madre lleva en la clínica desde primavera y nadie ha aireado esto.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You never told me it was that bad. Not in one letter.",
+          "es": "Nunca me dijiste que fuera tan grave. Ni en una carta.",
+          "t": 3.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "She told me not to. Said you'd come running and get yourself killed.",
+          "es": "Ella me pidió que no. Dijo que vendrías corriendo y acabarías muerto.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "So I stayed away and let strangers paint 'sell' on her door.",
+          "es": "Así que me quedé fuera y dejé que unos desconocidos pintaran «vende» en su puerta.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Don't put that on me. I held this block together with spit and favors.",
+          "es": "No me eches eso a mí. He sostenido esta manzana con saliva y favores.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "What favors, Ray? Who do we owe?",
+          "es": "¿Qué favores, Ray? ¿A quién le debemos?",
+          "t": 2.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Later. First the house. Bank wants arrears before the month's out, and the arrears are not small.",
+          "es": "Luego. Primero la casa. El banco quiere los atrasos antes de fin de mes, y no son pocos.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "How not small?",
+          "es": "¿Cuánto es «no pocos»?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "The kind where you sell the roof to keep the walls. So we find what's worth keeping, and what's worth selling.",
+          "es": "De los que vendes el tejado para salvar las paredes. Así que veamos qué vale la pena guardar y qué vender.",
+          "t": 7.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Start with the keys. She kept a ring for everything.",
+          "es": "Empecemos por las llaves. Ella guardaba un llavero para todo.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": "mack_door",
+      "objective": "Entra en la casa de tu madre",
+      "hint": "Acércate a la puerta y entra."
+    },
+    {
+      "type": "collect",
+      "at": [
+        -100,
+        15
+      ],
+      "count": 4,
+      "label": "Recuerdo",
+      "objective": "Examina los recuerdos de la casa (fotos, cartas, llaves)",
+      "hint": "Recorre las habitaciones y pulsa el botón de acción."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "Leave the wedding photo. Take the lockbox key, it's the little brass one.",
+          "es": "Deja la foto de boda. Coge la llave del cajón fuerte, la pequeña de latón.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Storage unit receipt, taped inside. Unit 14, Kingsley lot.",
+          "es": "Recibo de un trastero, pegado dentro. Unidad 14, solar de Kingsley.",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "scene",
+      "at": "mack_door",
+      "cast": [
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Big Ray",
+          "en": "That unit's got boxes your mama paid for out of her own pocket every month. Don't ask me what's in them.",
+          "es": "Esa unidad tiene cajas que tu madre pagó de su bolsillo cada mes. No me preguntes qué hay.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You know, though.",
+          "es": "Pero tú lo sabes.",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I know it's hers. And I know somebody else has been asking about that lot.",
+          "es": "Sé que es suyo. Y sé que alguien más ha estado preguntando por ese solar.",
+          "t": 5.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Suits?",
+          "es": "¿Trajes?",
+          "t": 2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Suits with a kid driving. Go. Take my car, I'll stay and mind the door.",
+          "es": "Trajes con un chaval al volante. Ve. Llévate mi coche, yo vigilo la puerta.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un vehículo para ir al trastero"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        30,
+        -60
+      ],
+      "objective": "Conduce hasta el solar de trasteros de Kingsley"
+    },
+    {
+      "type": "fight",
+      "at": [
+        30,
+        -60
+      ],
+      "count": 2,
+      "objective": "Echa a los dos chavales que fuerzan el candado de la unidad 14",
+      "faction": "redline_kings",
+      "armed": false
+    },
+    {
+      "type": "goto",
+      "target": [
+        30,
+        -62
+      ],
+      "objective": "Entra en la unidad 14 con la llave de latón",
+      "hint": "El candado está oxidado: la llave tiene que girar a la primera."
+    },
+    {
+      "type": "collect",
+      "at": [
+        30,
+        -62
+      ],
+      "count": 2,
+      "label": "Caja",
+      "objective": "Recoge las dos cajas de tu madre",
+      "hint": "Acércate a cada caja para cargarla."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Heavy. She was hoarding something that clinks.",
+          "es": "Pesan. Estaba guardando algo que tintinea.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Trunk, not the back seat. And take the slow way. Nobody trails a man driving like a deacon.",
+          "es": "Al maletero, no al asiento de atrás. Y ve despacio. Nadie sigue a un hombre que conduce como un diácono.",
+          "t": 6.4
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": "mack_house_curb",
+      "objective": "Lleva las cajas a casa sin dañar el coche",
+      "time": 90
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": [
+        -100,
+        15
+      ],
+      "count": 3,
+      "label": "Habitación",
+      "objective": "Ordena la casa: cocina, salón y cuarto de tu madre",
+      "hint": "Abre cada mueble y guarda lo útil."
+    },
+    {
+      "type": "scene",
+      "at": "mack_door",
+      "cast": [
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Ray. Letters. Twenty of them, all to the same P.O. box, none opened.",
+          "es": "Ray. Cartas. Veinte, todas al mismo apartado de correos, ninguna abierta.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Who from?",
+          "es": "¿De quién?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "One line on the back of the top one. 'Tell Marcus Dre never stopped asking.'",
+          "es": "Una línea en el reverso de la de arriba. «Dile a Marcus que Dre nunca dejó de preguntar».",
+          "t": 5.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Dre wrote your mother for eight years and she never said a word.",
+          "es": "Dre le escribió a tu madre ocho años y ella no dijo ni una palabra.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "She was protecting me. Or him.",
+          "es": "Me protegía a mí. O a él.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Or both. Put them away, son. Not today.",
+          "es": "O a los dos. Guárdalas, hijo. Hoy no.",
+          "t": 2.7
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": [
+        -96,
+        18
+      ],
+      "objective": "Abre el armario y revisa la ropa de tu madre",
+      "hint": "Acércate al armario del cuarto."
+    },
+    {
+      "type": "goto",
+      "target": [
+        -98,
+        12
+      ],
+      "objective": "Descansa y guarda la partida en la cama",
+      "hint": "Usa la cama para guardar manualmente."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "This number still yours, Marcus? Heard you were back. News moves fast when it's bad.",
+          "es": "¿Este número sigue siendo tuyo, Marcus? Me han dicho que has vuelto. Las noticias malas corren.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Dre.",
+          "es": "Dre.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Corner of Fifth and Marlow. Tonight. Come alone, bring your manners, leave your excuses.",
+          "es": "Esquina de Quinta y Marlow. Esta noche. Ven solo, trae educación y deja las excusas en casa.",
+          "t": 6.2
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": "dre_corner",
+      "objective": "Presenta tus respetos a Dre en su esquina"
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Look at that. Eight years and you still walk like the street owes you.",
+          "es": "Mírate. Ocho años y sigues caminando como si la calle te debiera algo.",
+          "t": 4.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I came for the house, Dre.",
+          "es": "He venido por la casa, Dre.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Everybody comes for something. Not tonight. Tonight you just look at me.",
+          "es": "Todos vienen por algo. Esta noche no. Esta noche solo me miras.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "You wrote my mother.",
+          "es": "Le escribiste a mi madre.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Somebody had to. Go home. We'll talk when I'm done being angry.",
+          "es": "Alguien tenía que hacerlo. Vete a casa. Hablaremos cuando se me pase el cabreo.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Eight years is a long time to be angry.",
+          "es": "Ocho años es mucho tiempo para estar cabreado.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Dre",
+          "en": "Stay out of it, Ghost.",
+          "es": "No te metas, Ghost.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 150,
+      "reputation": {
+        "westbrook_saints": 3
+      },
+      "toast": "+$150 · Llaves viejas"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: DRE DON'T FORGET (M en el radar)"
+    }
+  ]
+}

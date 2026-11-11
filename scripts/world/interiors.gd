@@ -77,6 +77,7 @@ const SHOPS := [
 	{"id": "clothes", "name": "Veyra Threads", "mark": "R", "color": Color(0.9, 0.35, 0.6), "ambient": Color(1.0, 0.93, 0.88), "service": "Comprar ropa"},
 	{"id": "barber", "name": "Fade Kings", "mark": "B", "color": Color(0.25, 0.6, 0.95), "ambient": Color(0.9, 0.95, 1.0), "service": "Corte y tinte"},
 	{"id": "tattoo", "name": "Ink Saints", "mark": "T", "color": Color(0.7, 0.3, 0.95), "ambient": Color(0.85, 0.75, 0.95), "service": "Tatuarse"},
+	{"id": "guns", "name": "Iron Sights", "mark": "A", "color": Color(0.85, 0.55, 0.15), "ambient": Color(0.95, 0.9, 0.82), "service": "Comprar munición"},
 ]
 var _shop_fronts: Array = []   # {id, pos: Vector3 (puerta en fachada), front: float, color, mark}
 
@@ -157,6 +158,22 @@ func _build_shop_fronts() -> void:
 						root.add_child(seg)
 					_mesh_box(root, Vector3(side * 1.15, 2.26, 0.32), Vector3(0.28, 0.08, 0.28), _mat(Color(0.8, 0.8, 0.82), 0.25, 0.9))
 					_mesh_box(root, Vector3(side * 1.15, 1.27, 0.32), Vector3(0.28, 0.08, 0.28), _mat(Color(0.8, 0.8, 0.82), 0.25, 0.9))
+			"guns":
+				# Rejas en los escaparates y diana de tiro.
+				for sx: float in [-2.9, 2.9]:
+					var gx := -1.4
+					while gx <= 1.4:
+						_mesh_box(root, Vector3(sx + gx, 1.5, 0.28), Vector3(0.05, 2.3, 0.05), frame)
+						gx += 0.35
+					var ring := MeshInstance3D.new()
+					var tm := TorusMesh.new()
+					tm.inner_radius = 0.28
+					tm.outer_radius = 0.36
+					tm.material = _mat(Color(0.9, 0.55, 0.15), 0.4, 0.0, Color(0.95, 0.55, 0.1), 2.0)
+					ring.mesh = tm
+					ring.rotation.x = PI * 0.5
+					ring.position = Vector3(sx, 1.6, 0.22)
+					root.add_child(ring)
 			"tattoo":
 				# Neón: rombo y dos dagas cruzadas en el escaparate.
 				var neon := _mat(Color(0.9, 0.3, 1.0), 0.3, 0.0, Color(0.85, 0.25, 1.0), 3.0)
@@ -412,6 +429,14 @@ func interaction(pos: Vector3, can_enter: bool) -> Dictionary:
 					return {"label": "Corte y tinte ($%d)" % main.BARBER_PRICE, "action": func() -> void: main.buy_head_style()}
 				"tattoo":
 					return {"label": "Tatuarse ($%d)" % main.TATTOO_PRICE, "action": func() -> void: main.buy_tattoo()}
+				"guns":
+					return {"label": "Munición ($%d)" % main.AMMO_PRICE, "action": func() -> void: main.buy_ammo()}
+		# Armería: el expositor de armas está a la izquierda del mostrador.
+		if p["id"] == "guns" and Vector2(pos.x - (o.x - 3.6), pos.z - (o.z - 0.4)).length() < 1.7:
+			var w: String = main.next_weapon_for_sale()
+			if w != "":
+				var st: Dictionary = Combat.STATS[w]
+				return {"label": "%s ($%d)" % [st["name"], int(st["price"])], "action": func() -> void: main.buy_weapon()}
 		if p["id"] == "house" and Vector2(pos.x - (o.x + 3.0), pos.z - (o.z + 4.0)).length() < 1.1:
 			return {"label": "Cambiarse de ropa", "action": func() -> void: main.change_outfit()}
 		if p["id"] == "house" and Vector2(pos.x - (o.x + 4.4), pos.z - (o.z + 3.2)).length() < 2.0:
@@ -797,6 +822,9 @@ func _ensure_built(i: int) -> void:
 		"tattoo":
 			_shell(root, size, h, float(p["door_x"]), _pbr("concrete_wall", Color(0.5, 0.46, 0.56), 3.0), _mat(Color(0.2, 0.19, 0.23), 0.9), Color(0.2, 0.2, 0.22))
 			_fill_tattoo(root, size)
+		"guns":
+			_shell(root, size, h, float(p["door_x"]), _pbr("concrete_wall", Color(0.82, 0.8, 0.74), 3.0), _mat(Color(0.85, 0.85, 0.83), 0.9), Color(0.3, 0.3, 0.32))
+			_fill_guns(root, size)
 	if not p.has("model"):
 		for n in root.find_children("*", "GeometryInstance3D", true, false):
 			(n as GeometryInstance3D).visibility_range_end = VIS_END
@@ -1047,6 +1075,33 @@ func _fill_tattoo(root: Node3D, size: Vector2) -> void:
 	_omni(root, Vector3(0, 2.6, 0.5), Color(0.8, 0.6, 1.0), 1.4, 9.0, true)
 	_omni(root, Vector3(-3.5, 2.2, 0.8), Color(1.0, 0.95, 0.9), 1.3, 5.0)
 	_ceiling_panel(root, Vector3(0, 3.16, 0.5), Vector3(1.8, 0.06, 0.8), Color(0.85, 0.7, 1.0))
+
+
+func _fill_guns(root: Node3D, size: Vector2) -> void:
+	var hd := size.y * 0.5
+	var hw := size.x * 0.5
+	_label(root, "IRON SIGHTS", Vector3(0, 2.55, -hd + 0.06), 0.0, 120, Color(1.0, 0.8, 0.45), 0.008)
+	_counter(root, Color(0.15, 0.15, 0.16))
+	_clerk(root, Vector3(0, 0.02, -3.2), 2, 4)
+	# Expositor de pared con armas largas y cortas (siluetas de acero) y cajas de munición.
+	var steel := _mat(Color(0.12, 0.12, 0.13), 0.35, 0.8)
+	var wood := _pbr("wood_planks", Color(0.55, 0.42, 0.32), 1.2)
+	_rbox(root, Vector3(-hw + 0.06, 1.6, -0.4), Vector3(0.06, 1.9, 4.6), wood, false)
+	for k in 5:
+		var z := -2.2 + 0.9 * k
+		_rbox(root, Vector3(-hw + 0.14, 2.1, z), Vector3(0.05, 0.09, 0.78), steel, false)
+		_rbox(root, Vector3(-hw + 0.14, 2.02, z - 0.3), Vector3(0.05, 0.2, 0.1), steel, false)
+		_rbox(root, Vector3(-hw + 0.14, 1.45, z), Vector3(0.05, 0.08, 0.52), steel, false)
+		_rbox(root, Vector3(-hw + 0.14, 1.36, z - 0.16), Vector3(0.05, 0.2, 0.09), steel, false)
+		_rbox(root, Vector3(-hw + 0.14, 0.95, z), Vector3(0.05, 0.08, 0.22), steel, false)
+		_rbox(root, Vector3(-hw + 0.14, 0.88, z - 0.07), Vector3(0.05, 0.14, 0.07), steel, false)
+	_prop(root, "steel_frame_shelves_01/steel_frame_shelves_01_1k.gltf", Vector3(hw - 0.5, 0, -1.0), 270.0)
+	_prop(root, "steel_frame_shelves_01/steel_frame_shelves_01_1k.gltf", Vector3(hw - 0.5, 0, 1.4), 270.0)
+	for k in 6:
+		_rbox(root, Vector3(hw - 0.9, 0.12 + 0.2 * float(k % 2), -2.0 + 0.5 * k), Vector3(0.34, 0.2, 0.26), _mat([Color(0.6, 0.5, 0.2), Color(0.3, 0.35, 0.22), Color(0.5, 0.15, 0.12)][k % 3], 0.8), false)
+	_omni(root, Vector3(0, 2.7, 0.5), Color(1.0, 0.92, 0.8), 1.6, 9.0, true)
+	_omni(root, Vector3(-3.4, 2.4, -0.4), Color(1.0, 0.85, 0.6), 1.2, 5.0)
+	_ceiling_panel(root, Vector3(0, 3.16, 0.5), Vector3(2.4, 0.06, 1.0))
 
 
 # ---- Vargas Auto Works ----

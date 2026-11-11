@@ -1,0 +1,321 @@
+{
+  "id": "m11",
+  "number": 11,
+  "title": "HONEST MONEY",
+  "title_es": "Dinero honrado",
+  "act": "ACTO I",
+  "start": "veyra_mart",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "veyra_mart",
+      "cast": [
+        "okafor",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "Three jobs, all legal, all small. Pays the same as a week of selling bad luck.",
+          "es": "Tres encargos, todos legales y pequeños. Pagan lo mismo que una semana vendiendo mala suerte.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "I owe the bank eleven grand by month's end. A week doesn't cover it.",
+          "es": "Debo al banco once mil a fin de mes. Una semana no basta.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Okafor",
+          "en": "A week doesn't, but a month of weeks does. And nobody shoots at you.",
+          "es": "Una semana no, pero un mes de semanas sí. Y nadie te dispara.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Take the jobs, son. Straight money lets you sleep.",
+          "es": "Coge los trabajos, hijo. El dinero limpio deja dormir.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "I haven't slept since the bus.",
+          "es": "No duermo desde el autobús.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Okafor",
+          "en": "First, a box of tools to Vargas Auto Works. Loco's waiting.",
+          "es": "Primero, una caja de herramientas a Vargas Auto Works. Loco espera.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Okafor",
+          "en": "Then Ms. Ferreira needs help moving her ovens. And last, a pharmacy order before the market shuts.",
+          "es": "Luego la señora Ferreira necesita ayuda con sus hornos. Y por último, un pedido de farmacia antes de que cierre el mercado.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I'm not a delivery boy, Okafor.",
+          "es": "No soy repartidor, Okafor.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Okafor",
+          "en": "No. You're a man with a debt. There's no shame in a van.",
+          "es": "No. Eres un hombre con una deuda. No hay vergüenza en una furgoneta.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Deacon driving, remember.",
+          "es": "Conducir como un diácono, recuerda.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fine. Keys.",
+          "es": "Vale. Las llaves.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Coge la furgoneta de reparto de Okafor"
+    },
+    {
+      "type": "collect",
+      "at": [
+        -20,
+        -20
+      ],
+      "count": 1,
+      "label": "Caja de herramientas",
+      "objective": "Carga la caja de herramientas en la furgoneta"
+    },
+    {
+      "type": "timed_drive",
+      "target": "vargas_front",
+      "objective": "Lleva las herramientas a Vargas respetando el tráfico",
+      "time": 80
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -80,
+        120
+      ],
+      "objective": "Ve a la panadería de la señora Ferreira"
+    },
+    {
+      "type": "collect",
+      "at": [
+        -80,
+        120
+      ],
+      "count": 2,
+      "label": "Horno",
+      "objective": "Carga los hornos en la furgoneta",
+      "hint": "Mueve con cuidado, que no se caigan."
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        -60,
+        -100
+      ],
+      "objective": "Aparca en el nuevo local de Ferreira con maniobra precisa",
+      "stop": true
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ms. Ferreira",
+          "en": "The pharmacy's shutting at six! Hurry, mijo!",
+          "es": "¡La farmacia cierra a las seis! ¡Date prisa, hijo!",
+          "t": 3.1
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        40,
+        60
+      ],
+      "objective": "Entrega el pedido urgente antes del cierre del mercado",
+      "time": 60
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "scene",
+      "at": "veyra_mart",
+      "cast": [
+        "okafor",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Okafor",
+          "en": "You're late. And someone left an envelope with your name. Cash, no note.",
+          "es": "Llegas tarde. Y alguien dejó un sobre con tu nombre. Efectivo, sin nota.",
+          "t": 5.0
+        },
+        {
+          "speaker": "Mack",
+          "en": "Who?",
+          "es": "¿Quién?",
+          "t": 2
+        },
+        {
+          "speaker": "Okafor",
+          "en": "Same man who hired the driver last week. Paid three times the rate to move something and not ask.",
+          "es": "El mismo hombre que contrató al conductor la semana pasada. Pagó el triple por mover algo sin preguntar.",
+          "t": 6.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "They want to use your clean work as cover.",
+          "es": "Quieren usar tu trabajo limpio como tapadera.",
+          "t": 2.9
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "give",
+      "ammo": 18,
+      "money": 0,
+      "toast": "Munición por si el intermediario insiste"
+    },
+    {
+      "type": "fight",
+      "at": [
+        40,
+        60
+      ],
+      "count": 3,
+      "objective": "Rechaza al intermediario y a sus dos compinches y quédate con la matrícula",
+      "armed": true
+    },
+    {
+      "type": "chase",
+      "at": [
+        30,
+        50
+      ],
+      "objective": "Persigue a pie al intermediario que huye con la matrícula",
+      "toast": "Corre y no le pierdas de vista."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": "keisha",
+      "objective": "Pasa la matrícula a Keisha"
+    },
+    {
+      "type": "scene",
+      "at": "keisha",
+      "cast": [
+        "keisha",
+        "okafor",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Plate traces to a Hargrove van again. Same courier, fresh paint.",
+          "es": "La matrícula lleva otra vez a una furgoneta de Hargrove. El mismo mensajero, pintura nueva.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "So they sent me business to cover their own.",
+          "es": "Así que me mandaron trabajo para tapar el suyo.",
+          "t": 3.1
+        },
+        {
+          "speaker": "K",
+          "en": "And you said no. That's the first time they've been told no and had to look.",
+          "es": "Y dijiste que no. Es la primera vez que les dicen que no y tienen que mirar.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Okafor",
+          "en": "The honest money was honest, Marcus. Take it.",
+          "es": "El dinero honrado era honrado, Marcus. Cógelo.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Grocery delivery licence, courier plate in your name, clean books. It's legal.",
+          "es": "Licencia de reparto, matrícula de mensajería a tu nombre, libros limpios. Es legal.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "A legal hustle. Never thought I'd say it.",
+          "es": "Un trapicheo legal. Nunca pensé que lo diría.",
+          "t": 2.9
+        },
+        {
+          "speaker": "K",
+          "en": "Welcome to the grown-up world.",
+          "es": "Bienvenido al mundo de los adultos.",
+          "t": 2.1
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 510,
+      "reputation": {
+        "westbrook_saints": 3
+      },
+      "toast": "+$510 · Dinero honrado"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: HARBOR RUN (M en el radar)"
+    }
+  ]
+}

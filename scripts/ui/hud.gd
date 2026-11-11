@@ -728,8 +728,15 @@ func _draw_weapon_box(r: Rect2) -> void:
 	_cluster.draw_style_box(sb2, inner)
 	if _weapon_kind == "fist":
 		_draw_fist(r.get_center(), 2.15)
-	elif _weapon_kind == "pistol":
+	elif _weapon_kind != "":
 		_draw_pistol(r.get_center() + Vector2(0, -8.0), 2.0)
+		if _weapon_kind != "pistol":
+			# Armas largas: cañón prolongado y etiqueta.
+			var bc := r.get_center() + Vector2(0, -8.0)
+			_cluster.draw_rect(Rect2(bc + Vector2(24, -11) * 2.0, Vector2(8.0 if _weapon_kind == "smg" else 16.0, 5.0) * 2.0), Color(0.13, 0.13, 0.15))
+			var lf := UITheme.bold_font()
+			var tag := "SUBF." if _weapon_kind == "smg" else "ESCOP."
+			_cluster.draw_string(lf, Vector2(r.position.x + 16.0, r.end.y - 16.0), tag, HORIZONTAL_ALIGNMENT_LEFT, -1, 15, Color(0.08, 0.08, 0.1))
 		if _ammo >= 0:
 			var font := UITheme.bold_font()
 			var txt := str(_ammo)

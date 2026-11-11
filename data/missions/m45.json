@@ -1,0 +1,380 @@
+{
+  "id": "m45",
+  "number": 45,
+  "title": "DOUBLE OR NOTHING",
+  "title_es": "Doble o nada",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "loco",
+        "dre",
+        "Marisol",
+        "keisha",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Friday night. Opal Theatre. Four thousand people, one pickpocket on every row, and Anders Pike in the box seats.",
+          "es": "Viernes por la noche. Teatro Ópalo. Cuatro mil personas, un carterista en cada fila y Anders Pike en el palco.",
+          "t": 7.8
+        },
+        {
+          "speaker": "Dre",
+          "en": "Loco and I take the back. Mack, you're the front. Nobody gets a hero moment.",
+          "es": "Loco y yo vamos por atrás. Mack, tú por delante. Nadie tiene un momento de héroe.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "You say that every time right before somebody does.",
+          "es": "Siempre lo dices justo antes de que alguien lo tenga.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Marisol",
+          "en": "Pike leaves the theatre at the last curtain call. Black coupe, driver named Esteban. They'll head for a garage downtown.",
+          "es": "Pike sale del teatro en la última ovación. Cupé negro, chófer llamado Esteban. Irán a un garaje del centro.",
+          "t": 8.4
+        },
+        {
+          "speaker": "K",
+          "en": "Garage level three has a locked cage. Pike keeps his box there. Cash, chips, a ledger with the real numbers.",
+          "es": "El nivel tres del garaje tiene una jaula cerrada. Pike guarda ahí su caja. Efectivo, fichas y un libro con los números reales.",
+          "t": 7.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "And I'm the guy who opens locks. Which is why my mama says I'll end up useful or in prison.",
+          "es": "Y yo soy el que abre cerraduras. Por eso mi madre dice que acabaré siendo útil o preso.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "Both, probably.",
+          "es": "Las dos cosas, seguramente.",
+          "t": 2
+        },
+        {
+          "speaker": "Marisol",
+          "en": "The Syndicate will have eyes at every exit. If they see three Westbrook faces they'll draw conclusions.",
+          "es": "El Syndicate tendrá ojos en cada salida. Si ven tres caras de Westbrook sacarán conclusiones.",
+          "t": 7.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we don't give them faces. We give them smoke.",
+          "es": "Pues no les damos caras. Les damos humo.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "Ghost's on overwatch. Three clicks on the radio means abort.",
+          "es": "Ghost está en vigilancia. Tres clics en la radio es abortar.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Three clicks. Or I shoot first.",
+          "es": "Tres clics. O disparo primero.",
+          "t": 2.2
+        }
+      ],
+      "title_card": true,
+      "hour": 20
+    },
+    {
+      "type": "give",
+      "ammo": 30,
+      "money": 0,
+      "toast": "Munición para la noche: +30"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 90,
+        "dz": 60
+      },
+      "objective": "Entra al Teatro Ópalo por la puerta de artistas"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "I'm on the roof. If you see a stagehand holding a clipboard like a weapon, that's the real security.",
+          "es": "Estoy en la azotea. Si ves a un tramoyista con un portapapeles como un arma, ese es el seguridad de verdad.",
+          "t": 7.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "Back stairs clear. You've got four minutes before the final act.",
+          "es": "Escalera trasera despejada. Tienes cuatro minutos antes del último acto.",
+          "t": 4.5
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 95,
+        "dz": 70
+      },
+      "guards": 3,
+      "objective": "Llega al palco de los patrocinadores sin ser visto",
+      "label": "Pasillo de palcos"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "chase",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 100,
+        "dz": 75
+      },
+      "objective": "Pike huye por el patio de butacas: no lo pierdas",
+      "toast": "¡Pike corre hacia el garaje!"
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un coche para seguir a la berlina de Pike"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 10,
+        "dz": -70
+      },
+      "objective": "Sigue la berlina de Pike hasta el garaje del centro"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 12,
+        "dz": -72
+      },
+      "count": 2,
+      "label": "Escuchar conversación",
+      "objective": "Acércate al nivel dos y escucha lo que habla Pike con su socio",
+      "hint": "Hay una columna junto al ascensor."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Anders Pike",
+          "en": "Third level, cage four. Combination is the opening night date. Nobody touches it until Sunday.",
+          "es": "Nivel tres, jaula cuatro. La combinación es la fecha del estreno. Nadie la toca hasta el domingo.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Esteban",
+          "en": "And the Westbrook kid? Cross wants him quiet.",
+          "es": "¿Y el chico de Westbrook? Cross lo quiere callado.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Anders Pike",
+          "en": "Cross wants a lot of things. Sunday.",
+          "es": "Cross quiere muchas cosas. El domingo.",
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": 15,
+        "dz": -78
+      },
+      "guards": 4,
+      "objective": "Sube al nivel tres y espera el momento de abrir la jaula en silencio",
+      "label": "Garaje, nivel 3"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 16,
+        "dz": -80
+      },
+      "count": 3,
+      "label": "Abrir jaula",
+      "objective": "Abre la jaula cuatro y saca el libro y el dinero",
+      "hint": "Tres bultos: dinero, fichas, libro."
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Three clicks! Three clicks! Security is closing the ramp!",
+          "es": "¡Tres clics! ¡Tres clics! ¡Seguridad está cerrando la rampa!",
+          "t": 4.0
+        },
+        {
+          "speaker": "Loco",
+          "en": "I can hold the barrier for twenty seconds. Don't waste them.",
+          "es": "Puedo mantener la barrera veinte segundos. No los desperdicies.",
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -10,
+        "dz": -40
+      },
+      "objective": "Escapa por la rampa antes de que seguridad cierre el aparcamiento",
+      "time": 55
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": 0,
+        "dz": -35
+      },
+      "count": 5,
+      "objective": "Rompe la persecución: ataca a los coches de seguridad",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "objective": "Vuelve al motel con la caja"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -110,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "ghost",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Count it twice. Cash is clean paper, but the ledger… the ledger is a map.",
+          "es": "Cuéntalo dos veces. El dinero es papel limpio, pero el libro… el libro es un mapa.",
+          "t": 5.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "Cross Meridian to Aurum Freight to Dorado Sol. And look, here: Syndicate crews paid as 'security consultants'.",
+          "es": "Cross Meridian, Aurum Freight, Dorado Sol. Y mira, aquí: equipos del Syndicate cobrando como «consultores de seguridad».",
+          "t": 7.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "So this isn't a casino skim. Casinos are just the laundry.",
+          "es": "Así que esto no es una trampa de casino. Los casinos son solo la lavandería.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "The money is flowing from far away. Bigger than Viper, bigger than any single set.",
+          "es": "El dinero viene de muy lejos. Más grande que Viper, más grande que cualquier banda.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Loco",
+          "en": "I took a couple of chips as a souvenir. What?",
+          "es": "Me llevé un par de fichas de recuerdo. ¿Qué?",
+          "t": 3.2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Put them back, Loco.",
+          "es": "Devuélvelas, Loco.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "No. Keep them. Tomorrow someone will ask where the chips went and we'll know who flinches.",
+          "es": "No. Quédatelas. Mañana alguien preguntará dónde están las fichas y sabremos quién se estremece.",
+          "t": 6.3
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2510,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -10
+      },
+      "toast": "MISIÓN COMPLETADA · Doble o nada"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE PEOPLE BEHIND IT (46 en el radar)"
+    }
+  ]
+}

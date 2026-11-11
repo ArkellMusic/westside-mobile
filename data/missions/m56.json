@@ -1,0 +1,332 @@
+{
+  "id": "m56",
+  "number": 56,
+  "title": "K'S RECORDING",
+  "title_es": "La grabación de K",
+  "act": "ACTO III",
+  "start": {
+    "zone": "las_brisas",
+    "dx": -110,
+    "dz": 95
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -105,
+        "dz": 95
+      },
+      "cast": [
+        "keisha",
+        "dre",
+        "ghost"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "I did something last night I shouldn't have. I ran the staff network again. Four months of cached audio.",
+          "es": "Hice algo anoche que no debía. Volví a recorrer la red del personal. Cuatro meses de audio en caché.",
+          "t": 7.3
+        },
+        {
+          "speaker": "Dre",
+          "en": "You listened to the Syndicate?",
+          "es": "¿Escuchaste al Syndicate?",
+          "t": 2.1
+        },
+        {
+          "speaker": "K",
+          "en": "I listened to a voice I know. A clip from Dorado Sol. Eleven seconds. Corrupted.",
+          "es": "Escuché una voz que conozco. Un fragmento de Dorado Sol. Once segundos. Corrupto.",
+          "t": 5.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Whose voice?",
+          "es": "¿De quién es la voz?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "I can't prove it until I clean the file. I won't say a name until I'm sure.",
+          "es": "No puedo demostrarlo hasta limpiar el archivo. No diré un nombre hasta estar segura.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Ask me.",
+          "es": "Pregúntame.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "Ghost. Please.",
+          "es": "Ghost. Por favor.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "If it's me, I want to hear it first.",
+          "es": "Si soy yo, quiero oírlo primero.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Dre",
+          "en": "We don't play it until K says so.",
+          "es": "No lo ponemos hasta que K lo diga.",
+          "t": 2.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "K, what do you need?",
+          "es": "K, ¿qué necesitas?",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "An isolated computer, no internet. And the original recorder. It's somewhere on the edge of the city.",
+          "es": "Un ordenador aislado, sin internet. Y la grabadora original. Está en algún lugar del borde de la ciudad.",
+          "t": 7.1
+        }
+      ],
+      "title_card": true,
+      "hour": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -60,
+        "dz": -20
+      },
+      "objective": "Recoge un portátil aislado en una tienda de segunda mano"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -62,
+        "dz": -22
+      },
+      "count": 2,
+      "label": "Preparar equipo",
+      "objective": "Prepara el portátil aislado y el cableado",
+      "hint": "Sin Wi-Fi, sin bluetooth."
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The audio has a reverb signature. Warehouse, concrete, steel doors. West industrial strip.",
+          "es": "El audio tiene firma de reverberación. Almacén, hormigón, puertas de acero. Franja industrial oeste.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "Heading there.",
+          "es": "Voy para allá.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -150,
+        "dz": -120
+      },
+      "objective": "Conduce hasta el almacén de la franja industrial oeste"
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -155,
+        "dz": -125
+      },
+      "guards": 4,
+      "objective": "Entra en el almacén sin que te vean",
+      "label": "Almacén"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -158,
+        "dz": -128
+      },
+      "count": 2,
+      "label": "Copiar dispositivo",
+      "objective": "Localiza el dispositivo original y cópialo",
+      "hint": "Está en una caja de herramientas."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -157,
+        "dz": -127
+      },
+      "count": 5,
+      "objective": "Seguridad llega antes de que acabe la copia: defiéndete",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Roba un coche para huir por caminos secundarios"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 80
+      },
+      "objective": "Huye por caminos secundarios hasta el puesto seguro"
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 80
+      },
+      "cast": [
+        "Voice",
+        "ghost",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "Voice",
+          "en": "Ghost: Keep it quiet. Names stay out of the room. You owe us the name of the Westbrook boy.",
+          "es": "Ghost: Mantenlo en silencio. Los nombres no entran en la sala. Nos debes el nombre del chico de Westbrook.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Voice",
+          "en": "Intermediary: Last chance, Ghost. Or your sister pays.",
+          "es": "Intermediario: Última oportunidad, Ghost. O paga tu hermana.",
+          "t": 3.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I never gave it. I never will.",
+          "es": "Nunca lo di. Nunca lo daré.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Dre",
+          "en": "He said 'I never gave it'. But he sat at that table.",
+          "es": "Dijo «nunca lo di». Pero se sentó en esa mesa.",
+          "t": 3.6
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "las_brisas",
+        "dx": -100,
+        "dz": 80
+      },
+      "cast": [
+        "keisha",
+        "dre"
+      ],
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "That's all of it. Eleven seconds became forty. No smoking gun, no confession. Just pressure.",
+          "es": "Eso es todo. Once segundos se convirtieron en cuarenta. Sin prueba definitiva, sin confesión. Solo presión.",
+          "t": 6.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "He met them. He lied about meeting them.",
+          "es": "Se reunió con ellos. Mintió sobre reunirse.",
+          "t": 2.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "He lied to protect something. We don't know what.",
+          "es": "Mintió para proteger algo. No sabemos qué.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Dre",
+          "en": "You want to wait.",
+          "es": "Quieres esperar.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "I want the whole story before I break a friend.",
+          "es": "Quiero la historia entera antes de romper a un amigo.",
+          "t": 3.3
+        },
+        {
+          "speaker": "K",
+          "en": "Whatever you decide, I'm keeping copies in three places.",
+          "es": "Decidáis lo que decidáis, guardo copias en tres sitios.",
+          "t": 3.9
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 3260,
+      "reputation": {
+        "westbrook_saints": -3,
+        "the_syndicate": -8
+      },
+      "toast": "MISIÓN COMPLETADA · La grabación de K"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: TWO SIDES (57 en el radar)"
+    }
+  ]
+}

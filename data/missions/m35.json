@@ -1,0 +1,318 @@
+{
+  "id": "m35",
+  "number": 35,
+  "title": "THE PRICE OF SILENCE",
+  "title_es": "El precio del silencio",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": 100,
+    "dz": 100
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -50,
+        "dz": 100
+      },
+      "cast": [
+        "Nina Cho",
+        "Helena Brandt"
+      ],
+      "lines": [
+        {
+          "speaker": "Helena Brandt",
+          "en": "I was an accountant at the harbor commission. Eight years. I kept the books honest until they stopped paying me to.",
+          "es": "Fui contable en la comisión del puerto. Ocho años. Llevé los libros limpios hasta que dejaron de pagarme por ello.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "You're the one who called me at four a.m.",
+          "es": "Eres quien me llamó a las cuatro de la madrugada.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Helena Brandt",
+          "en": "They sent me a letter. A friendly one. 'We value your discretion, Ms. Brandt. We know where your daughter goes to school.'",
+          "es": "Me mandaron una carta. Amable. «Valoramos su discreción, señora Brandt. Sabemos a qué colegio va su hija».",
+          "t": 8.5
+        },
+        {
+          "speaker": "Mack",
+          "en": "Signed?",
+          "es": "¿Firmada?",
+          "t": 2
+        },
+        {
+          "speaker": "Helena Brandt",
+          "en": "Not by a person. By a department. That's how they do threats. Nobody is ever guilty, only 'procedure.'",
+          "es": "No por una persona. Por un departamento. Así hacen las amenazas. Nadie es culpable, solo hay «procedimientos».",
+          "t": 7.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "We can get you somewhere safe. Tonight.",
+          "es": "Podemos llevarte a un lugar seguro. Esta noche.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Helena Brandt",
+          "en": "And my daughter? She has a recital Friday.",
+          "es": "¿Y mi hija? Tiene un recital el viernes.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we move both of you. Quiet.",
+          "es": "Entonces os movemos a las dos. En silencio.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Helena Brandt",
+          "en": "If I testify, they take everything. The house, the job, my name.",
+          "es": "Si testifico, me lo quitan todo. La casa, el trabajo, mi nombre.",
+          "t": 4.5
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "They already took your sleep.",
+          "es": "Ya te quitaron el sueño.",
+          "t": 2
+        },
+        {
+          "speaker": "Helena Brandt",
+          "en": "Yes. They did.",
+          "es": "Sí. Es verdad.",
+          "t": 2
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche discreto para trasladar a Helena y su hija"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -100,
+        "dz": 80
+      },
+      "objective": "Lleva a Helena a un lugar seguro",
+      "stop": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -60,
+        "dz": 95
+      },
+      "objective": "Investiga quién ha vigilado su casa y desde cuándo"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -62,
+        "dz": 97
+      },
+      "count": 3,
+      "label": "Pista",
+      "objective": "Recoge huellas de neumáticos, colillas y una cámara escondida",
+      "hint": "Mira bajo el seto y el poste de la luz."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "The camera has a serial number. It's bought in bulk by a company called Greywater Services.",
+          "es": "La cámara tiene un número de serie. La compró en lote una empresa llamada Greywater Services.",
+          "t": 6.4
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 80,
+        "dz": 60
+      },
+      "guards": 3,
+      "objective": "Entra en la oficina donde guardan copias de la amenaza firmada",
+      "label": "Oficina"
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 82,
+        "dz": 62
+      },
+      "count": 1,
+      "label": "Copia",
+      "objective": "Coge la copia de la amenaza con firma"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Guards. Private. No badge, no mercy.",
+          "es": "Guardias. Privados. Sin placa y sin piedad.",
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "type": "give",
+      "ammo": 14,
+      "money": 0,
+      "toast": "Munición de recambio"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 82,
+        "dz": 62
+      },
+      "count": 4,
+      "objective": "Despeja a los guardias privados",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "lose_cops",
+      "stars": 2,
+      "objective": "Corta la persecución con coches de seguridad privada"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -100,
+        "dz": 80
+      },
+      "objective": "Vuelve con Helena para convencerla de declarar"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Helena Brandt",
+          "en": "I told myself I wasn't brave enough. But my daughter asked me what I did when they came. I want an answer.",
+          "es": "Me dije que no era lo bastante valiente. Pero mi hija me preguntó qué hice cuando vinieron. Quiero tener respuesta.",
+          "t": 7.4
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -100,
+        "dz": 80
+      },
+      "cast": [
+        "Helena Brandt",
+        "Nina Cho"
+      ],
+      "lines": [
+        {
+          "speaker": "Helena Brandt",
+          "en": "The harbor deals were just the start. They made contracts for land in other places. Las Brisas. Northpoint. Everywhere.",
+          "es": "Los tratos del puerto eran solo el principio. Hacían contratos por terrenos en otros sitios. Las Brisas. Northpoint. En todas partes.",
+          "t": 8.3
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Outside San Cordova. Outside the state.",
+          "es": "Fuera de San Cordova. Fuera del estado.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then Westbrook wasn't first. Westbrook was practice.",
+          "es": "Entonces Westbrook no fue el primero. Westbrook fue un ensayo.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Helena Brandt",
+          "en": "They treat cities like houses. Buy, strip, sell.",
+          "es": "Tratan a las ciudades como casas. Compran, desmontan, venden.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then I owe a call to my own block.",
+          "es": "Entonces debo una llamada a mi propia manzana.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "Go. You've got a call waiting.",
+          "es": "Ve. Tienes una llamada esperando.",
+          "t": 2.1
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1780,
+      "reputation": {
+        "westbrook_saints": 3,
+        "the_syndicate": -7
+      },
+      "toast": "+$1780"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CALL FROM DRE (M en el radar)"
+    }
+  ]
+}

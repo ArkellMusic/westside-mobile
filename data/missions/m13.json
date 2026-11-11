@@ -1,0 +1,306 @@
+{
+  "id": "m13",
+  "number": 13,
+  "title": "CROSSED STREETS",
+  "title_es": "Calles cruzadas",
+  "act": "ACTO I",
+  "start": "dre_corner",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "dre",
+        "ghost",
+        "keisha",
+        "big_ray"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Block party, first one since my father died. Music, food, kids on bikes. I want the block to feel normal.",
+          "es": "Fiesta del barrio, la primera desde que murió mi padre. Música, comida, críos en bicicleta. Quiero que el barrio se sienta normal.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Normal's expensive, Dre.",
+          "es": "Lo normal es caro, Dre.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "I know what it costs. Ghost, how's the perimeter?",
+          "es": "Sé lo que cuesta. Ghost, ¿cómo va el perímetro?",
+          "t": 3.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Fine. Too fine. Nobody is fighting, nobody is arguing. That's wrong.",
+          "es": "Bien. Demasiado bien. Nadie pelea ni discute. Eso está mal.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "Quiet before something.",
+          "es": "Silencio antes de algo.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "Humor me. One night.",
+          "es": "Hazme el favor. Una noche.",
+          "t": 2
+        },
+        {
+          "speaker": "K",
+          "en": "I brought the permits. City signed. Clean.",
+          "es": "He traído los permisos. El ayuntamiento firmó. Limpios.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "Clean? Since when does the city sign anything for Westbrook?",
+          "es": "¿Limpios? ¿Desde cuándo el ayuntamiento firma algo para Westbrook?",
+          "t": 4.2
+        },
+        {
+          "speaker": "K",
+          "en": "Since somebody wanted a crowd in one place.",
+          "es": "Desde que alguien quiso una multitud en un solo sitio.",
+          "t": 3.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "Stop. Enjoy it. Help with the lights, Marcus.",
+          "es": "Para. Disfrútalo. Ayuda con las luces, Marcus.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'll take the grill. Somebody's gotta keep the old men happy.",
+          "es": "Yo me encargo de la parrilla. Alguien tiene que mantener contentos a los viejos.",
+          "t": 4.3
+        }
+      ]
+    },
+    {
+      "type": "time",
+      "hour": 18
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": [
+        -55,
+        100
+      ],
+      "objective": "Llega a la fiesta del barrio"
+    },
+    {
+      "type": "collect",
+      "at": [
+        -55,
+        100
+      ],
+      "count": 3,
+      "label": "Luz",
+      "objective": "Cuelga las guirnaldas de luces y ayuda en los puestos",
+      "hint": "Acércate a cada poste y cuelga la luz."
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Ghost",
+          "en": "Three guys by the east stalls. Hands in pockets, nobody's eating.",
+          "es": "Tres tipos junto a los puestos del este. Manos en los bolsillos, nadie come.",
+          "t": 4.6
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": [
+        -40,
+        115
+      ],
+      "count": 2,
+      "label": "Provocador",
+      "objective": "Identifica a los provocadores que dividen a los vecinos",
+      "hint": "Fíjate en quién empuja a quién."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "fight",
+      "at": [
+        -40,
+        115
+      ],
+      "count": 3,
+      "objective": "Reduce a los provocadores antes de que empiece el altercado",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Dre",
+          "en": "Marcus, the families! Get them out of the lane!",
+          "es": "¡Marcus, las familias! ¡Sácalas del carril!",
+          "t": 3.3
+        }
+      ]
+    },
+    {
+      "type": "goto",
+      "target": [
+        -80,
+        70
+      ],
+      "objective": "Acompaña a las familias a la salida segura",
+      "hint": "Camina delante, que te sigan."
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        -100,
+        40
+      ],
+      "objective": "Despeja con un coche el tráfico colapsado y abre la salida",
+      "time": 55
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "give",
+      "ammo": 20,
+      "money": 0,
+      "toast": "Munición del arsenal de Dre"
+    },
+    {
+      "type": "defend",
+      "at": [
+        -55,
+        100
+      ],
+      "count": 4,
+      "waves": 2,
+      "time": 55,
+      "objective": "Ayuda a Dre a proteger el escenario y los comercios"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "collect",
+      "at": [
+        -48,
+        95
+      ],
+      "count": 1,
+      "label": "Testigo",
+      "objective": "Habla con el testigo que reconoció un coche"
+    },
+    {
+      "type": "scene",
+      "at": "dre_corner",
+      "cast": [
+        "Witness",
+        "dre",
+        "ghost",
+        "keisha",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Witness",
+          "en": "Black sedan, tinted. Plate ended in nine-four-seven. It circled the block four times.",
+          "es": "Sedán negro, con cristales tintados. La matrícula acababa en nueve-cuatro-siete. Dio cuatro vueltas a la manzana.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Dre",
+          "en": "Party's over. Everybody go home.",
+          "es": "Se acabó la fiesta. Todos a casa.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "You knew this would happen.",
+          "es": "Sabías que pasaría.",
+          "t": 2
+        },
+        {
+          "speaker": "Dre",
+          "en": "I hoped it wouldn't. That's different.",
+          "es": "Esperaba que no. Es distinto.",
+          "t": 2.7
+        },
+        {
+          "speaker": "Ghost",
+          "en": "They wanted the crowd scared. They wanted it on us.",
+          "es": "Querían a la gente asustada. Querían cargárnoslo a nosotros.",
+          "t": 3.6
+        },
+        {
+          "speaker": "K",
+          "en": "Black sedan, tinted, one witness. I can chase that.",
+          "es": "Sedán negro, tintado, un testigo. Puedo seguirle el rastro.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Then we find the witness before they do.",
+          "es": "Entonces encontramos al testigo antes que ellos.",
+          "t": 2.8
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 580,
+      "reputation": {
+        "westbrook_saints": 5,
+        "redline_kings": -2
+      },
+      "toast": "+$580 · Calles cruzadas"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE WITNESS (M en el radar)"
+    }
+  ]
+}

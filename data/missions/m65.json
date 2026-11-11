@@ -1,0 +1,400 @@
+{
+  "id": "m65",
+  "number": 65,
+  "title": "IRON AND ICE",
+  "title_es": "Hierro y hielo",
+  "act": "ACTO IV",
+  "start": {
+    "zone": "northpoint",
+    "dx": 100,
+    "dz": 90
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -30,
+        "dz": -90
+      },
+      "cast": [
+        "ghost",
+        "Marek Dolan"
+      ],
+      "title_card": true,
+      "hour": 23,
+      "lines": [
+        {
+          "speaker": "Marek Dolan",
+          "en": "Sit with your back to the wall. Everybody at the Anvil is somebody's cousin.",
+          "es": "Siéntate de espaldas a la pared. En el Anvil todos son primos de alguien.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "We're here about the plant on the river. Brandt said you run the loading dock.",
+          "es": "Venimos por la planta del río. Brandt dijo que llevas el muelle de carga.",
+          "t": 5.5
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "I run twelve guys and a forklift. The plant runs me. Night shifts, no names on the manifest, paychecks in envelopes.",
+          "es": "Yo llevo doce tíos y una carretilla. La planta me lleva a mí. Turnos de noche, sin nombres en el manifiesto, la paga en sobres.",
+          "t": 8.1
+        },
+        {
+          "speaker": "Ghost",
+          "en": "What's in the cold rooms?",
+          "es": "¿Qué hay en las cámaras?",
+          "t": 2
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "Fish up front. Paper in the back. Whole walls of paper, kept at thirty-four degrees so it doesn't rot.",
+          "es": "Pescado delante. Papel detrás. Paredes enteras de papel, a un grado y pico para que no se pudra.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Paper doesn't need protecting that bad unless it's evidence.",
+          "es": "El papel no se protege tan bien si no es una prueba.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "Two of my men asked about it. One quit. The other went home with a broken hand and a note about his daughter's school.",
+          "es": "Dos de mis hombres preguntaron. Uno se fue. El otro volvió a casa con la mano rota y una nota sobre el colegio de su hija.",
+          "t": 8.3
+        },
+        {
+          "speaker": "Ghost",
+          "en": "And you're still talking.",
+          "es": "Y tú sigues hablando.",
+          "t": 2
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "I've got a daughter too. I figure there's a day you stop being afraid and start being tired. Today's that day.",
+          "es": "Yo también tengo una hija. Supongo que hay un día en que dejas de tener miedo y te cansas. Hoy es ese día.",
+          "t": 7.7
+        },
+        {
+          "speaker": "Mack",
+          "en": "What do you need from us?",
+          "es": "¿Qué necesitas de nosotros?",
+          "t": 2
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "My badge gets you through the maintenance gate. The blueprints are in the foreman's locker. Bring me back out alive afterward.",
+          "es": "Mi tarjeta os abre la puerta de mantenimiento. Los planos están en la taquilla del capataz. Sacadme vivo después.",
+          "t": 8.8
+        },
+        {
+          "speaker": "Ghost",
+          "en": "We bring everybody back, or none of us are coming back.",
+          "es": "Traemos a todos de vuelta, o ninguno vuelve.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "That's the first thing a man's said tonight that I believe. Let's work.",
+          "es": "Es lo primero que me dice esta noche un hombre y me lo creo. Pongámonos a ello.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "northpoint",
+        "dx": 60,
+        "dz": -110
+      },
+      "guards": 2,
+      "objective": "Vigila el perímetro del complejo sin ser visto",
+      "label": "Guardias de la valla"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "The plant is registered to a cold-chain logistics firm in a mailbox office. Same address as two others in San Cordova.",
+          "es": "La planta está registrada a una empresa de logística de frío en un buzón. La misma dirección que otras dos en San Cordova.",
+          "t": 8.3
+        }
+      ]
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": -40,
+        "dz": -100
+      },
+      "count": 3,
+      "label": "Credencial",
+      "objective": "Encuentra la credencial, los planos y el uniforme en las taquillas del turno",
+      "hint": "Examina las taquillas del vestuario."
+    },
+    {
+      "type": "give",
+      "ammo": 80,
+      "money": 0,
+      "toast": "Munición de reserva"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "northpoint",
+        "dx": 70,
+        "dz": -120
+      },
+      "objective": "Ve a la puerta de mantenimiento con la tarjeta de Marek",
+      "hint": "Cruza el patio de nieve.",
+      "radius": 8
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "northpoint",
+        "dx": 90,
+        "dz": -130
+      },
+      "guards": 3,
+      "objective": "Entra por la ruta de mantenimiento hacia el interior",
+      "label": "Guardias de mantenimiento"
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Marek Dolan",
+          "en": "Conveyor line. Don't touch the red lever, it takes a man's arm. Left, then the stairs over the compressor.",
+          "es": "Línea de cinta. No toques la palanca roja, te arranca un brazo. A la izquierda, luego las escaleras sobre el compresor.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Understood.",
+          "es": "Entendido.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "northpoint",
+        "dx": 110,
+        "dz": -140
+      },
+      "guards": 4,
+      "objective": "Atraviesa la sección industrial esquivando maquinaria y operarios",
+      "label": "Operarios"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "northpoint",
+        "dx": 125,
+        "dz": -150
+      },
+      "count": 2,
+      "label": "Registro",
+      "objective": "Copia los registros de transporte en la sala de servidores",
+      "hint": "Acércate al terminal y mantén pulsado."
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": 125,
+        "dz": -150
+      },
+      "cast": [
+        "ghost",
+        "Marek Dolan"
+      ],
+      "lines": [
+        {
+          "speaker": "Marek Dolan",
+          "en": "Four more sites listed. Same logistics firm. A fish plant, a rail depot, two cold houses. All with the same shift pattern.",
+          "es": "Cuatro sitios más en la lista. La misma empresa de logística. Una planta de pescado, un apeadero y dos cámaras. Todos con el mismo patrón de turnos.",
+          "t": 8.5
+        },
+        {
+          "speaker": "Ghost",
+          "en": "A chain. Not a warehouse. A chain.",
+          "es": "Una cadena. No un almacén. Una cadena.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "Wait. That's not a shift supervisor's voice. Somebody's in the corridor.",
+          "es": "Espera. Esa no es voz de supervisor. Hay alguien en el pasillo.",
+          "t": 5.0
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "northpoint",
+        "dx": 125,
+        "dz": -150
+      },
+      "count": 5,
+      "waves": 2,
+      "time": 45,
+      "objective": "Resiste mientras Marek y Ghost cargan el archivo",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "northpoint",
+        "dx": 135,
+        "dz": -160
+      },
+      "count": 5,
+      "objective": "Abre la salida cubierta de nieve hacia el muelle trasero",
+      "faction": "guards",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "northpoint",
+        "dx": -60,
+        "dz": -150
+      },
+      "objective": "Huye con Marek en una furgoneta por el acceso nevado"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "K",
+          "en": "Found it. In the logistics registry. A document archive named 'Meridian Vault Primary'. The entry is a signature, dated six months ago: E. Cross.",
+          "es": "Lo encontré. En el registro de logística. Un archivo documental llamado «Meridian Vault Primary». La entrada es una firma, de hace seis meses: E. Cross.",
+          "t": 9
+        },
+        {
+          "speaker": "Mack",
+          "en": "So the paper in the cold room is the copy.",
+          "es": "O sea que el papel de la cámara es la copia.",
+          "t": 2.9
+        },
+        {
+          "speaker": "K",
+          "en": "The original is in a building in the city center. Cross keeps the whole machine in one drawer.",
+          "es": "El original está en un edificio del centro. Cross guarda toda la máquina en un cajón.",
+          "t": 6.6
+        }
+      ]
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "northpoint",
+        "dx": -60,
+        "dz": -150
+      },
+      "cast": [
+        "ghost",
+        "Marek Dolan"
+      ],
+      "lines": [
+        {
+          "speaker": "Marek Dolan",
+          "en": "Can I go home now?",
+          "es": "¿Puedo ir a casa ya?",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Not tonight. Tonight you're a name on a very short list. Hale puts you in the same house as Pruitt.",
+          "es": "Esta noche no. Esta noche eres un nombre en una lista muy corta. Hale te mete en la misma casa que a Pruitt.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Marek Dolan",
+          "en": "My daughter...",
+          "es": "Mi hija...",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "I'll send someone for her. Tonight. I make the calls myself.",
+          "es": "Mandaré a alguien a por ella. Esta noche. Las llamadas las hago yo.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Mack",
+          "en": "You haven't said that many words in a week, Ghost.",
+          "es": "No has dicho tantas palabras en una semana, Ghost.",
+          "t": 3.5
+        },
+        {
+          "speaker": "Ghost",
+          "en": "Some days are worth it.",
+          "es": "Hay días que lo valen.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 4750,
+      "reputation": {
+        "westbrook_saints": 5,
+        "the_syndicate": -7
+      },
+      "toast": "+$4,750 · Cadena de instalaciones confirmada"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: CROSS FILES (M en el radar)"
+    }
+  ]
+}

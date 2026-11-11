@@ -1,0 +1,315 @@
+{
+  "id": "m41",
+  "number": 41,
+  "title": "INTERCEPTED ROUTE",
+  "title_es": "Ruta interceptada",
+  "act": "ACTO II",
+  "start": {
+    "zone": "san_cordova",
+    "dx": -20,
+    "dz": 30
+  },
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -50,
+        "dz": -30
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "The evidence has to travel to the capital. Two vans, one decoy. The real one carries the originals.",
+          "es": "Las pruebas tienen que viajar a la capital. Dos furgonetas, un señuelo. La real lleva los originales.",
+          "t": 6.9
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'll drive the decoy. It's the one I get shot at in.",
+          "es": "Conduzco el señuelo. Es en la que me disparan.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "You volunteer for that?",
+          "es": "¿Te ofreces para eso?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Somebody has to give them something to chase.",
+          "es": "Alguien tiene que darles algo que perseguir.",
+          "t": 3.2
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "The route goes through the old tunnel and the toll. Two choke points.",
+          "es": "La ruta pasa por el túnel viejo y el peaje. Dos cuellos de botella.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Whoever knows the plan is a short list. I told five people. Five.",
+          "es": "Quien conoce el plan es una lista corta. Se lo dije a cinco personas. Cinco.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "One of the five talks.",
+          "es": "Uno de los cinco habla.",
+          "t": 2
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Maybe. Trust nobody until the van is across.",
+          "es": "Quizá. No te fíes de nadie hasta que la furgoneta pase.",
+          "t": 3.1
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "I'll ride with the documents.",
+          "es": "Yo viajo con los documentos.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then I'm driving yours. Nobody touches that van.",
+          "es": "Entonces conduzco la tuya. Nadie toca esa furgoneta.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Loco",
+          "en": "Hey, boss. Don't die. I still want the money you owe me.",
+          "es": "Eh, jefe. No te mueras. Todavía quiero el dinero que me debes.",
+          "t": 3.9
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -50,
+        "dz": -30
+      },
+      "objective": "Acompaña el cargamento de pruebas bajo protección discreta"
+    },
+    {
+      "type": "steal",
+      "objective": "Elige el vehículo con el detective: una furgoneta de reparto"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Detective Hale",
+          "en": "Highway or coast road? Highway's faster but exposed. Coast is slow but nobody watches it.",
+          "es": "¿Autopista o la carretera de la costa? La autopista es más rápida pero expuesta. La costa es lenta y nadie la vigila.",
+          "t": 6.2
+        }
+      ]
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 80,
+        "dz": -60
+      },
+      "objective": "Conduce por la autopista hasta el punto de desvío"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Nina Cho",
+          "en": "That sign's wrong. The detour sends us into the industrial lot. It's a trap.",
+          "es": "Ese cartel está mal. El desvío nos manda al solar industrial. Es una trampa.",
+          "t": 5.3
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": -90
+      },
+      "objective": "Atraviesa el túnel antes de que cierren la barrera",
+      "time": 55
+    },
+    {
+      "type": "defend",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 120,
+        "dz": -90
+      },
+      "count": 4,
+      "waves": 2,
+      "time": 40,
+      "objective": "Protege la furgoneta mientras cruza el peaje",
+      "faction": "the_syndicate"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "They hit my decoy! Two cars on me! I'm okay. I'm okay! Keep driving!",
+          "es": "¡Han ido a por mi señuelo! ¡Dos coches encima! Estoy bien. ¡Estoy bien! ¡Sigue conduciendo!",
+          "t": 4.8
+        }
+      ]
+    },
+    {
+      "type": "give",
+      "ammo": 20,
+      "money": 0,
+      "toast": "Munición del maletero"
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 125,
+        "dz": -95
+      },
+      "count": 4,
+      "objective": "Rechaza el ataque en la autopista",
+      "faction": "the_syndicate",
+      "armed": true,
+      "waves": 2
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "lose_cops",
+      "stars": 3,
+      "objective": "Cambia de conductor y evita el control de la autopista"
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 160,
+        "dz": -140
+      },
+      "objective": "Llega al destino con los documentos",
+      "stop": true
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 160,
+        "dz": -140
+      },
+      "cast": [
+        "Nina Cho",
+        "Detective Hale",
+        "loco"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "The decoy's dead. Metal, I mean. I'm fine. I'm very fine.",
+          "es": "El señuelo ha muerto. El metal, quiero decir. Yo estoy bien. Muy bien.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "Half the documents survived. The rest burned in the second van.",
+          "es": "La mitad de los documentos sobrevivió. El resto se quemó en la segunda furgoneta.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Nina Cho",
+          "en": "What survived is enough to start a trial. And it all points one way.",
+          "es": "Lo que sobrevivió basta para empezar un juicio. Y todo apunta en una dirección.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Mack",
+          "en": "The mountain road. Las Brisas.",
+          "es": "La carretera de la montaña. Las Brisas.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Detective Hale",
+          "en": "A city that doesn't sleep, built on cash nobody can trace.",
+          "es": "Una ciudad que no duerme, construida con un efectivo imposible de rastrear.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Loco",
+          "en": "Sounds like my kind of town.",
+          "es": "Suena a mi tipo de ciudad.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "It's their kind of town. Don't forget that.",
+          "es": "Es el tipo de ciudad de ellos. No lo olvides.",
+          "t": 3.0
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 2200,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -9
+      },
+      "toast": "+$2200"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: ROAD TO LAS BRISAS (M en el radar)"
+    }
+  ]
+}

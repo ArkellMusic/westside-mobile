@@ -1,0 +1,287 @@
+{
+  "id": "m18",
+  "number": 18,
+  "title": "FIRE AT VARGAS",
+  "title_es": "Fuego en Vargas",
+  "act": "ACTO I",
+  "start": "vargas_front",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "loco",
+        "Teo",
+        "big_ray",
+        "ghost"
+      ],
+      "title_card": true,
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Three in the morning and my phone's ringing. Never good.",
+          "es": "Las tres de la madrugada y suena mi teléfono. Nunca es bueno.",
+          "t": 3.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "I smelled smoke from my mama's porch. What happened?",
+          "es": "Olí humo desde el porche de mi madre. ¿Qué ha pasado?",
+          "t": 3.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "Somebody put a rag in the fuel line room. Place is going up.",
+          "es": "Alguien metió un trapo en el cuarto de combustible. Esto está ardiendo.",
+          "t": 4.2
+        },
+        {
+          "speaker": "Teo",
+          "en": "Loco! Loco, the compressor room! I'm trapped!",
+          "es": "¡Loco! ¡Loco, el cuarto del compresor! ¡Estoy atrapado!",
+          "t": 3.2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Teo, hold on, hold on! That kid is nineteen!",
+          "es": "¡Teo, aguanta, aguanta! ¡Ese chaval tiene diecinueve años!",
+          "t": 3.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "What do you need?",
+          "es": "¿Qué necesitas?",
+          "t": 2
+        },
+        {
+          "speaker": "Loco",
+          "en": "Hands. Fire extinguishers. The breaker. Cut the power or the whole block goes up.",
+          "es": "Manos. Extintores. El diferencial. Corta la corriente o ardera toda la manzana.",
+          "t": 5.7
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I called the fire department. Twelve minutes out.",
+          "es": "He llamado a los bomberos. A doce minutos.",
+          "t": 3.4
+        },
+        {
+          "speaker": "Loco",
+          "en": "Twelve minutes is a lifetime.",
+          "es": "Doce minutos son una vida.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Then we don't wait.",
+          "es": "Pues no esperamos.",
+          "t": 2
+        },
+        {
+          "speaker": "Ghost",
+          "en": "(arriving) Camera disc. They'll have caught the arsonist. Save it.",
+          "es": "(llegando) El disco de cámaras. Habrá grabado al incendiario. Sálvalo.",
+          "t": 4.6
+        }
+      ]
+    },
+    {
+      "type": "time",
+      "hour": 3
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "fight",
+      "at": "vargas_front",
+      "count": 2,
+      "objective": "Quita de en medio a los dos tipos que bloquean la puerta del taller",
+      "faction": "the_syndicate",
+      "armed": false
+    },
+    {
+      "type": "goto",
+      "target": [
+        100,
+        -115
+      ],
+      "objective": "Entra al taller y saca a Teo del cuarto del compresor"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "timed_drive",
+      "target": [
+        105,
+        -112
+      ],
+      "objective": "Corta la electricidad y retira los bidones antes de que exploten",
+      "time": 45
+    },
+    {
+      "type": "collect",
+      "at": [
+        98,
+        -108
+      ],
+      "count": 3,
+      "label": "Bidón",
+      "objective": "Saca los bidones de combustible fuera del taller",
+      "hint": "Arrástralos a la calle, lejos del fuego."
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "steal",
+      "objective": "Coge un coche para guiar al camión de bomberos"
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        140,
+        -95
+      ],
+      "objective": "Guía a los bomberos hasta el taller entre los obstáculos"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": [
+        100,
+        -118
+      ],
+      "count": 1,
+      "label": "Disco de cámaras",
+      "objective": "Rescata el disco de cámaras de la oficina en llamas"
+    },
+    {
+      "type": "goto",
+      "target": [
+        60,
+        -100
+      ],
+      "objective": "Pon el disco a salvo, lejos del taller"
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "drive_to",
+      "target": [
+        130,
+        -70
+      ],
+      "objective": "Sigue al vehículo que huye de la escena, sin conducir de forma temeraria"
+    },
+    {
+      "type": "lose_cops",
+      "stars": 1,
+      "objective": "Pierde de vista a la policía para no complicar la evidencia"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": "vargas_front",
+      "cast": [
+        "loco",
+        "Teo",
+        "big_ray"
+      ],
+      "lines": [
+        {
+          "speaker": "Loco",
+          "en": "Look at it. Three generations of work, black as a coffin.",
+          "es": "Míralo. Tres generaciones de trabajo, negro como un ataúd.",
+          "t": 4.0
+        },
+        {
+          "speaker": "Teo",
+          "en": "I'm sorry, boss. I should have run.",
+          "es": "Lo siento, jefe. Debí haber corrido.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "Shut up, kid. You're alive. That's the only thing I count.",
+          "es": "Cállate, chaval. Estás vivo. Es lo único que cuento.",
+          "t": 4.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Disc is safe. Camera caught a man at the back door.",
+          "es": "El disco está a salvo. La cámara captó a un hombre en la puerta trasera.",
+          "t": 3.6
+        },
+        {
+          "speaker": "Loco",
+          "en": "Show me his face.",
+          "es": "Enséñame su cara.",
+          "t": 2
+        },
+        {
+          "speaker": "Mack",
+          "en": "Can't see it. Mask. But a grey suit.",
+          "es": "No se ve. Máscara. Pero un traje gris.",
+          "t": 2.5
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'm going to find that man. And when I do, I'm not calling the cops.",
+          "es": "Voy a encontrar a ese hombre. Y cuando lo haga, no llamaré a la policía.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "Loco. Careful what you promise.",
+          "es": "Loco. Cuidado con lo que prometes.",
+          "t": 2.2
+        },
+        {
+          "speaker": "Loco",
+          "en": "I'm not promising, Ray. I'm saying.",
+          "es": "No prometo, Ray. Digo.",
+          "t": 2.5
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 780,
+      "reputation": {
+        "westbrook_saints": 4,
+        "the_syndicate": -4
+      },
+      "toast": "+$780 · Fuego en Vargas"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: SMOKE TRAIL (M en el radar)"
+    }
+  ]
+}

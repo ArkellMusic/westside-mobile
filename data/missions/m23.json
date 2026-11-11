@@ -1,0 +1,332 @@
+{
+  "id": "m23",
+  "number": 23,
+  "title": "CITY OF FOG",
+  "title_es": "Ciudad de niebla",
+  "act": "ACTO II",
+  "start": "bridge",
+  "steps": [
+    {
+      "type": "phase",
+      "n": 1
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": -150,
+        "dz": -110
+      },
+      "cast": [
+        "big_ray",
+        "Tomas Reyes"
+      ],
+      "lines": [
+        {
+          "speaker": "Tomas Reyes",
+          "en": "Ray Burrell, you old dog. You still owe me forty dollars from the ninety-six fight.",
+          "es": "Ray Burrell, perro viejo. Todavía me debes cuarenta dólares de la pelea del noventa y seis.",
+          "t": 5.8
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "And you still owe me a bed for the kid. Tomas, this is Marcus. Mack.",
+          "es": "Y tú me debes una cama para el chico. Tomas, este es Marcus. Mack.",
+          "t": 4.8
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "The one who left. I heard. Westbrook talks loud, even from across the water.",
+          "es": "El que se fue. Lo he oído. Westbrook habla alto, hasta desde el otro lado del agua.",
+          "t": 5.3
+        },
+        {
+          "speaker": "Mack",
+          "en": "I didn't come to talk about the past. I came because the same money is eating my neighborhood.",
+          "es": "No he venido a hablar del pasado. He venido porque el mismo dinero se está comiendo mi barrio.",
+          "t": 6.6
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "Then you came to the right fog. This city is built on favors. Everybody owes, nobody pays.",
+          "es": "Pues has llegado a la niebla adecuada. Esta ciudad se levanta sobre favores. Todos deben, nadie paga.",
+          "t": 6.3
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I can't stay, Mack. Somebody has to watch your mother's block. Tomas will point you.",
+          "es": "No puedo quedarme, Mack. Alguien tiene que vigilar la manzana de tu madre. Tomas te guiará.",
+          "t": 5.9
+        },
+        {
+          "speaker": "Mack",
+          "en": "You're leaving me with a stranger.",
+          "es": "Me dejas con un desconocido.",
+          "t": 2.4
+        },
+        {
+          "speaker": "Big Ray",
+          "en": "I'm leaving you with a man who hates the same suits we do. That's better than family.",
+          "es": "Te dejo con un hombre que odia los mismos trajes que nosotros. Eso vale más que la familia.",
+          "t": 6.0
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "Rule one: trams have right of way. Rule two: nobody here asks your last name. Rule three: pay your debts.",
+          "es": "Regla uno: los tranvías tienen preferencia. Regla dos: aquí nadie pregunta tu apellido. Regla tres: paga tus deudas.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "What debts? I've been in town ten minutes.",
+          "es": "¿Qué deudas? Llevo en la ciudad diez minutos.",
+          "t": 2.9
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "The room costs a favor. I have a delivery up the hill that can't be late. Welcome to San Cordova.",
+          "es": "El cuarto cuesta un favor. Tengo un encargo cuesta arriba que no puede llegar tarde. Bienvenido a San Cordova.",
+          "t": 6.8
+        }
+      ],
+      "title_card": true
+    },
+    {
+      "type": "drive_to",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -60,
+        "dz": -90
+      },
+      "objective": "Cruza la bahía con la ruta panorámica"
+    },
+    {
+      "type": "phase",
+      "n": 2
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": -20,
+        "dz": -40
+      },
+      "objective": "Aprende las reglas: espera en la parada del tranvía",
+      "hint": "Los tranvías tienen preferencia y las cuestas engañan."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Tomas Reyes",
+          "en": "Stay off the rails when you hear the bell. Nine out of ten tourists learn that lesson once.",
+          "es": "Fuera de los raíles cuando suene la campana. Nueve de cada diez turistas aprenden eso una sola vez.",
+          "t": 6.4
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 3
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 40,
+        "dz": -20
+      },
+      "objective": "Encuentra el hostal de Tomas en la calle Lanterna"
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Tomas Reyes",
+          "en": "Third floor, window faces the harbor. Don't open it at night. The fog smells like diesel and secrets.",
+          "es": "Tercera planta, la ventana da al puerto. No la abras de noche. La niebla huele a diésel y a secretos.",
+          "t": 7.1
+        },
+        {
+          "speaker": "Mack",
+          "en": "Charming.",
+          "es": "Encantador.",
+          "t": 2
+        }
+      ]
+    },
+    {
+      "type": "phase",
+      "n": 4
+    },
+    {
+      "type": "steal",
+      "objective": "Consigue un coche para la entrega de Tomas"
+    },
+    {
+      "type": "timed_drive",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 70,
+        "dz": 90
+      },
+      "objective": "Sube la cuesta empinada y entrega el paquete a tiempo",
+      "time": 70
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Tomas Reyes",
+          "en": "You made it up the Sixty Percent. Brakes still hanging on?",
+          "es": "Has subido la Sesenta por Ciento. ¿Aguantan los frenos?",
+          "t": 4.1
+        }
+      ]
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 5
+    },
+    {
+      "type": "collect",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 100,
+        "dz": 110
+      },
+      "count": 3,
+      "label": "Foto",
+      "objective": "Fotografía a los hombres que compran el almacén del puerto",
+      "hint": "Cuenta tres fotos desde la barandilla."
+    },
+    {
+      "type": "call",
+      "lines": [
+        {
+          "speaker": "Mack",
+          "en": "Suits again. Same cheap smile as the ones on Kingsley.",
+          "es": "Trajes otra vez. La misma sonrisa barata que los de Kingsley.",
+          "t": 3.8
+        }
+      ]
+    },
+    {
+      "type": "fight",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 105,
+        "dz": 115
+      },
+      "count": 3,
+      "objective": "Quítate de encima a los vigilantes que te han visto",
+      "faction": "the_syndicate",
+      "armed": true
+    },
+    {
+      "type": "phase",
+      "n": 6
+    },
+    {
+      "type": "sneak",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 150,
+        "dz": 150
+      },
+      "guards": 2,
+      "objective": "Sigue al contacto hasta el barrio alto sin armar escándalo",
+      "label": "Contacto"
+    },
+    {
+      "type": "goto",
+      "target": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": 155
+      },
+      "objective": "Alcanza el mirador donde espera el contacto"
+    },
+    {
+      "type": "checkpoint"
+    },
+    {
+      "type": "phase",
+      "n": 7
+    },
+    {
+      "type": "scene",
+      "at": {
+        "zone": "san_cordova",
+        "dx": 155,
+        "dz": 155
+      },
+      "cast": [
+        "Tomas Reyes"
+      ],
+      "lines": [
+        {
+          "speaker": "Tomas Reyes",
+          "en": "You're good at not being seen. Dangerous trait for an honest man.",
+          "es": "Se te da bien pasar desapercibido. Rasgo peligroso para un hombre honrado.",
+          "t": 4.6
+        },
+        {
+          "speaker": "Mack",
+          "en": "Honest ain't what I'd call me.",
+          "es": "Honrado no es como me llamaría.",
+          "t": 2.1
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "The warehouse buyer is a shell. Papers, no people. But there's a reporter chasing those papers. Nina Cho.",
+          "es": "El comprador del almacén es una pantalla. Papeles, ninguna persona. Pero hay una periodista detrás de esos papeles. Nina Cho.",
+          "t": 7.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Reporter. They love to talk and they love to get people killed.",
+          "es": "Periodista. Les encanta hablar y matar a la gente por ellos.",
+          "t": 4.4
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "This one's different. She lost a brother to a company like that. Go meet her.",
+          "es": "Esta es distinta. Perdió a un hermano por una empresa como esa. Ve a conocerla.",
+          "t": 5.4
+        },
+        {
+          "speaker": "Mack",
+          "en": "Fine. But the first time somebody follows me home, I'm blaming you.",
+          "es": "Vale. Pero la primera vez que alguien me siga a casa, te echo la culpa.",
+          "t": 4.7
+        },
+        {
+          "speaker": "Tomas Reyes",
+          "en": "Take the blame. Take the room. Take the fog. Just take care.",
+          "es": "Quédate con la culpa. Con el cuarto. Con la niebla. Y cuídate.",
+          "t": 4.2
+        }
+      ]
+    },
+    {
+      "type": "reward",
+      "money": 1060,
+      "reputation": {
+        "westbrook_saints": 2,
+        "the_syndicate": -3
+      },
+      "toast": "+$1060"
+    },
+    {
+      "type": "complete",
+      "next_objective": "Siguiente misión: THE REPORTER (M en el radar)"
+    }
+  ]
+}
